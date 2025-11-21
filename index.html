@@ -117,14 +117,64 @@
         /* Hero Section with Video Background */
         .hero {
             position: relative;
-            min-height: 625px;
+            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: url('assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg') center/cover;
             color: white;
             padding: 4rem 2rem;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%) scale(1.2);
+            transform-origin: center center;
+            z-index: 0;
+            object-fit: cover;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator::after {
+            content: '↓';
+            display: block;
+            font-size: 24px;
+            margin-top: 0.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
         }
         
         .hero::before {
@@ -135,6 +185,12 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         /* Mission Section */
@@ -450,7 +506,7 @@
         .farmers-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            width: 100%;
         }
         
         .farmers-section h2 {
@@ -458,6 +514,149 @@
             font-size: 32px;
             color: #FFFFFF;
             margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .farmers-intro {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        
+        .farmers-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            padding: 0 2rem 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-text-light) transparent;
+        }
+        
+        .farmers-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .farmers-grid::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .farmers-grid::-webkit-scrollbar-thumb {
+            background-color: var(--color-text-light);
+            border-radius: 4px;
+        }
+        
+        .farmers-grid::-webkit-scrollbar-thumb:hover {
+            background-color: var(--color-secondary);
+        }
+        
+        .farmer-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 0;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            flex: 0 0 350px;
+            min-width: 350px;
+        }
+        
+        .farmer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .farmer-image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .farmer-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transition: transform 0.3s;
+        }
+        
+        .farmer-card:hover .farmer-image {
+            transform: scale(1.05);
+        }
+        
+        .farmer-card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        
+        .farmer-name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .farmer-cta {
+            display: block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .farmer-card:hover .farmer-cta {
+            background-color: var(--color-secondary);
+        }
+        
+        .shipments-grid .shipment-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .shipments-grid .shipment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .farmer-location {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .farmer-story {
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #333;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        
+        .farmer-highlight {
+            font-size: 14px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
         }
         
         .farmer-quote {
@@ -471,7 +670,7 @@
             margin: 2rem 0;
         }
         
-        .farmer-name {
+        .farmer-name-old {
             font-family: var(--font-heading);
             font-size: 16px;
             color: var(--color-primary);
@@ -545,6 +744,19 @@
                 grid-template-columns: 1fr;
             }
             
+            .farmers-grid {
+                gap: 1.5rem;
+            }
+            
+            .farmer-card {
+                flex: 0 0 300px;
+                min-width: 300px;
+            }
+            
+            .farmers-grid {
+                padding: 0 1rem 1rem;
+            }
+            
             .featured-content {
                 grid-template-columns: 1fr;
             }
@@ -575,6 +787,22 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Loading state for stats */
+        .stat-number.loading {
+            opacity: 0.6;
+        }
+        
+        .stat-number.loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
     </style>
 </head>
 <body>
@@ -587,6 +815,8 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#mission">Mission</a></li>
                 <li><a href="#products">Products</a></li>
+                <li><a href="#farmers">Farms</a></li>
+                <li><a href="#shipments">Shipments</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -594,6 +824,20 @@
     
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <video 
+            class="hero-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            poster="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg">
+            <source src="https://video.wixstatic.com/video/0e2cde_e43e6687994b4d69bd1bfd671b910730/1080p/mp4/file.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <!-- Video background - no text overlay needed as per original design -->
+        </div>
+        <div class="scroll-indicator">Scroll to explore</div>
     </section>
     
     <!-- Mission Section -->
@@ -611,14 +855,14 @@
             
             <div class="stat-card">
                 <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg" alt="Cacao Circles">
-                <div class="stat-number">134</div>
-                <div class="stat-label">Trees Financed</div>
-                <div class="stat-description">Funding raised to plant trees, supporting reforestation efforts and enhancing ecosystem health.</div>
+                <div class="stat-number" id="trees-planted" data-default="134">134</div>
+                <div class="stat-label">Trees Planted</div>
+                <div class="stat-description">Trees planted through regenerative cacao farming, supporting reforestation efforts and enhancing ecosystem health.</div>
             </div>
             
             <div class="stat-card">
                 <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.webp" alt="Cacao Circles">
-                <div class="stat-number">0.134</div>
+                <div class="stat-number" id="hectares-restored" data-default="0.134">0.134</div>
                 <div class="stat-label">Hectares Restored</div>
                 <div class="stat-description">Hectares of land restored through regenerative cacao farming, enhancing biodiversity and climate resilience.</div>
             </div>
@@ -628,7 +872,10 @@
             <p>Agroverse unites a community to regenerate the Amazon with premium cacao from small farmers' agroforestry. Targeting 10,000 hectares of impact—shop to empower and catalyze change.</p>
         </div>
         
-        <a href="#products" class="cta-button">Shop Cacao – Empower Now</a>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="category/retail-packs/index.html" class="cta-button">Shop Retail Packs</a>
+            <a href="category/wholesale-bulk/index.html" class="cta-button" style="background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);">Shop Wholesale</a>
+        </div>
     </section>
     
     <!-- Featured Cacao Section -->
@@ -666,50 +913,279 @@
         <div class="products-subtitle">From Bahia to Pará: Ethical cacao that restores hectares, fuels rituals, and traces back to the source.</div>
         
         <div class="product-gallery">
-            <div class="product-card">
+            <a href="product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html" class="product-card" style="text-decoration: none; color: inherit;">
                 <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_43e4787aafc14e8b95fe84b826eecf7b~mv2.jpg" alt="Ceremonial Cacao – La do Sitio Farm">
                 <div class="product-card-body">
                     <h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
                     <div class="price">$25.00</div>
+                    <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From AGL8 • Paulo's Farm</div>
                 </div>
-            </div>
+            </a>
             
-            <div class="product-card">
+            <a href="product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html" class="product-card" style="text-decoration: none; color: inherit;">
                 <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_b3ea374b933645d988895d29a80befea~mv2.jpeg" alt="Taste of Rainforest">
                 <div class="product-card-body">
                     <h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
                     <div class="price">$25.00</div>
+                    <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From AGL10 • Capela Velha</div>
                 </div>
-            </div>
+            </a>
             
-            <div class="product-card">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_d2ec9b7e92c547019e90739efe3e8d96~mv2.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs">
-                <div class="product-card-body">
-                    <h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
-                    <div class="price">$25.00</div>
-                </div>
-            </div>
-            
-            <div class="product-card">
+            <a href="product-page/oscar-s-bahia-ceremonial-cacao/index.html" class="product-card" style="text-decoration: none; color: inherit;">
                 <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_360a687cf0904b7eb80661b781f11801~mv2.jpeg" alt="Ceremonial Cacao – Oscar's Farm">
                 <div class="product-card-body">
                     <h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
                     <div class="price">$25.00</div>
+                    <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From AGL4 • Oscar's Farm</div>
                 </div>
-            </div>
+            </a>
+            
+            <a href="product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html" class="product-card" style="text-decoration: none; color: inherit;">
+                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_d2ec9b7e92c547019e90739efe3e8d96~mv2.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs">
+                <div class="product-card-body">
+                    <h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
+                    <div class="price">$25.00</div>
+                    <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From AGL4 • Oscar's Farm</div>
+                </div>
+            </a>
         </div>
         
-        <a href="https://www.agroverse.shop/category/retail-packs" class="shop-button">Shop Now</a>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="category/retail-packs/index.html" class="shop-button">View All Retail Packs</a>
+            <a href="category/wholesale-bulk/index.html" class="shop-button" style="background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);">View Wholesale Bulk</a>
+        </div>
     </section>
     
     <!-- Farmers Section -->
-    <section class="farmers-section">
+    <section class="farmers-section" id="farmers">
         <div class="farmers-content">
             <h2>Meet Our Farmers</h2>
-            <div class="farmer-quote">
-                <blockquote>"I cultivate cacao to sow the seeds of a regenerative future"</blockquote>
-                <div class="farmer-name">Milan, Cacao Nibs Farmer</div>
+            <p class="farmers-intro" style="font-size: 18px;">
+                Direct relationships with family farms in Pará & Bahia, Brazil. Every bag tells a story of regenerative farming, multi-generational wisdom, and sustainable practices.
+            </p>
+            
+            <div class="farmers-grid">
+                <a href="farms/oscar-bahia/index.html" class="farmer-card">
+                    <div class="farmer-image-container">
+                        <img 
+                            src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" 
+                            alt="Oscar's Farm - Bahia, Brazil" 
+                            class="farmer-image"
+                            loading="lazy"
+                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                        />
+                    </div>
+                    <div class="farmer-card-content">
+                        <div class="farmer-name">Oscar</div>
+                        <div class="farmer-location">Bahia, Brazil</div>
+                        <div class="farmer-story">
+                            Three generations of cacao wisdom. Oscar's grandfather planted trees 80 years ago that are still producing today—a testament to regenerative farming that spans generations. His 100-year-old farm features 80-year-old Criolla trees yielding 900-1000kg/hectare, proving that well-tended native varieties can thrive for over a century.
+                        </div>
+                        <div class="farmer-highlight">
+                            🌳 80-year-old trees • Three generations • Fine-flavored cacao selection
+                        </div>
+                        <div class="farmer-cta">Learn More →</div>
+                    </div>
+                </a>
+                
+                <a href="farms/vivi-jesus-do-deus-itacare/index.html" class="farmer-card">
+                    <div class="farmer-image-container">
+                        <img 
+                            src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif" 
+                            alt="Vivi's Jesus Do Deus Farm - Itacaré, Bahia" 
+                            class="farmer-image"
+                            loading="lazy"
+                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg'; this.onerror=null;"
+                        />
+                    </div>
+                    <div class="farmer-card-content">
+                        <div class="farmer-name">Vivi</div>
+                        <div class="farmer-location">Jesus Do Deus Farm, Itacaré, Bahia, Brazil</div>
+                        <div class="farmer-story">
+                            A former policeman and politician in Itacaré, Vivi received a calling from God that transformed his life's path. He converted what was once a cattle ranch into Jesus Do Deus, a thriving cabruca agroforestry farm. This regenerative transformation—from cattle grazing to cacao forest—demonstrates the power of vision and commitment to healing the land.
+                        </div>
+                        <div class="farmer-highlight">
+                            🌿 Cattle ranch to cabruca agroforestry • Divine calling • Regenerative transformation
+                        </div>
+                        <div class="farmer-cta">Learn More →</div>
+                    </div>
+                </a>
+                
+                <a href="farms/paulo-la-do-sitio-para/index.html" class="farmer-card">
+                    <div class="farmer-image-container">
+                        <img 
+                            src="assets/raw/AGL8 _ Agroverse_paulo_farm_page_files/paulo.jpg" 
+                            alt="Paulo's La do Sitio Farm - Pará, Amazon Rainforest" 
+                            class="farmer-image"
+                            loading="lazy"
+                            onerror="this.src='https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif'; this.onerror=null;"
+                        />
+                    </div>
+                    <div class="farmer-card-content">
+                        <div class="farmer-name">Paulo & Family</div>
+                        <div class="farmer-location">La do Sitio, Pará, Amazon Rainforest, Brazil</div>
+                        <div class="farmer-story">
+                            Paulo and his wife run La do Sitio, an award-winning cacao farm in the Amazon rainforest of Pará. Their farm is part of the CEPOTX cooperative, which supports small-scale farmers through regenerative practices. La do Sitio has won multiple regional cacao awards, recognizing their commitment to quality and sustainable farming in the heart of the Amazon.
+                        </div>
+                        <div class="farmer-highlight">
+                            🏆 Award-winning farm • CEPOTX cooperative • Amazon Rainforest
+                        </div>
+                        <div class="farmer-cta">Learn More →</div>
+                    </div>
+                </a>
+                
+                <a href="farms/fazenda-santa-ana-bahia/index.html" class="farmer-card">
+                    <div class="farmer-image-container">
+                        <img 
+                            src="assets/raw/fazenda-santa-ana-itacare.jpg" 
+                            alt="Fazenda Santa Ana - Bahia, Brazil" 
+                            class="farmer-image"
+                            loading="lazy"
+                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                        />
+                    </div>
+                    <div class="farmer-card-content">
+                        <div class="farmer-name">Fazenda Santa Ana</div>
+                        <div class="farmer-location">Bahia, Brazil • Coopercabruca Cooperative</div>
+                        <div class="farmer-story">
+                            Fazenda Santa Ana is a farm with deep roots in Bahia, Brazil, known for its rich history and vibrant community traditions. The farm is part of the Coopercabruca cooperative, which supports small-scale farmers through regenerative practices and sustainable cacao cultivation. Through the cooperative, Fazenda Santa Ana contributes to a network of regenerative cacao producers working together to preserve traditional farming methods.
+                        </div>
+                        <div class="farmer-highlight">
+                            🤝 Coopercabruca cooperative • Rich history • Community traditions
+                        </div>
+                        <div class="farmer-cta">Learn More →</div>
+                    </div>
+                </a>
+                
+                <a href="farms/fazenda-capelavelha-bahia/index.html" class="farmer-card">
+                    <div class="farmer-image-container">
+                        <img 
+                            src="assets/capela_velha.jpg" 
+                            alt="Fazenda Capelavelha - Women-Owned Farm, Bahia, Brazil" 
+                            class="farmer-image"
+                            loading="lazy"
+                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                        />
+                    </div>
+                    <div class="farmer-card-content">
+                        <div class="farmer-name">Fazenda Capelavelha</div>
+                        <div class="farmer-location">Bahia, Brazil • Women-Owned Farm</div>
+                        <div class="farmer-story">
+                            Fazenda Capelavelha is a women-owned regenerative organic cacao farm dedicated to sustainable agriculture and empowering women in farming. The farm specializes in unique cacao processing techniques, including innovative caramelized cacao beans. Their commitment to regenerative practices and organic certification demonstrates the vital role women play in building sustainable food systems.
+                        </div>
+                        <div class="farmer-highlight">
+                            👩‍🌾 Women-owned • Regenerative organic • Caramelized cacao specialty
+                        </div>
+                        <div class="farmer-cta">Learn More →</div>
+                    </div>
+                </a>
             </div>
+            
+            <div class="farmer-quote" style="margin-top: 3rem;">
+                <blockquote style="margin: 0; font-style: italic;">"I cultivate cacao to sow the seeds of a regenerative future"</blockquote>
+                <div class="farmer-name-old" style="margin-top: 1rem;">— Milan, Cacao Nibs Farmer</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Shipments Section -->
+    <section class="shipments-section" id="shipments" style="padding: 5rem 2rem; background-color: var(--color-bg-light);">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="font-family: var(--font-heading); font-size: 48px; color: var(--color-primary); margin-bottom: 1rem;">Our Shipments</h2>
+            <p style="font-size: 18px; color: var(--color-text-light); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Explore our transparent supply chain. Each shipment represents a direct relationship with farmers, complete traceability, and real impact on the Amazon Rainforest.
+            </p>
+            
+            <div class="shipments-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <!-- Recent Shipments -->
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl14/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" alt="AGL14" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MANUFACTURING</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL14</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">40 kg • Oscar's Farm, Bahia • Harvest 2025</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl13/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif" alt="AGL13" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MANUFACTURING</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL13</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">150 kg • Vivi's Farm, Itacaré • Jesus Do Deus</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl10/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif" alt="AGL10" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL10</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">5 kg • Capela Velha Fazenda • Caramelized Beans</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl8/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif" alt="AGL8" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/AGL8 _ Agroverse_paulo_farm_page_files/paulo.jpg'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL8</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">330 kg • Paulo's Farm, Pará • La do Sitio</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl6/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif" alt="AGL6" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.webp'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL6</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">22 kg • São Jorge Farm, Itabuna</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                    <a href="shipments/agl4/index.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" alt="AGL4" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
+                            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">AGL4</h3>
+                            <p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1rem;">300 kg • Oscar's Farm, Bahia</p>
+                            <div style="color: var(--color-primary); font-weight: 600; font-size: 14px;">View Details →</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 3rem; color: var(--color-text-light); font-size: 14px;">
+                <a href="https://www.truesight.me/agroverse-shipments" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: underline;">View all shipments on TrueSight DAO →</a>
+            </p>
         </div>
     </section>
     
@@ -728,10 +1204,146 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#mission">Mission</a></li>
                 <li><a href="#products">Products</a></li>
+                <li><a href="#farmers">Farms</a></li>
+                <li><a href="#shipments">Shipments</a></li>
                 <li><a href="mailto:info@agroverse.shop">Contact</a></li>
             </ul>
             <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
         </div>
     </footer>
+    
+    <script>
+        // Web service URL for sold bags count (1 bag = 1 tree planted = hectares restored)
+        const SOLD_BAGS_API_URL = 'https://script.google.com/macros/s/AKfycbzHDqxI4lWlDcl6AnAhZxw7kbOp4exPPk5GFgdwqJuAfMva_00q8eIMFOAzAYIlxVRH/exec';
+        
+        // Function to update trees planted and hectares restored from API
+        async function updateTreesAndHectares() {
+            const treesElement = document.getElementById('trees-planted');
+            const hectaresElement = document.getElementById('hectares-restored');
+            
+            // Show loading state
+            if (treesElement) treesElement.classList.add('loading');
+            if (hectaresElement) hectaresElement.classList.add('loading');
+            
+            try {
+                const response = await fetch(SOLD_BAGS_API_URL);
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.soldBagsCount !== undefined) {
+                    const treesPlanted = data.soldBagsCount;
+                    const hectaresRestored = treesPlanted; // 1 bag = 1 tree = hectares restored
+                    
+                    // Update trees planted
+                    if (treesElement) {
+                        treesElement.textContent = treesPlanted.toLocaleString();
+                        treesElement.classList.remove('loading');
+                    }
+                    
+                    // Update hectares restored
+                    if (hectaresElement) {
+                        hectaresElement.textContent = hectaresRestored.toLocaleString();
+                        hectaresElement.classList.remove('loading');
+                    }
+                    
+                    console.log('Updated statistics:', {
+                        treesPlanted: treesPlanted,
+                        hectaresRestored: hectaresRestored,
+                        timestamp: data.timestamp
+                    });
+                } else {
+                    throw new Error(data.error || 'Invalid response format');
+                }
+            } catch (error) {
+                console.error('Error fetching sold bags count:', error);
+                
+                // Remove loading state and keep default values
+                if (treesElement) {
+                    treesElement.classList.remove('loading');
+                    treesElement.textContent = treesElement.getAttribute('data-default') || '134';
+                }
+                if (hectaresElement) {
+                    hectaresElement.classList.remove('loading');
+                    hectaresElement.textContent = hectaresElement.getAttribute('data-default') || '0.134';
+                }
+            }
+        }
+        
+        // Function to ensure video autoplay
+        function ensureVideoAutoplay() {
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                // Ensure video is muted for autoplay
+                heroVideo.muted = true;
+                
+                // Try to play the video
+                const playPromise = heroVideo.play();
+                
+                // Handle autoplay restrictions
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Video autoplay was prevented:', error);
+                        // Try to play on user interaction
+                        document.addEventListener('click', function playVideo() {
+                            heroVideo.play().catch(e => console.log('Video play failed:', e));
+                            document.removeEventListener('click', playVideo);
+                        }, { once: true });
+                    });
+                }
+            }
+        }
+        
+        // Parallax scroll effect for hero video
+        function setupHeroVideoParallax() {
+            const heroVideo = document.querySelector('.hero-video');
+            const heroSection = document.querySelector('.hero');
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            if (!heroVideo || !heroSection) return;
+            
+            const heroHeight = heroSection.offsetHeight;
+            const maxScroll = heroHeight * 0.5; // Adjust this to control how much scrolling affects the video
+            const initialScale = 1.2; // Starting scale (zoomed in)
+            const finalScale = 1.0; // Final scale (zoomed out to show more)
+            
+            function handleScroll() {
+                const scrollY = window.scrollY;
+                const scrollProgress = Math.min(scrollY / maxScroll, 1); // Clamp between 0 and 1
+                
+                // Calculate scale based on scroll progress
+                const currentScale = initialScale - (scrollProgress * (initialScale - finalScale));
+                
+                // Apply transform to video
+                heroVideo.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+                
+                // Fade out scroll indicator as user scrolls
+                if (scrollIndicator) {
+                    const indicatorOpacity = Math.max(0, 1 - (scrollProgress * 2));
+                    scrollIndicator.style.opacity = indicatorOpacity;
+                }
+            }
+            
+            // Use requestAnimationFrame for smooth scrolling
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // Initial call
+            handleScroll();
+        }
+        
+        // Update statistics when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTreesAndHectares();
+            ensureVideoAutoplay();
+            setupHeroVideoParallax();
+        });
+    </script>
 </body>
 </html>
