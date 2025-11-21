@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Venue Partners | Agroverse</title>
+    <meta name="description" content="Find Agroverse cacao at our partner venues across USA, Brazil, and Switzerland. Discover where to experience our regenerative, ethically-sourced cacao.">
+    <link rel="canonical" href="https://www.agroverse.shop/partners">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agroverse.shop/partners">
+    <meta property="og:title" content="Venue Partners | Agroverse">
+    <meta property="og:description" content="Find Agroverse cacao at our partner venues across USA, Brazil, and Switzerland.">
+    <meta property="og:image" content="https://www.agroverse.shop/assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.agroverse.shop/partners">
+    <meta property="twitter:title" content="Venue Partners | Agroverse">
+    <meta property="twitter:description" content="Find Agroverse cacao at our partner venues across USA, Brazil, and Switzerland.">
+    <meta property="twitter:image" content="https://www.agroverse.shop/assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/20230711 - Agroverse logo for trademark filing.jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .partners-hero {
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.9) 0%, rgba(77, 77, 77, 0.9) 100%),
+                        url('../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg') center/cover;
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .partners-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+        }
+        
+        .partners-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .location-section {
+            margin-bottom: 4rem;
+        }
+        
+        .location-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .partner-card-image {
+            width: 100%;
+            height: 200px;
+            background: var(--color-bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-size: 48px;
+            overflow: hidden;
+        }
+        
+        .partner-card-image img.partner-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+            background: white;
+        }
+        
+        .partner-card-body {
+            padding: 1.5rem;
+        }
+        
+        .partner-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .partner-location {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .partner-description {
+            font-size: 14px;
+            color: var(--color-text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .partner-link {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .partner-link::after {
+            content: ' →';
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .partners-hero h1 {
+                font-size: 36px;
+            }
+            
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/20230711 - Agroverse logo for trademark filing.jpeg" alt="Agroverse Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#mission">Mission</a></li>
+                <li><a href="../index.html#products">Products</a></li>
+                <li><a href="../index.html#farmers">Farms</a></li>
+                <li><a href="../index.html#shipments">Shipments</a></li>
+                <li><a href="index.html">Partners</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="partners-hero">
+        <h1>Venue Partners</h1>
+        <p>Find Agroverse cacao at our partner venues across the USA, Brazil, and Switzerland. Experience our regenerative, ethically-sourced cacao at these wonderful locations.</p>
+    </section>
+    
+    <section class="content-section">
+        <!-- USA Partners -->
+        <div class="location-section">
+            <h2>🇺🇸 United States</h2>
+            <div class="partners-grid">
+                <a href="block71-silicon-valley/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/block71-silicon-valley-logo.jpeg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Block71 Silicon Valley</h3>
+                        <div class="partner-location">Silicon Valley, California</div>
+                        <div class="partner-description">Connecting Singaporean and US entrepreneurs, driving innovation through collaboration.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="go-ask-alice/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/go-ask-alice-logo.png" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Go Ask Alice</h3>
+                        <div class="partner-location">Santa Cruz, California</div>
+                        <div class="partner-description">A vibrant, community-focused small business rooted in the heart of downtown Santa Cruz, promoting sustainable living and earth-based practices.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="green-gulch-farm-zen-center/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/green-gulch-farm-zen-center-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Green Gulch Farm Zen Center</h3>
+                        <div class="partner-location">Marin County, California</div>
+                        <div class="partner-description">A serene Buddhist practice center blending spiritual cultivation, organic farming, and mindful living in harmony with nature.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="kikis-cocoa/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/kikis-cocoa-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Kiki's Cocoa</h3>
+                        <div class="partner-location">San Francisco, California</div>
+                        <div class="partner-description">A boutique San Francisco chocolatier crafting exquisite, ethically-sourced confections, offering monthly subscriptions and truffle-making classes.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="love-wisdom-power/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/love-wisdom-power-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Love Wisdom Power</h3>
+                        <div class="partner-location">Williams, Oregon</div>
+                        <div class="partner-description">A sacred conduit to wholeness, where profound guidance illuminates paths of love, wisdom, and inner power.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="miss-tomato/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/miss-tomato-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Miss Tomato</h3>
+                        <div class="partner-location">Daly City, California</div>
+                        <div class="partner-description">A beloved sandwich shop offering diverse gourmet options, fresh ingredients, and unique flavors.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="peace-on-fifth/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/peace-on-fifth-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Peace on Fifth</h3>
+                        <div class="partner-location">Dayton, Ohio</div>
+                        <div class="partner-description">A beacon of compassionate commerce, where ethically sourced chocolates and freedom-focused treasures ignite conversations on justice.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="queen-hippie-gypsy/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/queen-hippie-gypsy-logo.png" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Queen Hippie Gypsy</h3>
+                        <div class="partner-location">Downtown Oakland, California</div>
+                        <div class="partner-description">A luminous botanica sanctuary, where Black Girl Magic blooms through shimmering crystals and ancestral whispers.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="sacred-earth-farms/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/sacred-earth-farms-logo.png" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Sacred Earth Farms</h3>
+                        <div class="partner-location">Merlin, Oregon</div>
+                        <div class="partner-description">A regenerative haven of healing and harmony, where sun-kissed soils and sacred infusions craft potent elixirs.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="soulfulness-breathe/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/soulfulness-breathe-logo.avif" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Soulfulness Breathe</h3>
+                        <div class="partner-location">Denver, Colorado</div>
+                        <div class="partner-description">A sacred haven of breath and renewal, where ancient traditions and modern resilience intertwine to guide souls through emotional release and holistic healing.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="the-enchanted-forest-boutique/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/the-enchanted-forest-boutique-logo.webp" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>The Enchanted Forest Boutique</h3>
+                        <div class="partner-location">Chico, California</div>
+                        <div class="partner-description">A whimsical metaphysical retreat, where glittering crystals and cosmic curiosities weave spells of wonder.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+                
+                <a href="the-ponderosa-slab-city/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/the-ponderosa-slab-city-logo.jpg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>The Ponderosa, Slab City</h3>
+                        <div class="partner-location">Slab City, California</div>
+                        <div class="partner-description">Nestled in the heart of Slab City—the "Last Free Place in America"—a unique community space.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Brazil Partners -->
+        <div class="location-section">
+            <h2>🇧🇷 Brazil</h2>
+            <div class="partners-grid">
+                <a href="founderhaus/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/founderhaus-logo.jpeg" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Founder Haus</h3>
+                        <div class="partner-location">Brazil</div>
+                        <div class="partner-description">Founder Haus partner location in Brazil.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Switzerland Partners -->
+        <div class="location-section">
+            <h2>🇨🇭 Switzerland</h2>
+            <div class="partners-grid">
+                <a href="heierling-ski/index.html" class="partner-card">
+                    <div class="partner-card-image"><img src="../assets/partners/logos/heierling-ski-logo.png" alt="Partner Logo" class="partner-logo-img"></div>
+                    <div class="partner-card-body">
+                        <h3>Heierling Ski</h3>
+                        <div class="partner-location">Switzerland</div>
+                        <div class="partner-description">Heierling Ski partner location in Switzerland.</div>
+                        <div class="partner-link">Learn More</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="footer-content">
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+            <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+            <p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+            <ul class="footer-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#mission">Mission</a></li>
+                <li><a href="../index.html#products">Products</a></li>
+                <li><a href="../index.html#farmers">Farms</a></li>
+                <li><a href="../index.html#shipments">Shipments</a></li>
+                <li><a href="index.html">Partners</a></li>
+                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
+            </ul>
+            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
