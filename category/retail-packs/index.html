@@ -132,24 +132,27 @@
         }
         
         .product-card {
-            background: white;
-            border-radius: 12px;
+            background-color: var(--color-bg);
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-card-link {
             text-decoration: none;
             color: inherit;
             display: block;
         }
         
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .product-image {
+        .product-card img {
             width: 100%;
-            height: 300px;
+            height: 313px;
             object-fit: cover;
         }
         
@@ -158,43 +161,14 @@
         }
         
         .product-card h3 {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            color: var(--color-primary);
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
+            color: var(--color-primary);
         }
         
-        .product-price {
-            font-size: 24px;
+        .product-card .price {
             font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-shipment {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .product-shipment a {
-            color: var(--color-primary);
-            text-decoration: underline;
-        }
-        
-        .view-product {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--color-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .view-product:hover {
-            background-color: var(--color-secondary);
         }
         
         /* Footer */
@@ -268,45 +242,49 @@
     
     <section class="products-section">
         <div class="products-grid">
-            <a href="../../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html" class="product-card">
-                <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_43e4787aafc14e8b95fe84b826eecf7b~mv2.jpg" alt="Ceremonial Cacao – La do Sitio Farm" class="product-image">
-                <div class="product-card-body">
-                    <h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
-                    <div class="product-price">$25.00</div>
-                    <div class="product-shipment">From <a href="../../shipments/agl8/index.html">AGL8 Shipment</a> • Paulo's Farm, Pará</div>
-                    <span class="view-product">View Product →</span>
-                </div>
-            </a>
+            <div class="product-card">
+                <a href="../../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html" class="product-card-link">
+                    <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_43e4787aafc14e8b95fe84b826eecf7b~mv2.jpg" alt="Ceremonial Cacao – La do Sitio Farm">
+                    <div class="product-card-body">
+                        <h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
+                        <div class="price">$25.00</div>
+                        <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl8/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL8 Shipment</a> • Paulo's Farm, Pará</div>
+                    </div>
+                </a>
+            </div>
             
-            <a href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html" class="product-card">
-                <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_b3ea374b933645d988895d29a80befea~mv2.jpeg" alt="Taste of Rainforest" class="product-image">
-                <div class="product-card-body">
-                    <h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
-                    <div class="product-price">$25.00</div>
-                    <div class="product-shipment">From <a href="../../shipments/agl10/index.html">AGL10 Shipment</a> • Capela Velha Fazenda</div>
-                    <span class="view-product">View Product →</span>
-                </div>
-            </a>
+            <div class="product-card">
+                <a href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html" class="product-card-link">
+                    <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_b3ea374b933645d988895d29a80befea~mv2.jpeg" alt="Taste of Rainforest">
+                    <div class="product-card-body">
+                        <h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
+                        <div class="price">$25.00</div>
+                        <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl10/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL10 Shipment</a> • Capela Velha Fazenda</div>
+                    </div>
+                </a>
+            </div>
             
-            <a href="../../product-page/oscar-s-bahia-ceremonial-cacao/index.html" class="product-card">
-                <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_360a687cf0904b7eb80661b781f11801~mv2.jpeg" alt="Ceremonial Cacao – Oscar's Farm" class="product-image">
-                <div class="product-card-body">
-                    <h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
-                    <div class="product-price">$25.00</div>
-                    <div class="product-shipment">From <a href="../../shipments/agl4/index.html">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-                    <span class="view-product">View Product →</span>
-                </div>
-            </a>
+            <div class="product-card">
+                <a href="../../product-page/oscar-s-bahia-ceremonial-cacao/index.html" class="product-card-link">
+                    <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_360a687cf0904b7eb80661b781f11801~mv2.jpeg" alt="Ceremonial Cacao – Oscar's Farm">
+                    <div class="product-card-body">
+                        <h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
+                        <div class="price">$25.00</div>
+                        <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
+                    </div>
+                </a>
+            </div>
             
-            <a href="../../product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html" class="product-card">
-                <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_d2ec9b7e92c547019e90739efe3e8d96~mv2.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs" class="product-image">
-                <div class="product-card-body">
-                    <h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
-                    <div class="product-price">$25.00</div>
-                    <div class="product-shipment">From <a href="../../shipments/agl4/index.html">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-                    <span class="view-product">View Product →</span>
-                </div>
-            </a>
+            <div class="product-card">
+                <a href="../../product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html" class="product-card-link">
+                    <img src="../../assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_d2ec9b7e92c547019e90739efe3e8d96~mv2.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs">
+                    <div class="product-card-body">
+                        <h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
+                        <div class="price">$25.00</div>
+                        <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
     
