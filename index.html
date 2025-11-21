@@ -15,17 +15,17 @@
     <meta property="og:url" content="https://www.agroverse.shop/">
     <meta property="og:title" content="Agroverse | Regenerating our Amazon rainforest, One Cacao at a time">
     <meta property="og:description" content="Unite in Agroverse's cacao circles, celebrating mindful connection and Amazon Rainforest regeneration. Savor premium cacao ethically sourced from the lush Amazon, supporting regenerative farming and local communities.">
-    <meta property="og:image" content="https://www.agroverse.shop/assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg">
+    <meta property="og:image" content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.agroverse.shop/">
     <meta property="twitter:title" content="Agroverse | Regenerating our Amazon rainforest, One Cacao at a time">
     <meta property="twitter:description" content="Unite in Agroverse's cacao circles, celebrating mindful connection and Amazon Rainforest regeneration. Savor premium cacao ethically sourced from the lush Amazon, supporting regenerative farming and local communities.">
-    <meta property="twitter:image" content="https://www.agroverse.shop/assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg">
+    <meta property="twitter:image" content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/20230711 - Agroverse logo for trademark filing.jpeg">
+    <link rel="icon" type="image/jpeg" href="assets/images/logo/agroverse-logo.jpeg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
         "@type": "LocalBusiness",
         "name": "Agroverse",
         "url": "https://www.agroverse.shop",
-        "image": "https://www.agroverse.shop/assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg",
+        "image": "https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg",
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "US"
@@ -265,20 +265,34 @@
         
         .cta-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: var(--color-accent);
-            color: var(--color-primary);
+            padding: 1.25rem 3rem;
+            background-color: var(--color-primary);
+            color: white;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
             margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--color-primary);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            background-color: var(--color-secondary);
+        }
+        
+        .cta-button.secondary {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: var(--color-accent);
+            border-color: var(--color-primary);
         }
         
         /* Featured Cacao Section */
@@ -809,7 +823,7 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/20230711 - Agroverse logo for trademark filing.jpeg" alt="Agroverse Logo">
+                <img src="assets/images/logo/agroverse-logo.jpeg" alt="Agroverse Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -848,14 +862,14 @@
         
         <div class="stats-grid">
             <div class="stat-card">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg" alt="Cacao Circles">
+                <img src="assets/images/hero/cacao-circles.jpg" alt="Cacao Circles">
                 <div class="stat-number">32</div>
                 <div class="stat-label">Gatherings Held</div>
                 <div class="stat-description">Cultivating a conscious community through mindful moments and regenerative living celebrations.</div>
             </div>
             
             <div class="stat-card">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg" alt="Cacao Circles">
+                <img src="assets/images/hero/cacao-circles-alt.jpg" alt="Cacao Circles">
                 <div class="stat-number" id="trees-planted" data-default="134">134</div>
                 <div class="stat-label">Trees Planted</div>
                 <div class="stat-description">Trees planted through regenerative cacao farming, supporting reforestation efforts and enhancing ecosystem health.</div>
@@ -873,9 +887,9 @@
             <p>Agroverse unites a community to regenerate the Amazon with premium cacao from small farmers' agroforestry. Targeting 10,000 hectares of impact—shop to empower and catalyze change.</p>
         </div>
         
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;">
             <a href="category/retail-packs/index.html" class="cta-button">Shop Retail Packs</a>
-            <a href="category/wholesale-bulk/index.html" class="cta-button" style="background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);">Shop Wholesale</a>
+            <a href="category/wholesale-bulk/index.html" class="cta-button secondary">Shop Wholesale</a>
         </div>
     </section>
     
@@ -915,7 +929,7 @@
         
         <div class="product-gallery">
             <a href="product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html" class="product-card" style="text-decoration: none; color: inherit;">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_43e4787aafc14e8b95fe84b826eecf7b~mv2.jpg" alt="Ceremonial Cacao – La do Sitio Farm">
+                <img src="assets/images/products/la-do-sitio-farm.jpg" alt="Ceremonial Cacao – La do Sitio Farm">
                 <div class="product-card-body">
                     <h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
                     <div class="price">$25.00</div>
@@ -924,7 +938,7 @@
             </a>
             
             <a href="product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html" class="product-card" style="text-decoration: none; color: inherit;">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_b3ea374b933645d988895d29a80befea~mv2.jpeg" alt="Taste of Rainforest">
+                <img src="assets/images/products/taste-of-rainforest.jpeg" alt="Taste of Rainforest">
                 <div class="product-card-body">
                     <h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
                     <div class="price">$25.00</div>
@@ -933,7 +947,7 @@
             </a>
             
             <a href="product-page/oscar-s-bahia-ceremonial-cacao/index.html" class="product-card" style="text-decoration: none; color: inherit;">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_360a687cf0904b7eb80661b781f11801~mv2.jpeg" alt="Ceremonial Cacao – Oscar's Farm">
+                <img src="assets/images/products/oscars-farm.jpeg" alt="Ceremonial Cacao – Oscar's Farm">
                 <div class="product-card-body">
                     <h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
                     <div class="price">$25.00</div>
@@ -942,7 +956,7 @@
             </a>
             
             <a href="product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html" class="product-card" style="text-decoration: none; color: inherit;">
-                <img src="assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/0e2cde_d2ec9b7e92c547019e90739efe3e8d96~mv2.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs">
+                <img src="assets/images/products/cacao-nibs.jpeg" alt="Amazon Rainforest Regenerative Cacao Nibs">
                 <div class="product-card-body">
                     <h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
                     <div class="price">$25.00</div>
@@ -973,7 +987,7 @@
                             alt="Oscar's Farm - Bahia, Brazil" 
                             class="farmer-image"
                             loading="lazy"
-                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                            onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;"
                         />
                     </div>
                     <div class="farmer-card-content">
@@ -996,7 +1010,7 @@
                             alt="Vivi's Jesus Do Deus Farm - Itacaré, Bahia" 
                             class="farmer-image"
                             loading="lazy"
-                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg'; this.onerror=null;"
+                            onerror="this.src='assets/images/hero/cacao-circles.jpg'; this.onerror=null;"
                         />
                     </div>
                     <div class="farmer-card-content">
@@ -1015,7 +1029,7 @@
                 <a href="farms/paulo-la-do-sitio-para/index.html" class="farmer-card">
                     <div class="farmer-image-container">
                         <img 
-                            src="assets/raw/AGL8 _ Agroverse_paulo_farm_page_files/paulo.jpg" 
+                            src="assets/images/farms/paulo.jpg" 
                             alt="Paulo's La do Sitio Farm - Pará, Amazon Rainforest" 
                             class="farmer-image"
                             loading="lazy"
@@ -1038,11 +1052,11 @@
                 <a href="farms/fazenda-santa-ana-bahia/index.html" class="farmer-card">
                     <div class="farmer-image-container">
                         <img 
-                            src="assets/raw/fazenda-santa-ana-itacare.jpg" 
+                            src="assets/images/farms/fazenda-santa-ana-itacare.jpg" 
                             alt="Fazenda Santa Ana - Bahia, Brazil" 
                             class="farmer-image"
                             loading="lazy"
-                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                            onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;"
                         />
                     </div>
                     <div class="farmer-card-content">
@@ -1065,7 +1079,7 @@
                             alt="Fazenda Capelavelha - Women-Owned Farm, Bahia, Brazil" 
                             class="farmer-image"
                             loading="lazy"
-                            onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;"
+                            onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;"
                         />
                     </div>
                     <div class="farmer-card-content">
@@ -1101,8 +1115,8 @@
                 <!-- Recent Shipments -->
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl14/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" alt="AGL14" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" alt="AGL14" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MANUFACTURING</div>
@@ -1115,8 +1129,8 @@
                 
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl13/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif" alt="AGL13" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.jpg'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif" alt="AGL13" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/hero/cacao-circles.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MANUFACTURING</div>
@@ -1129,8 +1143,8 @@
                 
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl10/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif" alt="AGL10" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif" alt="AGL10" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
@@ -1143,8 +1157,8 @@
                 
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl8/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif" alt="AGL8" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/AGL8 _ Agroverse_paulo_farm_page_files/paulo.jpg'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif" alt="AGL8" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/farms/paulo.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
@@ -1157,8 +1171,8 @@
                 
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl6/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif" alt="AGL6" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles.webp'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif" alt="AGL6" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
@@ -1171,8 +1185,8 @@
                 
                 <div class="shipment-card" style="background: white; border-radius: 12px; padding: 0; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s;">
                     <a href="shipments/agl4/index.html" style="text-decoration: none; color: inherit; display: block;">
-                        <div style="width: 100%; height: 200px; overflow: hidden;">
-                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" alt="AGL4" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='assets/raw/Agroverse _ Regenerating our Amazon rainforest, One Cacao at a time_files/cacao_circles(1).jpg'; this.onerror=null;">
+                        <div style="width: 100%; height: 250px; overflow: hidden; background-color: #f7f7f7; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" alt="AGL4" style="width: 100%; height: 100%; object-fit: contain; object-position: center;" onerror="this.src='assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
                         </div>
                         <div style="padding: 1.5rem;">
                             <div style="font-size: 12px; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SALES IN PROGRESS</div>
