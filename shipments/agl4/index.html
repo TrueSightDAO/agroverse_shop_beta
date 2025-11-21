@@ -1,41 +1,35 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO Meta Tags -->
-    <title>AGL4 Shipment | Oscar's Farm - Bahia | Agroverse</title>
-    <meta name="description" content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom with 80-year-old trees still producing today.">
-    <link rel="canonical" href="https://www.agroverse.shop/shipments/agl4">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://www.agroverse.shop/shipments/agl4">
-    <meta property="og:title" content="AGL4 Shipment | Oscar's Farm - Bahia | Agroverse">
-    <meta property="og:description" content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.agroverse.shop/shipments/agl4">
-    <meta property="twitter:title" content="AGL4 Shipment | Oscar's Farm - Bahia | Agroverse">
-    <meta property="twitter:description" content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="../../assets/images/logo/agroverse-logo.jpeg">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Leaflet CSS for maps -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>AGL4 Shipment | Oscar's Farm - Bahia | Agroverse</title>
+<meta content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom with 80-year-old trees still producing today." name="description"/>
+<link href="https://www.agroverse.shop/shipments/agl4" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="article" property="og:type"/>
+<meta content="https://www.agroverse.shop/shipments/agl4" property="og:url"/>
+<meta content="AGL4 Shipment | Oscar's Farm - Bahia | Agroverse" property="og:title"/>
+<meta content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom." property="og:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/shipments/agl4" property="twitter:url"/>
+<meta content="AGL4 Shipment | Oscar's Farm - Bahia | Agroverse" property="twitter:title"/>
+<meta content="300 kg of organic cacao nibs from Oscar's farm in Bahia, Brazil. Three generations of cacao wisdom." property="twitter:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../assets/images/logo/agroverse-logo.jpeg" rel="icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
@@ -356,7 +350,11 @@
             .shipment-hero {
                 grid-template-columns: 1fr;
                 min-height: auto;
-            }
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
             
             .shipment-hero-content {
                 padding: 3rem 2rem;
@@ -520,204 +518,300 @@
         @media (max-width: 768px) {
             .email-form {
                 flex-direction: column;
-            }
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
             
             .email-input {
                 min-width: 100%;
             }
         }
-    </style>
+    
+        
+        /* Mobile Hamburger Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
+            .nav-links:not(.mobile-menu) {
+                display: none !important;
+            }
+            .nav-links:not(.mobile-menu) {
+                display: none;
+            }
+            
+            .nav-links.mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background-color: var(--color-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 2rem 2rem;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+                gap: 1.5rem;
+                overflow-y: auto;
+            }
+            
+            .nav-links.mobile-menu.active {
+                right: 0;
+            }
+            
+            .nav-links.mobile-menu li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-bg-light);
+                padding-bottom: 1rem;
+            }
+            
+            .nav-links.mobile-menu a {
+                font-size: 1.1rem;
+                width: 100%;
+                display: block;
+            }
+            
+            .mobile-menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+            
+            header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo img {
+                height: 48px;
+            }
+            
+            nav {
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../../index.html" class="logo">
-                <img src="../../assets/images/logo/agroverse-logo.jpeg" alt="Agroverse Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../index.html#mission">Mission</a></li>
-                <li><a href="../../index.html#products">Products</a></li>
-                <li><a href="../../index.html#farmers">Farms</a></li>
-                <li><a href="../../index.html#shipments">Shipments</a></li>
-                <li><a href="../../partners/index.html">Partners</a></li>
-                <li><a href="../../index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="shipment-hero" style="position: relative;">
-        <a href="../../index.html" class="back-link" style="color: white; position: absolute; top: 2rem; left: 2rem; z-index: 10;">Back to Home</a>
-        
-        <div class="shipment-hero-content">
-            <div class="shipment-id">Shipment</div>
-            <h1>AGL4</h1>
-            <p class="shipment-hero-description">300 kg of organic cacao nibs from Bahia Small Scale Farmers</p>
-            
-            <div class="trees-badge">
-                <div class="trees-badge-label">Tree Planting Financed</div>
-                <div class="trees-badge-number" id="trees-planted" data-trees-sold data-shipment-id="agl4" data-default="0">0</div>
-            </div>
-        </div>
-        
-        <div class="shipment-hero-video-container">
-            <video 
-                class="shipment-hero-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline
-                controls
-                poster="https://static.wixstatic.com/media/0e2cde_116fa4a7cbcd43d3aee572acf869961af000.jpg">
-                <source src="https://video.wixstatic.com/video/0e2cde_116fa4a7cbcd43d3aee572acf869961a/1080p/mp4/file.mp4" type="video/mp4">
+<header>
+<nav>
+<a class="logo" href="../../index.html">
+<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<div class="shipment-hero" style="position: relative;">
+<a class="back-link" href="../../index.html" style="color: white; position: absolute; top: 2rem; left: 2rem; z-index: 10;">Back to Home</a>
+<div class="shipment-hero-content">
+<div class="shipment-id">Shipment</div>
+<h1>AGL4</h1>
+<p class="shipment-hero-description">300 kg of organic cacao nibs from Bahia Small Scale Farmers</p>
+<div class="trees-badge">
+<div class="trees-badge-label">Tree Planting Financed</div>
+<div class="trees-badge-number" data-default="0" data-shipment-id="agl4" data-trees-sold="" id="trees-planted">0</div>
+</div>
+</div>
+<div class="shipment-hero-video-container">
+<video autoplay="" class="shipment-hero-video" controls="" loop="" muted="" playsinline="" poster="https://static.wixstatic.com/media/0e2cde_116fa4a7cbcd43d3aee572acf869961af000.jpg">
+<source src="https://video.wixstatic.com/video/0e2cde_116fa4a7cbcd43d3aee572acf869961a/1080p/mp4/file.mp4" type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
-        </div>
-    </div>
-    
-    <div class="shipment-container">
-        <!-- Email Signup Section - Primary CTA -->
-        <div class="email-signup-section">
-            <h3>Get Updates on Your Tree-Planting Journey</h3>
-            <p id="email-signup-message-agl4">Your bag from AGL4 = 1 tree planted. Get notified when your tree is planted in the Amazon Rainforest.</p>
-            <div id="qr-code-display-agl4" style="display: none; margin-bottom: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(59, 51, 51, 0.15) 0%, rgba(59, 51, 51, 0.05) 100%); border: 2px solid var(--color-primary); border-radius: 12px; font-size: 16px; text-align: center; box-shadow: 0 4px 12px rgba(59, 51, 51, 0.1);">
-                <div style="margin-bottom: 0.5rem; font-weight: 600; color: var(--color-primary); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">📱 QR Code Detected</div>
-                <div style="font-family: 'Courier New', monospace; font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: 2px; margin: 0.5rem 0;">
-                    <span id="qr-code-value-agl4"></span>
-                </div>
-                <div style="margin-top: 0.75rem; font-size: 13px; color: var(--color-text-light); line-height: 1.5;">
+</div>
+</div>
+<div class="shipment-container">
+<!-- Email Signup Section - Primary CTA -->
+<div class="email-signup-section">
+<h3>Get Updates on Your Tree-Planting Journey</h3>
+<p id="email-signup-message-agl4">Your bag from AGL4 = 1 tree planted. Get notified when your tree is planted in the Amazon Rainforest.</p>
+<div id="qr-code-display-agl4" style="display: none; margin-bottom: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(59, 51, 51, 0.15) 0%, rgba(59, 51, 51, 0.05) 100%); border: 2px solid var(--color-primary); border-radius: 12px; font-size: 16px; text-align: center; box-shadow: 0 4px 12px rgba(59, 51, 51, 0.1);">
+<div style="margin-bottom: 0.5rem; font-weight: 600; color: var(--color-primary); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">📱 QR Code Detected</div>
+<div style="font-family: 'Courier New', monospace; font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: 2px; margin: 0.5rem 0;">
+<span id="qr-code-value-agl4"></span>
+</div>
+<div style="margin-top: 0.75rem; font-size: 13px; color: var(--color-text-light); line-height: 1.5;">
                     We've detected your QR code! Enter your email below to receive updates when your tree is planted.
                 </div>
-            </div>
-            <form class="email-form" id="email-signup-form-agl4" onsubmit="handleEmailSignup(event, 'agl4')">
-                <input 
-                    type="email" 
-                    class="email-input" 
-                    placeholder="Enter your email" 
-                    required
-                    id="email-input-agl4"
-                >
-                <button type="submit" class="email-submit" id="email-submit-agl4">Track My Impact</button>
-            </form>
-            <div class="email-success" id="email-success-agl4">
+</div>
+<form class="email-form" id="email-signup-form-agl4" onsubmit="handleEmailSignup(event, 'agl4')">
+<input class="email-input" id="email-input-agl4" placeholder="Enter your email" required="" type="email"/>
+<button class="email-submit" id="email-submit-agl4" type="submit">Track My Impact</button>
+</form>
+<div class="email-success" id="email-success-agl4">
                 ✓ You'll receive updates when AGL4 trees are planted!
             </div>
-            <div class="email-error" id="email-error-agl4" style="display: none; color: #d32f2f; margin-top: 1rem; font-size: 14px;">
+<div class="email-error" id="email-error-agl4" style="display: none; color: #d32f2f; margin-top: 1rem; font-size: 14px;">
                 There was an error. Please try again.
             </div>
-        </div>
-        <div class="shipment-grid">
-            <div>
-                <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif" alt="AGL4 - Oscar's Farm" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
-                <h2>AGL4</h2>
-                <p style="color: var(--color-text-light); line-height: 1.8;">
+</div>
+<div class="shipment-grid">
+<div>
+<img alt="AGL4 - Oscar's Farm" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif"/>
+<h2>AGL4</h2>
+<p style="color: var(--color-text-light); line-height: 1.8;">
                     300 kg of organic cacao nibs from Bahia small-scale farmers, air-freighted as an early organic bridge shipment. This shipment represents the legacy of three generations of cacao wisdom, with 80-year-old trees still producing today.
                 </p>
-            </div>
-            
-            <div class="shipment-info">
-                <h3>Shipment Overview</h3>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-label">Shipment Title</div>
-                        <div class="info-value">AGL4</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Status</div>
-                        <div class="info-value">SALES IN PROGRESS</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Farm Shipment Date</div>
-                        <div class="info-value">August 28, 2024</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Weight of Cacao</div>
-                        <div class="info-value">300 kg</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Trees to be Planted</div>
-                        <div class="info-value">
-                            <span id="trees-count" data-trees-sold data-shipment-id="agl4" data-default="0">0</span>
-                            <span class="trees-sold-loading" style="display: none; margin-left: 0.5rem; font-size: 0.875rem; color: var(--color-text-light);">(updating...)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3>Financing</h3>
-                <div class="info-grid">
-                    <div class="info-row">
-                        <div class="info-label">Funding Approach</div>
-                        <div class="info-value">DAO financed</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">Financing Contract</div>
-                        <div class="info-value"><a href="https://github.com/TrueSightDAO/.github/blob/main/assets/20240916_agl4_contract.pdf" target="_blank" rel="noopener noreferrer">View Contract</a></div>
-                    </div>
-                </div>
-                
-                <h3>Transparency in Action</h3>
-                <ul class="documents-list">
-                    <li><a href="https://github.com/TrueSightDAO/notarizations/20250714215834_gary_teh_oscar_lab_report.pdf" target="_blank" rel="noopener noreferrer">Lab Report</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- Transparency Section - Secondary Action -->
-        <div class="transparency-section">
-            <h3>Want to Verify the Full Ledger?</h3>
-            <p>Access complete transparency records including financial contracts, invoices, and detailed shipment tracking on TrueSight DAO.</p>
-            <a href="https://www.truesight.me/agroverse-shipments/agl4" target="_blank" rel="noopener noreferrer" class="ledger-link">View Full Transparency Ledger</a>
-        </div>
-        
-        <!-- Location Map Section -->
-        <div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
-            <h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
-            <div id="map-agl4" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
-            <p style="margin-top: 0.5rem; text-align: center;">
-                <a href="https://www.google.com/maps/place/14%C2%B027'49.3%22S+39%C2%B007'56.1%22W/@-33.3837125,-105.1869744,3z/data=!4m13!1m8!3m7!1s0x739106c675ce9bb:0x795150bef2cd194d!2sLagoa+Encantada,+Ilh%C3%A9us+-+State+of+Bahia,+Brazil!3b1!8m2!3d-14.6207075!4d-39.1397344!16s%2Fg%2F1q5hrc_bh!3m3!8m2!3d-14.4636944!4d-39.13225!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;">View on Google Maps</a>
-            </p>
-        </div>
-        
-        <div class="farmer-section">
-            <h3 style="margin-top: 0;">Meet the Farmer</h3>
-            <div class="farmer-profile">
-                <img src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" alt="Oscar" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;">
-                <div class="farmer-details">
-                    <h3>Oscar</h3>
-                    <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Bahia, Brazil</strong></p>
-                    <p style="line-height: 1.8;">
+</div>
+<div class="shipment-info">
+<h3>Shipment Overview</h3>
+<div class="info-grid">
+<div class="info-row">
+<div class="info-label">Shipment Title</div>
+<div class="info-value">AGL4</div>
+</div>
+<div class="info-row">
+<div class="info-label">Status</div>
+<div class="info-value">SALES IN PROGRESS</div>
+</div>
+<div class="info-row">
+<div class="info-label">Farm Shipment Date</div>
+<div class="info-value">August 28, 2024</div>
+</div>
+<div class="info-row">
+<div class="info-label">Weight of Cacao</div>
+<div class="info-value">300 kg</div>
+</div>
+<div class="info-row">
+<div class="info-label">Trees to be Planted</div>
+<div class="info-value">
+<span data-default="0" data-shipment-id="agl4" data-trees-sold="" id="trees-count">0</span>
+<span class="trees-sold-loading" style="display: none; margin-left: 0.5rem; font-size: 0.875rem; color: var(--color-text-light);">(updating...)</span>
+</div>
+</div>
+</div>
+<h3>Financing</h3>
+<div class="info-grid">
+<div class="info-row">
+<div class="info-label">Funding Approach</div>
+<div class="info-value">DAO financed</div>
+</div>
+<div class="info-row">
+<div class="info-label">Financing Contract</div>
+<div class="info-value"><a href="https://github.com/TrueSightDAO/.github/blob/main/assets/20240916_agl4_contract.pdf" rel="noopener noreferrer" target="_blank">View Contract</a></div>
+</div>
+</div>
+<h3>Transparency in Action</h3>
+<ul class="documents-list">
+<li><a href="https://github.com/TrueSightDAO/notarizations/20250714215834_gary_teh_oscar_lab_report.pdf" rel="noopener noreferrer" target="_blank">Lab Report</a></li>
+</ul>
+</div>
+</div>
+<!-- Transparency Section - Secondary Action -->
+<div class="transparency-section">
+<h3>Want to Verify the Full Ledger?</h3>
+<p>Access complete transparency records including financial contracts, invoices, and detailed shipment tracking on TrueSight DAO.</p>
+<a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl4" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
+</div>
+<!-- Location Map Section -->
+<div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
+<h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
+<div id="map-agl4" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
+<p style="margin-top: 0.5rem; text-align: center;">
+<a href="https://www.google.com/maps/place/14%C2%B027'49.3%22S+39%C2%B007'56.1%22W/@-33.3837125,-105.1869744,3z/data=!4m13!1m8!3m7!1s0x739106c675ce9bb:0x795150bef2cd194d!2sLagoa+Encantada,+Ilh%C3%A9us+-+State+of+Bahia,+Brazil!3b1!8m2!3d-14.6207075!4d-39.1397344!16s%2Fg%2F1q5hrc_bh!3m3!8m2!3d-14.4636944!4d-39.13225!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
+</p>
+</div>
+<div class="farmer-section">
+<h3 style="margin-top: 0;">Meet the Farmer</h3>
+<div class="farmer-profile">
+<img alt="Oscar" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif"/>
+<div class="farmer-details">
+<h3>Oscar</h3>
+<p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Bahia, Brazil</strong></p>
+<p style="line-height: 1.8;">
                         Three generations of cacao wisdom. Oscar's grandfather planted trees 80 years ago that are still producing today—a testament to regenerative farming that spans generations. His 100-year-old farm features 80-year-old Criolla trees yielding 900-1000kg/hectare, proving that well-tended native varieties can thrive for over a century.
                     </p>
-                    <p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
+<p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
                         🌳 80-year-old trees • Three generations • Fine-flavored cacao selection
                     </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer id="contact">
-        <div class="footer-content">
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
-            <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
-            <p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
-            <ul class="footer-links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../index.html#mission">Mission</a></li>
-                <li><a href="../../index.html#products">Products</a></li>
-                <li><a href="../../index.html#farmers">Farms</a></li>
-                <li><a href="../../index.html#shipments">Shipments</a></li>
-                <li><a href="../../partners/index.html">Partners</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
-            </ul>
-            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <!-- Leaflet JS for maps -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    
-    <script>
+</div>
+</div>
+</div>
+</div>
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="mailto:info@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<!-- Leaflet JS for maps -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
         // Google Apps Script endpoint for shipment-specific tree counts
         const TREES_SOLD_API_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec';
         
@@ -928,6 +1022,66 @@
             }
         });
     </script>
-</body>
+<div class="mobile-menu-overlay"></div><script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('active');
+                
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                
+                // Prevent body scroll when menu is open
+                if (!isExpanded) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // Close menu when clicking overlay
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close menu on window resize if it becomes desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+    </script></body>
 </html>
-

@@ -1,36 +1,31 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO Meta Tags -->
-    <title>Blog | Agroverse</title>
-    <meta name="description" content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers.">
-    <link rel="canonical" href="https://www.agroverse.shop/blog/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.agroverse.shop/blog/">
-    <meta property="og:title" content="Blog | Agroverse">
-    <meta property="og:description" content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.agroverse.shop/blog/">
-    <meta property="twitter:title" content="Blog | Agroverse">
-    <meta property="twitter:description" content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="../assets/images/logo/agroverse-logo.jpeg">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Blog | Agroverse</title>
+<meta content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers." name="description"/>
+<link href="https://www.agroverse.shop/blog/" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/blog/" property="og:url"/>
+<meta content="Blog | Agroverse" property="og:title"/>
+<meta content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers." property="og:description"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/blog/" property="twitter:url"/>
+<meta content="Blog | Agroverse" property="twitter:title"/>
+<meta content="Read stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers." property="twitter:description"/>
+<!-- Favicon -->
+<link href="../assets/images/logo/agroverse-logo.jpeg" rel="icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
@@ -209,7 +204,11 @@
         @media (max-width: 768px) {
             .blog-hero h1 {
                 font-size: 2.5rem;
-            }
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
             
             .blog-grid {
                 grid-template-columns: 1fr;
@@ -221,247 +220,408 @@
                 font-size: 0.9rem;
             }
         }
-    </style>
+    
+        
+        /* Mobile Hamburger Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
+            .nav-links:not(.mobile-menu) {
+                display: none !important;
+            }
+            .nav-links:not(.mobile-menu) {
+                display: none;
+            }
+            
+            .nav-links.mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background-color: var(--color-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 2rem 2rem;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+                gap: 1.5rem;
+                overflow-y: auto;
+            }
+            
+            .nav-links.mobile-menu.active {
+                right: 0;
+            }
+            
+            .nav-links.mobile-menu li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-bg-light);
+                padding-bottom: 1rem;
+            }
+            
+            .nav-links.mobile-menu a {
+                font-size: 1.1rem;
+                width: 100%;
+                display: block;
+            }
+            
+            .mobile-menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+            
+            header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo img {
+                height: 48px;
+            }
+            
+            nav {
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="../index.html">
-                    <img src="../assets/images/logo/agroverse-logo.jpeg" alt="Agroverse Logo">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#mission">Mission</a></li>
-                <li><a href="../category/retail-packs/index.html">Products</a></li>
-                <li><a href="../farms/oscar-bahia/index.html">Farms</a></li>
-                <li><a href="../shipments/agl8/index.html">Shipments</a></li>
-                <li><a href="../blog/">Blog</a></li>
-                <li><a href="../partners/index.html">Partners</a></li>
-                <li><a href="../index.html#gatherings">Gatherings</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="blog-hero">
-        <h1>Our Blog</h1>
-        <p>Stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers</p>
-    </section>
-    
-    <main class="blog-container">
-        <div class="blog-grid">
+<header>
+<nav>
+<div class="logo">
+<a href="../index.html">
+<img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+</div>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../index.html#mission">Mission</a></li>
+<li><a href="../category/retail-packs/index.html">Products</a></li>
+<li><a href="../farms/oscar-bahia/index.html">Farms</a></li>
+<li><a href="../shipments/agl8/index.html">Shipments</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../partners/index.html">Partners</a></li>
+<li><a href="../index.html#gatherings">Gatherings</a></li>
+<li><a href="mailto:info@agroverse.shop">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="blog-hero">
+<h1>Our Blog</h1>
+<p>Stories about regenerative cacao farming, Amazon rainforest conservation, and our community of farmers</p>
+</section>
+<main class="blog-container">
+<div class="blog-grid">
+<article class="blog-card">
+<a class="blog-card-link" href="/post/how-stem-cells-regenerate-with-regular-cacao-consumption/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">How Stem Cells Regenerate with Regular Cacao Consumption</h2>
+<p class="blog-card-description">Photo by Jenni Miska on UnsplashDid you know that consuming cacao, especially in its purest and darkest form, could help you stay young and healthy...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">November 22, 2024</span>
+<span class="blog-card-author">By Nathani Baesso</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/the-joy-of-cacao-circles-connections-and-community/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/okanogan-regenerative-cacao-journey/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
+<p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">June 11, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">Understanding Cabruca: A Traditional Agroforestry Practice for Amazonian Rainforest Conservation</h2>
+<p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">May 28, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">Understanding Cabruca: A Traditional Agroforestry Practice for Amazonian Rainforest Conservation</h2>
+<p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
+<div class="blog-card-meta">
+<span class="blog-card-date">May 28, 2024</span>
+<span class="blog-card-author">By TrueSight Community</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">Blog</h2>
+<p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
+<div class="blog-card-meta">
+<span class="blog-card-author">By Agroverse Team</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">Blog</h2>
+<p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
+<div class="blog-card-meta">
+<span class="blog-card-author">By Agroverse Team</span>
+</div>
+</div>
+</a>
+</article>
+<article class="blog-card">
+<a class="blog-card-link" href="/post/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c/">
+<div class="blog-card-image-container">
+<div class="blog-card-image-placeholder">📝</div>
+</div>
+<div class="blog-card-content">
+<h2 class="blog-card-title">Blog</h2>
+<p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
+<div class="blog-card-meta">
+<span class="blog-card-author">By Agroverse Team</span>
+</div>
+</div>
+</a>
+</article>
+</div>
+</main>
+<div class="mobile-menu-overlay"></div><script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('active');
+                
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                
+                // Prevent body scroll when menu is open
+                if (!isExpanded) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
             
-            <article class="blog-card">
-                <a href="/post/how-stem-cells-regenerate-with-regular-cacao-consumption/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">How Stem Cells Regenerate with Regular Cacao Consumption</h2>
-                        <p class="blog-card-description">Photo by Jenni Miska on UnsplashDid you know that consuming cacao, especially in its purest and darkest form, could help you stay young and healthy...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">November 22, 2024</span>
-                            <span class="blog-card-author">By Nathani Baesso</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/the-joy-of-cacao-circles-connections-and-community/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/okanogan-regenerative-cacao-journey/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">The Joy of Cacao Circles: Connections and Community</h2>
-                        <p class="blog-card-description">In today's fast-paced world, nurturing meaningful connections and fostering a strong sense of community are more important than ever. Cacao circles...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">June 11, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">Understanding Cabruca: A Traditional Agroforestry Practice for Amazonian Rainforest Conservation</h2>
-                        <p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">May 28, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">Understanding Cabruca: A Traditional Agroforestry Practice for Amazonian Rainforest Conservation</h2>
-                        <p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
-                        <div class="blog-card-meta">
-                            <span class="blog-card-date">May 28, 2024</span>
-                            <span class="blog-card-author">By TrueSight Community</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">Blog</h2>
-                        <p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
-                        <div class="blog-card-meta">
-                            
-                            <span class="blog-card-author">By Agroverse Team</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">Blog</h2>
-                        <p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
-                        <div class="blog-card-meta">
-                            
-                            <span class="blog-card-author">By Agroverse Team</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-            <article class="blog-card">
-                <a href="/post/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c/" class="blog-card-link">
-                    <div class="blog-card-image-container">
-                        <div class="blog-card-image-placeholder">📝</div>
-                    </div>
-                    <div class="blog-card-content">
-                        <h2 class="blog-card-title">Blog</h2>
-                        <p class="blog-card-description">Cabruca is an ancient agroforestry practice originating from the Amazon region, which has been employed by indigenous communities and colonizers al...</p>
-                        <div class="blog-card-meta">
-                            
-                            <span class="blog-card-author">By Agroverse Team</span>
-                        </div>
-                    </div>
-                </a>
-            </article>
-        
-        </div>
-    </main>
-</body>
+            // Close menu when clicking overlay
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close menu on window resize if it becomes desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+    </script></body>
 </html>

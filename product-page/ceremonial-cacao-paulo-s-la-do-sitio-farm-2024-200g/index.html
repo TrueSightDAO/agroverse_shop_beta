@@ -1,38 +1,33 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO Meta Tags -->
-    <title>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse</title>
-    <meta name="description" content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability. Award-winning regenerative cacao from the Amazon Rainforest.">
-    <link rel="canonical" href="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="product">
-    <meta property="og:url" content="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g">
-    <meta property="og:title" content="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse">
-    <meta property="og:description" content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability.">
-    <meta property="og:image" content="https://www.agroverse.shop/assets/images/products/la-do-sitio-farm.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g">
-    <meta property="twitter:title" content="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse">
-    <meta property="twitter:description" content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability.">
-    <meta property="twitter:image" content="https://www.agroverse.shop/assets/images/products/la-do-sitio-farm.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="../../assets/images/logo/agroverse-logo.jpeg">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse</title>
+<meta content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability. Award-winning regenerative cacao from the Amazon Rainforest." name="description"/>
+<link href="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="product" property="og:type"/>
+<meta content="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g" property="og:url"/>
+<meta content="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse" property="og:title"/>
+<meta content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/products/la-do-sitio-farm.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g" property="twitter:url"/>
+<meta content="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g) | Agroverse" property="twitter:title"/>
+<meta content="Premium ceremonial cacao from Paulo's La do Sitio farm in Pará, Brazil. 200g bag with QR code traceability." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/products/la-do-sitio-farm.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../assets/images/logo/agroverse-logo.jpeg" rel="icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
@@ -271,7 +266,11 @@
             .product-section {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
             
             .product-image-container {
                 position: static;
@@ -286,106 +285,278 @@
                 font-size: 14px;
             }
         }
-    </style>
+    
+        
+        /* Mobile Hamburger Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            
+        body {
+            overflow-x: hidden;
+        }
+        }
+            .nav-links:not(.mobile-menu) {
+                display: none !important;
+            }
+            .nav-links:not(.mobile-menu) {
+                display: none;
+            }
+            
+            .nav-links.mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background-color: var(--color-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5rem 2rem 2rem;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+                gap: 1.5rem;
+                overflow-y: auto;
+            }
+            
+            .nav-links.mobile-menu.active {
+                right: 0;
+            }
+            
+            .nav-links.mobile-menu li {
+                width: 100%;
+                border-bottom: 1px solid var(--color-bg-light);
+                padding-bottom: 1rem;
+            }
+            
+            .nav-links.mobile-menu a {
+                font-size: 1.1rem;
+                width: 100%;
+                display: block;
+            }
+            
+            .mobile-menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+            
+            .mobile-menu-overlay.active {
+                display: block;
+            }
+            
+            header {
+                padding: 1rem 1.5rem;
+            }
+            
+            .logo img {
+                height: 48px;
+            }
+            
+            nav {
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../../index.html" class="logo">
-                <img src="../../assets/images/logo/agroverse-logo.jpeg" alt="Agroverse Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../index.html#mission">Mission</a></li>
-                <li><a href="../../index.html#products">Products</a></li>
-                <li><a href="../../index.html#farmers">Farms</a></li>
-                <li><a href="../../index.html#shipments">Shipments</a></li>
-                <li><a href="../../partners/index.html">Partners</a></li>
-                <li><a href="../../index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="product-section">
-        <div class="product-image-container">
-            <img src="../../assets/images/products/la-do-sitio-farm.jpg" alt="Ceremonial Cacao – La do Sitio Farm" class="product-image">
-        </div>
+<header>
+<nav>
+<a class="logo" href="../../index.html">
+<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="product-section">
+<div class="product-image-container">
+<img alt="Ceremonial Cacao – La do Sitio Farm" class="product-image" src="../../assets/images/products/la-do-sitio-farm.jpg"/>
+</div>
+<div class="product-info">
+<h1>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h1>
+<div class="product-price">$25.00</div>
+<div class="product-description">
+<p>Experience the soulful essence of ceremonial cacao sourced directly from Paulo's La do Sitio farm in Pará, Brazil. This award-winning farm, part of the CEPOTX cooperative, produces premium cacao through regenerative agroforestry practices in the heart of the Amazon Rainforest.</p>
+<p>Each 200g bag includes a QR code that allows you to trace your cacao back to the exact shipment (AGL8) and farm where it was grown. Scan the code to view shipment details, FDA approval, and an exclusive video of the farm in action.</p>
+</div>
+<div class="product-details">
+<h3>Product Details</h3>
+<div class="detail-row">
+<span class="detail-label">Weight:</span>
+<span class="detail-value">200g</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Origin:</span>
+<span class="detail-value">La do Sitio Farm, Pará, Brazil</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Harvest:</span>
+<span class="detail-value">2024</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Shipment:</span>
+<span class="detail-value"><a href="../../shipments/agl8/index.html">AGL8</a></span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Farm:</span>
+<span class="detail-value">Paulo's La do Sitio Farm</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Cooperative:</span>
+<span class="detail-value">CEPOTX</span>
+</div>
+</div>
+<div class="traceability-section">
+<h3>Trace This Product</h3>
+<p>Every bag includes a unique QR code. Scan it to:</p>
+<ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+<li>View the exact shipment (AGL8) your cacao came from</li>
+<li>See the farm location on an interactive map</li>
+<li>Access FDA approval and lab reports</li>
+<li>Watch a video of the farm in action</li>
+<li>Register your email for tree-planting updates</li>
+</ul>
+<a class="cta-button" href="../../shipments/agl8/index.html">View Shipment Details</a>
+<a class="secondary-button" href="https://www.truesight.me/agroverse-shipments/agl8" rel="noopener noreferrer" target="_blank">View Full Ledger</a>
+</div>
+<div style="margin-top: 2rem;">
+<a class="cta-button" href="https://www.agroverse.shop/category/retail-packs">Shop Now</a>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: This product is available through our retail store. Contact us for wholesale inquiries.</p>
+</div>
+</div>
+</section>
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="mailto:info@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<div class="mobile-menu-overlay"></div><script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.mobile-menu-overlay');
         
-        <div class="product-info">
-            <h1>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h1>
-            <div class="product-price">$25.00</div>
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('active');
+                
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                
+                // Prevent body scroll when menu is open
+                if (!isExpanded) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
             
-            <div class="product-description">
-                <p>Experience the soulful essence of ceremonial cacao sourced directly from Paulo's La do Sitio farm in Pará, Brazil. This award-winning farm, part of the CEPOTX cooperative, produces premium cacao through regenerative agroforestry practices in the heart of the Amazon Rainforest.</p>
-                <p>Each 200g bag includes a QR code that allows you to trace your cacao back to the exact shipment (AGL8) and farm where it was grown. Scan the code to view shipment details, FDA approval, and an exclusive video of the farm in action.</p>
-            </div>
+            // Close menu when clicking overlay
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
             
-            <div class="product-details">
-                <h3>Product Details</h3>
-                <div class="detail-row">
-                    <span class="detail-label">Weight:</span>
-                    <span class="detail-value">200g</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Origin:</span>
-                    <span class="detail-value">La do Sitio Farm, Pará, Brazil</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Harvest:</span>
-                    <span class="detail-value">2024</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Shipment:</span>
-                    <span class="detail-value"><a href="../../shipments/agl8/index.html">AGL8</a></span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Farm:</span>
-                    <span class="detail-value">Paulo's La do Sitio Farm</span>
-                </div>
-                <div class="detail-row">
-                    <span class="detail-label">Cooperative:</span>
-                    <span class="detail-value">CEPOTX</span>
-                </div>
-            </div>
+            // Close menu when clicking a link
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                });
+            });
             
-            <div class="traceability-section">
-                <h3>Trace This Product</h3>
-                <p>Every bag includes a unique QR code. Scan it to:</p>
-                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                    <li>View the exact shipment (AGL8) your cacao came from</li>
-                    <li>See the farm location on an interactive map</li>
-                    <li>Access FDA approval and lab reports</li>
-                    <li>Watch a video of the farm in action</li>
-                    <li>Register your email for tree-planting updates</li>
-                </ul>
-                <a href="../../shipments/agl8/index.html" class="cta-button">View Shipment Details</a>
-                <a href="https://www.truesight.me/agroverse-shipments/agl8" target="_blank" rel="noopener noreferrer" class="secondary-button">View Full Ledger</a>
-            </div>
-            
-            <div style="margin-top: 2rem;">
-                <a href="https://www.agroverse.shop/category/retail-packs" class="cta-button">Shop Now</a>
-                <p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: This product is available through our retail store. Contact us for wholesale inquiries.</p>
-            </div>
-        </div>
-    </section>
-    
-    <footer id="contact">
-        <div class="footer-content">
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
-            <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
-            <p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
-            <ul class="footer-links">
-                <li><a href="../../index.html#home">Home</a></li>
-                <li><a href="../../index.html#mission">Mission</a></li>
-                <li><a href="../../index.html#products">Products</a></li>
-                <li><a href="../../index.html#farmers">Farms</a></li>
-                <li><a href="../../index.html#shipments">Shipments</a></li>
-                <li><a href="../../partners/index.html">Partners</a></li>
-                <li><a href="mailto:info@agroverse.shop">Contact</a></li>
-            </ul>
-            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
+            // Close menu on window resize if it becomes desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+    </script></body>
 </html>
-
