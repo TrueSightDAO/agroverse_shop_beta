@@ -278,6 +278,9 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 </style>
+    <!-- Leaflet CSS for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
 </head>
 <body>
     <header>
@@ -326,7 +329,16 @@
             </div>
         </div>
         
-        <a href="../index.html" class="back-link">Back to All Partners</a>
+        
+        <!-- Location Map Section -->
+        <div class="partner-info" style="margin-top: 3rem;">
+            <h3>Location</h3>
+            <div id="map-love-wisdom-power" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
+            <div style="text-align: center;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Williams,+Oregon" target="_blank" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;">View on Google Maps</a>
+            </div>
+        </div>
+<a href="../index.html" class="back-link">Back to All Partners</a>
     </section>
     
     <footer id="contact">
@@ -346,5 +358,44 @@
             <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Agroverse. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Leaflet JS for maps -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+
+        <script>
+        // Initialize Leaflet map with geocoding
+        document.addEventListener('DOMContentLoaded', function() {
+            function initMap() {
+                const map = L.map('map-love-wisdom-power').setView([0, 0], 2);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                // Geocode location using Nominatim (OpenStreetMap)
+                const location = "Williams, Oregon";
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.length > 0) {
+                            const lat = parseFloat(data[0].lat);
+                            const lon = parseFloat(data[0].lon);
+                            map.setView([lat, lon], 13);
+                            
+                            L.marker([lat, lon])
+                                .addTo(map)
+                                .bindPopup('<b>Love Wisdom Power</b><br>Williams, Oregon')
+                                .openPopup();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Geocoding error:', error);
+                    });
+            }
+            
+            initMap();
+        });
+        </script>
 </body>
 </html>

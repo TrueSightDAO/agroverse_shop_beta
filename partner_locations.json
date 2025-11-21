@@ -1,0 +1,58 @@
+{
+  "block71-silicon-valley": {
+    "name": "Block71 Silicon Valley",
+    "location": "Silicon Valley, California"
+  },
+  "go-ask-alice": {
+    "name": "Go Ask Alice",
+    "location": "Santa Cruz, California"
+  },
+  "green-gulch-farm-zen-center": {
+    "name": "Green Gulch Farm Zen Center",
+    "location": "Marin County, California"
+  },
+  "kikis-cocoa": {
+    "name": "Kiki's Cocoa",
+    "location": "San Francisco, California"
+  },
+  "love-wisdom-power": {
+    "name": "Love Wisdom Power",
+    "location": "Williams, Oregon"
+  },
+  "miss-tomato": {
+    "name": "Miss Tomato",
+    "location": "Daly City, California"
+  },
+  "peace-on-fifth": {
+    "name": "Peace on Fifth",
+    "location": "Dayton, Ohio"
+  },
+  "queen-hippie-gypsy": {
+    "name": "Queen Hippie Gypsy",
+    "location": "Downtown Oakland, California"
+  },
+  "sacred-earth-farms": {
+    "name": "Sacred Earth Farms",
+    "location": "Merlin, Oregon"
+  },
+  "soulfulness-breathe": {
+    "name": "Soulfulness Breathe",
+    "location": "Denver, Colorado"
+  },
+  "the-enchanted-forest-boutique": {
+    "name": "The Enchanted Forest Boutique",
+    "location": "Chico, California"
+  },
+  "the-ponderosa-slab-city": {
+    "name": "The Ponderosa, Slab City",
+    "location": "Slab City, California"
+  },
+  "founderhaus": {
+    "name": "Founder Haus",
+    "location": "Brazil"
+  },
+  "heierling-ski": {
+    "name": "Heierling Ski",
+    "location": "Switzerland"
+  }
+}
