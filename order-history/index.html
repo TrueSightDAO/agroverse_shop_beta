@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>Order History | Agroverse</title>
+<meta content="View your order history" name="description"/>
+<link href="../assets/images/logo/agroverse-logo.jpeg" rel="icon" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --color-primary: #3b3333;
+  --color-secondary: #4d4d4d;
+  --color-text: #3b3333;
+  --color-text-light: #756F63;
+  --color-bg: #ffffff;
+  --color-bg-light: #f7f7f7;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  line-height: 1.6;
+  background-color: var(--color-bg);
+}
+
+header {
+  background-color: var(--color-bg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 61px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--color-secondary);
+}
+
+.order-history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.order-history-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.order-history-header h1 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.order-history-header p {
+  color: var(--color-text-light);
+}
+
+.order-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.order-history-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-history-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-history-header-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.order-history-info h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.order-history-date {
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+.order-history-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.order-history-status {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-placed {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-processing {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.status-shipped {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-delivered {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-pending {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.order-history-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.order-history-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.order-history-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.order-history-link:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
+.order-history-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.order-history-empty p {
+  color: var(--color-text-light);
+  font-size: 18px;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+  .order-history-header-item {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .order-history-meta {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../index.html">
+<img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../order-history/">Order History</a></li>
+</ul>
+</nav>
+</header>
+
+<div class="order-history-container">
+<div class="order-history-header">
+<h1>Order History</h1>
+<p>View and track all your past orders</p>
+</div>
+
+<div id="order-history-container">
+<div class="order-history-empty">
+<p>Loading your order history...</p>
+</div>
+</div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/order-history.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  const config = window.AGROVERSE_CONFIG || {};
+
+  function displayOrderHistory() {
+    const container = document.getElementById('order-history-container');
+    if (!container) return;
+
+    const orderHistory = window.OrderHistory ? window.OrderHistory.getOrderHistory() : [];
+    
+    if (!orderHistory || orderHistory.length === 0) {
+      container.innerHTML = window.OrderHistory 
+        ? window.OrderHistory.generateOrderHistoryHTML([], config.baseUrl || '/')
+        : '<div class="order-history-empty"><p>You haven\'t placed any orders yet.</p><a href="' + (config.baseUrl || '/') + '" class="cta-button">Start Shopping</a></div>';
+      return;
+    }
+
+    container.innerHTML = window.OrderHistory.generateOrderHistoryHTML(orderHistory, config.baseUrl || '/');
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', displayOrderHistory);
+  } else {
+    displayOrderHistory();
+  }
+
+  // Listen for order history updates
+  window.addEventListener('orderHistoryUpdated', displayOrderHistory);
+})();
+</script>
+</body>
+</html>
+

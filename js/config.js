@@ -7,25 +7,44 @@
   'use strict';
 
   // Detect environment based on hostname
-  const isLocal = window.location.hostname === 'localhost' || 
-                  window.location.hostname === '127.0.0.1' ||
-                  window.location.hostname.includes('localhost:') ||
-                  window.location.hostname.includes('127.0.0.1:');
+  const hostname = window.location.hostname;
+  
+  const isLocal = hostname === 'localhost' || 
+                hostname === '127.0.0.1' ||
+                hostname.includes('localhost:') ||
+                hostname.includes('127.0.0.1:');
 
-  const isProduction = window.location.hostname === 'www.agroverse.shop' ||
-                       window.location.hostname === 'agroverse.shop' ||
-                       window.location.hostname.includes('github.io');
+  // Beta subdomain = development mode
+  const isDevelopment = hostname === 'beta.agroverse.shop' || 
+                       hostname === 'www.beta.agroverse.shop';
+
+  // Main domain = production mode
+  const isProduction = hostname === 'www.agroverse.shop' ||
+                       hostname === 'agroverse.shop' ||
+                       (!isLocal && !isDevelopment); // Default to production if not local or beta
 
   // Base URL configuration
-  const baseUrl = isLocal 
-    ? 'http://127.0.0.1:8000' // Local development server
-    : 'https://www.agroverse.shop';
+  let baseUrl;
+  if (isLocal) {
+    baseUrl = 'http://127.0.0.1:8000'; // Local development server
+  } else if (isDevelopment) {
+    baseUrl = 'https://beta.agroverse.shop';
+  } else {
+    baseUrl = 'https://www.agroverse.shop';
+  }
 
   // Google App Script Web App URL
-  // Replace with your actual Google App Script deployment URL
-  const GOOGLE_SCRIPT_URL = isLocal
-    ? 'YOUR_LOCAL_DEV_SCRIPT_URL' // For testing, you can use a test script
-    : 'YOUR_PRODUCTION_SCRIPT_URL'; // Your production Google App Script URL
+  // IMPORTANT: Replace with your actual Google App Script deployment URL
+  // 
+  // To get your URL:
+  // 1. Deploy your Google App Script as a Web App
+  // 2. Copy the Web app URL (looks like: https://script.google.com/macros/s/.../exec)
+  // 3. Paste it below
+  //
+  // ✅ GOOD NEWS: You can use the SAME URL for both local and production!
+  // The script automatically detects dev vs prod from the request.
+  // Just paste your deployment URL in both fields (or use the same one).
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec';
 
   // Stripe Configuration
   // Note: Stripe keys should be in Google App Script, not here
@@ -37,14 +56,23 @@
       : 'pk_live_...' // Stripe live publishable key (optional, for future use)
   };
 
+  // Google Places API Key (for address autocomplete)
+  // Using the same key from dapp repository
+  const GOOGLE_PLACES_API_KEY = 'AIzaSyCJvOEQgMAqLPzQnTkFfH-wWMhusNTpWaE';
+
+  // Determine environment for API calls
+  const environment = isLocal || isDevelopment ? 'development' : 'production';
+
   // Export configuration
   window.AGROVERSE_CONFIG = {
     isLocal: isLocal,
+    isDevelopment: isDevelopment,
     isProduction: isProduction,
     baseUrl: baseUrl,
     googleScriptUrl: GOOGLE_SCRIPT_URL,
+    googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     stripe: STRIPE_CONFIG,
-    environment: isLocal ? 'development' : 'production',
+    environment: environment,
     
     // URLs
     urls: {
@@ -54,12 +82,14 @@
     },
     
     // Debug mode
-    debug: isLocal
+    debug: isLocal || isDevelopment
   };
 
   // Log environment in development
-  if (isLocal) {
-    console.log('🔧 Development Mode');
+  if (isLocal || isDevelopment) {
+    console.log('🔧 ' + (isLocal ? 'Local' : 'Beta') + ' Development Mode');
+    console.log('Hostname:', hostname);
+    console.log('Environment:', environment);
     console.log('Config:', window.AGROVERSE_CONFIG);
   }
 })();

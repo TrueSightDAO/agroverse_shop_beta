@@ -56,15 +56,24 @@
    * Get form data
    */
   function getFormData(form) {
+    var nameInput = form.querySelector('[name="fullName"]');
+    var emailInput = form.querySelector('[name="email"]');
+    var phoneInput = form.querySelector('[name="phone"]');
+    var addressInput = form.querySelector('[name="address"]');
+    var cityInput = form.querySelector('[name="city"]');
+    var stateInput = form.querySelector('[name="state"]');
+    var zipInput = form.querySelector('[name="zip"]');
+    var countryInput = form.querySelector('[name="country"]');
+
     return {
-      fullName: form.querySelector('[name="fullName"]')?.value || '',
-      email: form.querySelector('[name="email"]')?.value || '',
-      phone: form.querySelector('[name="phone"]')?.value || '',
-      address: form.querySelector('[name="address"]')?.value || '',
-      city: form.querySelector('[name="city"]')?.value || '',
-      state: form.querySelector('[name="state"]')?.value || '',
-      zip: form.querySelector('[name="zip"]')?.value || '',
-      country: form.querySelector('[name="country"]')?.value || 'US'
+      fullName: nameInput ? nameInput.value : '',
+      email: emailInput ? emailInput.value : '',
+      phone: phoneInput ? phoneInput.value : '',
+      address: addressInput ? addressInput.value : '',
+      city: cityInput ? cityInput.value : '',
+      state: stateInput ? stateInput.value : '',
+      zip: zipInput ? zipInput.value : '',
+      country: countryInput ? countryInput.value : 'US'
     };
   }
 
@@ -120,20 +129,35 @@
       throw new Error('Google App Script URL not configured. Please set AGROVERSE_CONFIG.googleScriptUrl');
     }
 
-    const payload = {
-      action: 'createCheckoutSession',
-      cart: cart,
-      shippingAddress: shippingAddress,
-      environment: config.environment
-    };
+    // Update cart weights before checkout (fixes legacy cart items with weight: 0)
+    if (window.Cart && window.Cart.updateWeights) {
+      window.Cart.updateWeights();
+      // Get updated cart with weights
+      cart = window.Cart.getCart();
+    }
+
+    // Get selected shipping rate if available
+    var selectedShippingRate = null;
+    if (window.CheckoutShippingCalculator && window.CheckoutShippingCalculator.getSelectedRate) {
+      selectedShippingRate = window.CheckoutShippingCalculator.getSelectedRate();
+    }
+
+    // Build URL with query parameters (GET request - simpler and no CORS preflight)
+    var params = new URLSearchParams();
+    params.append('action', 'createCheckoutSession');
+    params.append('environment', config.environment || 'production');
+    params.append('cart', JSON.stringify(cart));
+    if (shippingAddress) {
+      params.append('shippingAddress', JSON.stringify(shippingAddress));
+    }
+    if (selectedShippingRate && selectedShippingRate.id) {
+      params.append('selectedShippingRateId', selectedShippingRate.id);
+    }
 
     try {
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload)
+      // Use GET request - simpler and no CORS preflight issues
+      var response = await fetch(scriptUrl + '?' + params.toString(), {
+        method: 'GET'
       });
 
       if (!response.ok) {
@@ -186,8 +210,13 @@
     setLoading(true);
 
     try {
+      // Save form data to localStorage before redirecting
+      if (window.CheckoutFormStorage && window.CheckoutFormStorage.save) {
+        window.CheckoutFormStorage.save(formData);
+      }
+
       // Create checkout session
-      const checkoutUrl = await createCheckoutSession(cart, formData);
+      var checkoutUrl = await createCheckoutSession(cart, formData);
       
       // Redirect to Stripe
       window.location.href = checkoutUrl;
@@ -215,31 +244,79 @@
    * Update cart display on checkout page
    */
   function updateCartDisplay() {
-    const cart = window.Cart.getCart();
-    const cartItemsContainer = document.getElementById('checkout-cart-items');
-    const cartSubtotal = document.getElementById('checkout-subtotal');
+    console.log('updateCartDisplay called');
+    
+    // Wait for Cart to be available
+    if (!window.Cart) {
+      console.warn('Cart not available yet, retrying...');
+      setTimeout(updateCartDisplay, 100);
+      return;
+    }
 
-    if (cartItemsContainer) {
-      if (cart.items.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Your cart is empty</p>';
-      } else {
-        cartItemsContainer.innerHTML = cart.items.map(item => `
-          <div class="checkout-cart-item">
-            <img src="${item.image || ''}" alt="${item.name}" class="checkout-cart-item-image">
-            <div class="checkout-cart-item-details">
-              <div class="checkout-cart-item-name">${item.name}</div>
-              <div class="checkout-cart-item-quantity">Quantity: ${item.quantity}</div>
-            </div>
-            <div class="checkout-cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-          </div>
-        `).join('');
+    var cart = window.Cart.getCart();
+    console.log('Cart retrieved:', cart);
+    
+    var cartItemsContainer = document.getElementById('checkout-cart-items');
+    var cartSubtotal = document.getElementById('checkout-subtotal');
+
+    if (!cartItemsContainer) {
+      console.warn('Cart items container not found');
+      return;
+    }
+
+    if (!cart) {
+      console.warn('Cart is null');
+      cartItemsContainer.innerHTML = '<p style="color: var(--color-text-light);">Unable to load cart. Please refresh the page.</p>';
+      return;
+    }
+
+    if (!cart.items || cart.items.length === 0) {
+      console.log('Cart is empty');
+      cartItemsContainer.innerHTML = '<p style="color: var(--color-text-light);">Your cart is empty. <a href="../index.html">Continue shopping</a></p>';
+      if (cartSubtotal) {
+        cartSubtotal.textContent = '$0.00';
       }
+      return;
     }
 
+    console.log('Cart has', cart.items.length, 'items');
+
+    // Render cart items
+    console.log('Rendering cart items:', cart.items);
+    cartItemsContainer.innerHTML = cart.items.map(item => {
+      // Fix image path - handle both absolute and relative paths
+      var imageSrc = item.image || '';
+      if (imageSrc && !imageSrc.startsWith('http') && !imageSrc.startsWith('/')) {
+        // Relative path - ensure it's correct from checkout page
+        if (!imageSrc.startsWith('../')) {
+          imageSrc = '../' + imageSrc;
+        }
+      } else if (!imageSrc) {
+        imageSrc = '../assets/images/hero/cacao-circles.jpg';
+      }
+      
+      var itemTotal = (item.price || 0) * (item.quantity || 1);
+      var itemName = item.name || 'Product';
+      var itemQuantity = item.quantity || 1;
+      
+      return '<div class="checkout-cart-item">' +
+        '<img src="' + imageSrc + '" alt="' + itemName + '" class="checkout-cart-item-image" onerror="this.onerror=null; this.src=\'../assets/images/hero/cacao-circles.jpg\';">' +
+        '<div class="checkout-cart-item-details">' +
+          '<div class="checkout-cart-item-name">' + itemName + '</div>' +
+          '<div class="checkout-cart-item-quantity">Quantity: ' + itemQuantity + '</div>' +
+        '</div>' +
+        '<div class="checkout-cart-item-price">$' + itemTotal.toFixed(2) + '</div>' +
+      '</div>';
+    }).join('');
+
+    // Update subtotal
     if (cartSubtotal) {
-      const subtotal = window.Cart.getSubtotal();
-      cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+      var subtotal = window.Cart.getSubtotal();
+      cartSubtotal.textContent = '$' + subtotal.toFixed(2);
     }
+
+    // Shipping rates will be calculated by checkout-shipping-calculator.js
+    // when user enters their address
   }
 
   // Initialize when DOM is ready

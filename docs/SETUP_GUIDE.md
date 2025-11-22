@@ -90,13 +90,48 @@ In the "Orders" sheet, create these columns in row 1:
 2. Scroll to "Script properties"
 3. Add these properties:
 
-**For Development:**
-- `STRIPE_SECRET_KEY`: Your Stripe test secret key (`sk_test_...`)
-- `STRIPE_WEBHOOK_SECRET`: Your Stripe test webhook secret (`whsec_...`)
-- `GOOGLE_SHEET_ID`: Your Google Sheet ID
+**Required Properties (for single deployment):**
 
-**For Production:**
-- Use the same properties but with **live** Stripe keys
+**Development (Test Mode):**
+- `STRIPE_TEST_SECRET_KEY`: Your Stripe test secret key (`sk_test_...`)
+- `STRIPE_TEST_WEBHOOK_SECRET`: Your Stripe test webhook secret (`whsec_...`)
+
+**Production (Live Mode):**
+- `STRIPE_LIVE_SECRET_KEY`: Your Stripe live secret key (`sk_live_...`)
+- `STRIPE_LIVE_WEBHOOK_SECRET`: Your Stripe live webhook secret (`whsec_...`)
+
+**Both Environments:**
+- `GOOGLE_SHEET_ID`: Your Google Sheet ID (same sheet works for both)
+
+**📋 See `docs/SCRIPT_PROPERTIES_REFERENCE.md` for detailed instructions and where to get each value.**
+
+### 3.4 Deploy as Web App
+1. Click **Deploy** → **New deployment**
+2. Click the gear icon (⚙️) next to "Select type"
+3. Choose **Web app**
+4. Configure:
+   - **Description**: "Agroverse Checkout API" (optional)
+   - **Execute as**: Me
+   - **Who has access**: Anyone (or "Anyone with link" for testing)
+5. Click **Deploy**
+6. **Copy the Web app URL** - it looks like:
+   ```
+   https://script.google.com/macros/s/AKfycb.../exec
+   ```
+7. **IMPORTANT**: Save this URL - you'll need it for the next step!
+
+### 3.5 Update Website Configuration
+1. Open `js/config.js` in your project
+2. Replace `YOUR_LOCAL_DEV_SCRIPT_URL` with your Web app URL (for local testing)
+3. Replace `YOUR_PRODUCTION_SCRIPT_URL` with your Web app URL (for production)
+4. Save the file
+
+**Example:**
+```javascript
+const GOOGLE_SCRIPT_URL = isLocal
+  ? 'https://script.google.com/macros/s/AKfycb.../exec' // Your actual URL
+  : 'https://script.google.com/macros/s/AKfycb.../exec'; // Same or different URL
+```
 
 **Note:** You can have separate scripts for dev and prod, or use environment detection in the script.
 

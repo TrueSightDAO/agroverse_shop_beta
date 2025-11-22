@@ -475,8 +475,15 @@
 <a class="secondary-button" href="https://www.truesight.me/agroverse-shipments/agl8" rel="noopener noreferrer" target="_blank">View Full Ledger</a>
 </div>
 <div style="margin-top: 2rem;">
-<a class="cta-button" href="https://www.agroverse.shop/category/retail-packs">Shop Now</a>
-<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: This product is available through our retail store. Contact us for wholesale inquiries.</p>
+<button class="cta-button add-to-cart-btn" 
+        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
+        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
+        data-product-price="25.00"
+        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
+        data-stripe-price-id="price_xxxxx">
+  Add to Cart - $25.00
+</button>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: Contact us for wholesale inquiries.</p>
 </div>
 </div>
 </section>
@@ -558,6 +565,12 @@
             });
         }
     });
-    </script></body>
+    </script>
+<script src="../../js/config.js"></script>
+<script src="../../js/cart.js"></script>
+<script src="../../js/cart-ui.js"></script>
+<script src="../../js/add-to-cart.js"></script>
+<link href="../../css/cart.css" rel="stylesheet"/>
+</body>
 </html>
 

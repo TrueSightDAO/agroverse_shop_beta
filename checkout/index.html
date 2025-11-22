@@ -196,6 +196,82 @@ nav {
   color: var(--color-primary);
 }
 
+.checkout-shipping-note {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+.checkout-shipping-note strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.shipping-option {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
+
+.shipping-option:hover {
+  border-color: var(--color-primary);
+  background: #f9f9f9;
+}
+
+.shipping-option-selected {
+  border-color: var(--color-primary);
+  background: #f5f5f5;
+}
+
+.shipping-option input[type="radio"] {
+  margin-right: 0.75rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.shipping-option-details {
+  flex: 1;
+}
+
+.shipping-option-name {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.shipping-option-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.shipping-option-price {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 16px;
+}
+
+.shipping-option-delivery {
+  font-size: 13px;
+}
+
 .cta-button {
   display: block;
   width: 100%;
@@ -240,6 +316,10 @@ nav {
 <a class="logo" href="../index.html">
 <img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
 </a>
+<ul class="nav-links" style="display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+<li style="list-style: none;"><a href="../index.html" style="color: var(--color-text); text-decoration: none; font-weight: 600;">Home</a></li>
+<li style="list-style: none;"><a href="../order-history/" style="color: var(--color-text); text-decoration: none; font-weight: 600;">Order History</a></li>
+</ul>
 </nav>
 </header>
 
@@ -307,12 +387,41 @@ nav {
 <span>Subtotal:</span>
 <span id="checkout-subtotal">$0.00</span>
 </div>
+<div class="checkout-shipping-note">
+<strong>Shipping:</strong> <span id="shipping-estimate">Enter your address above to see shipping options</span>
+<div id="shipping-rates" style="margin-top: 0.5rem;"></div>
+</div>
 </div>
 </div>
 
 <script src="../js/config.js"></script>
+<script src="../js/products.js"></script>
 <script src="../js/cart.js"></script>
 <script src="../js/checkout.js"></script>
+<script src="../js/checkout-form-storage.js"></script>
+<script src="../js/checkout-places-autocomplete.js"></script>
+<script src="../js/checkout-shipping-calculator.js"></script>
+<script>
+// Debug: Check cart after all scripts load
+window.addEventListener('load', function() {
+  console.log('Page loaded, checking cart...');
+  if (window.Cart) {
+    var cart = window.Cart.getCart();
+    console.log('Cart found:', cart);
+    console.log('Cart items:', cart.items);
+    console.log('Cart items count:', cart.items ? cart.items.length : 0);
+    
+    // Force update cart display
+    if (window.Checkout && window.Checkout.updateCartDisplay) {
+      setTimeout(function() {
+        window.Checkout.updateCartDisplay();
+      }, 200);
+    }
+  } else {
+    console.error('Cart object not found!');
+  }
+});
+</script>
 </body>
 </html>
 

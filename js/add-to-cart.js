@@ -6,6 +6,12 @@
 (function() {
   'use strict';
 
+  // Prevent multiple initializations
+  if (window.addToCartInitialized) {
+    return;
+  }
+  window.addToCartInitialized = true;
+
   /**
    * Show toast notification
    */
@@ -79,29 +85,54 @@
    */
   function handleAddToCart(event) {
     event.preventDefault();
+    event.stopPropagation(); // Prevent event from bubbling up
 
     const button = event.target.closest('.add-to-cart-btn');
     if (!button) return;
 
+    // Prevent double-firing by checking if already processing
+    if (button.dataset.processing === 'true') {
+      return;
+    }
+    button.dataset.processing = 'true';
+
     // Get product data from data attributes
-    const product = {
-      productId: button.dataset.productId,
-      name: button.dataset.productName,
-      price: parseFloat(button.dataset.productPrice),
-      image: button.dataset.productImage,
-      stripePriceId: button.dataset.stripePriceId || '',
-      quantity: 1
-    };
+    const productId = button.dataset.productId;
+    
+    // Try to get full product data from window.PRODUCTS first (includes weight)
+    let product;
+    if (window.PRODUCTS && window.PRODUCTS[productId]) {
+      product = Object.assign({}, window.PRODUCTS[productId], {
+        quantity: 1
+      });
+    } else {
+      // Fallback to data attributes if product not in PRODUCTS
+      product = {
+        productId: productId,
+        name: button.dataset.productName,
+        price: parseFloat(button.dataset.productPrice),
+        image: button.dataset.productImage,
+        stripePriceId: button.dataset.stripePriceId || '',
+        weight: parseFloat(button.dataset.productWeight) || 0,
+        quantity: 1
+      };
+    }
 
     // Validate product data
     if (!product.productId || !product.name || !product.price) {
       console.error('Invalid product data:', product);
       showToast('Error: Invalid product data');
+      button.dataset.processing = 'false';
       return;
     }
 
     // Add to cart
     const success = window.Cart.add(product);
+
+    // Reset processing flag after a short delay
+    setTimeout(() => {
+      button.dataset.processing = 'false';
+    }, 500);
 
     if (success) {
       showToast('Added to cart!');
@@ -121,18 +152,17 @@
    * Initialize add to cart buttons
    */
   function initAddToCart() {
-    // Attach event listeners to all add to cart buttons
-    document.addEventListener('click', function(event) {
-      if (event.target.closest('.add-to-cart-btn')) {
-        handleAddToCart(event);
-      }
-    });
-
-    // Also handle buttons that might be added dynamically
-    const buttons = document.querySelectorAll('.add-to-cart-btn');
-    buttons.forEach(button => {
-      button.addEventListener('click', handleAddToCart);
-    });
+    // Use event delegation - single listener on document
+    // This handles both existing and dynamically added buttons
+    // Only add listener once (check if already added)
+    if (!window.addToCartListenerAdded) {
+      document.addEventListener('click', function(event) {
+        if (event.target.closest('.add-to-cart-btn')) {
+          handleAddToCart(event);
+        }
+      }, true); // Use capture phase to catch early
+      window.addToCartListenerAdded = true;
+    }
   }
 
   // Initialize when DOM is ready
