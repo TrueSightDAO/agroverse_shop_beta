@@ -2116,13 +2116,30 @@ function testGetOrderStatus(sessionId) {
   Logger.log('');
   Logger.log('=== Test Complete ===');
   Logger.log('');
-  Logger.log('Summary:');
+  Logger.log('--- Step 5: Product Images Summary ---');
+  var itemsWithImages = 0;
+  var itemsWithoutImages = 0;
+  for (var imgCheck = 0; imgCheck < items.length; imgCheck++) {
+    if (items[imgCheck].image) {
+      itemsWithImages++;
+      Logger.log('  ✓ Item "' + items[imgCheck].name + '" has image: ' + items[imgCheck].image);
+    } else {
+      itemsWithoutImages++;
+      Logger.log('  ✗ Item "' + items[imgCheck].name + '" has NO image');
+    }
+  }
+  Logger.log('  Items with images: ' + itemsWithImages + ' / ' + items.length);
+  Logger.log('  Items without images: ' + itemsWithoutImages + ' / ' + items.length);
+  
+  Logger.log('');
+  Logger.log('=== Summary ===');
   Logger.log('  Session ID: ' + testSessionId);
   Logger.log('  Environment: ' + foundEnvironment);
   Logger.log('  Payment Status: ' + (foundSession.payment_status || 'N/A'));
   Logger.log('  Customer: ' + customerName + ' (' + customerEmail + ')');
   Logger.log('  Total: $' + totalAmount.toFixed(2) + ' ' + (foundSession.currency || 'USD').toUpperCase());
   Logger.log('  Items: ' + totalQuantity);
+  Logger.log('  Items with Images: ' + itemsWithImages + ' / ' + items.length);
   
   // Return formatted order object
   return {
