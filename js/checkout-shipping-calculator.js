@@ -101,6 +101,30 @@
   }
 
   /**
+   * Update checkout submit button state
+   */
+  function updateSubmitButtonState(enabled, message) {
+    var submitButton = document.getElementById('checkout-submit');
+    var submitNote = document.getElementById('checkout-submit-note');
+    
+    if (submitButton) {
+      submitButton.disabled = !enabled;
+      if (enabled) {
+        submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+      } else {
+        submitButton.style.opacity = '0.6';
+        submitButton.style.cursor = 'not-allowed';
+      }
+    }
+    
+    if (submitNote) {
+      submitNote.textContent = message || (enabled ? '' : 'Please select a shipping option above to continue');
+      submitNote.style.display = enabled ? 'none' : 'block';
+    }
+  }
+
+  /**
    * Update shipping display on page with selectable options
    */
   function updateShippingDisplay(rates, message) {
@@ -114,20 +138,22 @@
     if (message) {
       shippingEstimate.textContent = message;
       shippingRatesContainer.innerHTML = '';
-      // Clear selected shipping option
+      // Clear selected shipping option and disable submit button
       if (window.CheckoutShippingCalculator) {
         window.CheckoutShippingCalculator.setSelectedRate(null);
       }
+      updateSubmitButtonState(false, 'Please enter your address to see shipping options');
       return;
     }
 
     if (!rates || rates.length === 0) {
       shippingEstimate.textContent = 'No shipping options available';
       shippingRatesContainer.innerHTML = '';
-      // Clear selected shipping option
+      // Clear selected shipping option and disable submit button
       if (window.CheckoutShippingCalculator) {
         window.CheckoutShippingCalculator.setSelectedRate(null);
       }
+      updateSubmitButtonState(false, 'No shipping options available. Please contact us for assistance.');
       return;
     }
 
@@ -172,6 +198,9 @@
     if (window.CheckoutShippingCalculator) {
       window.CheckoutShippingCalculator.setSelectedRate(cheapestRate);
     }
+    
+    // Enable submit button since we have rates and a default selection
+    updateSubmitButtonState(true);
 
     // Add event listeners to radio buttons
     var radioButtons = shippingRatesContainer.querySelectorAll('input[type="radio"]');
@@ -197,6 +226,9 @@
         if (this.closest('.shipping-option')) {
           this.closest('.shipping-option').classList.add('shipping-option-selected');
         }
+        
+        // Ensure submit button is enabled when option is selected
+        updateSubmitButtonState(true);
       });
     }
   }
@@ -273,6 +305,15 @@
   } else {
     initShippingCalculator();
   }
+  
+  // Initialize submit button as disabled
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      updateSubmitButtonState(false, 'Please enter your address to see shipping options');
+    });
+  } else {
+    updateSubmitButtonState(false, 'Please enter your address to see shipping options');
+  }
 
   // Store selected shipping rate
   var selectedShippingRate = null;
@@ -301,7 +342,8 @@
     calculate: calculateShippingRates,
     getAddress: getShippingAddressFromForm,
     setSelectedRate: setSelectedRate,
-    getSelectedRate: getSelectedRate
+    getSelectedRate: getSelectedRate,
+    updateSubmitButton: updateSubmitButtonState
   };
 
 })();

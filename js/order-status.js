@@ -115,10 +115,13 @@
     const items = order.items || [];
     const itemsHtml = items.map(item => `
       <div class="order-item">
-        <div class="order-item-name">${item.name || 'Product'}</div>
-        <div class="order-item-details">
-          <span>Quantity: ${item.quantity || 1}</span>
-          <span class="order-item-price">$${((item.price || 0) * (item.quantity || 1)).toFixed(2)}</span>
+        ${item.image ? `<img src="${item.image}" alt="${item.name || 'Product'}" class="order-item-image" />` : ''}
+        <div class="order-item-content">
+          <div class="order-item-name">${item.name || 'Product'}</div>
+          <div class="order-item-details">
+            <span>Quantity: ${item.quantity || 1}</span>
+            <span class="order-item-price">$${((item.price || 0) * (item.quantity || 1)).toFixed(2)}</span>
+          </div>
         </div>
       </div>
     `).join('');

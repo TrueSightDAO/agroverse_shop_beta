@@ -100,6 +100,8 @@ nav {
 }
 
 .order-history-item {
+  display: flex;
+  gap: 1.5rem;
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
@@ -112,7 +114,22 @@ nav {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.order-history-header-item {
+.order-history-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.order-history-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.order-history-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

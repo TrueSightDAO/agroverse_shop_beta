@@ -1157,10 +1157,18 @@ function getOrderStatus(sessionId) {
       var amount = (item.amount_total || 0) / 100; // Convert from cents
       var description = item.description || 'Product';
       
+      // Extract product image from Stripe line item
+      // Images are in item.price.product.images array
+      var productImage = null;
+      if (item.price && item.price.product && item.price.product.images && item.price.product.images.length > 0) {
+        productImage = item.price.product.images[0]; // Use first image
+      }
+      
       items.push({
         name: description,
         quantity: quantity,
-        price: amount / quantity // Price per item
+        price: amount / quantity, // Price per item
+        image: productImage || null // Product image URL
       });
       
       totalQuantity += quantity;
@@ -1902,7 +1910,7 @@ function testEasyPostMinimal() {
  */
 function testGetOrderStatus(sessionId) {
   // Default test session ID - replace with your actual session ID
-  var testSessionId = sessionId || 'cs_test_a1jH9qxTAElo466oPPTarFuOWXV7VNGt8rPwmRPfKGrJPjDnJJUZ5hTJMY';
+  var testSessionId = sessionId || 'cs_test_a1TWwFuLbhfyXHroNy3OCAzPEWctusgYf3gBzAF8RbXxN4FIbMQF76Xh57';
   
   Logger.log('=== Testing Order Status Retrieval ===');
   Logger.log('Stripe Session ID: ' + testSessionId);
@@ -1978,14 +1986,46 @@ function testGetOrderStatus(sessionId) {
     var amount = (item.amount_total || 0) / 100;
     var description = item.description || 'Product';
     
+    // Extract product image from Stripe line item
+    var productImage = null;
+    if (item.price && item.price.product) {
+      Logger.log('  Item ' + (j + 1) + ' - Product Data:');
+      Logger.log('    Product ID: ' + (item.price.product.id || 'N/A'));
+      Logger.log('    Product Name: ' + (item.price.product.name || 'N/A'));
+      
+      if (item.price.product.images && item.price.product.images.length > 0) {
+        productImage = item.price.product.images[0];
+        Logger.log('    ✓ Product Image Found: ' + productImage);
+        Logger.log('    Image URL: ' + productImage);
+        Logger.log('    Total Images: ' + item.price.product.images.length);
+        if (item.price.product.images.length > 1) {
+          Logger.log('    Additional Images:');
+          for (var imgIdx = 1; imgIdx < item.price.product.images.length; imgIdx++) {
+            Logger.log('      - ' + item.price.product.images[imgIdx]);
+          }
+        }
+      } else {
+        Logger.log('    ✗ No product images found');
+        Logger.log('    Product object keys: ' + Object.keys(item.price.product || {}).join(', '));
+      }
+    } else {
+      Logger.log('  Item ' + (j + 1) + ' - WARNING: No price.product data');
+      Logger.log('    Item keys: ' + Object.keys(item).join(', '));
+      if (item.price) {
+        Logger.log('    Price keys: ' + Object.keys(item.price).join(', '));
+      }
+    }
+    
     Logger.log('  Item ' + (j + 1) + ': ' + description);
     Logger.log('    Quantity: ' + quantity);
     Logger.log('    Amount: $' + amount.toFixed(2));
+    Logger.log('    Image URL: ' + (productImage || '(none)'));
     
     items.push({
       name: description,
       quantity: quantity,
-      price: amount / quantity
+      price: amount / quantity,
+      image: productImage || null
     });
     
     totalQuantity += quantity;

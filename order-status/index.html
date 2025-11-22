@@ -157,9 +157,26 @@ nav {
 }
 
 .order-item {
+  display: flex;
+  gap: 1rem;
   padding: 1rem;
   background: var(--color-bg-light);
   border-radius: 8px;
+}
+
+.order-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.order-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .order-item-name {

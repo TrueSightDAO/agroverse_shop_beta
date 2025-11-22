@@ -284,13 +284,19 @@ nav {
   font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, opacity 0.3s;
   margin-top: 1.5rem;
   text-align: center;
 }
 
 .cta-button:hover:not(:disabled) {
   background-color: var(--color-secondary);
+}
+
+.cta-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-text-light);
 }
 
 .cta-button:disabled {
@@ -376,7 +382,8 @@ nav {
 </div>
 </div>
 
-<button type="submit" id="checkout-submit" class="cta-button">Continue to Payment</button>
+<button type="submit" id="checkout-submit" class="cta-button" disabled>Continue to Payment</button>
+<p id="checkout-submit-note" style="margin-top: 0.5rem; color: var(--color-text-light); font-size: 14px; font-style: italic;">Please select a shipping option above to continue</p>
 </form>
 </div>
 

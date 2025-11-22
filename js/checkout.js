@@ -206,6 +206,22 @@
       return;
     }
 
+    // Check if shipping option is selected
+    var selectedShippingRate = null;
+    if (window.CheckoutShippingCalculator && window.CheckoutShippingCalculator.getSelectedRate) {
+      selectedShippingRate = window.CheckoutShippingCalculator.getSelectedRate();
+    }
+    
+    if (!selectedShippingRate) {
+      showErrors(['Please select a shipping option before continuing']);
+      // Scroll to shipping options
+      var shippingSection = document.getElementById('shipping-rates');
+      if (shippingSection) {
+        shippingSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
     // Show loading
     setLoading(true);
 

@@ -36,6 +36,7 @@
       const existingIndex = orderHistory.findIndex(o => o.sessionId === order.sessionId);
       
       // Create order summary for history
+      const firstItem = order.items && order.items.length > 0 ? order.items[0] : null;
       const orderSummary = {
         sessionId: order.sessionId,
         date: order.date,
@@ -43,7 +44,8 @@
         amount: order.amount,
         currency: order.currency || 'USD',
         itemCount: order.items ? order.items.reduce((sum, item) => sum + (item.quantity || 1), 0) : 0,
-        firstItemName: order.items && order.items.length > 0 ? order.items[0].name : 'Product'
+        firstItemName: firstItem ? firstItem.name : 'Product',
+        firstItemImage: firstItem && firstItem.image ? firstItem.image : null
       };
       
       if (existingIndex >= 0) {
@@ -146,20 +148,23 @@
       const statusClass = getStatusClass(order.status);
       return `
         <div class="order-history-item">
-          <div class="order-history-header">
-            <div class="order-history-info">
-              <h3>${order.firstItemName}${order.itemCount > 1 ? ` + ${order.itemCount - 1} more` : ''}</h3>
-              <p class="order-history-date">${formatDate(order.date)}</p>
+          ${order.firstItemImage ? `<img src="${order.firstItemImage}" alt="${order.firstItemName}" class="order-history-image" />` : ''}
+          <div class="order-history-content">
+            <div class="order-history-header">
+              <div class="order-history-info">
+                <h3>${order.firstItemName}${order.itemCount > 1 ? ` + ${order.itemCount - 1} more` : ''}</h3>
+                <p class="order-history-date">${formatDate(order.date)}</p>
+              </div>
+              <div class="order-history-meta">
+                <span class="order-history-status ${statusClass}">${order.status}</span>
+                <span class="order-history-amount">$${order.amount.toFixed(2)} ${order.currency}</span>
+              </div>
             </div>
-            <div class="order-history-meta">
-              <span class="order-history-status ${statusClass}">${order.status}</span>
-              <span class="order-history-amount">$${order.amount.toFixed(2)} ${order.currency}</span>
+            <div class="order-history-actions">
+              <a href="${baseUrl || ''}/order-status/?session_id=${order.sessionId}" class="order-history-link">
+                View Details →
+              </a>
             </div>
-          </div>
-          <div class="order-history-actions">
-            <a href="${baseUrl || ''}/order-status/?session_id=${order.sessionId}" class="order-history-link">
-              View Details →
-            </a>
           </div>
         </div>
       `;
