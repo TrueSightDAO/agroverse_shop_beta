@@ -49,10 +49,22 @@ function getConfig(environment) {
   var env = environment || 'production';
   var isDev = env === 'development';
   
+  var stripeSecretKey = isDev 
+    ? props.getProperty('STRIPE_TEST_SECRET_KEY') 
+    : props.getProperty('STRIPE_LIVE_SECRET_KEY');
+  
+  // Validate that we have a secret key (starts with "sk_") not a publishable key (starts with "pk_")
+  if (stripeSecretKey) {
+    if (stripeSecretKey.indexOf('pk_') === 0) {
+      Logger.log('ERROR: ' + (isDev ? 'STRIPE_TEST_SECRET_KEY' : 'STRIPE_LIVE_SECRET_KEY') + ' appears to be a publishable key (starts with pk_). Please use a secret key (starts with sk_).');
+      stripeSecretKey = null; // Clear invalid key
+    } else if (stripeSecretKey.indexOf('sk_') !== 0) {
+      Logger.log('WARNING: ' + (isDev ? 'STRIPE_TEST_SECRET_KEY' : 'STRIPE_LIVE_SECRET_KEY') + ' does not start with "sk_". Please verify it is a secret key.');
+    }
+  }
+  
   return {
-    stripeSecretKey: isDev 
-      ? props.getProperty('STRIPE_TEST_SECRET_KEY') 
-      : props.getProperty('STRIPE_LIVE_SECRET_KEY'),
+    stripeSecretKey: stripeSecretKey,
     // Webhook secrets are optional - only needed if using webhooks instead of polling
     stripeWebhookSecret: isDev
       ? props.getProperty('STRIPE_TEST_WEBHOOK_SECRET')
@@ -324,30 +336,80 @@ function createCheckoutSession(data) {
       var unitAmount = Math.round(priceAmount * 100);
       
       // Build product image URL (if relative, make it absolute)
+      // Stripe requires absolute HTTPS URLs for images (even in test mode)
       var imageUrl = item.image || '';
-      if (imageUrl && imageUrl.indexOf('http') !== 0) {
+      
+      // Log original image value for debugging
+      Logger.log('Processing image for product: ' + item.name);
+      Logger.log('  Original image value: ' + (imageUrl || '(empty)'));
+      Logger.log('  Product ID: ' + (item.productId || 'N/A'));
+      
+      if (imageUrl) {
         // Make relative URLs absolute based on environment
-        var baseUrl = environment === 'development' 
-          ? 'http://127.0.0.1:8000' 
-          : 'https://www.agroverse.shop';
-        imageUrl = baseUrl + (imageUrl.indexOf('/') === 0 ? imageUrl : '/' + imageUrl);
+        // For localhost development, use beta.agroverse.shop so Stripe can access images
+        // Stripe requires publicly accessible HTTPS URLs for images
+        var baseUrl;
+        if (environment === 'development') {
+          // Local development - use beta.agroverse.shop for images (Stripe can't access localhost)
+          baseUrl = 'https://beta.agroverse.shop';
+        } else {
+          // Production - use main domain
+          baseUrl = 'https://www.agroverse.shop';
+        }
+        
+        // Ensure image path starts with /
+        // Handle both '/assets/...' and 'assets/...' formats
+        var imagePath = imageUrl.indexOf('/') === 0 ? imageUrl : '/' + imageUrl;
+        imageUrl = baseUrl + imagePath;
+        
+        // Ensure HTTPS (Stripe requirement - all image URLs must be HTTPS)
+        if (imageUrl.indexOf('http://') === 0) {
+          imageUrl = imageUrl.replace('http://', 'https://');
+        }
+        
+        // Validate URL format
+        if (imageUrl.indexOf('https://') !== 0) {
+          Logger.log('  ERROR: Invalid image URL format: ' + imageUrl);
+          imageUrl = ''; // Clear invalid URL
+        } else {
+          Logger.log('  Final image URL: ' + imageUrl);
+        }
+      } else {
+        Logger.log('  WARNING: No image URL for product: ' + item.name + ' (productId: ' + (item.productId || 'N/A') + ')');
+        Logger.log('  Cart item data: ' + JSON.stringify({
+          productId: item.productId,
+          name: item.name,
+          hasImage: !!item.image,
+          imageValue: item.image
+        }));
       }
       
       // Build line item with price_data (dynamic product creation)
+      var productData = {
+        name: item.name || 'Product',
+        description: item.name || 'Product'
+      };
+      
+      // Only include images if we have a valid image URL
+      // Stripe will ignore empty arrays, so we only add the field if there's an image
+      if (imageUrl) {
+        productData.images = [imageUrl];
+        Logger.log('  Adding image to Stripe product: ' + imageUrl);
+      } else {
+        Logger.log('  WARNING: No image URL for product "' + item.name + '" - images array will be empty');
+      }
+      
       var lineItem = {
         quantity: parseInt(item.quantity) || 1,
         price_data: {
           currency: 'usd',
           unit_amount: unitAmount,
-          product_data: {
-            name: item.name || 'Product',
-            description: item.name || 'Product',
-            images: imageUrl ? [imageUrl] : []
-          }
+          product_data: productData
         }
       };
       
       lineItems.push(lineItem);
+      Logger.log('  Line item created for: ' + item.name + ' (quantity: ' + lineItem.quantity + ', price: $' + (unitAmount / 100).toFixed(2) + ')');
     }
 
     // Determine success and cancel URLs based on environment
@@ -428,13 +490,29 @@ function createCheckoutSession(data) {
     // The address collected on our form is used for metadata, but Stripe will collect
     // the shipping address during checkout to calculate/display shipping rates properly
 
+    // Log payload for debugging (especially line items with images)
+    Logger.log('Creating Stripe checkout session with ' + lineItems.length + ' line items');
+    for (var li = 0; li < lineItems.length; li++) {
+      var liItem = lineItems[li];
+      Logger.log('  Line item ' + (li + 1) + ': ' + (liItem.price_data.product_data.name || 'Unknown'));
+      if (liItem.price_data.product_data.images && liItem.price_data.product_data.images.length > 0) {
+        Logger.log('    Image: ' + liItem.price_data.product_data.images[0]);
+      } else {
+        Logger.log('    Image: (none)');
+      }
+    }
+    
+    var formData = buildFormData(payload);
+    Logger.log('Form data length: ' + formData.length + ' characters');
+    Logger.log('Form data preview (first 500 chars): ' + formData.substring(0, 500));
+    
     var response = UrlFetchApp.fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'post',
       headers: {
         'Authorization': 'Bearer ' + CONFIG.stripeSecretKey,
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      payload: buildFormData(payload),
+      payload: formData,
       muteHttpExceptions: true // Get full error messages
     });
     
@@ -1012,34 +1090,49 @@ function getOrderStatus(sessionId) {
     var foundEnvironment = null;
     
     // First, try to fetch from Stripe (primary source of truth)
+    Logger.log('Looking for session: ' + sessionId);
+    Logger.log('Trying environments: ' + environments.join(', '));
+    
     for (var envIdx = 0; envIdx < environments.length; envIdx++) {
       var env = environments[envIdx];
       var CONFIG = getConfig(env);
       
+      Logger.log('Checking ' + env + ' environment...');
+      
       if (!CONFIG.stripeSecretKey) {
+        Logger.log('  Skipping ' + env + ' - Stripe key not configured');
         continue; // Skip if Stripe key not configured for this environment
       }
+      
+      Logger.log('  Stripe key configured (length: ' + CONFIG.stripeSecretKey.length + ')');
       
       try {
         // Try to retrieve session from Stripe
         stripeSession = retrieveStripeSession(sessionId, CONFIG.stripeSecretKey);
         
         if (stripeSession) {
+          Logger.log('  ✓ Found session in ' + env + ' environment');
+          Logger.log('  Session ID: ' + stripeSession.id);
+          Logger.log('  Payment Status: ' + (stripeSession.payment_status || 'N/A'));
           foundEnvironment = env;
           break; // Found it, stop searching
+        } else {
+          Logger.log('  ✗ Session not found in ' + env + ' environment');
         }
       } catch (stripeError) {
-        Logger.log('Error fetching from Stripe (' + env + '): ' + stripeError.toString());
+        Logger.log('  ✗ Error fetching from Stripe (' + env + '): ' + stripeError.toString());
+        Logger.log('  Stack: ' + stripeError.stack);
         continue;
       }
     }
     
-    // If not found in Stripe, return error
+    // If not found in Stripe, return error with more details
     if (!stripeSession) {
       Logger.log('Order not found in Stripe: ' + sessionId);
+      Logger.log('Searched in environments: ' + environments.join(', '));
       return createCORSResponse({
         status: 'error',
-        error: 'Order not found'
+        error: 'Order not found. Please verify the order number is correct.'
       });
     }
     
@@ -1086,7 +1179,16 @@ function getOrderStatus(sessionId) {
     }
     
     // Extract shipping address from Stripe
+    // Check multiple possible locations for shipping address
     var shippingAddress = null;
+    
+    // Log available shipping-related fields for debugging
+    Logger.log('Checking for shipping address in session: ' + sessionId);
+    Logger.log('  shipping_details exists: ' + !!stripeSession.shipping_details);
+    Logger.log('  shipping exists: ' + !!stripeSession.shipping);
+    Logger.log('  payment_status: ' + (stripeSession.payment_status || 'N/A'));
+    
+    // Try shipping_details first (most common for checkout sessions)
     if (stripeSession.shipping_details && stripeSession.shipping_details.address) {
       var shipping = stripeSession.shipping_details;
       shippingAddress = {
@@ -1097,6 +1199,40 @@ function getOrderStatus(sessionId) {
         zip: shipping.address.postal_code || '',
         country: shipping.address.country || 'US'
       };
+      Logger.log('  ✓ Found shipping address in shipping_details');
+    } 
+    // Try shipping field (alternative location)
+    else if (stripeSession.shipping && stripeSession.shipping.address) {
+      var shipping = stripeSession.shipping;
+      shippingAddress = {
+        fullName: shipping.name || customerName || '',
+        address: shipping.address.line1 + (shipping.address.line2 ? ', ' + shipping.address.line2 : ''),
+        city: shipping.address.city || '',
+        state: shipping.address.state || '',
+        zip: shipping.address.postal_code || '',
+        country: shipping.address.country || 'US'
+      };
+      Logger.log('  ✓ Found shipping address in shipping field');
+    }
+    // Try customer_details.shipping (sometimes used)
+    else if (stripeSession.customer_details && stripeSession.customer_details.shipping && stripeSession.customer_details.shipping.address) {
+      var shipping = stripeSession.customer_details.shipping;
+      shippingAddress = {
+        fullName: shipping.name || customerName || '',
+        address: shipping.address.line1 + (shipping.address.line2 ? ', ' + shipping.address.line2 : ''),
+        city: shipping.address.city || '',
+        state: shipping.address.state || '',
+        zip: shipping.address.postal_code || '',
+        country: shipping.address.country || 'US'
+      };
+      Logger.log('  ✓ Found shipping address in customer_details.shipping');
+    }
+    else {
+      Logger.log('  ✗ No shipping address found in session');
+      Logger.log('  Session keys: ' + Object.keys(stripeSession).join(', '));
+      if (stripeSession.shipping_details) {
+        Logger.log('  shipping_details keys: ' + Object.keys(stripeSession.shipping_details).join(', '));
+      }
     }
     
     // Now try to augment with Google Sheet data (tracking number, status updates, etc.)
@@ -1221,18 +1357,52 @@ function parseItemsPurchased(itemsPurchased, totalAmount, totalQuantity) {
  */
 function retrieveStripeSession(sessionId, stripeSecretKey) {
   try {
+    // Expand line_items to get complete product data
+    // Note: shipping_details cannot be expanded, but it's included by default in checkout sessions
     var url = 'https://api.stripe.com/v1/checkout/sessions/' + sessionId + '?expand[]=line_items.data';
     var response = UrlFetchApp.fetch(url, {
       method: 'get',
       headers: {
         'Authorization': 'Bearer ' + stripeSecretKey
-      }
+      },
+      muteHttpExceptions: true // Get full error response
     });
 
-    var session = JSON.parse(response.getContentText());
+    var responseCode = response.getResponseCode();
+    var responseText = response.getContentText();
+    
+    if (responseCode !== 200) {
+      Logger.log('Stripe API error (code ' + responseCode + '): ' + responseText);
+      var errorData;
+      try {
+        errorData = JSON.parse(responseText);
+        if (errorData.error && errorData.error.message) {
+          Logger.log('Stripe error message: ' + errorData.error.message);
+        }
+      } catch (parseError) {
+        Logger.log('Could not parse error response');
+      }
+      return null;
+    }
+
+    var session = JSON.parse(responseText);
+    
+    // Check if response contains an error
+    if (session.error) {
+      Logger.log('Stripe session error: ' + JSON.stringify(session.error));
+      return null;
+    }
+    
+    // Validate session has required fields
+    if (!session.id) {
+      Logger.log('Warning: Session response missing id field');
+      return null;
+    }
+    
     return session;
   } catch (error) {
     Logger.log('Error retrieving Stripe session: ' + error.toString());
+    Logger.log('Stack trace: ' + error.stack);
     return null;
   }
 }
