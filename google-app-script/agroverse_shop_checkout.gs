@@ -1151,6 +1151,13 @@ function getOrderStatus(sessionId) {
     var totalQuantity = 0;
     var totalAmount = 0;
     
+    // Get the Stripe secret key for fetching product details
+    var stripeSecretKey = null;
+    if (foundEnvironment) {
+      var envConfig = getConfig(foundEnvironment);
+      stripeSecretKey = envConfig.stripeSecretKey;
+    }
+    
     for (var i = 0; i < lineItems.length; i++) {
       var item = lineItems[i];
       var quantity = item.quantity || 1;
@@ -1158,10 +1165,104 @@ function getOrderStatus(sessionId) {
       var description = item.description || 'Product';
       
       // Extract product image from Stripe line item
-      // Images are in item.price.product.images array
+      // When using price_data, product might be a string ID (not expanded) or an object
       var productImage = null;
-      if (item.price && item.price.product && item.price.product.images && item.price.product.images.length > 0) {
-        productImage = item.price.product.images[0]; // Use first image
+      var productData = null;
+      var productId = null;
+      
+      // Check if product is expanded (object) or just an ID (string)
+      if (item.price && item.price.product) {
+        if (typeof item.price.product === 'string') {
+          // Product is just an ID, need to fetch it separately
+          productId = item.price.product;
+          Logger.log('  Item ' + (i + 1) + ': Product is ID string: ' + productId + ', fetching product details...');
+          
+          if (stripeSecretKey) {
+            try {
+              // Fetch product details from Stripe API
+              var productUrl = 'https://api.stripe.com/v1/products/' + productId;
+              var productResponse = UrlFetchApp.fetch(productUrl, {
+                method: 'get',
+                headers: {
+                  'Authorization': 'Bearer ' + stripeSecretKey
+                },
+                muteHttpExceptions: true
+              });
+              
+              if (productResponse.getResponseCode() === 200) {
+                var productResponseText = productResponse.getContentText();
+                productData = JSON.parse(productResponseText);
+                Logger.log('  ✓ Fetched product: ' + (productData.name || 'N/A'));
+                
+                if (productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+                  productImage = productData.images[0];
+                  Logger.log('  ✓ Found product image: ' + productImage);
+                } else {
+                  Logger.log('  ✗ Product has no images');
+                  Logger.log('  Product keys: ' + Object.keys(productData || {}).join(', '));
+                }
+              } else {
+                Logger.log('  ✗ Failed to fetch product (code ' + productResponse.getResponseCode() + ')');
+                Logger.log('  Response: ' + productResponse.getContentText());
+              }
+            } catch (fetchError) {
+              Logger.log('  ✗ Error fetching product: ' + fetchError.toString());
+            }
+          } else {
+            Logger.log('  ✗ No Stripe secret key available to fetch product');
+          }
+        } else if (typeof item.price.product === 'object') {
+          // Product is expanded (object)
+          productData = item.price.product;
+          // Handle if product is an array (unexpected but possible)
+          if (Array.isArray(productData) && productData.length > 0) {
+            productData = productData[0];
+          }
+          if (productData && typeof productData === 'object' && productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+            productImage = productData.images[0];
+            Logger.log('  ✓ Found expanded product image: ' + productImage);
+          } else {
+            Logger.log('  ✗ Expanded product has no images');
+            Logger.log('  Product keys: ' + Object.keys(productData || {}).join(', '));
+          }
+        }
+      }
+      
+      // Fallback: try item.product (sometimes product is at item level)
+      if (!productImage && item.product) {
+        if (typeof item.product === 'string' && stripeSecretKey) {
+          // Fetch product by ID
+          productId = item.product;
+          try {
+            var productUrl = 'https://api.stripe.com/v1/products/' + productId;
+            var productResponse = UrlFetchApp.fetch(productUrl, {
+              method: 'get',
+              headers: {
+                'Authorization': 'Bearer ' + stripeSecretKey
+              },
+              muteHttpExceptions: true
+            });
+            
+            if (productResponse.getResponseCode() === 200) {
+              productData = JSON.parse(productResponse.getContentText());
+              if (productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+                productImage = productData.images[0];
+                Logger.log('  ✓ Found image in item.product: ' + productImage);
+              }
+            }
+          } catch (fetchError) {
+            Logger.log('  ✗ Error fetching product from item.product: ' + fetchError.toString());
+          }
+        } else if (typeof item.product === 'object') {
+          productData = item.product;
+          if (Array.isArray(productData) && productData.length > 0) {
+            productData = productData[0];
+          }
+          if (productData && typeof productData === 'object' && productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+            productImage = productData.images[0];
+            Logger.log('  ✓ Found image in item.product: ' + productImage);
+          }
+        }
       }
       
       items.push({
@@ -1365,9 +1466,10 @@ function parseItemsPurchased(itemsPurchased, totalAmount, totalQuantity) {
  */
 function retrieveStripeSession(sessionId, stripeSecretKey) {
   try {
-    // Expand line_items to get complete product data
+    // Expand line_items and product data to get complete product information including images
     // Note: shipping_details cannot be expanded, but it's included by default in checkout sessions
-    var url = 'https://api.stripe.com/v1/checkout/sessions/' + sessionId + '?expand[]=line_items.data';
+    // Try expanding with the full path notation
+    var url = 'https://api.stripe.com/v1/checkout/sessions/' + sessionId + '?expand[]=line_items.data&expand[]=line_items.data.price.product';
     var response = UrlFetchApp.fetch(url, {
       method: 'get',
       headers: {
@@ -1394,6 +1496,43 @@ function retrieveStripeSession(sessionId, stripeSecretKey) {
     }
 
     var session = JSON.parse(responseText);
+    
+    // Debug: Log line items structure to understand product data format
+    if (session.line_items && session.line_items.data && session.line_items.data.length > 0) {
+      var firstItem = session.line_items.data[0];
+      Logger.log('DEBUG retrieveStripeSession: First line item structure:');
+      Logger.log('  Item keys: ' + Object.keys(firstItem).join(', '));
+      if (firstItem.price) {
+        Logger.log('  Price keys: ' + Object.keys(firstItem.price).join(', '));
+        if (firstItem.price.product) {
+          Logger.log('  Product type: ' + typeof firstItem.price.product);
+          Logger.log('  Product is array: ' + Array.isArray(firstItem.price.product));
+          if (typeof firstItem.price.product === 'object' && !Array.isArray(firstItem.price.product)) {
+            Logger.log('  Product keys: ' + Object.keys(firstItem.price.product).join(', '));
+            if (firstItem.price.product.images) {
+              Logger.log('  Product.images type: ' + typeof firstItem.price.product.images);
+              Logger.log('  Product.images is array: ' + Array.isArray(firstItem.price.product.images));
+              if (Array.isArray(firstItem.price.product.images)) {
+                Logger.log('  Product.images length: ' + firstItem.price.product.images.length);
+                if (firstItem.price.product.images.length > 0) {
+                  Logger.log('  First image URL: ' + firstItem.price.product.images[0]);
+                }
+              }
+            }
+          } else if (Array.isArray(firstItem.price.product)) {
+            Logger.log('  WARNING: Product is an array! Length: ' + firstItem.price.product.length);
+            if (firstItem.price.product.length > 0) {
+              Logger.log('  First element type: ' + typeof firstItem.price.product[0]);
+              Logger.log('  First element keys: ' + Object.keys(firstItem.price.product[0] || {}).join(', '));
+            }
+          }
+        } else {
+          Logger.log('  No product in price object');
+        }
+      } else {
+        Logger.log('  No price in item');
+      }
+    }
     
     // Check if response contains an error
     if (session.error) {
@@ -1987,32 +2126,70 @@ function testGetOrderStatus(sessionId) {
     var description = item.description || 'Product';
     
     // Extract product image from Stripe line item
+    // When using price_data, product might be in different locations
     var productImage = null;
-    if (item.price && item.price.product) {
-      Logger.log('  Item ' + (j + 1) + ' - Product Data:');
-      Logger.log('    Product ID: ' + (item.price.product.id || 'N/A'));
-      Logger.log('    Product Name: ' + (item.price.product.name || 'N/A'));
+    var productData = null;
+    
+    Logger.log('  Item ' + (j + 1) + ' - Debugging Product Data:');
+    Logger.log('    Item keys: ' + Object.keys(item).join(', '));
+    Logger.log('    Item type: ' + typeof item);
+    Logger.log('    Item is array: ' + Array.isArray(item));
+    
+    if (item.price) {
+      Logger.log('    Price exists, keys: ' + Object.keys(item.price).join(', '));
+      Logger.log('    Price type: ' + typeof item.price);
+      Logger.log('    Price.product exists: ' + !!item.price.product);
+      Logger.log('    Price.product type: ' + typeof item.price.product);
+      Logger.log('    Price.product is array: ' + Array.isArray(item.price.product));
       
-      if (item.price.product.images && item.price.product.images.length > 0) {
-        productImage = item.price.product.images[0];
-        Logger.log('    ✓ Product Image Found: ' + productImage);
-        Logger.log('    Image URL: ' + productImage);
-        Logger.log('    Total Images: ' + item.price.product.images.length);
-        if (item.price.product.images.length > 1) {
-          Logger.log('    Additional Images:');
-          for (var imgIdx = 1; imgIdx < item.price.product.images.length; imgIdx++) {
-            Logger.log('      - ' + item.price.product.images[imgIdx]);
+      // Try different locations for product data
+      if (item.price.product) {
+        productData = item.price.product;
+        Logger.log('    Found product in item.price.product');
+        Logger.log('    Product type: ' + (Array.isArray(productData) ? 'Array' : typeof productData));
+        
+        // Handle if product is an array (unexpected but possible)
+        if (Array.isArray(productData)) {
+          Logger.log('    WARNING: product is an array, length: ' + productData.length);
+          if (productData.length > 0) {
+            productData = productData[0]; // Use first element
+            Logger.log('    Using first element of product array');
+          }
+        }
+        
+        if (productData && typeof productData === 'object') {
+          Logger.log('    Product keys: ' + Object.keys(productData).join(', '));
+          Logger.log('    Product ID: ' + (productData.id || 'N/A'));
+          Logger.log('    Product Name: ' + (productData.name || 'N/A'));
+          
+          if (productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+            productImage = productData.images[0];
+            Logger.log('    ✓ Product Image Found: ' + productImage);
+            Logger.log('    Total Images: ' + productData.images.length);
+          } else {
+            Logger.log('    ✗ No images array in product');
+            Logger.log('    Product.images type: ' + typeof productData.images);
           }
         }
       } else {
-        Logger.log('    ✗ No product images found');
-        Logger.log('    Product object keys: ' + Object.keys(item.price.product || {}).join(', '));
+        Logger.log('    ✗ No product in item.price');
       }
     } else {
-      Logger.log('  Item ' + (j + 1) + ' - WARNING: No price.product data');
-      Logger.log('    Item keys: ' + Object.keys(item).join(', '));
-      if (item.price) {
-        Logger.log('    Price keys: ' + Object.keys(item.price).join(', '));
+      Logger.log('    ✗ No price in item');
+    }
+    
+    // Also try item.product (sometimes product is at item level)
+    if (!productImage && item.product) {
+      Logger.log('    Trying item.product...');
+      productData = item.product;
+      if (Array.isArray(productData)) {
+        if (productData.length > 0) {
+          productData = productData[0];
+        }
+      }
+      if (productData && productData.images && Array.isArray(productData.images) && productData.images.length > 0) {
+        productImage = productData.images[0];
+        Logger.log('    ✓ Found image in item.product: ' + productImage);
       }
     }
     
@@ -2099,18 +2276,34 @@ function testGetOrderStatus(sessionId) {
   // Test the actual getOrderStatus function
   try {
     var orderStatusResult = getOrderStatus(testSessionId);
-    var orderStatusText = orderStatusResult.getContentText();
-    var orderStatusData = JSON.parse(orderStatusText);
     
-    if (orderStatusData.status === 'success') {
-      Logger.log('✓ getOrderStatus returned success');
-      Logger.log('  Order Status: ' + (orderStatusData.order.status || 'N/A'));
-      Logger.log('  Items Count: ' + (orderStatusData.order.items ? orderStatusData.order.items.length : 0));
+    // Check if result is ContentService.TextOutput
+    if (orderStatusResult && typeof orderStatusResult.getContentText === 'function') {
+      var orderStatusText = orderStatusResult.getContentText();
+      var orderStatusData = JSON.parse(orderStatusText);
+      
+      if (orderStatusData.status === 'success') {
+        Logger.log('✓ getOrderStatus returned success');
+        Logger.log('  Order Status: ' + (orderStatusData.order.status || 'N/A'));
+        Logger.log('  Items Count: ' + (orderStatusData.order.items ? orderStatusData.order.items.length : 0));
+        if (orderStatusData.order.items && orderStatusData.order.items.length > 0) {
+          Logger.log('  First Item Image: ' + (orderStatusData.order.items[0].image || '(none)'));
+          for (var itemIdx = 0; itemIdx < orderStatusData.order.items.length; itemIdx++) {
+            var testItem = orderStatusData.order.items[itemIdx];
+            Logger.log('  Item ' + (itemIdx + 1) + ' "' + testItem.name + '" image: ' + (testItem.image || '(none)'));
+          }
+        }
+      } else {
+        Logger.log('✗ getOrderStatus returned error: ' + (orderStatusData.error || 'Unknown'));
+      }
     } else {
-      Logger.log('✗ getOrderStatus returned error: ' + (orderStatusData.error || 'Unknown'));
+      Logger.log('✗ getOrderStatus did not return ContentService.TextOutput');
+      Logger.log('  Result type: ' + typeof orderStatusResult);
+      Logger.log('  Result keys: ' + (orderStatusResult && typeof orderStatusResult === 'object' ? Object.keys(orderStatusResult).join(', ') : 'N/A'));
     }
   } catch (testError) {
     Logger.log('✗ Error testing getOrderStatus: ' + testError.toString());
+    Logger.log('  Stack: ' + (testError.stack || 'N/A'));
   }
   
   Logger.log('');
