@@ -128,4 +128,3 @@ Link to TrueSight DAO (Clear, but not prominent)
 4. **Contextual Messaging** - "Your bag from AGL8 = 1 tree"
 5. **Progressive Disclosure** - Transparency as secondary action
 
-

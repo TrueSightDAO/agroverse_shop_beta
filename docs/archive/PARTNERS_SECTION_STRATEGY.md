@@ -119,4 +119,3 @@ From the downloaded HTML files, extract:
 5. Add navigation links
 6. Test and refine
 
-

@@ -132,4 +132,3 @@ Farmer Card (Clickable)
 3. **Update cards**: Make clickable, remove secondary links
 4. **Test UX**: Ensure clear call-to-action
 
-

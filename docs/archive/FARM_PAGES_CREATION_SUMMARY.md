@@ -77,4 +77,3 @@ Each farm page includes:
 5. ⏳ Add more farm details from provided websites (if needed)
 6. ⏳ Update "Meet Our Farmers" section to include new farms (optional)
 
-

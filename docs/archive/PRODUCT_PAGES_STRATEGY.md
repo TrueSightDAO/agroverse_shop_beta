@@ -114,4 +114,3 @@ Each product is associated with a shipment (AGL), creating a clear traceability 
 - **Mobile Responsive**: All pages must work on mobile
 - **SEO Optimized**: Proper meta tags, structured data
 
-

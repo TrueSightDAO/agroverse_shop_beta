@@ -113,4 +113,3 @@ Update existing farmer cards to link to agroverse_shop shipment pages:
 
 The current implementation is solid. The main improvement would be adding navigation from the main site to make shipments more discoverable.
 
-

@@ -45,4 +45,3 @@ To use a proper farm image from the Fazenda Capelavelha website:
 
 The shipment image (agl10.avif) should remain on the AGL10 shipment page as it represents the specific shipment, not the farm itself.
 
-

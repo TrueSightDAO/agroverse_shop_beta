@@ -101,4 +101,3 @@ Currently all partners are in the USA section. When Brazil and Switzerland partn
 5. Add maps for partner locations (if addresses available)
 6. Add partner websites/social media links
 
-

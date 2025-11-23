@@ -40,4 +40,3 @@ Currently using a generic cacao farm image (`cacao_circles(1).jpg`) as a placeho
    - `/index.html` (farmer card)
    - Update meta tags (og:image, twitter:image) in farm page
 
-

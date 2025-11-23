@@ -13,42 +13,52 @@
    */
   function validateShippingForm(formData) {
     const errors = [];
+    const fieldErrors = {}; // Track which fields have errors
 
     if (!formData.fullName || formData.fullName.trim().length < 2) {
       errors.push('Full name is required');
+      fieldErrors.fullName = true;
     }
 
     if (!formData.email || !formData.email.includes('@')) {
       errors.push('Valid email is required');
+      fieldErrors.email = true;
     }
 
     if (!formData.phone || formData.phone.trim().length < 10) {
       errors.push('Valid phone number is required');
+      fieldErrors.phone = true;
     }
 
     if (!formData.address || formData.address.trim().length < 5) {
       errors.push('Street address is required');
+      fieldErrors.address = true;
     }
 
     if (!formData.city || formData.city.trim().length < 2) {
       errors.push('City is required');
+      fieldErrors.city = true;
     }
 
     if (!formData.state || formData.state.trim().length < 2) {
       errors.push('State is required');
+      fieldErrors.state = true;
     }
 
     if (!formData.zip || !/^\d{5}(-\d{4})?$/.test(formData.zip)) {
       errors.push('Valid ZIP code is required');
+      fieldErrors.zip = true;
     }
 
     if (!formData.country) {
       errors.push('Country is required');
+      fieldErrors.country = true;
     }
 
     return {
       valid: errors.length === 0,
-      errors: errors
+      errors: errors,
+      fieldErrors: fieldErrors
     };
   }
 
@@ -78,9 +88,9 @@
   }
 
   /**
-   * Show form errors
+   * Show form errors and highlight invalid fields
    */
-  function showErrors(errors) {
+  function showErrors(errors, fieldErrors) {
     const errorContainer = document.getElementById('checkout-errors');
     if (errorContainer) {
       errorContainer.innerHTML = errors.map(err => 
@@ -105,10 +115,67 @@
         }, 100);
       }
     }
+    
+    // Highlight invalid fields
+    if (fieldErrors) {
+      highlightInvalidFields(fieldErrors);
+    }
+  }
+  
+  /**
+   * Highlight invalid form fields
+   */
+  function highlightInvalidFields(fieldErrors) {
+    // First, clear all error states
+    clearFieldErrors();
+    
+    // Add error class to invalid fields
+    const fieldMap = {
+      fullName: 'fullName',
+      email: 'email',
+      phone: 'phone',
+      address: 'address',
+      city: 'city',
+      state: 'state',
+      zip: 'zip',
+      country: 'country'
+    };
+    
+    for (const fieldName in fieldErrors) {
+      if (fieldErrors[fieldName]) {
+        const fieldId = fieldMap[fieldName];
+        if (fieldId) {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.classList.add('error');
+            // Scroll to first invalid field
+            if (Object.keys(fieldErrors).indexOf(fieldName) === 0) {
+              setTimeout(function() {
+                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                field.focus();
+              }, 300);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /**
+   * Clear error highlighting from all fields
+   */
+  function clearFieldErrors() {
+    const form = document.getElementById('checkout-form');
+    if (form) {
+      const fields = form.querySelectorAll('input, select');
+      fields.forEach(function(field) {
+        field.classList.remove('error');
+      });
+    }
   }
 
   /**
-   * Clear form errors
+   * Clear form errors and field highlighting
    */
   function clearErrors() {
     const errorContainer = document.getElementById('checkout-errors');
@@ -116,6 +183,7 @@
       errorContainer.innerHTML = '';
       errorContainer.style.display = 'none';
     }
+    clearFieldErrors();
   }
 
   /**
@@ -212,7 +280,7 @@
     // Validate form
     const validation = validateShippingForm(formData);
     if (!validation.valid) {
-      showErrors(validation.errors);
+      showErrors(validation.errors, validation.fieldErrors);
       return;
     }
 
@@ -271,6 +339,38 @@
 
     // Update cart display
     updateCartDisplay();
+    
+    // Clear field errors when user starts typing
+    const form = document.getElementById('checkout-form');
+    if (form) {
+      const fields = form.querySelectorAll('input, select');
+      fields.forEach(function(field) {
+        field.addEventListener('input', function() {
+          if (this.classList.contains('error')) {
+            this.classList.remove('error');
+            // Clear error messages if all fields are valid
+            const hasErrors = Array.from(fields).some(function(f) {
+              return f.classList.contains('error');
+            });
+            if (!hasErrors) {
+              clearErrors();
+            }
+          }
+        });
+        field.addEventListener('change', function() {
+          if (this.classList.contains('error')) {
+            this.classList.remove('error');
+            // Clear error messages if all fields are valid
+            const hasErrors = Array.from(fields).some(function(f) {
+              return f.classList.contains('error');
+            });
+            if (!hasErrors) {
+              clearErrors();
+            }
+          }
+        });
+      });
+    }
   }
 
   /**

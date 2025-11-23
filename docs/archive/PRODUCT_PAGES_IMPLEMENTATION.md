@@ -76,4 +76,3 @@ Product Pages
 3. Add product links to shipment pages (optional enhancement)
 4. Test all links and navigation paths
 
-

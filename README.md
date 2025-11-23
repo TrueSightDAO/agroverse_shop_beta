@@ -32,12 +32,14 @@ A static HTML e-commerce website for Agroverse, migrated from Wix to GitHub Page
 - ✅ Address autocomplete (Google Places)
 - ✅ Form data persistence
 - ✅ Environment-aware configuration (dev/prod)
+- ✅ Legacy URL redirects (GitHub Pages 404 handler)
 
 ## 📁 Project Structure
 
 ```
 agroverse_shop/
 ├── index.html                          # Main landing page
+├── 404.html                            # Legacy URL redirect handler
 ├── checkout/
 │   └── index.html                      # Checkout page (shipping form)
 ├── order-status/
@@ -60,16 +62,18 @@ agroverse_shop/
 │   ├── order-history.js                # Order history management
 │   ├── quote-request.js                # Quote request handling
 │   ├── universal-nav.js                # Universal navigation (cart icon, order history link)
-│   └── image-url-helper.js             # Image URL conversion (relative → absolute)
+│   ├── image-url-helper.js             # Image URL conversion (relative → absolute)
+│   └── legacy-redirects.js             # Legacy URL redirect map
 ├── css/
 │   └── cart.css                        # Cart styles
 ├── google-app-script/
 │   └── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
-├── assets/
-│   └── images/
-│       ├── products/                   # Product images
-│       └── farms/                      # Farm images
-└── docs/                               # Documentation
+├── scripts/
+│   └── generate_redirects.py           # Script to generate redirect map from CSV
+└── assets/
+    └── images/
+        ├── products/                   # Product images
+        └── farms/                      # Farm images
 ```
 
 ## 🚀 Quick Start
@@ -81,6 +85,11 @@ agroverse_shop/
 chmod +x start-local-server.sh
 ./start-local-server.sh
 ```
+
+The script automatically:
+- Detects if Node.js or Python is installed
+- Installs dependencies if needed
+- Starts a local server on `http://127.0.0.1:8000`
 
 **Option 2: Python**
 ```bash
@@ -94,6 +103,13 @@ npm run dev
 ```
 
 Then visit: `http://127.0.0.1:8000`
+
+**Why 127.0.0.1 instead of file://?**
+- ✅ Full HTTP protocol support
+- ✅ CORS works properly (Google Places API, fetch requests)
+- ✅ All browser APIs function correctly
+- ✅ Proper MIME types for files
+- ✅ Matches production environment better
 
 ### Production Deployment
 
@@ -118,7 +134,6 @@ Then visit: `http://127.0.0.1:8000`
 ### Environment Detection
 
 The site automatically detects the environment:
-
 - **Local Development**: `localhost` or `127.0.0.1`
 - **Beta/Dev**: `beta.agroverse.shop`
 - **Production**: `www.agroverse.shop` or `agroverse.shop`
@@ -145,10 +160,17 @@ window.AGROVERSE_CONFIG = {
    - Copy code from `google-app-script/agroverse_shop_checkout.gs`
 
 2. **Set Script Properties** (Project Settings → Script Properties):
+   - Click the **gear icon** (⚙️) in the left sidebar
+   - Scroll down to **"Script properties"**
+   - Click **"Add script property"** for each property below
+
+   **Required Properties:**
    - `STRIPE_TEST_SECRET_KEY` - Stripe test secret key (`sk_test_...`)
    - `STRIPE_LIVE_SECRET_KEY` - Stripe live secret key (`sk_live_...`)
-   - `GOOGLE_SHEET_ID` - Google Sheet ID (from URL)
+   - `GOOGLE_SHEET_ID` - Google Sheet ID (from URL: `https://docs.google.com/spreadsheets/d/[SHEET_ID]/edit`)
    - `GOOGLE_SHEET_NAME` - Sheet name (default: "Stripe Social Media Checkout ID")
+
+   **Optional Properties (for real shipping rates):**
    - `EASYPOST_API_KEY` - EasyPost API key (for shipping rates)
    - `ORIGIN_ADDRESS_LINE1` - Warehouse street address
    - `ORIGIN_ADDRESS_CITY` - Warehouse city
@@ -158,7 +180,27 @@ window.AGROVERSE_CONFIG = {
    - `BASE_BOX_WEIGHT_OZ` - Base box weight in ounces (default: 11.5)
    - `PER_ITEM_PACKAGING_OZ` - Per-item packaging weight (default: 0.65)
 
-   See `docs/SCRIPT_PROPERTIES_REFERENCE.md` for detailed instructions.
+   **Complete Property Reference:**
+
+   | Property Name | Required For | Required? | Format | Example |
+   |--------------|--------------|-----------|--------|---------|
+   | `STRIPE_TEST_SECRET_KEY` | Development | ✅ Yes | `sk_test_...` | From Stripe Dashboard |
+   | `STRIPE_LIVE_SECRET_KEY` | Production | ✅ Yes | `sk_live_...` | From Stripe Dashboard |
+   | `GOOGLE_SHEET_ID` | Both | ✅ Yes | Alphanumeric | From Sheet URL |
+   | `GOOGLE_SHEET_NAME` | Both | ⚠️ Optional | String | `Stripe Social Media Checkout ID` |
+   | `EASYPOST_API_KEY` | Real Shipping Rates | ❌ No | `EZTK...` or `EZAK...` | From EasyPost Dashboard |
+   | `ORIGIN_ADDRESS_LINE1` | EasyPost | ⚠️ If using EasyPost | String | `123 Main Street` |
+   | `ORIGIN_ADDRESS_CITY` | EasyPost | ⚠️ If using EasyPost | String | `San Francisco` |
+   | `ORIGIN_ADDRESS_STATE` | EasyPost | ⚠️ If using EasyPost | String (2-letter) | `CA` |
+   | `ORIGIN_ADDRESS_POSTAL_CODE` | EasyPost | ⚠️ If using EasyPost | String | `94102` |
+   | `ORIGIN_ADDRESS_COUNTRY` | EasyPost | ⚠️ If using EasyPost | String (2-letter) | `US` |
+   | `BASE_BOX_WEIGHT_OZ` | Package Weight | ❌ No | Number | `11.5` |
+   | `PER_ITEM_PACKAGING_OZ` | Package Weight | ❌ No | Number | `0.65` |
+
+   **Where to Get Keys:**
+   - **Stripe Keys**: [Stripe Dashboard](https://dashboard.stripe.com) → Developers → API keys
+   - **Google Sheet ID**: From URL: `https://docs.google.com/spreadsheets/d/[SHEET_ID]/edit`
+   - **EasyPost Key**: [EasyPost Dashboard](https://www.easypost.com/dashboard) → Settings → API Keys
 
 3. **Deploy as Web App:**
    - Click "Deploy" → "New deployment"
@@ -177,6 +219,13 @@ window.AGROVERSE_CONFIG = {
    - Event source: Time-driven
    - Type: Minutes timer
    - Interval: Every 5-15 minutes
+
+**How It Works:**
+The script automatically selects the correct keys based on the environment:
+- **Development** (`localhost`, `127.0.0.1`): Uses `STRIPE_TEST_*` keys
+- **Production** (`www.agroverse.shop`): Uses `STRIPE_LIVE_*` keys
+
+This means you only need **one deployment** that works for both environments!
 
 ## 🛒 E-Commerce Features
 
@@ -200,6 +249,11 @@ window.AGROVERSE_CONFIG = {
 10. Redirected to order status page
 11. Order saved to Google Sheets
 12. Can view order history anytime
+
+**Where "Add to Cart" Appears:**
+- ✅ Individual product pages
+- ✅ Category page (`/category/retail-packs/`)
+- ✅ Main page product gallery
 
 **Cart Management:**
 - Stored in `localStorage` (key: `agroverse_cart`)
@@ -228,6 +282,10 @@ window.AGROVERSE_CONFIG = {
 6. Admin provides custom quote
 7. Admin sends quote to customer
 8. If accepted, admin creates Stripe Payment Link
+
+**Where "Request Quote" Appears:**
+- ✅ Individual wholesale product pages
+- ✅ Wholesale category page (`/category/wholesale-bulk/`)
 
 ### Order Management
 
@@ -261,7 +319,7 @@ window.AGROVERSE_CONFIG = {
 - **Trigger**: When user enters shipping address on checkout page
 - **Display**: Real-time rate options with user selection
 - **Integration**: Google App Script calls EasyPost API
-- **Fallback**: None (only EasyPost rates shown)
+- **Fallback**: Fixed rates if EasyPost not configured
 
 ### Stripe Integration
 - **Checkout**: Stripe Checkout (hosted)
@@ -289,6 +347,29 @@ window.AGROVERSE_CONFIG = {
 - **Purpose**: Converts relative image paths to absolute URLs
 - **Reason**: Ensures images load correctly regardless of page depth
 - **Usage**: Used by cart UI, order status, order history
+
+### Legacy URL Redirects
+
+**How It Works:**
+1. User visits legacy URL (e.g., `agroverse.shop/old-product`)
+2. GitHub Pages automatically serves `404.html` for any missing pages
+3. `404.html` loads `js/legacy-redirects.js` and checks `LEGACY_REDIRECTS` map
+4. If match found → redirects to new URL (301 permanent via meta refresh + JavaScript)
+5. If no match → shows friendly 404 page
+
+**Regenerating Redirects:**
+If the CSV file is updated, regenerate the redirect map:
+```bash
+python3 scripts/generate_redirects.py assets/raw/legacy_agroverse_shop_URL_Redirects_Export.csv
+```
+
+This will update `js/legacy-redirects.js` with the latest redirects.
+
+**Wildcard Patterns:**
+- `/recipes/{title}` → `/recipes` (then to `/cacao-espresso`)
+- `/recipes-1/{title}` → `/recipes-1` (then to `/breakfast-cacao-smoothie`)
+
+These are handled automatically in `404.html`.
 
 ## 📝 Product Management
 
@@ -339,15 +420,44 @@ const PRODUCTS = {
 - Verify image files exist in `assets/images/`
 - Check browser console for 404 errors
 
-## 📚 Documentation
+### Local Development Issues
 
-### Essential Docs
-- **`docs/SCRIPT_PROPERTIES_REFERENCE.md`** ⭐ - Complete guide to all Google App Script properties (required for setup)
-- **`docs/LOCAL_DEVELOPMENT.md`** - Detailed local development setup instructions
-- **`docs/CHECKOUT_SYSTEM_SUMMARY.md`** - Detailed checkout system overview (retail vs wholesale flows)
+**"Port 8000 already in use"**
+```bash
+# Use a different port
+http-server -p 8001 -a 127.0.0.1
+# Don't forget to update js/config.js with the new port!
+```
 
-### Documentation Index
-See `docs/README.md` for a complete list of all documentation files and which ones are essential vs historical.
+**"Cannot find module http-server"**
+```bash
+npm install
+```
+
+**"Permission denied" (macOS/Linux)**
+```bash
+chmod +x start-local-server.sh
+```
+
+**Google Places API not working**
+- Make sure you're using `http://127.0.0.1:8000` (not `file://`)
+- Check browser console for CORS errors
+- Verify your API key allows `127.0.0.1` as an origin
+
+### Script Properties Issues
+
+**"Stripe development secret key not configured"**
+- Make sure you set `STRIPE_TEST_SECRET_KEY` (not `STRIPE_SECRET_KEY`)
+
+**"Stripe production secret key not configured"**
+- Make sure you set `STRIPE_LIVE_SECRET_KEY` (not `STRIPE_SECRET_KEY`)
+
+**"Google Sheet ID not configured"**
+- Make sure you set `GOOGLE_SHEET_ID` with the correct Sheet ID
+
+**Wrong keys being used?**
+- Check that the property names match exactly (case-sensitive)
+- Verify you're using the correct keys for test vs live mode
 
 ## 🔐 Security Notes
 
@@ -355,6 +465,7 @@ See `docs/README.md` for a complete list of all documentation files and which on
 - **API Keys**: Google Places API key is public (safe for client-side use)
 - **EasyPost Key**: Stored in Google App Script properties (server-side only)
 - **CORS**: Google App Script Web App handles CORS automatically
+- **Script Properties**: Encrypted by Google, only people with edit access can see them
 
 ## 🌐 URLs
 

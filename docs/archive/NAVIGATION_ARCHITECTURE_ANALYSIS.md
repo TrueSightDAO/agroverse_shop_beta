@@ -169,4 +169,3 @@ Home → Farms → Check favorite farm → See new shipments
 
 This prioritizes your unique value (farm relationships) while maintaining access to all functionality.
 
-
