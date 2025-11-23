@@ -13,6 +13,69 @@
   window.addToCartInitialized = true;
 
   /**
+   * Show mobile toast notification
+   */
+  function showMobileToast(message) {
+    // Remove existing toast if any
+    const existingToast = document.getElementById('mobile-cart-toast');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.id = 'mobile-cart-toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--color-primary, #3b3333);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      animation: slideUp 0.3s ease-out;
+    `;
+
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+    `;
+    if (!document.querySelector('#mobile-cart-toast-style')) {
+      style.id = 'mobile-cart-toast-style';
+      document.head.appendChild(style);
+    }
+
+    document.body.appendChild(toast);
+
+    // Remove after 2 seconds
+    setTimeout(() => {
+      toast.style.animation = 'slideUp 0.3s ease-out reverse';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.remove();
+        }
+      }, 300);
+    }, 2000);
+  }
+
+  /**
    * Handle add to cart button click
    */
   function handleAddToCart(event) {
@@ -65,8 +128,12 @@
       button.dataset.processing = 'false';
     }, 500);
 
+    // Show toast notification on mobile (where cart icon might not be visible)
+    if (success && window.innerWidth <= 768) {
+      showMobileToast('Added to cart!');
+    }
+
     // Cart badge will update automatically via cart event listeners
-    // No toast notification - cleaner UX
   }
 
   /**

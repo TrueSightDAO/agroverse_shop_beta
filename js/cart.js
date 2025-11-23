@@ -63,6 +63,76 @@
   }
 
   /**
+   * Normalize and deduplicate cart items
+   */
+  function normalizeCartItems() {
+    const cart = getCart();
+    let updated = false;
+    const seenIds = new Map();
+    
+    // Normalize product IDs and merge duplicates
+    const normalizedItems = [];
+    for (let i = 0; i < cart.items.length; i++) {
+      const item = cart.items[i];
+      const normalizedId = normalizeProductId(item.productId);
+      
+      if (!normalizedId) {
+        continue; // Skip invalid items
+      }
+      
+      // Update item with normalized ID
+      if (item.productId !== normalizedId) {
+        item.productId = normalizedId;
+        updated = true;
+      }
+      
+      // Check if we've seen this product ID before
+      if (seenIds.has(normalizedId)) {
+        // Merge with existing item
+        const existingIndex = seenIds.get(normalizedId);
+        normalizedItems[existingIndex].quantity += (item.quantity || 1);
+        updated = true;
+      } else {
+        // Add new item
+        seenIds.set(normalizedId, normalizedItems.length);
+        normalizedItems.push(item);
+      }
+    }
+    
+    // Update with canonical product data if available
+    if (window.PRODUCTS) {
+      for (let i = 0; i < normalizedItems.length; i++) {
+        const item = normalizedItems[i];
+        const product = window.PRODUCTS[item.productId];
+        if (product) {
+          // Update with canonical data
+          if (item.name !== product.name) {
+            item.name = product.name;
+            updated = true;
+          }
+          if (item.price !== product.price) {
+            item.price = product.price;
+            updated = true;
+          }
+          if (product.image && item.image !== product.image) {
+            item.image = product.image;
+            updated = true;
+          }
+          if (!item.weight || parseFloat(item.weight) === 0) {
+            item.weight = product.weight || 0;
+            updated = true;
+          }
+        }
+      }
+    }
+    
+    if (updated || normalizedItems.length !== cart.items.length) {
+      cart.items = normalizedItems;
+      saveCart(cart);
+    }
+  }
+
+  /**
    * Update cart items with missing weights from PRODUCTS
    */
   function updateCartItemWeights() {
@@ -70,12 +140,15 @@
       return; // PRODUCTS not loaded yet
     }
     
+    // First normalize and deduplicate
+    normalizeCartItems();
+    
     const cart = getCart();
     let updated = false;
     
     for (let i = 0; i < cart.items.length; i++) {
       const item = cart.items[i];
-      // If weight is missing or 0, try to get it from PRODUCTS
+      // If weight is still missing or 0, try to get it from PRODUCTS
       if (!item.weight || parseFloat(item.weight) === 0) {
         const product = window.PRODUCTS[item.productId];
         if (product && product.weight) {
@@ -91,6 +164,24 @@
   }
 
   /**
+   * Normalize product ID to ensure consistency
+   */
+  function normalizeProductId(productId) {
+    if (!productId) return null;
+    
+    // Trim whitespace
+    productId = productId.trim();
+    
+    // Map known variations to canonical IDs
+    const idMappings = {
+      'ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g': 'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g',
+      'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g': 'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g'
+    };
+    
+    return idMappings[productId] || productId;
+  }
+
+  /**
    * Add item to cart
    */
   function addToCart(product) {
@@ -102,6 +193,28 @@
       return false;
     }
 
+    // Normalize product ID to prevent duplicates
+    product.productId = normalizeProductId(product.productId);
+    if (!product.productId) {
+      console.error('Invalid product ID after normalization');
+      return false;
+    }
+
+    // Get canonical product data from PRODUCTS if available (ensures consistency)
+    if (window.PRODUCTS && window.PRODUCTS[product.productId]) {
+      const canonicalProduct = window.PRODUCTS[product.productId];
+      // Use canonical data but preserve quantity
+      product = {
+        productId: canonicalProduct.productId,
+        name: canonicalProduct.name,
+        price: canonicalProduct.price,
+        image: canonicalProduct.image || product.image,
+        stripePriceId: canonicalProduct.stripePriceId || product.stripePriceId,
+        weight: canonicalProduct.weight || product.weight || 0,
+        quantity: product.quantity || 1
+      };
+    }
+
     // If weight is missing, try to get it from PRODUCTS
     if (!product.weight || parseFloat(product.weight) === 0) {
       if (window.PRODUCTS && window.PRODUCTS[product.productId]) {
@@ -109,20 +222,28 @@
       }
     }
 
-    // Check if product already in cart
+    // Check if product already in cart (use normalized ID)
     const existingIndex = cart.items.findIndex(
-      item => item.productId === product.productId
+      item => normalizeProductId(item.productId) === product.productId
     );
 
     if (existingIndex >= 0) {
-      // Update quantity
-      cart.items[existingIndex].quantity += (product.quantity || 1);
-      // Update weight if provided
-      if (product.weight) {
-        cart.items[existingIndex].weight = parseFloat(product.weight) || 0;
+      // Update existing item - use canonical data to prevent inconsistencies
+      const existingItem = cart.items[existingIndex];
+      existingItem.quantity += (product.quantity || 1);
+      // Update with canonical data if available
+      if (window.PRODUCTS && window.PRODUCTS[product.productId]) {
+        const canonicalProduct = window.PRODUCTS[product.productId];
+        existingItem.productId = canonicalProduct.productId; // Ensure normalized ID
+        existingItem.name = canonicalProduct.name; // Use canonical name
+        existingItem.price = canonicalProduct.price; // Use canonical price
+        existingItem.image = canonicalProduct.image || existingItem.image; // Prefer canonical image
+        existingItem.weight = canonicalProduct.weight || existingItem.weight || 0;
+      } else if (product.weight) {
+        existingItem.weight = parseFloat(product.weight) || 0;
       }
     } else {
-      // Add new item
+      // Add new item with normalized data
       cart.items.push({
         productId: product.productId,
         name: product.name,
@@ -142,7 +263,8 @@
    */
   function removeFromCart(productId) {
     const cart = getCart();
-    cart.items = cart.items.filter(item => item.productId !== productId);
+    const normalizedId = normalizeProductId(productId);
+    cart.items = cart.items.filter(item => normalizeProductId(item.productId) !== normalizedId);
     return saveCart(cart);
   }
 
@@ -155,7 +277,8 @@
     }
 
     const cart = getCart();
-    const item = cart.items.find(item => item.productId === productId);
+    const normalizedId = normalizeProductId(productId);
+    const item = cart.items.find(item => normalizeProductId(item.productId) === normalizedId);
     
     if (item) {
       item.quantity = parseInt(quantity, 10);
@@ -229,9 +352,19 @@
     getItemCount: getCartItemCount,
     getSubtotal: calculateSubtotal,
     updateWeights: updateCartItemWeights,
+    normalize: normalizeCartItems,
     getCart: getCartData,
     EVENT_NAME: CART_EVENT_NAME
   };
+
+  // Normalize cart on load to fix any legacy duplicates
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(normalizeCartItems, 500); // Wait a bit for PRODUCTS to load
+    });
+  } else {
+    setTimeout(normalizeCartItems, 500);
+  }
 
 })();
 

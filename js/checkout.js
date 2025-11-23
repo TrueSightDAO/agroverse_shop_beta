@@ -87,6 +87,23 @@
         `<div class="error-message">${err}</div>`
       ).join('');
       errorContainer.style.display = 'block';
+      
+      // Scroll error container into view so user can see it
+      errorContainer.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'nearest' 
+      });
+      
+      // Also scroll the submit button into view as a fallback
+      const submitButton = document.getElementById('checkout-submit');
+      if (submitButton) {
+        setTimeout(function() {
+          submitButton.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+        }, 100);
+      }
     }
   }
 
@@ -258,6 +275,7 @@
 
   /**
    * Update cart display on checkout page
+   * Note: This function only READS the cart, it never modifies it
    */
   function updateCartDisplay() {
     console.log('updateCartDisplay called');
@@ -269,8 +287,15 @@
       return;
     }
 
+    // Get cart - this is read-only, we never modify the cart on checkout page
     var cart = window.Cart.getCart();
     console.log('Cart retrieved:', cart);
+    
+    // Ensure we have a valid cart structure
+    if (!cart || !cart.items) {
+      console.warn('Invalid cart structure');
+      cart = { items: [] };
+    }
     
     var cartItemsContainer = document.getElementById('checkout-cart-items');
     var cartSubtotal = document.getElementById('checkout-subtotal');

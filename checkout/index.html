@@ -120,12 +120,18 @@ nav {
   color: #c33;
   padding: 0.75rem;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   border: 1px solid #fcc;
+  font-weight: 500;
 }
 
 #checkout-errors {
   display: none;
+  margin-bottom: 1rem;
+}
+
+#checkout-errors:not(:empty) {
+  display: block;
 }
 
 .checkout-cart-section {
@@ -333,7 +339,6 @@ nav {
 <div class="checkout-form-section">
 <h2>Shipping Information</h2>
 
-<div id="checkout-errors"></div>
 
 <form id="checkout-form">
 <div class="form-group">
@@ -381,6 +386,8 @@ nav {
 </select>
 </div>
 </div>
+
+<div id="checkout-errors" style="margin-bottom: 1rem;"></div>
 
 <button type="submit" id="checkout-submit" class="cta-button" disabled>Continue to Payment</button>
 <p id="checkout-submit-note" style="margin-top: 0.5rem; color: var(--color-text-light); font-size: 14px; font-style: italic;">Please select a shipping option above to continue</p>
