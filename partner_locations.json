@@ -54,5 +54,33 @@
   "heierling-ski": {
     "name": "Heierling Ski",
     "location": "Switzerland"
+  },
+  "lumin-earth-apothecary": {
+    "name": "Lumin Earth Apothecary",
+    "location": "Morro Bay, California"
+  },
+  "hacker-dojo": {
+    "name": "Hacker Dojo",
+    "location": "Mountain View, California"
+  },
+  "republic-cafe-and-ming-lounge": {
+    "name": "Republic Cafe and Ming Lounge",
+    "location": "Portland, Oregon"
+  },
+  "prism-percussions": {
+    "name": "Prism Percussions",
+    "location": "Corvallis, Oregon"
+  },
+  "love-of-ganesha": {
+    "name": "Love of Ganesha",
+    "location": "San Francisco, California"
+  },
+  "embodied-blindfold-dance": {
+    "name": "Embodied Blindfold Dance",
+    "location": "Eugene, Oregon"
+  },
+  "edge-and-node-house-of-web3": {
+    "name": "Edge and Node, House of Web3",
+    "location": "San Francisco, California"
   }
 }

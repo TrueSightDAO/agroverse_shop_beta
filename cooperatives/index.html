@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Cooperatives | Agroverse</title>
+<meta content="Learn about the cooperatives that support our partner farms in Brazil. CEPOTX in Pará and Coopercabruca in Bahia work with small-scale farmers to produce regenerative cacao." name="description"/>
+<link href="https://www.agroverse.shop/cooperatives" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/cooperatives" property="og:url"/>
+<meta content="Cooperatives | Agroverse" property="og:title"/>
+<meta content="Learn about the cooperatives that support our partner farms in Brazil." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/cooperatives" property="twitter:url"/>
+<meta content="Cooperatives | Agroverse" property="twitter:title"/>
+<meta content="Learn about the cooperatives that support our partner farms in Brazil." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .cooperatives-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cooperatives-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+        }
+        
+        .cooperatives-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .cooperatives-intro {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cooperatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .cooperative-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .cooperative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cooperative-card-image {
+            width: 100%;
+            height: 250px;
+            background: var(--color-bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .cooperative-card-image img.cooperative-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cooperative-card-body {
+            padding: 1.5rem;
+        }
+        
+        .cooperative-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cooperative-location {
+            font-size: 16px;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .cooperative-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+        
+        .cooperative-link {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+        
+        .cooperative-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .cooperatives-hero h1 {
+                font-size: 32px;
+            }
+            
+            .cooperatives-hero p {
+                font-size: 18px;
+            }
+            
+            .cooperatives-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">
+<a href="../index.html"><img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/></a>
+</div>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../index.html#mission">Mission</a></li>
+<li><a href="../index.html#products">Products</a></li>
+<li><a href="../index.html#farmers">Farms</a></li>
+<li><a href="../index.html#shipments">Shipments</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="cooperatives-hero">
+<h1>Our Cooperatives</h1>
+<p>Cooperatives play a vital role in supporting small-scale farmers, providing resources, knowledge sharing, and market access. Learn about the cooperatives that work with our partner farms to produce regenerative cacao.</p>
+</section>
+<section class="content-section">
+<div class="cooperatives-intro">
+<p>Our partner farms work with cooperatives that support regenerative agriculture, quality standards, and sustainable livelihoods. These cooperatives enable small-scale farmers to access resources, share knowledge, and maintain the highest standards of quality while preserving traditional farming methods.</p>
+</div>
+<div class="cooperatives-grid">
+<a class="cooperative-card" href="cepotx/index.html">
+<div class="cooperative-card-image">
+<img alt="CEPOTX Cooperative" class="cooperative-logo-img" src="../assets/cooperatives/headers/cepotx-header.jpeg"/>
+</div>
+<div class="cooperative-card-body">
+<h3>CEPOTX</h3>
+<div class="cooperative-location">Pará, Brazil • Amazon Rainforest</div>
+<div class="cooperative-description">CEPOTX supports small-scale cacao farmers in Pará, Brazil, through regenerative practices. Member farms like Paulo's La do Sitio produce award-winning Amazon Rainforest cacao.</div>
+<div class="cooperative-link">Learn More →</div>
+</div>
+</a>
+<a class="cooperative-card" href="coopercabruca/index.html">
+<div class="cooperative-card-image">
+<img alt="Coopercabruca Cooperative" class="cooperative-logo-img" src="../assets/cooperatives/headers/coopercabruca-header.jpeg"/>
+</div>
+<div class="cooperative-card-body">
+<h3>Coopercabruca</h3>
+<div class="cooperative-location">Bahia, Brazil</div>
+<div class="cooperative-description">Coopercabruca supports small-scale cacao farmers in Bahia, Brazil, through regenerative practices. Member farms like Fazenda Santa Ana produce quality cacao while preserving traditional farming methods.</div>
+<div class="cooperative-link">Learn More →</div>
+</div>
+</a>
+</div>
+</section>
+<footer id="contact" style="background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+<div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p style="margin-top: 1rem;">Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<p style="margin-top: 0.5rem;">Email: <a href="mailto:info@agroverse.shop" style="color: white;">info@agroverse.shop</a></p>
+</div>
+</footer>
+</body>
+</html>
+

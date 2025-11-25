@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Coopercabruca Cooperative - Bahia, Brazil | Agroverse</title>
+<meta content="Coopercabruca cooperative supports small-scale cacao farmers in Bahia, Brazil through regenerative practices. Member farms like Fazenda Santa Ana produce quality cacao while preserving traditional farming methods." name="description"/>
+<link href="https://www.agroverse.shop/cooperatives/coopercabruca" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/cooperatives/coopercabruca" property="og:url"/>
+<meta content="Coopercabruca Cooperative - Bahia, Brazil | Agroverse" property="og:title"/>
+<meta content="Coopercabruca cooperative supports small-scale cacao farmers in Bahia, Brazil through regenerative practices." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/cooperatives/headers/coopercabruca-header.jpeg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/cooperatives/coopercabruca" property="twitter:url"/>
+<meta content="Coopercabruca Cooperative - Bahia, Brazil | Agroverse" property="twitter:title"/>
+<meta content="Coopercabruca cooperative supports small-scale cacao farmers in Bahia, Brazil through regenerative practices." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/cooperatives/headers/coopercabruca-header.jpeg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Cooperative Hero */
+        .cooperative-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.8) 0%, rgba(77, 77, 77, 0.8) 100%),
+                        url('../../assets/cooperatives/headers/coopercabruca-header.jpeg') center center/cover;
+            background-color: #f7f7f7;
+            background-repeat: no-repeat;
+        }
+        
+        .cooperative-logo-container {
+            margin-bottom: 2rem;
+            text-align: center;
+            position: absolute;
+            bottom: 8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .cooperative-logo {
+            max-width: 200px;
+            height: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cooperative-hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .cooperative-hero-content p {
+            font-size: 20px;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .cooperative-story {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+        
+        .cooperative-story p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .cooperative-info {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .cooperative-info h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            min-width: 150px;
+        }
+        
+        .info-value {
+            color: var(--color-text);
+        }
+        
+        .info-value a {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+        
+        .info-value a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Member Farms Section */
+        .member-farms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .farm-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .farm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .farm-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .farm-card .farm-location {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .farm-card .farm-description {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .farm-card .farm-link {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .farm-card .farm-link:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--color-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .cooperative-hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .cooperative-hero-content p {
+                font-size: 16px;
+            }
+            
+            .member-farms {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">
+<a href="../../index.html"><img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/></a>
+</div>
+<ul class="nav-links">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
+<li><a href="../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<section class="cooperative-hero">
+<div class="cooperative-logo-container">
+<img alt="Coopercabruca Cooperative Logo" class="cooperative-logo" src="../../assets/cooperatives/logos/coopercabruca-logo.avif"/>
+</div>
+<div class="cooperative-hero-content">
+<h1>Coopercabruca</h1>
+<p>Bahia, Brazil</p>
+</div>
+</section>
+<section class="content-section">
+<h2>About Coopercabruca</h2>
+<div class="cooperative-story">
+<p>Coopercabruca is a cooperative that supports small-scale cacao farmers in Bahia, Brazil, working together to preserve traditional farming methods while ensuring sustainable livelihoods. The cooperative brings together regenerative cacao producers who share knowledge, maintain quality standards, and support each other in producing exceptional cacao.</p>
+<p>Through Coopercabruca, member farms contribute to a network of regenerative cacao producers dedicated to preserving the region's agricultural heritage. The cooperative's collaborative spirit reflects the essence of Bahia's cacao farming community, where individual farms work together to maintain quality standards and support sustainable practices.</p>
+<p>Coopercabruca was instrumental in Agroverse's early shipments, including our foundational proof-of-concept shipment (AGL0) and first commercial imports (AGL1, AGL2). These early partnerships established the transparency standards and direct relationships that define Agroverse's commitment to regenerative cacao sourcing.</p>
+</div>
+<div class="cooperative-info">
+<h3>Cooperative Information</h3>
+<div class="info-row">
+<div class="info-label">Location</div>
+<div class="info-value">Bahia, Brazil</div>
+</div>
+<div class="info-row">
+<div class="info-label">Focus</div>
+<div class="info-value">Regenerative cacao farming, traditional methods, small-scale farmer support</div>
+</div>
+<div class="info-row">
+<div class="info-label">Practices</div>
+<div class="info-value">Cabruca agroforestry, sustainable cultivation, community collaboration</div>
+</div>
+<div class="info-row">
+<div class="info-label">Heritage</div>
+<div class="info-value">Preserving traditional farming methods and agricultural heritage</div>
+</div>
+</div>
+</section>
+<section class="content-section">
+<h2>Member Farms</h2>
+<p style="font-size: 18px; margin-bottom: 2rem; color: var(--color-text-light);">Our partner farms that are part of the Coopercabruca cooperative:</p>
+<div class="member-farms">
+<a class="farm-card" href="../../farms/fazenda-santa-ana-bahia/index.html">
+<h3>Fazenda Santa Ana</h3>
+<div class="farm-location">Bahia, Brazil</div>
+<div class="farm-description">
+Fazenda Santa Ana is a farm with deep roots in Bahia, Brazil, known for its rich history and vibrant community traditions. The farm contributes to a network of regenerative cacao producers working together to preserve traditional farming methods.
+</div>
+<div class="farm-link">Learn More →</div>
+</a>
+</div>
+</section>
+<section class="content-section">
+<h2>Shipments</h2>
+<p style="font-size: 18px; margin-bottom: 2rem; color: var(--color-text-light);">Shipments from Coopercabruca member farms:</p>
+<div class="member-farms">
+<a class="farm-card" href="../../shipments/agl0/index.html">
+<h3>AGL0</h3>
+<div class="farm-location">6.5 kg • Proof-of-Concept</div>
+<div class="farm-description">
+The foundational proof-of-concept shipment that launched Agroverse. This 6.5 kg sample from Coopercabruca, carried via hand luggage, demonstrated the viability of our model for transparent, regenerative cacao sourcing.
+</div>
+<div class="farm-link">View Shipment →</div>
+</a>
+<a class="farm-card" href="../../shipments/agl1/index.html">
+<h3>AGL1</h3>
+<div class="farm-location">6.5 kg • First Commercial Import</div>
+<div class="farm-description">
+Our first commercial import with full documentation, establishing the transparency standards that define Agroverse. This shipment included complete FDA prior notice, official invoice, and purchase order documentation.
+</div>
+<div class="farm-link">View Shipment →</div>
+</a>
+<a class="farm-card" href="../../shipments/agl2/index.html">
+<h3>AGL2</h3>
+<div class="farm-location">128 kg • First Large Commercial Shipment</div>
+<div class="farm-description">
+128 kg of organic cacao nibs from Fazenda Santa Ana, our first large-scale commercial shipment via air freight. This shipment marked a significant milestone in our partnership with Coopercabruca.
+</div>
+<div class="farm-link">View Shipment →</div>
+</a>
+</div>
+</section>
+<div class="content-section">
+<a class="back-link" href="../index.html">← Back to All Cooperatives</a>
+</div>
+<footer id="contact" style="background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; margin-top: 4rem;">
+<div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p style="margin-top: 1rem;">Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<p style="margin-top: 0.5rem;">Email: <a href="mailto:info@agroverse.shop" style="color: white;">info@agroverse.shop</a></p>
+</div>
+</footer>
+</body>
+</html>
+
