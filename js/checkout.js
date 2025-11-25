@@ -335,14 +335,8 @@
     const form = document.getElementById('checkout-form');
     if (form) {
       form.addEventListener('submit', handleCheckoutSubmit);
-    }
-
-    // Update cart display
-    updateCartDisplay();
-    
-    // Clear field errors when user starts typing
-    const form = document.getElementById('checkout-form');
-    if (form) {
+      
+      // Clear field errors when user starts typing
       const fields = form.querySelectorAll('input, select');
       fields.forEach(function(field) {
         field.addEventListener('input', function() {
@@ -371,6 +365,9 @@
         });
       });
     }
+
+    // Update cart display on page load
+    updateCartDisplay();
   }
 
   /**
@@ -470,7 +467,8 @@
   // Export for external use
   window.Checkout = {
     validateShippingForm: validateShippingForm,
-    createCheckoutSession: createCheckoutSession
+    createCheckoutSession: createCheckoutSession,
+    updateCartDisplay: updateCartDisplay
   };
 
 })();

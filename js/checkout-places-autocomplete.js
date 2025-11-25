@@ -27,12 +27,26 @@
       return;
     }
 
+    // Check if Autocomplete is available (deprecated for new customers as of March 2025)
+    if (!google.maps.places.Autocomplete) {
+      console.warn('Google Maps Places Autocomplete is not available. This feature may not work for new API customers.');
+      // Continue without autocomplete - users can still type addresses manually
+      return;
+    }
+
     // Create autocomplete
-    autocomplete = new google.maps.places.Autocomplete(addressInput, {
-      types: ['address'],
-      componentRestrictions: { country: 'us' },
-      fields: ['address_components', 'formatted_address', 'geometry']
-    });
+    try {
+      autocomplete = new google.maps.places.Autocomplete(addressInput, {
+        types: ['address'],
+        componentRestrictions: { country: 'us' },
+        fields: ['address_components', 'formatted_address', 'geometry']
+      });
+    } catch (error) {
+      console.warn('Failed to create Google Places Autocomplete:', error);
+      console.warn('Note: As of March 1st, 2025, google.maps.places.Autocomplete is not available to new customers.');
+      // Continue without autocomplete - users can still type addresses manually
+      return;
+    }
 
     // Create places service for getting place details
     placesService = new google.maps.places.PlacesService(document.createElement('div'));

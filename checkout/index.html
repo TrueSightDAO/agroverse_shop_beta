@@ -443,14 +443,28 @@ window.addEventListener('load', function() {
     console.log('Cart items:', cart.items);
     console.log('Cart items count:', cart.items ? cart.items.length : 0);
     
-    // Force update cart display
-    if (window.Checkout && window.Checkout.updateCartDisplay) {
-      setTimeout(function() {
+    // Force update cart display - retry if needed
+    function tryUpdateCart() {
+      if (window.Checkout && window.Checkout.updateCartDisplay) {
         window.Checkout.updateCartDisplay();
-      }, 200);
+      } else if (window.Cart) {
+        // If Checkout not ready, try again
+        setTimeout(tryUpdateCart, 100);
+      }
     }
+    setTimeout(tryUpdateCart, 100);
   } else {
     console.error('Cart object not found!');
+    // Retry loading cart
+    setTimeout(function() {
+      if (window.Cart) {
+        var cart = window.Cart.getCart();
+        console.log('Cart loaded on retry:', cart);
+        if (window.Checkout && window.Checkout.updateCartDisplay) {
+          window.Checkout.updateCartDisplay();
+        }
+      }
+    }, 500);
   }
 });
 </script>

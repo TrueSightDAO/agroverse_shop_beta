@@ -23,14 +23,29 @@
                        hostname === 'agroverse.shop' ||
                        (!isLocal && !isDevelopment); // Default to production if not local or beta
 
-  // Base URL configuration
+  // Base URL configuration - use current origin to ensure same domain
   let baseUrl;
   if (isLocal) {
     baseUrl = 'http://127.0.0.1:8000'; // Local development server
-  } else if (isDevelopment) {
-    baseUrl = 'https://beta.agroverse.shop';
+  } else if (window.location.protocol === 'file:') {
+    // Handle file:// protocol (local file viewing)
+    // Extract the base directory from the current file path
+    const currentPath = window.location.pathname;
+    // Remove filename and get directory
+    const pathParts = currentPath.split('/').filter(p => p);
+    // Find the root directory (agroverse_shop)
+    const rootIndex = pathParts.findIndex(p => p === 'agroverse_shop');
+    if (rootIndex !== -1) {
+      // Reconstruct path up to and including agroverse_shop
+      const basePath = '/' + pathParts.slice(0, rootIndex + 1).join('/');
+      baseUrl = 'file://' + basePath;
+    } else {
+      // Fallback: use origin (file://)
+      baseUrl = 'file://';
+    }
   } else {
-    baseUrl = 'https://www.agroverse.shop';
+    // Use current origin (protocol + hostname) to ensure same domain
+    baseUrl = window.location.origin;
   }
 
   // Google App Script Web App URL
@@ -75,8 +90,12 @@
     environment: environment,
     
     // URLs
+    // For file:// protocol, ensure we point to index.html files
+    // For http/https, use directory path (server handles index.html)
     urls: {
-      checkout: `${baseUrl}/checkout`,
+      checkout: window.location.protocol === 'file:' 
+        ? `${baseUrl}/checkout/index.html`
+        : `${baseUrl}/checkout`,
       orderStatus: `${baseUrl}/order-status`,
       cart: `${baseUrl}/#cart`
     },

@@ -534,32 +534,12 @@
         }
         
         .farmers-grid {
-            display: flex;
-            flex-wrap: nowrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             width: 100%;
             margin: 3rem 0;
-            overflow-x: auto;
-            padding: 0 2rem 1rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-text-light) transparent;
-        }
-        
-        .farmers-grid::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .farmers-grid::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .farmers-grid::-webkit-scrollbar-thumb {
-            background-color: var(--color-text-light);
-            border-radius: 4px;
-        }
-        
-        .farmers-grid::-webkit-scrollbar-thumb:hover {
-            background-color: var(--color-secondary);
+            padding: 0 2rem;
         }
         
         .farmer-card {
@@ -574,8 +554,7 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            flex: 0 0 350px;
-            min-width: 350px;
+            width: 100%;
         }
         
         .farmer-card:hover {
@@ -774,16 +753,9 @@
             }
             
             .farmers-grid {
-                gap: 1.5rem;
-            }
-            
-            .farmer-card {
-                flex: 0 0 300px;
-                min-width: 300px;
-            }
-            
-            .farmers-grid {
-                padding: 0 1rem 1rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
             }
             
             .featured-content {
@@ -796,6 +768,14 @@
             
             .hero {
                 min-height: 400px;
+            }
+            
+            .hero-video {
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+                min-width: 100%;
+                min-height: 100%;
             }
             
             .footer-links {
@@ -1414,7 +1394,7 @@
 </div>
 </footer>
 <script>
-        // Web service URL for sold bags count (1 bag = 1 tree planted = hectares restored)
+        // Web service URL for sold bags count (1 bag = 1 tree planted, 1000 trees = 1 hectare restored)
         const SOLD_BAGS_API_URL = 'https://script.google.com/macros/s/AKfycbzHDqxI4lWlDcl6AnAhZxw7kbOp4exPPk5GFgdwqJuAfMva_00q8eIMFOAzAYIlxVRH/exec';
         
         // Function to update trees planted and hectares restored from API
@@ -1432,7 +1412,7 @@
                 
                 if (data.status === 'success' && data.soldBagsCount !== undefined) {
                     const treesPlanted = data.soldBagsCount;
-                    const hectaresRestored = treesPlanted; // 1 bag = 1 tree = hectares restored
+                    const hectaresRestored = treesPlanted / 1000; // 1000 trees = 1 hectare restored
                     
                     // Update trees planted
                     if (treesElement) {
@@ -1442,7 +1422,7 @@
                     
                     // Update hectares restored
                     if (hectaresElement) {
-                        hectaresElement.textContent = hectaresRestored.toLocaleString();
+                        hectaresElement.textContent = hectaresRestored.toFixed(3);
                         hectaresElement.classList.remove('loading');
                     }
                     
@@ -1501,20 +1481,31 @@
             
             if (!heroVideo || !heroSection) return;
             
+            // Function to check if mobile view
+            function isMobileView() {
+                return window.innerWidth <= 768;
+            }
+            
             const heroHeight = heroSection.offsetHeight;
             const maxScroll = heroHeight * 0.5; // Adjust this to control how much scrolling affects the video
-            const initialScale = 1.2; // Starting scale (zoomed in)
-            const finalScale = 1.0; // Final scale (zoomed out to show more)
             
             function handleScroll() {
+                const isMobile = isMobileView();
+                const initialScale = isMobile ? 1.0 : 1.2; // Starting scale (no zoom on mobile)
+                const finalScale = isMobile ? 1.0 : 1.0; // Final scale (zoomed out to show more)
+                
                 const scrollY = window.scrollY;
                 const scrollProgress = Math.min(scrollY / maxScroll, 1); // Clamp between 0 and 1
                 
                 // Calculate scale based on scroll progress
                 const currentScale = initialScale - (scrollProgress * (initialScale - finalScale));
                 
-                // Apply transform to video
-                heroVideo.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+                // Apply transform to video (only if not mobile, or use simpler transform on mobile)
+                if (isMobile) {
+                    heroVideo.style.transform = `translate(-50%, -50%)`;
+                } else {
+                    heroVideo.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+                }
                 
                 // Fade out scroll indicator as user scrolls
                 if (scrollIndicator) {

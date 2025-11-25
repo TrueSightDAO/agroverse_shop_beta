@@ -295,8 +295,11 @@
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
 <li><a href="../../index.html#farmers">Farms</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#gatherings">Gatherings</a></li>
 <li><a href="../index.html">Partners</a></li>
+<li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
 </nav>
@@ -340,13 +343,78 @@
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
 <li><a href="../../index.html#farmers">Farms</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#gatherings">Gatherings</a></li>
 <li><a href="../index.html">Partners</a></li>
+<li><a href="../../order-history/">Order History</a></li>
 <li><a href="mailto:info@agroverse.shop">Contact</a></li>
 </ul>
 <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
 </div>
 </footer>
+<div class="mobile-menu-overlay"></div><script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('active');
+                
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                
+                if (!isExpanded) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            if (overlay) {
+                overlay.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('active');
+                    if (overlay) {
+                        overlay.classList.remove('active');
+                    }
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    });
+    </script>
+<script src="../../js/cart.js"></script>
+<script src="../../js/cart-ui.js"></script>
+<script src="../../js/add-to-cart.js"></script>
+<link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>
 
