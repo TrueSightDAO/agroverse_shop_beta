@@ -380,7 +380,7 @@
 <p>Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao. Experience the diverse spaces—from urban sanctuaries to desert retreats—where our cacao brings people together in mindful connection.</p>
 <div class="pilgrimage-stats">
 <div class="stat-item">
-<span class="stat-value" id="gathering-venues-count">23</span>
+                    <span class="stat-value" id="gathering-venues-count">19</span>
 <span class="stat-label">Venues</span>
 </div>
 <div class="stat-item">
@@ -447,12 +447,35 @@
 <script>
     // Update gathering path stats
     document.addEventListener('DOMContentLoaded', function() {
+        const countElement = document.getElementById('gathering-venues-count');
+        if (!countElement) return;
+        
         if (window.PARTNERS_DATA) {
-            const venueCount = Object.keys(window.PARTNERS_DATA).length;
-            const countElement = document.getElementById('gathering-venues-count');
-            if (countElement) {
-                countElement.textContent = venueCount;
-            }
+            const pacificStops = [
+                'block71-silicon-valley',
+                'go-ask-alice',
+                'green-gulch-farm-zen-center',
+                'hacker-dojo',
+                'kikis-cocoa',
+                'love-wisdom-power',
+                'miss-tomato',
+                'peace-on-fifth',
+                'queen-hippie-gypsy',
+                'sacred-earth-farms',
+                'secrets-of-garden-slo',
+                'soulfulness-breathe',
+                'the-enchanted-forest-boutique',
+                'the-ponderosa-slab-city',
+                'lumin-earth-apothecary',
+                'republic-cafe-and-ming-lounge',
+                'prism-percussions',
+                'love-of-ganesha',
+                'embodied-blindfold-dance'
+            ];
+            const venueCount = pacificStops.filter(slug => window.PARTNERS_DATA[slug]).length || 19;
+            countElement.textContent = venueCount;
+        } else {
+            countElement.textContent = '19';
         }
     });
 </script>
