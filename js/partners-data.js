@@ -9,7 +9,7 @@ window.PARTNERS_DATA = {
         lat: 37.5669704,
         lon: -122.3238659,
         location: 'San Mateo, California',
-        description: 'Connecting Singaporean and US entrepreneurs, driving innovation through collaboration.'
+        description: 'A collaborative hackerspace and innovation hub in Silicon Valley where entrepreneurs, programmers, and creators gather around regenerative cacao. Bridging Singaporean and US entrepreneurial ecosystems since 2009, fostering cross-cultural collaboration and technological innovation while supporting rainforest restoration.'
     },
     'go-ask-alice': {
         name: 'Go Ask Alice',
@@ -17,7 +17,7 @@ window.PARTNERS_DATA = {
         lat: 36.9719889,
         lon: -122.0256564,
         location: 'Santa Cruz, California',
-        description: 'A vibrant, community-focused small business rooted in the heart of downtown Santa Cruz, California. As a women-owned and LGBTQ+ friendly space, Go Ask Alice creates a welcoming environment for all.'
+        description: 'A vibrant, community-focused small business rooted in the heart of downtown Santa Cruz, California. Owned by Nicolina Ammerman, this women-owned and LGBTQ+ friendly space connects people with the transformative and healing power of nature. As a partner venue, Go Ask Alice offers regenerative ceremonial cacao, supporting sustainable living and earth-based practices that make the benefits of the natural world accessible to all.'
     },
     'green-gulch-farm-zen-center': {
         name: 'Green Gulch Farm Zen Center',
@@ -25,7 +25,7 @@ window.PARTNERS_DATA = {
         lat: 37.8685,
         lon: -122.5450,
         location: 'Marin County, California',
-        description: 'A serene Buddhist practice center in Marin County, blending spiritual cultivation, organic farming, and mindful living in harmony with nature.'
+        description: 'A serene Buddhist practice center in Marin County, blending spiritual cultivation, organic farming, and mindful living in harmony with nature. This sacred space offers meditation, organic farming, and community gatherings where regenerative cacao serves as a bridge between spiritual practice and conscious consumption, supporting rainforest restoration through mindful connection.'
     },
     'hacker-dojo': {
         name: 'Hacker Dojo',
@@ -33,7 +33,7 @@ window.PARTNERS_DATA = {
         lat: 37.3962356,
         lon: -122.0491779,
         location: 'Mountain View, California',
-        description: 'A community workspace and innovation hub in Mountain View, California, fostering creativity, collaboration, and technological innovation.'
+        description: 'A community workspace and innovation hub in Mountain View, California, fostering creativity, collaboration, and technological innovation. At Hacker Dojo, regenerative cacao brings together technologists, entrepreneurs, and creators, creating spaces for mindful connection and conscious innovation that support both technological advancement and rainforest restoration.'
     },
     'kikis-cocoa': {
         name: 'Kiki\'s Cocoa',
@@ -41,7 +41,7 @@ window.PARTNERS_DATA = {
         lat: 37.7746386,
         lon: -122.4398332,
         location: 'San Francisco, California',
-        description: 'A cozy cacao-focused space in San Francisco where community gathers around ceremonial cacao and mindful connection.'
+        description: 'A boutique San Francisco chocolatier owned by Kirsten "Kiki" Ritschel, crafting exquisite, ethically-sourced confections. Kiki\'s Cocoa offers monthly subscriptions, single-origin ganache, and truffle-making classes. As a partner venue, they proudly offer Agroverse ceremonial cacao, connecting their community with regenerative, ethically-sourced cacao from Brazilian farmers while supporting rainforest restoration through conscious chocolate consumption.'
     },
     'love-wisdom-power': {
         name: 'Love Wisdom Power',
@@ -57,7 +57,7 @@ window.PARTNERS_DATA = {
         lat: 37.7066,
         lon: -122.4619,
         location: 'Daly City, California',
-        description: 'A community gathering space in Daly City, California, where local connections and regenerative cacao create meaningful experiences.'
+        description: 'A beloved Daly City sandwich shop and community gathering space where neighbors come together around regenerative cacao. Known for gourmet sandwiches, fresh ingredients, and meaningful local connections that support rainforest restoration through conscious consumption.'
     },
     'peace-on-fifth': {
         name: 'Peace on Fifth',
@@ -71,14 +71,16 @@ window.PARTNERS_DATA = {
         slug: 'queen-hippie-gypsy',
         lat: 37.8044,
         lon: -122.2712,
-        location: 'Downtown Oakland, California'
+        location: 'Downtown Oakland, California',
+        description: 'A luminous botanica sanctuary in Downtown Oakland, where Black Girl Magic blooms through shimmering crystals and ancestral whispers. Owned by Lilly Ayers, this Oakland gem stands as the city\'s first Black woman-owned crystal, metaphysical, and artisan botanica. As a partner venue, Queen Hippie Gypsy offers Agroverse ceremonial cacao, empowering women of color to reclaim their spiritual sovereignty while supporting regenerative agriculture and rainforest restoration.'
     },
     'sacred-earth-farms': {
         name: 'Sacred Earth Farms',
         slug: 'sacred-earth-farms',
         lat: 42.5173,
         lon: -123.1015,
-        location: 'Merlin, Oregon'
+        location: 'Merlin, Oregon',
+        description: 'A regenerative haven of healing and harmony in Merlin, Oregon, where sun-kissed soils and sacred infusions craft potent elixirs. Sacred Earth Farms creates spaces where regenerative cacao meets herbal wisdom, supporting both local healing practices and rainforest restoration through conscious consumption and community connection.'
     },
     'secrets-of-garden-slo': {
         name: 'Secrets of Garden SLO',
@@ -86,7 +88,7 @@ window.PARTNERS_DATA = {
         lat: 35.2828,
         lon: -120.6596,
         location: 'San Luis Obispo, California',
-        description: 'A garden sanctuary in San Luis Obispo, California, where nature, community, and regenerative cacao come together in a peaceful, nurturing environment.'
+        description: 'A beloved tea and herb shop established in 2004, specializing in hand-blended premium teas and herbal blends. Owned by Kirstin Sherritt, Secrets of Garden SLO is dedicated to enhancing physical, mental, and spiritual well-being through nature\'s healing power. As a partner venue, they offer Agroverse ceremonial cacao, bringing regenerative, ethically-sourced cacao to the Central Coast community, perfectly complementing their existing offerings of premium teas and herbal remedies while supporting rainforest restoration.'
     },
     'soulfulness-breathe': {
         name: 'Soulfulness Breathe',
@@ -149,7 +151,7 @@ window.PARTNERS_DATA = {
         lat: 44.0521,
         lon: -123.0868,
         location: 'Eugene, Oregon',
-        description: 'A unique movement practice space in Eugene, Oregon, offering blindfolded dance experiences that deepen connection to self and others, enhanced by regenerative cacao.'
+        description: 'A unique movement practice space in Eugene, Oregon, offering transformative blindfolded dance experiences that combine dance, mindfulness, and sensory exploration. Through blindfolded movement practices, participants connect more deeply with their bodies, release inhibitions, and explore movement in profound ways. As an Agroverse partner, Embodied Blindfold Dance incorporates regenerative cacao into their healing and movement workshops, creating powerful containers for personal transformation, embodied awareness, and conscious connection while supporting rainforest restoration.'
     },
     'edge-and-node-house-of-web3': {
         name: 'Edge and Node, House of Web3',
