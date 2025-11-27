@@ -14,7 +14,7 @@
 <meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path" property="og:url"/>
 <meta content="The Brazilian Journey | Agroverse Cacao Journeys" property="og:title"/>
 <meta content="A journey from Florianópolis to the Amazon Rainforest, visiting regenerative cacao farms in Brazil." property="og:description"/>
-<meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path/assets/images/brazilian-rainforest.jpg" property="og:image"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path/assets/images/brazilian-rainforest.jpg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/brazilian-path" property="twitter:url"/>
@@ -697,8 +697,10 @@
             if (totalStopsEl) totalStopsEl.textContent = sortedStops.length;
             if (totalDistanceEl) totalDistanceEl.textContent = Math.round(kmToMiles(totalDistance));
             if (estimatedTimeEl) {
-                // Estimate: 1-2 days per stop, or roughly 200-300 miles per day
-                const estimatedDays = Math.ceil(kmToMiles(totalDistance) / 250);
+                // Estimate: Travel time in Brazil (200 miles/day, slower than US) + time at farms (2-3 days per farm)
+                const travelDays = Math.ceil(kmToMiles(totalDistance) / 200);
+                const farmDays = sortedStops.length * 2.5; // Average 2.5 days per farm visit
+                const estimatedDays = Math.ceil(travelDays + farmDays);
                 estimatedTimeEl.textContent = estimatedDays + '+';
             }
         }
@@ -709,7 +711,7 @@
 </script>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
-<script src="../../js/cart-ui.js"></script>
+<script src="../../js/cart-ui.js"></script><div class="mobile-menu-overlay"></div>
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>

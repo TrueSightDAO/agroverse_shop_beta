@@ -124,6 +124,7 @@
         .nav-dropdown > a::after {
             content: '▼';
             font-size: 0.7rem;
+                z-index: 10; /* Ensure it's above content */
             transition: transform 0.3s ease;
         }
         
@@ -340,14 +341,10 @@
         }
         
         .journey-card > .journeys-eyebrow {
-            position: absolute;
             top: 1.5rem;
             left: 2rem;
-            color: rgba(255,255,255,0.9);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
             font-size: 0.8rem;
-        }
+            }
         
         .journey-card[data-journey="pacific"]::before {
             background-image: url('assets/images/pacific-coast-highway.jpg');
@@ -998,8 +995,52 @@
                 grid-template-columns: 1fr;
             }
             
+            
             .journey-card {
-                min-height: 320px;
+                min-height: 400px; /* Increased to accommodate more text */
+                overflow: hidden; /* Prevent content from overflowing */
+            }
+            
+            .journey-card-content {
+                padding: 1.5rem;
+                padding-top: 3.5rem; /* Space for eyebrow at top */
+                padding-bottom: 1.5rem; /* Ensure bottom padding */
+                justify-content: flex-end;
+                max-height: 100%; /* Ensure content doesn't exceed card height */
+                box-sizing: border-box;
+                overflow-y: auto; /* Allow scrolling if content is too long */
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .journey-card h3 {
+                font-size: 20px;
+                line-height: 1.3;
+                margin-bottom: 0.5rem;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+            
+            .journey-card p {
+                font-size: 0.85rem;
+                line-height: 1.6;
+                margin-bottom: 0.75rem;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            
+            .journey-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+                margin-bottom: 0.5rem;
+            }
+            
+            .journey-card > .journeys-eyebrow {
+                top: 1rem;
+                left: 1.5rem;
+                font-size: 0.7rem;
+                z-index: 10; /* Ensure it's above content */
             }
             
             .farmers-grid {

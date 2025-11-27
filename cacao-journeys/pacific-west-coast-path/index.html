@@ -14,7 +14,7 @@
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="og:url"/>
 <meta content="The Pacific West Coast Journey | Agroverse Cacao Journeys" property="og:title"/>
 <meta content="A journey from Washington's borderlands near Canada to the California desert near Mexico, visiting partner venues where communities gather around regenerative cacao. Following a path reminiscent of the Pacific Crest Trail." property="og:description"/>
-<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="og:image"/>
+<meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path/assets/images/pacific-coast-highway.jpg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/cacao-journeys/pacific-west-coast-path" property="twitter:url"/>
@@ -616,6 +616,9 @@
             if (!stopsList) return;
             
             let totalDistance = 0;
+            let cumulativeDays = 1; // Start on Day 1
+            const daysPerVenue = 1.5; // Average days spent at each venue
+            const milesPerDay = 250; // Travel speed in miles per day
             let html = '';
             
             stops.forEach((stop, index) => {
@@ -630,13 +633,22 @@
                 
                 const distanceMiles = kmToMiles(distance);
                 
+                // Calculate travel days from previous stop
+                const travelDays = index > 0 ? Math.ceil(distanceMiles / milesPerDay) : 0;
+                
+                // Current day is when you arrive at this venue
+                const arrivalDay = Math.ceil(cumulativeDays);
+                
+                // After visiting this venue, move forward by travel time + venue time
+                cumulativeDays += travelDays + daysPerVenue;
+                
                 // Determine image path - try .jpeg first, then .jpg
                 const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' ? 'jpeg' : 'jpg';
                 const imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
                 
                 html += `
                     <div class="stop-item">
-                        <div class="stop-number">${index + 1}</div>
+                        <div class="stop-number">Day ${arrivalDay}</div>
                         <img src="${imagePath}" alt="${stop.name}" class="stop-image" onerror="this.style.display='none';"/>
                         <div class="stop-content">
                             <h3><a href="../../partners/${stop.slug}/index.html">${stop.name}</a></h3>
@@ -644,7 +656,7 @@
                             <div class="stop-description">
                                 ${stop.description || `Experience regenerative cacao at ${stop.name}, a gathering space where communities come together in mindful connection.`}
                             </div>
-                            ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop</span>` : '<span class="stop-distance">Starting point</span>'}
+                            ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop (${travelDays > 0 ? travelDays + ' day' + (travelDays > 1 ? 's' : '') + ' travel' : 'same day'})</span>` : '<span class="stop-distance">Starting point</span>'}
                             <div><a href="../../partners/${stop.slug}/index.html" class="stop-link">Visit Partner Page</a></div>
                         </div>
                     </div>
@@ -661,8 +673,10 @@
             if (totalStopsEl) totalStopsEl.textContent = stops.length;
             if (totalDistanceEl) totalDistanceEl.textContent = Math.round(kmToMiles(totalDistance));
             if (estimatedTimeEl) {
-                // Estimate: 1-2 days per stop, or roughly 200-300 miles per day
-                const estimatedDays = Math.ceil(kmToMiles(totalDistance) / 250);
+                // Estimate: Travel time (250 miles/day) + time at venues (1-2 days per venue)
+                const travelDays = Math.ceil(kmToMiles(totalDistance) / 250);
+                const venueDays = stops.length * 1.5; // Average 1.5 days per venue
+                const estimatedDays = Math.ceil(travelDays + venueDays);
                 estimatedTimeEl.textContent = estimatedDays + '+';
             }
         }
@@ -673,7 +687,7 @@
 </script>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
-<script src="../../js/cart-ui.js"></script>
+<script src="../../js/cart-ui.js"></script><div class="mobile-menu-overlay"></div>
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>
