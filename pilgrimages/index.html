@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Agroverse Cacao Pilgrimages | Sacred Paths of Connection</title>
+<meta content="Embark on sacred journeys connecting communities, farms, and the regenerative path of cacao. Explore the Gathering Path through partner venues or the Farm Path to visit regenerative cacao farms." name="description"/>
+<link href="https://www.agroverse.shop/pilgrimages" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/pilgrimages" property="og:url"/>
+<meta content="Agroverse Cacao Pilgrimages | Sacred Paths of Connection" property="og:title"/>
+<meta content="Embark on sacred journeys connecting communities, farms, and the regenerative path of cacao." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/pilgrimages" property="twitter:url"/>
+<meta content="Agroverse Cacao Pilgrimages | Sacred Paths of Connection" property="twitter:title"/>
+<meta content="Embark on sacred journeys connecting communities, farms, and the regenerative path of cacao." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .pilgrimages-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .pilgrimages-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pilgrimages-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Pilgrimage Cards Grid */
+        .pilgrimages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .pilgrimage-card {
+            background: var(--color-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .pilgrimage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pilgrimage-card-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pilgrimage-card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .pilgrimage-card-body {
+            padding: 2.5rem;
+        }
+        
+        .pilgrimage-card-body h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .pilgrimage-card-body p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pilgrimage-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-bg-light);
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        
+        .pilgrimage-link {
+            display: inline-block;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .pilgrimage-link::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        .pilgrimage-card:hover .pilgrimage-link::after {
+            transform: translateX(5px);
+        }
+        
+        .coming-soon {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .pilgrimages-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .pilgrimages-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .pilgrimages-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .pilgrimage-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../index.html">
+<img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<ul class="nav-links">
+<li><a href="../index.html#home">Home</a></li>
+<li><a href="../index.html#mission">Mission</a></li>
+<li><a href="../index.html#products">Products</a></li>
+<li><a href="../index.html#farmers">Farms</a></li>
+<li><a href="../index.html#shipments">Shipments</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../index.html#gatherings">Gatherings</a></li>
+<li><a href="../partners/index.html">Partners</a></li>
+<li><a href="index.html">Pilgrimages</a></li>
+<li><a href="../order-history/">Order History</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="pilgrimages-hero">
+<h1>Agroverse Cacao Pilgrimages</h1>
+<p>Sacred paths connecting communities, farms, and the regenerative journey of cacao. Like the Kumano Kodo in Japan and The Way of Saint James in Spain, these pilgrimages invite you to walk with intention, connecting with the land, the people, and the transformative power of regenerative cacao.</p>
+</section>
+
+<section class="content-section">
+<div class="intro-text">
+<p>Each pilgrimage offers a unique journey of discovery. Whether you're traversing gathering spaces where communities come together, or visiting the farms where regenerative cacao grows, these paths invite mindful connection and conscious transformation.</p>
+</div>
+
+<div class="pilgrimages-grid">
+<a class="pilgrimage-card" href="gathering-path/index.html">
+<div class="pilgrimage-card-image" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);">
+🗺️
+</div>
+<div class="pilgrimage-card-body">
+<h2>The Gathering Path</h2>
+<p>Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao. Experience the diverse spaces—from urban sanctuaries to desert retreats—where our cacao brings people together in mindful connection.</p>
+<div class="pilgrimage-stats">
+<div class="stat-item">
+<span class="stat-value" id="gathering-venues-count">23</span>
+<span class="stat-label">Venues</span>
+</div>
+<div class="stat-item">
+<span class="stat-value" id="gathering-distance">~2,500</span>
+<span class="stat-label">Miles</span>
+</div>
+<div class="stat-item">
+<span class="stat-value">USA</span>
+<span class="stat-label">Route</span>
+</div>
+</div>
+<div class="pilgrimage-link">Begin Your Journey</div>
+</div>
+</a>
+
+<a class="pilgrimage-card coming-soon" href="#">
+<div class="pilgrimage-card-image" style="background: linear-gradient(135deg, #744210 0%, #5a3410 100%);">
+🌱
+<span class="coming-soon-badge">Coming Soon</span>
+</div>
+<div class="pilgrimage-card-body">
+<h2>The Farm Path</h2>
+<p>Embark on a journey to visit the regenerative cacao farms in the Amazon Rainforest. Walk the land where our cacao grows, meet the farmers, and witness firsthand the regenerative practices that restore the rainforest while supporting local communities.</p>
+<div class="pilgrimage-stats">
+<div class="stat-item">
+<span class="stat-value">—</span>
+<span class="stat-label">Farms</span>
+</div>
+<div class="stat-item">
+<span class="stat-value">—</span>
+<span class="stat-label">Miles</span>
+</div>
+<div class="stat-item">
+<span class="stat-value">Brazil</span>
+<span class="stat-label">Route</span>
+</div>
+</div>
+<div class="pilgrimage-link">Coming Soon</div>
+</div>
+</a>
+</div>
+</section>
+
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../index.html#home">Home</a></li>
+<li><a href="../index.html#mission">Mission</a></li>
+<li><a href="../index.html#products">Products</a></li>
+<li><a href="../index.html#farmers">Farms</a></li>
+<li><a href="../index.html#shipments">Shipments</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../index.html#gatherings">Gatherings</a></li>
+<li><a href="../partners/index.html">Partners</a></li>
+<li><a href="index.html">Pilgrimages</a></li>
+<li><a href="../order-history/">Order History</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/partners-data.js"></script>
+<script>
+    // Update gathering path stats
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.PARTNERS_DATA) {
+            const venueCount = Object.keys(window.PARTNERS_DATA).length;
+            const countElement = document.getElementById('gathering-venues-count');
+            if (countElement) {
+                countElement.textContent = venueCount;
+            }
+        }
+    });
+</script>
+<script src="../js/universal-nav.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/cart-ui.js"></script>
+<link href="../css/cart.css" rel="stylesheet"/>
+</body>
+</html>
+

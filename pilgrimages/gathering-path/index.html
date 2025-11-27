@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>The Gathering Path | Agroverse Cacao Pilgrimages</title>
+<meta content="Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao. A sacred path connecting gathering spaces across the West Coast." name="description"/>
+<link href="https://www.agroverse.shop/pilgrimages/gathering-path" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/pilgrimages/gathering-path" property="og:url"/>
+<meta content="The Gathering Path | Agroverse Cacao Pilgrimages" property="og:title"/>
+<meta content="Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="og:image"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/pilgrimages/gathering-path" property="twitter:url"/>
+<meta content="The Gathering Path | Agroverse Cacao Pilgrimages" property="twitter:title"/>
+<meta content="Journey from Seattle to the California desert, visiting partner venues where communities gather around regenerative cacao." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/hero/cacao-circles.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: var(--color-bg);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 61px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* Hero Section */
+        .journey-hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .journey-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .journey-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 3rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        #journey-map {
+            width: 100%;
+            height: 600px;
+        }
+        
+        /* Journey Stats */
+        .journey-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--color-bg-light);
+            border-radius: 12px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Journey Stops */
+        .journey-stops {
+            margin: 3rem 0;
+        }
+        
+        .journey-stops h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .stop-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--color-primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stop-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stop-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .stop-content {
+            flex: 1;
+        }
+        
+        .stop-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stop-content h3 a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        
+        .stop-content h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .stop-location {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stop-description {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .stop-distance {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .stop-link {
+            display: inline-block;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+        
+        .stop-link:hover {
+            text-decoration: underline;
+        }
+        
+        .stop-link::after {
+            content: ' →';
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .journey-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .journey-hero p {
+                font-size: 1rem;
+            }
+            
+            #journey-map {
+                height: 400px;
+            }
+            
+            .stop-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stop-number {
+                min-width: auto;
+            }
+            
+            .journey-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../../index.html">
+<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<ul class="nav-links">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../index.html">Pilgrimages</a></li>
+<li><a href="../../order-history/">Order History</a></li>
+<li><a href="../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="journey-hero">
+<h1>The Gathering Path</h1>
+<p>A sacred journey from Seattle to the California desert, connecting communities through regenerative cacao. Walk this path to discover gathering spaces where mindful connection flourishes, each venue a waypoint on the pilgrimage of conscious transformation.</p>
+</section>
+
+<section class="content-section">
+<div class="intro-text">
+<p>This pilgrimage takes you through diverse landscapes and communities, from the Pacific Northwest's creative hubs to California's coastal sanctuaries and desert retreats. Each stop offers a unique space for gathering, reflection, and connection—all centered around the regenerative power of cacao.</p>
+</div>
+
+<div class="map-section">
+<div id="journey-map"></div>
+</div>
+
+<div class="journey-stats">
+<div class="stat-item">
+<span class="stat-value" id="total-stops">—</span>
+<span class="stat-label">Stops</span>
+</div>
+<div class="stat-item">
+<span class="stat-value" id="total-distance">—</span>
+<span class="stat-label">Total Miles</span>
+</div>
+<div class="stat-item">
+<span class="stat-value" id="estimated-time">—</span>
+<span class="stat-label">Estimated Days</span>
+</div>
+<div class="stat-item">
+<span class="stat-value">USA</span>
+<span class="stat-label">Route</span>
+</div>
+</div>
+
+<div class="journey-stops">
+<h2>The Journey</h2>
+<div id="journey-stops-list">
+<!-- Stops will be inserted here by JavaScript -->
+</div>
+</div>
+</section>
+
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#mission">Mission</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#gatherings">Gatherings</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../index.html">Pilgrimages</a></li>
+<li><a href="../../order-history/">Order History</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+
+<!-- Leaflet JS for maps -->
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/partners-data.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!window.PARTNERS_DATA) {
+            console.error('Partners data not loaded');
+            return;
+        }
+        
+        // Get the traveling salesman path
+        function getTravelingSalesmanPath() {
+            const allSlugs = Object.keys(window.PARTNERS_DATA);
+            if (allSlugs.length === 0) return [];
+            
+            // Start from the westernmost partner (lowest longitude)
+            let startSlug = allSlugs[0];
+            let minLon = window.PARTNERS_DATA[startSlug].lon;
+            for (const slug of allSlugs) {
+                if (window.PARTNERS_DATA[slug].lon < minLon) {
+                    minLon = window.PARTNERS_DATA[slug].lon;
+                    startSlug = slug;
+                }
+            }
+            
+            const path = [startSlug];
+            const visited = new Set([startSlug]);
+            
+            // Greedy nearest neighbor
+            let currentSlug = startSlug;
+            while (visited.size < allSlugs.length) {
+                let nearestSlug = null;
+                let minDistance = Infinity;
+                
+                for (const slug of allSlugs) {
+                    if (visited.has(slug)) continue;
+                    
+                    const distance = calculateDistance(
+                        window.PARTNERS_DATA[currentSlug].lat,
+                        window.PARTNERS_DATA[currentSlug].lon,
+                        window.PARTNERS_DATA[slug].lat,
+                        window.PARTNERS_DATA[slug].lon
+                    );
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        nearestSlug = slug;
+                    }
+                }
+                
+                if (nearestSlug) {
+                    path.push(nearestSlug);
+                    visited.add(nearestSlug);
+                    currentSlug = nearestSlug;
+                } else {
+                    break;
+                }
+            }
+            
+            return path;
+        }
+        
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Earth's radius in kilometers
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+        
+        // Convert km to miles
+        function kmToMiles(km) {
+            return km * 0.621371;
+        }
+        
+        const path = getTravelingSalesmanPath();
+        const stops = path.map(slug => window.PARTNERS_DATA[slug]);
+        
+        // Initialize map
+        function initMap() {
+            if (stops.length === 0) return;
+            
+            // Calculate center and bounds
+            let minLat = Infinity, maxLat = -Infinity;
+            let minLon = Infinity, maxLon = -Infinity;
+            
+            stops.forEach(stop => {
+                minLat = Math.min(minLat, stop.lat);
+                maxLat = Math.max(maxLat, stop.lat);
+                minLon = Math.min(minLon, stop.lon);
+                maxLon = Math.max(maxLon, stop.lon);
+            });
+            
+            const centerLat = (minLat + maxLat) / 2;
+            const centerLon = (minLon + maxLon) / 2;
+            
+            const map = L.map('journey-map').setView([centerLat, centerLon], 5);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Add route polyline
+            const routePoints = stops.map(stop => [stop.lat, stop.lon]);
+            const polyline = L.polyline(routePoints, {
+                color: '#3b3333',
+                weight: 4,
+                opacity: 0.7,
+                smoothFactor: 1
+            }).addTo(map);
+            
+            // Add markers for each stop
+            stops.forEach((stop, index) => {
+                const marker = L.marker([stop.lat, stop.lon])
+                    .addTo(map)
+                    .bindPopup(`<b>Stop ${index + 1}</b><br>${stop.name}<br>${stop.location}`);
+                
+                // Number the markers
+                const icon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="background: #3b3333; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid white;">${index + 1}</div>`,
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 15]
+                });
+                marker.setIcon(icon);
+            });
+            
+            // Fit map to bounds
+            map.fitBounds(polyline.getBounds(), { padding: [50, 50] });
+        }
+        
+        // Render stops list
+        function renderStops() {
+            const stopsList = document.getElementById('journey-stops-list');
+            if (!stopsList) return;
+            
+            let totalDistance = 0;
+            let html = '';
+            
+            stops.forEach((stop, index) => {
+                const distance = index > 0 
+                    ? calculateDistance(
+                        stops[index - 1].lat, stops[index - 1].lon,
+                        stop.lat, stop.lon
+                    )
+                    : 0;
+                
+                totalDistance += distance;
+                
+                const distanceMiles = kmToMiles(distance);
+                
+                html += `
+                    <div class="stop-item">
+                        <div class="stop-number">${index + 1}</div>
+                        <div class="stop-content">
+                            <h3><a href="../../partners/${stop.slug}/index.html">${stop.name}</a></h3>
+                            <div class="stop-location">📍 ${stop.location}</div>
+                            <div class="stop-description">
+                                Experience regenerative cacao at ${stop.name}, a gathering space where communities come together in mindful connection.
+                            </div>
+                            ${index > 0 ? `<span class="stop-distance">${distanceMiles.toFixed(1)} miles from previous stop</span>` : '<span class="stop-distance">Starting point</span>'}
+                            <div><a href="../../partners/${stop.slug}/index.html" class="stop-link">Visit Partner Page</a></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            stopsList.innerHTML = html;
+            
+            // Update stats
+            const totalStopsEl = document.getElementById('total-stops');
+            const totalDistanceEl = document.getElementById('total-distance');
+            const estimatedTimeEl = document.getElementById('estimated-time');
+            
+            if (totalStopsEl) totalStopsEl.textContent = stops.length;
+            if (totalDistanceEl) totalDistanceEl.textContent = Math.round(kmToMiles(totalDistance));
+            if (estimatedTimeEl) {
+                // Estimate: 1-2 days per stop, or roughly 200-300 miles per day
+                const estimatedDays = Math.ceil(kmToMiles(totalDistance) / 250);
+                estimatedTimeEl.textContent = estimatedDays + '+';
+            }
+        }
+        
+        initMap();
+        renderStops();
+    });
+</script>
+<script src="../../js/universal-nav.js"></script>
+<script src="../../js/cart.js"></script>
+<script src="../../js/cart-ui.js"></script>
+<link href="../../css/cart.css" rel="stylesheet"/>
+</body>
+</html>
+
