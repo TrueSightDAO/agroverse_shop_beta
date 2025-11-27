@@ -468,13 +468,16 @@
 <section class="content-section">
 <h2>About Secrets of Garden SLO</h2>
 <div class="partner-story">
-<p>Secrets of Garden SLO, formerly known as The Secret Garden Organic Herb Shop, is a beloved tea and herb shop established in 2004 and located at 2050 Parker Street in San Luis Obispo, California. Specializing in hand-blended, premium loose-leaf teas and herbal blends, the shop is dedicated to enhancing physical, mental, and spiritual well-being through nature's healing power.</p>
+<p>Secrets of Garden SLO, formerly known as The Secret Garden Organic Herb Shop, is a beloved tea and herb shop established in 2004 and located at 2050 Parker Street in San Luis Obispo, California. Owned by Kirstin Sherritt, the shop specializes in hand-blended, premium loose-leaf teas and herbal blends, dedicated to enhancing physical, mental, and spiritual well-being through nature's healing power.</p>
 <p>In October 2024, the shop moved to its current location on the edge of downtown San Luis Obispo and adopted the name Secrets of Garden SLO to reflect its growth and evolution. The new space continues their legacy of sustainability, sourcing high-quality, organically grown, and ethically harvested botanicals while inspiring a deeper connection to nature.</p>
 <p>As a partner venue, Secrets of Garden SLO proudly offers Agroverse ceremonial cacao, connecting their community with regenerative, ethically-sourced cacao from Brazilian farmers. This partnership represents our shared commitment to sustainability, community connection, and the transformative power of ceremonial cacao. Together, we're bringing the healing benefits of regenerative cacao to the Central Coast community, perfectly complementing their existing offerings of premium teas and herbal remedies.</p>
 </div>
 
 <!-- Partner Images Gallery -->
 <div class="partner-gallery">
+<div class="gallery-item">
+<img alt="Kirstin Sherritt, owner of Secrets of Garden SLO" src="../../assets/partners/secrets-of-garden-slo-kirstin.jpg" loading="lazy"/>
+</div>
 <div class="gallery-item">
 <img alt="Premium loose-leaf teas and herbal blends" src="../../assets/partners/secrets-of-garden-slo-tea.jpg" loading="lazy"/>
 </div>
@@ -487,7 +490,7 @@
 <h3>Partner Information</h3>
 <div class="info-row">
 <div class="info-label">Location</div>
-<div class="info-value">2050 Parker Street, San Luis Obispo, California</div>
+<div class="info-value">2050 Parker St, San Luis Obispo, CA 93401</div>
 </div>
 <div class="info-row">
 <div class="info-label">Established</div>
@@ -550,7 +553,7 @@
                 }).addTo(map);
                 
                 // Geocode location using Nominatim (OpenStreetMap)
-                const location = "2050 Parker Street, San Luis Obispo, California";
+                const location = "2050 Parker St, San Luis Obispo, CA 93401";
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
                     .then(response => response.json())
                     .then(data => {
@@ -561,7 +564,7 @@
                             
                             L.marker([lat, lon])
                                 .addTo(map)
-                                .bindPopup('<b>Secrets of Garden SLO</b><br>2050 Parker Street<br>San Luis Obispo, California')
+                                .bindPopup('<b>Secrets of Garden SLO</b><br>2050 Parker St<br>San Luis Obispo, CA 93401')
                                 .openPopup();
                         }
                     })

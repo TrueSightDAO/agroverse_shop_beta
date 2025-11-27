@@ -278,6 +278,35 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
+        
+        /* Image Gallery */
+        .partner-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            width: 100%;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-item {
+                height: 300px;
+            }
+        }
 
         
         /* Mobile Hamburger Menu */
@@ -427,23 +456,42 @@
 <img alt="Partner Logo" class="partner-logo" src="../../assets/partners/logos/go-ask-alice-logo.png"/>
 </div>
 <h1>Go Ask Alice</h1>
-<p>Santa Cruz, California</p>
+<p>1125 Pacific Ave, Santa Cruz, CA 95060</p>
 </div>
 </section>
 <section class="content-section">
 <h2>About Go Ask Alice</h2>
 <div class="partner-story">
-<p>Go Ask Alice Santa Cruz is a vibrant, community-focused small business rooted in the heart of downtown Santa Cruz, California. As a women-owned and LGBTQ+ friendly establishment, the store operates on a philosophy that connects people with the transformative and healing power of nature. This dedication is evident in every aspect of their operation, from the carefully sourced products to the inclusive atmosphere that welcomes everyone seeking a holistic approach to wellness. Their mission is to promote sustainable living and earth-based practices, making the benefits of the natural world accessible to the modern consumer.</p>
+<p>Go Ask Alice Santa Cruz is a vibrant, community-focused small business rooted in the heart of downtown Santa Cruz, California. Owned by Nicolina Ammerman, this women-owned and LGBTQ+ friendly establishment operates on a philosophy that connects people with the transformative and healing power of nature. This dedication is evident in every aspect of their operation, from the carefully sourced products to the inclusive atmosphere that welcomes everyone seeking a holistic approach to wellness. Their mission is to promote sustainable living and earth-based practices, making the benefits of the natural world accessible to the modern consumer.</p>
+<p>As a partner venue, Go Ask Alice proudly offers Agroverse ceremonial cacao, connecting their community with regenerative, ethically-sourced cacao from Brazilian farmers. This partnership represents our shared commitment to sustainability, community connection, and the transformative power of ceremonial cacao.</p>
 </div>
+
+<!-- Partner Images Gallery -->
+<div class="partner-gallery">
+<div class="gallery-item">
+<img alt="Go Ask Alice store interior" src="../../assets/partners/go-ask-alice-store-interior.jpg" loading="lazy"/>
+</div>
+<div class="gallery-item">
+<img alt="Go Ask Alice store exterior at 1125 Pacific Ave" src="../../assets/partners/go-ask-alice-store-exterior.jpg" loading="lazy"/>
+</div>
+<div class="gallery-item">
+<img alt="Nicolina holding a Halloween-themed cup at Go Ask Alice" src="../../assets/partners/go-ask-alice-nicolina-halloween.jpg" loading="lazy"/>
+</div>
+</div>
+
 <div class="partner-info">
 <h3>Partner Information</h3>
 <div class="info-row">
 <div class="info-label">Location</div>
-<div class="info-value">Santa Cruz, California</div>
+<div class="info-value">1125 Pacific Ave, Santa Cruz, CA 95060</div>
 </div>
 <div class="info-row">
 <div class="info-label">Status</div>
 <div class="info-value">Active Partner</div>
+</div>
+<div class="info-row">
+<div class="info-label">Instagram</div>
+<div class="info-value"><a href="https://www.instagram.com/goaskalice/" target="_blank" rel="noreferrer noopener">@goaskalice</a></div>
 </div>
 </div>
 <!-- Location Map Section -->
@@ -451,7 +499,7 @@
 <h3>Location</h3>
 <div id="map-go-ask-alice" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 <div style="text-align: center;">
-<a href="https://www.google.com/maps/search/?api=1&amp;query=Santa+Cruz,+California" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=1125+Pacific+Ave,+Santa+Cruz,+CA+95060" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
 </div>
 </div>
 <a class="back-link" href="../index.html">Back to All Partners</a>
@@ -490,7 +538,7 @@
                 }).addTo(map);
                 
                 // Geocode location using Nominatim (OpenStreetMap)
-                const location = "Santa Cruz, California";
+                const location = "1125 Pacific Ave, Santa Cruz, CA 95060";
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
                     .then(response => response.json())
                     .then(data => {
@@ -501,7 +549,7 @@
                             
                             L.marker([lat, lon])
                                 .addTo(map)
-                                .bindPopup('<b>Go Ask Alice</b><br>Santa Cruz, California')
+                                .bindPopup('<b>Go Ask Alice</b><br>1125 Pacific Ave<br>Santa Cruz, CA 95060')
                                 .openPopup();
                         }
                     })
