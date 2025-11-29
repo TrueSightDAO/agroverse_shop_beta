@@ -185,11 +185,38 @@
     // Add cart icon to header if it doesn't exist
     const header = document.querySelector('header nav');
     if (header && !document.getElementById('cart-icon')) {
-      const navLinks = header.querySelector('.nav-links');
-      if (navLinks) {
+      // Find ALL nav-links elements
+      const allNavLinks = header.querySelectorAll('.nav-links');
+      
+      // Find desktop nav (one that doesn't have mobile-menu class)
+      let desktopNavLinks = null;
+      let mobileNavLinks = null;
+      
+      allNavLinks.forEach(function(nav) {
+        if (nav.classList.contains('mobile-menu')) {
+          mobileNavLinks = nav;
+        } else {
+          desktopNavLinks = nav;
+        }
+      });
+      
+      // If no separate desktop nav exists, check if there's a nav-links without mobile-menu
+      if (!desktopNavLinks) {
+        desktopNavLinks = header.querySelector('.nav-links:not(.mobile-menu)');
+      }
+      
+      // Add cart icon to desktop nav (or first nav-links if no desktop nav found)
+      const targetNav = desktopNavLinks || (allNavLinks.length > 0 ? allNavLinks[0] : null);
+      
+      if (targetNav && !targetNav.classList.contains('mobile-menu')) {
         const cartIconContainer = document.createElement('li');
         cartIconContainer.innerHTML = createCartIcon();
-        navLinks.appendChild(cartIconContainer);
+        targetNav.appendChild(cartIconContainer);
+      } else if (targetNav) {
+        // If we only have mobile menu, add it there but navigation.js will handle positioning
+        const cartIconContainer = document.createElement('li');
+        cartIconContainer.innerHTML = createCartIcon();
+        targetNav.appendChild(cartIconContainer);
       }
     }
 

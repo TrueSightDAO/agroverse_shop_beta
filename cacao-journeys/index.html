@@ -29,6 +29,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Navigation CSS -->
+<link href="../css/navigation.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -53,46 +55,6 @@
             color: var(--color-text);
             line-height: 1.6;
             background-color: var(--color-bg);
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--color-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 61px;
-            width: auto;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--color-secondary);
         }
         
         /* Hero Section */
@@ -317,6 +279,7 @@
             text-decoration: underline;
         }
         
+        /* Page-specific responsive styles */
         @media (max-width: 768px) {
             .pilgrimages-hero h1 {
                 font-size: 2.5rem;
@@ -335,11 +298,6 @@
                 flex-direction: column;
                 gap: 1rem;
             }
-            
-            .nav-links {
-                gap: 1rem;
-                font-size: 14px;
-            }
         }
     </style>
 </head>
@@ -349,7 +307,12 @@
 <a class="logo" href="../index.html">
 <img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
 </a>
-<ul class="nav-links">
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+<ul class="nav-links mobile-menu">
 <li><a href="../index.html#home">Home</a></li>
 <li><a href="../index.html#mission">Mission</a></li>
 <li><a href="../index.html#products">Products</a></li>
@@ -548,9 +511,12 @@
         }
     });
 </script>
+<!-- Shared Navigation JavaScript -->
+<script src="../js/navigation.js"></script>
 <script src="../js/universal-nav.js"></script>
 <script src="../js/cart.js"></script>
-<script src="../js/cart-ui.js"></script><div class="mobile-menu-overlay"></div>
+<script src="../js/cart-ui.js"></script>
+<div class="mobile-menu-overlay"></div>
 <link href="../css/cart.css" rel="stylesheet"/>
 </body>
 </html>

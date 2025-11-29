@@ -1,0 +1,264 @@
+/**
+ * Shared Navigation Styles
+ * Consistent navigation across all pages - desktop and mobile
+ */
+
+/* Header */
+header {
+    background-color: var(--color-bg, #ffffff);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo img {
+    height: 61px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--color-text, #3b3333);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-secondary, #4d4d4d);
+}
+
+/* Mobile Hamburger Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text, #3b3333);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+}
+
+/* Cart Icon Container - Desktop (normal styling) */
+.nav-links.mobile-menu .cart-icon-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Cart Icon in Mobile Menu - Prominent Top Position (mobile only) */
+@media (max-width: 768px) {
+    .nav-links.mobile-menu .cart-icon-container {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: var(--color-bg, #ffffff);
+        border-bottom: 2px solid var(--color-primary, #3b3333);
+        padding: 1.5rem 2rem 2rem 2rem;
+        margin: 0;
+        margin-bottom: 1rem;
+        z-index: 1002;
+        list-style: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-links.mobile-menu .cart-icon-container .cart-icon,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile {
+        background: var(--color-primary, #3b3333);
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-links.mobile-menu .cart-icon-container .cart-icon:hover,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(59, 51, 51, 0.4);
+        color: white;
+    }
+
+    .nav-links.mobile-menu .cart-icon-container .cart-icon svg,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile svg {
+        width: 28px;
+        height: 28px;
+        stroke-width: 2.5;
+    }
+
+    .nav-links.mobile-menu .cart-icon-container .cart-badge {
+        background-color: var(--color-accent, #fefc8f);
+        color: var(--color-primary, #3b3333);
+        font-weight: 700;
+        border: 2px solid var(--color-primary, #3b3333);
+    }
+}
+
+/* Desktop: Show mobile-menu as normal horizontal nav */
+.nav-links.mobile-menu {
+    display: flex;
+    position: static;
+    height: auto;
+    width: auto;
+    max-width: none;
+    background-color: transparent;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    box-shadow: none;
+    gap: 2rem;
+    overflow: visible;
+}
+
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+    .nav-links:not(.mobile-menu) {
+        display: none !important;
+    }
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links.mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 300px;
+        background-color: var(--color-bg, #ffffff);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        gap: 1.5rem;
+        overflow-y: auto;
+    }
+    
+    .nav-links.mobile-menu.active {
+        right: 0;
+    }
+    
+    .nav-links.mobile-menu li {
+        width: 100%;
+        border-bottom: 1px solid var(--color-bg-light, #f7f7f7);
+        padding-bottom: 1rem;
+    }
+    
+    .nav-links.mobile-menu li:has(.cart-icon-container),
+    .nav-links.mobile-menu .cart-icon-container {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    
+    .nav-links.mobile-menu li:not(.cart-icon-container) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .nav-links.mobile-menu a {
+        font-size: 1.1rem;
+        width: 100%;
+        display: block;
+    }
+    
+    header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .logo img {
+        height: 48px;
+    }
+    
+    nav {
+        position: relative;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+}
+

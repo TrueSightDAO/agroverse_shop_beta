@@ -12,6 +12,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<!-- Shared Navigation CSS -->
+<link href="../css/navigation.css" rel="stylesheet"/>
 <link href="../css/cart.css" rel="stylesheet"/>
 <style>
 :root {
@@ -36,28 +38,6 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   background-color: var(--color-bg);
-}
-
-header {
-  background-color: var(--color-bg);
-  padding: 1.5rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo img {
-  height: 61px;
-  width: auto;
 }
 
 .checkout-container {
@@ -343,7 +323,12 @@ nav {
 <a class="logo" href="../index.html">
 <img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
 </a>
-<ul class="nav-links">
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+<ul class="nav-links mobile-menu">
 <li><a href="../index.html#home">Home</a></li>
 <li><a href="../index.html#mission">Mission</a></li>
 <li><a href="../index.html#products">Products</a></li>
@@ -356,6 +341,7 @@ nav {
 </ul>
 </nav>
 </header>
+<div class="mobile-menu-overlay"></div>
 
 <div class="checkout-container">
 <div class="checkout-form-section">
@@ -432,6 +418,8 @@ nav {
 
 <script src="../js/config.js"></script>
 <script src="../js/image-url-helper.js"></script>
+<!-- Shared Navigation JavaScript -->
+<script src="../js/navigation.js"></script>
 <script src="../js/universal-nav.js"></script>
 <script src="../js/products.js"></script>
 <script src="../js/cart.js"></script>
