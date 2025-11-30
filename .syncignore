@@ -1,0 +1,33 @@
+# Files to exclude when syncing between repos
+# This file is used by sync scripts to preserve repository-specific files
+
+# CNAME files are repository-specific
+CNAME
+
+# Git files should never be synced
+.git
+.gitignore
+.gitattributes
+
+# Node modules (if applicable)
+node_modules
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment-specific files
+.env
+.env.local
+
+# Build artifacts (if any)
+dist
+build
+*.log
+
