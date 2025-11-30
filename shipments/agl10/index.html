@@ -657,7 +657,14 @@
             justify-content: space-between;
             align-items: center;
             margin: 3rem 0 2rem;
-            padding: 2rem 0;
+            padding: 2rem 2rem;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            max-width: 100%;
             border-top: 2px solid var(--color-bg-light);
             border-bottom: 2px solid var(--color-bg-light);
             gap: 2rem;
@@ -699,6 +706,46 @@
         
         .nav-label {
             font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+            margin: 0.25rem 0;
+        }
+        
+        .nav-direction {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-subtitle {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item.nav-next .nav-link {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .nav-item.nav-prev .nav-link {
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-item.nav-next .nav-link {
+                align-items: flex-start;
+                text-align: left;
+            }
         }
         </style>
 </head>
@@ -710,12 +757,13 @@
 </a>
 <button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
 <li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -825,7 +873,7 @@
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl10" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
 </div>
 <!-- Location Map Section -->
-<div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
+<div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">
 <h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
 <div id="map-agl10" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 <p style="margin-top: 0.5rem; text-align: center;">
@@ -837,10 +885,10 @@
 <div class="farmer-profile">
 <img alt="Capela Velha Fazenda" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif"/>
 <div class="farmer-details">
-<h3>Fazenda Capelavelha</h3>
+<h3><a href="../../farms/fazenda-capelavelha-bahia/index.html" style="color: var(--color-primary); text-decoration: none;">Fazenda Capelavelha</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Women-Owned Farm • Bahia, Brazil</strong></p>
 <p style="line-height: 1.8;">
-                        Fazenda Capelavelha is a women-owned regenerative organic cacao farm dedicated to sustainable agriculture and empowering women in farming. This farm specializes in unique cacao processing techniques, including the caramelized cacao beans featured in AGL10. Their commitment to regenerative practices and organic certification demonstrates the vital role women play in building sustainable food systems.
+                        <a href="../../farms/fazenda-capelavelha-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">Fazenda Capelavelha</a> is a women-owned regenerative organic cacao farm dedicated to sustainable agriculture and empowering women in farming. This farm specializes in unique cacao processing techniques, including the caramelized cacao beans featured in AGL10. Their commitment to regenerative practices and organic certification demonstrates the vital role women play in building sustainable food systems.
                     </p>
 <p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
                         👩‍🌾 Women-owned • Regenerative organic • Unique caramelized cacao
@@ -853,7 +901,7 @@
 </div>
 </div>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl8/">← <span class="nav-label">AGL8</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl13/"><span class="nav-label">AGL13</span> →</a></div></nav><footer id="contact">
+<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl8/"><span class="nav-direction">← Previous</span><span class="nav-label">AGL8</span><span class="nav-subtitle">Paulo's La do Sitio</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl13/"><span class="nav-direction">Next →</span><span class="nav-label">AGL13</span><span class="nav-subtitle">Vivi's Farm</span></a></div></nav><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>

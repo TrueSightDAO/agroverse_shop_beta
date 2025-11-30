@@ -657,7 +657,14 @@
             justify-content: space-between;
             align-items: center;
             margin: 3rem 0 2rem;
-            padding: 2rem 0;
+            padding: 2rem 2rem;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            max-width: 100%;
             border-top: 2px solid var(--color-bg-light);
             border-bottom: 2px solid var(--color-bg-light);
             gap: 2rem;
@@ -699,6 +706,46 @@
         
         .nav-label {
             font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+            margin: 0.25rem 0;
+        }
+        
+        .nav-direction {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-subtitle {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item.nav-next .nav-link {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .nav-item.nav-prev .nav-link {
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-item.nav-next .nav-link {
+                align-items: flex-start;
+                text-align: left;
+            }
         }
         </style>
 </head>
@@ -726,7 +773,7 @@
 <div class="shipment-hero-content">
 <div class="shipment-id">Shipment</div>
 <h1>AGL13</h1>
-<p class="shipment-hero-description">150 kg of top-grade, organically grown cacao beans from Vivi's Farm in Jeribucuacu, Bahia</p>
+<p class="shipment-hero-description">150 kg of top-grade, organically grown cacao beans from <a href="../../farms/vivi-jesus-do-deus-itacare/index.html" style="color: white; text-decoration: underline;">Vivi's Farm</a> in Jeribucuacu, Bahia</p>
 <div class="trees-badge">
 <div class="trees-badge-label">Tree Planting Financed</div>
 <div class="trees-badge-number" data-default="0" data-shipment-id="agl13" data-trees-sold="" id="trees-planted">0</div>
@@ -766,7 +813,7 @@
 <img alt="AGL13 - Vivi's Farm" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif"/>
 <h2>AGL13</h2>
 <p style="color: var(--color-text-light); line-height: 1.8;">
-                    Agroverse is thrilled to announce a new batch of 150 kilograms of top-grade, organically grown cacao beans sourced from Vivi's Farm in Jeribucuacu, located near the stunning beaches of Itacaré, Bahia. This shipment represents Vivi's remarkable transformation from a cattle ranch to a thriving cabruca agroforestry system.
+                    Agroverse is thrilled to announce a new batch of 150 kilograms of top-grade, organically grown cacao beans sourced from <a href="../../farms/vivi-jesus-do-deus-itacare/index.html" style="color: var(--color-primary); text-decoration: underline;">Vivi's Farm</a> in Jeribucuacu, located near the stunning beaches of Itacaré, Bahia. This shipment represents <a href="../../farms/vivi-jesus-do-deus-itacare/index.html" style="color: var(--color-primary); text-decoration: underline;">Vivi's</a> remarkable transformation from a cattle ranch to a thriving cabruca agroforestry system.
                 </p>
 </div>
 <div class="shipment-info">
@@ -820,7 +867,7 @@
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl13" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
 </div>
 <!-- Location Map Section -->
-<div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
+<div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">
 <h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
 <div id="map-agl13" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 <p style="margin-top: 0.5rem; text-align: center;">
@@ -832,10 +879,10 @@
 <div class="farmer-profile">
 <img alt="Vivi" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif"/>
 <div class="farmer-details">
-<h3>Vivi</h3>
+<h3><a href="../../farms/vivi-jesus-do-deus-itacare/index.html" style="color: var(--color-primary); text-decoration: none;">Vivi</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Jesus Do Deus Farm • Itacaré, Bahia, Brazil</strong></p>
 <p style="line-height: 1.8;">
-                        Vivi, a former policeman and politician in Itacaré, received a divine calling to transform a cattle ranch into a thriving cabruca agroforestry system. She walks us through the daily rhythm of regenerative farming—miles of walking to tend each tree with care. Her hands-on approach ensures every pod is hand-selected, preserving the quality and tradition that makes Brazilian cacao unique. The transformation from cattle ranch to cabruca agroforestry demonstrates the power of regenerative agriculture to restore ecosystems while creating sustainable livelihoods.
+                        <a href="../../farms/vivi-jesus-do-deus-itacare/index.html" style="color: var(--color-primary); text-decoration: underline;">Vivi</a>, a former policeman and politician in Itacaré, received a divine calling to transform a cattle ranch into a thriving cabruca agroforestry system. She walks us through the daily rhythm of regenerative farming—miles of walking to tend each tree with care. Her hands-on approach ensures every pod is hand-selected, preserving the quality and tradition that makes Brazilian cacao unique. The transformation from cattle ranch to cabruca agroforestry demonstrates the power of regenerative agriculture to restore ecosystems while creating sustainable livelihoods.
                     </p>
 <p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
                         ✨ Cattle ranch to cabruca agroforestry • Divine calling • Regenerative transformation
@@ -845,7 +892,7 @@
 </div>
 </div>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl10/">← <span class="nav-label">AGL10</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl14/"><span class="nav-label">AGL14</span> →</a></div></nav><footer id="contact">
+<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl10/"><span class="nav-direction">← Previous</span><span class="nav-label">AGL10</span><span class="nav-subtitle">Fazenda Capelavelha</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl14/"><span class="nav-direction">Next →</span><span class="nav-label">AGL14</span><span class="nav-subtitle">Oscar's Farm</span></a></div></nav><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>

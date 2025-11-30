@@ -658,7 +658,14 @@
             justify-content: space-between;
             align-items: center;
             margin: 3rem 0 2rem;
-            padding: 2rem 0;
+            padding: 2rem 2rem;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            max-width: 100%;
             border-top: 2px solid var(--color-bg-light);
             border-bottom: 2px solid var(--color-bg-light);
             gap: 2rem;
@@ -700,6 +707,46 @@
         
         .nav-label {
             font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+            margin: 0.25rem 0;
+        }
+        
+        .nav-direction {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-subtitle {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item.nav-next .nav-link {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .nav-item.nav-prev .nav-link {
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-item.nav-next .nav-link {
+                align-items: flex-start;
+                text-align: left;
+            }
         }
         </style>
 </head>
@@ -713,10 +760,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -822,11 +869,9 @@
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl5" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
 </div>
 <!-- Location Map Section -->
-<div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
+<div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">
 <h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
-<div id="map-agl5" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1); background: #f5f5f5; display: flex; align-items: center; justify-content: center; color: var(--color-text-light);">
-<p>Location data coming soon</p>
-</div>
+<div id="map-agl5" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 </div>
 <div class="farmer-section">
 <h3 style="margin-top: 0;">About This Product</h3>
@@ -836,7 +881,7 @@
 <h3><a href="../../farms/fazenda-analuana-bahia/index.html" style="color: var(--color-primary); text-decoration: none;">Fazenda Analuana</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Bahia, Brazil • Operated by Ana Luana</strong></p>
 <p style="line-height: 1.8;">
-                        AGL5 features 30 bottles of 250g cacao molasses from Fazenda Analuana, operated by Ana Luana, showcasing the versatility of regenerative cacao farming. Cacao molasses is a unique byproduct of the cacao processing, rich in flavor and nutrients. This shipment demonstrates our commitment to supporting small-scale farmers while offering diverse cacao products that celebrate the full potential of regenerative agriculture.
+                        AGL5 features 30 bottles of 250g cacao molasses from <a href="../../farms/fazenda-analuana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">Fazenda Analuana</a>, operated by Ana Luana, showcasing the versatility of regenerative cacao farming. Cacao molasses is a unique byproduct of the cacao processing, rich in flavor and nutrients. This shipment demonstrates our commitment to supporting small-scale farmers while offering diverse cacao products that celebrate the full potential of regenerative agriculture.
                     </p>
 <p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
                         🍯 Cacao molasses • Small-scale farmers • Product diversity
@@ -849,7 +894,7 @@
 </div>
 </div>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl4/">← <span class="nav-label">AGL4</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl6/"><span class="nav-label">AGL6</span> →</a></div></nav><footer id="contact">
+<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl4/"><span class="nav-direction">← Previous</span><span class="nav-label">AGL4</span><span class="nav-subtitle">Oscar's Farm</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl6/"><span class="nav-direction">Next →</span><span class="nav-label">AGL6</span><span class="nav-subtitle">São Jorge Farm</span></a></div></nav><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
@@ -869,6 +914,40 @@
 </footer>
 <!-- Leaflet JS for maps -->
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+        // Initialize map for Fazenda Analuana (AGL5 and AGL7)
+        (function() {
+            function initMap() {
+                const mapElement = document.getElementById('map-agl5');
+                if (!mapElement) {
+                    setTimeout(initMap, 100);
+                    return;
+                }
+                if (typeof L === 'undefined') {
+                    setTimeout(initMap, 100);
+                    return;
+                }
+                try {
+                    // Coordinates from Fazenda Analuana farm page
+                    const mapAnaluana = L.map('map-agl5').setView([-15.691646, -39.295703], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        maxZoom: 19
+                    }).addTo(mapAnaluana);
+                    L.marker([-15.691646, -39.295703]).addTo(mapAnaluana)
+                        .bindPopup('Fazenda Analuana<br>Bahia, Brazil<br><a href="https://www.google.com/maps/place/Fazenda+Analuana/@-15.691646,-39.295703,17z/data=!3m1!4b1!4m6!3m5!1s0x7370acb6be9166f:0xec6f6e4a9f37a4ef!8m2!3d-15.691646!4d-39.295703!16s%2Fg%2F11fx9cmz2m!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">View on Google Maps</a>')
+                        .openPopup();
+                } catch (error) {
+                    console.error('Error initializing map:', error);
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMap);
+            } else {
+                initMap();
+            }
+        })();
+</script>
 <script>
         // Google Apps Script endpoint for shipment-specific tree counts
         const TREES_SOLD_API_URL = 'https://script.google.com/macros/s/AKfycbzlfOBo9UqKOh7jIqGcmbPAMM1RxCbsJHb-UV_vM6VbvK_HSdT44KyGbbXIeo-_Ovfy/exec';

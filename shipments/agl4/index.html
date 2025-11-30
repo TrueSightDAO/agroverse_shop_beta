@@ -29,6 +29,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Navigation CSS -->
+<link href="../../css/navigation.css" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <style>
@@ -657,10 +659,17 @@
             justify-content: space-between;
             align-items: center;
             margin: 3rem 0 2rem;
-            padding: 2rem 0;
+            padding: 2rem 2rem;
             border-top: 2px solid var(--color-bg-light);
             border-bottom: 2px solid var(--color-bg-light);
             gap: 2rem;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            max-width: 100%;
         }
         
         .nav-item {
@@ -699,6 +708,160 @@
         
         .nav-label {
             font-weight: 600;
+            display: block;
+            font-size: 1.1rem;
+            margin: 0.25rem 0;
+        }
+        
+        .nav-direction {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-subtitle {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-item.nav-next .nav-link {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        .nav-item.nav-prev .nav-link {
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-item.nav-next .nav-link {
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+        
+        /* Taste Profile Chart Styles */
+        .taste-profile-section {
+            position: relative;
+        }
+        
+        .taste-wheel {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .taste-segment {
+            transition: opacity 0.3s ease;
+        }
+        
+        .taste-segment:hover {
+            opacity: 0.8;
+        }
+        
+        .taste-label {
+            font-size: 12px;
+            font-weight: 600;
+            fill: var(--color-text);
+            pointer-events: none;
+        }
+        
+        .taste-intensity {
+            font-size: 14px;
+            font-weight: 700;
+            fill: var(--color-primary);
+            pointer-events: none;
+        }
+        
+        .taste-tooltip {
+            position: absolute;
+            background: rgba(59, 51, 51, 0.95);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 14px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .taste-tooltip.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .taste-profile-grid {
+                grid-template-columns: 1fr !important;
+                display: flex !important;
+                flex-direction: column;
+                gap: 2rem !important;
+            }
+            
+            .taste-description {
+                order: 2;
+            }
+            
+            .taste-chart {
+                order: 1;
+            }
+            
+            .taste-wheel {
+                max-width: 100%;
+            }
+            
+            #taste-profile-chart {
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+                overflow: visible;
+                padding: 0;
+                margin-bottom: 0;
+            }
+            
+            .taste-bar-chart {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .taste-chart {
+                width: 100%;
+                max-width: 100%;
+                overflow: visible;
+                margin-bottom: 0;
+            }
+            
+            .taste-profile-section {
+                padding: 2rem 1rem !important;
+                overflow: hidden;
+            }
+            
+            .taste-profile-grid {
+                gap: 1.5rem !important;
+            }
+            
+            .taste-wheel {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
+            .taste-wheel svg {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
         }
         </style>
 </head>
@@ -712,10 +875,10 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../index.html#farmers">Farms</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../blog/">Blog</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
@@ -726,7 +889,7 @@
 <div class="shipment-hero-content">
 <div class="shipment-id">Shipment</div>
 <h1>AGL4</h1>
-<p class="shipment-hero-description">300 kg of organic cacao nibs from Bahia Small Scale Farmers</p>
+<p class="shipment-hero-description">300 kg of organic cacao nibs from <a href="../../farms/oscar-bahia/index.html" style="color: white; text-decoration: underline;">Oscar's Farm</a>, Bahia</p>
 <div class="trees-badge">
 <div class="trees-badge-label">Tree Planting Financed</div>
 <div class="trees-badge-number" data-default="0" data-shipment-id="agl4" data-trees-sold="" id="trees-planted">0</div>
@@ -769,7 +932,7 @@
 <img alt="AGL4 - Oscar's Farm" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif"/>
 <h2>AGL4</h2>
 <p style="color: var(--color-text-light); line-height: 1.8;">
-                    300 kg of organic cacao nibs from Bahia small-scale farmers, air-freighted as an early organic bridge shipment. This shipment represents the legacy of three generations of cacao wisdom, with 80-year-old trees still producing today.
+                    300 kg of organic cacao nibs from <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">Oscar's farm</a> in Bahia, air-freighted as an early organic bridge shipment. This shipment represents the legacy of three generations of cacao wisdom, with 80-year-old trees still producing today.
                 </p>
 </div>
 <div class="shipment-info">
@@ -816,6 +979,26 @@
 </ul>
 </div>
 </div>
+<!-- Taste Profile Section -->
+<div class="taste-profile-section" style="margin: 3rem 0; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(59, 51, 51, 0.05) 100%); border-radius: 16px; border: 2px solid rgba(139, 69, 19, 0.2);">
+<h3 style="margin-top: 0; margin-bottom: 1.5rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 32px;">Taste Profile</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;" class="taste-profile-grid">
+<div class="taste-description">
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+AGL4 from <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Oscar's farm</a> presents a distinctive <strong>deep, dark European chocolate</strong> taste profile that speaks to the heritage of 80-year-old Criolla trees. This cacao is exceptionally <strong>buttery</strong>—so rich and smooth that it literally wraps around your tongue, creating a luxurious, velvety mouthfeel that lingers long after the first taste.
+</p>
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+The flavor profile is characterized by its <strong>intense chocolate notes</strong> with subtle undertones of earth and wood, reflecting the mature trees and regenerative farming practices. The buttery texture is complemented by a <strong>smooth, low-acidity finish</strong> that makes this cacao ideal for both ceremonial use and premium chocolate making. This is a cacao that demands to be savored slowly, allowing each layer of flavor to unfold on the palate.
+</p>
+<p style="font-size: 1rem; line-height: 1.8; color: var(--color-text-light); font-style: italic;">
+Perfect for those seeking a traditional, rich chocolate experience with exceptional mouthfeel and depth.
+</p>
+</div>
+<div id="taste-profile-chart" class="taste-chart" style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; overflow: visible;">
+<!-- Taste profile chart will be rendered here -->
+</div>
+</div>
+</div>
 <!-- Transparency Section - Secondary Action -->
 <div class="transparency-section">
 <h3>Want to Verify the Full Ledger?</h3>
@@ -823,7 +1006,7 @@
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl4" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
 </div>
 <!-- Location Map Section -->
-<div class="location-section" style="margin: 3rem 0; padding: 2rem 0;">
+<div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">
 <h3 style="margin-top: 0; margin-bottom: 1rem; font-family: var(--font-heading); color: var(--color-primary);">Farm Location</h3>
 <div id="map-agl4" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 1rem; border: 2px solid rgba(59, 51, 51, 0.1);"></div>
 <p style="margin-top: 0.5rem; text-align: center;">
@@ -835,10 +1018,10 @@
 <div class="farmer-profile">
 <img alt="Oscar" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif"/>
 <div class="farmer-details">
-<h3>Oscar</h3>
+<h3><a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: none;">Oscar</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Bahia, Brazil</strong></p>
 <p style="line-height: 1.8;">
-                        Three generations of cacao wisdom. Oscar's grandfather planted trees 80 years ago that are still producing today—a testament to regenerative farming that spans generations. His 100-year-old farm features 80-year-old Criolla trees yielding 900-1000kg/hectare, proving that well-tended native varieties can thrive for over a century.
+                        Three generations of cacao wisdom. <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">Oscar's</a> grandfather planted trees 80 years ago that are still producing today—a testament to regenerative farming that spans generations. His 100-year-old farm features 80-year-old Criolla trees yielding 900-1000kg/hectare, proving that well-tended native varieties can thrive for over a century.
                     </p>
 <p style="margin-top: 1rem; color: var(--color-primary); font-weight: 600;">
                         🌳 80-year-old trees • Three generations • Fine-flavored cacao selection
@@ -848,7 +1031,7 @@
 </div>
 </div>
 
-<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl2/">← <span class="nav-label">AGL2</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl5/"><span class="nav-label">AGL5</span> →</a></div></nav><footer id="contact">
+<nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../agl2/"><span class="nav-direction">← Previous</span><span class="nav-label">AGL2</span><span class="nav-subtitle">Fazenda Santa Ana</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../agl5/"><span class="nav-direction">Next →</span><span class="nav-label">AGL5</span><span class="nav-subtitle">Fazenda Analuana</span></a></div></nav><footer id="contact">
 <div class="footer-content">
 <h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
 <p>Regenerating our Amazon rainforest, One Cacao at a time</p>
@@ -866,6 +1049,8 @@
 <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
 </div>
 </footer>
+<!-- D3.js for taste profile visualization -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <!-- Leaflet JS for maps -->
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1066,10 +1251,224 @@
             }
         })();
         
+        // Taste Profile Visualization
+        function renderTasteProfile() {
+            const container = document.getElementById('taste-profile-chart');
+            if (!container || typeof d3 === 'undefined') return;
+            
+            const data = {
+                batchId: 'AGL4',
+                origin: "Oscar's Farm - Bahia, Brazil",
+                profiles: {
+                    chocolate: { intensity: 9, notes: ['Deep Dark European', 'Intense'], color: '#8B4513' },
+                    buttery: { intensity: 10, notes: ['Velvety', 'Wraps around tongue'], color: '#D4AF37' },
+                    earth: { intensity: 5, notes: ['Woody', 'Mature trees'], color: '#6B4423' },
+                    smooth: { intensity: 9, notes: ['Low acidity', 'Lingering finish'], color: '#C9A961' },
+                    intensity: { intensity: 8, notes: ['Rich', 'Full-bodied'], color: '#5C4033' }
+                }
+            };
+            
+            const containerWidth = container.clientWidth || container.offsetWidth || 500;
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Mobile: Horizontal Bar Chart
+                const margin = { top: 20, right: 20, bottom: 40, left: 100 };
+                const width = Math.min(containerWidth - margin.left - margin.right, 400);
+                const height = Object.keys(data.profiles).length * 50 + margin.top + margin.bottom;
+                
+                const svg = d3.select(container)
+                    .append('svg')
+                    .attr('width', width + margin.left + margin.right)
+                    .attr('height', height)
+                    .attr('class', 'taste-bar-chart');
+                
+                const g = svg.append('g')
+                    .attr('transform', `translate(${margin.left},${margin.top})`);
+                
+                const xScale = d3.scaleLinear()
+                    .domain([0, 10])
+                    .range([0, width]);
+                
+                const yScale = d3.scaleBand()
+                    .domain(Object.keys(data.profiles))
+                    .range([0, height - margin.top - margin.bottom])
+                    .padding(0.2);
+                
+                const categories = Object.keys(data.profiles);
+                
+                // Bars
+                g.selectAll('.bar')
+                    .data(categories)
+                    .enter()
+                    .append('rect')
+                    .attr('class', 'bar')
+                    .attr('x', 0)
+                    .attr('y', d => yScale(d))
+                    .attr('width', d => xScale(data.profiles[d].intensity))
+                    .attr('height', yScale.bandwidth())
+                    .attr('fill', d => data.profiles[d].color)
+                    .attr('opacity', 0.85)
+                    .on('mouseover', function(event, d) {
+                        d3.select(this).attr('opacity', 1);
+                    })
+                    .on('mouseout', function() {
+                        d3.select(this).attr('opacity', 0.85);
+                    });
+                
+                // Labels
+                g.selectAll('.label')
+                    .data(categories)
+                    .enter()
+                    .append('text')
+                    .attr('class', 'label')
+                    .attr('x', -5)
+                    .attr('y', d => yScale(d) + yScale.bandwidth() / 2)
+                    .attr('dy', '0.35em')
+                    .attr('text-anchor', 'end')
+                    .style('font-size', '14px')
+                    .style('fill', '#3b3333')
+                    .text(d => d.charAt(0).toUpperCase() + d.slice(1));
+                
+                // Intensity values
+                g.selectAll('.value')
+                    .data(categories)
+                    .enter()
+                    .append('text')
+                    .attr('class', 'value')
+                    .attr('x', d => xScale(data.profiles[d].intensity) + 5)
+                    .attr('y', d => yScale(d) + yScale.bandwidth() / 2)
+                    .attr('dy', '0.35em')
+                    .style('font-size', '12px')
+                    .style('fill', '#3b3333')
+                    .style('font-weight', '600')
+                    .text(d => `${data.profiles[d].intensity}/10`);
+                
+                // X-axis
+                g.append('g')
+                    .attr('transform', `translate(0,${height - margin.top - margin.bottom})`)
+                    .call(d3.axisBottom(xScale).ticks(5))
+                    .style('font-size', '12px');
+            } else {
+                // Desktop: Radial Chart
+                const padding = 40;
+                const maxWidth = 500;
+                const width = Math.min(maxWidth, containerWidth - (padding * 2));
+                const height = width;
+                const radius = width / 2 - padding;
+                const centerX = width / 2;
+                const centerY = height / 2;
+                
+                const svg = d3.select(container)
+                    .append('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                    .attr('class', 'taste-wheel');
+                
+                const tooltip = d3.select('body')
+                    .append('div')
+                    .attr('class', 'taste-tooltip')
+                    .style('opacity', 0);
+                
+                const categories = Object.keys(data.profiles);
+                const anglePerCategory = (2 * Math.PI) / categories.length;
+                
+                categories.forEach((category, i) => {
+                    const profile = data.profiles[category];
+                    const startAngle = i * anglePerCategory - Math.PI / 2;
+                    const endAngle = (i + 1) * anglePerCategory - Math.PI / 2;
+                    const intensity = profile.intensity / 10;
+                    const outerRadius = radius * intensity;
+                    
+                    const arc = d3.arc()
+                        .innerRadius(radius * 0.3)
+                        .outerRadius(outerRadius)
+                        .startAngle(startAngle)
+                        .endAngle(endAngle);
+                    
+                    const segment = svg.append('path')
+                        .attr('d', arc)
+                        .attr('transform', `translate(${centerX}, ${centerY})`)
+                        .attr('fill', profile.color)
+                        .attr('stroke', '#fff')
+                        .attr('stroke-width', 2)
+                        .attr('class', 'taste-segment')
+                        .style('opacity', 0.85)
+                        .on('mouseover', function(event) {
+                            d3.select(this).style('opacity', 1);
+                            tooltip.transition().duration(200).style('opacity', 1);
+                            tooltip.html(`
+                                <strong>${category.charAt(0).toUpperCase() + category.slice(1)}</strong><br>
+                                Intensity: ${profile.intensity}/10<br>
+                                ${profile.notes.join(', ')}
+                            `)
+                            .style('left', (event.pageX + 10) + 'px')
+                            .style('top', (event.pageY - 10) + 'px');
+                        })
+                        .on('mouseout', function() {
+                            d3.select(this).style('opacity', 0.85);
+                            tooltip.transition().duration(200).style('opacity', 0);
+                        });
+                    
+                    // Add label
+                    const labelAngle = (startAngle + endAngle) / 2;
+                    const labelRadius = radius * 0.65;
+                    const labelX = centerX + Math.cos(labelAngle) * labelRadius;
+                    const labelY = centerY + Math.sin(labelAngle) * labelRadius;
+                    
+                    svg.append('text')
+                        .attr('x', labelX)
+                        .attr('y', labelY)
+                        .attr('text-anchor', 'middle')
+                        .attr('class', 'taste-label')
+                        .text(category.charAt(0).toUpperCase() + category.slice(1));
+                    
+                    // Add intensity number
+                    const intensityRadius = radius * 0.5;
+                    const intensityX = centerX + Math.cos(labelAngle) * intensityRadius;
+                    const intensityY = centerY + Math.sin(labelAngle) * intensityRadius;
+                    
+                    svg.append('text')
+                        .attr('x', intensityX)
+                        .attr('y', intensityY)
+                        .attr('text-anchor', 'middle')
+                        .attr('class', 'taste-intensity')
+                        .text(profile.intensity);
+                });
+                
+                // Add center circle
+                svg.append('circle')
+                    .attr('cx', centerX)
+                    .attr('cy', centerY)
+                    .attr('r', radius * 0.3)
+                    .attr('fill', '#3b3333')
+                    .attr('stroke', '#fff')
+                    .attr('stroke-width', 2);
+                
+                svg.append('text')
+                    .attr('x', centerX)
+                    .attr('y', centerY - 5)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'white')
+                    .attr('font-size', '14px')
+                    .attr('font-weight', '600')
+                    .text('AGL4');
+                
+                svg.append('text')
+                    .attr('x', centerX)
+                    .attr('y', centerY + 15)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', 'white')
+                    .attr('font-size', '11px')
+                    .text('Taste Profile');
+            }
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             updateTreesPlanted();
             initializePage('agl4');
             setupHeroVideo();
+            renderTasteProfile();
         });
         
         // Also update on page visibility change (when user returns to tab)
@@ -1079,7 +1478,10 @@
             }
         });
     </script>
-<div class="mobile-menu-overlay"></div><script>
+<div class="mobile-menu-overlay"></div>
+<!-- Shared Navigation JavaScript -->
+<script src="../../js/navigation.js"></script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuToggle = document.querySelector('.mobile-menu-toggle');
         const mobileMenu = document.querySelector('.mobile-menu');
