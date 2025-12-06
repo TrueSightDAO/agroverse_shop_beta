@@ -83,14 +83,21 @@ rsync -av \
     --delete \
     "$SOURCE/" "$DEST/"
 
-# Restore destination CNAME
-echo "$DEST_CNAME" > "$DEST/CNAME"
-echo -e "${GREEN}✓${NC} Restored destination CNAME: $DEST_CNAME"
+# Restore destination CNAME (only if it changed)
+cd "$DEST"
+CURRENT_CNAME=$(cat CNAME 2>/dev/null || echo "")
+if [ "$CURRENT_CNAME" != "$DEST_CNAME" ]; then
+    echo "$DEST_CNAME" > "$DEST/CNAME"
+    echo -e "${GREEN}✓${NC} Restored destination CNAME: $DEST_CNAME"
+    CNAME_CHANGED=true
+else
+    echo -e "${GREEN}✓${NC} CNAME already correct: $DEST_CNAME"
+    CNAME_CHANGED=false
+fi
 
 # Show what changed
 echo ""
 echo -e "${YELLOW}Changes in destination:${NC}"
-cd "$DEST"
 git status --short
 
 # Ask to commit
@@ -98,7 +105,16 @@ echo ""
 read -p "Commit and push changes? (y/N): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    git add .
+    # Stage all files except CNAME first
+    git add -A
+    # If CNAME changed, stage it separately to avoid resetting Pages settings
+    if [ "$CNAME_CHANGED" = true ]; then
+        git reset HEAD CNAME
+        # Only add CNAME if it's actually different from what's in git
+        if ! git diff --quiet HEAD -- CNAME 2>/dev/null; then
+            git add CNAME
+        fi
+    fi
     git commit -m "Sync from $SOURCE_NAME repo (CNAME preserved)"
     
     read -p "Push to remote? (y/N): " -n 1 -r
