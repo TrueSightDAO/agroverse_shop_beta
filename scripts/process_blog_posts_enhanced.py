@@ -596,6 +596,16 @@ def generate_blog_post_html(blog_data, url_slug):
             }}
         }}
     </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6EP25EHF4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S6EP25EHF4');
+    </script>
 </head>
 <body>
     <header>
