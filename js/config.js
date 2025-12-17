@@ -75,6 +75,9 @@
   // Using the same key from dapp repository
   const GOOGLE_PLACES_API_KEY = 'AIzaSyCJvOEQgMAqLPzQnTkFfH-wWMhusNTpWaE';
 
+  // Facebook Pixel ID
+  const FACEBOOK_PIXEL_ID = '2896386767418228';
+
   // Determine environment for API calls
   const environment = isLocal || isDevelopment ? 'development' : 'production';
 
@@ -86,6 +89,7 @@
     baseUrl: baseUrl,
     googleScriptUrl: GOOGLE_SCRIPT_URL,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
+    facebookPixelId: FACEBOOK_PIXEL_ID,
     stripe: STRIPE_CONFIG,
     environment: environment,
     

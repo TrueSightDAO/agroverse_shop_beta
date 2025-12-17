@@ -379,6 +379,24 @@
         window.trackPurchase(order.sessionId, cart, shipping, tax);
       }
 
+      // Track Facebook Pixel Purchase event
+      if (window.trackFacebookPurchase && order.sessionId) {
+        // Format order items for Facebook Pixel
+        const cart = {
+          items: (order.items || []).map(item => ({
+            productId: item.productId || '',
+            name: item.name || '',
+            price: parseFloat(item.price) || 0,
+            quantity: parseInt(item.quantity) || 1,
+            category: item.category || 'retail'
+          }))
+        };
+        
+        const shipping = parseFloat(order.shippingCost) || 0;
+        const tax = 0;
+        window.trackFacebookPurchase(order.sessionId, cart, shipping, tax);
+      }
+
       displayOrderStatus(order);
     } catch (error) {
       console.error('Order status error:', error);

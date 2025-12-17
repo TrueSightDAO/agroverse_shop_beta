@@ -274,6 +274,11 @@
       window.trackRemoveFromCart(itemToRemove);
     }
     
+    // Track Facebook Pixel RemoveFromCart event
+    if (success && itemToRemove && window.trackFacebookRemoveFromCart) {
+      window.trackFacebookRemoveFromCart(itemToRemove);
+    }
+    
     return success;
   }
 

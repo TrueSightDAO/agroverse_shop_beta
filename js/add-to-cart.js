@@ -128,6 +128,11 @@
       window.trackAddToCart(product);
     }
 
+    // Track Facebook Pixel AddToCart event
+    if (success && window.trackFacebookAddToCart) {
+      window.trackFacebookAddToCart(product);
+    }
+
     // Reset processing flag after a short delay
     setTimeout(() => {
       button.dataset.processing = 'false';
