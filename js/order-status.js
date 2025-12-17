@@ -361,6 +361,24 @@
       // Save order to history
       saveOrderToHistory(order);
 
+      // Track GA4 purchase event
+      if (window.trackPurchase && order.sessionId) {
+        // Format order items for GA4
+        const cart = {
+          items: (order.items || []).map(item => ({
+            productId: item.productId || '',
+            name: item.name || '',
+            price: parseFloat(item.price) || 0,
+            quantity: parseInt(item.quantity) || 1,
+            category: item.category || 'retail'
+          }))
+        };
+        
+        const shipping = parseFloat(order.shippingCost) || 0;
+        const tax = 0; // Tax is typically included in the amount
+        window.trackPurchase(order.sessionId, cart, shipping, tax);
+      }
+
       displayOrderStatus(order);
     } catch (error) {
       console.error('Order status error:', error);

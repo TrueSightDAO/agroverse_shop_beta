@@ -218,6 +218,11 @@
       // Submit quote request
       await submitQuoteRequest(formData);
       
+      // Track GA4 generate_lead event
+      if (window.trackGenerateLead) {
+        window.trackGenerateLead(0, 'USD'); // Quote requests don't have a value
+      }
+      
       // Show success
       showSuccess();
     } catch (error) {

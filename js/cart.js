@@ -264,8 +264,17 @@
   function removeFromCart(productId) {
     const cart = getCart();
     const normalizedId = normalizeProductId(productId);
+    const itemToRemove = cart.items.find(item => normalizeProductId(item.productId) === normalizedId);
+    
     cart.items = cart.items.filter(item => normalizeProductId(item.productId) !== normalizedId);
-    return saveCart(cart);
+    const success = saveCart(cart);
+    
+    // Track GA4 remove_from_cart event
+    if (success && itemToRemove && window.trackRemoveFromCart) {
+      window.trackRemoveFromCart(itemToRemove);
+    }
+    
+    return success;
   }
 
   /**
@@ -323,7 +332,24 @@
    * Get cart data
    */
   function getCartData() {
-    return getCart();
+    const cart = getCart();
+    
+    // Track view_cart event when cart is accessed (for cart page views)
+    // Only track if we're on a cart/checkout page to avoid over-tracking
+    if (window.location.pathname.includes('/cart') || window.location.pathname.includes('/checkout')) {
+      if (window.trackViewCart && cart.items && cart.items.length > 0) {
+        // Use a small delay to ensure this doesn't fire too frequently
+        if (!window._cartViewTracked) {
+          window._cartViewTracked = true;
+          setTimeout(() => {
+            window.trackViewCart(cart);
+            window._cartViewTracked = false;
+          }, 1000);
+        }
+      }
+    }
+    
+    return cart;
   }
 
   // Export public API

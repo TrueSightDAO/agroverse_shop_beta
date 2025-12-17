@@ -218,6 +218,15 @@
           window.CheckoutShippingCalculator.setSelectedRate(selectedRate);
         }
         
+        // Track GA4 add_shipping_info event
+        if (selectedRate && window.trackAddShippingInfo && window.Cart) {
+          var cart = window.Cart.getCart();
+          if (cart) {
+            var shippingTier = selectedRate.service || 'standard';
+            window.trackAddShippingInfo(cart, shippingTier);
+          }
+        }
+        
         // Update visual selection
         var labels = shippingRatesContainer.querySelectorAll('.shipping-option');
         for (var n = 0; n < labels.length; n++) {
