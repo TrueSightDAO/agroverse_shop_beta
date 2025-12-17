@@ -398,6 +398,131 @@ const PRODUCTS = {
 - In ounces (converted automatically)
 - Displayed on product pages (optional)
 
+## 📱 Product Feed (Facebook & Google Merchant Center)
+
+The site generates a Google Shopping-compatible product feed XML file that works with both **Facebook Commerce Manager** and **Google Merchant Center**.
+
+### Feed URL
+- **Production**: `https://www.agroverse.shop/facebook_product_feed.xml`
+- **File Location**: `facebook_product_feed.xml` (root directory)
+- **Format**: RSS 2.0 with Google Shopping namespace (compatible with both platforms)
+
+### Generating the Feed
+
+**Script**: `scripts/generate_facebook_feed.py`
+
+**Usage:**
+```bash
+cd /Users/garyjob/Applications/agroverse_shop
+python3 scripts/generate_facebook_feed.py
+```
+
+**What it does:**
+- Reads products from `js/products.js`
+- Generates Google Shopping-compatible XML feed (works for Facebook and Google)
+- Outputs to `facebook_product_feed.xml`
+- Includes all required fields for both platforms (id, title, description, link, image_link, availability, condition, price, brand, google_product_category, etc.)
+
+**When to regenerate:**
+- After adding new products
+- After updating product information (name, price, images)
+- After changing product availability
+
+**Note on Wholesale Products:**
+- By default, wholesale products (price: $0) are **excluded** from the feed
+- Google Merchant Center rejects products with $0.00 price
+- Only retail products with valid prices are included
+- To include wholesale products, run: `python3 scripts/generate_facebook_feed.py --include-wholesale`
+
+### Setting Up in Facebook Commerce Manager
+
+1. **Go to Facebook Commerce Manager**
+   - Visit [Facebook Commerce Manager](https://business.facebook.com/commerce)
+   - Navigate to your catalog
+
+2. **Add Data Source**
+   - Go to **Catalog** → **Data Sources**
+   - Click **Add Data Source**
+   - Select **Upload feed file** or **Use a data feed**
+
+3. **Configure Feed**
+   - **Feed URL**: `https://www.agroverse.shop/facebook_product_feed.xml`
+   - **Update Schedule**: Set to daily or weekly (Facebook will automatically fetch updates)
+   - **Feed Format**: XML (RSS 2.0 with Google Shopping namespace)
+
+4. **Verify Feed**
+   - Facebook will validate the feed
+   - Check for any errors or warnings
+   - Products should appear in your catalog within a few minutes
+
+### Setting Up in Google Merchant Center
+
+1. **Create Google Merchant Center Account**
+   - Visit [Google Merchant Center](https://www.google.com/retail/solutions/merchant-center/)
+   - Sign up or log in with your Google account
+   - Complete the account setup and verify your website
+
+2. **Add Product Feed**
+   - Go to **Products** → **Feeds**
+   - Click the **+** button to add a new feed
+   - Select your target country and language
+
+3. **Configure Feed**
+   - **Input method**: Select **Scheduled fetch**
+   - **Feed name**: Enter a name (e.g., "Agroverse Shop Products")
+   - **File URL**: `https://www.agroverse.shop/facebook_product_feed.xml`
+   - **Fetch frequency**: Set to daily or weekly
+   - **Fetch time**: Choose a time (e.g., 2:00 AM)
+
+4. **Verify and Submit**
+   - Click **Save** to create the feed
+   - Google will fetch and validate the feed
+   - Check **Diagnostics** for any errors or warnings
+   - Products should appear in your Merchant Center within 24-48 hours
+
+5. **Link to Google Ads (Optional)**
+   - To run Shopping ads, link your Merchant Center to Google Ads
+   - Go to **Settings** → **Linked accounts** → **Google Ads**
+   - Follow the linking process
+
+### Troubleshooting
+
+**Feed not updating:**
+- Ensure the XML file is committed and pushed to GitHub
+- Verify the feed URL is accessible (try opening it in a browser)
+- Check that GitHub Pages is serving the file correctly
+
+**Products missing:**
+- Check that product images are accessible (absolute URLs required)
+- Verify all required fields are present in the feed
+- Review platform-specific requirements
+
+**Validation errors:**
+- **Facebook**: Check Commerce Manager diagnostics for specific errors
+- **Google**: Review Merchant Center diagnostics and fix any issues
+- Common issues: missing images, invalid prices, incorrect availability status
+
+**Wholesale products:**
+- Wholesale products ($0.00 price) are **automatically excluded** from the feed
+- This prevents Google Merchant Center rejection
+- The feed only includes retail products with valid prices ($25.00)
+- If you need to include wholesale products, use the `--include-wholesale` flag (not recommended for Google)
+
+### Feed Contents
+
+The feed includes:
+- ✅ **Retail products only** (products with valid prices > $0)
+- ✅ Complete product information (titles, descriptions, prices)
+- ✅ Product images (absolute URLs)
+- ✅ Product page links
+- ✅ Availability status
+- ✅ Custom labels (farm name, shipment ID)
+- ✅ Product categories
+
+**Current feed**: 4 retail products, all priced at $25.00 USD
+
+**Note**: Wholesale products ($0.00 price) are automatically excluded to prevent Google Merchant Center rejection. To include them, use the `--include-wholesale` flag (not recommended for Google).
+
 ## 🐛 Troubleshooting
 
 ### Cart Icon Not Showing
@@ -483,5 +608,5 @@ For issues or questions:
 
 ---
 
-**Last Updated**: 2025-01-22  
-**Version**: 1.0.0
+**Last Updated**: 2025-12-12  
+**Version**: 1.1.0
