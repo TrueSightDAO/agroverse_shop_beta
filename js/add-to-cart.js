@@ -123,6 +123,11 @@
     // Add to cart
     const success = window.Cart.add(product);
 
+    // Track GA4 add_to_cart event
+    if (success && window.trackAddToCart) {
+      window.trackAddToCart(product);
+    }
+
     // Reset processing flag after a short delay
     setTimeout(() => {
       button.dataset.processing = 'false';
