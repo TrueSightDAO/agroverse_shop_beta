@@ -316,6 +316,11 @@
         window.CheckoutFormStorage.save(formData);
       }
 
+      // Track add_payment_info event (payment info is added when checkout session is created)
+      if (window.trackAddPaymentInfo) {
+        window.trackAddPaymentInfo(cart, 'stripe');
+      }
+
       // Create checkout session
       var checkoutUrl = await createCheckoutSession(cart, formData);
       
@@ -332,6 +337,14 @@
    * Initialize checkout page
    */
   function initCheckout() {
+    // Track begin_checkout when page loads
+    if (window.trackBeginCheckout) {
+      const cart = window.Cart.getCart();
+      if (cart && cart.items && cart.items.length > 0) {
+        window.trackBeginCheckout(cart);
+      }
+    }
+
     const form = document.getElementById('checkout-form');
     if (form) {
       form.addEventListener('submit', handleCheckoutSubmit);
