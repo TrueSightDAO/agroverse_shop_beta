@@ -57,9 +57,18 @@
     }
 
     // Track view_item if we found a product
-    if (productId && window.PRODUCTS[productId] && window.trackViewItem) {
+    if (productId && window.PRODUCTS[productId]) {
       const product = window.PRODUCTS[productId];
-      window.trackViewItem(product);
+      
+      // Track GA4 view_item
+      if (window.trackViewItem) {
+        window.trackViewItem(product);
+      }
+      
+      // Track Facebook Pixel ViewContent
+      if (window.trackFacebookViewContent) {
+        window.trackFacebookViewContent(product);
+      }
     }
   }
 

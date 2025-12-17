@@ -222,6 +222,11 @@
       if (window.trackGenerateLead) {
         window.trackGenerateLead(0, 'USD'); // Quote requests don't have a value
       }
+
+      // Track Facebook Pixel Lead event
+      if (window.trackFacebookLead) {
+        window.trackFacebookLead(0);
+      }
       
       // Show success
       showSuccess();
