@@ -2196,66 +2196,147 @@ function getExistingSessionIds(sheet) {
  */
 function sendTrackingEmails() {
   try {
-    // Default to production for scheduled emails (can be enhanced to check both)
-    var CONFIG = getConfig('production');
+    // Check both environments - use the same sheet for both
+    var environments = ['production', 'development'];
+    
+    for (var envIdx = 0; envIdx < environments.length; envIdx++) {
+      var environment = environments[envIdx];
+      var CONFIG = getConfig(environment);
+      
+      if (!CONFIG.stripeSecretKey) {
+        Logger.log('Skipping ' + environment + ' - Stripe key not configured');
+        continue;
+      }
+      
     var sheet = SpreadsheetApp.openById(CONFIG.sheetId).getSheetByName(CONFIG.sheetName);
+      if (!sheet) {
+        Logger.log('Sheet not found for ' + environment + ': ' + CONFIG.sheetName);
+        continue;
+      }
+      
     var data = sheet.getDataRange().getValues();
+      Logger.log('Processing ' + environment + ' environment: ' + (data.length - 1) + ' rows');
 
     // Skip header row
     for (var i = 1; i < data.length; i++) {
       var row = data[i];
-      
-      // Current sheet structure:
-      // Column C (index 2): Stripe Session ID
-      // Column N (index 13): Tracking Number
-      var sessionId = row[2]; // Column C
-      var trackingNumber = row[13]; // Column N (Tracking Number)
-      
-      // Check if tracking number exists
-      if (!trackingNumber || !trackingNumber.toString().trim()) {
-        continue; // Skip rows without tracking numbers
-      }
-      
-      trackingNumber = trackingNumber.toString().trim();
-      
-      // Check if email was already sent (Column O - index 14, if it exists)
-      var emailSent = row[14] || '';
-      if (emailSent && emailSent.toString().trim() === 'Yes') {
-        continue; // Skip if email already sent
-      }
-      
-      // Get customer email from Stripe session
-      var customerEmail = null;
-      try {
-        var stripeSession = retrieveStripeSession(sessionId, CONFIG.stripeSecretKey);
-        if (stripeSession) {
-          customerEmail = (stripeSession.customer_details && stripeSession.customer_details.email) 
-            || stripeSession.customer_email 
-            || null;
+        
+        // Current sheet structure:
+        // Column C (index 2): Stripe Session ID
+        // Column N (index 13): Tracking Number
+        var sessionId = row[2]; // Column C
+        
+        if (!sessionId || !sessionId.toString().trim()) {
+          continue; // Skip rows without session ID
         }
-      } catch (stripeError) {
-        Logger.log('Error retrieving Stripe session ' + sessionId + ': ' + stripeError.toString());
-        continue; // Skip if we can't get email
-      }
-      
-      if (!customerEmail) {
-        Logger.log('No email found for session ' + sessionId + ', skipping');
-        continue;
-      }
-      
-      // Send tracking email
-      try {
-        sendTrackingEmail(customerEmail, sessionId, trackingNumber);
         
-        // Mark email as sent in Column O (index 14)
-        // If Column O doesn't exist, we'll create it
-        var emailSentColumn = 15; // Column O (1-based)
-        sheet.getRange(i + 1, emailSentColumn).setValue('Yes');
-        sheet.getRange(i + 1, emailSentColumn + 1).setValue(new Date().toISOString()); // Column P: Timestamp
+        sessionId = sessionId.toString().trim();
         
-        Logger.log('Tracking email sent for session: ' + sessionId);
-      } catch (emailError) {
-        Logger.log('Error sending tracking email for session ' + sessionId + ': ' + emailError.toString());
+        // Determine if this session belongs to this environment
+        // Test sessions start with "cs_test_", live sessions start with "cs_live_"
+        var isTestSession = sessionId.indexOf('cs_test_') === 0;
+        var isLiveSession = sessionId.indexOf('cs_live_') === 0;
+        
+        // Skip if session doesn't match environment
+        if (environment === 'production' && isTestSession) {
+          continue; // Production environment, but this is a test session
+        }
+        if (environment === 'development' && isLiveSession) {
+          continue; // Development environment, but this is a live session
+        }
+        
+        var trackingNumber = row[13]; // Column N (Tracking Number)
+        
+        // Check if tracking number exists
+        if (!trackingNumber || !trackingNumber.toString().trim()) {
+          continue; // Skip rows without tracking numbers
+        }
+        
+        trackingNumber = trackingNumber.toString().trim();
+        
+        // Check if email was already sent (Column O - index 14, if it exists)
+        var emailSent = row[14] || '';
+        if (emailSent && emailSent.toString().trim() === 'Yes') {
+          continue; // Skip if email already sent
+        }
+        
+        // Get customer email and order details from Stripe session
+        var customerEmail = null;
+        var orderItems = [];
+        var shippingAddress = null;
+        try {
+          var stripeSession = retrieveStripeSession(sessionId, CONFIG.stripeSecretKey);
+          if (stripeSession) {
+            customerEmail = (stripeSession.customer_details && stripeSession.customer_details.email) 
+              || stripeSession.customer_email 
+              || null;
+            
+            // Extract order items
+            var lineItems = (stripeSession.line_items && stripeSession.line_items.data) || [];
+            for (var itemIdx = 0; itemIdx < lineItems.length; itemIdx++) {
+              var item = lineItems[itemIdx];
+              orderItems.push({
+                name: item.description || 'Product',
+                quantity: item.quantity || 1,
+                amount: ((item.amount_total || 0) / 100).toFixed(2)
+              });
+            }
+            
+            // Extract shipping address
+            if (stripeSession.shipping_details && stripeSession.shipping_details.address) {
+              var addr = stripeSession.shipping_details.address;
+              shippingAddress = {
+                name: stripeSession.shipping_details.name || '',
+                line1: addr.line1 || '',
+                line2: addr.line2 || '',
+                city: addr.city || '',
+                state: addr.state || '',
+                postal_code: addr.postal_code || '',
+                country: addr.country || ''
+              };
+            } else if (stripeSession.shipping && stripeSession.shipping.address) {
+              var addr = stripeSession.shipping.address;
+              shippingAddress = {
+                name: stripeSession.shipping.name || '',
+                line1: addr.line1 || '',
+                line2: addr.line2 || '',
+                city: addr.city || '',
+                state: addr.state || '',
+                postal_code: addr.postal_code || '',
+                country: addr.country || ''
+              };
+            }
+          }
+        } catch (stripeError) {
+          Logger.log('Error retrieving Stripe session ' + sessionId + ' from ' + environment + ': ' + stripeError.toString());
+          continue; // Skip if we can't get email
+        }
+        
+        if (!customerEmail) {
+          Logger.log('No email found for session ' + sessionId + ' in ' + environment + ', skipping');
+          continue;
+        }
+        
+        // Determine base URL based on environment
+        var baseUrl = environment === 'development' 
+          ? 'https://beta.agroverse.shop'
+          : 'https://www.agroverse.shop';
+        var orderStatusUrl = baseUrl + '/order-status?session_id=' + sessionId;
+        
+        // Send tracking email
+        try {
+          sendTrackingEmail(customerEmail, sessionId, trackingNumber, orderItems, shippingAddress, orderStatusUrl, environment);
+          
+          // Mark email as sent in Column O (index 14)
+          // If Column O doesn't exist, we'll create it
+          var emailSentColumn = 15; // Column O (1-based)
+          sheet.getRange(i + 1, emailSentColumn).setValue('Yes');
+          sheet.getRange(i + 1, emailSentColumn + 1).setValue(new Date().toISOString()); // Column P: Timestamp
+          
+          Logger.log('Tracking email sent for session: ' + sessionId + ' (' + environment + ')');
+        } catch (emailError) {
+          Logger.log('Error sending tracking email for session ' + sessionId + ': ' + emailError.toString());
+        }
       }
     }
   } catch (error) {
@@ -2265,17 +2346,69 @@ function sendTrackingEmails() {
 
 /**
  * Send tracking email to customer
+ * @param {string} email Customer email address
+ * @param {string} sessionId Stripe session ID
+ * @param {string} trackingNumber Tracking number
+ * @param {Array} orderItems Array of order items with {name, quantity, amount}
+ * @param {Object} shippingAddress Shipping address object
+ * @param {string} orderStatusUrl URL to view order details
+ * @param {string} environment Environment (development/production)
  */
-function sendTrackingEmail(email, sessionId, trackingNumber) {
+function sendTrackingEmail(email, sessionId, trackingNumber, orderItems, shippingAddress, orderStatusUrl, environment) {
   try {
     var trackingUrl = getTrackingUrl(trackingNumber);
     
     var subject = 'Your Agroverse Order Has Shipped!';
+    
+    // Build items list
+    var itemsList = '';
+    if (orderItems && orderItems.length > 0) {
+      for (var i = 0; i < orderItems.length; i++) {
+        var item = orderItems[i];
+        itemsList += '  • ' + item.name + ' (Qty: ' + item.quantity + ') - $' + item.amount + '\n';
+      }
+    } else {
+      itemsList = '  (Items not available)\n';
+    }
+    
+    // Build shipping address
+    var addressText = '';
+    if (shippingAddress) {
+      addressText = (shippingAddress.name ? shippingAddress.name + '\n' : '') +
+        (shippingAddress.line1 ? shippingAddress.line1 + '\n' : '') +
+        (shippingAddress.line2 ? shippingAddress.line2 + '\n' : '') +
+        (shippingAddress.city || shippingAddress.state || shippingAddress.postal_code 
+          ? (shippingAddress.city || '') + 
+            (shippingAddress.city && shippingAddress.state ? ', ' : '') + 
+            (shippingAddress.state || '') + 
+            ' ' + (shippingAddress.postal_code || '') + '\n'
+          : '') +
+        (shippingAddress.country ? shippingAddress.country + '\n' : '');
+    } else {
+      addressText = 'Address not available\n';
+    }
+    
     var body = 'Hello,\n\n' +
-      'Your order (' + sessionId + ') has been shipped!\n\n' +
+      'Great news! Your Agroverse order has been shipped.\n\n' +
+      
+      '=== ORDER INFORMATION ===\n' +
+      'Order Number: ' + sessionId + '\n\n' +
+      
+      '=== ITEMS SHIPPED ===\n' +
+      itemsList + '\n' +
+      
+      '=== SHIPPING ADDRESS ===\n' +
+      addressText + '\n' +
+      
+      '=== TRACKING INFORMATION ===\n' +
       'Tracking Number: ' + trackingNumber + '\n' +
-      (trackingUrl ? 'Track your package: ' + trackingUrl + '\n' : '') +
-      '\nThank you for your purchase!\n\n' +
+      (trackingUrl ? 'Track your package: ' + trackingUrl + '\n' : '') + '\n' +
+      
+      '=== VIEW ORDER DETAILS ===\n' +
+      'View your complete order details: ' + orderStatusUrl + '\n\n' +
+      
+      'Thank you for your purchase! We appreciate your business.\n\n' +
+      'If you have any questions, please don\'t hesitate to reach out.\n\n' +
       'Best regards,\n' +
       'Agroverse Team';
 
@@ -2326,7 +2459,7 @@ function submitQuoteRequest(data) {
     var quoteData = data.quoteData;
     var environment = data.environment || 'production';
     var CONFIG = getConfig(environment);
-    
+
     // Send email notification to admin
     try {
       var subject = 'New Wholesale Quote Request - ' + (quoteData.businessName || 'Unknown Business');
@@ -2335,8 +2468,8 @@ function submitQuoteRequest(data) {
       var productsList = [];
       var products = quoteData.products || [];
       if (products.length > 0) {
-        for (var p = 0; p < products.length; p++) {
-          var product = products[p];
+      for (var p = 0; p < products.length; p++) {
+        var product = products[p];
           var productLine = '- Product ID: ' + (product.productId || 'N/A');
           if (product.quantity) {
             productLine += ' | Quantity: ' + product.quantity + ' kg';
