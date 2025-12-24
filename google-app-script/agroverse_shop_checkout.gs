@@ -6,6 +6,22 @@
  * for the Agroverse Shop e-commerce platform. Integrates with Google Sheets for order storage
  * and automated tracking email notifications.
  * 
+ * Google Sheet Structure (columns A-N):
+ * A: Timestamp
+ * B: Customer Name
+ * C: Stripe Session ID
+ * D: Wix Order Number (empty for Stripe orders)
+ * E: Wix Order ID (empty for Stripe orders)
+ * F: Items Purchased
+ * G: Total Quantity
+ * H: Amount (total including shipping)
+ * I: Currency
+ * J: Shipping Address
+ * K: Shipping Cost
+ * L: Stripe Transaction Fee
+ * M: Shipping Provider (from Stripe)
+ * N: Tracking Number (manually entered by admin)
+ * 
  * Deployment URL: https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec
  * 
  * SETUP INSTRUCTIONS:
@@ -1056,8 +1072,319 @@ function saveOrderToSheet(session, environment) {
     // Get currency
     var currency = (session.currency && session.currency.toUpperCase()) || 'USD';
 
-    // Map to existing sheet structure:
-    // Timestamp | Customer Name | Stripe Session ID | Wix Order Number | Wix Order ID | Items Purchased | Total Quantity | Amount | Currency
+    // Calculate shipping cost
+    var amountSubtotal = (session.amount_subtotal || 0) / 100;
+    var amountTotal = (session.amount_total || 0) / 100;
+    var shippingCost = amountTotal - amountSubtotal;
+    if (shippingCost < 0) {
+      shippingCost = 0;
+    }
+
+    // Extract shipping address
+    var shippingAddressFormatted = '';
+    if (session.shipping_details && session.shipping_details.address) {
+      var addr = session.shipping_details.address;
+      var addressParts = [];
+      if (addr.line1) addressParts.push(addr.line1);
+      if (addr.line2) addressParts.push(addr.line2);
+      if (addr.city) addressParts.push(addr.city);
+      if (addr.state) addressParts.push(addr.state);
+      if (addr.postal_code) addressParts.push(addr.postal_code);
+      if (addr.country) addressParts.push(addr.country);
+      shippingAddressFormatted = addressParts.join(', ');
+    } else if (session.shipping && session.shipping.address) {
+      var addr = session.shipping.address;
+      var addressParts = [];
+      if (addr.line1) addressParts.push(addr.line1);
+      if (addr.line2) addressParts.push(addr.line2);
+      if (addr.city) addressParts.push(addr.city);
+      if (addr.state) addressParts.push(addr.state);
+      if (addr.postal_code) addressParts.push(addr.postal_code);
+      if (addr.country) addressParts.push(addr.country);
+      shippingAddressFormatted = addressParts.join(', ');
+    }
+
+    // Get Stripe transaction fee
+    var stripeFee = 0;
+    try {
+      if (session.payment_intent) {
+        var paymentIntentId = typeof session.payment_intent === 'string' 
+          ? session.payment_intent 
+          : session.payment_intent.id;
+        
+        // Retrieve payment intent to get charges
+        var paymentIntentUrl = 'https://api.stripe.com/v1/payment_intents/' + paymentIntentId;
+        var paymentIntentResponse = UrlFetchApp.fetch(paymentIntentUrl, {
+          method: 'get',
+          headers: {
+            'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+          },
+          muteHttpExceptions: true
+        });
+        
+        if (paymentIntentResponse.getResponseCode() === 200) {
+          var paymentIntent = JSON.parse(paymentIntentResponse.getContentText());
+          
+          // Get the charge ID from payment intent
+          if (paymentIntent.latest_charge) {
+            var chargeId = typeof paymentIntent.latest_charge === 'string' 
+              ? paymentIntent.latest_charge 
+              : paymentIntent.latest_charge.id;
+            
+            // Retrieve charge to get balance transaction
+            var chargeUrl = 'https://api.stripe.com/v1/charges/' + chargeId;
+            var chargeResponse = UrlFetchApp.fetch(chargeUrl, {
+              method: 'get',
+              headers: {
+                'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+              },
+              muteHttpExceptions: true
+            });
+            
+            if (chargeResponse.getResponseCode() === 200) {
+              var charge = JSON.parse(chargeResponse.getContentText());
+              
+              // Get balance transaction to get fee
+              if (charge.balance_transaction) {
+                var balanceTransactionId = typeof charge.balance_transaction === 'string' 
+                  ? charge.balance_transaction 
+                  : charge.balance_transaction.id;
+                
+                // Retrieve balance transaction
+                var balanceTransactionUrl = 'https://api.stripe.com/v1/balance_transactions/' + balanceTransactionId;
+                var balanceTransactionResponse = UrlFetchApp.fetch(balanceTransactionUrl, {
+                  method: 'get',
+                  headers: {
+                    'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+                  },
+                  muteHttpExceptions: true
+                });
+                
+                if (balanceTransactionResponse.getResponseCode() === 200) {
+                  var balanceTransaction = JSON.parse(balanceTransactionResponse.getContentText());
+                  stripeFee = (balanceTransaction.fee || 0) / 100; // Convert from cents
+                }
+              }
+            }
+          }
+        }
+      }
+    } catch (feeError) {
+      Logger.log('Error retrieving Stripe fee: ' + feeError.toString());
+      // Continue without fee - not critical
+    }
+
+    // Extract shipping provider from Stripe session
+    // Log shipping-related fields for debugging
+    Logger.log('=== DEBUGGING SHIPPING PROVIDER EXTRACTION ===');
+    Logger.log('Session ID: ' + session.id);
+    Logger.log('Session keys: ' + Object.keys(session).join(', '));
+    
+    // Check shipping_cost
+    if (session.shipping_cost) {
+      Logger.log('✓ session.shipping_cost exists');
+      Logger.log('  shipping_cost keys: ' + Object.keys(session.shipping_cost).join(', '));
+      Logger.log('  shipping_cost JSON: ' + JSON.stringify(session.shipping_cost));
+      
+      if (session.shipping_cost.shipping_rate) {
+        Logger.log('  ✓ shipping_cost.shipping_rate exists');
+        Logger.log('    shipping_rate keys: ' + Object.keys(session.shipping_cost.shipping_rate).join(', '));
+        Logger.log('    shipping_rate JSON: ' + JSON.stringify(session.shipping_cost.shipping_rate));
+      } else {
+        Logger.log('  ✗ shipping_cost.shipping_rate does NOT exist');
+      }
+    } else {
+      Logger.log('✗ session.shipping_cost does NOT exist');
+    }
+    
+    // Check shipping_options
+    if (session.shipping_options) {
+      Logger.log('✓ session.shipping_options exists');
+      Logger.log('  shipping_options type: ' + typeof session.shipping_options);
+      Logger.log('  shipping_options is array: ' + Array.isArray(session.shipping_options));
+      if (Array.isArray(session.shipping_options)) {
+        Logger.log('  shipping_options length: ' + session.shipping_options.length);
+        for (var optIdx = 0; optIdx < session.shipping_options.length; optIdx++) {
+          Logger.log('    Option ' + optIdx + ': ' + JSON.stringify(session.shipping_options[optIdx]));
+        }
+      } else {
+        Logger.log('  shipping_options JSON: ' + JSON.stringify(session.shipping_options));
+      }
+    } else {
+      Logger.log('✗ session.shipping_options does NOT exist');
+    }
+    
+    // Check shipping_details
+    if (session.shipping_details) {
+      Logger.log('✓ session.shipping_details exists');
+      Logger.log('  shipping_details keys: ' + Object.keys(session.shipping_details).join(', '));
+    }
+    
+    // Check session.shipping_rate (the selected shipping rate ID)
+    if (session.shipping_rate) {
+      Logger.log('✓ session.shipping_rate exists');
+      Logger.log('  shipping_rate type: ' + typeof session.shipping_rate);
+      Logger.log('  shipping_rate value: ' + (typeof session.shipping_rate === 'string' ? session.shipping_rate : JSON.stringify(session.shipping_rate)));
+    } else {
+      Logger.log('✗ session.shipping_rate does NOT exist');
+    }
+    
+    // Try to extract shipping provider
+    var shippingProvider = '';
+    
+    // Method 1: Check session.shipping_rate (the selected rate ID at session level)
+    if (session.shipping_rate) {
+      var shippingRateId = typeof session.shipping_rate === 'string' 
+        ? session.shipping_rate 
+        : (session.shipping_rate.id || session.shipping_rate);
+      
+      Logger.log('Attempting to extract from session.shipping_rate...');
+      Logger.log('  shipping_rate ID: ' + shippingRateId);
+      
+      // If it's an object (expanded), extract display_name directly
+      if (typeof session.shipping_rate === 'object' && session.shipping_rate.display_name) {
+        shippingProvider = session.shipping_rate.display_name;
+        Logger.log('  ✓ Found display_name from expanded shipping_rate: ' + shippingProvider);
+      } 
+      // If it's a string ID, fetch the shipping rate details
+      else if (typeof shippingRateId === 'string') {
+        Logger.log('  shipping_rate is a string ID, fetching shipping rate details...');
+        try {
+          var shippingRateUrl = 'https://api.stripe.com/v1/shipping_rates/' + shippingRateId;
+          var shippingRateResponse = UrlFetchApp.fetch(shippingRateUrl, {
+            method: 'get',
+            headers: {
+              'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+            },
+            muteHttpExceptions: true
+          });
+          
+          if (shippingRateResponse.getResponseCode() === 200) {
+            var shippingRateData = JSON.parse(shippingRateResponse.getContentText());
+            Logger.log('  Fetched shipping_rate JSON: ' + JSON.stringify(shippingRateData));
+            if (shippingRateData.display_name) {
+              shippingProvider = shippingRateData.display_name;
+              Logger.log('  ✓ Found display_name from fetched rate: ' + shippingProvider);
+            } else if (shippingRateData.id) {
+              shippingProvider = shippingRateData.id;
+              Logger.log('  ✓ Found id from fetched rate: ' + shippingProvider);
+            }
+          } else {
+            Logger.log('  ✗ Failed to fetch shipping rate: ' + shippingRateResponse.getContentText());
+          }
+        } catch (fetchError) {
+          Logger.log('  ✗ Error fetching shipping rate: ' + fetchError.toString());
+        }
+      }
+    }
+    
+    // Method 2: Check shipping_cost.shipping_rate (if it exists)
+    if (!shippingProvider && session.shipping_cost && session.shipping_cost.shipping_rate) {
+      var shippingRate = session.shipping_cost.shipping_rate;
+      Logger.log('Attempting to extract from shipping_cost.shipping_rate...');
+      Logger.log('  shipping_rate type: ' + typeof shippingRate);
+      
+      // If shipping_rate is a string (ID), we need to fetch it separately
+      if (typeof shippingRate === 'string') {
+        Logger.log('  shipping_rate is a string ID, fetching shipping rate details...');
+        try {
+          var shippingRateUrl = 'https://api.stripe.com/v1/shipping_rates/' + shippingRate;
+          var shippingRateResponse = UrlFetchApp.fetch(shippingRateUrl, {
+            method: 'get',
+            headers: {
+              'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+            },
+            muteHttpExceptions: true
+          });
+          
+          if (shippingRateResponse.getResponseCode() === 200) {
+            var shippingRateData = JSON.parse(shippingRateResponse.getContentText());
+            Logger.log('  Fetched shipping_rate JSON: ' + JSON.stringify(shippingRateData));
+            if (shippingRateData.display_name) {
+              shippingProvider = shippingRateData.display_name;
+              Logger.log('  ✓ Found display_name from fetched rate: ' + shippingProvider);
+            } else if (shippingRateData.id) {
+              shippingProvider = shippingRateData.id;
+              Logger.log('  ✓ Found id from fetched rate: ' + shippingProvider);
+            }
+          } else {
+            Logger.log('  ✗ Failed to fetch shipping rate: ' + shippingRateResponse.getContentText());
+          }
+        } catch (fetchError) {
+          Logger.log('  ✗ Error fetching shipping rate: ' + fetchError.toString());
+        }
+      } 
+      // If shipping_rate is an object (expanded), extract directly
+      else if (typeof shippingRate === 'object') {
+        Logger.log('  shipping_rate is an object (expanded)');
+        // Try display_name first, then id, then type
+        if (shippingRate.display_name) {
+          shippingProvider = shippingRate.display_name;
+          Logger.log('  ✓ Found display_name: ' + shippingProvider);
+        } else if (shippingRate.id) {
+          shippingProvider = shippingRate.id;
+          Logger.log('  ✓ Found id: ' + shippingProvider);
+        } else if (shippingRate.type) {
+          shippingProvider = shippingRate.type;
+          Logger.log('  ✓ Found type: ' + shippingProvider);
+        } else {
+          Logger.log('  ✗ No display_name, id, or type found in shipping_rate object');
+          Logger.log('  shipping_rate keys: ' + Object.keys(shippingRate).join(', '));
+        }
+      }
+    }
+    
+    // Method 3: Match shipping_amount from shipping_options with calculated shipping cost
+    if (!shippingProvider && session.shipping_options && Array.isArray(session.shipping_options) && session.shipping_options.length > 0) {
+      Logger.log('Attempting to match shipping_amount from shipping_options...');
+      Logger.log('  Calculated shipping cost (cents): ' + (shippingCost * 100));
+      
+      for (var optIdx = 0; optIdx < session.shipping_options.length; optIdx++) {
+        var option = session.shipping_options[optIdx];
+        var optionAmount = option.shipping_amount || 0;
+        Logger.log('  Option ' + optIdx + ' shipping_amount: ' + optionAmount);
+        
+        // Match by shipping amount (within 1 cent tolerance)
+        if (Math.abs(optionAmount - (shippingCost * 100)) < 1) {
+          Logger.log('  ✓ Matched shipping_amount for option ' + optIdx);
+          var rateId = option.shipping_rate;
+          if (typeof rateId === 'string') {
+            Logger.log('    Fetching shipping rate: ' + rateId);
+            try {
+              var shippingRateUrl = 'https://api.stripe.com/v1/shipping_rates/' + rateId;
+              var shippingRateResponse = UrlFetchApp.fetch(shippingRateUrl, {
+                method: 'get',
+                headers: {
+                  'Authorization': 'Bearer ' + CONFIG.stripeSecretKey
+                },
+                muteHttpExceptions: true
+              });
+              
+              if (shippingRateResponse.getResponseCode() === 200) {
+                var shippingRateData = JSON.parse(shippingRateResponse.getContentText());
+                if (shippingRateData.display_name) {
+                  shippingProvider = shippingRateData.display_name;
+                  Logger.log('    ✓ Found display_name: ' + shippingProvider);
+                  break;
+                }
+              }
+            } catch (fetchError) {
+              Logger.log('    ✗ Error fetching shipping rate: ' + fetchError.toString());
+            }
+          }
+        }
+      }
+      
+      if (!shippingProvider) {
+        Logger.log('  ✗ No matching shipping option found by amount');
+      }
+    }
+    
+    Logger.log('Final shippingProvider value: "' + shippingProvider + '"');
+    Logger.log('=== END SHIPPING PROVIDER DEBUG ===');
+
+    // Map to extended sheet structure:
+    // Timestamp | Customer Name | Stripe Session ID | Wix Order Number | Wix Order ID | Items Purchased | Total Quantity | Amount | Currency | Shipping Address | Shipping Cost | Stripe Fee | Shipping Provider | Tracking Number
     var row = [
       new Date().toISOString(), // Timestamp
       customerName, // Customer Name
@@ -1066,14 +1393,85 @@ function saveOrderToSheet(session, environment) {
       '', // Wix Order ID (empty - not using Wix)
       itemsPurchased, // Items Purchased
       totalQuantity, // Total Quantity
-      totalAmount, // Amount
-      currency // Currency
+      amountTotal, // Amount (total including shipping)
+      currency, // Currency
+      shippingAddressFormatted, // Shipping Address
+      shippingCost.toFixed(2), // Shipping Cost
+      stripeFee.toFixed(2), // Stripe Transaction Fee
+      shippingProvider, // Shipping Provider (Column M)
+      '' // Tracking Number (Column N - empty initially, to be filled by admin)
     ];
 
     sheet.appendRow(row);
     Logger.log('Order saved: ' + session.id);
+    Logger.log('  Shipping Address: ' + (shippingAddressFormatted || 'N/A'));
+    Logger.log('  Shipping Cost: $' + shippingCost.toFixed(2));
+    Logger.log('  Shipping Provider: ' + (shippingProvider || 'N/A'));
+    Logger.log('  Stripe Fee: $' + stripeFee.toFixed(2));
+
+    // Send notification email to admin
+    try {
+      sendOrderNotificationEmail(session, customerName, customerEmail, itemsPurchased, totalQuantity, amountTotal, shippingCost, shippingAddressFormatted, stripeFee, currency);
+    } catch (emailError) {
+      Logger.log('Error sending notification email (non-critical): ' + emailError.toString());
+      // Continue - order is saved successfully
+    }
   } catch (error) {
     Logger.log('Error saving order: ' + error.toString());
+    throw error;
+  }
+}
+
+/**
+ * Send order notification email to admin
+ */
+function sendOrderNotificationEmail(session, customerName, customerEmail, itemsPurchased, totalQuantity, amountTotal, shippingCost, shippingAddress, stripeFee, currency) {
+  try {
+    var currencySymbol = currency === 'USD' ? '$' : (currency + ' ');
+    var orderDate = new Date(session.created * 1000).toLocaleString();
+    
+    var subject = 'New Order: ' + customerName + ' - ' + currencySymbol + amountTotal.toFixed(2);
+    
+    var body = 'New order received!\n\n' +
+      '=== ORDER DETAILS ===\n' +
+      'Order Date: ' + orderDate + '\n' +
+      'Stripe Session ID: ' + session.id + '\n' +
+      'Payment Status: ' + (session.payment_status || 'N/A') + '\n\n' +
+      
+      '=== CUSTOMER INFORMATION ===\n' +
+      'Name: ' + customerName + '\n' +
+      'Email: ' + customerEmail + '\n\n' +
+      
+      '=== SHIPPING ADDRESS ===\n' +
+      (shippingAddress || 'No shipping address provided') + '\n\n' +
+      
+      '=== ORDER ITEMS ===\n' +
+      itemsPurchased + '\n' +
+      'Total Quantity: ' + totalQuantity + '\n\n' +
+      
+      '=== PRICING BREAKDOWN ===\n' +
+      'Subtotal: ' + currencySymbol + (amountTotal - shippingCost).toFixed(2) + '\n' +
+      'Shipping: ' + currencySymbol + shippingCost.toFixed(2) + '\n' +
+      'Total: ' + currencySymbol + amountTotal.toFixed(2) + '\n' +
+      'Stripe Fee: ' + currencySymbol + stripeFee.toFixed(2) + '\n' +
+      'Net Amount: ' + currencySymbol + (amountTotal - stripeFee).toFixed(2) + '\n\n' +
+      
+      '=== LINKS ===\n' +
+      'View in Stripe Dashboard: https://dashboard.stripe.com/payments?status%5B%5D=successful\n' +
+      'Search for Session ID: ' + session.id + '\n\n' +
+      
+      '---\n' +
+      'This is an automated notification from Agroverse Shop.';
+
+    MailApp.sendEmail({
+      to: 'garyjob@agroverse.shop',
+      subject: subject,
+      body: body
+    });
+
+    Logger.log('Order notification email sent to garyjob@agroverse.shop');
+  } catch (error) {
+    Logger.log('Error sending order notification email: ' + error.toString());
     throw error;
   }
 }
@@ -1374,6 +1772,7 @@ function getOrderStatus(sessionId) {
     // Now try to augment with Google Sheet data (tracking number, status updates, etc.)
     var sheetData = null;
     var trackingNumber = null;
+    var shippingProviderFromSheet = null;
     var orderStatus = 'Placed'; // Default status
     
     try {
@@ -1383,7 +1782,8 @@ function getOrderStatus(sessionId) {
       
       if (row > 0) {
         // Order found in sheet - get additional data
-        var data = sheet.getRange(row, 1, 1, 9).getValues()[0];
+        // Read up to column N (14 columns) to get tracking number
+        var data = sheet.getRange(row, 1, 1, 14).getValues()[0];
         sheetData = {
           timestamp: data[0],
           customerName: data[1],
@@ -1391,10 +1791,16 @@ function getOrderStatus(sessionId) {
           wixOrderId: data[4] || ''
         };
         
-        // Check if there's a tracking number column (if sheet has been extended)
-        // For now, tracking numbers would need to be added manually to the sheet
-        // and we'd need to know which column they're in
-        // This is a placeholder for future enhancement
+        // Column M (index 12): Shipping Provider
+        if (data[12] && data[12].toString().trim()) {
+          shippingProviderFromSheet = data[12].toString().trim();
+        }
+        
+        // Column N (index 13): Tracking Number
+        if (data[13] && data[13].toString().trim()) {
+          trackingNumber = data[13].toString().trim();
+          Logger.log('  ✓ Found tracking number in sheet: ' + trackingNumber);
+        }
       }
     } catch (sheetError) {
       Logger.log('Error checking sheet for additional data: ' + sheetError.toString());
@@ -1418,6 +1824,17 @@ function getOrderStatus(sessionId) {
       orderStatus = 'Pending';
     }
     
+    // Get shipping provider (from sheet if available, otherwise from Stripe session)
+    var finalShippingProvider = shippingProviderFromSheet;
+    if (!finalShippingProvider && stripeSession.shipping_cost && stripeSession.shipping_cost.shipping_rate) {
+      var shippingRate = stripeSession.shipping_cost.shipping_rate;
+      if (shippingRate.display_name) {
+        finalShippingProvider = shippingRate.display_name;
+      } else if (shippingRate.id) {
+        finalShippingProvider = shippingRate.id;
+      }
+    }
+    
     // Format order for frontend
     var order = {
       sessionId: stripeSession.id,
@@ -1431,7 +1848,8 @@ function getOrderStatus(sessionId) {
       shippingCost: shippingCost, // Shipping cost
       currency: (stripeSession.currency && stripeSession.currency.toUpperCase()) || 'USD',
       shippingAddress: shippingAddress,
-      trackingNumber: trackingNumber, // Will be added manually by admin to Google Sheet
+      shippingProvider: finalShippingProvider || null, // Shipping provider from Stripe or sheet
+      trackingNumber: trackingNumber || null, // Tracking number from Google Sheet (Column N)
       paymentStatus: stripeSession.payment_status || 'unknown'
     };
     
@@ -1496,9 +1914,10 @@ function parseItemsPurchased(itemsPurchased, totalAmount, totalQuantity) {
 function retrieveStripeSession(sessionId, stripeSecretKey) {
   try {
     // Expand line_items and product data to get complete product information including images
+    // Also expand shipping_cost.shipping_rate to get the display_name
     // Note: shipping_details cannot be expanded, but it's included by default in checkout sessions
     // Try expanding with the full path notation
-    var url = 'https://api.stripe.com/v1/checkout/sessions/' + sessionId + '?expand[]=line_items.data&expand[]=line_items.data.price.product';
+    var url = 'https://api.stripe.com/v1/checkout/sessions/' + sessionId + '?expand[]=line_items.data&expand[]=line_items.data.price.product&expand[]=shipping_cost.shipping_rate';
     var response = UrlFetchApp.fetch(url, {
       method: 'get',
       headers: {
@@ -1652,8 +2071,18 @@ function syncStripeOrdersForEnvironment(environment) {
     // Poll Stripe for completed checkout sessions from the last hour
     // Adjust time range as needed (e.g., last 24 hours for less frequent polling)
     var oneHourAgo = Math.floor(Date.now() / 1000) - (60 * 60); // Unix timestamp
+    var oneDayAgo = Math.floor(Date.now() / 1000) - (24 * 60 * 60); // Unix timestamp for last 24 hours
     
-    var sessions = retrieveCompletedSessions(CONFIG.stripeSecretKey, oneHourAgo);
+    Logger.log('Polling Stripe for ' + environment + ' environment');
+    Logger.log('Current time: ' + new Date().toISOString());
+    Logger.log('Looking for sessions created after: ' + new Date(oneHourAgo * 1000).toISOString() + ' (1 hour ago)');
+    Logger.log('Google Sheet URL: https://docs.google.com/spreadsheets/d/' + CONFIG.sheetId + '/edit#gid=0');
+    Logger.log('Sheet Name: ' + CONFIG.sheetName);
+    
+    // Try last 24 hours instead of just 1 hour to catch more sessions
+    var sessions = retrieveCompletedSessions(CONFIG.stripeSecretKey, oneDayAgo);
+    
+    Logger.log('Found ' + sessions.length + ' completed sessions from Stripe');
     
     var newOrdersCount = 0;
     
@@ -1687,13 +2116,16 @@ function retrieveCompletedSessions(stripeSecretKey, createdAfter) {
   try {
     // Stripe API: List checkout sessions
     // Filter by status=complete and created timestamp
+    // Stripe uses created[gte] format for "greater than or equal to"
     var params = [
       'limit=100', // Max 100 per request
       'status=complete',
-      'created>=' + createdAfter
+      'created[gte]=' + createdAfter
     ].join('&');
 
     var url = 'https://api.stripe.com/v1/checkout/sessions?' + params;
+    Logger.log('Calling Stripe API: ' + url);
+    
     var response = UrlFetchApp.fetch(url, {
       method: 'get',
       headers: {
@@ -1701,10 +2133,31 @@ function retrieveCompletedSessions(stripeSecretKey, createdAfter) {
       }
     });
 
-    var data = JSON.parse(response.getContentText());
+    var responseCode = response.getResponseCode();
+    Logger.log('Stripe API response code: ' + responseCode);
+    
+    var responseText = response.getContentText();
+    var data = JSON.parse(responseText);
+    
+    // Log response details
+    if (data.data) {
+      Logger.log('Retrieved ' + data.data.length + ' sessions from Stripe API');
+      if (data.data.length > 0) {
+        Logger.log('First session ID: ' + data.data[0].id);
+        Logger.log('First session created: ' + new Date(data.data[0].created * 1000).toISOString());
+      }
+    } else {
+      Logger.log('No data array in response. Response keys: ' + Object.keys(data).join(', '));
+      if (data.error) {
+        Logger.log('Stripe API error: ' + JSON.stringify(data.error));
+      }
+    }
+    
     return data.data || [];
   } catch (error) {
     Logger.log('Error retrieving completed sessions: ' + error.toString());
+    Logger.log('Stack trace: ' + error.stack);
+    Logger.log('URL attempted: https://api.stripe.com/v1/checkout/sessions?limit=100&status=complete&created[gte]=' + createdAfter);
     return [];
   }
 }
@@ -1735,30 +2188,155 @@ function getExistingSessionIds(sheet) {
 /**
  * Send tracking emails (scheduled function)
  * Set up a time-driven trigger to run this function periodically
+ * 
+ * Current sheet structure (columns A-N):
+ * A: Timestamp, B: Customer Name, C: Stripe Session ID, D: Wix Order Number, E: Wix Order ID,
+ * F: Items Purchased, G: Total Quantity, H: Amount, I: Currency, J: Shipping Address,
+ * K: Shipping Cost, L: Stripe Transaction Fee, M: Shipping Provider, N: Tracking Number
  */
 function sendTrackingEmails() {
   try {
-    // Default to production for scheduled emails (can be enhanced to check both)
-    var CONFIG = getConfig('production');
+    // Check both environments - use the same sheet for both
+    var environments = ['production', 'development'];
+    
+    for (var envIdx = 0; envIdx < environments.length; envIdx++) {
+      var environment = environments[envIdx];
+      var CONFIG = getConfig(environment);
+      
+      if (!CONFIG.stripeSecretKey) {
+        Logger.log('Skipping ' + environment + ' - Stripe key not configured');
+        continue;
+      }
+      
     var sheet = SpreadsheetApp.openById(CONFIG.sheetId).getSheetByName(CONFIG.sheetName);
+      if (!sheet) {
+        Logger.log('Sheet not found for ' + environment + ': ' + CONFIG.sheetName);
+        continue;
+      }
+      
     var data = sheet.getDataRange().getValues();
+      Logger.log('Processing ' + environment + ' environment: ' + (data.length - 1) + ' rows');
 
     // Skip header row
     for (var i = 1; i < data.length; i++) {
       var row = data[i];
-      var sessionId = row[0];
-      var email = row[1];
-      var status = row[3];
-      var trackingNumber = row[6];
-      var emailSent = row[7];
-
-      // Check if tracking number exists and email not sent
-      if (trackingNumber && trackingNumber.trim() && emailSent !== 'Yes') {
-        sendTrackingEmail(email, sessionId, trackingNumber, status);
         
-        // Mark email as sent
-        sheet.getRange(i + 1, 8).setValue('Yes');
-        sheet.getRange(i + 1, 9).setValue(new Date().toISOString());
+        // Current sheet structure:
+        // Column C (index 2): Stripe Session ID
+        // Column N (index 13): Tracking Number
+        var sessionId = row[2]; // Column C
+        
+        if (!sessionId || !sessionId.toString().trim()) {
+          continue; // Skip rows without session ID
+        }
+        
+        sessionId = sessionId.toString().trim();
+        
+        // Determine if this session belongs to this environment
+        // Test sessions start with "cs_test_", live sessions start with "cs_live_"
+        var isTestSession = sessionId.indexOf('cs_test_') === 0;
+        var isLiveSession = sessionId.indexOf('cs_live_') === 0;
+        
+        // Skip if session doesn't match environment
+        if (environment === 'production' && isTestSession) {
+          continue; // Production environment, but this is a test session
+        }
+        if (environment === 'development' && isLiveSession) {
+          continue; // Development environment, but this is a live session
+        }
+        
+        var trackingNumber = row[13]; // Column N (Tracking Number)
+        
+        // Check if tracking number exists
+        if (!trackingNumber || !trackingNumber.toString().trim()) {
+          continue; // Skip rows without tracking numbers
+        }
+        
+        trackingNumber = trackingNumber.toString().trim();
+        
+        // Check if email was already sent (Column O - index 14, if it exists)
+        var emailSent = row[14] || '';
+        if (emailSent && emailSent.toString().trim() === 'Yes') {
+          continue; // Skip if email already sent
+        }
+        
+        // Get customer email and order details from Stripe session
+        var customerEmail = null;
+        var orderItems = [];
+        var shippingAddress = null;
+        try {
+          var stripeSession = retrieveStripeSession(sessionId, CONFIG.stripeSecretKey);
+          if (stripeSession) {
+            customerEmail = (stripeSession.customer_details && stripeSession.customer_details.email) 
+              || stripeSession.customer_email 
+              || null;
+            
+            // Extract order items
+            var lineItems = (stripeSession.line_items && stripeSession.line_items.data) || [];
+            for (var itemIdx = 0; itemIdx < lineItems.length; itemIdx++) {
+              var item = lineItems[itemIdx];
+              orderItems.push({
+                name: item.description || 'Product',
+                quantity: item.quantity || 1,
+                amount: ((item.amount_total || 0) / 100).toFixed(2)
+              });
+            }
+            
+            // Extract shipping address
+            if (stripeSession.shipping_details && stripeSession.shipping_details.address) {
+              var addr = stripeSession.shipping_details.address;
+              shippingAddress = {
+                name: stripeSession.shipping_details.name || '',
+                line1: addr.line1 || '',
+                line2: addr.line2 || '',
+                city: addr.city || '',
+                state: addr.state || '',
+                postal_code: addr.postal_code || '',
+                country: addr.country || ''
+              };
+            } else if (stripeSession.shipping && stripeSession.shipping.address) {
+              var addr = stripeSession.shipping.address;
+              shippingAddress = {
+                name: stripeSession.shipping.name || '',
+                line1: addr.line1 || '',
+                line2: addr.line2 || '',
+                city: addr.city || '',
+                state: addr.state || '',
+                postal_code: addr.postal_code || '',
+                country: addr.country || ''
+              };
+            }
+          }
+        } catch (stripeError) {
+          Logger.log('Error retrieving Stripe session ' + sessionId + ' from ' + environment + ': ' + stripeError.toString());
+          continue; // Skip if we can't get email
+        }
+        
+        if (!customerEmail) {
+          Logger.log('No email found for session ' + sessionId + ' in ' + environment + ', skipping');
+          continue;
+        }
+        
+        // Determine base URL based on environment
+        var baseUrl = environment === 'development' 
+          ? 'https://beta.agroverse.shop'
+          : 'https://www.agroverse.shop';
+        var orderStatusUrl = baseUrl + '/order-status?session_id=' + sessionId;
+        
+        // Send tracking email
+        try {
+          sendTrackingEmail(customerEmail, sessionId, trackingNumber, orderItems, shippingAddress, orderStatusUrl, environment);
+          
+          // Mark email as sent in Column O (index 14)
+          // If Column O doesn't exist, we'll create it
+          var emailSentColumn = 15; // Column O (1-based)
+          sheet.getRange(i + 1, emailSentColumn).setValue('Yes');
+          sheet.getRange(i + 1, emailSentColumn + 1).setValue(new Date().toISOString()); // Column P: Timestamp
+          
+          Logger.log('Tracking email sent for session: ' + sessionId + ' (' + environment + ')');
+        } catch (emailError) {
+          Logger.log('Error sending tracking email for session ' + sessionId + ': ' + emailError.toString());
+        }
       }
     }
   } catch (error) {
@@ -1768,18 +2346,69 @@ function sendTrackingEmails() {
 
 /**
  * Send tracking email to customer
+ * @param {string} email Customer email address
+ * @param {string} sessionId Stripe session ID
+ * @param {string} trackingNumber Tracking number
+ * @param {Array} orderItems Array of order items with {name, quantity, amount}
+ * @param {Object} shippingAddress Shipping address object
+ * @param {string} orderStatusUrl URL to view order details
+ * @param {string} environment Environment (development/production)
  */
-function sendTrackingEmail(email, sessionId, trackingNumber, status) {
+function sendTrackingEmail(email, sessionId, trackingNumber, orderItems, shippingAddress, orderStatusUrl, environment) {
   try {
     var trackingUrl = getTrackingUrl(trackingNumber);
     
     var subject = 'Your Agroverse Order Has Shipped!';
+    
+    // Build items list
+    var itemsList = '';
+    if (orderItems && orderItems.length > 0) {
+      for (var i = 0; i < orderItems.length; i++) {
+        var item = orderItems[i];
+        itemsList += '  • ' + item.name + ' (Qty: ' + item.quantity + ') - $' + item.amount + '\n';
+      }
+    } else {
+      itemsList = '  (Items not available)\n';
+    }
+    
+    // Build shipping address
+    var addressText = '';
+    if (shippingAddress) {
+      addressText = (shippingAddress.name ? shippingAddress.name + '\n' : '') +
+        (shippingAddress.line1 ? shippingAddress.line1 + '\n' : '') +
+        (shippingAddress.line2 ? shippingAddress.line2 + '\n' : '') +
+        (shippingAddress.city || shippingAddress.state || shippingAddress.postal_code 
+          ? (shippingAddress.city || '') + 
+            (shippingAddress.city && shippingAddress.state ? ', ' : '') + 
+            (shippingAddress.state || '') + 
+            ' ' + (shippingAddress.postal_code || '') + '\n'
+          : '') +
+        (shippingAddress.country ? shippingAddress.country + '\n' : '');
+    } else {
+      addressText = 'Address not available\n';
+    }
+    
     var body = 'Hello,\n\n' +
-      'Your order (' + sessionId + ') has been shipped!\n\n' +
+      'Great news! Your Agroverse order has been shipped.\n\n' +
+      
+      '=== ORDER INFORMATION ===\n' +
+      'Order Number: ' + sessionId + '\n\n' +
+      
+      '=== ITEMS SHIPPED ===\n' +
+      itemsList + '\n' +
+      
+      '=== SHIPPING ADDRESS ===\n' +
+      addressText + '\n' +
+      
+      '=== TRACKING INFORMATION ===\n' +
       'Tracking Number: ' + trackingNumber + '\n' +
-      (trackingUrl ? 'Track your package: ' + trackingUrl + '\n' : '') +
-      '\nStatus: ' + status + '\n\n' +
-      'Thank you for your purchase!\n\n' +
+      (trackingUrl ? 'Track your package: ' + trackingUrl + '\n' : '') + '\n' +
+      
+      '=== VIEW ORDER DETAILS ===\n' +
+      'View your complete order details: ' + orderStatusUrl + '\n\n' +
+      
+      'Thank you for your purchase! We appreciate your business.\n\n' +
+      'If you have any questions, please don\'t hesitate to reach out.\n\n' +
       'Best regards,\n' +
       'Agroverse Team';
 
@@ -1792,6 +2421,7 @@ function sendTrackingEmail(email, sessionId, trackingNumber, status) {
     Logger.log('Tracking email sent to: ' + email);
   } catch (error) {
     Logger.log('Error sending email: ' + error.toString());
+    throw error; // Re-throw so caller can handle it
   }
 }
 
@@ -1822,100 +2452,107 @@ function getTrackingUrl(trackingNumber) {
 
 /**
  * Submit quote request
+ * Sends email notification to garyjob@agroverse.shop with all quote request details
  */
 function submitQuoteRequest(data) {
   try {
     var quoteData = data.quoteData;
     var environment = data.environment || 'production';
     var CONFIG = getConfig(environment);
-    var sheet = SpreadsheetApp.openById(CONFIG.sheetId);
-    
-    // Get or create "Quote Requests" sheet
-    var quoteSheet = sheet.getSheetByName('Quote Requests');
-    if (!quoteSheet) {
-      quoteSheet = sheet.insertSheet('Quote Requests');
-      // Add headers
-      quoteSheet.appendRow([
-        'Date',
-        'Business Name',
-        'Contact Name',
-        'Email',
-        'Phone',
-        'Company Type',
-        'Shipping Address',
-        'Expected Frequency',
-        'Products (JSON)',
-        'Notes',
-        'Status',
-        'Quote Provided',
-        'Quote Amount',
-        'Last Updated'
-      ]);
-    }
-
-    // Format products
-    var productsJson = JSON.stringify(quoteData.products || []);
-
-    // Add row to sheet
-    var row = [
-      new Date().toISOString(), // Date
-      quoteData.businessName || '',
-      quoteData.contactName || '',
-      quoteData.email || '',
-      quoteData.phone || '',
-      quoteData.companyType || '',
-      quoteData.shippingAddress || '',
-      quoteData.expectedFrequency || '',
-      productsJson, // Products
-      quoteData.notes || '',
-      'Pending', // Status
-      'No', // Quote Provided
-      '', // Quote Amount
-      new Date().toISOString() // Last Updated
-    ];
-
-    quoteSheet.appendRow(row);
 
     // Send email notification to admin
     try {
-      var subject = 'New Wholesale Quote Request - ' + quoteData.businessName;
+      var subject = 'New Wholesale Quote Request - ' + (quoteData.businessName || 'Unknown Business');
       
-      // Build products list
+      // Build products list with more details
       var productsList = [];
       var products = quoteData.products || [];
+      if (products.length > 0) {
       for (var p = 0; p < products.length; p++) {
         var product = products[p];
-        productsList.push('- ' + product.productId + ': ' + product.quantity + ' kg');
+          var productLine = '- Product ID: ' + (product.productId || 'N/A');
+          if (product.quantity) {
+            productLine += ' | Quantity: ' + product.quantity + ' kg';
+          }
+          if (product.productName) {
+            productLine += ' | Name: ' + product.productName;
+          }
+          productsList.push(productLine);
+        }
+      } else {
+        productsList.push('No products specified');
       }
       
-      var body = 'New wholesale quote request received:\n\n' +
-        'Business: ' + quoteData.businessName + '\n' +
-        'Contact: ' + quoteData.contactName + '\n' +
-        'Email: ' + quoteData.email + '\n' +
-        'Phone: ' + quoteData.phone + '\n' +
+      // Format shipping address (handle both string and object)
+      var shippingAddressFormatted = '';
+      if (quoteData.shippingAddress) {
+        if (typeof quoteData.shippingAddress === 'string') {
+          shippingAddressFormatted = quoteData.shippingAddress;
+        } else if (typeof quoteData.shippingAddress === 'object') {
+          // If it's an object, format it nicely
+          var addr = quoteData.shippingAddress;
+          var addressParts = [];
+          if (addr.line1 || addr.addressLine1) addressParts.push(addr.line1 || addr.addressLine1);
+          if (addr.line2 || addr.addressLine2) addressParts.push(addr.line2 || addr.addressLine2);
+          if (addr.city) addressParts.push(addr.city);
+          if (addr.state || addr.stateProvince) addressParts.push(addr.state || addr.stateProvince);
+          if (addr.postalCode || addr.zipCode) addressParts.push(addr.postalCode || addr.zipCode);
+          if (addr.country) addressParts.push(addr.country);
+          shippingAddressFormatted = addressParts.join(', ');
+        }
+      }
+      
+      var body = '=== NEW WHOLESALE QUOTE REQUEST ===\n\n' +
+        'Submitted: ' + new Date().toLocaleString() + '\n\n' +
+        
+        '=== BUSINESS INFORMATION ===\n' +
+        'Business Name: ' + (quoteData.businessName || 'Not provided') + '\n' +
+        'Contact Name: ' + (quoteData.contactName || 'Not provided') + '\n' +
+        'Email: ' + (quoteData.email || 'Not provided') + '\n' +
+        'Phone: ' + (quoteData.phone || 'Not provided') + '\n' +
         'Company Type: ' + (quoteData.companyType || 'Not specified') + '\n\n' +
-        'Products Requested:\n' + productsList.join('\n') + '\n\n' +
-        'Shipping Address:\n' + quoteData.shippingAddress + '\n\n' +
+        
+        '=== PRODUCTS REQUESTED ===\n' +
+        productsList.join('\n') + '\n\n' +
+        
+        '=== SHIPPING INFORMATION ===\n' +
+        (shippingAddressFormatted || 'Not provided') + '\n\n' +
+        
+        '=== ORDER DETAILS ===\n' +
         'Expected Frequency: ' + (quoteData.expectedFrequency || 'Not specified') + '\n\n' +
-        'Notes:\n' + (quoteData.notes || 'None') + '\n\n' +
-        '---\n' +
-        'View in Google Sheet: https://docs.google.com/spreadsheets/d/' + CONFIG.sheetId;
+        
+        '=== ADDITIONAL NOTES ===\n' +
+        (quoteData.notes || 'None') + '\n\n' +
+        
+        '=== CONTACT INFORMATION ===\n' +
+        'Reply to: ' + (quoteData.email || 'No email provided') + '\n' +
+        (quoteData.phone ? 'Phone: ' + quoteData.phone + '\n' : '') +
+        '\n---\n' +
+        'This is an automated notification from Agroverse Shop.\n' +
+        'Quote request submitted via: ' + (environment === 'development' ? 'Development' : 'Production') + ' environment';
 
       MailApp.sendEmail({
-        to: Session.getActiveUser().getEmail(), // Admin email
+        to: 'garyjob@agroverse.shop',
         subject: subject,
-        body: body
+        body: body,
+        replyTo: quoteData.email || undefined // Set reply-to to customer email if available
       });
+      
+      Logger.log('Quote request email sent to garyjob@agroverse.shop for: ' + quoteData.email);
     } catch (emailError) {
       Logger.log('Error sending email notification: ' + emailError.toString());
-      // Don't fail the request if email fails
+      // Return error if email fails - this is critical
+      return createCORSResponse({
+        status: 'error',
+        error: 'Failed to send quote request notification: ' + emailError.toString()
+      });
     }
 
-    Logger.log('Quote request saved: ' + quoteData.email);
+    Logger.log('Quote request processed: ' + quoteData.email);
 
     return createCORSResponse({
       status: 'success',
-      message: 'Quote request submitted successfully'
+      message: 'Quote request submitted successfully. We will contact you soon!'
     });
   } catch (error) {
     Logger.log('Error submitting quote request: ' + error.toString());
@@ -2376,5 +3013,23 @@ function testGetOrderStatus(sessionId) {
     shippingAddress: shippingAddress,
     created: new Date(foundSession.created * 1000).toISOString()
   };
+}
+
+/**
+ * Helper function to get the Google Sheet URL
+ * Run this function to see the sheet URL in the logs
+ */
+function getSheetUrl() {
+  var configs = ['production', 'development'];
+  configs.forEach(function(env) {
+    var CONFIG = getConfig(env);
+    if (CONFIG.sheetId) {
+      var url = 'https://docs.google.com/spreadsheets/d/' + CONFIG.sheetId + '/edit';
+      Logger.log(env.toUpperCase() + ' Sheet URL: ' + url);
+      Logger.log('Sheet Name: ' + CONFIG.sheetName);
+    } else {
+      Logger.log(env.toUpperCase() + ': GOOGLE_SHEET_ID not configured');
+    }
+  });
 }
 
