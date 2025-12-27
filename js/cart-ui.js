@@ -110,21 +110,30 @@
 
     // Attach event listeners
     container.querySelectorAll('.cart-item-decrease').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
         const productId = btn.dataset.productId;
         const item = cart.items.find(i => i.productId === productId);
         if (item) {
-          window.Cart.updateQuantity(productId, item.quantity - 1);
+          // Decreasing quantity doesn't need inventory check
+          const result = await window.Cart.updateQuantity(productId, item.quantity - 1, { skipInventoryCheck: true });
+          if (!result.success && result.message) {
+            alert(result.message);
+          }
         }
       });
     });
 
     container.querySelectorAll('.cart-item-increase').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
         const productId = btn.dataset.productId;
         const item = cart.items.find(i => i.productId === productId);
         if (item) {
-          window.Cart.updateQuantity(productId, item.quantity + 1);
+          // Increasing quantity needs inventory check
+          const result = await window.Cart.updateQuantity(productId, item.quantity + 1);
+          if (!result.success) {
+            const errorMessage = result.message || 'Unable to update quantity';
+            alert(errorMessage);
+          }
         }
       });
     });

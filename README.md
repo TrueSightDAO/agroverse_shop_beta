@@ -67,7 +67,9 @@ agroverse_shop/
 ├── css/
 │   └── cart.css                        # Cart styles
 ├── google-app-script/
-│   └── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
+│   ├── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
+│   ├── update_store_inventory.gs       # Store inventory calculation and update
+│   └── README.md                       # Google Apps Scripts documentation
 ├── scripts/
 │   └── generate_redirects.py           # Script to generate redirect map from CSV
 └── assets/
@@ -153,6 +155,12 @@ window.AGROVERSE_CONFIG = {
 ```
 
 ### Google App Script Setup
+
+**Scripts Available:**
+- `agroverse_shop_checkout.gs` - Stripe checkout, order management, shipping calculation
+- `update_store_inventory.gs` - Calculates and updates store inventory for SKUs (see [google-app-script/README.md](google-app-script/README.md) for details)
+
+For detailed documentation on all Google Apps Scripts, see: [google-app-script/README.md](google-app-script/README.md)
 
 1. **Create/Open Script:**
    - Go to [Google App Script](https://script.google.com)
