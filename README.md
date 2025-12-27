@@ -553,7 +553,7 @@ const PRODUCTS = {
 
 ## ➕ Adding a New SKU Product
 
-When adding a new product SKU to the Agroverse Shop, follow these steps to ensure proper integration across the site:
+When adding a new product SKU to the Agroverse Shop, follow these steps to ensure proper integration across the site and exposure to Facebook Commerce Manager and Google Merchant Center:
 
 ### 1. Add Product Entry to `js/products.js`
 
@@ -682,7 +682,37 @@ If you prefer to add the SKU manually, open the "Agroverse SKUs" sheet:
 - "Add to Cart" buttons are disabled when inventory is 0
 - Inventory counts are cached and refreshed periodically
 
-### 6. Test the Integration
+### 6. Regenerate Product Feed
+
+After adding a new product, you must regenerate the product feed so it's available in Facebook Commerce Manager and Google Merchant Center.
+
+**Generate the Feed:**
+```bash
+cd /Users/garyjob/Applications/agroverse_shop
+python3 scripts/generate_facebook_feed.py
+```
+
+This will:
+- Read products from `js/products.js`
+- Generate `facebook_product_feed.xml` with all retail products
+- Include the new product in the feed
+
+**Commit and Push the Feed:**
+```bash
+git add facebook_product_feed.xml
+git commit -m "Add [product-name] to product feed"
+git push origin main
+```
+
+**Platform Updates:**
+- **Facebook Commerce Manager**: Will automatically fetch the updated feed on the next scheduled update, or you can manually trigger a refresh in Commerce Manager → Catalog → Data Sources
+- **Google Merchant Center**: Will automatically fetch the updated feed on the next scheduled update, or you can manually trigger a fetch in Merchant Center → Products → Feeds
+
+**Feed URL:** `https://www.agroverse.shop/facebook_product_feed.xml`
+
+**Note:** The feed only includes retail products (price > $0). Wholesale products are automatically excluded to prevent Google Merchant Center rejection. If you need to include wholesale products, use the `--include-wholesale` flag (not recommended for Google).
+
+### 7. Test the Integration
 
 **Checklist:**
 - ✅ Product appears in `js/products.js`
@@ -695,6 +725,8 @@ If you prefer to add the SKU manually, open the "Agroverse SKUs" sheet:
 - ✅ Inventory displays correctly
 - ✅ SKU entry exists in Google Sheet
 - ✅ Product appears in inventory web service response
+- ✅ Product feed regenerated and includes new product
+- ✅ Feed file committed and pushed to GitHub
 
 **Testing Commands:**
 ```bash
@@ -706,6 +738,9 @@ open http://127.0.0.1:8000/product-page/[product-id]/
 
 # Check inventory service (replace with actual script URL)
 curl "https://script.google.com/macros/s/[SCRIPT_ID]/exec?action=getInventory&sku=[product-id]"
+
+# Verify product in feed
+curl "https://www.agroverse.shop/facebook_product_feed.xml" | grep "[product-id]"
 ```
 
 ### Example: Fazenda Santa Ana Product
