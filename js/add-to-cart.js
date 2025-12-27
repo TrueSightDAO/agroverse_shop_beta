@@ -167,6 +167,82 @@
   }
 
   /**
+   * Update button state based on inventory
+   * @param {HTMLElement} button - The add to cart button
+   * @param {number} inventory - Current inventory count
+   */
+  function updateButtonState(button, inventory) {
+    if (!button) return;
+    
+    const productId = button.dataset.productId;
+    const originalPrice = button.dataset.productPrice || button.textContent.match(/\$[\d.]+/)?.[0] || '';
+    
+    if (inventory <= 0) {
+      // Out of stock
+      button.disabled = true;
+      button.classList.add('out-of-stock');
+      button.textContent = 'Out of Stock';
+      button.style.backgroundColor = '#999';
+      button.style.cursor = 'not-allowed';
+      button.style.opacity = '0.6';
+      
+      // Store original content for potential restoration
+      if (!button.dataset.originalText) {
+        button.dataset.originalText = button.textContent;
+      }
+    } else {
+      // In stock - restore original state
+      button.disabled = false;
+      button.classList.remove('out-of-stock');
+      if (button.dataset.originalText) {
+        button.textContent = button.dataset.originalText;
+      } else if (originalPrice) {
+        button.textContent = `Add to Cart - ${originalPrice}`;
+      }
+      button.style.backgroundColor = '';
+      button.style.cursor = '';
+      button.style.opacity = '';
+    }
+  }
+
+  /**
+   * Check inventory and update all add to cart buttons on the page
+   */
+  async function checkInventoryAndUpdateButtons() {
+    // Wait for inventory service to be available
+    if (!window.InventoryService) {
+      // Retry after a short delay
+      setTimeout(checkInventoryAndUpdateButtons, 100);
+      return;
+    }
+
+    const buttons = document.querySelectorAll('.add-to-cart-btn');
+    
+    if (buttons.length === 0) return;
+
+    // Fetch all inventory at once
+    let allInventory = {};
+    try {
+      allInventory = await window.InventoryService.fetchAllInventory();
+    } catch (error) {
+      console.warn('Could not fetch inventory, buttons will remain enabled:', error);
+      return;
+    }
+
+    // Update each button based on inventory
+    buttons.forEach(button => {
+      const productId = button.dataset.productId;
+      if (productId) {
+        const inventory = allInventory[productId] !== undefined ? parseInt(allInventory[productId], 10) : null;
+        
+        if (inventory !== null) {
+          updateButtonState(button, inventory);
+        }
+      }
+    });
+  }
+
+  /**
    * Initialize add to cart buttons
    */
   function initAddToCart() {
@@ -175,12 +251,16 @@
     // Only add listener once (check if already added)
     if (!window.addToCartListenerAdded) {
       document.addEventListener('click', function(event) {
-        if (event.target.closest('.add-to-cart-btn')) {
+        const button = event.target.closest('.add-to-cart-btn');
+        if (button && !button.disabled && !button.classList.contains('out-of-stock')) {
           handleAddToCart(event);
         }
       }, true); // Use capture phase to catch early
       window.addToCartListenerAdded = true;
     }
+
+    // Check inventory and update button states
+    checkInventoryAndUpdateButtons();
   }
 
   // Initialize when DOM is ready
