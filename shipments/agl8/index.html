@@ -517,6 +517,74 @@
             content: '→';
         }
         
+        /* Products Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .item-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .item-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .item-card-body {
+            padding: 1.5rem;
+        }
+        
+        .item-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-card .item-meta {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .item-card .item-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .item-link {
+            font-size: 14px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .item-link:hover {
+            text-decoration: underline;
+        }
+        
+        .item-link::after {
+            content: ' →';
+        }
+        
         /* Video Section */
         .video-section {
             margin-top: 3rem;
@@ -1061,6 +1129,32 @@ Perfect for those seeking a complex, evolving flavor profile that transforms fro
 </div>
 </div>
 </div>
+<!-- Products from This Shipment -->
+<section class="content-section" style="margin-top: 3rem;">
+<h2>Products from This Shipment</h2>
+<div class="items-grid">
+<a class="item-card" href="../../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html">
+<img alt="Ceremonial Cacao – La do Sitio Farm" class="item-card-image" src="../../assets/images/products/la-do-sitio-farm.jpg"/>
+<div class="item-card-body">
+<h3>Ceremonial Cacao – La do Sitio Farm (200g)</h3>
+<div class="item-meta">$25.00 • From AGL8</div>
+<div class="item-links">
+<span class="item-link">View Product</span>
+</div>
+</div>
+</a>
+<a class="item-card" href="../../product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far/index.html">
+<img alt="La do Sitio Farm Cacao Beans" class="item-card-image" onerror="this.src='../../assets/images/farms/paulo_photo.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif"/>
+<div class="item-card-body">
+<h3>La do Sitio Farm Cacao Beans (per kg)</h3>
+<div class="item-meta">Wholesale • From AGL8</div>
+<div class="item-links">
+<span class="item-link">View Product</span>
+</div>
+</div>
+</a>
+</div>
+</section>
 <div class="farmer-section">
 <h3 style="margin-top: 0;">Meet the Farmer</h3>
 <div class="farmer-profile">

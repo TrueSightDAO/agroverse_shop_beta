@@ -100,9 +100,17 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
+        }
+        
+        .product-header {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .product-content-full {
+            max-width: 100%;
         }
         
         .product-image-container {
@@ -265,14 +273,14 @@
         }
         
         @media (max-width: 768px) {
-            .product-section {
+            body {
+                overflow-x: hidden;
+            }
+            
+            .product-header {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            
-        body {
-            overflow-x: hidden;
-        }
-        }
+            }
             
             .product-image-container {
                 position: static;
@@ -285,6 +293,25 @@
             .nav-links {
                 gap: 1rem;
                 font-size: 14px;
+            }
+            
+            .farmer-preview-card {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .farmer-preview-card img {
+                margin: 0 auto;
+            }
+            
+            .shipment-highlight-card h3 {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.5rem !important;
+            }
+            
+            .shipment-highlight-card > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
             }
         }
     
@@ -416,11 +443,11 @@
   gtag('js', new Date());
 
   gtag('config', 'G-S6EP25EHF4');
+</script>
 <!-- Facebook Pixel Code -->
 <script src="../../js/config.js"></script>
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
-</script>
 </head>
 <body>
 <header>
@@ -440,6 +467,7 @@
 </nav>
 </header>
 <section class="product-section">
+<div class="product-header">
 <div class="product-image-container">
 <img alt="Ceremonial Cacao – La do Sitio Farm" class="product-image" src="../../assets/images/products/la-do-sitio-farm.jpg"/>
 </div>
@@ -465,18 +493,96 @@
 <span class="detail-value">2024</span>
 </div>
 <div class="detail-row">
-<span class="detail-label">Shipment:</span>
-<span class="detail-value"><a href="../../shipments/agl8/index.html">AGL8</a></span>
-</div>
-<div class="detail-row">
 <span class="detail-label">Farm:</span>
-<span class="detail-value">Paulo's La do Sitio Farm</span>
+<span class="detail-value"><a href="../../farms/paulo-la-do-sitio-para/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Paulo's La do Sitio Farm</a></span>
 </div>
 <div class="detail-row">
 <span class="detail-label">Cooperative:</span>
 <span class="detail-value">CEPOTX</span>
 </div>
 </div>
+
+<!-- Add to Cart Button -->
+<div style="margin-top: 2rem; margin-bottom: 2rem;">
+<button class="cta-button add-to-cart-btn" 
+        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
+        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
+        data-product-price="25.00"
+        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
+        data-stripe-price-id="price_xxxxx">
+  Add to Cart - $25.00
+</button>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: Contact us for wholesale inquiries.</p>
+</div>
+</div>
+</div>
+
+<div class="product-content-full">
+<!-- Shipment Highlight Card -->
+<div class="shipment-highlight-card" style="background: linear-gradient(135deg, rgba(59, 51, 51, 0.05) 0%, rgba(59, 51, 51, 0.02) 100%); border: 2px solid var(--color-primary); border-radius: 12px; padding: 2rem; margin: 2rem 0;">
+<h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem;">
+<span>📦</span>
+<span>From Shipment <a href="../../shipments/agl8/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL8</a></span>
+</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+<div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-bottom: 0.25rem;">Status</div>
+<div style="font-weight: 600; color: var(--color-primary);">MANUFACTURING</div>
+</div>
+<div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-bottom: 0.25rem;">Shipment Date</div>
+<div style="font-weight: 600; color: var(--color-primary);">April 7, 2025</div>
+</div>
+<div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-bottom: 0.25rem;">Total Weight</div>
+<div style="font-weight: 600; color: var(--color-primary);">330 kg</div>
+</div>
+</div>
+<p style="color: var(--color-text); line-height: 1.8; margin-bottom: 1.5rem;">
+330 kg of cacao almonds from small-scale farmers in Pará, Brazil, manufactured under the <a href="../../cooperatives/cepotx/index.html" style="color: var(--color-primary); text-decoration: underline;">CEPOTX cooperative</a>. This shipment represents the commitment of Paulo and his family at La do Sitio, an award-winning regenerative cacao farm in the heart of the Amazon Rainforest.
+</p>
+<a class="cta-button" href="../../shipments/agl8/index.html" style="display: inline-block; text-align: center;">View Full Shipment Details →</a>
+</div>
+
+<!-- Meet the Farmer Preview -->
+<div class="farmer-preview-card" style="background: var(--color-bg-light); border-radius: 12px; padding: 2rem; margin: 2rem 0; display: flex; gap: 2rem; align-items: center;">
+<img alt="Paulo" src="../../assets/images/farms/paulo_profile_photo.jpeg" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-primary);"/>
+<div style="flex: 1;">
+<h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.5rem;">
+<a href="../../farms/paulo-la-do-sitio-para/index.html" style="color: var(--color-primary); text-decoration: none;">Paulo & Family</a>
+</h3>
+<p style="color: var(--color-text-light); margin-bottom: 0.75rem; font-weight: 600;">La do Sitio • Pará, Amazon Rainforest, Brazil</p>
+<p style="color: var(--color-text); line-height: 1.8; margin-bottom: 1rem;">
+Paulo and his wife run La do Sitio, an award-winning cacao farm in the Amazon rainforest of Pará. Their farm is part of the <a href="../../cooperatives/cepotx/index.html" style="color: var(--color-primary); text-decoration: underline;">CEPOTX cooperative</a>, which supports small-scale farmers through regenerative practices. La do Sitio has won multiple regional cacao awards.
+</p>
+<p style="color: var(--color-primary); font-weight: 600; margin-bottom: 1rem;">
+🏆 Award-winning farm • CEPOTX cooperative • Amazon Rainforest
+</p>
+<a href="../../farms/paulo-la-do-sitio-para/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Learn more about Paulo's farm →</a>
+</div>
+</div>
+
+<!-- Taste Profile Section -->
+<div class="taste-profile-section" style="margin: 2rem 0; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(59, 51, 51, 0.05) 100%); border-radius: 16px; border: 2px solid rgba(139, 69, 19, 0.2);">
+<h3 style="margin-top: 0; margin-bottom: 1.5rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 32px;">Taste Profile</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;" class="taste-profile-grid">
+<div class="taste-description">
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+AGL8 from <a href="../../farms/paulo-la-do-sitio-para/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Paulo's La do Sitio</a> presents a truly <strong>transformative</strong> taste experience. The flavor journey begins with bold <strong>smoky and tobaccoy</strong> notes that gradually unfold into a <strong>lush green floral</strong> profile—a remarkable evolution that reveals the complexity of Amazon rainforest cacao.
+</p>
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+The initial impression is rich and earthy, with pronounced smoky and tobacco characteristics that speak to the terroir of the Amazon. As the cacao develops on the palate, these bold notes gracefully transition, opening up to reveal vibrant green and floral flavors that dance across the tongue. This transformation creates a dynamic, multi-layered tasting experience that showcases the unique character of award-winning regenerative cacao from the heart of the Amazon.
+</p>
+<p style="font-size: 1rem; line-height: 1.8; color: var(--color-text-light); font-style: italic;">
+Perfect for those seeking a complex, evolving flavor profile that transforms from bold earthiness to delicate floral notes.
+</p>
+</div>
+<div id="taste-profile-chart" class="taste-chart" style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; overflow: visible;">
+<!-- Taste profile chart will be rendered here -->
+</div>
+</div>
+</div>
+
 <div class="traceability-section">
 <h3>Trace This Product</h3>
 <p>Every bag includes a unique QR code. Scan it to:</p>
@@ -489,17 +595,6 @@
 </ul>
 <a class="cta-button" href="../../shipments/agl8/index.html">View Shipment Details</a>
 <a class="secondary-button" href="https://www.truesight.me/agroverse-shipments/agl8" rel="noopener noreferrer" target="_blank">View Full Ledger</a>
-</div>
-<div style="margin-top: 2rem;">
-<button class="cta-button add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
-        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
-        data-stripe-price-id="price_xxxxx">
-  Add to Cart - $25.00
-</button>
-<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: Contact us for wholesale inquiries.</p>
 </div>
 </div>
 </section>
@@ -591,6 +686,301 @@
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
+
+<!-- D3.js for taste profile visualization -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    renderTasteProfile();
+});
+
+// Taste Profile Visualization for AGL8 - Transformation Profile
+function renderTasteProfile() {
+    const container = document.getElementById('taste-profile-chart');
+    if (!container || typeof d3 === 'undefined') return;
+    
+    const data = {
+        batchId: 'AGL8',
+        origin: "Paulo's La do Sitio - Pará, Amazon Rainforest, Brazil",
+        initial: {
+            smoky: { intensity: 8, notes: ['Bold', 'Rich'], color: '#5C4033' },
+            tobacco: { intensity: 7, notes: ['Earthy', 'Deep'], color: '#6B4423' }
+        },
+        developed: {
+            green: { intensity: 6, notes: ['Fresh', 'Vibrant'], color: '#90EE90' },
+            floral: { intensity: 7, notes: ['Lush', 'Delicate'], color: '#FFB6C1' }
+        },
+        transformation: { intensity: 9, notes: ['Evolving', 'Dynamic'], color: '#9370DB' }
+    };
+    
+    const containerWidth = container.clientWidth || container.offsetWidth || 500;
+    const isMobile = window.innerWidth <= 768;
+    
+    // Combine initial and developed profiles
+    const allProfiles = { ...data.initial, ...data.developed, transformation: data.transformation };
+    
+    if (isMobile) {
+        // Mobile: Horizontal Bar Chart
+        const margin = { top: 20, right: 20, bottom: 40, left: 100 };
+        const width = Math.min(containerWidth - margin.left - margin.right, 400);
+        const height = Object.keys(allProfiles).length * 50 + margin.top + margin.bottom;
+        
+        const svg = d3.select(container)
+            .append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height)
+            .attr('class', 'taste-bar-chart');
+        
+        const g = svg.append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
+        
+        const xScale = d3.scaleLinear()
+            .domain([0, 10])
+            .range([0, width]);
+        
+        const yScale = d3.scaleBand()
+            .domain(Object.keys(allProfiles))
+            .range([0, height - margin.top - margin.bottom])
+            .padding(0.2);
+        
+        const categories = Object.keys(allProfiles);
+        
+        // Bars
+        g.selectAll('.bar')
+            .data(categories)
+            .enter()
+            .append('rect')
+            .attr('class', 'bar')
+            .attr('x', 0)
+            .attr('y', d => yScale(d))
+            .attr('width', d => xScale(allProfiles[d].intensity))
+            .attr('height', yScale.bandwidth())
+            .attr('fill', d => allProfiles[d].color)
+            .attr('opacity', 0.85)
+            .on('mouseover', function(event, d) {
+                d3.select(this).attr('opacity', 1);
+            })
+            .on('mouseout', function() {
+                d3.select(this).attr('opacity', 0.85);
+            });
+        
+        // Labels with phase indicator
+        g.selectAll('.label')
+            .data(categories)
+            .enter()
+            .append('text')
+            .attr('class', 'label')
+            .attr('x', -5)
+            .attr('y', d => yScale(d) + yScale.bandwidth() / 2)
+            .attr('dy', '0.35em')
+            .attr('text-anchor', 'end')
+            .style('font-size', '14px')
+            .style('fill', '#3b3333')
+            .text(d => {
+                const phase = data.initial[d] ? ' (Initial)' : (data.developed[d] ? ' (Developed)' : '');
+                return d.charAt(0).toUpperCase() + d.slice(1) + phase;
+            });
+        
+        // Intensity values
+        g.selectAll('.value')
+            .data(categories)
+            .enter()
+            .append('text')
+            .attr('class', 'value')
+            .attr('x', d => xScale(allProfiles[d].intensity) + 5)
+            .attr('y', d => yScale(d) + yScale.bandwidth() / 2)
+            .attr('dy', '0.35em')
+            .style('font-size', '12px')
+            .style('fill', '#3b3333')
+            .style('font-weight', '600')
+            .text(d => `${allProfiles[d].intensity}/10`);
+        
+        // X-axis
+        g.append('g')
+            .attr('transform', `translate(0,${height - margin.top - margin.bottom})`)
+            .call(d3.axisBottom(xScale).ticks(5))
+            .style('font-size', '12px');
+    } else {
+        // Desktop: Radial Chart
+        const padding = 40;
+        const maxWidth = 500;
+        const width = Math.min(maxWidth, containerWidth - (padding * 2));
+        const height = width;
+        const radius = width / 2 - padding;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        
+        const svg = d3.select(container)
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height)
+            .attr('class', 'taste-wheel');
+        
+        const tooltip = d3.select('body')
+            .append('div')
+            .attr('class', 'taste-tooltip')
+            .style('opacity', 0)
+            .style('position', 'absolute')
+            .style('background-color', 'rgba(0,0,0,0.7)')
+            .style('color', 'white')
+            .style('padding', '8px')
+            .style('border-radius', '4px')
+            .style('pointer-events', 'none');
+        
+        const categories = Object.keys(allProfiles);
+        const anglePerCategory = (2 * Math.PI) / categories.length;
+        
+        categories.forEach((category, i) => {
+            const profile = allProfiles[category];
+            const startAngle = i * anglePerCategory - Math.PI / 2;
+            const endAngle = (i + 1) * anglePerCategory - Math.PI / 2;
+            const intensity = profile.intensity / 10;
+            const outerRadius = radius * intensity;
+            
+            const arc = d3.arc()
+                .innerRadius(radius * 0.3)
+                .outerRadius(outerRadius)
+                .startAngle(startAngle)
+                .endAngle(endAngle);
+            
+            const segment = svg.append('path')
+                .attr('d', arc)
+                .attr('transform', `translate(${centerX}, ${centerY})`)
+                .attr('fill', profile.color)
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2)
+                .attr('class', 'taste-segment')
+                .style('opacity', 0.85)
+                .on('mouseover', function(event) {
+                    d3.select(this).style('opacity', 1);
+                    tooltip.transition().duration(200).style('opacity', 1);
+                    const phase = data.initial[category] ? 'Initial' : (data.developed[category] ? 'Developed' : 'Transformation');
+                    tooltip.html(`
+                        <strong>${category.charAt(0).toUpperCase() + category.slice(1)}</strong><br>
+                        Phase: ${phase}<br>
+                        Intensity: ${profile.intensity}/10<br>
+                        ${profile.notes.join(', ')}
+                    `)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseout', function() {
+                    d3.select(this).style('opacity', 0.85);
+                    tooltip.transition().duration(200).style('opacity', 0);
+                });
+            
+            // Add label
+            const labelAngle = (startAngle + endAngle) / 2;
+            const labelRadius = radius * 0.65;
+            const labelX = centerX + Math.cos(labelAngle) * labelRadius;
+            const labelY = centerY + Math.sin(labelAngle) * labelRadius;
+            
+            svg.append('text')
+                .attr('x', labelX)
+                .attr('y', labelY)
+                .attr('text-anchor', 'middle')
+                .attr('class', 'taste-label')
+                .style('font-size', '12px')
+                .style('fill', '#3b3333')
+                .text(category.charAt(0).toUpperCase() + category.slice(1));
+            
+            // Add intensity number
+            const intensityRadius = radius * 0.5;
+            const intensityX = centerX + Math.cos(labelAngle) * intensityRadius;
+            const intensityY = centerY + Math.sin(labelAngle) * intensityRadius;
+            
+            svg.append('text')
+                .attr('x', intensityX)
+                .attr('y', intensityY)
+                .attr('text-anchor', 'middle')
+                .attr('class', 'taste-intensity')
+                .style('font-size', '14px')
+                .style('fill', '#3b3333')
+                .style('font-weight', '600')
+                .text(profile.intensity);
+        });
+        
+        // Add center circle
+        svg.append('circle')
+            .attr('cx', centerX)
+            .attr('cy', centerY)
+            .attr('r', radius * 0.3)
+            .attr('fill', '#3b3333')
+            .attr('stroke', '#fff')
+            .attr('stroke-width', 2);
+        
+        svg.append('text')
+            .attr('x', centerX)
+            .attr('y', centerY - 5)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '14px')
+            .attr('font-weight', '600')
+            .text('AGL8');
+        
+        svg.append('text')
+            .attr('x', centerX)
+            .attr('y', centerY + 15)
+            .attr('text-anchor', 'middle')
+            .attr('fill', 'white')
+            .attr('font-size', '10px')
+            .text('Transformation');
+    }
+}
+</script>
+
+<style>
+.taste-profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.taste-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .taste-profile-grid {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column;
+        gap: 2rem !important;
+    }
+    
+    .taste-description {
+        order: 2;
+    }
+    
+    .taste-chart {
+        order: 1;
+    }
+    
+    .taste-wheel {
+        max-width: 100%;
+    }
+    
+    #taste-profile-chart {
+        min-height: auto;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    
+    .taste-bar-chart {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+</style>
 </body>
 </html>
 
