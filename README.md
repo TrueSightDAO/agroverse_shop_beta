@@ -67,7 +67,9 @@ agroverse_shop/
 ├── css/
 │   └── cart.css                        # Cart styles
 ├── google-app-script/
-│   └── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
+│   ├── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
+│   ├── update_store_inventory.gs       # Store inventory calculation and update
+│   └── README.md                       # Google Apps Scripts documentation
 ├── scripts/
 │   └── generate_redirects.py           # Script to generate redirect map from CSV
 └── assets/
@@ -154,6 +156,12 @@ window.AGROVERSE_CONFIG = {
 
 ### Google App Script Setup
 
+**Scripts Available:**
+- `agroverse_shop_checkout.gs` - Stripe checkout, order management, shipping calculation
+- `update_store_inventory.gs` - Calculates and updates store inventory for SKUs (see [google-app-script/README.md](google-app-script/README.md) for details)
+
+For detailed documentation on all Google Apps Scripts, see: [google-app-script/README.md](google-app-script/README.md)
+
 1. **Create/Open Script:**
    - Go to [Google App Script](https://script.google.com)
    - Create new project or open existing
@@ -226,6 +234,121 @@ The script automatically selects the correct keys based on the environment:
 - **Production** (`www.agroverse.shop`): Uses `STRIPE_LIVE_*` keys
 
 This means you only need **one deployment** that works for both environments!
+
+## 📊 Analytics Setup
+
+The site includes comprehensive analytics tracking with **Google Analytics 4 (GA4)** and **Facebook Pixel**. All tracking is automatically integrated into the e-commerce flow.
+
+### Google Analytics 4 (GA4)
+
+**Tracking ID**: `G-S6EP25EHF4`
+
+**Implementation:**
+- Base code included in all HTML pages (via `gtag.js`)
+- E-commerce events automatically tracked
+- Events integrated with cart, checkout, and purchase flows
+
+**Files:**
+- `js/ga4-events.js` - Core GA4 events tracking library
+- `js/product-page-tracking.js` - Auto-tracks `view_item` on product pages
+- `js/category-page-tracking.js` - Auto-tracks `view_item_list` on category pages
+
+**Events Tracked:**
+- ✅ `view_item` - Product page views
+- ✅ `view_item_list` - Category page views
+- ✅ `select_item` - Product selection from lists
+- ✅ `add_to_cart` - Items added to cart
+- ✅ `remove_from_cart` - Items removed from cart
+- ✅ `view_cart` - Cart page views
+- ✅ `begin_checkout` - Checkout initiation
+- ✅ `add_shipping_info` - Shipping option selection
+- ✅ `add_payment_info` - Payment info added
+- ✅ `purchase` - Order completion
+- ✅ `generate_lead` - Quote request submissions
+- ✅ `search` - Site searches (if implemented)
+
+**Verification:**
+- Check GA4 Realtime reports: [Google Analytics](https://analytics.google.com)
+- Use GA4 DebugView for testing
+- Events appear in the Events report within 24-48 hours
+
+### Facebook Pixel
+
+**Pixel ID**: `2896386767418228` (configured in `js/config.js`)
+
+**Implementation:**
+- Base Pixel code included in all HTML pages
+- E-commerce events automatically tracked
+- Events integrated with cart, checkout, and purchase flows
+- Includes noscript fallback for users with JavaScript disabled
+
+**Files:**
+- `js/facebook-pixel.js` - Base Pixel initialization
+- `js/facebook-pixel-events.js` - E-commerce event tracking functions
+
+**Events Tracked:**
+- ✅ `PageView` - Automatic on all pages
+- ✅ `ViewContent` - Product page views
+- ✅ `AddToCart` - Items added to cart
+- ✅ `RemoveFromCart` - Items removed from cart
+- ✅ `InitiateCheckout` - Checkout initiation
+- ✅ `AddPaymentInfo` - Payment info added
+- ✅ `Purchase` - Order completion
+- ✅ `Lead` - Quote request submissions
+
+**Configuration:**
+The Pixel ID is set in `js/config.js`:
+```javascript
+const FACEBOOK_PIXEL_ID = '2896386767418228';
+```
+
+**Verification:**
+- Install [Facebook Pixel Helper](https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc) browser extension
+- Visit your site and check the extension icon
+- View events in [Facebook Events Manager](https://business.facebook.com/events_manager)
+- Use Test Events to see real-time tracking
+
+### Adding Analytics to New Pages
+
+**IMPORTANT**: When creating new HTML pages, always include the analytics scripts in the `<head>` section:
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6EP25EHF4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6EP25EHF4');
+</script>
+<!-- Facebook Pixel Code -->
+<script src="js/config.js"></script>
+<script src="js/facebook-pixel.js"></script>
+<script src="js/facebook-pixel-events.js"></script>
+```
+
+**For pages in subdirectories**, adjust the script paths:
+- 1 level deep (e.g., `checkout/index.html`): Use `../js/...`
+- 2 levels deep (e.g., `product-page/name/index.html`): Use `../../js/...`
+- 3 levels deep: Use `../../../js/...`
+
+**Script Loading Order:**
+1. `config.js` (must load first - provides configuration)
+2. `facebook-pixel.js` (base Pixel initialization)
+3. `facebook-pixel-events.js` (event tracking functions)
+4. Other page-specific scripts
+
+**Automatic Event Tracking:**
+- Product pages: Automatically track `view_item` / `ViewContent` if product data is available
+- Category pages: Automatically track `view_item_list` if product cards are present
+- Cart operations: Automatically tracked via `cart.js` and `add-to-cart.js`
+- Checkout: Automatically tracked via `checkout.js`
+- Purchase: Automatically tracked via `order-status.js`
+
+**Testing:**
+- Use browser developer tools console to verify events are firing
+- Check for console logs: "GA4 event sent:" and "Facebook Pixel event sent:"
+- Use browser extensions (GA4 DebugView, Facebook Pixel Helper) for visual verification
 
 ## 🛒 E-Commerce Features
 
@@ -609,4 +732,4 @@ For issues or questions:
 ---
 
 **Last Updated**: 2025-12-12  
-**Version**: 1.1.0
+**Version**: 1.2.0
