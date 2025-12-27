@@ -551,6 +551,210 @@ const PRODUCTS = {
 - In ounces (converted automatically)
 - Displayed on product pages (optional)
 
+## ➕ Adding a New SKU Product
+
+When adding a new product SKU to the Agroverse Shop, follow these steps to ensure proper integration across the site and exposure to Facebook Commerce Manager and Google Merchant Center:
+
+### 1. Add Product Entry to `js/products.js`
+
+Add the product data to the `window.PRODUCTS` object:
+
+```javascript
+'ceremonial-cacao-fazenda-santa-ana-2023-200g': {
+  productId: 'ceremonial-cacao-fazenda-santa-ana-2023-200g',
+  name: 'Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)',
+  price: 25.00,
+  weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
+  image: '/assets/images/farms/fazenda-santa-ana-itacare.jpg',
+  stripePriceId: '', // Not needed - using price_data instead
+  category: 'retail',
+  shipment: 'AGL2',
+  farm: 'Fazenda Santa Ana, Bahia'
+}
+```
+
+**Required Fields:**
+- `productId`: URL-friendly unique identifier (lowercase, hyphens)
+- `name`: Full product display name
+- `price`: Price in USD (number, not string)
+- `weight`: Weight in ounces (required for shipping)
+- `image`: Path to product image (relative from site root)
+- `category`: Either `'retail'` or `'wholesale'`
+- `shipment`: Shipment ID (e.g., `'AGL2'`)
+- `farm`: Farm name (used for linking and display)
+
+### 2. Create Product Page HTML
+
+Create a new directory in `product-page/` following the naming convention:
+- Directory name should match `productId` (e.g., `product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g/`)
+- Create `index.html` inside that directory
+- Use an existing product page as a template (e.g., `product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html`)
+
+**Product Page Must Include:**
+- Product title, price, description
+- Product details (weight, origin, harvest, farm, etc.)
+- "Add to Cart" button with correct `data-product-id`
+- Inventory display section (`<div id="inventory-display">`)
+- Shipment highlight card (if applicable)
+- "Meet the Farmer" preview card (if applicable)
+- Taste profile section and chart (if applicable)
+- Traceability section
+- All required scripts (`inventory-service.js`, `add-to-cart.js`, etc.)
+
+**Template Structure:**
+```html
+<div class="product-page">
+  <div class="product-header">
+    <!-- Product image and basic info -->
+    <div id="inventory-display"></div>
+    <button class="add-to-cart-btn" data-product-id="...">Add to Cart</button>
+  </div>
+  
+  <div class="product-details">
+    <!-- Product specifications -->
+  </div>
+  
+  <!-- Shipment Highlight Card -->
+  <!-- Meet the Farmer Preview -->
+  <!-- Taste Profile Section -->
+  <!-- Traceability Section -->
+</div>
+```
+
+### 3. Update Related Pages
+
+**Farm Page (`farms/[farm-name]/index.html`):**
+- Add product card to "Products from This Farm" section
+- Link to the new product page
+
+**Shipment Page (`shipments/[shipment-id]/index.html`):**
+- Add product card to "Products from This Shipment" section (or "Purchase This Cacao" section for retail products)
+- Link to the new product page
+- Include wholesale products if applicable
+
+**Landing Page (`index.html`):**
+- Add product card to the products section (if retail product)
+- Include inventory display div: `<div id="inventory-display-[product-id]" class="product-inventory-count"></div>`
+
+**Category Page (`category/retail-packs/index.html` or `category/wholesale-bulk/index.html`):**
+- Add product card to the appropriate category listing
+- Include inventory display div for retail products
+
+### 4. Add SKU Entry to Google Sheet
+
+Use the helper script to add the product to the "Agroverse SKUs" Google Sheet:
+
+```bash
+cd /Users/garyjob/Applications/agroverse_shop
+python3 scripts/add_fazenda_santa_ana_sku.py
+```
+
+**Note:** You'll need to modify the script's `NEW_PRODUCT` dictionary with your product data, or create a generic script that accepts product data as parameters.
+
+**Google Sheet Columns:**
+- Column A: Product ID (matches `productId` in `products.js`)
+- Column B: Product Name
+- Column C: Price (USD)
+- Column D: Weight (oz)
+- Column E: Category (`retail` or `wholesale`)
+- Column F: Shipment ID
+- Column G: Farm name
+- Column H: Image Path (full URL)
+- Column I: Store inventory (automatically calculated by `update_store_inventory.gs`)
+
+**Alternative: Manual Entry**
+If you prefer to add the SKU manually, open the "Agroverse SKUs" sheet:
+- URL: `https://docs.google.com/spreadsheets/d/1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU/edit?gid=98293503#gid=98293503`
+- Add a new row with all the product information
+- Ensure the Product ID in Column A matches the `productId` in `products.js`
+
+### 5. Verify Inventory Integration
+
+**Automatic Inventory Calculation:**
+- The `update_store_inventory.gs` script will automatically calculate and populate Column I ("Store inventory") when it runs
+- This script aggregates inventory from:
+  - Main ledger ("offchain asset location" sheet)
+  - Managed ledgers (from "Shipment Ledger Listing")
+  - Filters by store managers and maps currencies to SKUs
+
+**Inventory Display:**
+- Product pages automatically display inventory count via `inventory-service.js`
+- "Add to Cart" buttons are disabled when inventory is 0
+- Inventory counts are cached and refreshed periodically
+
+### 6. Regenerate Product Feed
+
+After adding a new product, you must regenerate the product feed so it's available in Facebook Commerce Manager and Google Merchant Center.
+
+**Generate the Feed:**
+```bash
+cd /Users/garyjob/Applications/agroverse_shop
+python3 scripts/generate_facebook_feed.py
+```
+
+This will:
+- Read products from `js/products.js`
+- Generate `facebook_product_feed.xml` with all retail products
+- Include the new product in the feed
+
+**Commit and Push the Feed:**
+```bash
+git add facebook_product_feed.xml
+git commit -m "Add [product-name] to product feed"
+git push origin main
+```
+
+**Platform Updates:**
+- **Facebook Commerce Manager**: Will automatically fetch the updated feed on the next scheduled update, or you can manually trigger a refresh in Commerce Manager → Catalog → Data Sources
+- **Google Merchant Center**: Will automatically fetch the updated feed on the next scheduled update, or you can manually trigger a fetch in Merchant Center → Products → Feeds
+
+**Feed URL:** `https://www.agroverse.shop/facebook_product_feed.xml`
+
+**Note:** The feed only includes retail products (price > $0). Wholesale products are automatically excluded to prevent Google Merchant Center rejection. If you need to include wholesale products, use the `--include-wholesale` flag (not recommended for Google).
+
+### 7. Test the Integration
+
+**Checklist:**
+- ✅ Product appears in `js/products.js`
+- ✅ Product page loads correctly at `/product-page/[product-id]/`
+- ✅ "Add to Cart" button works and validates inventory
+- ✅ Product card appears on landing page (if retail)
+- ✅ Product card appears on category page
+- ✅ Product links from farm page (if applicable)
+- ✅ Product links from shipment page
+- ✅ Inventory displays correctly
+- ✅ SKU entry exists in Google Sheet
+- ✅ Product appears in inventory web service response
+- ✅ Product feed regenerated and includes new product
+- ✅ Feed file committed and pushed to GitHub
+
+**Testing Commands:**
+```bash
+# Start local server
+./start-local-server.sh
+
+# Visit product page
+open http://127.0.0.1:8000/product-page/[product-id]/
+
+# Check inventory service (replace with actual script URL)
+curl "https://script.google.com/macros/s/[SCRIPT_ID]/exec?action=getInventory&sku=[product-id]"
+
+# Verify product in feed
+curl "https://www.agroverse.shop/facebook_product_feed.xml" | grep "[product-id]"
+```
+
+### Example: Fazenda Santa Ana Product
+
+For reference, see how the Fazenda Santa Ana ceremonial cacao (2023) was added:
+- **Product ID**: `ceremonial-cacao-fazenda-santa-ana-2023-200g`
+- **Product Page**: `product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g/index.html`
+- **Farm Page**: `farms/fazenda-santa-ana-bahia/index.html`
+- **Shipment Page**: `shipments/agl2/index.html`
+- **Google Sheet**: Row 10 in "Agroverse SKUs"
+- **Script Used**: `scripts/add_fazenda_santa_ana_sku.py` (can be adapted for future products)
+
+This example demonstrates the complete workflow for adding a new SKU product.
+
 ## 📱 Product Feed (Facebook & Google Merchant Center)
 
 The site generates a Google Shopping-compatible product feed XML file that works with both **Facebook Commerce Manager** and **Google Merchant Center**.

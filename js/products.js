@@ -93,6 +93,17 @@ window.PRODUCTS = {
     category: 'wholesale',
     shipment: 'AGL8',
     farm: "Paulo's Farm, Pará"
+  },
+  'ceremonial-cacao-fazenda-santa-ana-2023-200g': {
+    productId: 'ceremonial-cacao-fazenda-santa-ana-2023-200g',
+    name: 'Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)',
+    price: 25.00,
+    weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
+    image: '/assets/images/farms/fazenda-santa-ana-itacare.jpg',
+    stripePriceId: '', // Not needed - using price_data instead
+    category: 'retail',
+    shipment: 'AGL2',
+    farm: 'Fazenda Santa Ana, Bahia'
   }
 };
 
