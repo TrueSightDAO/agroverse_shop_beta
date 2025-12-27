@@ -517,6 +517,87 @@
             content: '→';
         }
         
+        /* Products Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .item-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .item-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .item-card-body {
+            padding: 1.5rem;
+        }
+        
+        .item-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-card .item-meta {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .item-card .item-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .item-link {
+            font-size: 14px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .item-link:hover {
+            text-decoration: underline;
+        }
+        
+        .item-link::after {
+            content: ' →';
+        }
+        
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .content-section h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+        }
+        
         @media (max-width: 768px) {
             .email-form {
                 flex-direction: column;
@@ -921,6 +1002,22 @@
 </ul>
 </div>
 </div>
+<!-- Products from This Shipment -->
+<section class="content-section" style="margin-top: 3rem;">
+<h2>Products from This Shipment</h2>
+<div class="items-grid">
+<a class="item-card" href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html">
+<img alt="Taste of Rainforest - Caramelized Cacao Beans" class="item-card-image" src="../../assets/images/products/taste-of-rainforest.jpeg"/>
+<div class="item-card-body">
+<h3>Taste of Rainforest - Caramelized Cacao Beans (200g)</h3>
+<div class="item-meta">$25.00 • From AGL10</div>
+<div class="item-links">
+<span class="item-link">View Product</span>
+</div>
+</div>
+</a>
+</div>
+</section>
 <!-- Transparency Section - Secondary Action -->
 <div class="transparency-section">
 <h3>Want to Verify the Full Ledger?</h3>
