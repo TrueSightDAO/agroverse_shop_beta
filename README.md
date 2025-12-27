@@ -1,6 +1,36 @@
 # Agroverse Shop - E-Commerce Platform
 
-A static HTML e-commerce website for Agroverse, migrated from Wix to GitHub Pages. Features a complete checkout system with Stripe integration, shopping cart, order management, and wholesale quote requests.
+A static HTML e-commerce website for Agroverse, migrated from Wix to GitHub Pages. Features a complete checkout system with Stripe integration, shopping cart, order management, wholesale quote requests, blog content, and farm/shipment pages.
+
+## 📚 Context
+
+This repository contains the complete Agroverse Shop website, including:
+
+- **E-Commerce Platform**: Full shopping cart, checkout, and order management system
+- **Content Pages**: Blog posts, farm profiles, shipment pages, and product pages
+- **Inventory Management**: Real-time inventory tracking linked to Google Sheets
+- **Google Apps Scripts**: Backend services for checkout, inventory updates, and order processing
+
+### Blog Content
+
+The site includes blog posts in the `/post/` directory. Blog posts feature:
+- Responsive image layouts with side-by-side display on desktop
+- Image pairs and groups automatically wrap multiple consecutive images
+- Text-to-speech functionality with highlighting and auto-scrolling
+- Embedded taste profile charts using D3.js
+- Links to related shipments, farms, and products
+
+### Image Layout System
+
+Blog posts use a flexible image layout system:
+- **Desktop**: Consecutive images display side-by-side using flexbox
+- **Mobile**: Images stack vertically for better readability
+- **Pairs**: 2 images display side-by-side with equal width
+- **Groups**: 3+ images automatically wrap to multiple rows
+- **Sizing**: Images respect max-width and max-height constraints
+- **Responsive**: Automatically adapts based on screen size
+
+Images are wrapped in `.image-pair` containers to enable the side-by-side layout on desktop views.
 
 ## 🏗️ Architecture Overview
 
