@@ -78,7 +78,7 @@
   /**
    * Handle add to cart button click
    */
-  function handleAddToCart(event) {
+  async function handleAddToCart(event) {
     event.preventDefault();
     event.stopPropagation(); // Prevent event from bubbling up
 
@@ -120,27 +120,47 @@
       return;
     }
 
-    // Add to cart
-    const success = window.Cart.add(product);
+    // Add to cart with inventory validation
+    try {
+      const result = await window.Cart.add(product);
+      
+      if (result.success) {
+        // Track GA4 add_to_cart event
+        if (window.trackAddToCart) {
+          window.trackAddToCart(product);
+        }
 
-    // Track GA4 add_to_cart event
-    if (success && window.trackAddToCart) {
-      window.trackAddToCart(product);
-    }
+        // Track Facebook Pixel AddToCart event
+        if (window.trackFacebookAddToCart) {
+          window.trackFacebookAddToCart(product);
+        }
 
-    // Track Facebook Pixel AddToCart event
-    if (success && window.trackFacebookAddToCart) {
-      window.trackFacebookAddToCart(product);
-    }
-
-    // Reset processing flag after a short delay
-    setTimeout(() => {
-      button.dataset.processing = 'false';
-    }, 500);
-
-    // Show toast notification on mobile (where cart icon might not be visible)
-    if (success && window.innerWidth <= 768) {
-      showMobileToast('Added to cart!');
+        // Show toast notification on mobile (where cart icon might not be visible)
+        if (window.innerWidth <= 768) {
+          showMobileToast('Added to cart!');
+        }
+      } else {
+        // Show error message
+        const errorMessage = result.message || 'Unable to add to cart';
+        if (window.innerWidth <= 768) {
+          showMobileToast(errorMessage);
+        } else {
+          alert(errorMessage);
+        }
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      const errorMessage = 'Unable to add to cart. Please try again.';
+      if (window.innerWidth <= 768) {
+        showMobileToast(errorMessage);
+      } else {
+        alert(errorMessage);
+      }
+    } finally {
+      // Reset processing flag after a short delay
+      setTimeout(() => {
+        button.dataset.processing = 'false';
+      }, 500);
     }
 
     // Cart badge will update automatically via cart event listeners

@@ -103,6 +103,14 @@
         document.head.appendChild(cartCss);
       }
 
+      // Add inventory-service.js first (needed by cart.js)
+      if (!document.querySelector('script[src*="inventory-service.js"]') && !window.InventoryService) {
+        const inventoryServiceJs = document.createElement('script');
+        inventoryServiceJs.src = baseUrl + 'js/inventory-service.js';
+        inventoryServiceJs.async = false; // Load synchronously before cart.js
+        document.body.appendChild(inventoryServiceJs);
+      }
+
       // Add cart.js if not present
       if (!document.querySelector('script[src*="cart.js"]') && !window.Cart) {
         const cartJs = document.createElement('script');

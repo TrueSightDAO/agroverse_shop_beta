@@ -182,22 +182,25 @@
   }
 
   /**
-   * Add item to cart
+   * Add item to cart with inventory validation
+   * @param {Object} product - Product object with productId, name, price, etc.
+   * @param {Object} options - Optional object with {skipInventoryCheck: boolean}
+   * @return {Promise<{success: boolean, message?: string}>} Result object
    */
-  function addToCart(product) {
+  async function addToCart(product, options = {}) {
     const cart = getCart();
     
     // Validate product data
     if (!product.productId || !product.name || !product.price) {
       console.error('Invalid product data:', product);
-      return false;
+      return { success: false, message: 'Invalid product data' };
     }
 
     // Normalize product ID to prevent duplicates
     product.productId = normalizeProductId(product.productId);
     if (!product.productId) {
       console.error('Invalid product ID after normalization');
-      return false;
+      return { success: false, message: 'Invalid product ID' };
     }
 
     // Get canonical product data from PRODUCTS if available (ensures consistency)
@@ -219,6 +222,35 @@
     if (!product.weight || parseFloat(product.weight) === 0) {
       if (window.PRODUCTS && window.PRODUCTS[product.productId]) {
         product.weight = window.PRODUCTS[product.productId].weight || 0;
+      }
+    }
+
+    // Check inventory availability (unless skipped)
+    if (!options.skipInventoryCheck && window.InventoryService) {
+      const requestedQuantity = product.quantity || 1;
+      
+      // Find existing item in cart to get current quantity
+      const existingItem = cart.items.find(
+        item => normalizeProductId(item.productId) === product.productId
+      );
+      const currentCartQuantity = existingItem ? existingItem.quantity : 0;
+      
+      try {
+        const availability = await window.InventoryService.checkInventoryAvailability(
+          product.productId,
+          requestedQuantity,
+          currentCartQuantity
+        );
+        
+        if (!availability.available) {
+          const message = availability.availableQuantity > 0
+            ? `Only ${availability.availableQuantity} available in stock. You already have ${currentCartQuantity} in your cart.`
+            : `This item is out of stock.`;
+          return { success: false, message: message, availableQuantity: availability.availableQuantity };
+        }
+      } catch (error) {
+        // If inventory check fails, log but continue (graceful degradation)
+        console.warn('Inventory check failed, proceeding with add to cart:', error);
       }
     }
 
@@ -255,7 +287,8 @@
       });
     }
 
-    return saveCart(cart);
+    const saved = saveCart(cart);
+    return { success: saved };
   }
 
   /**
@@ -283,23 +316,57 @@
   }
 
   /**
-   * Update item quantity
+   * Update item quantity with inventory validation
+   * @param {string} productId - Product ID
+   * @param {number} quantity - New quantity
+   * @param {Object} options - Optional object with {skipInventoryCheck: boolean}
+   * @return {Promise<{success: boolean, message?: string}>} Result object
    */
-  function updateQuantity(productId, quantity) {
+  async function updateQuantity(productId, quantity, options = {}) {
     if (quantity <= 0) {
-      return removeFromCart(productId);
+      const removed = removeFromCart(productId);
+      return { success: removed };
     }
 
     const cart = getCart();
     const normalizedId = normalizeProductId(productId);
     const item = cart.items.find(item => normalizeProductId(item.productId) === normalizedId);
     
-    if (item) {
-      item.quantity = parseInt(quantity, 10);
-      return saveCart(cart);
+    if (!item) {
+      return { success: false, message: 'Item not found in cart' };
+    }
+
+    // Check inventory availability (unless skipped)
+    if (!options.skipInventoryCheck && window.InventoryService) {
+      const requestedQuantity = parseInt(quantity, 10);
+      const currentQuantity = item.quantity || 0;
+      
+      // If quantity is being increased, check if the new quantity is available
+      // If quantity is being decreased, no need to check (we already allow decreases)
+      if (requestedQuantity > currentQuantity) {
+        try {
+          // Get total inventory available
+          const inventory = await window.InventoryService.getInventory(productId);
+          
+          // Check if the requested quantity exceeds available inventory
+          // Since items are normalized (one item per productId), we just check directly
+          if (requestedQuantity > inventory) {
+            const availableQuantity = Math.max(0, inventory);
+            const message = availableQuantity > 0
+              ? `Only ${availableQuantity} available in stock.`
+              : `This item is out of stock.`;
+            return { success: false, message: message, availableQuantity: availableQuantity };
+          }
+        } catch (error) {
+          // If inventory check fails, log but continue (graceful degradation)
+          console.warn('Inventory check failed, proceeding with quantity update:', error);
+        }
+      }
     }
     
-    return false;
+    item.quantity = parseInt(quantity, 10);
+    const saved = saveCart(cart);
+    return { success: saved };
   }
 
   /**
