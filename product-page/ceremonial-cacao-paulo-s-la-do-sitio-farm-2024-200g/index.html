@@ -474,6 +474,23 @@
 <div class="product-info">
 <h1>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h1>
 <div class="product-price">$25.00</div>
+
+<!-- Add to Cart Button -->
+<div style="margin-top: 1.5rem; margin-bottom: 2rem;">
+<div id="inventory-display" style="margin-bottom: 0.75rem; font-size: 14px; color: var(--color-text-light); min-height: 20px;">
+<!-- Inventory count will be displayed here -->
+</div>
+<button class="cta-button add-to-cart-btn" 
+        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
+        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
+        data-product-price="25.00"
+        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
+        data-stripe-price-id="price_xxxxx">
+  Add to Cart - $25.00
+</button>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: Contact us for wholesale inquiries.</p>
+</div>
+
 <div class="product-description">
 <p>Experience the soulful essence of ceremonial cacao sourced directly from Paulo's La do Sitio farm in Pará, Brazil. This award-winning farm, part of the CEPOTX cooperative, produces premium cacao through regenerative agroforestry practices in the heart of the Amazon Rainforest.</p>
 <p>Each 200g bag includes a QR code that allows you to trace your cacao back to the exact shipment (AGL8) and farm where it was grown. Scan the code to view shipment details, FDA approval, and an exclusive video of the farm in action.</p>
@@ -500,19 +517,6 @@
 <span class="detail-label">Cooperative:</span>
 <span class="detail-value">CEPOTX</span>
 </div>
-</div>
-
-<!-- Add to Cart Button -->
-<div style="margin-top: 2rem; margin-bottom: 2rem;">
-<button class="cta-button add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
-        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
-        data-stripe-price-id="price_xxxxx">
-  Add to Cart - $25.00
-</button>
-<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Note: Contact us for wholesale inquiries.</p>
 </div>
 </div>
 </div>
@@ -685,7 +689,47 @@ Perfect for those seeking a complex, evolving flavor profile that transforms fro
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
+<script src="../../js/inventory-service.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
+
+<!-- Inventory Display Script -->
+<script>
+(function() {
+  async function displayInventory() {
+    const inventoryDisplay = document.getElementById('inventory-display');
+    if (!inventoryDisplay) return;
+
+    // Wait for InventoryService to be available
+    if (!window.InventoryService) {
+      setTimeout(displayInventory, 100);
+      return;
+    }
+
+    const productId = 'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g';
+    try {
+      const inventory = await window.InventoryService.getInventory(productId);
+      
+      if (inventory !== null && inventory !== undefined) {
+        if (inventory > 0) {
+          inventoryDisplay.innerHTML = `<strong style="color: var(--color-primary);">${inventory}</strong> ${inventory === 1 ? 'bag' : 'bags'} left in stock`;
+          inventoryDisplay.style.color = 'var(--color-text-light)';
+        } else {
+          inventoryDisplay.innerHTML = '<span style="color: #d32f2f; font-weight: 600;">Out of stock</span>';
+        }
+      }
+    } catch (error) {
+      console.warn('Could not fetch inventory for display:', error);
+      // Don't show anything if we can't fetch inventory
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', displayInventory);
+  } else {
+    displayInventory();
+  }
+})();
+</script>
 
 <!-- D3.js for taste profile visualization -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
