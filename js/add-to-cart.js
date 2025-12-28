@@ -190,8 +190,11 @@
         const colorMatch = inlineStyle.match(/color:\s*([^;]+)/i);
         const cursorMatch = inlineStyle.match(/cursor:\s*([^;]+)/i);
         
+        // Extract and store original values, with proper fallbacks
         button.dataset.originalBgColor = (bgMatch ? bgMatch[1].trim() : null) || 'var(--color-primary, #3b3333)';
-        button.dataset.originalColor = (colorMatch ? colorMatch[1].trim() : null) || 'white';
+        // Ensure color is always stored as 'white' if not found or if it's a CSS variable
+        const extractedColor = colorMatch ? colorMatch[1].trim() : null;
+        button.dataset.originalColor = extractedColor || 'white';
         button.dataset.originalCursor = (cursorMatch ? cursorMatch[1].trim() : null) || 'pointer';
       } else if (originalPrice) {
         // If button is already "Out of Stock", reconstruct original text from price
@@ -236,7 +239,9 @@
       
       // Restore background color (use original or default primary color)
       button.style.backgroundColor = originalBgColor;
-      button.style.color = originalColor;
+      // Always set color to white for add-to-cart buttons (they should always be white)
+      // Use setProperty with important to ensure it overrides any CSS
+      button.style.setProperty('color', 'white', 'important');
       button.style.cursor = originalCursor;
       button.style.opacity = '';
     }

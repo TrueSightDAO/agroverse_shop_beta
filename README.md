@@ -32,6 +32,131 @@ Blog posts use a flexible image layout system:
 
 Images are wrapped in `.image-pair` containers to enable the side-by-side layout on desktop views.
 
+### Video Management
+
+All videos on the website are hosted on YouTube and embedded using YouTube iframes. This approach provides:
+- **Repository size reduction**: Videos are not stored in the repository (~500MB+ saved)
+- **Better performance**: YouTube CDN with adaptive streaming
+- **SEO benefits**: Videos discoverable in YouTube search
+- **Traffic generation**: Links in video descriptions drive traffic back to agroverse.shop
+- **Analytics**: YouTube provides views, engagement, and watch time data
+
+#### Adding a New Video
+
+1. **Prepare the video file**:
+   - Place the video file in `assets/videos/` (temporarily, for upload)
+   - Recommended format: MP4, 1080p or higher
+   - Keep file size reasonable (under 500MB recommended)
+
+2. **Add video metadata**:
+   - Open `scripts/video_metadata.json`
+   - Add a new entry with:
+     - `filename`: The video filename (e.g., `"new-farm-video.mp4"`)
+     - `title`: SEO-optimized title (e.g., `"Farm Name - Video Description | Agroverse"`)
+     - `description`: Detailed description with:
+       - Context about the video content
+       - Links back to relevant agroverse.shop pages (farm, product, shipment)
+       - Relevant hashtags for discoverability
+     - `tags`: Array of relevant tags for YouTube search
+     - `pages`: Array of page paths where this video will appear
+     - `privacy`: `"public"` (for SEO) or `"unlisted"` (if needed)
+
+   Example:
+   ```json
+   {
+     "filename": "new-farm-video.mp4",
+     "title": "Farm Name - Video Description | Agroverse",
+     "description": "Description text...\n\n🌳 Learn more: https://www.agroverse.shop/farms/farm-name\n📦 View products: https://www.agroverse.shop/product-page/product\n\n#cacao #Brazil #regenerativeagriculture",
+     "tags": ["cacao", "Brazil", "farming", "regenerative agriculture"],
+     "pages": [
+       "farms/farm-name/index.html",
+       "product-page/product/index.html"
+     ],
+     "privacy": "public"
+   }
+   ```
+
+3. **Upload to YouTube**:
+   ```bash
+   cd /Users/garyjob/Applications/agroverse_shop
+   python3 scripts/batch_upload_videos.py --upload-only
+   ```
+   - The script will:
+     - Read metadata from `video_metadata.json`
+     - Upload videos with proper titles, descriptions, and tags
+     - Store YouTube video IDs in `youtube_videos.json`
+     - Skip videos that are already uploaded
+
+4. **Update HTML pages**:
+   - Add the video to the relevant HTML pages using a `<video>` tag:
+     ```html
+     <div class="farm-video-container">
+       <video class="farm-video" controls loop muted playsinline>
+         <source src="../../assets/videos/new-farm-video.mp4" type="video/mp4"/>
+         Your browser does not support the video tag.
+       </video>
+     </div>
+     ```
+   - Then run the update script:
+     ```bash
+     python3 scripts/update_html_with_youtube_embeds.py
+     ```
+   - The script will:
+     - Find all `<video>` tags referencing `assets/videos/`
+     - Replace them with YouTube iframe embeds
+     - Maintain existing CSS classes and structure
+
+5. **Verify and clean up**:
+   - Test the pages to ensure videos display correctly
+   - The video files in `assets/videos/` can remain (they're not tracked in git)
+   - Or add `assets/videos/*.mp4` to `.gitignore` if you want to exclude them
+
+#### Video File Structure
+
+- **Metadata**: `scripts/video_metadata.json`
+  - Contains titles, descriptions, tags, and page mappings
+  - Used by the upload script
+
+- **YouTube Mappings**: `scripts/youtube_videos.json`
+  - Maps video filenames to YouTube video IDs
+  - Automatically created/updated by the upload script
+  - Used by the HTML update script
+
+- **Upload Script**: `scripts/batch_upload_videos.py`
+  - Uploads videos to YouTube with metadata
+  - Stores video IDs in `youtube_videos.json`
+
+- **HTML Update Script**: `scripts/update_html_with_youtube_embeds.py`
+  - Replaces `<video>` tags with YouTube iframe embeds
+  - Maintains responsive design and CSS classes
+
+#### Best Practices
+
+1. **Video Titles**: Include farm name, location, and key topic. End with "| Agroverse" for branding.
+
+2. **Descriptions**: Always include:
+   - Context about the video
+   - Links to relevant agroverse.shop pages (farm, product, shipment)
+   - Relevant hashtags for discoverability
+
+3. **Tags**: Use relevant, searchable tags (e.g., "cacao", "Brazil", "regenerative agriculture", "ceremonial cacao")
+
+4. **Privacy**: Use `"public"` for SEO benefits. Videos are discoverable in YouTube search.
+
+5. **Page Placement**: Add videos to relevant pages (farm pages, product pages, shipment pages) using the standard video container structure.
+
+6. **CSS Classes**: Use existing classes:
+   - `.farm-video-container` - Container for responsive video
+   - `.farm-video` - Video element (becomes iframe)
+   - `.farm-video-section` - Section wrapper with heading and description
+
+#### Troubleshooting
+
+- **Video not uploading**: Check that `scripts/youtube_credentials.json` exists and is valid
+- **Video not appearing on page**: Run `update_html_with_youtube_embeds.py` after uploading
+- **Video ID not found**: Ensure the filename in `video_metadata.json` matches the actual file name
+- **CSS issues**: Check that `css/cards.css` has the YouTube iframe styles (`.farm-video-container iframe.farm-video`)
+
 ## 🏗️ Architecture Overview
 
 ### Frontend (Static Site)
