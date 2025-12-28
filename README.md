@@ -565,7 +565,7 @@ Add the product data to the `window.PRODUCTS` object:
   name: 'Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)',
   price: 25.00,
   weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
-  image: '/assets/images/farms/fazenda-santa-ana-itacare.jpg',
+    image: '/assets/images/products/fazenda-santa-ana-product.jpg',
   stripePriceId: '', // Not needed - using price_data instead
   category: 'retail',
   shipment: 'AGL2',
