@@ -31,6 +31,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -126,12 +128,15 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            min-height: 60vh;
         }
         
         .shipment-hero-video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 500px; /* Constrain width for portrait videos */
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain; /* Show full video without cropping */
             object-position: center;
         }
         
@@ -517,73 +522,8 @@
             content: '→';
         }
         
-        /* Products Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .item-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .item-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .item-card-body {
-            padding: 1.5rem;
-        }
-        
-        .item-card h3 {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .item-card .item-meta {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .item-card .item-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .item-link {
-            font-size: 14px;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .item-link:hover {
-            text-decoration: underline;
-        }
-        
-        .item-link::after {
-            content: ' →';
-        }
+                /* Products/Shipments Grid - Now using cards.css for standard card styling */
+        /* Card styling is standardized in cards.css */
         
         .content-section {
             max-width: 1200px;
@@ -915,8 +855,11 @@
 <div class="trees-badge-number" data-default="0" data-shipment-id="agl14" data-trees-sold="" id="trees-planted">0</div>
 </div>
 </div>
-<div class="shipment-hero-video-container" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); display: flex; align-items: center; justify-content: center;">
-<img alt="AGL14 - Oscar's Farm" onerror="this.style.display='none';" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" style="width: 100%; height: 100%; object-fit: cover;"/>
+<div class="shipment-hero-video-container">
+<video autoplay="" class="shipment-hero-video" controls="" loop="" muted="" playsinline="">
+<source src="../../assets/videos/oscar-farm-video.mp4" type="video/mp4"/>
+                Your browser does not support the video tag.
+            </video>
 </div>
 </div>
 <div class="shipment-container">
@@ -1262,6 +1205,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateTreesPlanted();
             initializePage('agl14');
+            setupHeroVideo();
         });
         
         // Also update on page visibility change (when user returns to tab)
