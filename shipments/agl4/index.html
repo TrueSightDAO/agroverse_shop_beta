@@ -33,6 +33,8 @@
 <link href="../../css/navigation.css" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -128,12 +130,15 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            min-height: 60vh;
         }
         
         .shipment-hero-video {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 500px; /* Constrain width for portrait videos */
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain; /* Show full video without cropping */
             object-position: center;
         }
         
@@ -519,73 +524,8 @@
             content: '→';
         }
         
-        /* Products Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .item-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .item-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .item-card-body {
-            padding: 1.5rem;
-        }
-        
-        .item-card h3 {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .item-card .item-meta {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .item-card .item-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .item-link {
-            font-size: 14px;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .item-link:hover {
-            text-decoration: underline;
-        }
-        
-        .item-link::after {
-            content: ' →';
-        }
+                /* Products/Shipments Grid - Now using cards.css for standard card styling */
+        /* Card styling is standardized in cards.css */
         
         .content-section {
             max-width: 1200px;
@@ -1039,10 +979,14 @@
 </div>
 </div>
 <div class="shipment-hero-video-container">
-<video autoplay="" class="shipment-hero-video" controls="" loop="" muted="" playsinline="" poster="https://static.wixstatic.com/media/0e2cde_116fa4a7cbcd43d3aee572acf869961af000.jpg">
-<source src="https://video.wixstatic.com/video/0e2cde_116fa4a7cbcd43d3aee572acf869961a/1080p/mp4/file.mp4" type="video/mp4"/>
-                Your browser does not support the video tag.
-            </video>
+<iframe 
+    class="shipment-hero-video"
+    src="https://www.youtube.com/embed/BI55aQ6B73U?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+</iframe>
 </div>
 </div>
 <div class="shipment-container">

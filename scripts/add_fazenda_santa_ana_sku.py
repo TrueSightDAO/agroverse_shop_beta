@@ -24,7 +24,7 @@ NEW_PRODUCT = {
     'Category': 'retail',
     'Shipment': 'AGL2',
     'Farm': 'Fazenda Santa Ana',
-    'Image Path': 'https://www.agroverse.shop/assets/images/farms/fazenda-santa-ana-itacare.jpg',
+    'Image Path': 'https://www.agroverse.shop/assets/images/products/fazenda-santa-ana-product.jpg',
     'Store inventory': ''  # Will be calculated by update_store_inventory.gs
 }
 

@@ -31,6 +31,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -181,73 +183,8 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Shipments & Products Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .item-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .item-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .item-card-body {
-            padding: 1.5rem;
-        }
-        
-        .item-card h3 {
-            font-family: var(--font-heading);
-            font-size: 20px;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .item-card .item-meta {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .item-card .item-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .item-link {
-            font-size: 14px;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .item-link:hover {
-            text-decoration: underline;
-        }
-        
-        .item-link::after {
-            content: ' →';
-        }
+        /* Shipments & Products Grid - Now using cards.css for standard card styling */
+        /* Card and video styling is standardized in cards.css */
         
         /* Map Section */
         .map-container {
@@ -291,20 +228,19 @@
         @media (max-width: 768px) {
             .farm-hero-content h1 {
                 font-size: 36px;
+            }
             
-        body {
-            overflow-x: hidden;
-        }
-        }
+            /* Video responsive styles are in cards.css */
+            
+            body {
+                overflow-x: hidden;
+            }
             
             .items-grid {
                 grid-template-columns: 1fr;
             }
             
-            .nav-links {
-                gap: 1rem;
-                font-size: 14px;
-            }
+            /* Card responsive styles are in cards.css */
         }
     
         
@@ -567,6 +503,39 @@
 <strong>📍 Location</strong>
                     Bahia, Brazil
                 </div>
+    </div>
+</div>
+<!-- Videos Container - Side by Side on Desktop -->
+<div class="farm-videos-container">
+<!-- Family History Video Section -->
+<div class="farm-video-section">
+<h3>Hear from Oscar: The Family Story</h3>
+<div class="farm-video-container">
+<iframe 
+    class="farm-video"
+    src="https://www.youtube.com/embed/lh_dAXhE7xQ?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+</iframe>
+</div>
+<p>Oscar shares the story of three generations of cacao wisdom and how his grandfather's vision continues to shape the farm today.</p>
+</div>
+<!-- Farm Video Section - Cacao Selection Process -->
+<div class="farm-video-section">
+<h3>Witness the Cacao Selection Process</h3>
+<div class="farm-video-container">
+<iframe 
+    class="farm-video"
+    src="https://www.youtube.com/embed/BI55aQ6B73U?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+</iframe>
+</div>
+<p>See how Oscar's team carefully selects cacao beans, maintaining the quality standards passed down through generations.</p>
 </div>
 </div>
 </section>

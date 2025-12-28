@@ -1,0 +1,219 @@
+/* ====================================
+   Agroverse Shop - Standardized Cards CSS
+   ====================================
+   
+   This file contains standardized styling for:
+   - Product cards (item-card)
+   - Video cards (farm-video-section)
+   - Shipment cards
+   - Product listing grids (items-grid)
+   
+   Usage: Link this file in your HTML pages
+   <link rel="stylesheet" href="../../css/cards.css">
+   ==================================== */
+
+/* ====================================
+   ITEM CARDS (Products, Shipments, etc.)
+   ==================================== */
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* When only one item, center it and limit to 1/3 width */
+.items-grid:has(.item-card:only-child) {
+    grid-template-columns: minmax(280px, 33.333%);
+    justify-items: center;
+}
+
+.item-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.item-card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.item-card-body {
+    padding: 1.5rem;
+}
+
+.item-card h3 {
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-size: 20px;
+    color: var(--color-primary, #3b3333);
+    margin-bottom: 0.5rem;
+}
+
+.item-card .item-meta {
+    font-size: 14px;
+    color: var(--color-text-light, #756F63);
+    margin-bottom: 1rem;
+}
+
+.item-card .item-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.item-link {
+    font-size: 14px;
+    color: var(--color-primary, #3b3333);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.item-link:hover {
+    text-decoration: underline;
+}
+
+.item-link::after {
+    content: ' →';
+}
+
+/* ====================================
+   VIDEO CARDS (Farm Videos, Product Videos)
+   ==================================== */
+
+/* Container for multiple video sections (side-by-side on desktop) */
+.farm-videos-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.farm-video-section {
+    margin: 3rem 0; /* Default margin for single videos */
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Videos inside container should have no margin (container handles spacing) */
+.farm-videos-container .farm-video-section {
+    margin: 0;
+}
+
+.farm-video-section h3 {
+    margin: 0;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    color: var(--color-primary, #3b3333);
+    font-size: 24px;
+    background: #fff;
+}
+
+.farm-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Constrain container width for landscape videos */
+    margin: 0 auto; /* Center the container */
+    background: #000;
+    /* For YouTube iframes - responsive 16:9 aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+/* Portrait videos on product pages should be narrower */
+.product-page .farm-video-container {
+    max-width: 500px; /* Narrower for portrait videos */
+    padding-bottom: 75%; /* 4:3 aspect ratio for portrait videos */
+}
+
+.farm-video {
+    width: 100%;
+    max-width: 100%; /* Constrain to container width */
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+/* YouTube iframe embed styling (replaces video element) */
+.farm-video-container iframe.farm-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.farm-video-section p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    margin: 1rem 0 0 0;
+    color: var(--color-text-light, #756F63);
+    font-size: 14px;
+    background: #fff;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+   ==================================== */
+
+@media (max-width: 960px) {
+    .items-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .items-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .item-card-image {
+        height: 250px;
+    }
+    
+    .farm-videos-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+    
+    .farm-video-container {
+        min-height: 300px;
+        max-height: 500px;
+        padding: 0.5rem 0;
+    }
+    
+    .farm-video {
+        max-width: 100%;
+        max-height: 500px;
+    }
+    
+    .farm-video-section h3 {
+        font-size: 20px;
+        padding: 1rem 1rem 0.75rem 1rem;
+    }
+    
+    .farm-video-section p {
+        padding: 0 1rem 1rem 1rem;
+        font-size: 13px;
+    }
+}
+

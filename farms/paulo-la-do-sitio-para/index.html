@@ -31,6 +31,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -129,6 +131,10 @@
             padding: 4rem 2rem;
         }
         
+        .content-section[style*="background-color"] {
+            padding: 4rem 2rem;
+        }
+        
         .content-section h2 {
             font-family: var(--font-heading);
             font-size: 36px;
@@ -181,72 +187,52 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Shipments & Products Grid */
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+        /* Shipments & Products Grid - Now using cards.css for standard card styling */
+        /* Card styling is standardized in cards.css */
         
-        .item-card {
-            background: white;
+        /* Farm Video Section */
+        .farm-video-section {
+            margin: 3rem 0;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .item-card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .item-card-body {
-            padding: 1.5rem;
-        }
-        
-        .item-card h3 {
+        .farm-video-section h3 {
+            margin: 0;
+            padding: 1.5rem 1.5rem 1rem 1.5rem;
             font-family: var(--font-heading);
-            font-size: 20px;
             color: var(--color-primary);
-            margin-bottom: 0.5rem;
+            font-size: 24px;
+            background: #fff;
         }
         
-        .item-card .item-meta {
-            font-size: 14px;
-            color: var(--color-text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .item-card .item-links {
+        .farm-video-container {
+            position: relative;
+            width: 100%;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            min-height: 60vh;
+            max-height: 80vh;
         }
         
-        .item-link {
+        .farm-video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .farm-video-section p {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            margin: 1rem 0 0 0;
+            color: var(--color-text-light);
             font-size: 14px;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .item-link:hover {
-            text-decoration: underline;
-        }
-        
-        .item-link::after {
-            content: ' →';
+            background: #fff;
         }
         
         /* Map Section */
@@ -299,6 +285,21 @@
             
             .items-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .farm-video-container {
+                min-height: 40vh;
+                max-height: 60vh;
+            }
+            
+            .farm-video-section h3 {
+                font-size: 20px;
+                padding: 1rem 1rem 0.75rem 1rem;
+            }
+            
+            .farm-video-section p {
+                padding: 0 1rem 1rem 1rem;
+                font-size: 13px;
             }
             
             .nav-links {
@@ -568,7 +569,22 @@
 <strong>📍 Region</strong>
                     Pará, Brazil
                 </div>
+    </div>
 </div>
+<!-- Farm Video Section -->
+<div class="farm-video-section">
+<h3>Experience Paulo's Farm</h3>
+<div class="farm-video-container">
+<iframe 
+    class="farm-video"
+    src="https://www.youtube.com/embed/8PIi57AOEE0?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+</iframe>
+</div>
+<p>See the regenerative cacao farming practices at La do Sitio in the heart of the Amazon Rainforest, where Paulo and his family cultivate award-winning cacao with deep respect for the land.</p>
 </div>
 </section>
 <section class="content-section" style="background-color: var(--color-bg-light);">

@@ -175,7 +175,40 @@
     if (!button) return;
     
     const productId = button.dataset.productId;
-    const originalPrice = button.dataset.productPrice || button.textContent.match(/\$[\d.]+/)?.[0] || '';
+    const originalPrice = button.dataset.productPrice || '';
+    
+    // Store original text and styles BEFORE any modifications (only once, and only if not "Out of Stock")
+    if (!button.dataset.originalText) {
+      const currentText = button.textContent || '';
+      // Only save if it's not already "Out of Stock" (prevents saving wrong original)
+      if (currentText !== 'Out of Stock') {
+        button.dataset.originalText = currentText;
+        // Store original inline style values (preserve CSS variables like var(--color-primary))
+        // Parse the style attribute to get the actual CSS variable strings
+        const inlineStyle = button.getAttribute('style') || '';
+        const bgMatch = inlineStyle.match(/background-color:\s*([^;]+)/i);
+        const colorMatch = inlineStyle.match(/color:\s*([^;]+)/i);
+        const cursorMatch = inlineStyle.match(/cursor:\s*([^;]+)/i);
+        
+        // Extract and store original values, with proper fallbacks
+        button.dataset.originalBgColor = (bgMatch ? bgMatch[1].trim() : null) || 'var(--color-primary, #3b3333)';
+        // Ensure color is always stored as 'white' if not found or if it's a CSS variable
+        const extractedColor = colorMatch ? colorMatch[1].trim() : null;
+        button.dataset.originalColor = extractedColor || 'white';
+        button.dataset.originalCursor = (cursorMatch ? cursorMatch[1].trim() : null) || 'pointer';
+      } else if (originalPrice) {
+        // If button is already "Out of Stock", reconstruct original text from price
+        button.dataset.originalText = `Add to Cart - $${parseFloat(originalPrice).toFixed(2)}`;
+        button.dataset.originalBgColor = 'var(--color-primary, #3b3333)';
+        button.dataset.originalColor = 'white';
+        button.dataset.originalCursor = 'pointer';
+      } else {
+        button.dataset.originalText = 'Add to Cart';
+        button.dataset.originalBgColor = 'var(--color-primary, #3b3333)';
+        button.dataset.originalColor = 'white';
+        button.dataset.originalCursor = 'pointer';
+      }
+    }
     
     if (inventory <= 0) {
       // Out of stock
@@ -185,22 +218,31 @@
       button.style.backgroundColor = '#999';
       button.style.cursor = 'not-allowed';
       button.style.opacity = '0.6';
-      
-      // Store original content for potential restoration
-      if (!button.dataset.originalText) {
-        button.dataset.originalText = button.textContent;
-      }
     } else {
       // In stock - restore original state
       button.disabled = false;
       button.classList.remove('out-of-stock');
-      if (button.dataset.originalText) {
+      
+      // Restore original text (but never restore to "Out of Stock")
+      if (button.dataset.originalText && button.dataset.originalText !== 'Out of Stock') {
         button.textContent = button.dataset.originalText;
       } else if (originalPrice) {
-        button.textContent = `Add to Cart - ${originalPrice}`;
+        button.textContent = `Add to Cart - $${parseFloat(originalPrice).toFixed(2)}`;
+      } else {
+        button.textContent = 'Add to Cart';
       }
-      button.style.backgroundColor = '';
-      button.style.cursor = '';
+      
+      // Restore original styles - check if button has inline styles first
+      const originalBgColor = button.dataset.originalBgColor || 'var(--color-primary, #3b3333)';
+      const originalColor = button.dataset.originalColor || 'white';
+      const originalCursor = button.dataset.originalCursor || 'pointer';
+      
+      // Restore background color (use original or default primary color)
+      button.style.backgroundColor = originalBgColor;
+      // Always set color to white for add-to-cart buttons (they should always be white)
+      // Use setProperty with important to ensure it overrides any CSS
+      button.style.setProperty('color', 'white', 'important');
+      button.style.cursor = originalCursor;
       button.style.opacity = '';
     }
   }

@@ -29,6 +29,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -151,6 +153,9 @@
             padding: 2rem;
             margin: 2rem 0;
         }
+        
+        /* Farm Video Section - Now using cards.css, keeping product-specific overrides here if needed */
+        /* Video card styling is now standardized in cards.css */
         
         .product-details h3 {
             font-family: var(--font-heading);
@@ -285,6 +290,8 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+            
+            /* Farm video section styling is now in cards.css */
             
             .product-image-container {
                 position: static;
@@ -453,7 +460,7 @@
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
 </head>
-<body>
+<body class="product-page">
 <header>
 <nav>
 <a class="logo" href="../../index.html">
@@ -568,6 +575,22 @@ Three generations of cacao wisdom. Oscar's grandfather planted trees 80 years ag
 </p>
 <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Learn more about Oscar's farm →</a>
 </div>
+</div>
+
+<!-- Farm Video Section -->
+<div class="farm-video-section">
+<h3 style="margin: 0 0 1rem 0; padding: 1.5rem 1.5rem 0 1.5rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 24px;">Watch the Farm in Action</h3>
+<div class="farm-video-container">
+<iframe 
+    class="farm-video"
+    src="https://www.youtube.com/embed/BI55aQ6B73U?rel=0"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+</iframe>
+</div>
+<p style="padding: 0 1.5rem 1.5rem 1.5rem; margin: 1rem 0 0 0; color: var(--color-text-light); font-size: 14px;">Experience Oscar's farm and see the 80-year-old Criolla trees and three generations of cacao wisdom in action.</p>
 </div>
 
 <!-- Taste Profile Section -->
