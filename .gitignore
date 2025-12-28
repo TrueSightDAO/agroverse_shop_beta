@@ -49,3 +49,15 @@ yarn-debug.log*
 yarn-error.log*
 # Note: Keeping package.json and package-lock.json (they're small and useful for setup)
 
+
+# YouTube API credentials - DO NOT COMMIT
+scripts/youtube_credentials.json
+**/credentials.json
+**/client_secret*.json
+
+# YouTube OAuth token
+youtube_token.json
+**/youtube_token.json
+
+# YouTube video mappings (contains IDs)
+youtube_videos.json

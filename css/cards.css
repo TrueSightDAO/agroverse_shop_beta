@@ -132,20 +132,17 @@
     width: 100%;
     max-width: 800px; /* Constrain container width for landscape videos */
     margin: 0 auto; /* Center the container */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: #000;
-    min-height: 400px;
-    max-height: 600px;
-    padding: 1rem 0;
+    /* For YouTube iframes - responsive 16:9 aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
 }
 
 /* Portrait videos on product pages should be narrower */
 .product-page .farm-video-container {
     max-width: 500px; /* Narrower for portrait videos */
-    min-height: 400px;
-    max-height: 600px;
+    padding-bottom: 75%; /* 4:3 aspect ratio for portrait videos */
 }
 
 .farm-video {
@@ -154,6 +151,16 @@
     height: auto;
     max-height: 600px;
     object-fit: contain;
+}
+
+/* YouTube iframe embed styling (replaces video element) */
+.farm-video-container iframe.farm-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .farm-video-section p {
