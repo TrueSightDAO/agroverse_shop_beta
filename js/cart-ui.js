@@ -158,10 +158,30 @@
   }
 
   /**
+   * Set mobile viewport height for cart sidebar
+   */
+  function setMobileViewportHeight() {
+    const sidebar = document.getElementById('cart-sidebar');
+    if (!sidebar) return;
+    
+    // On mobile, use actual window height instead of 100vh
+    if (window.innerWidth <= 768) {
+      const vh = window.innerHeight * 0.01;
+      sidebar.style.setProperty('--vh', `${vh}px`);
+      sidebar.style.height = `${window.innerHeight}px`;
+      sidebar.style.maxHeight = `${window.innerHeight}px`;
+    } else {
+      sidebar.style.height = '';
+      sidebar.style.maxHeight = '';
+    }
+  }
+
+  /**
    * Open cart sidebar
    */
   function openCartSidebar() {
     const sidebar = document.getElementById('cart-sidebar');
+    setMobileViewportHeight(); // Set correct height before opening
     const overlay = document.getElementById('cart-overlay');
     if (sidebar) {
       sidebar.classList.add('active');
@@ -274,6 +294,22 @@
   } else {
     initCartUI();
   }
+
+  // Handle viewport height changes on mobile (e.g., when address bar shows/hides)
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      setMobileViewportHeight();
+    }, 100);
+  });
+
+  // Also handle orientation changes
+  window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+      setMobileViewportHeight();
+    }, 200);
+  });
 
   // Export for external use
   window.CartUI = {
