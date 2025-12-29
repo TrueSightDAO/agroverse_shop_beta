@@ -6,19 +6,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
-<title>Retail Packs | Agroverse</title>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA. Each bag includes a QR code to trace your cacao back to the farm." name="description"/>
-<link href="https://www.agroverse.shop/category/retail-packs" rel="canonical"/>
+<title>Wholesale Bulk | Agroverse</title>
+<meta content="Premium organic cacao beans and nibs in bulk quantities. Direct from regenerative farms in Brazil's Amazon Rainforest and Bahia. Perfect for businesses, cafes, and manufacturers." name="description"/>
+<link href="https://www.agroverse.shop/category/wholesale-bulk" rel="canonical"/>
 <!-- Open Graph / Facebook -->
 <meta content="website" property="og:type"/>
-<meta content="https://www.agroverse.shop/category/retail-packs" property="og:url"/>
-<meta content="Retail Packs | Agroverse" property="og:title"/>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA." property="og:description"/>
+<meta content="https://www.agroverse.shop/category/wholesale-bulk" property="og:url"/>
+<meta content="Wholesale Bulk | Agroverse" property="og:title"/>
+<meta content="Premium organic cacao beans and nibs in bulk quantities. Direct from regenerative farms in Brazil's Amazon Rainforest and Bahia." property="og:description"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
-<meta content="https://www.agroverse.shop/category/retail-packs" property="twitter:url"/>
-<meta content="Retail Packs | Agroverse" property="twitter:title"/>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/category/wholesale-bulk" property="twitter:url"/>
+<meta content="Wholesale Bulk | Agroverse" property="twitter:title"/>
+<meta content="Premium organic cacao beans and nibs in bulk quantities. Direct from regenerative farms in Brazil's Amazon Rainforest and Bahia." property="twitter:description"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
 <link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
@@ -345,11 +345,11 @@
   gtag('js', new Date());
 
   gtag('config', 'G-S6EP25EHF4');
-</script>
 <!-- Facebook Pixel Code -->
 <script src="../../js/config.js"></script>
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
+</script>
 </head>
 <body>
 <header>
@@ -371,114 +371,77 @@
 </nav>
 </header>
 <section class="category-header">
-<h1>Retail Packs</h1>
-<p>Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA. Each bag includes a QR code to trace your cacao back to the farm where it was grown.</p>
+<h1>Wholesale Bulk</h1>
+<p>Premium organic cacao beans and nibs in bulk quantities. Direct from regenerative farms in Brazil's Amazon Rainforest and Bahia. Perfect for businesses, cafes, and manufacturers seeking traceable, sustainable cacao.</p>
 </section>
 <section class="products-section">
 <div class="products-grid">
 <div class="product-card">
-<a class="product-card-link" href="../../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html">
-<img alt="Ceremonial Cacao – La do Sitio Farm" src="../../assets/images/products/la-do-sitio-farm.jpg"/>
+<a class="product-card-link" href="../../product-page/organic-criollo-cacao-beans-bahia-brazil-oscar-s-100-year-farm/index.html">
+<img alt="Organic Criollo Cacao Beans - Oscar's 100-Year Farm" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif"/>
 <div class="product-card-body">
-<h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
-<div class="price">$25.00</div>
+<h3>Organic Criollo Cacao Beans - Bahia Brazil, Oscar's 100-Year Farm (per kilogram)</h3>
+<div class="price">Contact for Pricing</div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl14/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL14 Shipment</a> • Oscar's Farm, Bahia</div>
+</div>
+</a>
+<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
+<a href="../../quote-request/index.html?product=organic-criollo-cacao-beans-oscar-farm" 
+   class="cta-button"
+   style="display: block; width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; text-align: center; text-decoration: none;">
+  Request Quote
+</a>
+</div>
+</div>
+<div class="product-card">
+<a class="product-card-link" href="../../product-page/organic-hybrid-cacao-beans-jesus-da-deus-fazenda-bahia-per-kilogram/index.html">
+<img alt="Organic Cacao Beans - Jesus Da Deus Fazenda" onerror="this.src='../../assets/images/hero/cacao-circles.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl13.avif"/>
+<div class="product-card-body">
+<h3>Organic Cacao Beans - Jesus Da Deus Fazenda, Bahia (per kilogram)</h3>
+<div class="price">Contact for Pricing</div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl13/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL13 Shipment</a> • Vivi's Farm, Itacaré</div>
+</div>
+</a>
+<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
+<a href="../../quote-request/index.html?product=organic-hybrid-cacao-beans-jesus-da-deus" 
+   class="cta-button"
+   style="display: block; width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; text-align: center; text-decoration: none;">
+  Request Quote
+</a>
+</div>
+</div>
+<div class="product-card">
+<a class="product-card-link" href="../../product-page/organic-criollo-cacao-nibs-bahia-brazil-oscar-s-100-year-farm/index.html">
+<img alt="Organic Criollo Cacao Nibs - Oscar's 100-Year Farm" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif"/>
+<div class="product-card-body">
+<h3>Organic Criollo Cacao Nibs - Bahia Brazil, Oscar's 100-Year Farm (per kilogram)</h3>
+<div class="price">Contact for Pricing</div>
+<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
+</div>
+</a>
+<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
+<a href="../../quote-request/index.html?product=organic-criollo-cacao-nibs-oscar-farm" 
+   class="cta-button"
+   style="display: block; width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; text-align: center; text-decoration: none;">
+  Request Quote
+</a>
+</div>
+</div>
+<div class="product-card">
+<a class="product-card-link" href="../../product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far/index.html">
+<img alt="La do Sitio Farm Cacao Beans" onerror="this.src='../../assets/images/farms/paulo_photo.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif"/>
+<div class="product-card-body">
+<h3>La do Sitio Farm Cacao Beans - Brazilian Amazon Rainforest (per kilogram)</h3>
+<div class="price">Contact for Pricing</div>
 <div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl8/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL8 Shipment</a> • Paulo's Farm, Pará</div>
 </div>
 </a>
 <div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
-        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html">
-<img alt="Taste of Rainforest" src="../../assets/images/products/taste-of-rainforest.jpeg"/>
-<div class="product-card-body">
-<h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl10/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL10 Shipment</a> • Capela Velha Fazenda</div>
-</div>
+<a href="../../quote-request/index.html?product=premium-organic-cacao-beans-la-do-sitio" 
+   class="cta-button"
+   style="display: block; width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; text-align: center; text-decoration: none;">
+  Request Quote
 </a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="taste-of-rainforest-caramelized-cacao-beans"
-        data-product-name="Taste of Rainforest - 200 grams Caramelized Cacao Beans"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/taste-of-rainforest.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/oscar-s-bahia-ceremonial-cacao/index.html">
-<img alt="Ceremonial Cacao – Oscar's Farm" src="../../assets/images/products/oscars-farm.jpeg"/>
-<div class="product-card-body">
-<h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="oscar-bahia-ceremonial-cacao-200g"
-        data-product-name="Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/oscars-farm.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html">
-<img alt="Amazon Rainforest Regenerative Cacao Nibs" src="../../assets/images/products/cacao-nibs.jpeg"/>
-<div class="product-card-body">
-<h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="8-ounce-organic-cacao-nibs"
-        data-product-name="Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/cacao-nibs.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g/index.html">
-<img alt="Ceremonial Cacao – Fazenda Santa Ana" src="../../assets/images/products/fazenda-santa-ana-product.jpg"/>
-<div class="product-card-body">
-<h3>Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl2/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL2 Shipment</a> • Fazenda Santa Ana, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-fazenda-santa-ana-2023-200g"
-        data-product-name="Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/fazenda-santa-ana-product.jpg"
-        data-stripe-price-id=""
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
 </div>
 </div>
 </div>
@@ -567,11 +530,5 @@
 <script src="../../js/products.js"></script>
 <script src="../../js/ga4-events.js"></script>
 <script src="../../js/category-page-tracking.js"></script>
-<script src="../../js/cart.js"></script>
-<script src="../../js/cart-ui.js"></script>
-<script src="../../js/inventory-service.js"></script>
-    <script src="../../js/inventory-display.js"></script>
-<script src="../../js/add-to-cart.js"></script>
-<link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>

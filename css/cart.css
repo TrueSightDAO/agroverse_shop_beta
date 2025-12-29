@@ -45,13 +45,16 @@
   width: 100%;
   max-width: 400px;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  max-height: 100vh;
+  max-height: 100dvh;
   background: white;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   z-index: 2000;
   display: flex;
   flex-direction: column;
   transition: right 0.3s ease;
-  overflow-y: auto;
+  overflow: hidden; /* Prevent double scrollbars */
 }
 
 .cart-sidebar.active {
@@ -60,6 +63,7 @@
 
 .cart-sidebar-header {
   padding: 1.5rem;
+  padding-top: calc(1.5rem + env(safe-area-inset-top)); /* Account for safe area on mobile */
   border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
@@ -68,6 +72,7 @@
   top: 0;
   background: white;
   z-index: 1;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .cart-sidebar-header h2 {
@@ -101,6 +106,9 @@
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0; /* Important for flex children to allow scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .cart-empty {
@@ -201,11 +209,13 @@
 /* Cart Sidebar Footer */
 .cart-sidebar-footer {
   padding: 1.5rem;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); /* Account for safe area on mobile */
   border-top: 1px solid #eee;
   background: white;
   position: sticky;
   bottom: 0;
   z-index: 1;
+  flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
 .cart-subtotal {
@@ -261,6 +271,30 @@
 @media (max-width: 768px) {
   .cart-sidebar {
     max-width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height on mobile */
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+  
+  .cart-sidebar-header {
+    padding: 1rem;
+    padding-top: calc(1rem + env(safe-area-inset-top));
+  }
+  
+  .cart-items {
+    padding: 0.75rem;
+  }
+  
+  .cart-sidebar-footer {
+    padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  
+  .cart-checkout-btn {
+    padding: 0.875rem;
+    font-size: 16px; /* Larger touch target */
+    min-height: 48px; /* Minimum touch target size */
   }
 }
 
