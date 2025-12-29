@@ -6,19 +6,21 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
-<title>Retail Packs | Agroverse</title>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA. Each bag includes a QR code to trace your cacao back to the farm." name="description"/>
-<link href="https://www.agroverse.shop/category/retail-packs" rel="canonical"/>
+<title>La do Sitio Farm Cacao Beans - Brazilian Amazon Rainforest (per kilogram) | Agroverse</title>
+<meta content="Premium organic cacao beans from Paulo's La do Sitio farm in Pará, Brazil. Wholesale pricing available. Award-winning regenerative cacao from the Amazon Rainforest." name="description"/>
+<link href="https://www.agroverse.shop/product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far" rel="canonical"/>
 <!-- Open Graph / Facebook -->
-<meta content="website" property="og:type"/>
-<meta content="https://www.agroverse.shop/category/retail-packs" property="og:url"/>
-<meta content="Retail Packs | Agroverse" property="og:title"/>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA." property="og:description"/>
+<meta content="product" property="og:type"/>
+<meta content="https://www.agroverse.shop/product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far" property="og:url"/>
+<meta content="La do Sitio Farm Cacao Beans - Brazilian Amazon Rainforest (per kilogram) | Agroverse" property="og:title"/>
+<meta content="Premium organic cacao beans from Paulo's La do Sitio farm in Pará, Brazil. Wholesale pricing available." property="og:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif" property="og:image"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
-<meta content="https://www.agroverse.shop/category/retail-packs" property="twitter:url"/>
-<meta content="Retail Packs | Agroverse" property="twitter:title"/>
-<meta content="Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far" property="twitter:url"/>
+<meta content="La do Sitio Farm Cacao Beans - Brazilian Amazon Rainforest (per kilogram) | Agroverse" property="twitter:title"/>
+<meta content="Premium organic cacao beans from Paulo's La do Sitio farm in Pará, Brazil. Wholesale pricing available." property="twitter:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
 <link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
@@ -27,7 +29,9 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<style>
+
+<!-- Standardized Cards CSS -->
+<link href="../../css/cards.css" rel="stylesheet"/><style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
@@ -93,79 +97,143 @@
             color: var(--color-secondary);
         }
         
-        /* Category Header */
-        .category-header {
-            background: linear-gradient(135deg, rgba(59, 51, 51, 0.9) 0%, rgba(77, 77, 77, 0.9) 100%);
-            color: white;
+        /* Product Section */
+        .product-section {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 4rem 2rem;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
         }
         
-        .category-header h1 {
+        .product-image-container {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .product-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-info h1 {
             font-family: var(--font-heading);
-            font-size: 48px;
+            font-size: 36px;
+            color: var(--color-primary);
             margin-bottom: 1rem;
         }
         
-        .category-header p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
-        /* Products Grid */
-        .products-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .product-card {
-            background-color: var(--color-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .product-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .product-card img {
-            width: 100%;
-            height: 313px;
-            object-fit: cover;
-        }
-        
-        .product-card-body {
-            padding: 1.5rem;
-        }
-        
-        .product-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--color-primary);
-        }
-        
-        .product-card .price {
+        .product-price {
+            font-size: 32px;
             font-weight: 700;
             color: var(--color-primary);
+            margin: 1.5rem 0;
+        }
+        
+        .product-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+        
+        .product-details {
+            background: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .product-details h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .detail-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .detail-value {
+            color: var(--color-text-light);
+        }
+        
+        .detail-value a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .detail-value a:hover {
+            text-decoration: underline;
+        }
+        
+        .traceability-section {
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.05) 0%, rgba(59, 51, 51, 0.02) 100%);
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .traceability-section h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .traceability-section p {
+            margin-bottom: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--color-secondary);
+        }
+        
+        .secondary-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--color-primary);
+            text-decoration: none;
+            border: 2px solid var(--color-primary);
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            margin-left: 1rem;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--color-primary);
+            color: white;
         }
         
         /* Footer */
@@ -199,16 +267,21 @@
         }
         
         @media (max-width: 768px) {
-            .category-header h1 {
-                font-size: 32px;
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             
         body {
             overflow-x: hidden;
         }
         }
             
-            .products-grid {
-                grid-template-columns: 1fr;
+            .product-image-container {
+                position: static;
+            }
+            
+            .product-info h1 {
+                font-size: 28px;
             }
             
             .nav-links {
@@ -345,11 +418,11 @@
   gtag('js', new Date());
 
   gtag('config', 'G-S6EP25EHF4');
-</script>
 <!-- Facebook Pixel Code -->
 <script src="../../js/config.js"></script>
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
+</script>
 </head>
 <body>
 <header>
@@ -361,125 +434,78 @@
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#mission">Mission</a></li>
 <li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../blog/">Blog</a></li>
-<li><a href="../../order-history/">Order History</a></li>
+<li><a href="../../index.html#farmers">Farms</a></li>
+<li><a href="../../index.html#shipments">Shipments</a></li><li><a href="../../blog/">Blog</a></li>
+<li><a href="../../partners/index.html">Partners</a></li>
 <li><a href="../../index.html#contact">Contact</a></li>
 </ul>
 </nav>
 </header>
-<section class="category-header">
-<h1>Retail Packs</h1>
-<p>Indulge in our curated retail packs of ready-to-enjoy organic cacao products, shipped hassle-free from the USA. Each bag includes a QR code to trace your cacao back to the farm where it was grown.</p>
-</section>
-<section class="products-section">
-<div class="products-grid">
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/index.html">
-<img alt="Ceremonial Cacao – La do Sitio Farm" src="../../assets/images/products/la-do-sitio-farm.jpg"/>
-<div class="product-card-body">
-<h3>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl8/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL8 Shipment</a> • Paulo's Farm, Pará</div>
+<section class="product-section">
+<div class="product-image-container">
+<img alt="La do Sitio Farm Cacao Beans" class="product-image" onerror="this.src='../../assets/images/farms/paulo_photo.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif"/>
 </div>
+<div class="product-info">
+<h1>La do Sitio Farm Cacao Beans - Brazilian Amazon Rainforest (per kilogram)</h1>
+<div class="product-price">Contact for Pricing</div>
+<div class="product-description">
+<p>Premium organic cacao beans from Paulo's La do Sitio farm in Pará, Brazil. This award-winning farm, part of the CEPOTX cooperative, produces premium cacao through regenerative agroforestry practices in the heart of the Amazon Rainforest.</p>
+<p>Perfect for chocolate makers, cafes, and businesses seeking traceable, sustainable cacao from the Amazon. Each shipment is fully traceable back to the exact farm and harvest (AGL8).</p>
+</div>
+<div class="product-details">
+<h3>Product Details</h3>
+<div class="detail-row">
+<span class="detail-label">Unit:</span>
+<span class="detail-value">Per kilogram</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Origin:</span>
+<span class="detail-value">La do Sitio Farm, Pará, Brazil</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Type:</span>
+<span class="detail-value">Organic Cacao Beans</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Harvest:</span>
+<span class="detail-value">2024</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Shipment:</span>
+<span class="detail-value"><a href="../../shipments/agl8/index.html">AGL8</a></span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Farm:</span>
+<span class="detail-value">Paulo's La do Sitio Farm</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Cooperative:</span>
+<span class="detail-value">CEPOTX</span>
+</div>
+<div class="detail-row">
+<span class="detail-label">Awards:</span>
+<span class="detail-value">Multiple regional cacao awards</span>
+</div>
+</div>
+<div class="traceability-section">
+<h3>Trace This Product</h3>
+<p>Every shipment is fully traceable. View details to:</p>
+<ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+<li>View the exact shipment (AGL8) your cacao came from</li>
+<li>See the farm location on an interactive map</li>
+<li>Access FDA approval and lab reports</li>
+<li>Watch a video of the farm in action</li>
+<li>Access the full transparency ledger</li>
+</ul>
+<a class="cta-button" href="../../shipments/agl8/index.html">View Shipment Details</a>
+<a class="secondary-button" href="https://www.truesight.me/agroverse-shipments/agl8" rel="noopener noreferrer" target="_blank">View Full Ledger</a>
+</div>
+<div style="margin-top: 2rem;">
+<a class="cta-button" href="../../quote-request/index.html?product=premium-organic-cacao-beans-la-do-sitio">
+  Request Wholesale Quote
 </a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-paulo-s-la-do-sitio-farm-200g"
-        data-product-name="Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/la-do-sitio-farm.jpg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html">
-<img alt="Taste of Rainforest" src="../../assets/images/products/taste-of-rainforest.jpeg"/>
-<div class="product-card-body">
-<h3>Taste of Rainforest - 200 grams Caramelized Cacao Beans</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl10/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL10 Shipment</a> • Capela Velha Fazenda</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="taste-of-rainforest-caramelized-cacao-beans"
-        data-product-name="Taste of Rainforest - 200 grams Caramelized Cacao Beans"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/taste-of-rainforest.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/oscar-s-bahia-ceremonial-cacao/index.html">
-<img alt="Ceremonial Cacao – Oscar's Farm" src="../../assets/images/products/oscars-farm.jpeg"/>
-<div class="product-card-body">
-<h3>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="oscar-bahia-ceremonial-cacao-200g"
-        data-product-name="Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/oscars-farm.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/8-ounce-organic-cacao-nibs-from-brazil/index.html">
-<img alt="Amazon Rainforest Regenerative Cacao Nibs" src="../../assets/images/products/cacao-nibs.jpeg"/>
-<div class="product-card-body">
-<h3>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL4 Shipment</a> • Oscar's Farm, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="8-ounce-organic-cacao-nibs"
-        data-product-name="Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/cacao-nibs.jpeg"
-        data-stripe-price-id="price_xxxxx"
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
-</div>
-<div class="product-card">
-<a class="product-card-link" href="../../product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g/index.html">
-<img alt="Ceremonial Cacao – Fazenda Santa Ana" src="../../assets/images/products/fazenda-santa-ana-product.jpg"/>
-<div class="product-card-body">
-<h3>Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)</h3>
-<div class="price">$25.00</div>
-<div style="font-size: 14px; color: var(--color-text-light); margin-top: 0.5rem;">From <a href="../../shipments/agl2/index.html" style="color: var(--color-primary); text-decoration: underline;">AGL2 Shipment</a> • Fazenda Santa Ana, Bahia</div>
-</div>
-</a>
-<div class="product-card-actions" style="padding: 1rem 1.5rem; border-top: 1px solid #eee;">
-<button class="add-to-cart-btn" 
-        data-product-id="ceremonial-cacao-fazenda-santa-ana-2023-200g"
-        data-product-name="Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)"
-        data-product-price="25.00"
-        data-product-image="../../assets/images/products/fazenda-santa-ana-product.jpg"
-        data-stripe-price-id=""
-        style="width: 100%; padding: 0.75rem; background-color: var(--color-primary, #3b3333); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s;">
-  Add to Cart - $25.00
-</button>
-</div>
+<a class="secondary-button" href="mailto:community@agroverse.shop?subject=Wholesale Inquiry - La do Sitio Farm Cacao Beans" style="margin-left: 1rem;">Contact Directly</a>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 14px;">Perfect for businesses, cafes, and manufacturers. Minimum order quantities apply.</p>
 </div>
 </div>
 </section>
@@ -562,16 +588,11 @@
         }
     });
     </script>
+
 <script src="../../js/config.js"></script>
-<script src="../../js/universal-nav.js"></script>
 <script src="../../js/products.js"></script>
 <script src="../../js/ga4-events.js"></script>
-<script src="../../js/category-page-tracking.js"></script>
-<script src="../../js/cart.js"></script>
-<script src="../../js/cart-ui.js"></script>
-<script src="../../js/inventory-service.js"></script>
-    <script src="../../js/inventory-display.js"></script>
-<script src="../../js/add-to-cart.js"></script>
-<link href="../../css/cart.css" rel="stylesheet"/>
+<script src="../../js/product-page-tracking.js"></script>
+<script src="../../js/universal-nav.js"></script>
 </body>
 </html>
