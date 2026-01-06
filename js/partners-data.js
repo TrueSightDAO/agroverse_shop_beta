@@ -199,6 +199,30 @@ window.PARTNERS_DATA = {
         location: 'Seattle, Washington',
         description: 'Led by Jae Nice, RPM Ninja creates safe creative spaces for music, art, and community in Seattle. Through immersive events, fantasy balls, bazaars, and workshops, they bring together artists, musicians, and community members to celebrate creativity and connection.'
     },
+    'rhythm-and-stones': {
+        name: 'Rhythm and Stones',
+        slug: 'rhythm-and-stones',
+        lat: 33.6616904,
+        lon: -114.2186328,
+        location: 'Pop-up Vendor at Winter Desert Gatherings - Quartzite, Arizona',
+        description: 'Founded by Michael Johnson, Rhythm and Stones is a pop-up vendor at winter desert gatherings, offering handcrafted items alongside regenerative Amazonian cacao. Located in Quartzite, Arizona during the winter season, part of the vibrant nomad community that migrates to the desert for gatherings and community connection.'
+    },
+    'raye-workz': {
+        name: 'Raye Workz',
+        slug: 'raye-workz',
+        lat: 48.6822123,
+        lon: -119.2346017,
+        location: 'Pop-up Vendor at Gatherings',
+        description: 'Run by Ranette, Raye Workz is a pop-up vendor that brings handcrafted items and regenerative cacao to gatherings throughout the Pacific West Coast journey. From the spring gathering at the Okanogan Family Barter Faire in Washington to winter desert gatherings in Arizona and California, Raye Workz creates spaces for connection, celebration, and conscious commerce.'
+    },
+    'llama-bus': {
+        name: 'Llama Bus',
+        slug: 'llama-bus',
+        lat: 48.6822123,
+        lon: -119.2346017,
+        location: 'Pop-up Vendor at Gatherings',
+        description: 'A pop-up vendor at the Okanogan Family Barter Faire and winter desert gatherings, offering unique items and regenerative cacao alongside other vendors like Raye Workz and Prism Percussions. Part of the vibrant community that follows the Pacific West Coast journey from spring to winter.'
+    },
 };
 
 /**

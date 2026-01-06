@@ -712,9 +712,9 @@
             return km * 0.621371;
         }
         
-        // Filter and sort partners (excluding Ponderosa since it's part of an experience)
+        // Filter and sort partners (excluding Ponderosa since it's part of an experience, and Prism Percussions since it's a pop-up vendor/partner rather than a venue)
         const westCoastPartners = filterWestCoastPartners();
-        const sortedPath = sortNorthToSouth(westCoastPartners).filter(slug => slug !== 'the-ponderosa-slab-city');
+        const sortedPath = sortNorthToSouth(westCoastPartners).filter(slug => slug !== 'the-ponderosa-slab-city' && slug !== 'prism-percussions');
         const stops = sortedPath.map(slug => {
             const partner = westCoastPartners[slug];
             return {
