@@ -137,6 +137,14 @@ window.PARTNERS_DATA = {
         location: 'Slab City, California',
         description: 'A unique community space in Slab City, California, where free-spirited gatherings and regenerative cacao create connections in the heart of the desert.'
     },
+    'the-whole-body-repair-clinic': {
+        name: 'The Whole Body Repair Clinic',
+        slug: 'the-whole-body-repair-clinic',
+        lat: 33.6622624,
+        lon: -114.2374006,
+        location: 'Quartzsite, Arizona',
+        description: 'Founded by Leesa Bolden, The Whole Body Repair Clinic combines traditional Chinese medicine with modern therapies including acupuncture, massage therapy, herbal consultations, Qigong instruction, PEMF healing, red light therapy, and ionic footbath detoxification. As an Agroverse partner, they incorporate regenerative ceremonial cacao into their holistic healing sessions.'
+    },
     'lumin-earth-apothecary': {
         name: 'Lumin Earth Apothecary',
         slug: 'lumin-earth-apothecary',
