@@ -98,6 +98,14 @@ window.PARTNERS_DATA = {
         location: 'Merlin, Oregon',
         description: 'A regenerative haven of healing and harmony in Merlin, Oregon, where sun-kissed soils and sacred infusions craft potent elixirs. Sacred Earth Farms creates spaces where regenerative cacao meets herbal wisdom, supporting both local healing practices and rainforest restoration through conscious consumption and community connection.'
     },
+    'soha': {
+        name: 'SOHA - Sanctuary of Healing Arts',
+        slug: 'soha',
+        lat: 44.4973867,
+        lon: -123.4410702,
+        location: 'Philomath, Oregon',
+        description: 'SOHA - Sanctuary of Healing Arts is a community-supported sanctuary on 142 acres of vibrant rainforest and mystical meadows in Philomath, Oregon. Founded and run by David Campbell and Molly Rush, SOHA serves as a philanthropic organization dedicated to the benefit of all sentient beings through the transformative power of art and healing. As a volunteer-run retreat center, SOHA offers workshops, concerts, retreats, and year-round gatherings that bring together artists, healers, and seekers from around the world. The sanctuary\'s private campus creates a sacred space for deep connection, creative expression, and spiritual exploration, accessible only by invitation to maintain its intimate and intentional atmosphere.'
+    },
     'secrets-of-garden-slo': {
         name: 'Secrets of Garden SLO',
         slug: 'secrets-of-garden-slo',
