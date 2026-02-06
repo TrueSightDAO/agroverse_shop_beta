@@ -207,6 +207,14 @@ window.PARTNERS_DATA = {
         lon: 9.8361,
         location: 'Davos, Switzerland'
     },
+    'shuar-design-boutique': {
+        name: 'Shuar Design Boutique',
+        slug: 'shuar-design-boutique',
+        lat: 46.9489,
+        lon: 7.4474,
+        location: 'Bern, Switzerland',
+        description: 'Part of Yankuam, an indigenous culture centre in Bern\'s old town. The SHUAR DESIGN BOUTIQUE offers fair-trade craft from Shuar artists (Ecuadorian Amazon) and Agroverse ceremonial cacao—bags of cacao for sale. NANKI EXPERIENCE and UWISHIN ACADEMY offer workshops and spiritual learning. Run by Verein Yankuam at Gerechtigkeitsgasse 32, Bern.'
+    },
     'rpm-ninja': {
         name: 'RPM Ninja',
         slug: 'rpm-ninja',
