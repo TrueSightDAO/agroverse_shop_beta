@@ -168,54 +168,57 @@ function getCurrencyToSKUMapping() {
  * Get inventory from main ledger "offchain asset location" sheet.
  * Only counts inventory where Column B (Location/Manager Name) matches a store manager.
  * Data starts at row 5 (row 4 is header).
- * 
+ *
  * @param {Array<string>} storeManagers - List of store manager names to filter by
- * @return {Object} Map of currency to total amount (e.g., { "AGL4": 100, "AGL8": 50, ... })
+ * @return {Object} Map of currency to manager breakdown (e.g., { "AGL4": { "manager1": 50, "manager2": 25 }, ... })
  */
 function getMainLedgerInventory(storeManagers) {
   const inventory = {};
-  
+
   try {
     const spreadsheet = SpreadsheetApp.openById(MAIN_SPREADSHEET_ID);
     const sheet = spreadsheet.getSheetByName(OFFCHAIN_ASSET_LOCATION_SHEET_NAME);
-    
+
     if (!sheet) {
       Logger.log(`Warning: Sheet "${OFFCHAIN_ASSET_LOCATION_SHEET_NAME}" not found`);
       return inventory;
     }
-    
+
     const lastRow = sheet.getLastRow();
     if (lastRow < 5) { // Data starts at row 5
       Logger.log(`No data in "${OFFCHAIN_ASSET_LOCATION_SHEET_NAME}" sheet`);
       return inventory;
     }
-    
+
     // Read data starting from row 5 (row 4 is header)
     const dataRange = sheet.getRange(5, 1, lastRow - 4, 3); // Columns A, B, C
     const data = dataRange.getValues();
-    
+
     // Create a Set for faster lookup
     const storeManagerSet = new Set(storeManagers);
-    
+
     for (let i = 0; i < data.length; i++) {
       const row = data[i];
       const currency = row[ASSET_CURRENCY_COL] ? row[ASSET_CURRENCY_COL].toString().trim() : '';
       const location = row[ASSET_LOCATION_COL] ? row[ASSET_LOCATION_COL].toString().trim() : '';
       const amount = parseFloat(row[ASSET_AMOUNT_COL]) || 0;
-      
+
       // Only count if location/manager is in our store managers list
       if (currency && location && storeManagerSet.has(location) && amount > 0) {
         if (!inventory[currency]) {
-          inventory[currency] = 0;
+          inventory[currency] = {};
         }
-        inventory[currency] += amount;
-        Logger.log(`Main ledger: ${currency} +${amount} (managed by ${location})`);
+        if (!inventory[currency][location]) {
+          inventory[currency][location] = 0;
+        }
+        inventory[currency][location] += amount;
+        Logger.log(`📦 Main ledger (${OFFCHAIN_ASSET_LOCATION_SHEET_NAME}): ${currency} +${amount} units managed by ${location}`);
       }
     }
-    
-    Logger.log(`Main ledger inventory totals: ${Object.keys(inventory).length} currencies`);
+
+    Logger.log(`Main ledger inventory totals: ${Object.keys(inventory).length} currencies across ${storeManagers.length} managers`);
     return inventory;
-    
+
   } catch (e) {
     Logger.log(`Error getting main ledger inventory: ${e.message}`);
     return inventory;
@@ -276,14 +279,14 @@ function getManagedLedgerUrls() {
  * Get inventory from a managed ledger's Balance sheet.
  * Reads the "Balance" sheet in the ledger spreadsheet.
  * Only counts inventory where Column H (Location/Manager Name) matches a store manager.
- * 
+ *
  * @param {string} ledgerUrl - Resolved ledger URL (Google Sheets URL)
  * @param {Array<string>} storeManagers - List of store manager names to filter by
- * @return {Object} Map of currency to total amount (e.g., { "AGL4": 25, "AGL8": 10, ... })
+ * @return {Object} Map of currency to manager breakdown (e.g., { "AGL4": { "manager1": 25, "manager2": 10 }, ... })
  */
 function getManagedLedgerInventory(ledgerUrl, storeManagers) {
   const inventory = {};
-  
+
   try {
     // Extract spreadsheet ID from URL
     const spreadsheetIdMatch = ledgerUrl.match(/\/d\/([a-zA-Z0-9-_]+)/);
@@ -291,48 +294,56 @@ function getManagedLedgerInventory(ledgerUrl, storeManagers) {
       Logger.log(`Could not extract spreadsheet ID from URL: ${ledgerUrl}`);
       return inventory;
     }
-    
+
     const spreadsheetId = spreadsheetIdMatch[1];
+
+    // Extract ledger name from URL for logging (e.g., "AGL4" from agroverse.shop/agl4)
+    const ledgerNameMatch = ledgerUrl.match(/\/([^\/]+)$/);
+    const ledgerName = ledgerNameMatch ? ledgerNameMatch[1].toUpperCase() : spreadsheetId.substring(0, 10);
+
     const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
     const sheet = spreadsheet.getSheetByName(BALANCE_SHEET_NAME);
-    
+
     if (!sheet) {
       Logger.log(`Warning: Balance sheet not found in ledger: ${ledgerUrl}`);
       return inventory;
     }
-    
+
     const lastRow = sheet.getLastRow();
     if (lastRow < 2) {
       Logger.log(`No data in Balance sheet for ledger: ${ledgerUrl}`);
       return inventory;
     }
-    
+
     // Read data starting from row 2 (row 1 is header)
     // Columns H (Location), I (Amount), J (Currency)
     const dataRange = sheet.getRange(2, 8, lastRow - 1, 3); // Columns H, I, J
     const data = dataRange.getValues();
-    
+
     // Create a Set for faster lookup
     const storeManagerSet = new Set(storeManagers);
-    
+
     for (let i = 0; i < data.length; i++) {
       const row = data[i];
       const location = row[0] ? row[0].toString().trim() : ''; // Column H
       const amount = parseFloat(row[1]) || 0; // Column I
       const currency = row[2] ? row[2].toString().trim() : ''; // Column J
-      
+
       // Only count if location/manager is in our store managers list
       if (currency && location && storeManagerSet.has(location) && amount > 0) {
         if (!inventory[currency]) {
-          inventory[currency] = 0;
+          inventory[currency] = {};
         }
-        inventory[currency] += amount;
-        Logger.log(`Managed ledger ${spreadsheetId}: ${currency} +${amount} (managed by ${location})`);
+        if (!inventory[currency][location]) {
+          inventory[currency][location] = 0;
+        }
+        inventory[currency][location] += amount;
+        Logger.log(`📦 Managed ledger ${ledgerName}: ${currency} +${amount} units managed by ${location}`);
       }
     }
-    
+
     return inventory;
-    
+
   } catch (e) {
     Logger.log(`Error getting inventory from ledger ${ledgerUrl}: ${e.message}`);
     return inventory;
@@ -344,80 +355,166 @@ function getManagedLedgerInventory(ledgerUrl, storeManagers) {
  * Orchestrates the entire calculation process:
  * 1. Gets store managers
  * 2. Gets currency to SKU mappings
- * 3. Gets inventory from main ledger
- * 4. Gets inventory from all managed ledgers
+ * 3. Gets inventory from main ledger (with manager breakdown)
+ * 4. Gets inventory from all managed ledgers (with manager breakdown)
  * 5. Combines and maps to SKU Product IDs
- * 
+ * 6. Provides detailed logging of manager/ledger breakdown per SKU
+ *
  * @return {Object} Map of SKU Product ID to total inventory count (e.g., { "sku1": 100, "sku2": 50, ... })
  */
 function calculateStoreInventory() {
-  Logger.log('Starting store inventory calculation...');
-  
+  Logger.log('🔄 Starting store inventory calculation...');
+
   // Get store managers
   const storeManagers = getStoreManagers();
   if (storeManagers.length === 0) {
-    Logger.log('No store managers found. Aborting.');
+    Logger.log('❌ No store managers found. Aborting.');
     return {};
   }
-  
+
   // Get currency to SKU mapping
   const currencyToSKU = getCurrencyToSKUMapping();
   if (Object.keys(currencyToSKU).length === 0) {
-    Logger.log('No currency mappings found. Aborting.');
+    Logger.log('❌ No currency mappings found. Aborting.');
     return {};
   }
-  
-  // Get inventory from main ledger
+
+  // Get inventory from main ledger (with manager breakdown)
   const mainLedgerInventory = getMainLedgerInventory(storeManagers);
-  
-  // Get inventory from managed ledgers
+
+  // Get inventory from managed ledgers (with manager breakdown)
   const managedLedgerUrls = getManagedLedgerUrls();
   const allManagedInventory = {};
-  
+
   for (let i = 0; i < managedLedgerUrls.length; i++) {
     const ledgerUrl = managedLedgerUrls[i];
-    Logger.log(`Processing managed ledger ${i + 1}/${managedLedgerUrls.length}: ${ledgerUrl}`);
+    Logger.log(`🔍 Processing managed ledger ${i + 1}/${managedLedgerUrls.length}: ${ledgerUrl}`);
     const ledgerInventory = getManagedLedgerInventory(ledgerUrl, storeManagers);
-    
-    // Merge into allManagedInventory
+
+    // Merge into allManagedInventory (preserving manager breakdown)
     for (const currency in ledgerInventory) {
       if (!allManagedInventory[currency]) {
-        allManagedInventory[currency] = 0;
+        allManagedInventory[currency] = {};
       }
-      allManagedInventory[currency] += ledgerInventory[currency];
+      for (const manager in ledgerInventory[currency]) {
+        if (!allManagedInventory[currency][manager]) {
+          allManagedInventory[currency][manager] = 0;
+        }
+        allManagedInventory[currency][manager] += ledgerInventory[currency][manager];
+      }
     }
   }
-  
-  // Combine main ledger and managed ledger inventories
-  const totalInventoryByCurrency = {};
-  
-  // Add main ledger inventory
-  for (const currency in mainLedgerInventory) {
-    totalInventoryByCurrency[currency] = (totalInventoryByCurrency[currency] || 0) + mainLedgerInventory[currency];
-  }
-  
-  // Add managed ledger inventory
-  for (const currency in allManagedInventory) {
-    totalInventoryByCurrency[currency] = (totalInventoryByCurrency[currency] || 0) + allManagedInventory[currency];
-  }
-  
-  // Convert currency inventory to SKU inventory
+
+  // Convert currency inventory to SKU inventory with detailed breakdown
   const skuInventory = {};
-  
-  for (const currency in totalInventoryByCurrency) {
+  const skuBreakdown = {}; // For detailed logging
+
+  Logger.log('📊 Processing inventory breakdown by SKU, manager, and ledger:');
+
+  // Process main ledger inventory
+  for (const currency in mainLedgerInventory) {
     const skuProductId = currencyToSKU[currency];
     if (skuProductId) {
-      if (!skuInventory[skuProductId]) {
+      // Initialize SKU tracking
+      if (!skuBreakdown[skuProductId]) {
+        skuBreakdown[skuProductId] = {};
         skuInventory[skuProductId] = 0;
       }
-      skuInventory[skuProductId] += totalInventoryByCurrency[currency];
-      Logger.log(`SKU ${skuProductId} (${currency}): ${totalInventoryByCurrency[currency]} units`);
-    } else {
-      Logger.log(`Warning: Currency "${currency}" has no SKU mapping`);
+
+      for (const manager in mainLedgerInventory[currency]) {
+        const amount = mainLedgerInventory[currency][manager];
+        const ledgerKey = `${OFFCHAIN_ASSET_LOCATION_SHEET_NAME} (offchain)`;
+
+        if (!skuBreakdown[skuProductId][ledgerKey]) {
+          skuBreakdown[skuProductId][ledgerKey] = {};
+        }
+        skuBreakdown[skuProductId][ledgerKey][manager] = (skuBreakdown[skuProductId][ledgerKey][manager] || 0) + amount;
+        skuInventory[skuProductId] += amount;
+      }
     }
   }
-  
-  Logger.log(`Total SKUs with inventory: ${Object.keys(skuInventory).length}`);
+
+  // Process managed ledger inventory
+  for (const currency in allManagedInventory) {
+    const skuProductId = currencyToSKU[currency];
+    if (skuProductId) {
+      // Initialize SKU tracking if not already done
+      if (!skuBreakdown[skuProductId]) {
+        skuBreakdown[skuProductId] = {};
+        skuInventory[skuProductId] = 0;
+      }
+
+      for (const manager in allManagedInventory[currency]) {
+        const amount = allManagedInventory[currency][manager];
+
+        // Try to determine ledger name from the inventory data
+        let ledgerName = 'Unknown Ledger';
+        for (let i = 0; i < managedLedgerUrls.length; i++) {
+          const ledgerUrl = managedLedgerUrls[i];
+          const ledgerNameMatch = ledgerUrl.match(/\/([^\/]+)$/);
+          const candidateName = ledgerNameMatch ? ledgerNameMatch[1].toUpperCase() : 'Unknown';
+
+          // Check if this ledger contains this currency/manager combination
+          try {
+            const spreadsheetIdMatch = ledgerUrl.match(/\/d\/([a-zA-Z0-9-_]+)/);
+            if (spreadsheetIdMatch) {
+              const spreadsheetId = spreadsheetIdMatch[1];
+              const spreadsheet = SpreadsheetApp.openById(spreadsheetId);
+              const sheet = spreadsheet.getSheetByName(BALANCE_SHEET_NAME);
+              if (sheet) {
+                const lastRow = sheet.getLastRow();
+                if (lastRow >= 2) {
+                  const dataRange = sheet.getRange(2, 8, lastRow - 1, 3);
+                  const data = dataRange.getValues();
+                  for (let j = 0; j < data.length; j++) {
+                    const row = data[j];
+                    const rowLocation = row[0] ? row[0].toString().trim() : '';
+                    const rowCurrency = row[2] ? row[2].toString().trim() : '';
+                    const rowAmount = parseFloat(row[1]) || 0;
+
+                    if (rowLocation === manager && rowCurrency === currency && rowAmount > 0) {
+                      ledgerName = candidateName;
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+          } catch (e) {
+            // Ignore errors when checking ledgers
+          }
+        }
+
+        const ledgerKey = `${ledgerName} (managed)`;
+
+        if (!skuBreakdown[skuProductId][ledgerKey]) {
+          skuBreakdown[skuProductId][ledgerKey] = {};
+        }
+        skuBreakdown[skuProductId][ledgerKey][manager] = (skuBreakdown[skuProductId][ledgerKey][manager] || 0) + amount;
+        skuInventory[skuProductId] += amount;
+      }
+    } else {
+      Logger.log(`⚠️ Warning: Currency "${currency}" has no SKU mapping`);
+    }
+  }
+
+  // Log detailed breakdown for each SKU
+  Logger.log('📋 Detailed SKU inventory breakdown:');
+  for (const skuProductId in skuBreakdown) {
+    Logger.log(`🛍️ SKU: ${skuProductId} (Total: ${skuInventory[skuProductId]} units)`);
+
+    for (const ledgerKey in skuBreakdown[skuProductId]) {
+      Logger.log(`  📁 Ledger: ${ledgerKey}`);
+
+      for (const manager in skuBreakdown[skuProductId][ledgerKey]) {
+        const units = skuBreakdown[skuProductId][ledgerKey][manager];
+        Logger.log(`    👤 ${manager}: ${units} units`);
+      }
+    }
+    Logger.log(''); // Empty line between SKUs
+  }
+
+  Logger.log(`✅ Total SKUs with inventory: ${Object.keys(skuInventory).length}`);
   return skuInventory;
 }
 

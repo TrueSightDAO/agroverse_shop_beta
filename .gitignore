@@ -66,3 +66,17 @@ scripts/youtube_videos.json
 # These videos are uploaded to YouTube and embedded, so we don't need to commit them
 assets/videos/*.mp4
 assets/videos/*.MP4
+assets/videos/*.mov
+assets/videos/*.MOV
+assets/videos/*.avi
+assets/videos/*.AVI
+assets/videos/*.mkv
+assets/videos/*.MKV# Partner video assets (also hosted on YouTube)
+assets/partners/*.mp4
+assets/partners/*.MP4
+assets/partners/*.mov
+assets/partners/*.MOV
+assets/partners/*.avi
+assets/partners/*.AVI
+assets/partners/*.mkv
+assets/partners/*.MKV
