@@ -31,7 +31,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
 
 <!-- Standardized Cards CSS -->
-<link href="../../css/cards.css" rel="stylesheet"/><style>
+<link href="../../css/cards.css" rel="stylesheet"/>
+<!-- Product Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs",
+  "image": "https://www.agroverse.shop/assets/images/products/cacao-nibs.jpg",
+  "description": "Organic cacao nibs from Oscar's farm in Bahia, Brazil. 8 oz (227g) bag with QR code traceability. Three generations of cacao wisdom.",
+  "sku": "oscar-bahia-cacao-nibs-8oz",
+  "brand": {
+    "@type": "Brand",
+    "name": "Agroverse"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.agroverse.shop/product-page/8-ounce-organic-cacao-nibs-from-brazil",
+    "priceCurrency": "USD",
+    "price": "25.00",
+    "priceValidUntil": "2025-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Agroverse"
+    }
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Weight",
+      "value": "8 oz (227g)"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Origin",
+      "value": "Oscar's Farm, Bahia, Brazil"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Harvest Year",
+      "value": "2024"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Shipment ID",
+      "value": "AGL4"
+    }
+  ]
+}
+</script><style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
