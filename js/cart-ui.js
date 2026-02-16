@@ -238,15 +238,48 @@
       const targetNav = desktopNavLinks || (allNavLinks.length > 0 ? allNavLinks[0] : null);
       
       if (targetNav && !targetNav.classList.contains('mobile-menu')) {
+        // Add to desktop nav (normal nav-links)
         const cartIconContainer = document.createElement('li');
         cartIconContainer.innerHTML = createCartIcon();
         targetNav.appendChild(cartIconContainer);
       } else if (targetNav) {
-        // If we only have mobile menu, add it there but navigation.js will handle positioning
+        // If we only have mobile menu, add it there with container class for proper styling
         const cartIconContainer = document.createElement('li');
+        cartIconContainer.className = 'cart-icon-container';
         cartIconContainer.innerHTML = createCartIcon();
-        targetNav.appendChild(cartIconContainer);
+        targetNav.insertBefore(cartIconContainer, targetNav.firstChild);
       }
+      
+      // Always ensure cart icon is in mobile menu with container class (for consistent mobile styling)
+      // Do this after a short delay to ensure mobile menu exists
+      setTimeout(function() {
+        const mobileMenu = document.querySelector('.nav-links.mobile-menu') || document.querySelector('ul.mobile-menu');
+        const cartIcon = document.getElementById('cart-icon');
+        
+        if (mobileMenu && cartIcon) {
+          // Check if cart icon is already in mobile menu
+          const cartIconInMobileMenu = mobileMenu.contains(cartIcon);
+          const existingContainer = mobileMenu.querySelector('.cart-icon-container');
+          
+          if (!existingContainer) {
+            if (cartIconInMobileMenu) {
+              // Cart icon is in mobile menu, wrap it in container
+              const cartIconLi = cartIcon.closest('li');
+              if (cartIconLi && !cartIconLi.classList.contains('cart-icon-container')) {
+                cartIconLi.classList.add('cart-icon-container');
+                // Move to beginning
+                mobileMenu.insertBefore(cartIconLi, mobileMenu.firstChild);
+              }
+            } else {
+              // Cart icon not in mobile menu, add it with container
+              const mobileCartContainer = document.createElement('li');
+              mobileCartContainer.className = 'cart-icon-container';
+              mobileCartContainer.innerHTML = createCartIcon();
+              mobileMenu.insertBefore(mobileCartContainer, mobileMenu.firstChild);
+            }
+          }
+        }
+      }, 100);
     }
 
     // Add cart sidebar to body if it doesn't exist

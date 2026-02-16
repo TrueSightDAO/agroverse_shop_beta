@@ -1,22 +1,16 @@
 {
-  "name": "agroverse-shop",
+  "name": "agroverse-shop-tests",
   "version": "1.0.0",
-  "description": "Agroverse Shop - Static e-commerce site",
+  "description": "Playwright tests for Agroverse.shop consistency",
   "scripts": {
-    "dev": "http-server -p 8000 -a 127.0.0.1 -c-1",
-    "start": "http-server -p 8000 -a 127.0.0.1 -c-1"
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:update": "playwright test --update-snapshots",
+    "test:report": "playwright show-report",
+    "test:ci": "playwright test --reporter=html,github"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
-  },
-  "dependencies": {
-    "google-auth-library": "^10.5.0",
-    "google-spreadsheet": "^5.0.2"
+    "@playwright/test": "^1.40.0"
   }
 }
-
-
-
-
-
-
