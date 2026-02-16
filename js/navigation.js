@@ -78,11 +78,6 @@
    * Position cart icon at top right of mobile menu (mobile only)
    */
   function positionCartIconInMobileMenu() {
-    // Only run on mobile screens
-    if (window.innerWidth > 768) {
-      return;
-    }
-    
     const mobileMenu = document.querySelector('.nav-links.mobile-menu') || document.querySelector('ul.mobile-menu');
     const cartIcon = document.getElementById('cart-icon');
     
@@ -90,9 +85,13 @@
       return; // Elements not found
     }
     
-    // Check if cart icon is already positioned in mobile menu
+    // Check if cart icon is already positioned in mobile menu with container
     const existingCartContainer = mobileMenu.querySelector('.cart-icon-container');
     if (existingCartContainer) {
+      // Ensure it's at the top
+      if (existingCartContainer.parentElement === mobileMenu && existingCartContainer !== mobileMenu.firstChild) {
+        mobileMenu.insertBefore(existingCartContainer, mobileMenu.firstChild);
+      }
       return; // Already positioned
     }
     
@@ -100,12 +99,21 @@
     const cartIconInMobileMenu = mobileMenu.contains(cartIcon);
     
     if (cartIconInMobileMenu) {
-      // Cart icon is already in mobile menu, move to top for mobile
+      // Cart icon is already in mobile menu, ensure it's wrapped in container for proper styling
       const cartIconLi = cartIcon.closest('li');
       if (cartIconLi && !cartIconLi.classList.contains('cart-icon-container')) {
         cartIconLi.classList.add('cart-icon-container');
+        // Ensure cart icon has the cart-icon class for CSS styling
+        if (!cartIcon.classList.contains('cart-icon')) {
+          cartIcon.classList.add('cart-icon');
+        }
         // Move to beginning of mobile menu
         mobileMenu.insertBefore(cartIconLi, mobileMenu.firstChild);
+      } else if (cartIconLi && cartIconLi.classList.contains('cart-icon-container')) {
+        // Already has container, just ensure it's at the top
+        if (cartIconLi.parentElement === mobileMenu && cartIconLi !== mobileMenu.firstChild) {
+          mobileMenu.insertBefore(cartIconLi, mobileMenu.firstChild);
+        }
       }
       return;
     }
@@ -117,49 +125,63 @@
     }
     
     // Create container for cart icon at top right of mobile menu
-    const cartContainer = document.createElement('li');
-    cartContainer.className = 'cart-icon-container';
+    // Only clone if we're on mobile screens (to avoid duplicate on desktop)
+    if (window.innerWidth <= 768) {
+      const cartContainer = document.createElement('li');
+      cartContainer.className = 'cart-icon-container';
+      
+      // Clone the cart icon for mobile menu
+      const cartIconClone = cartIcon.cloneNode(true);
+      cartIconClone.id = 'cart-icon-mobile'; // Use different ID to avoid conflicts
+      // Ensure it has the cart-icon class for CSS styling
+      cartIconClone.classList.add('cart-icon');
+      cartContainer.appendChild(cartIconClone);
+      
+      // Insert at the beginning of mobile menu for top-right positioning
+      mobileMenu.insertBefore(cartContainer, mobileMenu.firstChild);
     
-    // Clone the cart icon for mobile menu
-    const cartIconClone = cartIcon.cloneNode(true);
-    cartIconClone.id = 'cart-icon-mobile'; // Use different ID to avoid conflicts
-    cartContainer.appendChild(cartIconClone);
-    
-    // Insert at the beginning of mobile menu for top-right positioning
-    mobileMenu.insertBefore(cartContainer, mobileMenu.firstChild);
-    
-    // Attach event listener to the mobile cart icon
-    cartIconClone.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (window.CartUI) {
-        window.CartUI.open();
-      }
-    });
-    
-    // Update mobile cart badge when cart updates
-    if (window.Cart) {
-      function updateMobileCartBadge() {
-        const mobileBadge = cartIconClone.querySelector('#cart-badge');
-        const desktopBadge = cartIcon.querySelector('#cart-badge');
-        const count = window.Cart.getItemCount();
+      // Attach event listener to the mobile cart icon
+      cartIconClone.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.CartUI) {
+          window.CartUI.open();
+        }
+      });
+      
+      // Update mobile cart badge when cart updates
+      if (window.Cart) {
+        function updateMobileCartBadge() {
+          const mobileBadge = cartIconClone.querySelector('#cart-badge');
+          const desktopBadge = cartIcon.querySelector('#cart-badge');
+          const count = window.Cart.getItemCount();
+          
+          if (mobileBadge) {
+            mobileBadge.textContent = count;
+            mobileBadge.style.display = count > 0 ? 'block' : 'none';
+          }
+          if (desktopBadge) {
+            desktopBadge.textContent = count;
+            desktopBadge.style.display = count > 0 ? 'block' : 'none';
+          }
+        }
         
-        if (mobileBadge) {
-          mobileBadge.textContent = count;
-          mobileBadge.style.display = count > 0 ? 'block' : 'none';
-        }
-        if (desktopBadge) {
-          desktopBadge.textContent = count;
-          desktopBadge.style.display = count > 0 ? 'block' : 'none';
+        // Initial update
+        updateMobileCartBadge();
+        
+        // Listen for cart updates
+        window.addEventListener(window.Cart.EVENT_NAME, updateMobileCartBadge);
+      }
+    } else {
+      // On desktop, ensure cart icon in mobile menu has container class for CSS
+      // (even though it won't be visible, it ensures consistency)
+      const cartIconInMobileMenu = mobileMenu.contains(cartIcon);
+      if (cartIconInMobileMenu) {
+        const cartIconLi = cartIcon.closest('li');
+        if (cartIconLi && !cartIconLi.classList.contains('cart-icon-container')) {
+          cartIconLi.classList.add('cart-icon-container');
         }
       }
-      
-      // Initial update
-      updateMobileCartBadge();
-      
-      // Listen for cart updates
-      window.addEventListener(window.Cart.EVENT_NAME, updateMobileCartBadge);
     }
-  }
 
   /**
    * Initialize navigation
@@ -169,9 +191,9 @@
     initMobileNavigation();
     
     // Position cart icon in mobile menu (wait for cart to be initialized)
-    // Only position on mobile screens
+    // Always check and position - function handles mobile/desktop logic internally
     function checkAndPosition() {
-      if (window.innerWidth <= 768 && document.getElementById('cart-icon')) {
+      if (document.getElementById('cart-icon')) {
         positionCartIconInMobileMenu();
       }
     }
@@ -204,42 +226,38 @@
     initNavigation();
   }
 
-  // Re-check cart icon positioning after cart UI initializes (mobile only)
+  // Re-check cart icon positioning after cart UI initializes
   if (window.CartUI) {
-    // Cart UI already loaded, check immediately (only on mobile)
+    // Cart UI already loaded, check immediately
     setTimeout(function() {
-      if (window.innerWidth <= 768) {
-        positionCartIconInMobileMenu();
-      }
+      positionCartIconInMobileMenu();
     }, 100);
   } else {
     // Wait for CartUI to be available
     window.addEventListener('load', function() {
       setTimeout(function() {
-        if (window.innerWidth <= 768) {
-          positionCartIconInMobileMenu();
-        }
+        positionCartIconInMobileMenu();
       }, 500);
     });
   }
   
-  // Re-check on window resize (only reposition on mobile)
+  // Re-check on window resize
+  let resizeTimeout;
   window.addEventListener('resize', function() {
-    if (window.innerWidth <= 768) {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
       positionCartIconInMobileMenu();
-    } else {
-      // On desktop, ensure cart icon is at the end (not moved to beginning)
-      const mobileMenu = document.querySelector('.nav-links.mobile-menu');
-      const cartIcon = document.getElementById('cart-icon');
-      if (mobileMenu && cartIcon) {
-        const cartIconLi = cartIcon.closest('li');
-        if (cartIconLi && cartIconLi.classList.contains('cart-icon-container')) {
-          // Remove container class and move to end on desktop
-          cartIconLi.classList.remove('cart-icon-container');
-          mobileMenu.appendChild(cartIconLi);
+      
+      // On desktop, ensure cart icon container styling doesn't interfere
+      if (window.innerWidth > 768) {
+        const mobileMenu = document.querySelector('.nav-links.mobile-menu');
+        const cartIcon = document.getElementById('cart-icon');
+        if (mobileMenu && cartIcon) {
+          const cartIconLi = cartIcon.closest('li');
+          // Keep container class but CSS will handle desktop vs mobile styling
         }
       }
-    }
+    }, 150);
   });
 
   // Export for external use

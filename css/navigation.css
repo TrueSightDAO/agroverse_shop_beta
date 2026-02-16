@@ -103,7 +103,10 @@ nav {
 
 /* Cart Icon in Mobile Menu - Prominent Top Position (mobile only) */
 @media (max-width: 768px) {
-    .nav-links.mobile-menu .cart-icon-container {
+    /* Container styling - ensures consistent spacing and positioning */
+    .nav-links.mobile-menu .cart-icon-container,
+    .nav-links.mobile-menu li:has(#cart-icon),
+    .nav-links.mobile-menu li:has(.cart-icon) {
         position: sticky;
         top: 0;
         width: 100%;
@@ -111,7 +114,7 @@ nav {
         border-bottom: 2px solid var(--color-primary, #3b3333);
         padding: 1.5rem 2rem 2rem 2rem;
         margin: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem; /* Increased from 1rem for better spacing */
         z-index: 1002;
         list-style: none;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -120,43 +123,106 @@ nav {
         align-items: center;
     }
 
+    /* Cart icon styling - applies to ALL cart icons inside mobile menu */
+    /* Use maximum specificity to ensure these styles override cart.css */
+    /* Target by ID first (highest specificity), then by class */
+    .nav-links.mobile-menu li #cart-icon,
+    .nav-links.mobile-menu li #cart-icon-mobile,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile,
+    .nav-links.mobile-menu #cart-icon,
+    .nav-links.mobile-menu #cart-icon-mobile,
+    /* Also target by class for cases where ID might not be set */
+    .nav-links.mobile-menu li .cart-icon,
     .nav-links.mobile-menu .cart-icon-container .cart-icon,
-    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile {
-        background: var(--color-primary, #3b3333);
-        border: none;
-        padding: 1rem;
+    .nav-links.mobile-menu .cart-icon,
+    /* Also target when mobile menu is active */
+    .nav-links.mobile-menu.active li #cart-icon,
+    .nav-links.mobile-menu.active li #cart-icon-mobile,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon-mobile,
+    .nav-links.mobile-menu.active #cart-icon,
+    .nav-links.mobile-menu.active #cart-icon-mobile,
+    .nav-links.mobile-menu.active li .cart-icon,
+    .nav-links.mobile-menu.active .cart-icon-container .cart-icon,
+    .nav-links.mobile-menu.active .cart-icon {
+        background: var(--color-primary, #3b3333) !important;
+        border: none !important;
+        padding: 1rem !important;
         cursor: pointer;
-        color: white;
-        display: flex;
+        color: white !important;
+        display: flex !important;
         align-items: center;
         justify-content: center;
         position: relative;
-        border-radius: 50%;
-        width: 56px;
-        height: 56px;
-        box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3);
+        border-radius: 50% !important;
+        width: 56px !important;
+        height: 56px !important;
+        min-width: 56px !important;
+        min-height: 56px !important;
+        max-width: 56px !important;
+        max-height: 56px !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3) !important;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .nav-links.mobile-menu .cart-icon-container .cart-icon:hover,
-    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile:hover {
+    .nav-links.mobile-menu .cart-icon-container #cart-icon:hover,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile:hover,
+    .nav-links.mobile-menu li #cart-icon:hover,
+    .nav-links.mobile-menu li .cart-icon:hover,
+    .nav-links.mobile-menu #cart-icon:hover,
+    .nav-links.mobile-menu #cart-icon-mobile:hover,
+    .nav-links.mobile-menu.active .cart-icon-container .cart-icon:hover,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon:hover,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon-mobile:hover,
+    .nav-links.mobile-menu.active li #cart-icon:hover,
+    .nav-links.mobile-menu.active li .cart-icon:hover,
+    .nav-links.mobile-menu.active #cart-icon:hover,
+    .nav-links.mobile-menu.active #cart-icon-mobile:hover {
         transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(59, 51, 51, 0.4);
-        color: white;
+        box-shadow: 0 6px 16px rgba(59, 51, 51, 0.4) !important;
+        color: white !important;
     }
 
+    /* SVG inside cart icon - ensure it's sized correctly */
     .nav-links.mobile-menu .cart-icon-container .cart-icon svg,
-    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile svg {
-        width: 28px;
-        height: 28px;
+    .nav-links.mobile-menu .cart-icon-container #cart-icon svg,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile svg,
+    .nav-links.mobile-menu li #cart-icon svg,
+    .nav-links.mobile-menu li .cart-icon svg,
+    .nav-links.mobile-menu li #cart-icon-mobile svg,
+    .nav-links.mobile-menu #cart-icon svg,
+    .nav-links.mobile-menu #cart-icon-mobile svg,
+    .nav-links.mobile-menu.active .cart-icon-container .cart-icon svg,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon svg,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-icon-mobile svg,
+    .nav-links.mobile-menu.active li #cart-icon svg,
+    .nav-links.mobile-menu.active li .cart-icon svg,
+    .nav-links.mobile-menu.active li #cart-icon-mobile svg,
+    .nav-links.mobile-menu.active #cart-icon svg,
+    .nav-links.mobile-menu.active #cart-icon-mobile svg {
+        width: 28px !important;
+        height: 28px !important;
         stroke-width: 2.5;
     }
+    
 
-    .nav-links.mobile-menu .cart-icon-container .cart-badge {
-        background-color: var(--color-accent, #fefc8f);
-        color: var(--color-primary, #3b3333);
+    .nav-links.mobile-menu .cart-icon-container .cart-badge,
+    .nav-links.mobile-menu .cart-icon-container #cart-badge,
+    .nav-links.mobile-menu li #cart-badge,
+    .nav-links.mobile-menu li .cart-badge,
+    .nav-links.mobile-menu #cart-badge,
+    .nav-links.mobile-menu.active .cart-icon-container .cart-badge,
+    .nav-links.mobile-menu.active .cart-icon-container #cart-badge,
+    .nav-links.mobile-menu.active li #cart-badge,
+    .nav-links.mobile-menu.active li .cart-badge,
+    .nav-links.mobile-menu.active #cart-badge {
+        background-color: var(--color-accent, #fefc8f) !important;
+        color: var(--color-primary, #3b3333) !important;
         font-weight: 700;
-        border: 2px solid var(--color-primary, #3b3333);
+        border: 2px solid var(--color-primary, #3b3333) !important;
     }
 }
 
@@ -181,6 +247,29 @@ nav {
 @media (max-width: 768px) {
     .nav-links:not(.mobile-menu) {
         display: none !important;
+    }
+    
+    /* Ensure cart icon gets mobile styling when visible on mobile screens */
+    /* Target cart icon anywhere in header when mobile menu is the active navigation */
+    header nav .cart-icon,
+    header nav #cart-icon,
+    header nav #cart-icon-mobile {
+        /* Only apply mobile menu styling if inside mobile menu or when mobile menu is visible */
+    }
+    
+    /* When mobile menu is active/open, style cart icon consistently */
+    .nav-links.mobile-menu.active ~ * .cart-icon,
+    .nav-links.mobile-menu.active ~ * #cart-icon,
+    body:has(.nav-links.mobile-menu.active) header nav .cart-icon,
+    body:has(.nav-links.mobile-menu.active) header nav #cart-icon {
+        background: var(--color-primary, #3b3333) !important;
+        border: none !important;
+        padding: 1rem !important;
+        color: white !important;
+        border-radius: 50% !important;
+        width: 56px !important;
+        height: 56px !important;
+        box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3) !important;
     }
     
     body {
@@ -225,7 +314,7 @@ nav {
     .nav-links.mobile-menu .cart-icon-container {
         border-bottom: none;
         padding-bottom: 0;
-        margin-bottom: 0;
+        margin-bottom: 2rem; /* Ensure spacing below cart icon */
     }
     
     .nav-links.mobile-menu li:not(.cart-icon-container) {

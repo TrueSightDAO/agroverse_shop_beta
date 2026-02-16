@@ -20,6 +20,27 @@
   color: var(--color-secondary, #4d4d4d);
 }
 
+/* Don't apply default cart.css styles to cart icons inside mobile menu */
+/* navigation.css handles mobile menu cart icon styling with higher specificity */
+@media (max-width: 768px) {
+  /* Exclude mobile menu cart icons from default cart.css styling */
+  .nav-links.mobile-menu .cart-icon,
+  .nav-links.mobile-menu #cart-icon,
+  .nav-links.mobile-menu #cart-icon-mobile,
+  .nav-links.mobile-menu li .cart-icon,
+  .nav-links.mobile-menu li #cart-icon,
+  .nav-links.mobile-menu li #cart-icon-mobile,
+  .nav-links.mobile-menu.active .cart-icon,
+  .nav-links.mobile-menu.active #cart-icon,
+  .nav-links.mobile-menu.active #cart-icon-mobile,
+  .nav-links.mobile-menu.active li .cart-icon,
+  .nav-links.mobile-menu.active li #cart-icon,
+  .nav-links.mobile-menu.active li #cart-icon-mobile {
+    /* Don't apply cart.css default styles - navigation.css will handle styling */
+    /* This prevents cart.css from overriding navigation.css mobile menu styles */
+  }
+}
+
 .cart-badge {
   position: absolute;
   top: 0;
