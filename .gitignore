@@ -1,82 +1,61 @@
-# Raw downloaded assets from Wix
-assets/raw/
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
-# OS Files
+# Dependencies - NEVER commit node_modules
+node_modules/
+**/node_modules/
+
+# Lock files - package-lock.json SHOULD be committed (for consistent installs)
+# yarn.lock and pnpm-lock.yaml can be committed if using those package managers
+# Uncomment if you want to exclude lock files:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# OS files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-
-# Editor files
-.vscode/
-.idea/
 *.swp
 *.swo
 *~
 
-# Logs
-*.log
-npm-debug.log*
+# IDE
+.vscode/
+.idea/
+*.sublime-*
 
-# Temporary files
-*.tmp
-*.temp
-
-# Environment variables
+# Environment
 .env
 .env.local
 .env.*.local
 
-# Service account credentials (NEVER commit these!)
+# Credentials and Secrets - NEVER commit these!
 google-service-account.json
-*service-account*.json
 *credentials*.json
+*token*.json
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+*.secret
 
-# Python virtual environment
-venv/
-Venv/
-env/
-ENV/
-.venv/
+# Exported/Backup files - Large exported HTML files with dependencies
+assets/raw/
+**/*_files/
+*.html_files/
 
-# Node.js / NPM
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-# Note: Keeping package.json and package-lock.json (they're small and useful for setup)
+# Temporary and cache files
+*.cache
+.cache/
+tmp/
+temp/
 
-
-# YouTube API credentials - DO NOT COMMIT
-scripts/youtube_credentials.json
-**/credentials.json
-**/client_secret*.json
-
-# YouTube OAuth token
-youtube_token.json
-**/youtube_token.json
-
-# YouTube video mappings (contains IDs)
-scripts/youtube_videos.json
-
-# Video files (hosted on YouTube, embedded via iframes)
-# These videos are uploaded to YouTube and embedded, so we don't need to commit them
+# Temporary video files (will be uploaded to YouTube)
 assets/videos/*.mp4
-assets/videos/*.MP4
 assets/videos/*.mov
-assets/videos/*.MOV
 assets/videos/*.avi
-assets/videos/*.AVI
 assets/videos/*.mkv
-assets/videos/*.MKV# Partner video assets (also hosted on YouTube)
-assets/partners/*.mp4
-assets/partners/*.MP4
-assets/partners/*.mov
-assets/partners/*.MOV
-assets/partners/*.avi
-assets/partners/*.AVI
-assets/partners/*.mkv
-assets/partners/*.MKV
