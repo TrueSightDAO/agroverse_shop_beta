@@ -33,6 +33,12 @@ jobs:
         run: npm test
         env:
           CI: true
+          # GITHUB_REPOSITORY is automatically set by GitHub Actions
+          # Tests will automatically use the correct URL:
+          # - agroverse_shop_beta → beta.agroverse.shop
+          # - agroverse_shop_prod → www.agroverse.shop
+        # Increase timeout for test execution (tests may take longer in CI)
+        timeout-minutes: 20
 
       - name: Upload test results
         if: always()
