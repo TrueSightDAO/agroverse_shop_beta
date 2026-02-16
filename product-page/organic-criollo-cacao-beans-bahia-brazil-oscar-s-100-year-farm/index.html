@@ -31,7 +31,56 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
 
 <!-- Standardized Cards CSS -->
-<link href="../../css/cards.css" rel="stylesheet"/><style>
+<link href="../../css/cards.css" rel="stylesheet"/>
+<!-- Product Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Organic Criollo Cacao Beans, Bahia Brazil, Oscar's 100-Year Farm",
+  "image": "https://www.agroverse.shop/assets/images/products/oscars-farm.jpeg",
+  "description": "Organic Criollo cacao beans from Oscar's 100-year-old farm in Bahia, Brazil. Three generations of cacao wisdom with 80-year-old trees.",
+  "sku": "oscar-bahia-criollo-beans",
+  "brand": {
+    "@type": "Brand",
+    "name": "Agroverse"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.agroverse.shop/product-page/organic-criollo-cacao-beans-bahia-brazil-oscar-s-100-year-farm",
+    "priceCurrency": "USD",
+    "price": "25.00",
+    "priceValidUntil": "2025-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Agroverse"
+    }
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Weight",
+      "value": "varies"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Origin",
+      "value": "Oscar's Farm, Bahia, Brazil"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Harvest Year",
+      "value": "2024"
+    },
+    {
+      "@type": "PropertyValue",
+      "name": "Shipment ID",
+      "value": "AGL4"
+    }
+  ]
+}
+</script><style>
         :root {
             --color-primary: #3b3333;
             --color-secondary: #4d4d4d;
