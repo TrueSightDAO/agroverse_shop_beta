@@ -85,8 +85,17 @@
         }
         
         /* Hide mobile menu on desktop */
-        .nav-links.mobile-menu {
-            display: none;
+        @media (min-width: 769px) {
+            .nav-links.mobile-menu {
+                display: flex;
+            }
+        }
+        
+        /* Hide mobile menu toggle on desktop */
+        @media (min-width: 769px) {
+            .mobile-menu-toggle {
+                display: none;
+            }
         }
         
         
@@ -487,17 +496,7 @@
 <img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
 </a>
 </div>
-<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links">
-<li><a href="../../index.html#home">Home</a></li>
-<li><a href="../../index.html#mission">Mission</a></li>
-<li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li>
-<li><a href="../../index.html#gatherings">Gatherings</a></li>
-<li><a href="../../blog/">Blog</a></li>
-<li><a href="../../order-history/">Order History</a></li>
-<li><a href="../../index.html#contact">Contact</a></li>
-</ul><ul class="nav-links mobile-menu">
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
 <li><a href="../../index.html#home">Home</a></li>
 <li><a href="../../index.html#products">Products</a></li>
 <li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>

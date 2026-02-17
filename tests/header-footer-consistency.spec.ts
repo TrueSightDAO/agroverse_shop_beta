@@ -154,18 +154,23 @@ test.describe('Header and Footer Menu Consistency', () => {
         await page.waitForSelector('nav, header nav, .nav-links', { timeout: 10000 }).catch(() => {});
         
         // Extract header menu items
-        // On desktop viewport, get links from nav-links (excluding mobile-menu if both exist)
-        // If only mobile-menu exists, use that (it's the same links, just styled differently)
+        // On desktop viewport, we need to check for VISIBLE navigation links
+        // Some pages only have mobile-menu which might be hidden on desktop
         let menuItems: Array<{text: string, href: string}> = [];
         
-        // First try to find desktop nav-links (without mobile-menu class)
+        // First try to find desktop nav-links (without mobile-menu class) that are visible
         const desktopNavLinks = page.locator('nav .nav-links:not(.mobile-menu) li > a');
         const desktopCount = await desktopNavLinks.count();
         
         if (desktopCount > 0) {
-          // Use desktop nav-links
+          // Check if any are visible
+          let visibleCount = 0;
           const links = await desktopNavLinks.all();
           for (const link of links) {
+            const isVisible = await link.isVisible();
+            if (!isVisible) continue;
+            
+            visibleCount++;
             const text = await link.textContent();
             const href = await link.getAttribute('href') || '';
             const className = await link.evaluate((el: HTMLElement) => el.className || '');
@@ -184,13 +189,28 @@ test.describe('Header and Footer Menu Consistency', () => {
             const normalizedHref = normalizeHref(href);
             menuItems.push({ text: text.trim(), href: normalizedHref });
           }
-        } else {
-          // Fallback: use nav-links.mobile-menu (which contains the same links)
-          // This is common on pages that use a single nav-links for both desktop and mobile
+          
+          // If desktop nav exists but nothing is visible, that's a problem
+          if (desktopCount > 0 && visibleCount === 0) {
+            console.log(`⚠️  ${url}: Desktop nav-links exist but none are visible`);
+          }
+        }
+        
+        // If no visible desktop nav, check mobile-menu visibility
+        // On desktop, mobile-menu should still be visible if it's the only nav
+        if (menuItems.length === 0) {
           const mobileNavLinks = page.locator('nav .nav-links li > a, nav ul.nav-links li > a');
           const links = await mobileNavLinks.all();
           
           for (const link of links) {
+            // Check if link is visible on desktop (mobile-menu might be hidden)
+            const isVisible = await link.isVisible();
+            if (!isVisible) {
+              // If mobile-menu links are hidden on desktop, that's a problem
+              console.log(`⚠️  ${url}: Navigation links exist but are not visible on desktop`);
+              continue;
+            }
+            
             const text = await link.textContent();
             const href = await link.getAttribute('href') || '';
             const className = await link.evaluate((el: HTMLElement) => el.className || '');
