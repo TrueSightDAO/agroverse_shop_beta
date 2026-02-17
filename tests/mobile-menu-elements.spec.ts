@@ -20,7 +20,8 @@ const TEST_PAGES = [
   '/shipments/agl4',
   '/shipments/agl8',
   '/partners',
-  '/blog'
+  '/blog',
+  '/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins',
 ];
 
 test.describe('Mobile Menu Elements Consistency', () => {
@@ -330,8 +331,8 @@ test.describe('Mobile Menu Elements Consistency', () => {
 
     console.log(`\n🌐 Testing mobile menu functionality: ${baseUrl}\n`);
 
-    // Test on a few key pages
-    const testPages = ['/', '/product-page/oscar-s-bahia-ceremonial-cacao', '/blog'];
+    // Test on key pages including blog posts
+    const testPages = ['/', '/product-page/oscar-s-bahia-ceremonial-cacao', '/blog', '/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins'];
 
     for (const url of testPages) {
       try {

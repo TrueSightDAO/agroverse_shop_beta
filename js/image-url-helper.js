@@ -13,6 +13,9 @@
    * - assets/images/products/image.jpg (relative)
    * - ../assets/images/products/image.jpg (relative with parent)
    * - https://example.com/image.jpg (already absolute)
+   * 
+   * For cart images, always use absolute URLs from root to ensure
+   * they work across all pages regardless of URL depth.
    */
   function makeImageUrlAbsolute(imageUrl) {
     if (!imageUrl) {
@@ -25,42 +28,29 @@
     }
 
     // Get current page's base URL
-    const currentPath = window.location.pathname;
     const currentHost = window.location.origin;
     
-    // If image starts with /, it's absolute from root - just prepend origin
+    // If image starts with /, it's already absolute from root - just prepend origin
     if (imageUrl.indexOf('/') === 0) {
       return currentHost + imageUrl;
     }
 
-    // Calculate depth of current page
-    // e.g., /blog/ = depth 1, /post/article/ = depth 2, / = depth 0
-    const pathParts = currentPath.split('/').filter(p => p && p !== 'index.html');
-    const depth = pathParts.length;
-
-    // Build path to root
-    let rootPath = '';
-    if (depth > 0) {
-      rootPath = '../'.repeat(depth);
-    }
-
-    // Handle relative paths
-    // If imageUrl already starts with ../, we need to be careful
-    if (imageUrl.indexOf('../') === 0) {
-      // Count how many ../ in the image URL
-      const imageDepth = (imageUrl.match(/\.\.\//g) || []).length;
-      // Adjust root path
-      const adjustedDepth = Math.max(0, depth - imageDepth);
-      rootPath = adjustedDepth > 0 ? '../'.repeat(adjustedDepth) : '';
-      // Remove ../ from imageUrl
-      imageUrl = imageUrl.replace(/\.\.\//g, '');
-    }
-
-    // Ensure image path doesn't start with / (we'll add it)
-    const cleanImagePath = imageUrl.indexOf('/') === 0 ? imageUrl.substring(1) : imageUrl;
+    // For relative paths, convert to absolute from root
+    // This ensures images work on all pages regardless of URL depth
+    // Remove any leading ../ or ./ and ensure it starts with /
+    let cleanPath = imageUrl;
     
-    // Build absolute URL
-    return currentHost + '/' + rootPath.replace(/\/$/, '') + (rootPath ? '/' : '') + cleanImagePath;
+    // Remove leading ../ or ./
+    cleanPath = cleanPath.replace(/^(\.\.\/)+/, '');
+    cleanPath = cleanPath.replace(/^\.\//, '');
+    
+    // Ensure path starts with /
+    if (cleanPath.indexOf('/') !== 0) {
+      cleanPath = '/' + cleanPath;
+    }
+    
+    // Return absolute URL
+    return currentHost + cleanPath;
   }
 
   // Export for external use

@@ -132,19 +132,49 @@ test.describe('Agroverse.shop - Visual Consistency', () => {
     await page.goto(`${baseUrl}/`, { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForLoadState('networkidle');
     
-    // Check heading font
-    const heading = page.locator('h1').first();
-    const headingFont = await heading.evaluate((el) => {
-      return window.getComputedStyle(el).fontFamily;
-    });
-    expect(headingFont).toContain('Playfair Display');
+    // Wait for fonts to load
+    await page.waitForTimeout(2000);
+    
+    // Check heading font - try h1 first, then h2, then h3
+    let headingFont = '';
+    const headingSelectors = ['h1', 'h2', 'h3'];
+    for (const selector of headingSelectors) {
+      const heading = page.locator(selector).first();
+      const count = await heading.count();
+      if (count > 0) {
+        headingFont = await heading.evaluate((el) => {
+          return window.getComputedStyle(el).fontFamily;
+        });
+        if (headingFont) {
+          break;
+        }
+      }
+    }
+    
+    // Verify heading font contains Playfair Display
+    expect(headingFont).toBeTruthy();
+    expect(headingFont.toLowerCase()).toContain('playfair display');
     
     // Check body font
     const body = page.locator('body');
     const bodyFont = await body.evaluate((el) => {
       return window.getComputedStyle(el).fontFamily;
     });
-    expect(bodyFont).toContain('Open Sans');
+    expect(bodyFont).toBeTruthy();
+    expect(bodyFont.toLowerCase()).toContain('open sans');
+    
+    // Also check CSS variables are set correctly
+    const cssVars = await page.evaluate(() => {
+      const root = document.documentElement;
+      const computedStyle = getComputedStyle(root);
+      return {
+        headingFont: computedStyle.getPropertyValue('--font-heading').trim(),
+        bodyFont: computedStyle.getPropertyValue('--font-body').trim(),
+      };
+    });
+    
+    expect(cssVars.headingFont.toLowerCase()).toContain('playfair display');
+    expect(cssVars.bodyFont.toLowerCase()).toContain('open sans');
   });
 
   test('Responsive design works across breakpoints', async ({ page, baseURL }) => {

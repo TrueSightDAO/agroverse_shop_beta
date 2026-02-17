@@ -29,11 +29,17 @@ test.describe('Cart Icon Consistency', () => {
 
     console.log(`\n🛒 Testing cart icon consistency against: ${baseUrl}\n`);
 
+    // Ensure desktop viewport for consistent testing
+    await page.setViewportSize({ width: 1920, height: 1080 });
+
     for (const url of TEST_PAGES) {
       try {
         const fullUrl = `${baseUrl}${url}`;
         console.log(`📄 Loading: ${fullUrl}`);
         await page.goto(fullUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        
+        // Ensure viewport is still desktop (in case page navigation changed it)
+        await page.setViewportSize({ width: 1920, height: 1080 });
         
         // Wait for cart icon to be rendered (it's added dynamically)
         await page.waitForSelector('#cart-icon', { timeout: 10000 });
