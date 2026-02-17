@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
  * Ensures navigation links (desktop nav-links and mobile-menu) are identical across all pages
  */
 
-// Pages to test - comprehensive list
+// Pages to test - comprehensive list including blog posts
 const TEST_PAGES = [
   '/',
   '/category/retail-packs',
@@ -20,7 +20,9 @@ const TEST_PAGES = [
   '/shipments/agl4',
   '/shipments/agl8',
   '/partners',
-  '/blog'
+  '/blog',
+  '/post/the-joy-of-cacao-circles-connections-and-community',
+  '/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins',
 ];
 
 test.describe('Navigation Links Consistency', () => {

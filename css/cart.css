@@ -10,7 +10,7 @@
   cursor: pointer;
   padding: 0.5rem;
   color: var(--color-text, #3b3333);
-  display: flex;
+  display: inline-flex; /* Use inline-flex for desktop to match navigation consistency */
   align-items: center;
   justify-content: center;
   transition: color 0.3s;

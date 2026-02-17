@@ -101,6 +101,30 @@ nav {
     padding: 0;
 }
 
+/* Desktop: Cart icon container should display inline with other nav items */
+@media (min-width: 769px) {
+    .nav-links.mobile-menu .cart-icon-container {
+        display: list-item;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Ensure cart icon uses inline-flex on desktop for consistency */
+    .nav-links.mobile-menu .cart-icon-container .cart-icon,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon,
+    .nav-links.mobile-menu .cart-icon-container #cart-icon-mobile,
+    /* Also target cart icons in regular nav-links (non-mobile-menu) */
+    .nav-links:not(.mobile-menu) .cart-icon,
+    .nav-links:not(.mobile-menu) #cart-icon,
+    /* Target cart icon anywhere in navigation on desktop */
+    nav .cart-icon,
+    nav #cart-icon {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 /* Cart Icon in Mobile Menu - Prominent Top Position (mobile only) */
 @media (max-width: 768px) {
     /* Container styling - ensures consistent spacing and positioning */

@@ -113,6 +113,11 @@
       };
     }
 
+    // Ensure image URL is absolute for cross-page compatibility
+    if (product.image && window.ImageUrlHelper && window.ImageUrlHelper.makeAbsolute) {
+      product.image = window.ImageUrlHelper.makeAbsolute(product.image);
+    }
+
     // Validate product data
     if (!product.productId || !product.name || !product.price) {
       console.error('Invalid product data:', product);
