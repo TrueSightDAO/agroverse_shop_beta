@@ -238,16 +238,49 @@
       const targetNav = desktopNavLinks || (allNavLinks.length > 0 ? allNavLinks[0] : null);
       
       if (targetNav && !targetNav.classList.contains('mobile-menu')) {
-        // Add to desktop nav (normal nav-links)
-        const cartIconContainer = document.createElement('li');
-        cartIconContainer.innerHTML = createCartIcon();
-        targetNav.appendChild(cartIconContainer);
-      } else if (targetNav) {
-        // If we only have mobile menu, add it there with container class for proper styling
+        // Add to desktop nav (normal nav-links) - position after Contact
         const cartIconContainer = document.createElement('li');
         cartIconContainer.className = 'cart-icon-container';
         cartIconContainer.innerHTML = createCartIcon();
-        targetNav.insertBefore(cartIconContainer, targetNav.firstChild);
+        
+        // Find Contact link and insert cart icon right after it
+        const contactLink = targetNav.querySelector('a[href*="contact"], a[href*="Contact"], a[href="#contact"]');
+        if (contactLink) {
+          const contactLi = contactLink.closest('li');
+          if (contactLi && contactLi.nextSibling) {
+            targetNav.insertBefore(cartIconContainer, contactLi.nextSibling);
+          } else {
+            targetNav.appendChild(cartIconContainer);
+          }
+        } else {
+          // If Contact not found, append to end
+          targetNav.appendChild(cartIconContainer);
+        }
+      } else if (targetNav) {
+        // If we only have mobile menu, add it there with container class for proper styling
+        // For desktop view, still position after Contact
+        const cartIconContainer = document.createElement('li');
+        cartIconContainer.className = 'cart-icon-container';
+        cartIconContainer.innerHTML = createCartIcon();
+        
+        // Check if we're on desktop (window width > 768)
+        if (window.innerWidth > 768) {
+          // Desktop: position after Contact
+          const contactLink = targetNav.querySelector('a[href*="contact"], a[href*="Contact"], a[href="#contact"]');
+          if (contactLink) {
+            const contactLi = contactLink.closest('li');
+            if (contactLi && contactLi.nextSibling) {
+              targetNav.insertBefore(cartIconContainer, contactLi.nextSibling);
+            } else {
+              targetNav.appendChild(cartIconContainer);
+            }
+          } else {
+            targetNav.appendChild(cartIconContainer);
+          }
+        } else {
+          // Mobile: position at top
+          targetNav.insertBefore(cartIconContainer, targetNav.firstChild);
+        }
       }
       
       // Always ensure cart icon is in mobile menu with container class (for consistent mobile styling)

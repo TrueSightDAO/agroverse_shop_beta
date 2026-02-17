@@ -114,9 +114,15 @@
             item.price = product.price;
             updated = true;
           }
-          if (product.image && item.image !== product.image) {
-            item.image = product.image;
-            updated = true;
+          if (product.image) {
+            // Ensure image URL is absolute
+            const absoluteImage = (window.ImageUrlHelper && window.ImageUrlHelper.makeAbsolute)
+              ? window.ImageUrlHelper.makeAbsolute(product.image)
+              : product.image;
+            if (item.image !== absoluteImage) {
+              item.image = absoluteImage;
+              updated = true;
+            }
           }
           if (!item.weight || parseFloat(item.weight) === 0) {
             item.weight = product.weight || 0;
@@ -194,6 +200,11 @@
     if (!product.productId || !product.name || !product.price) {
       console.error('Invalid product data:', product);
       return { success: false, message: 'Invalid product data' };
+    }
+
+    // Ensure image URL is absolute for cross-page compatibility
+    if (product.image && window.ImageUrlHelper && window.ImageUrlHelper.makeAbsolute) {
+      product.image = window.ImageUrlHelper.makeAbsolute(product.image);
     }
 
     // Normalize product ID to prevent duplicates
