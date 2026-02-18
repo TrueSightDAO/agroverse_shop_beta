@@ -1,116 +1,59 @@
-# Playwright Consistency Tests for Agroverse.shop
+# Agroverse Shop Tests
 
-Automated tests to ensure visual and layout consistency across all pages.
+Playwright visual consistency tests for agroverse.shop. Ensure header/footer, cart, nav, and SEO content are consistent across all pages.
 
-## Setup
+> **Local runs:** Tests hit `http://localhost:8000`. Playwright auto-starts Python `http.server` on port 8000. Ensure port 8000 is free. To test against beta instead: `BASE_URL=https://beta.agroverse.shop npm test`
 
-```bash
-# Install Playwright
-npm install -D @playwright/test
-npx playwright install
-
-# Or with yarn
-yarn add -D @playwright/test
-yarn playwright install
-```
-
-## Running Tests
+## Quick start
 
 ```bash
-# Run all tests
-npx playwright test
-
-# Run specific test file
-npx playwright test consistency.spec.ts
-
-# Run in UI mode (interactive)
-npx playwright test --ui
-
-# Run with browser visible
-npx playwright test --headed
-
-# Run on specific browser
-npx playwright test --project=chromium
+npm test              # Run all tests (starts local server on :8000)
+npm run test:headed   # Run with browser visible
+npm run test:ui       # Playwright UI mode
+npm run test:ci       # CI-friendly output (HTML + GitHub reporter)
 ```
 
-## Test Coverage
+## Smart test runner (resume on failure)
 
-### Visual Consistency Tests
-- ✅ Navigation header consistency
-- ✅ Footer consistency
-- ✅ Brand colors consistency
-- ✅ Font consistency
-- ✅ Responsive design (mobile/tablet/desktop)
-- ✅ Product page structure consistency
-- ✅ No broken images
-- ✅ Valid internal links
-- ✅ Meta tags consistency
-
-### Visual Regression Tests
-- ✅ Homepage snapshots (desktop/mobile)
-- ✅ Product page snapshots
-- ✅ Cross-browser visual consistency
-
-## What Gets Tested
-
-### Key Pages Tested
-- Homepage (`/`)
-- Category pages (`/category/retail-packs`, `/category/wholesale-bulk`)
-- Product pages (all 9 products)
-- Farm pages (`/farms/*`)
-- Shipment pages (`/shipments/*`)
-- Partners page
-- Blog
-
-### Breakpoints Tested
-- Mobile: 375x667 (iPhone SE)
-- Tablet: 768x1024 (iPad)
-- Desktop: 1920x1080
-
-### Browsers Tested
-- Chromium (Chrome/Edge)
-- Firefox
-- WebKit (Safari)
-- Mobile Chrome (Pixel 5)
-- Mobile Safari (iPhone 12)
-
-## Updating Snapshots
-
-If visual changes are intentional:
+For long test runs, use the smart runner to resume from failures:
 
 ```bash
-# Update snapshots
-npx playwright test --update-snapshots
+npm run test:smart    # Run all, track progress
+npm run test:resume   # Resume from last failure
+npm run test:reset    # Reset and start fresh
 ```
 
-## CI Integration
+## CI (GitHub Actions)
 
-Add to GitHub Actions or CI pipeline:
+- **Workflow**: `.github/workflows/visual-consistency.yml`
+- **Triggers**: Push/PR to `main` or `master`; also `workflow_dispatch` (manual)
+- **URL selection**: Beta repo → `beta.agroverse.shop`; Prod repo → `www.agroverse.shop`
+- **Artifacts**: Playwright report (30 days); screenshots on failure (7 days)
 
-```yaml
-- name: Install Playwright
-  run: npx playwright install --with-deps
+## Local vs CI
 
-- name: Run tests
-  run: npx playwright test
+| Mode | baseURL | Server |
+|------|---------|--------|
+| Local | `http://localhost:8000` | Python `http.server` (auto-started) |
+| CI (beta) | `https://beta.agroverse.shop` | None (live site) |
+| CI (prod) | `https://www.agroverse.shop` | None (live site) |
 
-- name: Upload test results
-  if: always()
-  uses: actions/upload-artifact@v3
-  with:
-    name: playwright-report
-    path: playwright-report/
-```
+Override: `BASE_URL=https://beta.agroverse.shop npm test`
 
-## Troubleshooting
+## Test files
 
-**Tests failing due to dynamic content?**
-- Adjust `maxDiffPixels` in screenshot assertions
-- Use `mask` option to ignore dynamic elements
+- `header-footer-consistency.spec.ts` — Header and footer menu items across pages
+- `nav-consistency.spec.ts` — Navigation structure
+- `footer-consistency.spec.ts` — Footer links and structure
+- `cart-*.spec.ts` — Cart icon, functionality, image visibility
+- `hamburger-menu-functionality.spec.ts` — Mobile menu
+- `mobile-menu-elements.spec.ts` — Mobile menu elements
+- `nav-footer-relationship.spec.ts` — Nav ↔ footer alignment
+- `seo-content-alignment.spec.ts` — SEO metadata and content
+- `consistency.spec.ts` — General consistency checks
 
-**Tests timing out?**
-- Increase timeout in `playwright.config.ts`
-- Check network conditions
+## Adding tests
 
-**Need to test more pages?**
-- Add URLs to `KEY_PAGES` array in `consistency.spec.ts`
+1. Add a new `.spec.ts` in `tests/`
+2. Use `playwright.config.ts` baseURL (or override via `BASE_URL`)
+3. Tests run against live site in CI — no mocking; keep tests resilient to minor content changes

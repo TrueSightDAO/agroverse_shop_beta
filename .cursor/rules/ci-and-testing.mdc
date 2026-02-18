@@ -1,0 +1,41 @@
+---
+description: Agroverse Shop CI and Playwright testing - run tests when changing nav, footer, cart, or pages
+globs: tests/**/*.spec.ts, playwright.config.ts, .github/workflows/*.yml, **/index.html, **/header*.html, **/footer*.html, js/cart*.js, js/universal-nav.js
+alwaysApply: false
+---
+
+# Agroverse Shop CI and Testing
+
+## When to run tests
+
+- Before committing changes to nav, footer, cart, header, or page structure
+- When asked to run CI or verify visual consistency
+- After adding or modifying blog posts, product pages, or navigation
+
+## Commands
+
+```bash
+npm test              # Run all Playwright tests (starts local server)
+npm run test:headed   # Run with browser visible
+npm run test:resume   # Resume from last failure (smart runner)
+npm run test:reset    # Reset smart runner state
+```
+
+## CI (GitHub Actions)
+
+- **Workflow**: `.github/workflows/visual-consistency.yml`
+- **Triggers**: Push/PR to main; `workflow_dispatch` (manual)
+- **URL**: Beta repo → beta.agroverse.shop; Prod repo → www.agroverse.shop
+- **Artifacts**: playwright-report (30d); test screenshots on failure (7d)
+
+## Local vs CI
+
+- **Local**: Tests hit `http://localhost:8000`. Playwright auto-starts Python `http.server` on port 8000. Ensure port 8000 is free.
+- **CI (GitHub Actions)**: Tests hit live site (beta.agroverse.shop or www.agroverse.shop depending on repo).
+
+Override local baseURL: `BASE_URL=https://beta.agroverse.shop npm test`
+
+## Architecture
+
+- **Playwright** runs against live site in CI (no mocking)
+- **Tests**: Header/footer consistency, nav, cart, mobile menu, SEO content
