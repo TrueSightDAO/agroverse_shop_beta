@@ -11,6 +11,10 @@ node_modules/
 # OS files
 .DS_Store
 
+# Cursor IDE (keep .cursor/rules/ for AI/agent context)
+.cursor/*
+!.cursor/rules/
+
 # Environment files
 .env
 
