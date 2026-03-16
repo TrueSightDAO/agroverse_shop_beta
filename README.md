@@ -233,6 +233,20 @@ agroverse_shop/
         └── farms/                      # Farm images
 ```
 
+## 🧪 Testing
+
+Playwright visual consistency tests. See [tests/README.md](./tests/README.md) for full details.
+
+```bash
+npm test              # Run tests (starts local server)
+npm run test:headed   # Run with browser visible
+npm run test:resume   # Resume from last failure (smart runner)
+```
+
+- **CI**: `.github/workflows/visual-consistency.yml` runs on push/PR to main
+- **Scope**: Header/footer, nav, cart, mobile menu, SEO content
+- **Local**: Uses `localhost:8000`; CI uses `beta.agroverse.shop` or `www.agroverse.shop` depending on repo
+
 ## 🚀 Quick Start
 
 ### Local Development
