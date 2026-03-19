@@ -80,6 +80,16 @@
             url: '../../cooperatives/coopercabruca/index.html',
             description: 'Visit Coopercabruca, a cooperative that supports small-scale cacao farmers in Bahia, working together to preserve traditional farming methods while ensuring sustainable livelihoods. The cooperative brings together regenerative cacao producers who share knowledge, maintain quality standards, and support each other. Coopercabruca was instrumental in Agroverse\'s early shipments, establishing the transparency standards and direct relationships that define our commitment to regenerative cacao sourcing.'
         },
+        'cic-cacao-innovation-center': {
+            name: 'CIC - Centro de Inovação do Cacau',
+            slug: 'cic-cacao-innovation-center',
+            lat: -14.7946,
+            lon: -39.0503,
+            location: 'Ilhéus, Bahia, Brazil',
+            type: 'partner',
+            url: '../../partners/cic-cacao-innovation-center/index.html',
+            description: 'Visit the Centro de Inovação do Cacau (CIC)—Cacao Innovation Center—at the UESC campus in Ilhéus. CIC is where Agroverse sources all lab testing for cacao from Brazilian farmers. Their physical-chemical analyses verify heavy metal levels and quality parameters, ensuring compliance with Brazilian ANVISA regulations. Tour the lab, learn about traceability and quality standards, and see the science behind the regenerative cacao that reaches global markets.'
+        },
         'black-king-ilheus': {
             name: 'Black King - Ilhéus Warehouse',
             slug: 'black-king-ilheus',

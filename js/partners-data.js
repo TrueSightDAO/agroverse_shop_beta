@@ -57,7 +57,7 @@ window.PARTNERS_DATA = {
         lat: 37.7746386,
         lon: -122.4398332,
         location: 'San Francisco, California',
-        description: 'A boutique San Francisco chocolatier owned by Kirsten "Kiki" Ritschel, crafting exquisite, ethically-sourced confections. Kiki\'s Cocoa offers monthly subscriptions, single-origin ganache, and truffle-making classes. As a partner venue, they proudly offer Agroverse ceremonial cacao, connecting their community with regenerative, ethically-sourced cacao from Brazilian farmers while supporting rainforest restoration through conscious chocolate consumption.'
+        description: 'A boutique San Francisco chocolatier owned by Kirsten "Kiki" Ritschel, crafting exquisite, ethically-sourced confections. Kiki\'s Cocoa offers monthly subscriptions, single-estate ganache, and truffle-making classes. As a partner venue, they proudly offer Agroverse ceremonial cacao, connecting their community with regenerative, ethically-sourced cacao from Brazilian farmers while supporting rainforest restoration through conscious chocolate consumption.'
     },
     'love-wisdom-power': {
         name: 'Love Wisdom Power',
