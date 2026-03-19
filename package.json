@@ -11,7 +11,8 @@
     "test:ci": "playwright test --reporter=html,github",
     "test:smart": "node scripts/test-runner.js",
     "test:resume": "node scripts/test-runner.js --resume",
-    "test:reset": "node scripts/test-runner.js --reset"
+    "test:reset": "node scripts/test-runner.js --reset",
+    "test:single-estate": "playwright test single-estate-positioning"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0"
