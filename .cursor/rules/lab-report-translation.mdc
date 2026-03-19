@@ -1,0 +1,15 @@
+---
+description: Lab report translation - read context when adding English summaries or translating Portuguese lab reports for shipments
+globs: shipments/**/*.html, scripts/translate_lab_report.py
+alwaysApply: false
+---
+
+# Lab Report Translation (Agroverse Shipments)
+
+**When the task involves** translating Portuguese lab reports to English, adding English summaries to shipment pages, or extracting/translating PDF lab reports:
+
+1. **Read** `agentic_ai_context/LAB_REPORT_TRANSLATION.md` for the full workflow.
+2. **Use** `scripts/translate_lab_report.py` to extract PDF text and translate via Grok API (key in `video_editor/.env`).
+3. **Add** the English summary in the "Transparency in Action" section, with a link to the original Portuguese PDF.
+
+Do **not** create English PDF copies—we are not the authority. Display summary + link to original only.
