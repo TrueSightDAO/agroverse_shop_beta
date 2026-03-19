@@ -903,6 +903,27 @@ The site generates a Google Shopping-compatible product feed XML file that works
 - **File Location**: `facebook_product_feed.xml` (root directory)
 - **Format**: RSS 2.0 with Google Shopping namespace (compatible with both platforms)
 
+### Merchant Feed Safety Rules (Do Not Regress)
+
+When editing product pages or regenerating the feed, keep these rules to avoid Google/Facebook ingestion issues:
+
+1. **Use feed category field, not page JSON-LD freeform category**
+   - Keep `g:google_product_category` in `facebook_product_feed.xml` (numeric taxonomy id is fine, e.g. `357`).
+   - Do **not** add or re-add freeform `Product.category` strings in product page JSON-LD if Merchant diagnostics flags them.
+
+2. **Use canonical, non-redirecting feed URLs**
+   - Prefer `https://agroverse.shop/...` consistently for `link` and `image_link` in the feed.
+   - Avoid unnecessary domain redirects in feed URLs.
+
+3. **Ensure clean XML escaping**
+   - XML must parse cleanly.
+   - Avoid double-escaped entities (bad: `&amp;apos;`, good: `&apos;` or plain apostrophe where valid).
+
+4. **Validate after each feed update**
+   - Regenerate feed.
+   - Confirm feed parses and all item links return HTTP 200.
+   - Re-fetch in Merchant Center / Commerce Manager after publishing.
+
 ### Generating the Feed
 
 **Script**: `scripts/generate_facebook_feed.py`
