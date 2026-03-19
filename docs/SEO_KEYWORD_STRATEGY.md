@@ -32,8 +32,8 @@ This strategy is driven by competitor research in **market_research/ceremonial_c
 
 - **Homepage:** Title and meta must include “ceremonial cacao” and differentiators (regeneration, cacao circles). Meta description ideally 150–160 chars for SERP; include “organic ceremonial cacao” or “ceremonial cacao USA.”
 - **Product pages:** Each ceremonial product: title/meta with product name + “ceremonial cacao,” “organic,” and origin. See `PRODUCT_CREATION_CHECKLIST.md` for schema and URLs.
-- **Blog / Cacao Journeys:** Use “ceremonial cacao,” “regenerative,” “traceability,” “single origin” where relevant.
-- **Farms / Shipments:** Emphasize “single origin,” “farm traceability,” “ceremonial cacao [origin].”
+- **Blog / Cacao Journeys:** Use “ceremonial cacao,” “regenerative,” “traceability,” “single estate” where relevant.
+- **Farms / Shipments:** Emphasize “single estate,” “farm traceability,” “ceremonial cacao [origin].”
 
 ---
 

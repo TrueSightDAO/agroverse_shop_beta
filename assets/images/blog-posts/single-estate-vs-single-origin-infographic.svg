@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-labelledby="title desc">
+  <title id="title">Single Origin vs Single Estate Cacao</title>
+  <desc id="desc">Diagram comparing regional sourcing with farm-level sourcing</desc>
+  <rect width="800" height="420" fill="#f7f7f7"/>
+  <text x="400" y="36" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#3b3333" font-weight="bold">Single Origin vs Single Estate</text>
+  <text x="400" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#756F63">Cacao sourcing at a glance</text>
+  <rect x="24" y="80" width="360" height="300" rx="12" fill="#fff" stroke="#3b3333" stroke-width="2"/>
+  <text x="204" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3b3333" font-weight="bold">Single origin</text>
+  <text x="204" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#756F63">One region or country</text>
+  <ellipse cx="204" cy="195" rx="100" ry="52" fill="#e8e4dc" stroke="#756F63"/>
+  <text x="204" y="198" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Region / country</text>
+  <circle cx="165" cy="245" r="14" fill="#7a6b5a"/>
+  <circle cx="204" cy="255" r="14" fill="#7a6b5a"/>
+  <circle cx="243" cy="245" r="14" fill="#7a6b5a"/>
+  <text x="204" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#756F63">Many farms &#8594; one label</text>
+  <text x="204" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Traceability: regional</text>
+  <text x="204" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Flavor: blended character</text>
+  <rect x="416" y="80" width="360" height="300" rx="12" fill="#fff" stroke="#3b3333" stroke-width="3"/>
+  <text x="596" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#3b3333" font-weight="bold">Single estate</text>
+  <text x="596" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#756F63">One farm / one harvest</text>
+  <rect x="526" y="160" width="140" height="90" rx="8" fill="#d4c4a8" stroke="#3b3333"/>
+  <text x="596" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Named farm</text>
+  <text x="596" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#756F63">Oscar &#183; Paulo &#183; Santa Ana</text>
+  <path d="M596 260 L596 288" stroke="#3b3333" stroke-width="2"/>
+  <polygon points="596,296 590,282 602,282" fill="#3b3333"/>
+  <text x="596" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Traceability: farm + harvest</text>
+  <text x="596" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#3b3333">Flavor: distinct terroir</text>
+  <rect x="596" y="358" width="120" height="14" fill="#fefc8f" rx="3" transform="translate(-60,0)"/>
+  <text x="596" y="369" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#3b3333" font-weight="bold">Agroverse model</text>
+</svg>
