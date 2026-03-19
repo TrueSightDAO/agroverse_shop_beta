@@ -12,7 +12,7 @@ This strategy is driven by competitor research in **market_research/ceremonial_c
 | ceremonial cacao USA | Homepage, meta description |
 | buy ceremonial cacao | Product pages, category |
 | organic ceremonial cacao | Product pages, meta, product titles |
-| single origin ceremonial cacao | Product pages, farm/shipment pages |
+| single estate ceremonial cacao | Product pages, farm/shipment pages |
 
 ---
 
@@ -51,7 +51,7 @@ This strategy is driven by competitor research in **market_research/ceremonial_c
 - **Ceremonial Cacao (Ora):** 24 product pages, heavy "ceremonial cacao" + origin in titles, "organic" frequent, "regenerative" and "traceability" present.
 - **Ma Cacao:** "regenerative" 3x, "ceremonial" 2x, "origin" 5x across 57 pages. Emphasizes "ceremony bar" and origin.
 - **Four Visions:** Ceremonial cacao category exists; broader plant medicine focus.
-- **Bar and Cocoa:** Multi-brand retailer with "ceremonial cacao" collection; emphasizes "single origin."
+- **Bar and Cocoa:** Multi-brand retailer with "ceremonial cacao" collection; emphasizes "single estate."
 
 **Pattern:** Competitors consistently use "ceremonial cacao" + origin in product titles. "Organic" is standard. Our differentiators (regenerative, traceability, Amazon) align well.
 

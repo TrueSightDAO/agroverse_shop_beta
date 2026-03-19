@@ -56,6 +56,7 @@
             'vivi-jesus-do-deus-itacare',    // Farm - Itacaré, Bahia
             'oscar-bahia',                    // Farm - Bahia
             'coopercabruca',                  // Cooperative - Bahia
+            'cic-cacao-innovation-center',    // Partner - CIC Lab, Ilhéus, Bahia
             'black-king-ilheus',              // Partner - Ilhéus, Bahia
             'itacare-cultural-experiences',   // Experience - Itacaré
             'salvador-colonial-history',      // Experience - Salvador

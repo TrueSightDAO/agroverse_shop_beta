@@ -51,7 +51,7 @@
             
             if (!stop.type) {
                 // Fallback: try to determine from slug
-                if (stop.slug === 'founderhaus' || stop.slug === 'black-king-ilheus') {
+                if (stop.slug === 'founderhaus' || stop.slug === 'black-king-ilheus' || stop.slug === 'cic-cacao-innovation-center') {
                     return '../' + stop.slug + '/index.html';
                 } else if (window.FARMS_DATA && window.FARMS_DATA[stop.slug]) {
                     return '../../farms/' + stop.slug + '/index.html';
