@@ -37,7 +37,13 @@ from datetime import datetime
 BASE_DIR = Path(__file__).parent.parent
 PRODUCTS_JS_FILE = BASE_DIR / 'js' / 'products.js'
 OUTPUT_XML_FILE = BASE_DIR / 'facebook_product_feed.xml'
-BASE_URL = 'https://www.agroverse.shop'
+# Apex host for feeds (no www) — matches Merchant Center / public product URLs
+BASE_URL = 'https://agroverse.shop'
+
+# Google product taxonomy ID (must exist in taxonomy-with-ids.en-US.txt).
+# 357 is NOT a valid category ID. Use a leaf category, e.g.:
+# 4748 - Food, Beverages & Tobacco > Food Items > Candy & Chocolate
+DEFAULT_GOOGLE_PRODUCT_CATEGORY = '4748'
 
 def parse_products_js():
     """Parse products.js file and extract product data."""
@@ -114,27 +120,20 @@ def parse_products_js():
     
     return products
 
-def escape_xml(text):
-    """Escape XML special characters."""
-    if text is None:
-        return ''
-    text = str(text)
-    text = text.replace('&', '&amp;')
-    text = text.replace('<', '&lt;')
-    text = text.replace('>', '&gt;')
-    text = text.replace('"', '&quot;')
-    text = text.replace("'", '&apos;')
-    return text
-
 def format_price(price):
     """Format price for Facebook feed (e.g., '25.00 USD')."""
     if price is None or price == 0:
         return None
     return f"{price:.2f} USD"
 
-def get_product_url(product_id):
-    """Generate product page URL."""
-    return f"{BASE_URL}/product-page/{product_id}/"
+def get_product_url(product_id, product):
+    """Generate product page URL.
+
+    Internal product_id (cart / Stripe / g:id) often differs from the on-site URL slug
+    (folder name under product-page/). Use optional productPageSlug from products.js.
+    """
+    slug = product.get('productPageSlug') or product_id
+    return f"{BASE_URL}/product-page/{slug}/"
 
 def get_image_url(image_path):
     """Convert relative image path to absolute URL."""
@@ -211,12 +210,12 @@ def generate_xml_feed(products, include_wholesale=False):
     for product_id, product in filtered_products.items():
         item = ET.SubElement(channel, 'item')
         
-        # Required fields
-        ET.SubElement(item, 'g:id').text = escape_xml(product_id)
-        ET.SubElement(item, 'g:title').text = escape_xml(product.get('name', ''))
+        # Required fields (plain Unicode on .text — ElementTree escapes &, <, > for XML)
+        ET.SubElement(item, 'g:id').text = str(product_id)
+        ET.SubElement(item, 'g:title').text = product.get('name', '') or ''
         
-        # Link (required)
-        product_url = get_product_url(product_id)
+        # Link (required) — slug must match live HTML path, not necessarily g:id
+        product_url = get_product_url(product_id, product)
         ET.SubElement(item, 'g:link').text = product_url
         
         # Image link (required)
@@ -227,7 +226,7 @@ def generate_xml_feed(products, include_wholesale=False):
         
         # Description
         description = generate_description(product)
-        ET.SubElement(item, 'g:description').text = escape_xml(description)
+        ET.SubElement(item, 'g:description').text = description
         
         # Availability (required)
         category = product.get('category', 'retail')
@@ -254,25 +253,33 @@ def generate_xml_feed(products, include_wholesale=False):
         
         # Additional fields
         if product.get('farm'):
-            ET.SubElement(item, 'g:custom_label_0').text = escape_xml(product.get('farm'))
+            ET.SubElement(item, 'g:custom_label_0').text = str(product.get('farm'))
         
         if product.get('shipment'):
-            ET.SubElement(item, 'g:custom_label_1').text = escape_xml(product.get('shipment'))
+            ET.SubElement(item, 'g:custom_label_1').text = str(product.get('shipment'))
         
         if category:
-            ET.SubElement(item, 'g:product_type').text = escape_xml(category.title())
+            ET.SubElement(item, 'g:product_type').text = category.title()
         
-        # Google product category
-        ET.SubElement(item, 'g:google_product_category').text = '357'
+        # Google product category (predefined ID only — see DEFAULT_GOOGLE_PRODUCT_CATEGORY)
+        cat = product.get('googleProductCategory') or DEFAULT_GOOGLE_PRODUCT_CATEGORY
+        ET.SubElement(item, 'g:google_product_category').text = str(cat)
     
     # Convert to string with pretty formatting
     xml_str = ET.tostring(rss, encoding='unicode')
     dom = minidom.parseString(xml_str)
     pretty_xml = dom.toprettyxml(indent='  ')
     
-    # Remove empty lines
+    # Remove empty lines; declare UTF-8 for special characters (en-dash, accents)
     lines = [line for line in pretty_xml.split('\n') if line.strip()]
     pretty_xml = '\n'.join(lines)
+    if pretty_xml.startswith("<?xml "):
+        first_nl = pretty_xml.find("\n")
+        head = pretty_xml[:first_nl]
+        rest = pretty_xml[first_nl:]
+        if "encoding=" not in head:
+            head = '<?xml version="1.0" encoding="UTF-8"?>'
+        pretty_xml = head + rest
     
     # Write to file
     print(f"Writing XML feed to {OUTPUT_XML_FILE}...")
@@ -325,7 +332,7 @@ def generate_facebook_feed(include_wholesale=False):
     print("1. Commit and push the XML file to GitHub")
     print("2. Facebook: Add data source in Commerce Manager")
     print("3. Google: Add feed in Merchant Center (Products → Feeds)")
-    print("4. Use the feed URL: https://www.agroverse.shop/facebook_product_feed.xml")
+    print(f"4. Use the feed URL: {BASE_URL}/facebook_product_feed.xml")
 
 if __name__ == '__main__':
     import sys

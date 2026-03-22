@@ -10,6 +10,8 @@ window.PRODUCTS = {
   // Retail Products
   'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g': {
     productId: 'ceremonial-cacao-paulo-s-la-do-sitio-farm-200g',
+    // URL path under /product-page/ (must match folder name; id may differ for Stripe/SKU)
+    productPageSlug: 'ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g',
     name: 'Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)',
     price: 25.00,
     weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
@@ -21,6 +23,7 @@ window.PRODUCTS = {
   },
   'taste-of-rainforest-caramelized-cacao-beans': {
     productId: 'taste-of-rainforest-caramelized-cacao-beans',
+    productPageSlug: 'taste-of-rainforest-200-grams-caramelized-cacao-beans',
     name: 'Taste of Rainforest - 200 grams Caramelized Cacao Beans',
     price: 25.00,
     weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
@@ -32,6 +35,7 @@ window.PRODUCTS = {
   },
   'oscar-bahia-ceremonial-cacao-200g': {
     productId: 'oscar-bahia-ceremonial-cacao-200g',
+    productPageSlug: 'oscar-s-bahia-ceremonial-cacao',
     name: "Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)",
     price: 25.00,
     weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
@@ -43,6 +47,7 @@ window.PRODUCTS = {
   },
   '8-ounce-organic-cacao-nibs': {
     productId: '8-ounce-organic-cacao-nibs',
+    productPageSlug: '8-ounce-organic-cacao-nibs-from-brazil',
     name: 'Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs',
     price: 25.00,
     weight: 8.0, // 8 oz (227g) (for shipping calculation)
