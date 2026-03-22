@@ -19,7 +19,7 @@ const POSTS_DIR = path.join(ROOT, 'post');
 const BEGIN = '<!-- BEGIN_AUTO_BLOG_POSTS -->';
 const END = '<!-- END_AUTO_BLOG_POSTS -->';
 
-const BASE_URL = 'https://www.agroverse.shop';
+const BASE_URL = 'https://agroverse.shop';
 
 function formatDate(d) {
   const y = d.getUTCFullYear();

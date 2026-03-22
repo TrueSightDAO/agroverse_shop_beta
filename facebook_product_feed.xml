@@ -1,24 +1,24 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
   <channel>
     <title>Agroverse Shop Products</title>
     <link>https://agroverse.shop</link>
     <description>Agroverse regenerative cacao products from Brazilian farms</description>
-    <lastBuildDate>Sat, 27 Dec 2025 22:45:14 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 16:34:31 +0000</lastBuildDate>
     <item>
       <g:id>ceremonial-cacao-paulo-s-la-do-sitio-farm-200g</g:id>
       <g:title>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</g:title>
       <g:link>https://agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/</g:link>
       <g:image_link>https://agroverse.shop/assets/images/products/la-do-sitio-farm.jpg</g:image_link>
-      <g:description>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g). From Paulo&apos;s Farm, Pará. Shipment AGL8. Available for direct purchase.</g:description>
+      <g:description>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g). From Paulo's Farm, Pará. Shipment AGL8. Available for direct purchase.</g:description>
       <g:availability>in stock</g:availability>
       <g:price>25.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:custom_label_0>Paulo&apos;s Farm, Pará</g:custom_label_0>
+      <g:custom_label_0>Paulo's Farm, Pará</g:custom_label_0>
       <g:custom_label_1>AGL8</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
-      <g:google_product_category>357</g:google_product_category>
+      <g:google_product_category>4748</g:google_product_category>
     </item>
     <item>
       <g:id>taste-of-rainforest-caramelized-cacao-beans</g:id>
@@ -33,37 +33,37 @@
       <g:custom_label_0>Capela Velha Fazenda</g:custom_label_0>
       <g:custom_label_1>AGL10</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
-      <g:google_product_category>357</g:google_product_category>
+      <g:google_product_category>4748</g:google_product_category>
     </item>
     <item>
       <g:id>oscar-bahia-ceremonial-cacao-200g</g:id>
-      <g:title>Ceremonial Cacao – Oscar&apos;s Farm, Bahia Brazil, 2024 (200g)</g:title>
+      <g:title>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g)</g:title>
       <g:link>https://agroverse.shop/product-page/oscar-s-bahia-ceremonial-cacao/</g:link>
       <g:image_link>https://agroverse.shop/assets/images/products/oscars-farm.jpeg</g:image_link>
-      <g:description>Ceremonial Cacao – Oscar&apos;s Farm, Bahia Brazil, 2024 (200g). From Oscar&apos;s Farm, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
+      <g:description>Ceremonial Cacao – Oscar's Farm, Bahia Brazil, 2024 (200g). From Oscar's Farm, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
       <g:availability>in stock</g:availability>
       <g:price>25.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:custom_label_0>Oscar&apos;s Farm, Bahia</g:custom_label_0>
+      <g:custom_label_0>Oscar's Farm, Bahia</g:custom_label_0>
       <g:custom_label_1>AGL4</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
-      <g:google_product_category>357</g:google_product_category>
+      <g:google_product_category>4748</g:google_product_category>
     </item>
     <item>
       <g:id>8-ounce-organic-cacao-nibs</g:id>
       <g:title>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs</g:title>
       <g:link>https://agroverse.shop/product-page/8-ounce-organic-cacao-nibs-from-brazil/</g:link>
       <g:image_link>https://agroverse.shop/assets/images/products/cacao-nibs.jpeg</g:image_link>
-      <g:description>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs. From Oscar&apos;s Farm, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
+      <g:description>Amazon Rainforest Regenerative 8 Ounce Organic Cacao Nibs. From Oscar's Farm, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
       <g:availability>in stock</g:availability>
       <g:price>25.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:custom_label_0>Oscar&apos;s Farm, Bahia</g:custom_label_0>
+      <g:custom_label_0>Oscar's Farm, Bahia</g:custom_label_0>
       <g:custom_label_1>AGL4</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
-      <g:google_product_category>357</g:google_product_category>
+      <g:google_product_category>4748</g:google_product_category>
     </item>
     <item>
       <g:id>ceremonial-cacao-fazenda-santa-ana-2023-200g</g:id>
@@ -78,7 +78,7 @@
       <g:custom_label_0>Fazenda Santa Ana, Bahia</g:custom_label_0>
       <g:custom_label_1>AGL2</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
-      <g:google_product_category>357</g:google_product_category>
+      <g:google_product_category>4748</g:google_product_category>
     </item>
   </channel>
 </rss>
