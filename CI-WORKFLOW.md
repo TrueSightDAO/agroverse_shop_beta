@@ -76,6 +76,10 @@ npm run test:resume
 - **Fix**: Updated `css/cart.css` to use `inline-flex` and added `!important` rules in `navigation.css` for desktop
 - **Files**: `css/cart.css`, `css/navigation.css`
 
+## Sitemap (blog posts)
+
+Before pushing, if you added or changed posts under `post/`, run `npm run sitemap` and commit `sitemap.xml`. CI enforces this with `npm run sitemap:check`.
+
 ## Notes
 
 - Test state file (`.test-state.json`) is gitignored - don't commit it

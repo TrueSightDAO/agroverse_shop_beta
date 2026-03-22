@@ -12,7 +12,9 @@
     "test:smart": "node scripts/test-runner.js",
     "test:resume": "node scripts/test-runner.js --resume",
     "test:reset": "node scripts/test-runner.js --reset",
-    "test:single-estate": "playwright test single-estate-positioning"
+    "test:single-estate": "playwright test single-estate-positioning",
+    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap:check": "node scripts/generate-sitemap.js --check"
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0"
