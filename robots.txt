@@ -7,4 +7,4 @@ Disallow: /private/
 Disallow: /*.json$
 
 # Sitemap location
-Sitemap: https://www.agroverse.shop/sitemap.xml
+Sitemap: https://agroverse.shop/sitemap.xml

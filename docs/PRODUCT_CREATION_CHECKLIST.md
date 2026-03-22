@@ -115,7 +115,7 @@ mkdir -p product-page/product-slug-name
   - ✅ `https://www.agroverse.shop/product-page/oscar-s-bahia-ceremonial-cacao`
   - ❌ `https://www.agroverse.shop/product-page/oscar-bahia-ceremonial-cacao-200g` (wrong!)
 
-- [ ] **Set `google_product_category` to: `422`**
+- [ ] **Set `google_product_category` to: `4748`**
   - This is the Google product category ID for "Food, Beverages & Tobacco > Food Items > Candy, Sweets & Gum > Chocolate"
   - Required for all cacao/chocolate products
 
@@ -127,7 +127,7 @@ mkdir -p product-page/product-slug-name
   - `image_link`
   - `price`
   - `availability` (usually "in stock")
-  - `google_product_category` (422)
+  - `google_product_category` (4748)
   - `brand` (Agroverse)
   - `condition` (new)
 
@@ -149,7 +149,7 @@ After creating a product:
 - [ ] **Check Merchant Center feed:**
   - URL in feed matches folder name exactly
   - No trailing slashes
-  - `google_product_category` is set to `422`
+  - `google_product_category` is set to `4748`
 
 - [ ] **Update sitemap.xml:**
   - Add new product URL to `sitemap.xml`
@@ -177,7 +177,7 @@ After creating a product:
 
 **Problem:** `google_product_category` not set or invalid
 
-**Fix:** Always set to `422` for cacao/chocolate products.
+**Fix:** Always set to `4748` for cacao/chocolate products.
 
 ---
 
@@ -208,7 +208,7 @@ URL: https://www.agroverse.shop/product-page/[folder-name]
 
 Merchant Center:
 - [ ] Link field matches folder name exactly
-- [ ] google_product_category = 422
+- [ ] google_product_category = 4748
 - [ ] All required fields filled
 
 JSON-LD:

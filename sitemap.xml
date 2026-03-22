@@ -6,7 +6,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://www.agroverse.shop/</loc>
+    <loc>https://agroverse.shop/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,13 +14,13 @@
   
   <!-- Category Pages -->
   <url>
-    <loc>https://www.agroverse.shop/category/retail-packs</loc>
+    <loc>https://agroverse.shop/category/retail-packs</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/category/wholesale-bulk</loc>
+    <loc>https://agroverse.shop/category/wholesale-bulk</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -28,55 +28,55 @@
   
   <!-- Product Pages -->
   <url>
-    <loc>https://www.agroverse.shop/product-page/oscar-s-bahia-ceremonial-cacao</loc>
+    <loc>https://agroverse.shop/product-page/oscar-s-bahia-ceremonial-cacao</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g</loc>
+    <loc>https://agroverse.shop/product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans</loc>
+    <loc>https://agroverse.shop/product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/8-ounce-organic-cacao-nibs-from-brazil</loc>
+    <loc>https://agroverse.shop/product-page/8-ounce-organic-cacao-nibs-from-brazil</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g</loc>
+    <loc>https://agroverse.shop/product-page/ceremonial-cacao-fazenda-santa-ana-2023-200g</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/organic-criollo-cacao-beans-bahia-brazil-oscar-s-100-year-farm</loc>
+    <loc>https://agroverse.shop/product-page/organic-criollo-cacao-beans-bahia-brazil-oscar-s-100-year-farm</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/organic-criollo-cacao-nibs-bahia-brazil-oscar-s-100-year-farm</loc>
+    <loc>https://agroverse.shop/product-page/organic-criollo-cacao-nibs-bahia-brazil-oscar-s-100-year-farm</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/organic-hybrid-cacao-beans-jesus-da-deus-fazenda-bahia-per-kilogram</loc>
+    <loc>https://agroverse.shop/product-page/organic-hybrid-cacao-beans-jesus-da-deus-fazenda-bahia-per-kilogram</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far</loc>
+    <loc>https://agroverse.shop/product-page/premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -84,37 +84,37 @@
   
   <!-- Farm Pages -->
   <url>
-    <loc>https://www.agroverse.shop/farms/oscar-bahia</loc>
+    <loc>https://agroverse.shop/farms/oscar-bahia</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/farms/paulo-la-do-sitio-para</loc>
+    <loc>https://agroverse.shop/farms/paulo-la-do-sitio-para</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/farms/vivi-jesus-do-deus-itacare</loc>
+    <loc>https://agroverse.shop/farms/vivi-jesus-do-deus-itacare</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/farms/fazenda-santa-ana-bahia</loc>
+    <loc>https://agroverse.shop/farms/fazenda-santa-ana-bahia</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/farms/fazenda-capelavelha-bahia</loc>
+    <loc>https://agroverse.shop/farms/fazenda-capelavelha-bahia</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/farms/fazenda-analuana-bahia</loc>
+    <loc>https://agroverse.shop/farms/fazenda-analuana-bahia</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -122,37 +122,37 @@
   
   <!-- Shipment Pages -->
   <url>
-    <loc>https://www.agroverse.shop/shipments</loc>
+    <loc>https://agroverse.shop/shipments</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/shipments/agl4</loc>
+    <loc>https://agroverse.shop/shipments/agl4</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/shipments/agl8</loc>
+    <loc>https://agroverse.shop/shipments/agl8</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/shipments/agl10</loc>
+    <loc>https://agroverse.shop/shipments/agl10</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/shipments/agl13</loc>
+    <loc>https://agroverse.shop/shipments/agl13</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/shipments/agl14</loc>
+    <loc>https://agroverse.shop/shipments/agl14</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -160,7 +160,7 @@
   
   <!-- Partners Page -->
   <url>
-    <loc>https://www.agroverse.shop/partners</loc>
+    <loc>https://agroverse.shop/partners</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -168,7 +168,7 @@
   
   <!-- Blog index (lastmod updated by scripts/generate-sitemap.js) -->
   <url>
-    <loc>https://www.agroverse.shop/blog</loc>
+    <loc>https://agroverse.shop/blog</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -177,97 +177,97 @@
   <!-- Individual blog posts: auto-generated — run: npm run sitemap -->
   <!-- BEGIN_AUTO_BLOG_POSTS -->
   <url>
-    <loc>https://www.agroverse.shop/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community</loc>
+    <loc>https://agroverse.shop/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c</loc>
+    <loc>https://agroverse.shop/post/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th</loc>
+    <loc>https://agroverse.shop/post/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/cacao-minerals-benefits-and-bean-uses-a-deep-dive</loc>
+    <loc>https://agroverse.shop/post/cacao-minerals-benefits-and-bean-uses-a-deep-dive</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence</loc>
+    <loc>https://agroverse.shop/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/how-stem-cells-regenerate-with-regular-cacao-consumption</loc>
+    <loc>https://agroverse.shop/post/how-stem-cells-regenerate-with-regular-cacao-consumption</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/okanogan-regenerative-cacao-journey</loc>
+    <loc>https://agroverse.shop/post/okanogan-regenerative-cacao-journey</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/single-estate-vs-single-origin-why-it-matters</loc>
+    <loc>https://agroverse.shop/post/single-estate-vs-single-origin-why-it-matters</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis</loc>
+    <loc>https://agroverse.shop/post/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins</loc>
+    <loc>https://agroverse.shop/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/the-joy-of-cacao-circles-connections-and-community</loc>
+    <loc>https://agroverse.shop/post/the-joy-of-cacao-circles-connections-and-community</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/the-magic-of-terroir-how-place-shapes-the-extraordinary-flavors-of-cacao</loc>
+    <loc>https://agroverse.shop/post/the-magic-of-terroir-how-place-shapes-the-extraordinary-flavors-of-cacao</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them</loc>
+    <loc>https://agroverse.shop/post/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation</loc>
+    <loc>https://agroverse.shop/post/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise</loc>
+    <loc>https://agroverse.shop/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise</loc>
     <lastmod>2026-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://www.agroverse.shop/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection</loc>
+    <loc>https://agroverse.shop/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
