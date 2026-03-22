@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify sitemap lists all blog posts
+        run: npm run sitemap:check
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
