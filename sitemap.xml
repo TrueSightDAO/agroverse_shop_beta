@@ -166,12 +166,112 @@
     <priority>0.6</priority>
   </url>
   
-  <!-- Blog -->
+  <!-- Blog index (lastmod updated by scripts/generate-sitemap.js) -->
   <url>
     <loc>https://www.agroverse.shop/blog</loc>
-    <lastmod>2025-01-30</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
+  <!-- Individual blog posts: auto-generated — run: npm run sitemap -->
+  <!-- BEGIN_AUTO_BLOG_POSTS -->
+  <url>
+    <loc>https://www.agroverse.shop/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/cacao-minerals-benefits-and-bean-uses-a-deep-dive</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/how-stem-cells-regenerate-with-regular-cacao-consumption</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/okanogan-regenerative-cacao-journey</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/single-estate-vs-single-origin-why-it-matters</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/the-joy-of-cacao-circles-connections-and-community</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/the-magic-of-terroir-how-place-shapes-the-extraordinary-flavors-of-cacao</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.agroverse.shop/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <!-- END_AUTO_BLOG_POSTS -->
+
 </urlset>
