@@ -7,19 +7,19 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
 <title>Fazenda Santa Ana - Bahia, Brazil | Agroverse</title>
-<meta content="Fazenda Santa Ana in Bahia, Brazil. A farm with rich history and community traditions, producing quality cacao through regenerative practices." name="description"/>
+<meta content="Fazenda Santa Ana in Bahia, Brazil—Coopercabruca member, regenerative cacao, and home to Chocolate Morbeck craft chocolate made on the farm. Follow @chocolate.morbeck on Instagram." name="description"/>
 <link href="https://www.agroverse.shop/farms/fazenda-santa-ana-bahia" rel="canonical"/>
 <!-- Open Graph / Facebook -->
 <meta content="website" property="og:type"/>
 <meta content="https://www.agroverse.shop/farms/fazenda-santa-ana-bahia" property="og:url"/>
 <meta content="Fazenda Santa Ana - Bahia, Brazil | Agroverse" property="og:title"/>
-<meta content="Fazenda Santa Ana in Bahia, Brazil. A farm with rich history and community traditions." property="og:description"/>
+<meta content="Fazenda Santa Ana in Bahia—regenerative cacao and Chocolate Morbeck craft chocolate made on the farm. Follow @chocolate.morbeck on Instagram." property="og:description"/>
 <meta content="https://www.agroverse.shop/assets/images/farms/fazenda-santa-ana-itacare.jpg" property="og:image"/><meta content="630" property="og:image:height"/><meta content="1200" property="og:image:width"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/farms/fazenda-santa-ana-bahia" property="twitter:url"/>
 <meta content="Fazenda Santa Ana - Bahia, Brazil | Agroverse" property="twitter:title"/>
-<meta content="Fazenda Santa Ana in Bahia, Brazil. A farm with rich history and community traditions." property="twitter:description"/>
+<meta content="Fazenda Santa Ana in Bahia—regenerative cacao and Chocolate Morbeck on-farm craft chocolate. @chocolate.morbeck on Instagram." property="twitter:description"/>
 <meta content="https://www.agroverse.shop/assets/images/farms/fazenda-santa-ana-itacare.jpg" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
@@ -439,6 +439,52 @@
         .back-link::before {
             content: '← ';
         }
+        
+        /* Chocolate Morbeck — on-farm craft chocolate callout */
+        .morbeck-section {
+            margin: 3rem 0;
+            padding: 2rem 2.25rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(59, 51, 51, 0.06) 0%, rgba(139, 90, 43, 0.08) 100%);
+            border: 1px solid rgba(59, 51, 51, 0.12);
+        }
+        .morbeck-section h2 {
+            margin-top: 0;
+        }
+        .morbeck-layout {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .morbeck-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .morbeck-section img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        .morbeck-ig {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--color-primary);
+            color: #fff !important;
+            text-decoration: none !important;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .morbeck-ig:hover {
+            background: var(--color-secondary);
+            transform: translateY(-1px);
+        }
         </style>
 
 <!-- Google Analytics - Only loads on production (www.agroverse.shop) -->
@@ -467,7 +513,7 @@
 <section class="farm-hero">
 <div class="farm-hero-content">
 <h1>Fazenda Santa Ana</h1>
-<p>Bahia, Brazil • Rich History &amp; Community Traditions</p>
+<p>Bahia, Brazil • Regenerative cacao • <span style="white-space: nowrap;">Chocolate Morbeck on the farm</span></p>
 </div>
 </section>
 <section class="content-section">
@@ -476,6 +522,7 @@
 <p>Fazenda Santa Ana is a farm with deep roots in Bahia, Brazil, known for its rich history and vibrant community traditions. The farm is part of the <a href="../../cooperatives/coopercabruca/index.html" style="color: var(--color-primary); text-decoration: underline;">Coopercabruca cooperative</a>, which supports small-scale farmers through regenerative practices and sustainable cacao cultivation.</p>
 <p>The farm's commitment to quality and community is reflected in its participation in cooperative initiatives that benefit both farmers and the local ecosystem. Through <a href="../../cooperatives/coopercabruca/index.html" style="color: var(--color-primary); text-decoration: underline;">Coopercabruca</a>, Fazenda Santa Ana contributes to a network of regenerative cacao producers working together to preserve traditional farming methods while ensuring sustainable livelihoods.</p>
 <p>Fazenda Santa Ana represents the collaborative spirit of Bahia's cacao farming community, where individual farms work together through cooperatives to maintain quality standards, share knowledge, and support each other in producing exceptional cacao while preserving the region's agricultural heritage.</p>
+<p><strong>Chocolate Morbeck</strong> is the craft-chocolate brand produced right on Fazenda Santa Ana—turning the farm’s own cacao into small-batch bars and confections so visitors and customers can taste the estate in finished chocolate, not just in beans. For the latest releases, farm moments, and behind-the-scenes craft, follow <a href="https://www.instagram.com/chocolate.morbeck?igsh=c3lrZW43eWtkcWU3" rel="noopener noreferrer" target="_blank" style="color: var(--color-primary); font-weight: 600;">@chocolate.morbeck on Instagram</a>.</p>
 </div>
 <div class="farm-highlights">
 <h3>Farm Highlights</h3>
@@ -504,6 +551,25 @@
 <strong>🌱 Quality</strong>
                     Organic cacao production
                 </div>
+<div class="highlight-item">
+<strong>🍫 On-farm chocolate</strong>
+<a href="https://www.instagram.com/chocolate.morbeck?igsh=c3lrZW43eWtkcWU3" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" target="_blank">Chocolate Morbeck — @chocolate.morbeck</a>
+</div>
+</div>
+</div>
+<div class="morbeck-section" role="region" aria-labelledby="morbeck-heading">
+<h2 id="morbeck-heading">Chocolate Morbeck — Craft Chocolate on Fazenda Santa Ana</h2>
+<div class="morbeck-layout">
+<div>
+<p class="farm-story" style="margin-bottom: 1rem;">Chocolate Morbeck is made <strong>at Fazenda Santa Ana</strong>, using cacao grown on the same land. That short path from tree to tempering is what many people call <em>tree-to-bar</em> or <em>farm-to-bar</em>: the same soil, varieties, and harvest rhythms you’ll read about in our farm story show up in the bar you unwrap.</p>
+<p class="farm-story" style="margin-bottom: 1rem;">Because the brand lives on Instagram, you’ll find the most current seasonal products, pop-ups, and day-in-the-life snapshots there—far more up to date than any static page. We link to it here so Agroverse visitors exploring Santa Ana can connect directly with the people making chocolate on the ground.</p>
+<p class="farm-story" style="margin-bottom: 0;"><strong>Agroverse</strong> partners with Santa Ana for traceable ceremonial cacao and beans; <strong>Morbeck</strong> is the farm’s own label for finished chocolate—complementary stories from the same terroir.</p>
+<a class="morbeck-ig" href="https://www.instagram.com/chocolate.morbeck?igsh=c3lrZW43eWtkcWU3" rel="noopener noreferrer" target="_blank" title="Chocolate Morbeck on Instagram">Follow @chocolate.morbeck on Instagram →</a>
+</div>
+<div>
+<img alt="Fazenda Santa Ana ceremonial cacao and on-farm chocolate from the same estate" height="400" loading="lazy" src="../../assets/images/products/fazenda-santa-ana-product.jpg" width="600"/>
+<p style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 0.75rem; text-align: center;">Ceremonial cacao from Santa Ana on Agroverse; finished bars and more via Chocolate Morbeck.</p>
+</div>
 </div>
 </div>
 <!-- Farm Videos Container -->
