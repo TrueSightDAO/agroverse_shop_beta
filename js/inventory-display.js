@@ -6,6 +6,10 @@
 (function() {
   'use strict';
 
+  /** Last SKU map from a successful listing fetch; used to re-apply sort after resize/orientation. */
+  let lastListingInventoryMap = null;
+  let listingOrderResizeTimer = null;
+
   // Inventory status thresholds
   const LOW_STOCK_THRESHOLD = 5;
   const OUT_OF_STOCK_THRESHOLD = 0;
@@ -308,6 +312,55 @@
   }
 
   /**
+   * Collect outer .product-card roots that have an add-to-cart control (same rules as init).
+   * @return {HTMLElement[]}
+   */
+  function collectListingProductCards() {
+    const productCards = document.querySelectorAll('.product-card');
+    const cardMap = new Map();
+
+    productCards.forEach(card => {
+      const addToCartBtn = card.querySelector('.add-to-cart-btn, button[data-product-id]');
+      if (addToCartBtn) {
+        const productId = addToCartBtn.getAttribute('data-product-id') ||
+          addToCartBtn.dataset?.productId;
+        if (productId) {
+          if (!cardMap.has(productId)) {
+            cardMap.set(productId, []);
+          }
+          cardMap.get(productId).push(card);
+        }
+      }
+    });
+
+    return Array.from(
+      new Set(
+        Array.from(cardMap.values()).reduce((acc, list) => acc.concat(list), [])
+      )
+    );
+  }
+
+  /**
+   * Re-apply listing order using the last known inventory map (e.g. after mobile resize/orientation).
+   */
+  function refreshListingProductOrder() {
+    if (!lastListingInventoryMap) return;
+    const uniqueCards = collectListingProductCards();
+    if (uniqueCards.length <= 1) return;
+    reorderProductCardsByInventory(uniqueCards, lastListingInventoryMap);
+  }
+
+  function scheduleListingOrderRefresh() {
+    if (listingOrderResizeTimer) {
+      clearTimeout(listingOrderResizeTimer);
+    }
+    listingOrderResizeTimer = setTimeout(function() {
+      listingOrderResizeTimer = null;
+      refreshListingProductOrder();
+    }, 150);
+  }
+
+  /**
    * Sort product card rows so buyable items appear first and out-of-stock last.
    * Within each parent (e.g. .product-gallery, .products-grid), only direct
    * .product-card children are reordered; original order is kept within the same tier.
@@ -328,6 +381,8 @@
       }
       parents.get(parent).push(card);
     });
+
+    const touchedParents = [];
 
     parents.forEach((cardList, parent) => {
       const row = Array.from(parent.children).filter(
@@ -368,21 +423,40 @@
       });
 
       decorated.forEach(({ el }) => parent.appendChild(el));
+      decorated.forEach(({ el }, i) => {
+        el.style.order = String(i);
+      });
+      touchedParents.push(parent);
     });
+
+    if (typeof requestAnimationFrame !== 'undefined' && touchedParents.length) {
+      requestAnimationFrame(function() {
+        touchedParents.forEach(function(p) {
+          void p.offsetHeight;
+        });
+      });
+    }
   }
 
   /**
    * Initialize inventory display for all product cards on the page
    */
   async function initProductCards() {
-    // Check if InventoryService is available
+    let attempts = 0;
+    while (!window.InventoryService && attempts < 40) {
+      await new Promise(function(resolve) {
+        setTimeout(resolve, 50);
+      });
+      attempts++;
+    }
+
     if (!window.InventoryService) {
       console.warn('InventoryService not available. Inventory display disabled.');
       return;
     }
 
-    // Find all product cards
-    const productCards = document.querySelectorAll('.product-card, [class*="product-card"]');
+    // Outer cards only (.product-card-actions also matches [class*="product-card"] and confused parent grouping).
+    const productCards = document.querySelectorAll('.product-card');
     
     if (productCards.length === 0) {
       return;
@@ -431,6 +505,7 @@
         });
       });
 
+      lastListingInventoryMap = allInventory;
       reorderProductCardsByInventory(uniqueCards, allInventory);
     } catch (error) {
       console.error('Error fetching inventory for product cards:', error);
@@ -668,7 +743,7 @@
 
     // Check if we're on a product page or listing page
     const isProductPage = window.location.pathname.includes('/product-page/');
-    const hasProductCards = document.querySelectorAll('.product-card, [class*="product-card"]').length > 0;
+    const hasProductCards = document.querySelectorAll('.product-card').length > 0;
 
     if (isProductPage) {
       initProductPage();
@@ -680,6 +755,9 @@
   // Auto-initialize
   init();
 
+  window.addEventListener('resize', scheduleListingOrderRefresh);
+  window.addEventListener('orientationchange', scheduleListingOrderRefresh);
+
   // Export for manual initialization if needed
   window.InventoryDisplay = {
     init: init,
@@ -687,7 +765,8 @@
     initProductPage: initProductPage,
     updateProductCard: updateProductCard,
     updateProductPage: updateProductPage,
-    reorderProductCardsByInventory: reorderProductCardsByInventory
+    reorderProductCardsByInventory: reorderProductCardsByInventory,
+    refreshListingProductOrder: refreshListingProductOrder
   };
 
 })();
