@@ -1,0 +1,244 @@
+/* Commerce UX helpers for shipment landings + listing (used with index hero styles in index.html) */
+
+.shipment-hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.btn-shipment-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.35rem;
+    border-radius: 999px;
+    background: var(--color-accent, #fefc8f);
+    color: var(--color-primary, #3b3333);
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid rgba(254, 252, 143, 0.9);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-shipment-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-shipment-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn-shipment-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.shipment-shop-strip {
+    scroll-margin-top: 5.5rem;
+    margin: 2rem 0 2.5rem;
+    padding: 1.75rem 1.5rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(59, 51, 51, 0.06) 0%, rgba(139, 69, 19, 0.08) 100%);
+    border: 2px solid rgba(59, 51, 51, 0.12);
+}
+
+.shipment-shop-strip-title {
+    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-size: 1.5rem;
+    color: var(--color-primary, #3b3333);
+    margin: 0 0 0.5rem;
+}
+
+.shipment-shop-strip-copy {
+    margin: 0 0 1.25rem;
+    color: var(--color-text-light, #756f63);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-width: 42rem;
+}
+
+.shipment-shop-strip-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 0.75rem;
+    align-items: center;
+}
+
+.btn-shipment-strip-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.25rem;
+    border-radius: 999px;
+    background: var(--color-primary, #3b3333);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-shipment-strip-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(59, 51, 51, 0.25);
+}
+
+.btn-shipment-strip-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.15rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-primary, #3b3333);
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(59, 51, 51, 0.2);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-shipment-strip-secondary:hover {
+    background: var(--color-bg-light, #f7f7f7);
+    border-color: var(--color-primary, #3b3333);
+}
+
+.shipment-mid-shop-cta {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    border-radius: 14px;
+    background: rgba(59, 51, 51, 0.06);
+    border: 1px solid rgba(59, 51, 51, 0.1);
+}
+
+.shipment-mid-shop-cta-text {
+    margin: 0 0 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary, #3b3333);
+}
+
+.btn-shipment-mid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    background: var(--color-primary, #3b3333);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.btn-shipment-mid:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(59, 51, 51, 0.22);
+}
+
+section.content-section[id="shop"],
+#shop.shipment-shop-strip {
+    scroll-margin-top: 5.5rem;
+}
+
+#story.shipment-grid {
+    scroll-margin-top: 5.5rem;
+}
+
+/* Shipments listing hero */
+.shipments-hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+}
+
+/* Landing: CTAs below full-viewport hero (no overlap on video) */
+.home-hero-cta-strip {
+    background: var(--color-bg, #ffffff);
+    border-bottom: 1px solid rgba(59, 51, 51, 0.08);
+    padding: 1.25rem 1.5rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 4px 12px rgba(59, 51, 51, 0.06);
+}
+
+/* index.html hero CTAs (loaded in page inline styles or after this file) */
+.hero-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+.home-hero-cta-strip .hero-cta-primary {
+    box-shadow: 0 4px 14px rgba(59, 51, 51, 0.12);
+}
+
+.home-hero-cta-strip .hero-cta-secondary {
+    background: transparent;
+    color: var(--color-primary, #3b3333);
+    border: 2px solid var(--color-primary, #3b3333);
+}
+
+.home-hero-cta-strip .hero-cta-secondary:hover {
+    background: rgba(59, 51, 51, 0.06);
+}
+
+.hero-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: var(--color-accent, #fefc8f);
+    color: var(--color-primary, #3b3333);
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid rgba(254, 252, 143, 0.95);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.hero-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.hero-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .shipment-hero-cta-row {
+        justify-content: center;
+    }
+}
