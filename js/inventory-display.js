@@ -308,6 +308,70 @@
   }
 
   /**
+   * Sort product card rows so buyable items appear first and out-of-stock last.
+   * Within each parent (e.g. .product-gallery, .products-grid), only direct
+   * .product-card children are reordered; original order is kept within the same tier.
+   * @param {HTMLElement[]} cards - Product card elements
+   * @param {Object|null|undefined} allInventory - SKU map from fetchAllInventory
+   */
+  function reorderProductCardsByInventory(cards, allInventory) {
+    if (!cards || cards.length <= 1) return;
+
+    const invMap = allInventory && typeof allInventory === 'object' ? allInventory : null;
+    const parents = new Map();
+
+    cards.forEach(card => {
+      const parent = card.parentElement;
+      if (!parent) return;
+      if (!parents.has(parent)) {
+        parents.set(parent, []);
+      }
+      parents.get(parent).push(card);
+    });
+
+    parents.forEach((cardList, parent) => {
+      const row = Array.from(parent.children).filter(
+        el => el.classList && el.classList.contains('product-card')
+      );
+      if (row.length <= 1) return;
+
+      const decorated = row.map((el, idx) => {
+        const btn = el.querySelector('.add-to-cart-btn, button[data-product-id]');
+        const pid = btn &&
+          (btn.getAttribute('data-product-id') || btn.dataset?.productId);
+
+        let tier;
+        let invSort = 0;
+
+        if (!pid || !invMap) {
+          tier = 1;
+        } else if (Object.prototype.hasOwnProperty.call(invMap, pid)) {
+          const n = parseInt(invMap[pid], 10);
+          const count = isNaN(n) ? 0 : n;
+          if (count > 0) {
+            tier = 0;
+            invSort = count;
+          } else {
+            tier = 2;
+          }
+        } else {
+          tier = 1;
+        }
+
+        return { el, idx, tier, invSort };
+      });
+
+      decorated.sort((a, b) => {
+        if (a.tier !== b.tier) return a.tier - b.tier;
+        if (a.tier === 0 && b.tier === 0) return b.invSort - a.invSort;
+        return a.idx - b.idx;
+      });
+
+      decorated.forEach(({ el }) => parent.appendChild(el));
+    });
+  }
+
+  /**
    * Initialize inventory display for all product cards on the page
    */
   async function initProductCards() {
@@ -347,6 +411,12 @@
       return;
     }
 
+    const uniqueCards = Array.from(
+      new Set(
+        Array.from(cardMap.values()).reduce((acc, list) => acc.concat(list), [])
+      )
+    );
+
     // Fetch all inventory at once
     try {
       const allInventory = await window.InventoryService.fetchAllInventory();
@@ -360,6 +430,8 @@
           updateProductCard(card, productId, inventory);
         });
       });
+
+      reorderProductCardsByInventory(uniqueCards, allInventory);
     } catch (error) {
       console.error('Error fetching inventory for product cards:', error);
       // Show "Check availability" for all cards on error
@@ -614,7 +686,8 @@
     initProductCards: initProductCards,
     initProductPage: initProductPage,
     updateProductCard: updateProductCard,
-    updateProductPage: updateProductPage
+    updateProductPage: updateProductPage,
+    reorderProductCardsByInventory: reorderProductCardsByInventory
   };
 
 })();
