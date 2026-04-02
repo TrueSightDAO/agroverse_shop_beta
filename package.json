@@ -14,9 +14,17 @@
     "test:reset": "node scripts/test-runner.js --reset",
     "test:single-estate": "playwright test single-estate-positioning",
     "sitemap": "node scripts/generate-sitemap.js",
-    "sitemap:check": "node scripts/generate-sitemap.js --check"
+    "sitemap:check": "node scripts/generate-sitemap.js --check",
+    "clasp:checkout:login": "npx clasp login",
+    "clasp:checkout:login:manual": "npx clasp login --no-localhost",
+    "clasp:checkout:logout": "npx clasp logout",
+    "clasp:checkout:pull": "npx clasp pull -P google-app-script/agroverse_shop_checkout",
+    "clasp:checkout:push": "npx clasp push -P google-app-script/agroverse_shop_checkout",
+    "clasp:checkout:open": "npx clasp open -P google-app-script/agroverse_shop_checkout",
+    "clasp:checkout:status": "npx clasp status -P google-app-script/agroverse_shop_checkout"
   },
   "devDependencies": {
+    "@google/clasp": "^3.3.0",
     "@playwright/test": "^1.40.0"
   }
 }

@@ -235,6 +235,7 @@
   /**
    * PURCHASE - When user completes a purchase
    * https://developers.google.com/analytics/devguides/collection/ga4/reference/events#purchase
+   * For Merchant Center key events + feed alignment, items[].item_id should match the product `id` in your MC feed.
    */
   window.trackPurchase = function(transactionId, cart, shipping, tax) {
     if (!cart || !transactionId) return;

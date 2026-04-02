@@ -78,6 +78,16 @@
   // Facebook Pixel ID
   const FACEBOOK_PIXEL_ID = '2896386767418228';
 
+  // Google Customer Reviews (Merchant Center)
+  const isGoogleReviewsHost = hostname === 'www.agroverse.shop' || hostname === 'agroverse.shop';
+  // Set true to load survey opt-in on http://localhost:8000 / 127.0.0.1:8000 while testing. Set false for normal local dev.
+  const GOOGLE_CUSTOMER_REVIEWS_ENABLE_LOCAL_TEST = true;
+  const GOOGLE_CUSTOMER_REVIEWS_MERCHANT_ID =
+    isGoogleReviewsHost || (isLocal && GOOGLE_CUSTOMER_REVIEWS_ENABLE_LOCAL_TEST)
+      ? '5682641517'
+      : null;
+  const GOOGLE_CUSTOMER_REVIEWS_ESTIMATED_DELIVERY_DAYS = 7;
+
   // Determine environment for API calls
   const environment = isLocal || isDevelopment ? 'development' : 'production';
 
@@ -90,6 +100,9 @@
     googleScriptUrl: GOOGLE_SCRIPT_URL,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     facebookPixelId: FACEBOOK_PIXEL_ID,
+    googleCustomerReviewsMerchantId: GOOGLE_CUSTOMER_REVIEWS_MERCHANT_ID,
+    googleCustomerReviewsEnableLocalTest: GOOGLE_CUSTOMER_REVIEWS_ENABLE_LOCAL_TEST,
+    googleCustomerReviewsEstimatedDeliveryDays: GOOGLE_CUSTOMER_REVIEWS_ESTIMATED_DELIVERY_DAYS,
     stripe: STRIPE_CONFIG,
     environment: environment,
     

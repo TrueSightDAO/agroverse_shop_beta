@@ -4,9 +4,11 @@ This directory contains Google Apps Script files for the Agroverse Shop e-commer
 
 ## Scripts
 
-### `agroverse_shop_checkout.gs`
+### `agroverse_shop_checkout/agroverse_shop_checkout.gs`
 
 Handles Stripe checkout session creation, order polling, and order management. Integrates with Google Sheets for order storage and automated tracking email notifications.
+
+**Clasp (CLI sync):** see [`agroverse_shop_checkout/CLASP.md`](agroverse_shop_checkout/CLASP.md) and npm scripts `clasp:checkout:*` in the repo root `package.json`.
 
 **Features:**
 - Stripe checkout session creation

@@ -361,9 +361,9 @@
       // Save order to history
       saveOrderToHistory(order);
 
-      // Track GA4 purchase event
-      if (window.trackPurchase && order.sessionId) {
-        // Format order items for GA4
+      // Track GA4 purchase once per order (avoid duplicate key events on refresh / Merchant Center noise)
+      const purchaseOnceKey = 'agroverse_ga4_purchase_' + order.sessionId;
+      if (window.trackPurchase && order.sessionId && !sessionStorage.getItem(purchaseOnceKey)) {
         const cart = {
           items: (order.items || []).map(item => ({
             productId: item.productId || '',
@@ -373,15 +373,19 @@
             category: item.category || 'retail'
           }))
         };
-        
+
         const shipping = parseFloat(order.shippingCost) || 0;
         const tax = 0; // Tax is typically included in the amount
         window.trackPurchase(order.sessionId, cart, shipping, tax);
+        try {
+          sessionStorage.setItem(purchaseOnceKey, '1');
+        } catch (e) {
+          /* ignore quota / private mode */
+        }
       }
 
-      // Track Facebook Pixel Purchase event
-      if (window.trackFacebookPurchase && order.sessionId) {
-        // Format order items for Facebook Pixel
+      const fbPurchaseOnceKey = 'agroverse_fb_purchase_' + order.sessionId;
+      if (window.trackFacebookPurchase && order.sessionId && !sessionStorage.getItem(fbPurchaseOnceKey)) {
         const cart = {
           items: (order.items || []).map(item => ({
             productId: item.productId || '',
@@ -391,13 +395,33 @@
             category: item.category || 'retail'
           }))
         };
-        
+
         const shipping = parseFloat(order.shippingCost) || 0;
         const tax = 0;
         window.trackFacebookPurchase(order.sessionId, cart, shipping, tax);
+        try {
+          sessionStorage.setItem(fbPurchaseOnceKey, '1');
+        } catch (e) {
+          /* ignore */
+        }
       }
 
       displayOrderStatus(order);
+
+      // Google Customer Reviews opt-in (production only; see js/google-customer-reviews.js)
+      if (window.AgroverseGoogleCustomerReviews && order.paymentStatus === 'paid') {
+        var cfg = window.AGROVERSE_CONFIG || {};
+        if (cfg.googleCustomerReviewsMerchantId) {
+          window.AgroverseGoogleCustomerReviews.scheduleRender({
+            merchantId: cfg.googleCustomerReviewsMerchantId,
+            orderId: order.sessionId,
+            email: order.customerEmail,
+            shippingAddress: order.shippingAddress,
+            orderDateIso: order.date,
+            deliveryDaysAfterOrder: cfg.googleCustomerReviewsEstimatedDeliveryDays
+          });
+        }
+      }
     } catch (error) {
       console.error('Order status error:', error);
       displayError(error.message || 'Failed to load order status. Please try again later.');
