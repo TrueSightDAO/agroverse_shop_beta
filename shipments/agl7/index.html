@@ -36,6 +36,7 @@
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <!-- Standardized Cards CSS -->
 <link href="../../css/cards.css" rel="stylesheet"/>
+<link href="../../css/shipment-commerce-ux.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -828,6 +829,11 @@
 <div class="trees-badge-label">Tree Planting Financed</div>
 <div class="trees-badge-number" data-default="0" data-shipment-id="agl7" data-trees-sold="" id="trees-planted">0</div>
 </div>
+<div class="shipment-hero-cta-row">
+<a class="btn-shipment-primary" href="#shop">Shop this harvest</a>
+<a class="btn-shipment-secondary" href="#story">Read the story</a>
+</div>
+
 </div>
 <div class="shipment-hero-video-container" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); display: flex; align-items: center; justify-content: center;">
 <img alt="AGL7 - Cacao Molasses" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl7.gif" style="width: 100%; height: 100%; object-fit: cover;"/>
@@ -858,7 +864,16 @@
                 There was an error. Please try again.
             </div>
 </div>
-<div class="shipment-grid">
+<section id="shop" class="shipment-shop-strip" aria-label="Shop this harvest">
+<h2 class="shipment-shop-strip-title">Shop Agroverse cacao</h2>
+<p class="shipment-shop-strip-copy">Retail packs, ceremonial cacao, and wholesale—the same traceability stories, ready to ship.</p>
+<div class="shipment-shop-strip-actions">
+<a class="btn-shipment-strip-primary" href="../../index.html#products">Browse all products</a>
+<a class="btn-shipment-strip-secondary" href="../../category/retail-packs/index.html">Retail packs</a>
+<a class="btn-shipment-strip-secondary" href="../../category/wholesale-bulk/index.html">Wholesale</a>
+</div>
+</section>
+<div class="shipment-grid" id="story">
 <div>
 <img alt="AGL7 - Cacao Molasses" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl7.gif"/>
 <h2>AGL7</h2>
@@ -907,6 +922,10 @@
 <h3>Want to Verify the Full Ledger?</h3>
 <p>Access complete transparency records including financial contracts, invoices, and detailed shipment tracking on TrueSight DAO.</p>
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl7" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
+</div>
+<div class="shipment-mid-shop-cta" role="region" aria-label="Shop">
+<p class="shipment-mid-shop-cta-text">Ready to bring this harvest home?</p>
+<a class="btn-shipment-mid" href="#shop">Shop this shipment</a>
 </div>
 <!-- Location Map Section -->
 <div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">

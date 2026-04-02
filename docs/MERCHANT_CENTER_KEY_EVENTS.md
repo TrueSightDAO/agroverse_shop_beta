@@ -35,6 +35,8 @@ For purchase and item reports to line up with the **Merchant Center product feed
 
 ## Google Customer Reviews (survey opt-in)
 
+**Full reference (files, API, columns, clasp, testing, privacy):** [`docs/GOOGLE_CUSTOMER_REVIEWS.md`](GOOGLE_CUSTOMER_REVIEWS.md)
+
 Separate from “key events” but part of the same Merchant Center ecosystem: [Google Customer Reviews](https://support.google.com/merchants/topic/7107684) can email buyers a short survey after delivery.
 
 ### What we implemented on the site

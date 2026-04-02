@@ -35,6 +35,7 @@
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <!-- Standardized Cards CSS -->
 <link href="../../css/cards.css" rel="stylesheet"/>
+<link href="../../css/shipment-commerce-ux.css" rel="stylesheet"/>
 <style>
         :root {
             --color-primary: #3b3333;
@@ -843,6 +844,11 @@
 <div class="trees-badge-label">Tree Planting Financed</div>
 <div class="trees-badge-number" data-default="0" data-shipment-id="agl10" data-trees-sold="" id="trees-planted">0</div>
 </div>
+<div class="shipment-hero-cta-row">
+<a class="btn-shipment-primary" href="#shop">Shop this harvest</a>
+<a class="btn-shipment-secondary" href="#story">Read the story</a>
+</div>
+
 </div>
 <div class="shipment-hero-video-container">
 <video autoplay="" class="shipment-hero-video" controls="" loop="" muted="" playsinline="" poster="https://static.wixstatic.com/media/0e2cde_39f289adc0784ff7878544c3f43c59c7f000.jpg">
@@ -876,7 +882,7 @@
                 There was an error. Please try again.
             </div>
 </div>
-<div class="shipment-grid">
+<div class="shipment-grid" id="story">
 <div>
 <img alt="AGL10 - Capela Velha Fazenda" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif"/>
 <h2>AGL10</h2>
@@ -931,7 +937,7 @@
 </div>
 </div>
 <!-- Products from This Shipment -->
-<section class="content-section" style="margin-top: 3rem;">
+<section id="shop" class="content-section" style="margin-top: 3rem;">
 <h2>Products from This Shipment</h2>
 <div class="items-grid">
 <a class="item-card" href="../../product-page/taste-of-rainforest-200-grams-caramelized-cacao-beans/index.html">
@@ -951,6 +957,10 @@
 <h3>Want to Verify the Full Ledger?</h3>
 <p>Access complete transparency records including financial contracts, invoices, and detailed shipment tracking on TrueSight DAO.</p>
 <a class="ledger-link" href="https://www.truesight.me/agroverse-shipments/agl10" rel="noopener noreferrer" target="_blank">View Full Transparency Ledger</a>
+</div>
+<div class="shipment-mid-shop-cta" role="region" aria-label="Shop">
+<p class="shipment-mid-shop-cta-text">Ready to bring this harvest home?</p>
+<a class="btn-shipment-mid" href="#shop">Shop this shipment</a>
 </div>
 <!-- Location Map Section -->
 <div class="location-section" style="margin: 3rem 0; padding: 2rem; background: rgba(59, 51, 51, 0.05); border-radius: 12px;">
