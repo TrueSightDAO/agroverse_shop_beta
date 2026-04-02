@@ -234,7 +234,7 @@ agroverse_shop/
 ├── css/
 │   └── cart.css                        # Cart styles
 ├── google-app-script/
-│   ├── agroverse_shop_checkout.gs      # Backend script (Stripe + Sheets)
+│   ├── agroverse_shop_checkout/        # Checkout Apps Script (clasp) + agroverse_shop_checkout.gs
 │   ├── update_store_inventory.gs       # Store inventory calculation and update
 │   └── README.md                       # Google Apps Scripts documentation
 ├── scripts/
@@ -338,7 +338,7 @@ window.AGROVERSE_CONFIG = {
 ### Google App Script Setup
 
 **Scripts Available:**
-- `agroverse_shop_checkout.gs` - Stripe checkout, order management, shipping calculation
+- `agroverse_shop_checkout/agroverse_shop_checkout.gs` - Stripe checkout, order management, shipping calculation ([clasp](google-app-script/agroverse_shop_checkout/CLASP.md))
 - `update_store_inventory.gs` - Calculates and updates store inventory for SKUs (see [google-app-script/README.md](google-app-script/README.md) for details)
 
 For detailed documentation on all Google Apps Scripts, see: [google-app-script/README.md](google-app-script/README.md)
@@ -346,7 +346,7 @@ For detailed documentation on all Google Apps Scripts, see: [google-app-script/R
 1. **Create/Open Script:**
    - Go to [Google App Script](https://script.google.com)
    - Create new project or open existing
-   - Copy code from `google-app-script/agroverse_shop_checkout.gs`
+   - Copy code from `google-app-script/agroverse_shop_checkout/agroverse_shop_checkout.gs` (or `npm run clasp:checkout:push` after [CLASP.md](google-app-script/agroverse_shop_checkout/CLASP.md))
 
 2. **Set Script Properties** (Project Settings → Script Properties):
    - Click the **gear icon** (⚙️) in the left sidebar

@@ -16,7 +16,7 @@ Before creating a new product page, verify:
 
 - [ ] **Product data ready:**
   - Product name (full title)
-  - SKU (unique identifier)
+  - SKU (unique identifier) — **use the same value as Google Merchant Center `id`** when possible so GA4 `purchase` → `items[].item_id` matches the feed (key event / reporting alignment; see `docs/MERCHANT_CENTER_KEY_EVENTS.md`)
   - Price (USD)
   - Weight/size
   - Origin/farm name

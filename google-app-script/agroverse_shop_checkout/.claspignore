@@ -1,0 +1,4 @@
+# Do not push local / meta
+**/.DS_Store
+.git/**
+*.md
