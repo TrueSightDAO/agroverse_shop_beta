@@ -1,10 +1,91 @@
 /**
  * Product Page GA4 Tracking
  * Automatically tracks view_item event when product page loads
+ * Optional: ?qr=CODE or ?gcr_qr=CODE loads Google Customer Reviews opt-in (via getGcrContextByQr Apps Script)
  */
 
 (function() {
   'use strict';
+
+  /**
+   * If URL has qr / gcr_qr, fetch ledger-backed GCR fields and call AgroverseGoogleCustomerReviews.scheduleRender
+   */
+  function initGcrFromQrParam() {
+    var params = new URLSearchParams(window.location.search);
+    var qr = params.get('qr') || params.get('gcr_qr');
+    if (!qr || !String(qr).trim()) {
+      return;
+    }
+
+    var cfg = window.AGROVERSE_CONFIG || {};
+    var scriptUrl = cfg.googleScriptUrl;
+    if (!scriptUrl || scriptUrl.indexOf('YOUR_') !== -1) {
+      if (cfg.debug) {
+        console.warn('GCR QR: googleScriptUrl not configured');
+      }
+      return;
+    }
+
+    var apiUrl = scriptUrl + '?action=getGcrContextByQr&qr=' + encodeURIComponent(String(qr).trim());
+
+    fetch(apiUrl)
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        if (!data || data.status !== 'success' || !data.gcr) {
+          if (cfg.debug) {
+            console.warn('GCR QR:', (data && data.error) ? data.error : data);
+          }
+          return;
+        }
+
+        var g = data.gcr;
+
+        function runSchedule() {
+          if (!window.AgroverseGoogleCustomerReviews) {
+            return;
+          }
+          if (!cfg.googleCustomerReviewsMerchantId) {
+            if (cfg.debug) {
+              console.warn('GCR QR: googleCustomerReviewsMerchantId not set for this host');
+            }
+            return;
+          }
+          window.AgroverseGoogleCustomerReviews.scheduleRender({
+            merchantId: cfg.googleCustomerReviewsMerchantId,
+            orderId: g.orderId,
+            email: g.email,
+            deliveryCountry: g.deliveryCountry,
+            orderDateIso: g.orderDateIso,
+            products: g.products,
+            deliveryDaysAfterOrder: cfg.googleCustomerReviewsEstimatedDeliveryDays
+          });
+        }
+
+        if (window.AgroverseGoogleCustomerReviews) {
+          runSchedule();
+          return;
+        }
+
+        var base = (cfg.baseUrl || window.location.origin || '').replace(/\/$/, '');
+        var src = base + '/js/google-customer-reviews.js';
+        var s = document.createElement('script');
+        s.src = src;
+        s.onload = runSchedule;
+        s.onerror = function() {
+          if (cfg.debug) {
+            console.warn('GCR QR: failed to load google-customer-reviews.js');
+          }
+        };
+        document.head.appendChild(s);
+      })
+      .catch(function(err) {
+        if (cfg.debug) {
+          console.warn('GCR QR fetch failed', err);
+        }
+      });
+  }
 
   /**
    * Initialize product page tracking
@@ -72,11 +153,15 @@
     }
   }
 
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProductPageTracking);
-  } else {
+  function onDomReady() {
     initProductPageTracking();
+    initGcrFromQrParam();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onDomReady);
+  } else {
+    onDomReady();
   }
 
 })();

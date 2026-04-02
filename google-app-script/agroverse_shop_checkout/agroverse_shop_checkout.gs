@@ -1,5 +1,5 @@
 /**
- * File: google-app-script/agroverse_shop_checkout.gs
+ * File: google-app-script/agroverse_shop_checkout/agroverse_shop_checkout.gs
  * Repository: https://github.com/TrueSightDAO/agroverse_shop
  * 
  * Description: Handles Stripe checkout session creation, order polling, and order management
@@ -54,6 +54,7 @@
  * - POST /exec?action=submitQuoteRequest - Submit wholesale quote request
  * - POST /exec?action=calculateShippingRates - Calculate shipping rates (for checkout page display)
  * - GET /exec?action=getOrderStatus&sessionId=cs_xxx - Get order status
+ * - GET /exec?action=getGcrContextByQr&qr=CODE - GCR context from Agroverse QR codes + Agroverse SKUs (main ledger)
  * - POST /exec (with stripe-signature header) - Handle Stripe webhook (optional)
  */
 
@@ -200,6 +201,7 @@ function createCORSResponse(data) {
  * 
  * Expected query parameters:
  * - action=getOrderStatus&sessionId=cs_xxx - Get order status by Stripe session ID
+ * - action=getGcrContextByQr&qr=xxx - Payload for Google Customer Reviews (Owner Email, country, date, optional GTIN)
  * - action=calculateShippingRates&cart={...}&shippingAddress={...}&environment=development - Calculate shipping rates
  * 
  * @param {Object} e Event object containing parameters.
@@ -218,6 +220,11 @@ function doGet(e) {
         });
       }
       return getOrderStatus(sessionId);
+    }
+
+    if (action === 'getGcrContextByQr') {
+      var qrParam = e.parameter.qr;
+      return getGcrContextByQrCode(qrParam);
     }
 
     if (action === 'calculateShippingRates') {
@@ -291,7 +298,7 @@ function doGet(e) {
 
     return createCORSResponse({
       status: 'error',
-      error: 'Invalid action. Use: action=getOrderStatus&sessionId=cs_xxx or action=calculateShippingRates&cart={...}&shippingAddress={...}'
+      error: 'Invalid action. Use: action=getOrderStatus&sessionId=cs_xxx | action=getGcrContextByQr&qr=... | action=calculateShippingRates&...'
     });
   } catch (error) {
     Logger.log('Error in doGet: ' + error.toString());
@@ -1473,6 +1480,191 @@ function sendOrderNotificationEmail(session, customerName, customerEmail, itemsP
   } catch (error) {
     Logger.log('Error sending order notification email: ' + error.toString());
     throw error;
+  }
+}
+
+/** Main ledger (Agroverse QR codes + Agroverse SKUs). Override with Script Property GCR_LEDGER_SPREADSHEET_ID if needed. */
+var GCR_LEDGER_SPREADSHEET_ID = '1GE7PUq-UT6x2rBN-Q2ksogbWpgyuh2SaxJyG_uEK6PU';
+var GCR_QR_SHEET_NAME = 'Agroverse QR codes';
+var GCR_SKUS_SHEET_NAME = 'Agroverse SKUs';
+
+function normalizeGcrCountryCode(countryRaw) {
+  if (!countryRaw || String(countryRaw).trim() === '') {
+    return 'US';
+  }
+  var c = String(countryRaw).trim().toUpperCase();
+  if (c === 'USA' || c === 'UNITED STATES' || c === 'UNITED STATES OF AMERICA') {
+    return 'US';
+  }
+  if (c === 'BRAZIL' || c === 'BRASIL') {
+    return 'BR';
+  }
+  if (c.length === 2) {
+    return c;
+  }
+  return 'US';
+}
+
+/**
+ * Convert sheet cell YYYYMMDD or Date to ISO-ish string for GCR orderDateIso.
+ * @param {*} dateCell
+ * @return {?string}
+ */
+function qrCreationDateToOrderDateIso(dateCell) {
+  if (dateCell instanceof Date && !isNaN(dateCell.getTime())) {
+    return dateCell.toISOString();
+  }
+  var s = String(dateCell || '').trim().replace(/\D/g, '');
+  if (s.length !== 8) {
+    return null;
+  }
+  var y = s.substring(0, 4);
+  var m = s.substring(4, 6);
+  var d = s.substring(6, 8);
+  return y + '-' + m + '-' + d + 'T12:00:00.000Z';
+}
+
+/**
+ * If sheet column J is empty, try first YYYYMMDD in the qr id (e.g. 2024SJ_20250508_3 → 20250508).
+ * @param {string} qrId
+ * @return {?string}
+ */
+function orderDateIsoFallbackFromQrId(qrId) {
+  var m = String(qrId || '').match(/\d{8}/);
+  return m ? qrCreationDateToOrderDateIso(m[0]) : null;
+}
+
+/**
+ * Match Agroverse SKUs row by Product ID (A) or Product Name (B); return GTIN (J).
+ * @param {GoogleAppsScript.Spreadsheet.Spreadsheet} spreadsheet
+ * @param {string} productKey Value from QR sheet column I (Currency / product label)
+ * @return {?string}
+ */
+function findGtinByProductKeyForGcr(spreadsheet, productKey) {
+  if (!productKey || String(productKey).trim() === '') {
+    return null;
+  }
+  var sh = spreadsheet.getSheetByName(GCR_SKUS_SHEET_NAME);
+  if (!sh) {
+    Logger.log('getGcrContextByQr: sheet not found: ' + GCR_SKUS_SHEET_NAME);
+    return null;
+  }
+  var lastRow = sh.getLastRow();
+  if (lastRow < 2) {
+    return null;
+  }
+  var data = sh.getRange(2, 1, lastRow, 10).getValues();
+  var key = String(productKey).trim().toLowerCase();
+  for (var i = 0; i < data.length; i++) {
+    var pid = data[i][0] ? String(data[i][0]).trim().toLowerCase() : '';
+    var pname = data[i][1] ? String(data[i][1]).trim().toLowerCase() : '';
+    if (key && (key === pid || key === pname)) {
+      var gtin = data[i][9];
+      if (gtin != null && String(gtin).trim() !== '') {
+        return String(gtin).trim();
+      }
+      return null;
+    }
+  }
+  return null;
+}
+
+/**
+ * Public GET: action=getGcrContextByQr&qr=CODE
+ * Reads Agroverse QR codes: A=qr_code, G=country, I=product, J=QR creation date,
+ * L=Owner Email, M=Onboarding email sent date (preferred for GCR orderDateIso).
+ * Optional GTIN from Agroverse SKUs by matching column I to SKU A or B.
+ *
+ * @param {string} qrCode
+ * @return {GoogleAppsScript.Content.TextOutput}
+ */
+function getGcrContextByQrCode(qrCode) {
+  try {
+    if (!qrCode || String(qrCode).trim() === '') {
+      return createCORSResponse({
+        status: 'error',
+        error: 'qr parameter is required'
+      });
+    }
+    var q = String(qrCode).trim();
+    var props = PropertiesService.getScriptProperties();
+    var sheetId = props.getProperty('GCR_LEDGER_SPREADSHEET_ID') || GCR_LEDGER_SPREADSHEET_ID;
+
+    var ss = SpreadsheetApp.openById(sheetId);
+    var qrSheet = ss.getSheetByName(GCR_QR_SHEET_NAME);
+    if (!qrSheet) {
+      return createCORSResponse({
+        status: 'error',
+        error: 'QR sheet not found: ' + GCR_QR_SHEET_NAME
+      });
+    }
+
+    var lastRow = qrSheet.getLastRow();
+    if (lastRow < 2) {
+      return createCORSResponse({
+        status: 'error',
+        error: 'No QR rows in sheet'
+      });
+    }
+
+    var rows = qrSheet.getRange(2, 1, lastRow, 13).getValues();
+    var row = null;
+    for (var r = 0; r < rows.length; r++) {
+      var code = rows[r][0] ? String(rows[r][0]).trim() : '';
+      if (code === q) {
+        row = rows[r];
+        break;
+      }
+    }
+
+    if (!row) {
+      return createCORSResponse({
+        status: 'error',
+        error: 'QR code not found'
+      });
+    }
+
+    var email = row[11] ? String(row[11]).trim() : '';
+    if (!email) {
+      return createCORSResponse({
+        status: 'error',
+        error: 'Owner email not set for this QR code'
+      });
+    }
+
+    var deliveryCountry = normalizeGcrCountryCode(row[6]);
+    // M (index 12) = Onboarding email sent date; then J creation date; then YYYYMMDD in qr id
+    var orderDateIso = qrCreationDateToOrderDateIso(row[12]);
+    if (!orderDateIso) {
+      orderDateIso = qrCreationDateToOrderDateIso(row[9]);
+    }
+    if (!orderDateIso) {
+      orderDateIso = orderDateIsoFallbackFromQrId(q);
+    }
+    var productKey = row[8] ? String(row[8]).trim() : '';
+    var gtinRaw = productKey ? findGtinByProductKeyForGcr(ss, productKey) : null;
+    var gtinDigits = gtinRaw ? String(gtinRaw).replace(/\D/g, '') : '';
+
+    var payload = {
+      orderId: q,
+      email: email,
+      deliveryCountry: deliveryCountry,
+      orderDateIso: orderDateIso
+    };
+    if (gtinDigits) {
+      payload.products = [{ gtin: gtinDigits }];
+    }
+
+    return createCORSResponse({
+      status: 'success',
+      gcr: payload
+    });
+  } catch (err) {
+    Logger.log('getGcrContextByQrCode error: ' + err.toString());
+    return createCORSResponse({
+      status: 'error',
+      error: err.toString()
+    });
   }
 }
 
