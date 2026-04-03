@@ -1,0 +1,95 @@
+{
+  "posts": [
+    {
+      "slug": "brazil-commodity-vs-origin-cacao-food-grade",
+      "title": "Commodity vs Brazilian Origin Cacao: What “Cocoa Brazil” Means for Food-Grade Sourcing",
+      "description": "Not every “cocoa Brazil” search is about chocolate—here is how food-grade Brazilian cacao differs from anonymous commodity lots, and how origin and single-estate traceability change flavor, ethics, and your story.",
+      "og_image": "https://www.agroverse.shop/assets/images/partners/cic/cacao-tasting-wheel.jpg",
+      "primary_keyword": "cocoa brazil",
+      "intent_cluster": "Brazil / origin education",
+      "priority": "P1",
+      "sheet_notes": "Disambiguate food-grade vs beauty/commodity SERP noise; pillar for Brazil series"
+    },
+    {
+      "slug": "bahia-cacao-belt-farms-harvest-guide",
+      "title": "The Bahia Cacao Belt: Farms, Harvest Rhythms, and Why This Coast Shapes Flavor",
+      "description": "A practical guide to Brazil’s Southern Bahia cacao heartland—how the belt fits the country’s chocolate map, what harvest and post-harvest look like on the ground, and how to read farm-level sourcing.",
+      "primary_keyword": "cacao trade",
+      "intent_cluster": "Regional education / B2B",
+      "priority": "P1",
+      "sheet_notes": "Tie to Oscar, Santa Ana, Capel Velha, Analuana farm pages + shipments"
+    },
+    {
+      "slug": "cabruca-cacao-biodiversity-brazil",
+      "title": "Cabruca in Brazil: Shade-Grown Cacao, Forest Structure, and Biodiversity You Can Taste",
+      "description": "What cabruca is (and isn’t), how shade-native cabruca systems support wildlife corridors and microclimate, and why makers and consumers should care when buying Brazilian cacao.",
+      "primary_keyword": "amazon rainforest cacao tree",
+      "intent_cluster": "Regenerative / Amazon narrative",
+      "priority": "P2",
+      "sheet_notes": "Bridge Amazon + Bahia cabruca; internal link to cabruca/terroir posts"
+    },
+    {
+      "slug": "brazil-cacao-processing-flower-to-bar",
+      "title": "From Flower to Bar: Cacao Processing in Brazil Without the Fairy Tales",
+      "description": "Fermentation, drying, and sorting on Brazilian farms—what actually determines flavor, what marketing often skips, and how to ask suppliers for documentation that matches the cup.",
+      "primary_keyword": "preparing cacao",
+      "intent_cluster": "Technical / maker education",
+      "priority": "P2",
+      "sheet_notes": "Maker FAQ; link processing to single-estate lots"
+    },
+    {
+      "slug": "single-estate-brazil-cacao-for-brands",
+      "title": "Single-Estate Brazil Cacao for Brands: Consistency, Story, and Lab-Ready Traceability",
+      "description": "Why chocolate and beverage brands choose single-estate Brazilian lots over blended origins—flavor stability, compliance narratives, and building SKUs around named farms.",
+      "primary_keyword": "cacao amazon rainforest",
+      "intent_cluster": "B2B brand positioning",
+      "priority": "P1",
+      "sheet_notes": "Complement single-estate vs single-origin post; AGL8/AGL4 examples"
+    },
+    {
+      "slug": "wholesale-brazilian-cacao-buyer-checklist",
+      "title": "Wholesale Brazilian Cacao: A Buyer’s Checklist (Specs, Ethics, and Red Flags)",
+      "description": "Questions to ask before you wire money—crop year, genotype claims, moisture, fermentation protocol, cadmium conversation, contracts, and how to verify farm identity.",
+      "primary_keyword": "cocoa wholesale price",
+      "intent_cluster": "Commercial intent",
+      "priority": "P1",
+      "sheet_notes": "Maps to wholesale/commercial queries; CTA contact"
+    },
+    {
+      "slug": "ceremonial-cacao-brazil-respectful-sourcing",
+      "title": "Ceremonial Cacao from Brazil: Source with Clarity, Not Stereotypes",
+      "description": "How to discuss Brazilian ceremonial-grade cacao responsibly—transparency with farmers, avoiding extractive “medicine” language, and what lab and-chain-of-custody data actually helps facilitators.",
+      "primary_keyword": "cacao ceremony what is it",
+      "intent_cluster": "Ceremonial / wellness adjacent",
+      "priority": "P2",
+      "sheet_notes": "Ethical framing; disambiguate from unrelated ceremony brands in SERP"
+    },
+    {
+      "slug": "brazil-cacao-genetics-and-flavor",
+      "title": "Genetics, Flavor, and Brazilian Terroir: A Chocolate Maker’s Primer",
+      "description": "Criollo-leaning nostalgic trees, modern clones, and hybrids—how genetic background interacts with soil and process in Brazil, without reducing farmers to variety buzzwords.",
+      "primary_keyword": "cacao tree amazon rainforest",
+      "intent_cluster": "Technical flavor",
+      "priority": "P2",
+      "sheet_notes": "Link terroir post + CIC wheel image context"
+    },
+    {
+      "slug": "brazil-cacao-climate-agroforestry-resilience",
+      "title": "Climate, Drought, and Resilience: Why Agroforestry Matters for Brazil’s Cacao Future",
+      "description": "Climate pressures on Brazilian cacao regions, why diversified canopy and soil organic matter matter as much as variety, and what regenerative sourcing funds on the ground.",
+      "primary_keyword": "eating cacao beans",
+      "intent_cluster": "Climate / ESG narrative",
+      "priority": "P3",
+      "sheet_notes": "Broader intent; tie to regenerative mission"
+    },
+    {
+      "slug": "brazil-cacao-brand-origin-story-playbook",
+      "title": "A Practical Origin-Story Framework for Brands Using Brazilian Farm Partners",
+      "description": "Templates and guardrails for marketing teams—who to name, what to verify, how to pair photography with consent, and how to pass the “could the farmer recognize themselves?” test.",
+      "primary_keyword": "eating cacao nibs",
+      "intent_cluster": "Brand / content ops",
+      "priority": "P3",
+      "sheet_notes": "Editorial framework; internal links across series"
+    }
+  ]
+}

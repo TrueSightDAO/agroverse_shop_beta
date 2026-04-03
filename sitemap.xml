@@ -169,7 +169,7 @@
   <!-- Blog index (lastmod updated by scripts/generate-sitemap.js) -->
   <url>
     <loc>https://agroverse.shop/blog</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -195,14 +195,62 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://agroverse.shop/post/bahia-cacao-belt-farms-harvest-guide</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/brazil-cacao-brand-origin-story-playbook</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/brazil-cacao-climate-agroforestry-resilience</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/brazil-cacao-genetics-and-flavor</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/brazil-cacao-processing-flower-to-bar</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/brazil-commodity-vs-origin-cacao-food-grade</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/cabruca-cacao-biodiversity-brazil</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/cacao-minerals-benefits-and-bean-uses-a-deep-dive</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://agroverse.shop/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence</loc>
     <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/ceremonial-cacao-brazil-respectful-sourcing</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
@@ -219,8 +267,14 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://agroverse.shop/post/single-estate-brazil-cacao-for-brands</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/single-estate-vs-single-origin-why-it-matters</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
@@ -232,7 +286,7 @@
   </url>
   <url>
     <loc>https://agroverse.shop/post/the-heart-of-brazilian-cacao-bahia-and-amazon-origins</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
@@ -262,13 +316,19 @@
   </url>
   <url>
     <loc>https://agroverse.shop/post/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise</loc>
-    <lastmod>2026-03-19</lastmod>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
     <loc>https://agroverse.shop/post/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection</loc>
     <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/wholesale-brazilian-cacao-buyer-checklist</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
