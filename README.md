@@ -12,7 +12,7 @@ This repository contains the complete Agroverse Shop website, including:
 
 - **Live workbook:** [20260402 — Agroverse SEO performance monitoring](https://docs.google.com/spreadsheets/d/1qRlufSUQusQbJc3AwonIvHtfiAQjwhnMtl79FFkGBt8/edit) — keyword targets, change log, weekly Search Console snapshots (after Apps Script is deployed).
 - **How we run it:** [agentic_ai_context / **SEO_MONITORING_SHEET_WORKFLOW.md**](https://github.com/TrueSightDAO/agentic_ai_context/blob/main/SEO_MONITORING_SHEET_WORKFLOW.md) (clone locally: `agentic_ai_context/SEO_MONITORING_SHEET_WORKFLOW.md`).  
-  **Rule:** When you ship **SEO / keyword optimization** on this site (titles, meta, new landing URLs, IA, internal links, structured data), **update that workflow doc** if the process changes, log the change in the Sheet **Change_log**, and adjust **Keywords_targets** as needed.
+  **Rule:** When you ship **SEO / keyword optimization** on this site (titles, meta, new landing URLs, IA, internal links, structured data), **update that workflow doc** if the process changes, log changes in the Sheet **Change_log** (**one row per shipped HTML URL**—not one merged row per batch), and adjust **Keywords_targets** as needed. Use `market_research/scripts/seo_workbook_append.py` or `append_brazil_cocoa_series_to_seo_sheet.py` from the **market_research** repo when automating.
 - **Apps Script source (weekly GSC):** In the multi-repo workspace, `market_research/google_app_scripts/seo_monitoring_gsc/` (same tree as [content_schedule / market_research](https://github.com/TrueSightDAO/content_schedule)). Deploy with **clasp** or paste into the bound project; **not** auto-synced from git until someone pushes.
 
 ---
