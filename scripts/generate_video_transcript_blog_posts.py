@@ -11,6 +11,13 @@ Updates blog/index.html between <!-- VIDEO_TRANSCRIPT_POSTS --> … <!-- /VIDEO_
 Usage (from agroverse_shop/):
   python3 scripts/generate_video_transcript_blog_posts.py
 
+Public URL for canonical, og:url, and og:image (must match the host where HTML and JPEGs are served;
+otherwise WhatsApp/Facebook may show no preview if og:image 404s on production):
+  AGROVERSE_PUBLIC_ORIGIN=https://beta.agroverse.shop python3 scripts/generate_video_transcript_blog_posts.py
+
+This script runs **`sync_post_open_graph_images.py`** at the end so **`og:image`** matches blog cards. Re-run only that step if needed:
+  python3 scripts/sync_post_open_graph_images.py
+
 Transcripts: local ASR cleanup via transcript_publish_helpers, then optional Grok polish
 (≥40 words) when GROK_API_KEY is set or found in ../market_research/.env. Cache:
 scripts/transcript_grok_polish_cache.json
@@ -20,12 +27,21 @@ from __future__ import annotations
 import html
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
+
+from og_image_utils import (
+    DEFAULT_OG_CARD_PATH,
+    default_og_image_url,
+    dims_for_site_path,
+    public_origin,
+    strip_og_image_dims,
+)
 
 from transcript_publish_helpers import (
     apply_story_title_overrides,
@@ -45,8 +61,7 @@ YOUTUBE_MAP = REPO / "scripts/youtube_videos.json"
 TEMPLATE = REPO / "post/brazil-commodity-vs-origin-cacao-food-grade/index.html"
 BLOG_INDEX = REPO / "blog/index.html"
 
-LISTING_IMG = "/assets/images/blog/bahia-photo-library/cocoa-ripe-pods-yellow-grove.jpg"
-OG_IMAGE = "https://www.agroverse.shop/assets/images/blog/bahia-photo-library/cocoa-ripe-pods-yellow-grove.jpg"
+LISTING_IMG = DEFAULT_OG_CARD_PATH
 
 BEAN_HUMAN_TITLE_LOWER: dict[str, str] = {
     "bean to bliss episode 9_full hd 1080p.mp4": "Bean to Bliss — Episode 9",
@@ -66,7 +81,6 @@ VIDEO_CARDS_START = "<!-- VIDEO_TRANSCRIPT_POSTS -->"
 VIDEO_CARDS_END = "<!-- /VIDEO_TRANSCRIPT_POSTS -->"
 
 VIDEO_STORY_STATE = _SCRIPT_DIR / "video_story_posts_state.json"
-SITE_HOST = "https://www.agroverse.shop"
 
 MIN_STORY_DURATION_SEC = 45.0
 MIN_STORY_WORDS = 80
@@ -149,7 +163,7 @@ def write_redirect_stub(old_slug: str, new_slug: str) -> None:
     if old_slug == new_slug:
         return
     dest = f"/post/{new_slug}/"
-    canonical = f"{SITE_HOST}/post/{new_slug}"
+    canonical = f"{public_origin()}/post/{new_slug}"
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,7 +223,8 @@ def inject_embed_css(page: str) -> str:
 def abs_site_url(site_path: str) -> str:
     if site_path.startswith("http://") or site_path.startswith("https://"):
         return site_path
-    return f"{SITE_HOST}{site_path if site_path.startswith('/') else '/' + site_path}"
+    base = public_origin()
+    return f"{base}{site_path if site_path.startswith('/') else '/' + site_path}"
 
 
 def sync_youtube_mapping_titles(manifest_videos: list[dict], yt: dict[str, dict]) -> None:
@@ -242,20 +257,25 @@ def page_shell(
     published_iso: str,
     *,
     og_image: str | None = None,
+    og_card_site_path: str | None = None,
 ) -> str:
     if not TEMPLATE.is_file():
         raise SystemExit(f"Missing template {TEMPLATE}")
     raw = TEMPLATE.read_text(encoding="utf-8")
-    canonical = f"https://www.agroverse.shop/post/{slug}"
+    raw = strip_og_image_dims(raw)
+    origin = public_origin()
+    canonical = f"{origin}/post/{slug}"
     full_title = f"{title_short} | Agroverse"
     esc_full = html.escape(full_title)
     esc_desc = html.escape(description)
     esc_url = html.escape(canonical)
-    og_final = og_image if og_image else OG_IMAGE
+    card_path = og_card_site_path or DEFAULT_OG_CARD_PATH
+    og_final = og_image if og_image else default_og_image_url()
     esc_og = html.escape(og_final)
     esc_iso = html.escape(published_iso)
     esc_h1 = html.escape(h1)
     esc_pub = html.escape(published_display)
+    dims = dims_for_site_path(REPO, card_path) if card_path.startswith("/assets/") else None
 
     raw = re.sub(r"<title>.*?</title>", f"<title>{esc_full}</title>", raw, count=1, flags=re.DOTALL)
     raw = re.sub(
@@ -265,14 +285,14 @@ def page_shell(
         count=1,
     )
     raw = re.sub(
-        r'<link href="https://www\.agroverse\.shop/post/[^"]+" rel="canonical"/>',
+        r'<link href="https?://[^"]+/post/[^"]+" rel="canonical"/>',
         f'<link href="{esc_url}" rel="canonical"/>',
         raw,
         count=1,
     )
     for prop in ("og:url", "twitter:url"):
         raw = re.sub(
-            rf'<meta content="https://www\.agroverse\.shop/post/[^"]+" property="{prop}"/>',
+            rf'<meta content="https?://[^"]+/post/[^"]+" property="{prop}"/>',
             f'<meta content="{esc_url}" property="{prop}"/>',
             raw,
             count=1,
@@ -307,6 +327,14 @@ def page_shell(
         raw,
         count=1,
     )
+    if dims:
+        w, h = dims
+        og_line = f'<meta content="{esc_og}" property="og:image"/>'
+        raw = raw.replace(
+            og_line,
+            f'{og_line}\n<meta content="{w}" property="og:image:width"/>\n<meta content="{h}" property="og:image:height"/>',
+            1,
+        )
     raw = re.sub(
         r'<meta content="https://[^"]+" property="twitter:image"/>',
         f'<meta content="{esc_og}" property="twitter:image"/>',
@@ -439,6 +467,7 @@ def main() -> None:
         + transcript_to_html(_disp9)
     )
     thumb9 = post_thumb_web("bean-to-bliss-episode-9", manifest_row=e9, video_id=v9)
+    card9 = thumb9 or LISTING_IMG
     html9 = page_shell(
         "bean-to-bliss-episode-9",
         "Bean to Bliss — Episode 9",
@@ -448,7 +477,8 @@ def main() -> None:
         body9,
         BEAN_DISPLAY,
         BEAN_ISO,
-        og_image=abs_site_url(thumb9) if thumb9 else None,
+        og_image=abs_site_url(card9),
+        og_card_site_path=card9,
     )
     write_post("bean-to-bliss-episode-9", html9)
 
@@ -498,6 +528,7 @@ def main() -> None:
         manifest_row=e10_thumb_row,
         video_id=e10_thumb_id,
     )
+    card10 = thumb10 or LISTING_IMG
     html10 = page_shell(
         "bean-to-bliss-episode-10",
         "Bean to Bliss — Episode 10 (TikTok)",
@@ -506,7 +537,8 @@ def main() -> None:
         body10,
         BEAN_DISPLAY,
         BEAN_ISO,
-        og_image=abs_site_url(thumb10) if thumb10 else None,
+        og_image=abs_site_url(card10),
+        og_card_site_path=card10,
     )
     write_post("bean-to-bliss-episode-10", html10)
 
@@ -525,6 +557,7 @@ def main() -> None:
         + transcript_to_html(_disp12)
     )
     thumb12 = post_thumb_web("bean-to-bliss-episode-12", manifest_row=e12, video_id=v12)
+    card12 = thumb12 or LISTING_IMG
     html12 = page_shell(
         "bean-to-bliss-episode-12",
         "Bean to Bliss — Episode 12",
@@ -533,7 +566,8 @@ def main() -> None:
         body12,
         BEAN_DISPLAY,
         BEAN_ISO,
-        og_image=abs_site_url(thumb12) if thumb12 else None,
+        og_image=abs_site_url(card12),
+        og_card_site_path=card12,
     )
     write_post("bean-to-bliss-episode-12", html12)
 
@@ -588,7 +622,7 @@ def main() -> None:
             + transcript_to_html(display_text)
         )
         thumb = post_thumb_web(slug, manifest_row=row, video_id=vid)
-        og_story = abs_site_url(thumb) if thumb else None
+        card = thumb or LISTING_IMG
         out = page_shell(
             slug,
             title_short,
@@ -597,7 +631,8 @@ def main() -> None:
             body,
             STORY_DISPLAY,
             STORY_ISO,
-            og_image=og_story,
+            og_image=abs_site_url(card),
+            og_card_site_path=card,
         )
         write_post(slug, out)
         story_cards.append(blog_card(slug, title_short, desc, STORY_DISPLAY, card_image=thumb or LISTING_IMG))
@@ -637,6 +672,16 @@ def main() -> None:
         )
     )
     refresh_blog_cards(bean_cards + "".join(story_cards))
+
+    og_sync = _SCRIPT_DIR / "sync_post_open_graph_images.py"
+    if og_sync.is_file():
+        print("Syncing Open Graph / Twitter images to match blog listing cards…")
+        r = subprocess.run([sys.executable, str(og_sync)], cwd=str(REPO))
+        if r.returncode != 0:
+            print(
+                f"Warning: {og_sync.name} exited {r.returncode}; run it manually after fixing errors.",
+                file=sys.stderr,
+            )
 
 
 if __name__ == "__main__":
