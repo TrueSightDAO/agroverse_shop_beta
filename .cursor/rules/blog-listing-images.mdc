@@ -1,0 +1,28 @@
+---
+description: Blog index listing thumbnails — sources, duplicates, resized assets
+globs: blog/index.html, scripts/sync_blog_listing_thumbnails.py, assets/images/blog/**/*
+---
+
+# Agroverse blog listing images (`blog/index.html`)
+
+## Listing URLs (required)
+
+- Card `<img>` **src** MUST be **`/assets/images/blog/listing-640w/{post-slug}.jpg`** (one file per post on the grid).
+- Regenerate after changing sources: **`python3 scripts/sync_blog_listing_thumbnails.py`** (macOS `sips`: max edge 640px, JPEG ~quality 80). The script rewrites `blog/index.html` and sets **`loading="lazy"`** + **`decoding="async"`** + intrinsic **`width`/`height`** from the output file.
+- **Do not** hotlink full-resolution `blog-posts/` or 4K partner JPEGs on the listing grid unless you also add a build step — the listing folder is the performance contract.
+
+## Source selection (`MAP` in `scripts/sync_blog_listing_thumbnails.py`)
+
+1. **Prefer** the post’s **first real** in-body image under **`/assets/images/...`** (normalize `../../assets/` in migrated HTML). Skip nav **logo** paths.
+2. **Ignore** meaningless **`og:image`** when it is only **`partners/cic/cacao-tasting-wheel.jpg`** and the article has no body photos (generic placeholder).
+3. **SVG as only hero** (e.g. infographic): use the matching **PNG** raster in `blog-posts/` for the *source* passed to `sips`, not the SVG on the grid URL.
+4. **Text-only** posts: pick **distinct**, on-brand photos already in-repo (**`assets/images/blog/bahia-photo-library/`**, farms, partners, products, shipments).
+
+## Duplicates (forbidden)
+
+- **No repeated `src`** on the listing page.
+- **No duplicate MD5** among generated **`listing-640w/*.jpg`** files (identical pixels). If two posts share the same Wix export id / file, replace one source using **`bahia-photo-library`** or another unused asset, then re-run the sync script.
+
+## Context for workspace AIs
+
+- **`agentic_ai_context/PROJECT_INDEX.md`** (agroverse_shop row) and **`WORKSPACE_CONTEXT.md`** §4 spell out the same rules for cross-repo agents.

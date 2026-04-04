@@ -24,7 +24,9 @@ This repository contains the complete Agroverse Shop website, including:
 
 ### Blog Content
 
-The site includes blog posts in the `/post/` directory. Blog posts feature:
+The site includes blog posts in the `/post/` directory. **Bahia trip photography (web JPEGs + catalog):** see **`assets/images/blog/bahia-photo-library/README.md`** — optimized images from iPhone HEIC masters, descriptive filenames, and a table of contents / suggested uses for blog cards and post heroes.
+
+Blog posts feature:
 - Responsive image layouts with side-by-side display on desktop
 - Image pairs and groups automatically wrap multiple consecutive images
 - Text-to-speech functionality with highlighting and auto-scrolling
@@ -63,6 +65,13 @@ All videos on the website are hosted on YouTube and embedded using YouTube ifram
 - **SEO benefits**: Videos discoverable in YouTube search
 - **Traffic generation**: Links in video descriptions drive traffic back to agroverse.shop
 - **Analytics**: YouTube provides views, engagement, and watch time data
+
+#### Incoming phone / AirDrop videos (analyze + dedupe before YouTube)
+
+1. Stage MP4/MOV locally (e.g. `Downloads/`). **Do not** rely on identical filenames across exports—use hashes.
+2. Run **`python3 scripts/analyze_incoming_videos.py --input <folder> --output docs/incoming_videos_<batch>`** (see `scripts/requirements-video-analysis.txt` for pip deps). This emits **`manifest.json`**: **SHA-256**, sampled-frame **perceptual hashes** (anchor + timeline), **faster-whisper** transcripts, and **`youtube_upload_recommended`** (canonical file per near-duplicate group).
+3. Upload only recommended rows unless you override after a quick watch—then add entries to **`scripts/video_metadata.json`** and use **`batch_upload_videos.py`**; keep **`youtube_videos.json`** in sync with what is live.
+4. Still images (HEIC→JPEG): **`assets/images/blog/bahia-photo-library/README.md`**.
 
 #### Adding a New Video
 

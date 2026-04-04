@@ -3,7 +3,7 @@
  * Consistent navigation across all pages - desktop and mobile
  */
 
-/* Header — sticky only on mobile; desktop scrolls away naturally */
+/* Header — scrolls with the page on all breakpoints (sticky removed for long-form reading on mobile) */
 header {
     background-color: var(--color-bg, #ffffff);
     padding: 1.5rem 2rem;
@@ -353,8 +353,7 @@ nav {
     
     header {
         padding: 1rem 1.5rem;
-        position: sticky;
-        top: 0;
+        position: relative;
     }
     
     .logo img {

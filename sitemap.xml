@@ -177,6 +177,12 @@
   <!-- Individual blog posts: auto-generated — run: npm run sitemap -->
   <!-- BEGIN_AUTO_BLOG_POSTS -->
   <url>
+    <loc>https://agroverse.shop/post/after-a-swamp-walk-to-century-old-cacao-trees</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -196,6 +202,24 @@
   </url>
   <url>
     <loc>https://agroverse.shop/post/bahia-cacao-belt-farms-harvest-guide</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/bean-to-bliss-episode-10</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/bean-to-bliss-episode-12</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/bean-to-bliss-episode-9</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
@@ -243,6 +267,12 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://agroverse.shop/post/cacao-pod-selection-walk-on-oscar-s-farm</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -255,14 +285,122 @@
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://agroverse.shop/post/cracking-fresh-cacao-pods-in-the-field</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/day-three-sun-drying-cacao-on-banana-leaves</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/from-cattle-pasture-to-cacao-rebuilding-the-farm</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/greenhouse-visit-young-cacao-seedlings-before-transplant</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/how-stem-cells-regenerate-with-regular-cacao-consumption</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
+    <loc>https://agroverse.shop/post/making-chocolate-at-home-from-amazon-rainforest-cacao</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
     <loc>https://agroverse.shop/post/okanogan-regenerative-cacao-journey</loc>
     <lastmod>2026-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/opening-the-box-after-seven-days-of-cacao-fermentation</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/oscar-farm-video</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-03-26-1</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-05-23</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-09-18-3</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-09-19</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-09-20</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-09-26</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-10-07</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-10-09</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-10-13</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/project-11-02-1</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/pruning-witches-broom-with-vivi-across-the-grove</loc>
+    <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
@@ -274,6 +412,18 @@
   </url>
   <url>
     <loc>https://agroverse.shop/post/single-estate-vs-single-origin-why-it-matters</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/sorting-harvested-cacao-pods-at-oscar-s-farm</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://agroverse.shop/post/stone-melanger-cacao-nibs-to-liquor-for-a-small-batch</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
