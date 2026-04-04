@@ -74,6 +74,8 @@ BEAN_HUMAN_TITLE_LOWER: dict[str, str] = {
 
 BEAN_DISPLAY = "April 3, 2026"
 BEAN_ISO = "2026-04-03T16:00:00+00:00"
+# Shared H1 for the Episode 10 page (three embedded clips).
+BEAN10_PAGE_H1 = "Bean to Bliss — Episode 10 — TikTok (videos & transcript)"
 STORY_DISPLAY = "March 31, 2026"
 STORY_ISO = "2026-03-31T16:00:00+00:00"
 
@@ -214,6 +216,14 @@ def youtube_embed(video_id: str, iframe_title: str) -> str:
     )
 
 
+def iframe_title_with_optional_section(page_h1: str, section_label: str | None) -> str:
+    """Accessible iframe title: main post H1, or H1 plus embed section for multi-clip posts."""
+    s = (section_label or "").strip()
+    if s:
+        return f"{page_h1.strip()}: {s}"
+    return page_h1.strip()
+
+
 def inject_embed_css(page: str) -> str:
     if ".blog-video-embed" in page:
         return page
@@ -244,7 +254,25 @@ def sync_youtube_mapping_titles(manifest_videos: list[dict], yt: dict[str, dict]
     final = disambiguate_stories(preliminary, cleaned_by)
     final = apply_story_title_overrides(final)
     for b in basenames:
-        yt[b]["title"] = youtube_snippet_title(final[b])
+        bl = b.lower()
+        if bl == "bean to bliss episode 9_full hd 1080p.mp4":
+            yt[b]["title"] = youtube_snippet_title("Bean to Bliss — Episode 9 (video & transcript)")
+        elif bl in ("bean to bliss episode 12_full hd 1081.mp4", "bean to bliss episode 12_full hd 1080p.mp4"):
+            yt[b]["title"] = youtube_snippet_title("Bean to Bliss — Episode 12 (video & transcript)")
+        elif bl == "bean to bliss episode 10 - tiktok_full hd 1080p.mp4":
+            yt[b]["title"] = youtube_snippet_title(
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "Export: Full HD 1080p")
+            )
+        elif bl == "bean to bliss episode 10 - tiktok_full hd 1081.mp4":
+            yt[b]["title"] = youtube_snippet_title(
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "Export: Full HD 1081 (newer file)")
+            )
+        elif bl == "b2b ep 10 - tiktok part 2_full hd 1080p.mp4":
+            yt[b]["title"] = youtube_snippet_title(
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "B2B ep 10 — TikTok part 2")
+            )
+        else:
+            yt[b]["title"] = youtube_snippet_title(f"{final[b]} (video & transcript)")
 
 
 def page_shell(
@@ -461,8 +489,9 @@ def main() -> None:
     _raw9 = e9.get("transcript") or ""
     _cl9 = clean_transcript(_raw9)
     _disp9 = transcript_for_blog(_raw9, e9_name, locally_cleaned=_cl9, title_hint="Bean to Bliss — Episode 9")
+    h1_9 = "Bean to Bliss — Episode 9 (video & transcript)"
     body9 = (
-        youtube_embed(v9, "Bean to Bliss episode 9")
+        youtube_embed(v9, h1_9)
         + '<h2 class="blog-transcript-heading">Transcript</h2>\n'
         + transcript_to_html(_disp9)
     )
@@ -473,7 +502,7 @@ def main() -> None:
         "Bean to Bliss — Episode 9",
         description_from_transcript(_disp9)
         or "Full transcript and video: Bean to Bliss episode 9 — cacao, craft, and story from the field.",
-        "Bean to Bliss — Episode 9 (video & transcript)",
+        h1_9,
         body9,
         BEAN_DISPLAY,
         BEAN_ISO,
@@ -492,7 +521,12 @@ def main() -> None:
         bn = e10a["basename"]
         r_, c_ = e10a.get("transcript") or "", clean_transcript(e10a.get("transcript") or "")
         parts10.append('<h2 class="blog-embed-section-title">Export: Full HD 1080p</h2>\n')
-        parts10.append(youtube_embed(bid, "Bean to Bliss episode 10 — 1080p export"))
+        parts10.append(
+            youtube_embed(
+                bid,
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "Export: Full HD 1080p"),
+            )
+        )
         parts10.append(
             transcript_to_html(transcript_for_blog(r_, bn, locally_cleaned=c_, title_hint="Bean to Bliss — Episode 10 (1080p)"))
         )
@@ -501,7 +535,12 @@ def main() -> None:
         bn = e10b["basename"]
         r_, c_ = e10b.get("transcript") or "", clean_transcript(e10b.get("transcript") or "")
         parts10.append('<h2 class="blog-embed-section-title">Export: Full HD 1081 (newer file)</h2>\n')
-        parts10.append(youtube_embed(bid, "Bean to Bliss episode 10 — 1081 export"))
+        parts10.append(
+            youtube_embed(
+                bid,
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "Export: Full HD 1081 (newer file)"),
+            )
+        )
         parts10.append(
             transcript_to_html(transcript_for_blog(r_, bn, locally_cleaned=c_, title_hint="Bean to Bliss — Episode 10 (1081)"))
         )
@@ -510,7 +549,12 @@ def main() -> None:
         bn = e10c["basename"]
         r_, c_ = e10c.get("transcript") or "", clean_transcript(e10c.get("transcript") or "")
         parts10.append('<h2 class="blog-embed-section-title">B2B ep 10 — TikTok part 2</h2>\n')
-        parts10.append(youtube_embed(bid, "B2B episode 10 — TikTok part 2"))
+        parts10.append(
+            youtube_embed(
+                bid,
+                iframe_title_with_optional_section(BEAN10_PAGE_H1, "B2B ep 10 — TikTok part 2"),
+            )
+        )
         parts10.append(
             transcript_to_html(transcript_for_blog(r_, bn, locally_cleaned=c_, title_hint="Bean to Bliss — B2B ep 10"))
         )
@@ -533,7 +577,7 @@ def main() -> None:
         "bean-to-bliss-episode-10",
         "Bean to Bliss — Episode 10 (TikTok)",
         "Transcripts and embedded videos for Bean to Bliss episode 10—alternate exports and TikTok part 2.",
-        "Bean to Bliss — Episode 10 — TikTok (videos & transcript)",
+        BEAN10_PAGE_H1,
         body10,
         BEAN_DISPLAY,
         BEAN_ISO,
@@ -551,8 +595,9 @@ def main() -> None:
     _raw12 = e12.get("transcript") or ""
     _cl12 = clean_transcript(_raw12)
     _disp12 = transcript_for_blog(_raw12, e12_name, locally_cleaned=_cl12, title_hint="Bean to Bliss — Episode 12")
+    h1_12 = "Bean to Bliss — Episode 12 (video & transcript)"
     body12 = (
-        youtube_embed(v12, "Bean to Bliss episode 12")
+        youtube_embed(v12, h1_12)
         + '<h2 class="blog-transcript-heading">Transcript</h2>\n'
         + transcript_to_html(_disp12)
     )
@@ -562,7 +607,7 @@ def main() -> None:
         "bean-to-bliss-episode-12",
         "Bean to Bliss — Episode 12",
         description_from_transcript(_disp12) or "Full transcript and video for Bean to Bliss episode 12.",
-        "Bean to Bliss — Episode 12 (video & transcript)",
+        h1_12,
         body12,
         BEAN_DISPLAY,
         BEAN_ISO,
@@ -603,7 +648,7 @@ def main() -> None:
         cleaned = cleaned_by_basename[basename]
         human_title = final_titles[basename]
         slug = unique_slug(human_title, basename, used_slugs)
-        yt_title = youtube_snippet_title(human_title)
+        yt_title = youtube_snippet_title(f"{human_title} (video & transcript)")
         prev_slug = (prev_story.get(basename) or {}).get("slug")
         if prev_slug and prev_slug != slug:
             write_redirect_stub(prev_slug, slug)
@@ -617,7 +662,7 @@ def main() -> None:
         h1 = f"{human_title} (video & transcript)"
         vid = yt[basename]["video_id"]
         body = (
-            youtube_embed(vid, human_title)
+            youtube_embed(vid, h1)
             + '<h2 class="blog-transcript-heading">Transcript</h2>\n'
             + transcript_to_html(display_text)
         )
