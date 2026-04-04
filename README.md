@@ -6,6 +6,17 @@ A static HTML e-commerce website for Agroverse, migrated from Wix to GitHub Page
 
 This repository contains the complete Agroverse Shop website, including:
 
+### SEO & keyword performance (human hub)
+
+**Track and operate SEO work in one place:**
+
+- **Live workbook:** [20260402 — Agroverse SEO performance monitoring](https://docs.google.com/spreadsheets/d/1qRlufSUQusQbJc3AwonIvHtfiAQjwhnMtl79FFkGBt8/edit) — keyword targets, change log, weekly Search Console snapshots (after Apps Script is deployed).
+- **How we run it:** [agentic_ai_context / **SEO_MONITORING_SHEET_WORKFLOW.md**](https://github.com/TrueSightDAO/agentic_ai_context/blob/main/SEO_MONITORING_SHEET_WORKFLOW.md) (clone locally: `agentic_ai_context/SEO_MONITORING_SHEET_WORKFLOW.md`).  
+  **Rule:** When you ship **SEO / keyword optimization** on this site (titles, meta, new landing URLs, IA, internal links, structured data), **update that workflow doc** if the process changes, log changes in the Sheet **Change_log** (**one row per shipped HTML URL**—not one merged row per batch), and adjust **Keywords_targets** as needed. Use `market_research/scripts/seo_workbook_append.py` or `append_brazil_cocoa_series_to_seo_sheet.py` from the **market_research** repo when automating.
+- **Apps Script source (weekly GSC):** In the multi-repo workspace, `market_research/google_app_scripts/seo_monitoring_gsc/` (same tree as [content_schedule / market_research](https://github.com/TrueSightDAO/content_schedule)). Deploy with **clasp** or paste into the bound project; **not** auto-synced from git until someone pushes.
+
+---
+
 - **E-Commerce Platform**: Full shopping cart, checkout, and order management system
 - **Content Pages**: Blog posts, farm profiles, shipment pages, and product pages
 - **Inventory Management**: Real-time inventory tracking linked to Google Sheets
@@ -13,7 +24,9 @@ This repository contains the complete Agroverse Shop website, including:
 
 ### Blog Content
 
-The site includes blog posts in the `/post/` directory. Blog posts feature:
+The site includes blog posts in the `/post/` directory. **Bahia trip photography (web JPEGs + catalog):** see **`assets/images/blog/bahia-photo-library/README.md`** — optimized images from iPhone HEIC masters, descriptive filenames, and a table of contents / suggested uses for blog cards and post heroes.
+
+Blog posts feature:
 - Responsive image layouts with side-by-side display on desktop
 - Image pairs and groups automatically wrap multiple consecutive images
 - Text-to-speech functionality with highlighting and auto-scrolling
@@ -52,6 +65,13 @@ All videos on the website are hosted on YouTube and embedded using YouTube ifram
 - **SEO benefits**: Videos discoverable in YouTube search
 - **Traffic generation**: Links in video descriptions drive traffic back to agroverse.shop
 - **Analytics**: YouTube provides views, engagement, and watch time data
+
+#### Incoming phone / AirDrop videos (analyze + dedupe before YouTube)
+
+1. Stage MP4/MOV locally (e.g. `Downloads/`). **Do not** rely on identical filenames across exports—use hashes.
+2. Run **`python3 scripts/analyze_incoming_videos.py --input <folder> --output docs/incoming_videos_<batch>`** (see `scripts/requirements-video-analysis.txt` for pip deps). This emits **`manifest.json`**: **SHA-256**, sampled-frame **perceptual hashes** (anchor + timeline), **faster-whisper** transcripts, and **`youtube_upload_recommended`** (canonical file per near-duplicate group).
+3. Upload only recommended rows unless you override after a quick watch—then add entries to **`scripts/video_metadata.json`** and use **`batch_upload_videos.py`**; keep **`youtube_videos.json`** in sync with what is live.
+4. Still images (HEIC→JPEG): **`assets/images/blog/bahia-photo-library/README.md`**.
 
 #### Adding a New Video
 

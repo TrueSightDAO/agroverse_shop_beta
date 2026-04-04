@@ -36,7 +36,10 @@ function collectPosts() {
     .map((e) => e.name)
     .filter((slug) => {
       const idx = path.join(POSTS_DIR, slug, 'index.html');
-      return fs.existsSync(idx);
+      if (!fs.existsSync(idx)) return false;
+      const html = fs.readFileSync(idx, 'utf8');
+      if (html.includes('sitemap-omit')) return false;
+      return true;
     })
     .sort();
   return slugs.map((slug) => {
