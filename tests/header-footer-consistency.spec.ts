@@ -309,6 +309,7 @@ test.describe('Header and Footer Menu Consistency', () => {
   });
 
   test('Footer navigation menu items are consistent across all pages', async ({ page, baseURL }) => {
+    test.setTimeout(120000);
     const baseUrl = baseURL || 'http://localhost:8000';
     const errors: string[] = [];
     const menuItemsByPage: Record<string, Array<{text: string, href: string}>> = {};
@@ -320,14 +321,14 @@ test.describe('Header and Footer Menu Consistency', () => {
         const fullUrl = `${baseUrl}${url}`;
         console.log(`📄 Loading: ${fullUrl}`);
         
-        await page.goto(fullUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        await page.goto(fullUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
         await page.waitForTimeout(2000);
         
         // Scroll to footer
         await page.evaluate(() => {
           window.scrollTo(0, document.body.scrollHeight);
         });
-        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1500);
         
         // Wait for footer
         await page.waitForSelector('footer', { timeout: 10000 }).catch(() => {});

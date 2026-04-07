@@ -491,6 +491,7 @@
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
 </script>
+    <link href="../../css/cart.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -525,69 +526,10 @@
 <nav class="post-navigation"><div class="nav-item nav-prev"><a class="nav-link" href="../the-heart-of-brazilian-cacao-bahia-and-amazon-origins/">← <span class_="nav-label">The Heart of Brazilian Cacao: Bahia and Amazon Origins</span></a></div><div class="nav-item nav-next"><a class="nav-link" href="../the-joy-of-cacao-circles-connections-and-community/"><span class_="nav-label">The Joy of Cacao Circles: Connections and Community</span> →</a></div></nav><a class="back-link" href="../../index.html">← Back to Home</a>
 </article>
 </main>
-<div class="mobile-menu-overlay"></div><script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-        
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('active');
-                
-                if (overlay) {
-                    overlay.classList.toggle('active');
-                }
-                
-                // Prevent body scroll when menu is open
-                if (!isExpanded) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Close menu when clicking overlay
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-            
-            // Close menu when clicking a link
-            const menuLinks = mobileMenu.querySelectorAll('a');
-            menuLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            // Close menu on window resize if it becomes desktop view
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-    });
-    </script>
+<div class="mobile-menu-overlay"></div>
 <script src="../../js/config.js"></script>
+<script src="../../js/image-url-helper.js"></script>
+<script src="../../js/navigation.js"></script>
 <script src="../../js/universal-nav.js"></script>
 <footer id="contact">
 <div class="footer-content">
@@ -603,6 +545,7 @@
 <li><a href="../../blog/">Blog</a></li>
 <li><a href="../../index.html#gatherings">Gatherings</a></li>
 <li><a href="../../partners/index.html">Partners</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
 <li><a href="../../order-history/">Order History</a></li>
 <li><a href="mailto:community@agroverse.shop">Contact</a></li>
 </ul>
@@ -614,6 +557,5 @@
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
-<link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>

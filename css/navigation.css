@@ -266,8 +266,75 @@ nav {
 }
 
 
+/* Persistent cart in header on mobile (outside slide-out menu) */
+@media (min-width: 769px) {
+    .mobile-header-cart {
+        display: none !important;
+    }
+}
+
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
+    header nav {
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    header nav .logo {
+        margin-right: auto;
+    }
+
+    .mobile-header-cart {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        z-index: 1001;
+    }
+
+    .mobile-header-cart #cart-icon,
+    .mobile-header-cart .cart-icon {
+        background: var(--color-primary, #3b3333) !important;
+        border: none !important;
+        padding: 1rem !important;
+        cursor: pointer;
+        color: white !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 50% !important;
+        width: 56px !important;
+        height: 56px !important;
+        min-width: 56px !important;
+        min-height: 56px !important;
+        max-width: 56px !important;
+        max-height: 56px !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3) !important;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mobile-header-cart #cart-icon:hover,
+    .mobile-header-cart .cart-icon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(59, 51, 51, 0.4) !important;
+    }
+
+    .mobile-header-cart #cart-icon svg,
+    .mobile-header-cart .cart-icon svg {
+        width: 28px !important;
+        height: 28px !important;
+        stroke-width: 2.5;
+    }
+
+    .mobile-header-cart .cart-badge,
+    .mobile-header-cart #cart-badge {
+        background-color: var(--color-accent, #fefc8f) !important;
+        color: var(--color-primary, #3b3333) !important;
+        font-weight: 700;
+        border: 2px solid var(--color-primary, #3b3333) !important;
+    }
+
     .nav-links:not(.mobile-menu) {
         display: none !important;
     }
