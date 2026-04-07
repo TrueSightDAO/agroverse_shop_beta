@@ -8,6 +8,8 @@ delete scripts/youtube_token.json and re-authorize when prompted.
 
 Reads titles from scripts/youtube_videos.json ("title" field per basename).
 
+**Workflow:** Run after **`generate_video_transcript_blog_posts.py`** or any edit to **`youtube_videos.json`** so YouTube matches the blog (see **`agentic_ai_context/DOWNLOADS_MEDIA_TO_AGROVERSE.md`** §7 and end-to-end checklist). **OAuth:** requires **`youtube.force-ssl`**; on **`invalid_scope`** run **`youtube_oauth_reauthorize.py`** then retry.
+
 Usage (from agroverse_shop/):
   python3 scripts/youtube_update_video_titles.py --dry-run
   python3 scripts/youtube_update_video_titles.py --basename "Project 10-13_Full HD 1080p.MP4"
