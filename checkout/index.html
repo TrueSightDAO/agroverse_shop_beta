@@ -46,10 +46,13 @@ body {
   padding: 3rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: "form summary";
   gap: 3rem;
+  align-items: start;
 }
 
 .checkout-form-section {
+  grid-area: form;
   background: white;
   padding: 2rem;
   border-radius: 12px;
@@ -130,12 +133,32 @@ body {
 }
 
 .checkout-cart-section {
+  grid-area: summary;
   background: var(--color-bg-light);
   padding: 2rem;
   border-radius: 12px;
   height: fit-content;
   position: sticky;
   top: 100px;
+}
+
+.checkout-shipping-step {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e8e4df;
+}
+
+.checkout-shipping-step h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.checkout-shipping-step.is-loading #shipping-estimate {
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .checkout-cart-section h2 {
@@ -308,6 +331,9 @@ body {
 @media (max-width: 768px) {
   .checkout-container {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "summary"
+      "form";
     gap: 2rem;
   }
 
@@ -347,9 +373,20 @@ body {
 <div class="mobile-menu-overlay"></div>
 
 <div class="checkout-container">
+<div class="checkout-cart-section">
+<h2>Order Summary</h2>
+<div id="checkout-cart-items"></div>
+<div class="checkout-subtotal">
+<span>Subtotal:</span>
+<span id="checkout-subtotal">$0.00</span>
+</div>
+<p class="checkout-shipping-note checkout-shipping-note--summary" style="margin-top: 1rem; font-size: 14px; color: var(--color-text-light);">
+<strong>Shipping</strong> is calculated after you enter your delivery address below.
+</p>
+</div>
+
 <div class="checkout-form-section">
 <h2>Shipping Information</h2>
-
 
 <form id="checkout-form">
 <div class="form-group">
@@ -398,24 +435,19 @@ body {
 </div>
 </div>
 
+<div id="checkout-shipping-step" class="checkout-shipping-step" aria-live="polite">
+<h3>Shipping method</h3>
+<div class="checkout-shipping-note">
+<strong>Shipping:</strong> <span id="shipping-estimate">Enter your full address, then we will load rates here.</span>
+<div id="shipping-rates" style="margin-top: 0.5rem;"></div>
+</div>
+</div>
+
 <div id="checkout-errors" style="margin-bottom: 1rem;"></div>
 
 <button type="submit" id="checkout-submit" class="cta-button" disabled>Continue to Payment</button>
-<p id="checkout-submit-note" style="margin-top: 0.5rem; color: var(--color-text-light); font-size: 14px; font-style: italic;">Please select a shipping option above to continue</p>
+<p id="checkout-submit-note" style="margin-top: 0.5rem; color: var(--color-text-light); font-size: 14px; font-style: italic;">Complete your address above; then choose a shipping option to continue.</p>
 </form>
-</div>
-
-<div class="checkout-cart-section">
-<h2>Order Summary</h2>
-<div id="checkout-cart-items"></div>
-<div class="checkout-subtotal">
-<span>Subtotal:</span>
-<span id="checkout-subtotal">$0.00</span>
-</div>
-<div class="checkout-shipping-note">
-<strong>Shipping:</strong> <span id="shipping-estimate">Enter your address above to see shipping options</span>
-<div id="shipping-rates" style="margin-top: 0.5rem;"></div>
-</div>
 </div>
 </div>
 
