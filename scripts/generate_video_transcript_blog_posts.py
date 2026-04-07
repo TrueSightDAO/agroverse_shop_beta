@@ -18,6 +18,9 @@ otherwise WhatsApp/Facebook may show no preview if og:image 404s on production):
 This script runs **`sync_post_open_graph_images.py`** at the end so **`og:image`** matches blog cards. Re-run only that step if needed:
   python3 scripts/sync_post_open_graph_images.py
 
+After this script, run **`youtube_update_video_titles.py`** (dry-run, then apply) so live YouTube
+titles match **`youtube_videos.json`**—see **`agentic_ai_context/DOWNLOADS_MEDIA_TO_AGROVERSE.md`** §7.
+
 Transcripts: local ASR cleanup via transcript_publish_helpers, then optional Grok polish
 (≥40 words) when GROK_API_KEY is set or found in ../market_research/.env. Cache:
 scripts/transcript_grok_polish_cache.json

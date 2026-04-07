@@ -20,6 +20,7 @@ This repository contains sensitive credentials that should **NEVER** be committe
    - Contains access tokens and refresh tokens
    - **Action Required**: If this was ever committed, revoke and regenerate tokens
    - **Current Status**: ✅ Not tracked by Git (in `.gitignore`)
+   - **Regenerating (metadata + uploads):** Title updates use **`youtube.force-ssl`**. If you see **`invalid_scope`** or refresh errors when running **`youtube_update_video_titles.py`**, delete this file and run **`scripts/youtube_oauth_reauthorize.py`**, then retry. Full flow: **`agentic_ai_context/DOWNLOADS_MEDIA_TO_AGROVERSE.md`** §7 and checklist.
 
 4. **`js/config.js`**
    - Contains Google Places API key (public key, but should still be in environment variables)

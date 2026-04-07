@@ -15,6 +15,9 @@ Usage (from agroverse_shop/):
 By default only **story-grade** clips upload (≥ 45s and ≥ 80 words of transcript). Pass
 `--include-non-story` to also upload shorter/quieter files. Duplicates (`youtube_upload_recommended: false`)
 are always skipped.
+
+After new rows land in **youtube_videos.json**, run **`generate_video_transcript_blog_posts.py`**
+then **`youtube_update_video_titles.py`** so Studio titles match the manifest (**agentic_ai_context/DOWNLOADS_MEDIA_TO_AGROVERSE.md** checklist).
 """
 from __future__ import annotations
 
