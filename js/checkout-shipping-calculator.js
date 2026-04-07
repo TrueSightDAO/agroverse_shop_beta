@@ -27,7 +27,7 @@
     // Check if address is complete
     if (!shippingAddress || !shippingAddress.address || !shippingAddress.city || 
         !shippingAddress.state || !shippingAddress.zip) {
-      updateShippingDisplay(null, 'Enter your complete address above to see shipping options');
+      updateShippingDisplay(null, 'Enter your complete address to see shipping options');
       return;
     }
 
@@ -149,7 +149,7 @@
     }
     
     if (submitNote) {
-      submitNote.textContent = message || (enabled ? '' : 'Please select a shipping option above to continue');
+      submitNote.textContent = message || (enabled ? '' : 'Select a shipping option to continue.');
       submitNote.style.display = enabled ? 'none' : 'block';
     }
   }
@@ -160,9 +160,14 @@
   function updateShippingDisplay(rates, message) {
     var shippingEstimate = document.getElementById('shipping-estimate');
     var shippingRatesContainer = document.getElementById('shipping-rates');
+    var shippingStep = document.getElementById('checkout-shipping-step');
 
     if (!shippingEstimate || !shippingRatesContainer) {
       return;
+    }
+
+    if (shippingStep) {
+      shippingStep.classList.toggle('is-loading', message === 'Calculating shipping...');
     }
 
     if (message) {
@@ -172,11 +177,20 @@
       if (window.CheckoutShippingCalculator) {
         window.CheckoutShippingCalculator.setSelectedRate(null);
       }
-      updateSubmitButtonState(false, 'Please enter your address to see shipping options');
+      var disabledNote = message === 'Calculating shipping...'
+        ? 'Loading shipping options…'
+        : 'Complete your address to load shipping options.';
+      updateSubmitButtonState(false, disabledNote);
+      if (message === 'Calculating shipping...' && shippingStep && typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches) {
+        shippingStep.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
       return;
     }
 
     if (!rates || rates.length === 0) {
+      if (shippingStep) {
+        shippingStep.classList.remove('is-loading');
+      }
       shippingEstimate.textContent = 'No shipping options available';
       shippingRatesContainer.innerHTML = '';
       // Clear selected shipping option and disable submit button
@@ -199,6 +213,9 @@
     shippingEstimate.textContent = 'Select shipping option:';
     shippingEstimate.style.color = '';
     shippingEstimate.style.fontWeight = '';
+    if (shippingStep) {
+      shippingStep.classList.remove('is-loading');
+    }
 
     // Display selectable shipping options as radio buttons
     var ratesHtml = '<div class="shipping-options" style="margin-top: 0.75rem;">';
@@ -348,10 +365,10 @@
   // Initialize submit button as disabled
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-      updateSubmitButtonState(false, 'Please enter your address to see shipping options');
+      updateSubmitButtonState(false, 'Complete your address to load shipping options.');
     });
   } else {
-    updateSubmitButtonState(false, 'Please enter your address to see shipping options');
+    updateSubmitButtonState(false, 'Complete your address to load shipping options.');
   }
 
   // Store selected shipping rate
