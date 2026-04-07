@@ -8,6 +8,115 @@
 
   const config = window.AGROVERSE_CONFIG || {};
 
+  function removeLegacyMobileCartClones() {
+    document.querySelectorAll('#cart-icon-mobile').forEach(function(el) {
+      const li = el.closest('li');
+      if (li && li.parentElement) {
+        li.remove();
+      } else {
+        el.remove();
+      }
+    });
+  }
+
+  function ensureMobileHeaderCartHost(nav) {
+    let host = document.getElementById('mobile-header-cart');
+    if (host) {
+      return host;
+    }
+    const toggle = nav.querySelector('.mobile-menu-toggle');
+    if (!toggle) {
+      return null;
+    }
+    host = document.createElement('div');
+    host.id = 'mobile-header-cart';
+    host.className = 'mobile-header-cart';
+    nav.insertBefore(host, toggle);
+    return host;
+  }
+
+  /**
+   * Keeps #cart-icon in the nav row on desktop and in #mobile-header-cart on small screens.
+   * Lives here (not only navigation.js) so pages that include cart-ui without navigation.js stay consistent.
+   */
+  function repositionCartIcon() {
+    removeLegacyMobileCartClones();
+
+    const nav = document.querySelector('header nav');
+    const cartBtn = document.getElementById('cart-icon');
+    if (!nav || !cartBtn) {
+      return;
+    }
+
+    const mobileMenu = document.querySelector('.nav-links.mobile-menu') || document.querySelector('ul.mobile-menu');
+    const desktopNav = document.querySelector('header nav .nav-links:not(.mobile-menu)');
+    const targetNav = desktopNav || mobileMenu;
+    if (!targetNav) {
+      return;
+    }
+
+    if (!cartBtn.classList.contains('cart-icon')) {
+      cartBtn.classList.add('cart-icon');
+    }
+
+    const isDesktop = window.innerWidth > 768;
+
+    function detachCartButton() {
+      const host = document.getElementById('mobile-header-cart');
+      const parentLi = cartBtn.closest('li');
+      if (parentLi && parentLi.contains(cartBtn)) {
+        parentLi.removeChild(cartBtn);
+        if (!parentLi.textContent.trim() && parentLi.children.length === 0) {
+          parentLi.remove();
+        }
+      } else if (host && host.contains(cartBtn)) {
+        host.removeChild(cartBtn);
+      }
+    }
+
+    if (isDesktop) {
+      detachCartButton();
+
+      const li = document.createElement('li');
+      li.className = 'cart-icon-container';
+      li.appendChild(cartBtn);
+
+      const contactLink = targetNav.querySelector('a[href*="contact"], a[href*="Contact"], a[href="#contact"]');
+      if (contactLink) {
+        const contactLi = contactLink.closest('li');
+        if (contactLi) {
+          if (contactLi.nextSibling) {
+            targetNav.insertBefore(li, contactLi.nextSibling);
+          } else {
+            targetNav.appendChild(li);
+          }
+        } else {
+          targetNav.appendChild(li);
+        }
+      } else {
+        targetNav.appendChild(li);
+      }
+      return;
+    }
+
+    const toggle = nav.querySelector('.mobile-menu-toggle');
+    if (!toggle) {
+      return;
+    }
+
+    const host = ensureMobileHeaderCartHost(nav);
+    if (!host) {
+      return;
+    }
+
+    detachCartButton();
+    if (!host.contains(cartBtn)) {
+      host.appendChild(cartBtn);
+    }
+  }
+
+  window.AgroverseRepositionCart = repositionCartIcon;
+
   /**
    * Create cart icon HTML
    */
@@ -282,37 +391,10 @@
           targetNav.insertBefore(cartIconContainer, targetNav.firstChild);
         }
       }
-      
-      // Always ensure cart icon is in mobile menu with container class (for consistent mobile styling)
-      // Do this after a short delay to ensure mobile menu exists
-      setTimeout(function() {
-        const mobileMenu = document.querySelector('.nav-links.mobile-menu') || document.querySelector('ul.mobile-menu');
-        const cartIcon = document.getElementById('cart-icon');
-        
-        if (mobileMenu && cartIcon) {
-          // Check if cart icon is already in mobile menu
-          const cartIconInMobileMenu = mobileMenu.contains(cartIcon);
-          const existingContainer = mobileMenu.querySelector('.cart-icon-container');
-          
-          if (!existingContainer) {
-            if (cartIconInMobileMenu) {
-              // Cart icon is in mobile menu, wrap it in container
-              const cartIconLi = cartIcon.closest('li');
-              if (cartIconLi && !cartIconLi.classList.contains('cart-icon-container')) {
-                cartIconLi.classList.add('cart-icon-container');
-                // Move to beginning
-                mobileMenu.insertBefore(cartIconLi, mobileMenu.firstChild);
-              }
-            } else {
-              // Cart icon not in mobile menu, add it with container
-              const mobileCartContainer = document.createElement('li');
-              mobileCartContainer.className = 'cart-icon-container';
-              mobileCartContainer.innerHTML = createCartIcon();
-              mobileMenu.insertBefore(mobileCartContainer, mobileMenu.firstChild);
-            }
-          }
-        }
-      }, 100);
+    }
+
+    if (document.getElementById('cart-icon')) {
+      repositionCartIcon();
     }
 
     // Add cart sidebar to body if it doesn't exist
@@ -367,6 +449,7 @@
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(function() {
       setMobileViewportHeight();
+      repositionCartIcon();
     }, 100);
   });
 
@@ -374,6 +457,7 @@
   window.addEventListener('orientationchange', function() {
     setTimeout(function() {
       setMobileViewportHeight();
+      repositionCartIcon();
     }, 200);
   });
 

@@ -17,7 +17,7 @@ const TEST_PAGES = [
   '/shipments/agl4',
   '/shipments/agl8',
   '/partners',
-  '/blog',
+  '/blog/',
 ];
 
 test.describe('Cart Icon Consistency', () => {
@@ -367,72 +367,37 @@ test.describe('Cart Icon Consistency', () => {
           };
         });
 
-        // Test mobile view (375x667)
         await page.setViewportSize({ width: 375, height: 667 });
-        await page.waitForTimeout(1000); // Give time for responsive CSS to apply
+        await page.waitForTimeout(600);
 
-        // Trigger navigation.js to position cart icon (it runs on resize)
+        const mobileMenuToggle = page.locator('.mobile-menu-toggle');
+        if (await mobileMenuToggle.isVisible().catch(() => false)) {
+          const expanded = await mobileMenuToggle.getAttribute('aria-expanded');
+          if (expanded === 'true') {
+            await mobileMenuToggle.click();
+            await page.waitForTimeout(300);
+          }
+        }
+
         await page.evaluate(() => {
-          if (window.Navigation && typeof window.Navigation.positionCartIcon === 'function') {
+          if (typeof window.AgroverseRepositionCart === 'function') {
+            window.AgroverseRepositionCart();
+          } else if (window.Navigation && typeof window.Navigation.positionCartIcon === 'function') {
             window.Navigation.positionCartIcon();
           }
         });
-        await page.waitForTimeout(500);
+        await page.waitForTimeout(400);
 
-        // Check if mobile menu is open or cart icon is visible
-        const mobileMenuToggle = page.locator('.mobile-menu-toggle');
-        const isMobileMenuVisible = await mobileMenuToggle.isVisible();
-        
-        if (isMobileMenuVisible) {
-          // Open mobile menu to see cart icon
-          await mobileMenuToggle.click();
-          await page.waitForTimeout(1000); // Give time for menu to open and cart icon to be positioned
-          
-          // Trigger positioning again after menu opens
-          await page.evaluate(() => {
-            if (window.Navigation && typeof window.Navigation.positionCartIcon === 'function') {
-              window.Navigation.positionCartIcon();
-            }
-          });
-          await page.waitForTimeout(500);
-          
-          // Wait for cart icon container to be created (navigation.js should wrap it)
-          await page.waitForSelector('.cart-icon-container, #cart-icon', { timeout: 2000 }).catch(() => {});
-        }
+        const cartForMobile = page.locator('#cart-icon').first();
+        const inHeaderBar = await cartForMobile.evaluate((el) =>
+          Boolean(document.getElementById('mobile-header-cart')?.contains(el))
+        );
+        const hasHamburger = await mobileMenuToggle.isVisible().catch(() => false);
 
-        // Check for mobile cart icon - MUST be inside mobile menu for mobile styling to apply
-        const mobileMenu = page.locator('.nav-links.mobile-menu');
-        const cartIconInMobileMenu = mobileMenu.locator('#cart-icon, #cart-icon-mobile, .cart-icon');
-        const mobileCartExists = await cartIconInMobileMenu.count();
-        
-        // Debug: Check where cart icon actually is
-        const allCartIcons = await page.locator('#cart-icon, #cart-icon-mobile').all();
-        console.log(`  Debug: Found ${allCartIcons.length} cart icon(s) total`);
-        for (let i = 0; i < allCartIcons.length; i++) {
-          const info = await allCartIcons[i].evaluate(el => {
-            const navLinks = el.closest('.nav-links');
-            const isInMobileMenu = navLinks && navLinks.classList.contains('mobile-menu');
-            return {
-              parentClass: navLinks ? navLinks.className : 'no-nav-links',
-              isInMobileMenu: isInMobileMenu,
-              id: el.id
-            };
-          });
-          console.log(`    Cart icon ${i+1} (id="${info.id}"): parent="${info.parentClass}", inMobileMenu=${info.isInMobileMenu}`);
-        }
-        
-        // Use cart icon from mobile menu if available, otherwise fallback
-        const mobileCartIcon = mobileCartExists > 0 
-          ? cartIconInMobileMenu.first()
-          : page.locator('#cart-icon-mobile, #cart-icon, .cart-icon').first();
-        
-        const mobileStyles = mobileCartExists > 0 ? await mobileCartIcon.evaluate((el) => {
+        console.log(`  Debug: cart in #mobile-header-cart=${inHeaderBar}, hamburger=${hasHamburger}`);
+
+        const mobileStyles = await cartForMobile.evaluate((el) => {
           const computed = window.getComputedStyle(el);
-          // Debug: Check classes and IDs
-          const classes = el.className;
-          const id = el.id;
-          const parentClasses = el.closest('.nav-links')?.className || 'none';
-          console.log(`    Cart icon classes: "${classes}", id: "${id}", parent: "${parentClasses}"`);
           return {
             backgroundColor: computed.backgroundColor,
             borderRadius: computed.borderRadius,
@@ -441,53 +406,32 @@ test.describe('Cart Icon Consistency', () => {
             padding: computed.padding,
             color: computed.color,
           };
-        }) : null;
-        
-        if (!mobileStyles) {
-          // Fallback to regular cart icon if mobile-specific one doesn't exist
-          const fallbackIcon = page.locator('#cart-icon');
-          if (await fallbackIcon.count() > 0) {
-            const computed = await fallbackIcon.evaluate((el) => {
-              const styles = window.getComputedStyle(el);
-              return {
-                backgroundColor: styles.backgroundColor,
-                borderRadius: styles.borderRadius,
-                width: styles.width,
-                height: styles.height,
-                padding: styles.padding,
-                color: styles.color,
-              };
-            });
-            Object.assign(mobileStyles || {}, computed);
-          }
-        }
+        });
 
         console.log(`\n📱 ${url}:`);
         console.log(`   Desktop: bg=${desktopStyles.backgroundColor}, size=${desktopStyles.width}x${desktopStyles.height}`);
         console.log(`   Mobile:  bg=${mobileStyles?.backgroundColor || 'N/A'}, size=${mobileStyles?.width || 'N/A'}x${mobileStyles?.height || 'N/A'}`);
 
-        // On mobile, cart icon should have consistent styling (dark background, larger size)
-        // Check if mobile cart icon has the expected mobile menu styling
         if (mobileStyles) {
-          const expectedMobileBg = 'rgb(59, 51, 51)'; // var(--color-primary)
+          const expectedMobileBg = 'rgb(59, 51, 51)';
           const expectedMobileSize = '56px';
-          
-          // Check if cart icon is inside .cart-icon-container (required for mobile styling)
-          const isInContainer = await page.evaluate(() => {
-            const icon = document.querySelector('#cart-icon-mobile, .cart-icon-container #cart-icon, .cart-icon-container .cart-icon');
-            return icon && icon.closest('.cart-icon-container') !== null;
-          });
-          
-          if (!isInContainer) {
-            errors.push(`❌ ${url}: Mobile cart icon is not inside .cart-icon-container - mobile styling won't apply`);
+
+          if (hasHamburger && !inHeaderBar) {
+            errors.push(
+              `❌ ${url}: On mobile, #cart-icon should be inside #mobile-header-cart when the hamburger is present`
+            );
           }
-          
+
           if (mobileStyles.backgroundColor !== expectedMobileBg) {
-            errors.push(`❌ ${url}: Mobile cart icon background should be ${expectedMobileBg}, got ${mobileStyles.backgroundColor}. Is it inside .cart-icon-container?`);
+            errors.push(
+              `❌ ${url}: Mobile cart icon background should be ${expectedMobileBg}, got ${mobileStyles.backgroundColor}`
+            );
           }
-          
+
           if (mobileStyles.width !== expectedMobileSize || mobileStyles.height !== expectedMobileSize) {
-            errors.push(`❌ ${url}: Mobile cart icon size should be ${expectedMobileSize}x${expectedMobileSize}, got ${mobileStyles.width}x${mobileStyles.height}`);
+            errors.push(
+              `❌ ${url}: Mobile cart icon size should be ${expectedMobileSize}x${expectedMobileSize}, got ${mobileStyles.width}x${mobileStyles.height}`
+            );
           }
         } else {
           errors.push(`❌ ${url}: Mobile cart icon not found or not properly styled`);
