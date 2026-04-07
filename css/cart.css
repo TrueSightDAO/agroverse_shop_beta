@@ -35,9 +35,10 @@
   .nav-links.mobile-menu.active #cart-icon-mobile,
   .nav-links.mobile-menu.active li .cart-icon,
   .nav-links.mobile-menu.active li #cart-icon,
-  .nav-links.mobile-menu.active li #cart-icon-mobile {
+  .nav-links.mobile-menu.active li #cart-icon-mobile,
+  .mobile-header-cart .cart-icon,
+  .mobile-header-cart #cart-icon {
     /* Don't apply cart.css default styles - navigation.css will handle styling */
-    /* This prevents cart.css from overriding navigation.css mobile menu styles */
   }
 }
 
