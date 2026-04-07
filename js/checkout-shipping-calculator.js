@@ -43,12 +43,9 @@
     // Show loading
     updateShippingDisplay(null, 'Calculating shipping...');
 
-    // Prepare request
     var scriptUrl = config.googleScriptUrl;
-    if (!scriptUrl || scriptUrl.includes('YOUR_')) {
-      updateShippingDisplay(null, 'Shipping calculator not configured');
-      return;
-    }
+    var importerOrigin = config.shippingRatesApiOrigin;
+    var tryImporter = importerOrigin && String(importerOrigin).indexOf('YOUR_') === -1;
 
     // Calculate total weight from cart
     var totalWeightOz = 0;
@@ -69,35 +66,68 @@
     var packageWeightOz = baseBoxWeight + (perItemWeight * totalQuantity);
     totalWeightOz += packageWeightOz;
 
-    // Build URL with query parameters (GET request) - simplified payload
-    var params = new URLSearchParams();
-    params.append('action', 'calculateShippingRates');
-    params.append('environment', config.environment || 'production');
-    params.append('weightOz', totalWeightOz.toFixed(2));
-    if (shippingAddress) {
-      params.append('shippingAddress', JSON.stringify(shippingAddress));
+    function fetchRatesFromImporter(origin) {
+      var p = new URLSearchParams();
+      p.append('weightOz', totalWeightOz.toFixed(2));
+      p.append('environment', config.environment || 'production');
+      p.append('shippingAddress', JSON.stringify(shippingAddress));
+      var url = String(origin).replace(/\/?$/, '') + '/agroverse_shop/shipping_rates?' + p.toString();
+      return fetch(url, { method: 'GET' }).then(function(response) {
+        if (!response.ok) {
+          throw new Error('HTTP ' + response.status);
+        }
+        return response.json();
+      });
     }
-    
-    // Use GET request - simpler and no CORS preflight
-    fetch(scriptUrl + '?' + params.toString(), {
-      method: 'GET'
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      if (data.status === 'success' && data.rates && data.rates.length > 0) {
-        shippingRatesCache = data.rates;
-        lastAddressHash = addressHash;
-        updateShippingDisplay(data.rates);
-      } else {
-        updateShippingDisplay(null, data.error || 'Unable to calculate shipping rates');
-      }
-    })
-    .catch(function(error) {
-      console.error('Error calculating shipping:', error);
-      updateShippingDisplay(null, 'Error calculating shipping. Please try again.');
-    });
+
+    function fetchRatesFromGas(url) {
+      var params = new URLSearchParams();
+      params.append('action', 'calculateShippingRates');
+      params.append('environment', config.environment || 'production');
+      params.append('weightOz', totalWeightOz.toFixed(2));
+      params.append('shippingAddress', JSON.stringify(shippingAddress));
+      return fetch(url + '?' + params.toString(), { method: 'GET' }).then(function(response) {
+        return response.json();
+      });
+    }
+
+    var importerPromise = tryImporter
+      ? fetchRatesFromImporter(importerOrigin).catch(function(e) {
+          console.warn('Shipping rates (sentiment_importer / Edgar) failed, falling back to GAS:', e);
+          return null;
+        })
+      : Promise.resolve(null);
+
+    importerPromise
+      .then(function(data) {
+        if (data && data.status === 'success' && data.rates && data.rates.length > 0) {
+          shippingRatesCache = data.rates;
+          lastAddressHash = addressHash;
+          updateShippingDisplay(data.rates);
+          return null;
+        }
+        if (!scriptUrl || scriptUrl.includes('YOUR_')) {
+          updateShippingDisplay(null, (data && data.error) ? data.error : 'Shipping calculator not configured');
+          return null;
+        }
+        return fetchRatesFromGas(scriptUrl);
+      })
+      .then(function(gasData) {
+        if (!gasData) {
+          return;
+        }
+        if (gasData.status === 'success' && gasData.rates && gasData.rates.length > 0) {
+          shippingRatesCache = gasData.rates;
+          lastAddressHash = addressHash;
+          updateShippingDisplay(gasData.rates);
+        } else {
+          updateShippingDisplay(null, gasData.error || 'Unable to calculate shipping rates');
+        }
+      })
+      .catch(function(error) {
+        console.error('Error calculating shipping:', error);
+        updateShippingDisplay(null, 'Error calculating shipping. Please try again.');
+      });
   }
 
   /**

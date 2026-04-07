@@ -61,6 +61,9 @@
   // Just paste your deployment URL in both fields (or use the same one).
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec';
 
+  // Agroverse checkout shipping quotes: sentiment_importer on Edgar (EasyPost USPS, same logic as GAS). Falls back to GAS if unreachable.
+  const SHIPPING_RATES_API_ORIGIN = 'https://edgar.truesight.me';
+
   // Stripe Configuration
   // Note: Stripe keys should be in Google App Script, not here
   // This is just for reference
@@ -98,6 +101,7 @@
     isProduction: isProduction,
     baseUrl: baseUrl,
     googleScriptUrl: GOOGLE_SCRIPT_URL,
+    shippingRatesApiOrigin: SHIPPING_RATES_API_ORIGIN,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     facebookPixelId: FACEBOOK_PIXEL_ID,
     googleCustomerReviewsMerchantId: GOOGLE_CUSTOMER_REVIEWS_MERCHANT_ID,
