@@ -51,7 +51,7 @@
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   display: none;
   align-items: center;
@@ -135,7 +135,9 @@
 
 .cart-empty {
   text-align: center;
-  color: var(--color-text-light, #756F63);
+  color: var(--agroverse-small-print-color, #5a5349);
+  font-size: 1rem;
+  line-height: 1.55;
   padding: 2rem;
 }
 
@@ -169,12 +171,14 @@
 .cart-item-name {
   font-weight: 600;
   color: var(--color-primary, #3b3333);
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .cart-item-price {
-  color: var(--color-text-light, #756F63);
-  font-size: 14px;
+  color: var(--agroverse-small-print-color, #5a5349);
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .cart-item-controls {
@@ -216,9 +220,9 @@
 .cart-item-remove {
   background: none;
   border: none;
-  color: var(--color-text-light, #756F63);
+  color: var(--agroverse-small-print-color, #5a5349);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: underline;
   margin-left: auto;
   transition: color 0.3s;

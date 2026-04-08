@@ -194,13 +194,15 @@ body {
 .checkout-cart-item-name {
   font-weight: 600;
   color: var(--color-primary);
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.4;
   margin-bottom: 0.25rem;
 }
 
 .checkout-cart-item-quantity {
-  color: var(--color-text-light);
-  font-size: 12px;
+  color: #5a5349;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .checkout-cart-item-price {
@@ -224,9 +226,9 @@ body {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid #ddd;
-  font-size: 14px;
-  color: var(--color-text-light);
-  line-height: 1.5;
+  font-size: 15px;
+  color: #5a5349;
+  line-height: 1.55;
 }
 
 .checkout-shipping-note strong {
@@ -282,8 +284,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 14px;
-  color: var(--color-text-light);
+  font-size: 15px;
+  color: #5a5349;
 }
 
 .shipping-option-price {
@@ -293,7 +295,7 @@ body {
 }
 
 .shipping-option-delivery {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .cta-button {
@@ -380,7 +382,7 @@ body {
 <span>Subtotal:</span>
 <span id="checkout-subtotal">$0.00</span>
 </div>
-<p class="checkout-shipping-note checkout-shipping-note--summary" style="margin-top: 1rem; font-size: 14px; color: var(--color-text-light);">
+<p class="checkout-shipping-note checkout-shipping-note--summary" style="margin-top: 1rem; font-size: 15px; line-height: 1.55; color: #5a5349;">
 <strong>Shipping</strong> is calculated after you enter your delivery address below.
 </p>
 </div>
@@ -446,7 +448,7 @@ body {
 <div id="checkout-errors" style="margin-bottom: 1rem;"></div>
 
 <button type="submit" id="checkout-submit" class="cta-button" disabled>Continue to Payment</button>
-<p id="checkout-submit-note" style="margin-top: 0.5rem; color: var(--color-text-light); font-size: 14px; font-style: italic;">Complete your address above; then choose a shipping option to continue.</p>
+<p id="checkout-submit-note" style="margin-top: 0.5rem; color: #5a5349; font-size: 15px; line-height: 1.55; font-style: italic;">Complete your address above; then choose a shipping option to continue.</p>
 </form>
 </div>
 </div>

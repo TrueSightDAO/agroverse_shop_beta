@@ -446,3 +446,14 @@ nav {
     }
 }
 
+/**
+ * Small print / legal line in footer: many pages use inline
+ * font-size: 0.9rem; opacity: 0.8 — bump size & contrast for readability.
+ * Inline wins over normal rules; !important is intentional here.
+ */
+footer .footer-content p[style*="opacity: 0.8"][style*="font-size: 0.9rem"] {
+    font-size: 1.0625rem !important; /* ~17px at default 16px root */
+    opacity: 0.95 !important;
+    line-height: 1.55 !important;
+}
+
