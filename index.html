@@ -65,6 +65,9 @@
             --color-bg-light: #f7f7f7;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Open Sans', sans-serif;
+            /* CTA elevation (matches shipment-commerce-ux.css + product-card shadow) */
+            --agroverse-cta-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --agroverse-cta-shadow-hover: 0 6px 20px rgba(59, 51, 51, 0.16);
         }
         
         body {
@@ -520,13 +523,13 @@
             border-radius: 8px;
             transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
             margin-top: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--agroverse-cta-shadow);
             border: 2px solid var(--color-primary);
         }
         
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+            box-shadow: var(--agroverse-cta-shadow-hover);
             background-color: var(--color-secondary);
         }
         
@@ -534,11 +537,14 @@
             background-color: white;
             color: var(--color-primary);
             border: 2px solid var(--color-primary);
+            box-shadow: var(--agroverse-cta-shadow);
         }
         
         .cta-button.secondary:hover {
             background-color: var(--color-accent);
             border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--agroverse-cta-shadow-hover);
         }
         
         /* Featured Cacao Section */
@@ -606,12 +612,16 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            border: 2px solid var(--color-primary);
+            box-shadow: var(--agroverse-cta-shadow);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
             margin-top: 2rem;
         }
         
         .explore-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--agroverse-cta-shadow-hover);
             background-color: var(--color-secondary);
         }
         
@@ -732,13 +742,30 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            border: 2px solid var(--color-primary);
+            box-shadow: var(--agroverse-cta-shadow);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, border-color 0.3s, color 0.3s;
             margin-top: 2rem;
         }
         
         .shop-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--agroverse-cta-shadow-hover);
             background-color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .shop-button.shop-button--outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .shop-button.shop-button--outline:hover {
+            background-color: var(--color-accent);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
         }
         
         /* Farmers Section */
@@ -1405,7 +1432,7 @@
 </div>
 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
 <a class="shop-button" href="category/retail-packs/index.html">View All Retail Packs</a>
-<a class="shop-button" href="category/wholesale-bulk/index.html" style="background-color: transparent; border: 2px solid var(--color-primary); color: var(--color-primary);">View Wholesale Bulk</a>
+<a class="shop-button shop-button--outline" href="category/wholesale-bulk/index.html">View Wholesale Bulk</a>
 </div>
 </section>
 <!-- Farmers Section -->
@@ -1675,7 +1702,7 @@
 </div>
 </div>
 <div style="margin-top: 3rem;">
-<a class="shop-button" href="mailto:community@agroverse.shop?subject=Event Inquiry" style="display: inline-block; padding: 1rem 2.5rem; background-color: var(--color-primary); color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; border-radius: 5px; transition: background-color 0.3s;">Host Your Own Gathering</a>
+<a class="shop-button" href="mailto:community@agroverse.shop?subject=Event Inquiry">Host Your Own Gathering</a>
 </div>
 </section>
 <footer id="contact">
