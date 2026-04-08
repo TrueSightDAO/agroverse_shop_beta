@@ -1,5 +1,12 @@
 /* Commerce UX helpers for shipment landings + listing (used with index hero styles in index.html) */
 
+:root {
+    /* Align accent + solid CTAs with product-card elevation (index product-gallery) */
+    --agroverse-cta-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --agroverse-cta-shadow-hover: 0 6px 20px rgba(59, 51, 51, 0.16);
+    --agroverse-cta-outline: 2px solid var(--color-primary, #3b3333);
+}
+
 .shipment-hero-cta-row {
     display: flex;
     flex-wrap: wrap;
@@ -18,13 +25,14 @@
     color: var(--color-primary, #3b3333);
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid rgba(254, 252, 143, 0.9);
+    border: var(--agroverse-cta-outline);
+    box-shadow: var(--agroverse-cta-shadow);
     transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn-shipment-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--agroverse-cta-shadow-hover);
 }
 
 .btn-shipment-secondary {
@@ -87,12 +95,14 @@
     color: #fff;
     font-weight: 700;
     text-decoration: none;
+    border: 2px solid var(--color-primary, #3b3333);
+    box-shadow: var(--agroverse-cta-shadow);
     transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .btn-shipment-strip-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(59, 51, 51, 0.25);
+    transform: translateY(-2px);
+    box-shadow: var(--agroverse-cta-shadow-hover);
 }
 
 .btn-shipment-strip-secondary {
@@ -140,12 +150,14 @@
     color: #fff;
     font-weight: 700;
     text-decoration: none;
+    border: 2px solid var(--color-primary, #3b3333);
+    box-shadow: var(--agroverse-cta-shadow);
     transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .btn-shipment-mid:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(59, 51, 51, 0.22);
+    transform: translateY(-2px);
+    box-shadow: var(--agroverse-cta-shadow-hover);
 }
 
 section.content-section[id="shop"],
@@ -184,18 +196,18 @@ section.content-section[id="shop"],
     margin-top: 0;
 }
 
-.home-hero-cta-strip .hero-cta-primary {
-    box-shadow: 0 4px 14px rgba(59, 51, 51, 0.12);
-}
-
 .home-hero-cta-strip .hero-cta-secondary {
     background: transparent;
     color: var(--color-primary, #3b3333);
     border: 2px solid var(--color-primary, #3b3333);
+    box-shadow: var(--agroverse-cta-shadow);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .home-hero-cta-strip .hero-cta-secondary:hover {
     background: rgba(59, 51, 51, 0.06);
+    transform: translateY(-2px);
+    box-shadow: var(--agroverse-cta-shadow-hover);
 }
 
 .hero-cta-primary {
@@ -208,14 +220,14 @@ section.content-section[id="shop"],
     color: var(--color-primary, #3b3333);
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid rgba(254, 252, 143, 0.95);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    border: var(--agroverse-cta-outline);
+    box-shadow: var(--agroverse-cta-shadow);
     transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .hero-cta-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--agroverse-cta-shadow-hover);
 }
 
 .hero-cta-secondary {
