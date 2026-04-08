@@ -24,6 +24,11 @@ node_modules/
 # Large asset directories - exclude from Git
 assets/raw/
 assets/videos/
+# Hero video working files (full export, frames, WAV, transcripts); ship only assets/video/hero-landing-loop-720p-web.mp4
+assets/video/hero-source/
+
+# Python
+scripts/__pycache__/
 
 # Credentials and secrets - NEVER commit these!
 google-service-account.json

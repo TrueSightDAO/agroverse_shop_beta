@@ -191,6 +191,7 @@
             color: white;
             padding: 0;
             overflow: hidden;
+            background-color: #ffffff;
         }
         
         .hero-video {
@@ -207,6 +208,7 @@
             object-fit: cover;
             transition: transform 0.1s ease-out;
             will-change: transform;
+            background-color: #ffffff;
         }
         
         /* Scroll indicator */
@@ -1096,14 +1098,15 @@
                 padding: 0; /* Remove padding on mobile to eliminate extra space */
             }
             
+            /* cover: fills the hero on narrow viewports; contain caused grey letterboxing
+               above/below on iOS/WebKit (video layer ignores background-color there). */
             .hero-video {
-                object-fit: contain; /* Show full video without cropping */
+                object-fit: cover;
+                object-position: center center;
                 width: 100%;
                 height: 100%;
                 min-width: 100%;
                 min-height: 100%;
-                /* Center the video and reduce vertical space */
-                object-position: center center;
             }
             
             /* Reduce hero height on mobile to minimize letterboxing */
@@ -1182,7 +1185,7 @@
 <!-- Hero Section -->
 <section class="hero" id="home">
 <video autoplay="" class="hero-video" loop="" muted="" playsinline="" poster="assets/images/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg">
-<source src="https://video.wixstatic.com/video/0e2cde_e43e6687994b4d69bd1bfd671b910730/1080p/mp4/file.mp4" type="video/mp4"/>
+<source src="assets/video/hero-landing-loop-720p-web.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
         </video>
 <div class="scroll-indicator">Scroll to explore</div>
