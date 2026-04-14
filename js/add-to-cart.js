@@ -289,6 +289,9 @@
     });
   }
 
+  /** Called after dynamic markup (e.g. related PDP strip) injects more `.add-to-cart-btn` nodes. */
+  window.agroverseRefreshAddToCartButtons = checkInventoryAndUpdateButtons;
+
   /**
    * Initialize add to cart buttons
    */

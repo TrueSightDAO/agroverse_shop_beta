@@ -321,15 +321,19 @@
 
     productCards.forEach(card => {
       const addToCartBtn = card.querySelector('.add-to-cart-btn, button[data-product-id]');
+      let productId = null;
       if (addToCartBtn) {
-        const productId = addToCartBtn.getAttribute('data-product-id') ||
+        productId = addToCartBtn.getAttribute('data-product-id') ||
           addToCartBtn.dataset?.productId;
-        if (productId) {
-          if (!cardMap.has(productId)) {
-            cardMap.set(productId, []);
-          }
-          cardMap.get(productId).push(card);
+      }
+      if (!productId) {
+        productId = card.getAttribute('data-product-id') || card.dataset?.productId;
+      }
+      if (productId) {
+        if (!cardMap.has(productId)) {
+          cardMap.set(productId, []);
         }
+        cardMap.get(productId).push(card);
       }
     });
 
@@ -392,8 +396,10 @@
 
       const decorated = row.map((el, idx) => {
         const btn = el.querySelector('.add-to-cart-btn, button[data-product-id]');
-        const pid = btn &&
-          (btn.getAttribute('data-product-id') || btn.dataset?.productId);
+        const pid =
+          (btn && (btn.getAttribute('data-product-id') || btn.dataset?.productId)) ||
+          el.getAttribute('data-product-id') ||
+          el.dataset?.productId;
 
         let tier;
         let invSort = 0;
@@ -468,16 +474,20 @@
 
     productCards.forEach(card => {
       const addToCartBtn = card.querySelector('.add-to-cart-btn, button[data-product-id]');
+      let productId = null;
       if (addToCartBtn) {
-        const productId = addToCartBtn.getAttribute('data-product-id') || 
-                         addToCartBtn.dataset?.productId;
-        if (productId) {
-          productIds.push(productId);
-          if (!cardMap.has(productId)) {
-            cardMap.set(productId, []);
-          }
-          cardMap.get(productId).push(card);
+        productId = addToCartBtn.getAttribute('data-product-id') ||
+          addToCartBtn.dataset?.productId;
+      }
+      if (!productId) {
+        productId = card.getAttribute('data-product-id') || card.dataset?.productId;
+      }
+      if (productId) {
+        productIds.push(productId);
+        if (!cardMap.has(productId)) {
+          cardMap.set(productId, []);
         }
+        cardMap.get(productId).push(card);
       }
     });
 
