@@ -109,6 +109,30 @@ window.PRODUCTS = {
     category: 'retail',
     shipment: 'AGL2',
     farm: 'Fazenda Santa Ana, Bahia'
+  },
+  'organic-81-dark-chocolate-bar-50g-oscar-bahia-2024': {
+    productId: 'organic-81-dark-chocolate-bar-50g-oscar-bahia-2024',
+    productPageSlug: 'organic-81-dark-chocolate-bar-50g-oscar-bahia-2024',
+    name: "81% Organic Dark Chocolate Bar (50g) — Oscar's Farm, Bahia Brazil, 2024",
+    price: 10.00,
+    weight: 1.76, // 50g ≈ 1.76 oz (shipping calculation)
+    image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
+    stripePriceId: '',
+    category: 'retail',
+    shipment: 'AGL4',
+    farm: "Oscar's Farm, Bahia"
+  },
+  'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023': {
+    productId: 'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023',
+    productPageSlug: 'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023',
+    name: '81% Organic Dark Chocolate Bar (50g) — Fazenda Santa Ana, Bahia Brazil, 2023',
+    price: 10.00,
+    weight: 1.76,
+    image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
+    stripePriceId: '',
+    category: 'retail',
+    shipment: 'AGL2',
+    farm: 'Fazenda Santa Ana, Bahia'
   }
 };
 

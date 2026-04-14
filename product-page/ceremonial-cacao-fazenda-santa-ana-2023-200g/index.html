@@ -803,13 +803,17 @@ Perfect for those seeking a mild, smooth cacao experience with elegant floral no
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    renderTasteProfile();
+    requestAnimationFrame(function() {
+        requestAnimationFrame(renderTasteProfile);
+    });
 });
 
 // Taste Profile Visualization for AGL2 - Mild and Floral Profile
 function renderTasteProfile() {
     const container = document.getElementById('taste-profile-chart');
     if (!container || typeof d3 === 'undefined') return;
+    container.innerHTML = '';
+    try { d3.selectAll('.taste-tooltip--agl2').remove(); } catch (e) {}
     
     const data = {
         batchId: 'AGL2',
@@ -823,13 +827,14 @@ function renderTasteProfile() {
         }
     };
     
-    const containerWidth = container.clientWidth || container.offsetWidth || 500;
+    let containerWidth = container.getBoundingClientRect().width || container.clientWidth || container.offsetWidth || 0;
+    containerWidth = Math.max(containerWidth, 280);
     const isMobile = window.innerWidth <= 768;
     
     if (isMobile) {
         // Mobile: Horizontal Bar Chart
         const margin = { top: 20, right: 20, bottom: 40, left: 100 };
-        const width = Math.min(containerWidth - margin.left - margin.right, 400);
+        const width = Math.min(Math.max(containerWidth - margin.left - margin.right, 120), 400);
         const height = Object.keys(data.profiles).length * 50 + margin.top + margin.bottom;
         
         const svg = d3.select(container)
@@ -908,7 +913,7 @@ function renderTasteProfile() {
         // Desktop: Radial Chart
         const padding = 40;
         const maxWidth = 500;
-        const width = Math.min(maxWidth, containerWidth - (padding * 2));
+        const width = Math.max(240, Math.min(maxWidth, containerWidth - (padding * 2)));
         const height = width;
         const radius = width / 2 - padding;
         const centerX = width / 2;
@@ -922,7 +927,7 @@ function renderTasteProfile() {
         
         const tooltip = d3.select('body')
             .append('div')
-            .attr('class', 'taste-tooltip')
+            .attr('class', 'taste-tooltip taste-tooltip--agl2')
             .style('opacity', 0)
             .style('position', 'absolute')
             .style('background-color', 'rgba(0,0,0,0.7)')
