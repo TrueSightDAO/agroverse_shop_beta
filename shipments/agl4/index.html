@@ -1391,6 +1391,8 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
         function renderTasteProfile() {
             const container = document.getElementById('taste-profile-chart');
             if (!container || typeof d3 === 'undefined') return;
+            container.innerHTML = '';
+            try { d3.selectAll('.taste-tooltip--agl4').remove(); } catch (e) {}
             
             const data = {
                 batchId: 'AGL4',
@@ -1404,13 +1406,14 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 }
             };
             
-            const containerWidth = container.clientWidth || container.offsetWidth || 500;
+            let containerWidth = container.getBoundingClientRect().width || container.clientWidth || container.offsetWidth || 0;
+            containerWidth = Math.max(containerWidth, 280);
             const isMobile = window.innerWidth <= 768;
             
             if (isMobile) {
                 // Mobile: Horizontal Bar Chart
                 const margin = { top: 20, right: 20, bottom: 40, left: 100 };
-                const width = Math.min(containerWidth - margin.left - margin.right, 400);
+                const width = Math.min(Math.max(containerWidth - margin.left - margin.right, 120), 400);
                 const height = Object.keys(data.profiles).length * 50 + margin.top + margin.bottom;
                 
                 const svg = d3.select(container)
@@ -1489,7 +1492,7 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 // Desktop: Radial Chart
                 const padding = 40;
                 const maxWidth = 500;
-                const width = Math.min(maxWidth, containerWidth - (padding * 2));
+                const width = Math.max(240, Math.min(maxWidth, containerWidth - (padding * 2)));
                 const height = width;
                 const radius = width / 2 - padding;
                 const centerX = width / 2;
@@ -1503,7 +1506,7 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 
                 const tooltip = d3.select('body')
                     .append('div')
-                    .attr('class', 'taste-tooltip')
+                    .attr('class', 'taste-tooltip taste-tooltip--agl4')
                     .style('opacity', 0);
                 
                 const categories = Object.keys(data.profiles);
@@ -1604,7 +1607,10 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
             updateTreesPlanted();
             initializePage('agl4');
             setupHeroVideo();
-            renderTasteProfile();
+            // Defer chart render until layout gives #taste-profile-chart a non-zero width (fixes empty chart on first paint).
+            requestAnimationFrame(function() {
+                requestAnimationFrame(renderTasteProfile);
+            });
         });
         
         // Also update on page visibility change (when user returns to tab)
@@ -1617,70 +1623,6 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
 <div class="mobile-menu-overlay"></div>
 <!-- Shared Navigation JavaScript -->
 <script src="../../js/navigation.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-        
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('active');
-                
-                if (overlay) {
-                    overlay.classList.toggle('active');
-                }
-                
-                // Prevent body scroll when menu is open
-                if (!isExpanded) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Close menu when clicking overlay
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-            
-            // Close menu when clicking a link
-            const menuLinks = mobileMenu.querySelectorAll('a');
-            menuLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            // Close menu on window resize if it becomes desktop view
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-    });
-    </script>
-<script src="../../js/config.js"></script>
-<script src="../../js/universal-nav.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
