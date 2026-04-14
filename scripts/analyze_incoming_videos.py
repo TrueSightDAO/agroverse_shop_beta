@@ -28,6 +28,10 @@ Incremental runs (reuse transcript + frame hashes when file unchanged):
     --input ~/Downloads \\
     --output docs/incoming_videos_2026-04 \\
     --reuse-from docs/incoming_videos_2026-04/manifest.json
+
+**Important:** Each run rewrites **manifest.json** to **only** the files matched by `--glob`
+under `--input`. Narrow globs (e.g. a single series) **drop** other videos from the manifest unless
+you merge the JSON back into your full catalog afterward.
 """
 
 from __future__ import annotations

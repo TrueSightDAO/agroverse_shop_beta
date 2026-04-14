@@ -21,8 +21,12 @@ from googleapiclient.http import MediaFileUpload
 from googleapiclient.errors import HttpError
 import json
 
-# OAuth 2.0 scopes required for uploading videos
-SCOPES = ['https://www.googleapis.com/auth/youtube.upload']
+# OAuth 2.0 scopes — match youtube_batch_incoming.py / youtube_oauth_reauthorize.py
+# so scripts/youtube_token.json refreshes without invalid_scope when re-used across tools.
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube.force-ssl",
+]
 API_SERVICE_NAME = 'youtube'
 API_VERSION = 'v3'
 

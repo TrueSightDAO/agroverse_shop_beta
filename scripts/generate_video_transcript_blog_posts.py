@@ -67,6 +67,14 @@ BLOG_INDEX = REPO / "blog/index.html"
 LISTING_IMG = DEFAULT_OG_CARD_PATH
 
 BEAN_HUMAN_TITLE_LOWER: dict[str, str] = {
+    "bean to bliss episode 1.mp4": "Bean to Bliss — Episode 1",
+    "bean to bliss episode 2.mp4": "Bean to Bliss — Episode 2",
+    "bean to bliss episode 3.mp4": "Bean to Bliss — Episode 3",
+    "bean to bliss episode 4.mp4": "Bean to Bliss — Episode 4",
+    "bean to bliss episode 5.mp4": "Bean to Bliss — Episode 5",
+    "bean to bliss episode 6.mp4": "Bean to Bliss — Episode 6",
+    "bean to bliss episode 7.mp4": "Bean to Bliss — Episode 7",
+    "bean to bliss episode 11.mp4": "Bean to Bliss — Episode 11",
     "bean to bliss episode 9_full hd 1080p.mp4": "Bean to Bliss — Episode 9",
     "bean to bliss episode 10 - tiktok_full hd 1080p.mp4": "Bean to Bliss — Episode 10 (TikTok)",
     "bean to bliss episode 10 - tiktok_full hd 1081.mp4": "Bean to Bliss — Episode 10 (TikTok)",
@@ -91,6 +99,14 @@ MIN_STORY_DURATION_SEC = 45.0
 MIN_STORY_WORDS = 80
 
 BEAN_B2B_BASENAMES_LOWER = {
+    "bean to bliss episode 1.mp4",
+    "bean to bliss episode 2.mp4",
+    "bean to bliss episode 3.mp4",
+    "bean to bliss episode 4.mp4",
+    "bean to bliss episode 5.mp4",
+    "bean to bliss episode 6.mp4",
+    "bean to bliss episode 7.mp4",
+    "bean to bliss episode 11.mp4",
     "bean to bliss episode 9_full hd 1080p.mp4",
     "bean to bliss episode 10 - tiktok_full hd 1080p.mp4",
     "bean to bliss episode 10 - tiktok_full hd 1081.mp4",
@@ -274,6 +290,11 @@ def sync_youtube_mapping_titles(manifest_videos: list[dict], yt: dict[str, dict]
             yt[b]["title"] = youtube_snippet_title(
                 iframe_title_with_optional_section(BEAN10_PAGE_H1, "B2B ep 10 — TikTok part 2")
             )
+        elif re.fullmatch(r"bean to bliss episode (\d+)\.mp4", bl):
+            m = re.fullmatch(r"bean to bliss episode (\d+)\.mp4", bl)
+            assert m is not None
+            ep_n = int(m.group(1))
+            yt[b]["title"] = youtube_snippet_title(f"Bean to Bliss — Episode {ep_n} (video & transcript)")
         else:
             yt[b]["title"] = youtube_snippet_title(f"{final[b]} (video & transcript)")
 
@@ -514,6 +535,42 @@ def main() -> None:
     )
     write_post("bean-to-bliss-episode-9", html9)
 
+    # --- Bean to Bliss episodes 1–7 & 11 (lowercase exports; episode 8 omitted by editorial choice)
+    early_eps = (1, 2, 3, 4, 5, 6, 7, 11)
+    early_thumbs: dict[int, str | None] = {}
+    for ep in early_eps:
+        bn = f"bean to bliss episode {ep}.MP4"
+        row = by_basename(vids, bn)
+        if not row or bn not in yt:
+            raise SystemExit(f"Bean episode {ep}: missing manifest row or YouTube mapping ({bn})")
+        vid = yt[bn]["video_id"]
+        raw = row.get("transcript") or ""
+        cl = clean_transcript(raw)
+        disp = transcript_for_blog(raw, bn, locally_cleaned=cl, title_hint=f"Bean to Bliss — Episode {ep}")
+        h1_ep = f"Bean to Bliss — Episode {ep} (video & transcript)"
+        slug_ep = f"bean-to-bliss-episode-{ep}"
+        body_ep = (
+            youtube_embed(vid, h1_ep)
+            + '<h2 class="blog-transcript-heading">Transcript</h2>\n'
+            + transcript_to_html(disp)
+        )
+        thumb_ep = post_thumb_web(slug_ep, manifest_row=row, video_id=vid)
+        card_ep = thumb_ep or LISTING_IMG
+        html_ep = page_shell(
+            slug_ep,
+            f"Bean to Bliss — Episode {ep}",
+            description_from_transcript(disp)
+            or f"Video and full transcript: Bean to Bliss episode {ep} — field notes from the cacao groves.",
+            h1_ep,
+            body_ep,
+            BEAN_DISPLAY,
+            BEAN_ISO,
+            og_image=abs_site_url(card_ep),
+            og_card_site_path=card_ep,
+        )
+        write_post(slug_ep, html_ep)
+        early_thumbs[ep] = thumb_ep
+
     # --- Episode 10 (multi-clip)
     e10a = by_basename(vids, "Bean to Bliss episode 10 - TikTok_Full HD 1080p.MP4")
     e10b = by_basename(vids, "Bean to Bliss episode 10 - TikTok_Full HD 1081.MP4")
@@ -695,30 +752,52 @@ def main() -> None:
     YOUTUBE_MAP.write_text(json.dumps(yt, indent=2), encoding="utf-8")
     print(f"Synced YouTube mapping titles for {len([b for b in yt if b in {v['basename'] for v in vids}])} manifest-mapped videos.")
 
-    # --- Blog index cards: Bean first, then story (longest-first)
-    bean_cards = (
-        blog_card(
-            "bean-to-bliss-episode-12",
-            "Bean to Bliss — Episode 12 (transcript)",
-            "Video and full transcript: Bean to Bliss episode 12.",
-            BEAN_DISPLAY,
-            card_image=thumb12 or LISTING_IMG,
-        )
-        + blog_card(
-            "bean-to-bliss-episode-10",
-            "Bean to Bliss — Episode 10 — TikTok (transcript)",
-            "Embedded clips and transcripts for episode 10 exports and TikTok part 2.",
-            BEAN_DISPLAY,
-            card_image=thumb10 or LISTING_IMG,
-        )
-        + blog_card(
-            "bean-to-bliss-episode-9",
-            "Bean to Bliss — Episode 9 (transcript)",
-            "Video and full transcript: Bean to Bliss episode 9.",
-            BEAN_DISPLAY,
-            card_image=thumb9 or LISTING_IMG,
-        )
-    )
+    # --- Blog index cards: Bean series in episode order (1→12, skipping 8), then other transcript stories
+    bean_listing_order = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12]
+    bean_cards_parts: list[str] = []
+    for ep in bean_listing_order:
+        if ep in early_eps:
+            th = early_thumbs.get(ep) or LISTING_IMG
+            bean_cards_parts.append(
+                blog_card(
+                    f"bean-to-bliss-episode-{ep}",
+                    f"Bean to Bliss — Episode {ep} (transcript)",
+                    f"Video and full transcript: Bean to Bliss episode {ep}.",
+                    BEAN_DISPLAY,
+                    card_image=th or LISTING_IMG,
+                )
+            )
+        elif ep == 9:
+            bean_cards_parts.append(
+                blog_card(
+                    "bean-to-bliss-episode-9",
+                    "Bean to Bliss — Episode 9 (transcript)",
+                    "Video and full transcript: Bean to Bliss episode 9.",
+                    BEAN_DISPLAY,
+                    card_image=thumb9 or LISTING_IMG,
+                )
+            )
+        elif ep == 10:
+            bean_cards_parts.append(
+                blog_card(
+                    "bean-to-bliss-episode-10",
+                    "Bean to Bliss — Episode 10 — TikTok (transcript)",
+                    "Embedded clips and transcripts for episode 10 exports and TikTok part 2.",
+                    BEAN_DISPLAY,
+                    card_image=thumb10 or LISTING_IMG,
+                )
+            )
+        elif ep == 12:
+            bean_cards_parts.append(
+                blog_card(
+                    "bean-to-bliss-episode-12",
+                    "Bean to Bliss — Episode 12 (transcript)",
+                    "Video and full transcript: Bean to Bliss episode 12.",
+                    BEAN_DISPLAY,
+                    card_image=thumb12 or LISTING_IMG,
+                )
+            )
+    bean_cards = "".join(bean_cards_parts)
     refresh_blog_cards(bean_cards + "".join(story_cards))
 
     og_sync = _SCRIPT_DIR / "sync_post_open_graph_images.py"

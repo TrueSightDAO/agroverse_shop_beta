@@ -168,7 +168,6 @@
         priceParent.insertBefore(badge, nextSibling);
         badge.style.marginTop = '0.5rem';
         badge.style.display = 'block';
-        badge.style.marginBottom = '0';
       } else {
         // Price is in a link or other container, insert after it
         priceElement.parentElement.insertBefore(badge, priceElement.nextSibling);
@@ -202,6 +201,12 @@
           cardBody.appendChild(badge);
         }
       }
+    }
+
+    // Breathing room above Add to Cart / actions when the card has an actions row
+    if (badge.parentNode) {
+      const hasActions = card.querySelector('.product-card-actions');
+      badge.style.marginBottom = hasActions ? '1rem' : '0';
     }
 
     // Disable add-to-cart button if out of stock
