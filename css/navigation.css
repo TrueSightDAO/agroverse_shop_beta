@@ -3,8 +3,8 @@
  * Consistent navigation across all pages - desktop and mobile
  */
 
-/* Header — sticky so cart / menu stay reachable after add-to-cart without scrolling to top */
-header {
+/* Site chrome only — do not use bare `header` (article pages use <header class="blog-header"> for the title). */
+body > header {
     background-color: var(--color-bg, #ffffff);
     padding: 1.5rem 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -279,12 +279,12 @@ nav {
 
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
-    header nav {
+    body > header nav {
         justify-content: flex-start;
         gap: 0.5rem;
     }
 
-    header nav .logo {
+    body > header nav .logo {
         margin-right: auto;
     }
 
@@ -345,17 +345,17 @@ nav {
     
     /* Ensure cart icon gets mobile styling when visible on mobile screens */
     /* Target cart icon anywhere in header when mobile menu is the active navigation */
-    header nav .cart-icon,
-    header nav #cart-icon,
-    header nav #cart-icon-mobile {
+    body > header nav .cart-icon,
+    body > header nav #cart-icon,
+    body > header nav #cart-icon-mobile {
         /* Only apply mobile menu styling if inside mobile menu or when mobile menu is visible */
     }
     
     /* When mobile menu is active/open, style cart icon consistently */
     .nav-links.mobile-menu.active ~ * .cart-icon,
     .nav-links.mobile-menu.active ~ * #cart-icon,
-    body:has(.nav-links.mobile-menu.active) header nav .cart-icon,
-    body:has(.nav-links.mobile-menu.active) header nav #cart-icon {
+    body:has(.nav-links.mobile-menu.active) > header nav .cart-icon,
+    body:has(.nav-links.mobile-menu.active) > header nav #cart-icon {
         background: var(--color-primary, #3b3333) !important;
         border: none !important;
         padding: 1rem !important;
@@ -366,10 +366,9 @@ nav {
         box-shadow: 0 4px 12px rgba(59, 51, 51, 0.3) !important;
     }
     
-    body {
-        overflow-x: hidden;
-    }
-    
+    /* Do not set overflow-x on `body` — it breaks `position:sticky` on `body>header` in Chromium/WebKit.
+       Blog posts clip horizontal bleed on `main.blog-container` instead. */
+
     .mobile-menu-toggle {
         display: flex;
     }
@@ -422,9 +421,11 @@ nav {
         display: block;
     }
     
-    header {
+    body > header {
         padding: 1rem 1.5rem;
-        position: relative;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
     }
     
     .logo img {
@@ -437,7 +438,7 @@ nav {
 }
 
 @media (max-width: 480px) {
-    header {
+    body > header {
         padding: 0.75rem 1rem;
     }
     

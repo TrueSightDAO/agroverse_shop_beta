@@ -82,5 +82,9 @@
   "edge-and-node-house-of-web3": {
     "name": "Edge and Node, House of Web3",
     "location": "San Francisco, California"
+  },
+  "raven-things-collected": {
+    "name": "Raven Things Collected",
+    "location": "Los Angeles, California"
   }
 }
