@@ -96,6 +96,24 @@
         .secondary-button:hover { background-color: var(--color-primary); color: white; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0; }
         .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .pdp-media-block { margin: 2.5rem 0; }
+        .pdp-media-block > h2 { font-family: var(--font-heading); font-size: 1.65rem; color: var(--color-primary); margin-bottom: 0.75rem; }
+        .pdp-farm-videos-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; width: 100%; }
+        .pdp-farm-video-section h3 { font-family: var(--font-heading); font-size: 1.15rem; color: var(--color-primary); margin-bottom: 0.65rem; }
+        .pdp-farm-video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .pdp-farm-video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .pdp-farm-video-section p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.6; margin-top: 0.75rem; }
+        .taste-profile-section { margin: 2rem 0; padding: 2.5rem 1.5rem; background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(59, 51, 51, 0.05) 100%); border-radius: 16px; border: 2px solid rgba(139, 69, 19, 0.2); }
+        .taste-profile-section > h3 { margin-top: 0; margin-bottom: 1.25rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 1.65rem; }
+        .taste-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .taste-chart { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; overflow: visible; }
+        @media (max-width: 768px) {
+            .taste-profile-grid { grid-template-columns: 1fr !important; display: flex !important; flex-direction: column; gap: 2rem !important; }
+            .taste-description { order: 2; }
+            .taste-chart { order: 1; }
+            .taste-wheel { max-width: 100%; }
+            #taste-profile-chart { min-height: 200px; }
+        }
         .traceability-section { background: linear-gradient(135deg, rgba(59, 51, 51, 0.05) 0%, rgba(59, 51, 51, 0.02) 100%); border: 2px solid var(--color-primary); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
         .traceability-section h3 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 1rem; }
         footer { background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; }
@@ -162,7 +180,7 @@
 <div class="product-description">
 <p>This is a <strong>single-estate 81% dark chocolate bar</strong> (50g) made with <strong>81% cacao and 19% cane sugar</strong>, crafted by <a href="../../partners/kikis-cocoa/index.html" style="color: var(--color-primary); font-weight: 600;">Kirsten Ritschel (KiKi's Cocoa)</a> from cacao tied to <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); font-weight: 600;">Oscar's farm</a> in Bahia, Brazil.</p>
 <p style="margin: 1rem 0; padding: 1rem 1.25rem; background: var(--color-bg-light); border-left: 4px solid var(--color-primary); border-radius: 0 10px 10px 0;"><strong>Traceability &amp; impact.</strong> Each bar carries a <strong>unique QR code</strong>. Each bar sold <strong>plants a tree</strong> through Agroverse's tree-planting program.</p>
-<p>The lot behind this bar is documented on shipment <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); font-weight: 600;">AGL4</a>, including the <strong>English lab summary</strong>, original Portuguese lab PDF, and the interactive <strong>taste profile</strong> visualization for the underlying cacao.</p>
+<p>The lot behind this bar is documented on shipment <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); font-weight: 600;">AGL4</a> (English lab summary, original Portuguese lab PDF, and full paperwork). On this page you can watch the same farm films used on <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); font-weight: 600;">Oscar's farm page</a> and explore the <strong>AGL4 taste profile</strong> chart for the underlying cacao.</p>
 </div>
 <div class="product-details">
 <h3>Product Details</h3>
@@ -174,9 +192,39 @@
 </div>
 </div>
 </div>
+<div class="pdp-media-block">
+<h2>Oscar's farm &amp; cacao</h2>
+<p style="color: var(--color-text-light); margin-bottom: 1.25rem; max-width: 900px;">Two short films from the same farm story featured on <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); font-weight: 600;">Oscar's farm page</a> and aligned with shipment <a href="../../shipments/agl4/index.html" style="color: var(--color-primary); font-weight: 600;">AGL4</a>.</p>
+<div class="pdp-farm-videos-container">
+<div class="pdp-farm-video-section">
+<h3>Hear from Oscar: The family story</h3>
+<div class="pdp-farm-video-container">
+<iframe title="Oscar's farm — family story" src="https://www.youtube.com/embed/lh_dAXhE7xQ?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<p>Oscar on three generations of cacao wisdom and how his grandfather's vision still shapes the farm.</p>
+</div>
+<div class="pdp-farm-video-section">
+<h3>Witness the cacao selection process</h3>
+<div class="pdp-farm-video-container">
+<iframe title="Oscar's farm — cacao selection" src="https://www.youtube.com/embed/BI55aQ6B73U?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy"></iframe>
+</div>
+<p>How the team selects beans while keeping the quality standards passed down through generations.</p>
+</div>
+</div>
+</div>
+<div class="taste-profile-section">
+<h3>Taste profile (AGL4 lot)</h3>
+<div class="taste-profile-grid">
+<div class="taste-description">
+<p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1rem;">The cacao behind this bar maps to shipment <strong>AGL4</strong> from <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Oscar's farm</a>. The wheel summarizes the same sensory model used on the AGL4 shipment and ceremonial PDPs: deep chocolate and buttery smoothness, moderate earth, and a rich, full-bodied arc.</p>
+<p style="font-size: 0.98rem; line-height: 1.75; color: var(--color-text-light);">Hover segments (desktop) or scan the bar chart (mobile) to compare intensities. For lab PDFs and prior notice, use the shipment link below.</p>
+</div>
+<div id="taste-profile-chart" class="taste-chart"></div>
+</div>
+</div>
 <div class="traceability-section">
-<h3>Lab reports &amp; taste profile</h3>
-<p style="margin-bottom: 1rem;">For heavy-metal testing, the original lab PDF, and the AGL4 taste visualization, open the shipment page:</p>
+<h3>Lab reports &amp; full shipment file</h3>
+<p style="margin-bottom: 1rem;">For heavy-metal testing, the original lab PDF, and the complete AGL4 documentation set, open the shipment page:</p>
 <a class="cta-button" href="../../shipments/agl4/index.html">Open AGL4 shipment documentation</a>
 <a class="secondary-button" href="https://www.truesight.me/agroverse-shipments/agl4" rel="noopener noreferrer" target="_blank">View transparency ledger</a>
 </div>
@@ -231,6 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script src="../../js/config.js"></script>
 <script src="../../js/products.js"></script>
+<script src="../../js/related-pdp-section.js" defer></script>
 <script src="../../js/ga4-events.js"></script>
 <script src="../../js/product-page-tracking.js"></script>
 <script src="../../js/universal-nav.js"></script>
@@ -261,6 +310,29 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', displayInventory);
   else displayInventory();
 })();
+</script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="../../js/agroverse-taste-profile-chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function runChart() {
+    if (!window.AgroverseTasteProfileChart) return;
+    var el = document.getElementById('taste-profile-chart');
+    if (!el) return;
+    window.AgroverseTasteProfileChart.render(el, {
+      batchId: 'AGL4',
+      tooltipClass: 'taste-tooltip--bar81-oscar',
+      profiles: {
+        chocolate: { intensity: 9, notes: ['Deep Dark European', 'Intense'], color: '#8B4513' },
+        buttery: { intensity: 10, notes: ['Velvety', 'Wraps around tongue'], color: '#D4AF37' },
+        earth: { intensity: 5, notes: ['Woody', 'Mature trees'], color: '#6B4423' },
+        smooth: { intensity: 9, notes: ['Low acidity', 'Lingering finish'], color: '#C9A961' },
+        intensity: { intensity: 8, notes: ['Rich', 'Full-bodied'], color: '#5C4033' }
+      }
+    });
+  }
+  requestAnimationFrame(function() { requestAnimationFrame(runChart); });
+});
 </script>
 </body>
 </html>

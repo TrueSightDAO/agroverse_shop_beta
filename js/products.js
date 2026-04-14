@@ -4,6 +4,9 @@
  * 
  * NOTE: We use price_data in Stripe checkout (like sentiment_importer), so no need for pre-created Price IDs.
  * Products are created dynamically during checkout.
+ *
+ * relatedFamily: groups PDPs for js/related-pdp-section.js (merged with same-farm picks).
+ * productPageSlug: folder name under /product-page/ for this SKU’s PDP.
  */
 
 window.PRODUCTS = {
@@ -19,7 +22,8 @@ window.PRODUCTS = {
     stripePriceId: '', // Not needed - using price_data instead
     category: 'retail',
     shipment: 'AGL8',
-    farm: "Paulo's Farm, Pará"
+    farm: "Paulo's Farm, Pará",
+    relatedFamily: 'ceremonial-200g'
   },
   'taste-of-rainforest-caramelized-cacao-beans': {
     productId: 'taste-of-rainforest-caramelized-cacao-beans',
@@ -31,7 +35,8 @@ window.PRODUCTS = {
     stripePriceId: '', // Not needed - using price_data instead
     category: 'retail',
     shipment: 'AGL10',
-    farm: 'Capela Velha Fazenda'
+    farm: 'Capela Velha Fazenda',
+    relatedFamily: 'whole-cacao-retail'
   },
   'oscar-bahia-ceremonial-cacao-200g': {
     productId: 'oscar-bahia-ceremonial-cacao-200g',
@@ -43,7 +48,8 @@ window.PRODUCTS = {
     stripePriceId: '', // Not needed - using price_data instead
     category: 'retail',
     shipment: 'AGL4',
-    farm: "Oscar's Farm, Bahia"
+    farm: "Oscar's Farm, Bahia",
+    relatedFamily: 'ceremonial-200g'
   },
   '8-ounce-organic-cacao-nibs': {
     productId: '8-ounce-organic-cacao-nibs',
@@ -55,52 +61,62 @@ window.PRODUCTS = {
     stripePriceId: '', // Not needed - using price_data instead
     category: 'retail',
     shipment: 'AGL4',
-    farm: "Oscar's Farm, Bahia"
+    farm: "Oscar's Farm, Bahia",
+    relatedFamily: 'whole-cacao-retail'
   },
   
   // Wholesale Products
   'organic-criollo-cacao-beans-oscar-farm': {
     productId: 'organic-criollo-cacao-beans-oscar-farm',
+    productPageSlug: 'organic-criollo-cacao-beans-bahia-brazil-oscar-s-100-year-farm',
     name: 'Organic Criollo Cacao Beans - Oscar\'s 100-Year Farm (per kg)',
     price: 0, // Contact for pricing
     image: '/assets/images/products/oscars-farm.jpeg',
     stripePriceId: '', // Not needed - using price_data instead
     category: 'wholesale',
     shipment: 'AGL14',
-    farm: "Oscar's Farm, Bahia"
+    farm: "Oscar's Farm, Bahia",
+    relatedFamily: 'bulk-beans-wholesale'
   },
   'organic-hybrid-cacao-beans-jesus-da-deus': {
     productId: 'organic-hybrid-cacao-beans-jesus-da-deus',
+    productPageSlug: 'organic-hybrid-cacao-beans-jesus-da-deus-fazenda-bahia-per-kilogram',
     name: 'Organic Hybrid Cacao Beans - Jesus Da Deus Fazenda (per kg)',
     price: 0, // Contact for pricing
     image: '/assets/images/products/taste-of-rainforest.jpeg', // TODO: Update with correct image
     stripePriceId: '', // Not needed - using price_data instead
     category: 'wholesale',
     shipment: 'AGL13',
-    farm: "Vivi's Jesus Do Deus Farm, Itacaré"
+    farm: "Vivi's Jesus Do Deus Farm, Itacaré",
+    relatedFamily: 'bulk-beans-wholesale'
   },
   'organic-criollo-cacao-nibs-oscar-farm': {
     productId: 'organic-criollo-cacao-nibs-oscar-farm',
+    productPageSlug: 'organic-criollo-cacao-nibs-bahia-brazil-oscar-s-100-year-farm',
     name: 'Organic Criollo Cacao Nibs - Oscar\'s 100-Year Farm (per kg)',
     price: 0, // Contact for pricing
     image: '/assets/images/products/cacao-nibs.jpeg',
     stripePriceId: '', // Not needed - using price_data instead
     category: 'wholesale',
     shipment: 'AGL4',
-    farm: "Oscar's Farm, Bahia"
+    farm: "Oscar's Farm, Bahia",
+    relatedFamily: 'bulk-beans-wholesale'
   },
   'premium-organic-cacao-beans-la-do-sitio': {
     productId: 'premium-organic-cacao-beans-la-do-sitio',
+    productPageSlug: 'premium-organic-cacao-beans-brazilian-amazon-rainforest-la-do-sitio-far',
     name: 'Premium Organic Cacao Beans - La do Sitio Farm (per kg)',
     price: 0, // Contact for pricing
     image: '/assets/images/products/la-do-sitio-farm.jpg',
     stripePriceId: '', // Not needed - using price_data instead
     category: 'wholesale',
     shipment: 'AGL8',
-    farm: "Paulo's Farm, Pará"
+    farm: "Paulo's Farm, Pará",
+    relatedFamily: 'bulk-beans-wholesale'
   },
   'ceremonial-cacao-fazenda-santa-ana-2023-200g': {
     productId: 'ceremonial-cacao-fazenda-santa-ana-2023-200g',
+    productPageSlug: 'ceremonial-cacao-fazenda-santa-ana-2023-200g',
     name: 'Ceremonial Cacao – Fazenda Santa Ana, Bahia Brazil, 2023 (200g)',
     price: 25.00,
     weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
@@ -108,7 +124,8 @@ window.PRODUCTS = {
     stripePriceId: '', // Not needed - using price_data instead
     category: 'retail',
     shipment: 'AGL2',
-    farm: 'Fazenda Santa Ana, Bahia'
+    farm: 'Fazenda Santa Ana, Bahia',
+    relatedFamily: 'ceremonial-200g'
   },
   'organic-81-dark-chocolate-bar-50g-oscar-bahia-2024': {
     productId: 'organic-81-dark-chocolate-bar-50g-oscar-bahia-2024',
@@ -120,7 +137,8 @@ window.PRODUCTS = {
     stripePriceId: '',
     category: 'retail',
     shipment: 'AGL4',
-    farm: "Oscar's Farm, Bahia"
+    farm: "Oscar's Farm, Bahia",
+    relatedFamily: 'bar-81-50g'
   },
   'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023': {
     productId: 'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023',
@@ -132,7 +150,8 @@ window.PRODUCTS = {
     stripePriceId: '',
     category: 'retail',
     shipment: 'AGL2',
-    farm: 'Fazenda Santa Ana, Bahia'
+    farm: 'Fazenda Santa Ana, Bahia',
+    relatedFamily: 'bar-81-50g'
   }
 };
 
