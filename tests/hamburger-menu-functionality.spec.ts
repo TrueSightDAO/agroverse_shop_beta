@@ -288,8 +288,8 @@ test.describe('Hamburger Menu Functionality', () => {
           continue;
         }
 
-        // Click overlay to close menu
-        await overlay.click();
+        // Click the dimmed area left of the drawer; avoid blog headers and menu (narrow viewports).
+        await overlay.click({ position: { x: 15, y: 520 }, force: true });
         await page.waitForTimeout(800);
 
         // Check menu closed
