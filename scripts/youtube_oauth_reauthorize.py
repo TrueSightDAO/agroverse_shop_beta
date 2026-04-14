@@ -5,8 +5,9 @@ Start OAuth for YouTube Data API v3 with the scopes needed for uploads + metadat
 A browser window opens (or copy the URL from the terminal). Sign in with the channel
 owner account (e.g. admin@truesight.me) and approve access. Writes scripts/youtube_token.json.
 
-Scope: https://www.googleapis.com/auth/youtube.force-ssl  
-(same as youtube_update_video_titles.py; suffices for uploads if captions were consented separately).
+Scopes: **youtube.upload** + **youtube.force-ssl** — one consent for
+`upload_video_to_youtube.py`, `youtube_batch_incoming.py` (with captions), and
+`youtube_update_video_titles.py`.
 
 If you previously authorized with a narrower scope, delete youtube_token.json first:
 
@@ -31,7 +32,10 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CREDENTIALS_FILE = SCRIPT_DIR / "youtube_credentials.json"
 TOKEN_FILE = SCRIPT_DIR / "youtube_token.json"
 
-SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube.force-ssl",
+]
 
 
 def main() -> None:

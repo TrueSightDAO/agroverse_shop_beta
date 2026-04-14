@@ -90,6 +90,14 @@ window.PARTNERS_DATA = {
         location: 'Downtown Oakland, California',
         description: 'A luminous botanica sanctuary in Downtown Oakland, where Black Girl Magic blooms through shimmering crystals and ancestral whispers. Owned by Lilly Ayers, this Oakland gem stands as the city\'s first Black woman-owned crystal, metaphysical, and artisan botanica. As a partner venue, Queen Hippie Gypsy offers Agroverse ceremonial cacao, empowering women of color to reclaim their spiritual sovereignty while supporting regenerative agriculture and rainforest restoration.'
     },
+    'raven-things-collected': {
+        name: 'Raven Things Collected',
+        slug: 'raven-things-collected',
+        lat: 34.0764149,
+        lon: -118.2563339,
+        location: 'Los Angeles, California',
+        description: 'An Indigenous- and women-owned apothecary and boutique in Los Angeles (Echo Park), where neighbors discover botanical goods, curated treasures, and community warmth. Lyza connected with Agroverse after speaking with Gary about the mission, and Raven Things Collected now carries regenerative ceremonial cacao on Sunset Boulevard for locals who want to support smallholder farmers and rainforest restoration.'
+    },
     'sacred-earth-farms': {
         name: 'Sacred Earth Farms',
         slug: 'sacred-earth-farms',

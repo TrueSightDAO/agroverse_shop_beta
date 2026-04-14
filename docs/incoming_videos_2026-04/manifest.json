@@ -8732,6 +8732,50 @@
         {
           "t_sec": 59.0,
           "phash": "844d2de5ee84e535"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "ba35b4dfd0716824"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "cc0328dd6eabb82d"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "dd0e32f14b244b6e"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "928c1a957a1e6d7a"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "84004e3f4c7f7a6e"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "8f487d79e28d83d0"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "ecfa82e1626a7a34"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "fef280e1626b2ec8"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "fcf2818dc2687a6c"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "feca92a0c26e2b36"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "feeac6a0442c2f36"
         }
       ],
       "transcript": "So there's a lot of different trees growing around the Kakawa coconut growing in the plantation This one is the orange And this one is the lime tree And then you know there in the background you see like the banana trees So, yeah, so, come down Yeah Okay, here's just nothing Oh wow, special one Let's go, let's go Hmm Mmm This one Uh, you can try Uh, jambul Still, they're sweet, no? They're sweet Mmm Yeah, we're eating us So right now in the breaking process We're here's on the farm, break the pot Uh If I had the edge, that would be the edge Uh huh Oh look at this, Kakawa pot Oh, a whole batch of them Oh, wow Alright, pure, oh, right Okay, one serving of pure Kakawa coming right up Perfect",
@@ -9340,6 +9384,3002 @@
       "duplicate_reason": null,
       "youtube_upload_recommended": true,
       "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 1.MP4",
+      "basename": "bean to bliss episode 1.MP4",
+      "sha256": "857684e6ab6193ec5d1f839656f8f9f03f28c89b8543795906c5849b3149aad1",
+      "duration_sec": 119.2,
+      "width": 720,
+      "height": 406,
+      "video_codec": "h264",
+      "bit_rate": 2884198,
+      "container_size_bytes": 42974558,
+      "anchor_phashes": [
+        "c6c79e69b22622ce",
+        "964c9b929933639e",
+        "938ccbc3da699439",
+        "d3c30fe07a0ee236",
+        "d26596cbc31b6938"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "e53b5b640c1b32da"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "f51bcb64081bf09e"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "93cc8bdbd83126c6"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "933c72c6c2c70ecb"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "936dc6ce98c93934"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "932cc7cb98c9c939"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "932996d6ca9c8e99"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "86cd1a32d3c79533"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "86336cdccb94929e"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "92339ecccc636333"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "c3c54db298c7cc39"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "c6832338e63db3cc"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "c6c79e69b22622ce"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "c6c79e69b226638c"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "92c79a63b69e6464"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "92cd3464591de33b"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "c3862569e4cf496d"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "c36987b2c387c9c3"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "c66dc3c3cbc3498c"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "c369c3c39ac3cd94"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "c369c3c2dacf8992"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "c3a992cac9cfc586"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "c793c61a336cc68d"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "87869c664b1cc779"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "92cd96cd7238c593"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "9396cc3a71539c99"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "87e5c386965b3863"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "c761c78686ce9ac6"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "c761c7c696c6189e"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "c761c7c694c6983b"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "c661c7c69687c83b"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "c76961c69687c659"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "c6a5c7c692c3ca39"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "d63447c69ac3c719"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "933996b6c6676832"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "921896d3d327647d"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "964c9b929933639e"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "86cc93d3d9f2c48c"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "9e8c96dad2669c25"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "9b9c869a46cd3d23"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "872596c6c7969ac3"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "873d96c6c392186f"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "c761d896c6c79896"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "c369383696c7c738"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "93939666723ccd91"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "869e939c38356f61"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "c69e93d3616161e3"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "d29236ec6fc63039"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "d2c333f2961c4ae5"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "d29806f3b313c796"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "d98e27581c33c73c"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "c33966b6da19306e"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "c36924b6d399606f"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "c26b9632c99c669b"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "966ce663297919cc"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "c72c6d5232d9c66c"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "839c1ac7f169652d"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "9384cbc3bc6d1669"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "93a44bc3d9695c39"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "9384cbcb587934b6"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "92a4c9cbce4d969c"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "938ccbc3db693461"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "93c1cbc7db693430"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "922ccbc39e3d3478"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "930c9bc6cb6d3433"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "930d8fc6db693069"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "926c4bc3cb4d961b"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "93cdcbc69969303c"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "c38e63d0cf37304d"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "c2c72fcc3633343c"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "d296217c728f613e"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "96cfc3c6930e6934"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "92c7c696c7793134"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "8325c6d2c2cf9dc9"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "963492c3c3c9cdc7"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "9634c3c3c3cd9c9c"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "c796e34e691c3619"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "92879f4936619d93"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "9397ca6c3265cc9a"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "9696c96b187b63c8"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "c7932e7872383336"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "c79343c69c6766c4"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "c79c19d2f363609c"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "c3c72ee07e0fc099"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "d20f0ff0730fe11c"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "d2870fe07c0f613e"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "d2c60fe0f807e13e"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "c6a69bd8f41703b4"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "c3e61bd8bc1343b4"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "c3360fccf44b42b9"
+        }
+      ],
+      "transcript": "So yeah, my little year arrived at the Kakao Coast. Half of the city was on top of the mountain and the other half of the cities and the bottom of the mountain. Check out the view. And like the whole place. So yeah, I'm so excited. Yeah, I'm so excited. You have to take a look at it. One other thing to note is that the view is to be the colony of Portugal. There's a lot of people. This could always have been like that. And this is like school and this is like school. You cannot be as young as you. Okay, she only has to struggle a long with a chance upon a big giant square. Yeah, it's very small. Alright, thank you some coins, which I'll need to use for the head and waist here. I get to exercise a lot for the plastic bags. That's my wallet when I go overseas. You know what? I don't know if I can get robbed of your plastic bag. I'm going to be out like traveling for you. See that last thing I got to do there. I'm going to land it across all of this. I can take a look at the wood terrace. Yeah, local dude actually is doing some fishing right now. I'll look at that. So this is the full map of the ferry network. On Thursday morning, we're going to hop onto the ferry here in Saladau. And then hop off the ferry here in Ithapadi. Alright, this is what you expect on a come on Thursday.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 11.MP4",
+      "basename": "bean to bliss episode 11.MP4",
+      "sha256": "9d940dc5775e95bef17b2b50871d5be20290a19ed3ad39ca51be58bf518afa64",
+      "duration_sec": 94.0,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6052023,
+      "container_size_bytes": 71111280,
+      "anchor_phashes": [
+        "c24ff57f498102f8",
+        "e8189d878697ae87",
+        "9a1ed655d4ce0ad4",
+        "e301e94d19d9e399",
+        "fbe70d32343d121a"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "ee477be1311c984a"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "ae477be1311c994a"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "ae477be1311c994a"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "ee477be1311c984a"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "ee477be1311c984a"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "cd2696584be664e9"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "e51d9c6390992dcd"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "fb0b8948cf8571e2"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "f928a46ec2a039fb"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "e92cb42ec2b47de0"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "e96ef46468914be2"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "f13ec82574ca27b2"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "d91b92c6c5e521b3"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "d21694c46ba367f2"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "8a0ff1759c4e62b1"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "812f7b5ac5a4798a"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "cd6ff010cbaf1c50"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "de2ae15d9caa5314"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "936eec11bfc20cb8"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "e286d56e0ac03daf"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "f283e56e08d02fad"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "cd47921632e94df1"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "d959c18bc9e626a6"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "c94cc1c5e4e733b2"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "ea6ae352f0f068b8"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "c055932e66dd0af3"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "e34fdc3233d540a6"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "e83ab5948c9d15b5"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "c919908e8e9cbee6"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "e80cdc1ce78331f6"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "e971b618cc931bd4"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "d92ea45bc3a60da9"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "9b4dec3251cd52d4"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "ff1dc94c482d2d94"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "fe32d2165b3a2aa1"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "e123d2700f8f6cce"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "e123d26c8f8d6c8e"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "e123d4788f8e6c8e"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "d256f4af789112e4"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "e2078978fe81619f"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "fa17852c9a932dcc"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "b50da9b478e93586"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "b33bc86e84d259c5"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "f836c36998846fe2"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "f836c76990846fe2"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "d256d1bdc22a2dc5"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "aa0ad355d5c92bd1"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "9a1ed655d4ce0ad4"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "911bb938596936da"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "d11bbb35d2ad2494"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "bf1e941ce4e30be0"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "9c1cb01ae3f347cc"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "d59693a9eaea03d0"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "cc4fd298999336d2"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "c446d29c9c9336d7"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "a326e4f2e2c363e8"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "a767d11495b52be0"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "b767da1a302469ea"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "8e0ecb63339958dc"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "c607c363319c5ade"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "cc0fcb6366b019d9"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "bd39d99b20bc86e0"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "b91b9f6d4a5b21c0"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "e60ecde53c1b42cc"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "f008e2f10f0e7bf1"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "bc2efa0e07e43c85"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "c91dd1c331354fd2"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "db01c0505e7a7bab"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "df0bc0d05e5452eb"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "db43c03e5eea2aa4"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "c30ba062bedf4ab8"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "f3138da780d878e3"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "e13f9f0e878551d0"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "e46fdd0e8a8331b1"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "a33edd0784d05c9e"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "b307cca780dc78e3"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "b10fcfa380587ea5"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "b00ecfa780587ea7"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "b00fcfa380587fa5"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "c62f39906a67053f"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "c62f39906a67053f"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "c66e39906e67453a"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "c66e39906e67057a"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "fbe70d32343d121a"
+        }
+      ],
+      "transcript": "Being the police, episode 11 Sure Previously we explored how Kakawa was slowly driving under the sun In this episode we visited another facility in the rainforest to explore how Kakawa is being processed before it's shipped to the USA For one cent of the south And we are here at Little bit This is the loading area where Kakawa is This is the roasting facility This is the machine for rushing Roll Kakawa tips here 3D view I see So this is like a photoreating And this is all I'm curious I know you're great Kakawa Nice Mm-hmm No, okay Alright, I'm a person in the ceremonial break out Oh, coming right up I'm coming right up Huh? Yeah Zero sugar I'm a person in the ceremonial break out",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 2.MP4",
+      "basename": "bean to bliss episode 2.MP4",
+      "sha256": "5dc0442a5575902e9174d95d2d980ea68bb8769f892327ef52925c455829a940",
+      "duration_sec": 149.167,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6307946,
+      "container_size_bytes": 117616912,
+      "anchor_phashes": [
+        "842ed43d6a976bd0",
+        "92c4c5823e3c787f",
+        "bd6d42928f1b5c61",
+        "ca0b1df4e08b4f6c",
+        "f0b1161fd4b539a1"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "c0cc3d331bcd683e"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "c0cc3d331bcd683e"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "c03d919fc26a976a"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "c03d919bc26a977a"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "e9b0747383175ca9"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "eab861678296d9c9"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "90ccfb5b4ce0f0ca"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "8081e07e5ee7c5dc"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "8080705e5fe3dd7a"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "80c07c5f4fa25c7b"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "9dea0635ea95691a"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "8e5b613996c5596c"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "c2583d3bc3b40ccf"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "852ee5b9639678d0"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "852ef6b560976ad0"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "842ed4396a976fd0"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "f0b485d8db8e9594"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "f4a58dd2d2ce9a82"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "e9eacab0c07fb08a"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "a5da9acae0c273b1"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "c5c390f15ace3535"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "c4d19ee31b67849c"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "c3dc9df026b38d84"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "afab616e88d76188"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "eaea7c328095d9ca"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "afaf61285252998f"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "96b6722c3a63ad85"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "f6e5c15ac8c1d586"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "ffe4c01b5f4985c0"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "f6aca81f5f590981"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "8e4c73b38cccab32"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "9b195cee475710d2"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "e5fa83945a70e385"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "efe09f85101167ea"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "a5d91324d66961f6"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "a7d1002dd6696bf4"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "9f1a7980d357313c"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "9e7863a3d79d5120"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "abe8714207d0dbcd"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "8fea704e05f0cf89"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "e285d7bf4820e19e"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "e7899483f163a653"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "bff19ca0e0855656"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "b8eb10c7e81c7ae1"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "9ac0c5932e3f387a"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "92c0c5923e3c71fb"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "87750a86777171b4"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "9bfee5433e3011c2"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "d6ea16992ac47751"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "c4c8bd9737c86466"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "c6ead6191b802d7d"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "d4ec97191ac02c7f"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "c0c4bd963fcd6862"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "95ede2953e846329"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "9de9029436cb3a57"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "d52a2a91b5d9b52a"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "d52a2a9037d4f33a"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "d57a2a0a3793955a"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "d56a692d3c94950f"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "913bc295315ab66b"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "e782f92862f6cab0"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "8d08876b74878df6"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "9bc2d6a4a939f4c1"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "94c498a9e8fec0de"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "bc868e1f457f0538"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "fef88187865c7d20"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "f4f981875e1e38a1"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "fca8818ff85879a1"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "ffa8d0e0290f7cb0"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "fea8c5c10a1f7cb0"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "ffa091c70b5f70a0"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "ffa881c00b1f78b5"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "ffaa91e02a1f70a1"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "c06fb51e1c4e276a"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "bd6f42928f4f54a0"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "b96d4796ce1a5825"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "aaea079dd8983563"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "bd755282cf1d34e0"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "bd2b5292cb4d1768"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "a9927e06b940ed37"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "82a45f699e47936c"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "82a5deebb8869329"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "bb5ac2d0e0c6077d"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "9329666e497c1fd0"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "a44a614235ad9ff6"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "9bbe33fba4443121"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "a44b477912a787c7"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "9c9c9c973c9fb00c"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "969e9d28e1a163f8"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "c080c0adebb73a7e"
+        }
+      ],
+      "transcript": "Alright, it's like 7 o'clock right now. Okay, let's see. Oh wow, there's like a rainbow over there. Ah, it's a sign for the universe. Is that a simple, some bring over to the carburetor? Oh, we got to. We got to. Okay. I guess the journey officially begins. The Michael Jackson watch over us. I buy something all. Well, I'm in it's little bit. The rainbow makes so bad and finally arrived. Oh, I got to get you. I've got you. Oh, come at the breakfast. Oh, I'm in a little lander. I'm not that famous at the port, but like some port like a few pounds away. So, after much fumbling around, managed to get myself onto a taxi with this taxi driver. Yeah, thanks for that company. Perfect. Alright, thanks for driving. Bye bye. I guess it's time to try. Right, just. Yeah, it kind of gives you a little, you know, cool. You go faster. I can't taste my bike. Ooh, it's not cool. Alright, it's like checking the luggage. It's not really cool. Yeah, no way. But, Karik, in the last minutes about this bus, it's just like the toilet, the minus. Ooh, you're impossible. You're just impossible. Let me out now in the hotel country. So, I'm finally arrived in the Karik. Alright, so, I managed to get bused like luggage from the bus. Yeah, that's it.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 3.MP4",
+      "basename": "bean to bliss episode 3.MP4",
+      "sha256": "d9a8b03b4722cecb329817c4fce34c3524242dcbe5a3f83c88e31f90788d6f66",
+      "duration_sec": 60.767,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 5532051,
+      "container_size_bytes": 42020539,
+      "anchor_phashes": [
+        "c0ccc51d976e955a",
+        "942ed33560d12fce",
+        "c56296f62cc40f7a",
+        "826a2be4fb86b44e",
+        "916e54117bc4bf91"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "f7666899154e58b2"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "f7666898154e5cb2"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "f7666898154e5cb2"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "c0dc959d936b945a"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "c0c9953f976ea44a"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "c06c9519eb4f655a"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "c0ccc51d976e955a"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "c0ccc51d976e955a"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "d52b8fd60a95856a"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "b195b7971ab8418b"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "b0d197969abc498b"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "f5f80ac2d11e4eb4"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "f5e00ac6d51a5ef0"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "817a046b75da2f9c"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "d57f2b6ad0c432d0"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "957feb6ae0c405d0"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "da3a9bc36afc4700"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "844fc8966ecc7dc1"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "9c3cc7193b9519e8"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "c96a05a86ad13fb5"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "d578cb933a9466a2"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "cd6ec1917bd03ba0"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "952e07877e852e87"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "952e068f7e862ccb"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "d5688dd72a9532b2"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "d76e8d912a857a32"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "d76687912a857a33"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "843b56b878b1c7cc"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "857b52f57a934e08"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "8d7e26d17b853e20"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "c46883f72ec43f4a"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "d22ed5c52b873ac2"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "d13e9ec529856eb0"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "f04ee2614bf0d1b3"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "f04ee6a4cbb4909b"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "f45eefa58bb01032"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "f45eeba58fb0101a"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "e07d4e9843c73d68"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "e07d4e9147ce3d60"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "e07e0d986ec731e1"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "f07e2f946b843c61"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "f07d0e93778d3c40"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "ae4b21c2f29eb45a"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "866a2da5cab7944b"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "bf7ba0e44093ee11"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "bd7ba0e44097eb11"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "bd7aa7a0c1936893"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "bf4eb0e588d76818"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "bf7b80e4c097e191"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "a66719987667215e"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "a66719987667215e"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "a66719987667215e"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "fbe70d32343d121a"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "ffe70d32343d021a"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "916e54117bc4bf91"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "916e54117bc4bf91"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "cd3932c6c93966c6"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "cc3133cecc3166ce"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "d93126ce993166ce"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "cd3932c6c93966c6"
+        }
+      ],
+      "transcript": "you you",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 4.MP4",
+      "basename": "bean to bliss episode 4.MP4",
+      "sha256": "5696774138754f68746aed1e3f779f544983f56da58abc56d6360b93c48aff92",
+      "duration_sec": 121.8,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6303193,
+      "container_size_bytes": 95966127,
+      "anchor_phashes": [
+        "9a9ed0c51f6b2925",
+        "8f1fbfb54160a883",
+        "f36f4ccc23933a22",
+        "c42fc99d6a943fc0",
+        "99668c1c439e373e"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "e83536ca13341afb"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "e83536ca13341afb"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "e83536ca13341afb"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "e83536ca13341afb"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "c09c959d936b955a"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "c09c9599936bb55a"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "c09c9599936bb55a"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "c06a95398b4e6f5a"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "c06a95398b4e6f5a"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "8f8f85c73e600e8d"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "d331d1c13afa2a95"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "c98dedc05b6b2ab0"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "9a9ed2c4976b2925"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "9a8ec0913f6bad85"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "c39fc1837e6038f4"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "fb9c91d1176b0ad0"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "fb9d94d1386a0ee0"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "812f8d897ba03bf1"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "9039f1f15b812a9f"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "885bcbb9eb0ad125"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "d91bb684dcf9010f"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "f231c1e3b293a4a7"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "f41ffeb4c1a41168"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "fd009bb6d8a39549"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "fb03ac9749b0d34c"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "d53a9b9312d46ac5"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "d6d2779e0da9a424"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "aabc7cc04e9d70a3"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "bddac798d4232171"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "9a67c295cc9ab5c8"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "e3e2b694ad2452e9"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "e1e2b6958da65a29"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "f2f59b42c6287c52"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "c2c2ca18fb323f27"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "c2c2ca18da32bf37"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "c2e2ca18da16af37"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "c6c2ca18db323f27"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "8e1fbf974160aa83"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "bf588308793d8c9e"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "9fd1cd1d22c194c7"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "f43f85c0f2d02bd1"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "f43f8140f8d82fa5"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "d3ecbc80623fb468"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "fff1c0c84f07cc28"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "8c1dcbe766ccaa03"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "8c4c7d6b6ec2942d"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "f220b07f0edde81c"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "f428b3661cc66bd8"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "b61aa7b6626c6c89"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "bf6b8cf05a2e4ac0"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "99af225be48f7122"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "8ca24f107cc75a3f"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "9ce31846b1d6e9b4"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "98e31c4638d6e9b6"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "98e7104639dce997"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "fbad14f5b4161ac0"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "fefb01e1a01c16c7"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "fefd10a5a0101dd7"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "fbe814f5831e5e80"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "983b44c6bb91764e"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "f8384ec623972727"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "9c38e1f170c03f4f"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "853b53443e913f6c"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "e833b7459aca1965"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "ec3192449ecb1d7c"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "ec3d92469ce90d5c"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "c4772762da1d05bc"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "e388baf2e296592c"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "e525c2e2d83d3669"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "c32395dc768e689a"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "d96d878669c63ce0"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "e0e3cf3471278587"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "dfd3212f2501d3ca"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "e3b8480b99db6cb1"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "d161e712cce94fa4"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "d466e712cc594ca7"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "d466e716dc590ca5"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "d56ce716dc5908a5"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "d56ce71adc5808a7"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "d46ce71adc192aa5"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "ccae73946a913fc0"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "ccae62956ad13fc0"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "9cc633d8233305fe"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "8cc733cc233345de"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "c07fc3976a843fc0"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "d43fc9956a843fc0"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "93954d6e9297f160"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "b39d6c6a93b76060"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "ee181162ec9dd762"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "ee181166ec99d762"
+        }
+      ],
+      "transcript": "Episode 4 And... Next year! A mission is to help bring the cacao nips from this farming cooperative into the US market. It does remind me a lot of the hippie colonies spread across the Southeast Asia. Back before I moved to the US. So, seems like it's a little early. Most of the shops are too close. Very nice, like the business of some countrymen. Yeah, don't get what they have. Very nice, like... Very nice, like... Very nice. Oh. Hey, plus me for the day. I'm gonna take a boat ride. Oh, it's not mine. What a check. It's not mine. Hey, why are you here? I wanted to do a boat ride. Okay. Alright, I'm gonna take a boat ride. And we have a ride that is a summer-of-ease of the coast. We're on the boat! Why does the riders keep warm after the boat ride? Alright guys, everyone is like coming here to pay tribute to the sunset at the moment. It's like really beautiful. Thank you so much for watching.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 5.MP4",
+      "basename": "bean to bliss episode 5.MP4",
+      "sha256": "81bb921d324c3d6ac9492d75d4ec7a1fdcfbb255cfcb01fa0d72bede2df8eb36",
+      "duration_sec": 118.3,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6137935,
+      "container_size_bytes": 90764715,
+      "anchor_phashes": [
+        "f039dcb19c5e482d",
+        "fc5d63c38190f4f0",
+        "833b908b0bd14fcf",
+        "966bdd3c329316e0",
+        "c66719986e67613a"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "abe65419672e189d"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "abe65419672e189d"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "abe65419672e189d"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "abe65419672e189d"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "abe65419672e189d"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "c518906fd87ae66a"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "c518906fd87ae66a"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "c518906fd87ae66a"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "c43b935a926aa76a"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "bb9cc6908f7a2835"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "a89cd7910e7a2c37"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "b899df918e7a2825"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "e039d4a39c5e187d"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "c499917b926ab74a"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "c0999577934a376a"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "c499917b926ab74a"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "c499917b926ab74a"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "a5de61582b36c987"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "e17a855562976b8c"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "a5de394827360dc7"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "e5c36b582136c98f"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "e5ca685f29360ec5"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "9893d15a1c7dac39"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "f00da6b9590ec735"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "8623d9fc7f9324c0"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "8326ccdd7b8726c1"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "a465e58126270fef"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "e7a782c1c72abc70"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "ffae84c0c20bad74"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "b9dba491da2d5c60"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "eba091961b597de0"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "aabc2587725a63a9"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "c41995db936e954a"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "c41995db936e954a"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "f371ace4881e9a9a"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "f3cbcc8ea525e013"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "f3d9acaca922c1b4"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "fe1f9bb4b4a0a481"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "e7885e32318f3ce1"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "ec835c25f79c60c3"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "ef815634b18e68e3"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "d0c19f42317f4f52"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "94d0af2b522f9e4a"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "9390c40f3b5774cb"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "a5bb0887f1723ca6"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "f4900fe2f0781fa5"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "84bf8a83f9789685"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "807b3a9970f12fd2"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "807560bd6fd332a6"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "ad464a953fd42a8b"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "f8ea83f871852cf0"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "e5ac9ce063c83ec5"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "84bfbba448d93ac4"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "adf7b2c94970418d"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "cef4c9291c765a4c"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "d5e4ca2f31655e48"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "850b938f62934cfb"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "893191866af31dbe"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "982a829e6fe031fd"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "803c9dc54cee61e7"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "8606d07b6d870bfc"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "9b7aa443749c3c87"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "de2dc99a24a23bd2"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "d2b381596ee42d95"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "c0aa9afe65c529e1"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "993eb4ce4f8538d0"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "bd23c0d05e9d3794"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "a10b9c97f4836bd4"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "9e3264ecd1766591"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "c7a780d46f427a6c"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "da89c8d82dcc35b5"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "d14a99de4c2f3453"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "c61ccf4c3f8c09e5"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "9d228595671c956f"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "9a469a430cb1cebf"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "d42d864f22fd84bc"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "8be89cb25290b3bb"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "b37a8207e2969787"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "be22b1379290df52"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "87d568318fcfbc20"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "ae9542671db85a0f"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "b6e2cd4d5e945518"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "b95ae660d35d5126"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "966bd93c32931ee0"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "917adc2ef29484e9"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "a0d0cf6f323e3929"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "a483d839263e3f39"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "abc2dc6962664a79"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "bca741273fbc8063"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "98da1237f2963636"
+        }
+      ],
+      "transcript": "peeing the police. Episode 5 and action! Back in Brazil again after a holiday weekend and we are in Ita Kare! Now it's time to grab Bows luggage and here he lives. The stop over has been really nice by his time to pack up. Check this out. I have to sweaty walk, going in the bus, yeah? Two hours later on the bus. On terms of Bows luggage from the bus. Oh no! Yeah, they all do not do this. Oh my gosh! Most things still seems under construction as I travel from the bus station to my room by the beach. I can still look to the market. So the whole thing looks very... I guess despite the incompleteness, everything still feels very rustic. It's got a charm to it. Look at this like the nice interplay between men and nature. And then this is the last one. It's gonna show me the rest of the whole side. Wow! Oh I guess like this is... So this is my room and there is Bows luggage.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 6.MP4",
+      "basename": "bean to bliss episode 6.MP4",
+      "sha256": "cc9cacce15f0874d7056559b8eb288464eeb369581d2a3f6d2c562534243bd5d",
+      "duration_sec": 127.667,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6198726,
+      "container_size_bytes": 98921345,
+      "anchor_phashes": [
+        "e622dcdf0b817a68",
+        "f632c2893fb47883",
+        "e5a49c591ace61f1",
+        "c273879f68cc3d90",
+        "846f19986e67251f"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "f63229cd1533435b"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "b6322bcd1533435d"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "b6322bcd1533435d"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "b6322bcd1533435d"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "b6322bcd1533435d"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "acac339a63dc6546"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "acac339a63dc6546"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "acac329b63dc6546"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "a48c331b7b2d7626"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "e5ac9a1a639e6d24"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "a48c13136bbc7766"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "a4a41b135b2f6f26"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "e9a90a96323d7b64"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "e622dcdf0b817a68"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "e528d8d81b974f58"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "ca9feacc7d024689"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "8e21c166ffd168d1"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "d86e86b0aac47bc9"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "f023a2e55ecf6486"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "e532a17c4fca64c6"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "e126ad784f9c3686"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "f065ce1f5aa836a2"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "f064cf495ea436b2"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "dbb6404894233fbd"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "c72d5a602c9f6b85"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "8ea7115c3f90788f"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "bbcc640b7a8554da"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "9de572202f87725a"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "e17ac81b42962fad"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "fc6fe504608b1bb4"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "d662d2f226e476a4"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "cb7be0d142b163e2"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "db5ae150b0b16b4e"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "e32bb1c670966ed0"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "e025e3587b912bd5"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "a424f1dd6b832bd1"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "9c6ec7362f806ad1"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "d1bdbd610af42e81"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "f632c0893db47e83"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "f632c2893fb55a81"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "b52ae9856be32694"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "b52aeb9c62e32694"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "c54591153bdb69a3"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "d386e5a16a856997"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "b47fc88536c06b95"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "f57ac08f3cc45b81"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "ddd8d337628529d0"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "d09bd6312cc72af1"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "c46ad9af0f802bd5"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "d56ad9af0b812ad1"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "d46e8e942ee92995"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "e1eacec54ad43c98"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "a9b9dbc548d227c4"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "e3e8cec740d03e9c"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "ebe8cc975b913980"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "cbe8cc13539135cb"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "caead816539138cf"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "ef68928f7aa43688"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "e378d28f3cb43682"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "fb38d08f2ea432d1"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "f938d0833ea433d9"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "f53ec8822fb23199"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "cce8a1f675d114a6"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "c5e49c591ace4bb1"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "c5e4b4531acc69f1"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "c5f49c531acc49e5"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "d7f49c580acd69b0"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "d2d69d4c27a63893"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "c2de9f5031ae2a95"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "d2d2974c27e2389b"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "f2d6974c25a63896"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "d2d6955825c63a97"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "c5f7951869d52e90"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "c5a7bc1a529e7a81"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "953a499d3ed42785"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "c12b816766d62fb8"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "8233d7ca0cc72e9e"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "863795d889d72c9c"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "873795da89932c9c"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "873795d98b852cd4"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "8737d5ca8d852cd8"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "983594fa2e8533b3"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "9032b1f82f8d36e6"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "9033b1d82f9726d6"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "9030b5fa0f9726d5"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "903595da0f9732d5"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "c8aaa29d31d57e91"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "c5acb09a7ad93b84"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "da73879e68c82e94"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "c273879e78c82e95"
+        }
+      ],
+      "transcript": "Bindoblies, Abbasol 6, Action! I've made arrangements of the president of the Viacoperate this, so that we can finally pass him the bags of samples. Hold on, duties! How are you? Good! I'm just off the carpet, it gives us something to cover. Everyone is here, Marcel, Matios, all on duties! We have all the 6 samples on the plate. That's not the way I saw it. Marcel put the 6 number 6 in the two. Marcel is saying that the number 6 there is a flavour of the two, which is what the... The means the way they toasted. Yeah. His opinion is too much. I'm not sure if he's going to put the bag in the bag, but he said that the only one that he does not like at all, after he ate, after he's come again. That's terrible full chocolate. Or until this opinion, number 1, the number 5 are completely discharged. The 4 of the guys are very good at it. Okay, number 4, 2 beers for me. Okay, the worst of all for all of the two was the number 5. Top was the number 3, he loves the flavour of the cocoa. The beef and cell. The number 6, the first for me in the morning, all of the two, yes, we're going to go to the radio. So we have obtained some samples for them. And the number 7, the flavour is perfect. I'm not hot deep. I'm not relaxing my face up.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/bean to bliss episode 7.MP4",
+      "basename": "bean to bliss episode 7.MP4",
+      "sha256": "c9524fea35ae9f8c8709f517e80e2cad32ac19b4f14f0f37e24b58be7873c400",
+      "duration_sec": 107.367,
+      "width": 720,
+      "height": 1280,
+      "video_codec": "h264",
+      "bit_rate": 6208580,
+      "container_size_bytes": 83324331,
+      "anchor_phashes": [
+        "ab69e269ad3fc042",
+        "832bbb39bb678444",
+        "a79f9e83890db470",
+        "9b8bc60fcc46f30c",
+        "c66719986e67053b"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "fafd251652c119a9"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "fafd251652c119a9"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "fafd251652c119a9"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "fafd251652c119a9"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "fafd251652c119a9"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "cb29a169da965d1c"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "cb29a169da965d19"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "db69a18bba505327"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "c929bb63a35c5a34"
+        },
+        {
+          "t_sec": 9.0,
+          "phash": "bf21e8cbb05c4b64"
+        },
+        {
+          "t_sec": 10.0,
+          "phash": "a93be1e5bb466610"
+        },
+        {
+          "t_sec": 11.0,
+          "phash": "ab6be929a21bc664"
+        },
+        {
+          "t_sec": 12.0,
+          "phash": "aeb4eb4fe0298d30"
+        },
+        {
+          "t_sec": 13.0,
+          "phash": "ab29ede1aa3a9544"
+        },
+        {
+          "t_sec": 14.0,
+          "phash": "a92bf5e1a9692a54"
+        },
+        {
+          "t_sec": 15.0,
+          "phash": "9f8f8747b71cc840"
+        },
+        {
+          "t_sec": 16.0,
+          "phash": "b7878f4d3b768240"
+        },
+        {
+          "t_sec": 17.0,
+          "phash": "ef6faec2ca08c470"
+        },
+        {
+          "t_sec": 18.0,
+          "phash": "e327af8f9e14d410"
+        },
+        {
+          "t_sec": 19.0,
+          "phash": "ef2fabc1ef06c400"
+        },
+        {
+          "t_sec": 20.0,
+          "phash": "ab29bccbe12c1e54"
+        },
+        {
+          "t_sec": 21.0,
+          "phash": "8b29a9eba3815c76"
+        },
+        {
+          "t_sec": 22.0,
+          "phash": "8f29e1cbbe405336"
+        },
+        {
+          "t_sec": 23.0,
+          "phash": "8d8daba3fb198446"
+        },
+        {
+          "t_sec": 24.0,
+          "phash": "8d8daee6e311d918"
+        },
+        {
+          "t_sec": 25.0,
+          "phash": "c135f97beb02a445"
+        },
+        {
+          "t_sec": 26.0,
+          "phash": "a129fb7be302aa15"
+        },
+        {
+          "t_sec": 27.0,
+          "phash": "8929f973eb0dae04"
+        },
+        {
+          "t_sec": 28.0,
+          "phash": "a12be969eb23ce14"
+        },
+        {
+          "t_sec": 29.0,
+          "phash": "ababab6bcb01f110"
+        },
+        {
+          "t_sec": 30.0,
+          "phash": "ab3bb735a9248d44"
+        },
+        {
+          "t_sec": 31.0,
+          "phash": "ab29ab69a1259676"
+        },
+        {
+          "t_sec": 32.0,
+          "phash": "830ba93dbc6f8714"
+        },
+        {
+          "t_sec": 33.0,
+          "phash": "ab2baec4cf0b8654"
+        },
+        {
+          "t_sec": 34.0,
+          "phash": "ab2baec6cb0b8654"
+        },
+        {
+          "t_sec": 35.0,
+          "phash": "aa2bad8dda929654"
+        },
+        {
+          "t_sec": 36.0,
+          "phash": "8e0d8e6ee667c303"
+        },
+        {
+          "t_sec": 37.0,
+          "phash": "8fabab2bad61e060"
+        },
+        {
+          "t_sec": 38.0,
+          "phash": "e8cb972a8f57d00c"
+        },
+        {
+          "t_sec": 39.0,
+          "phash": "afa79606955eca09"
+        },
+        {
+          "t_sec": 40.0,
+          "phash": "828f955dcd6eb250"
+        },
+        {
+          "t_sec": 41.0,
+          "phash": "bf978048cf07b670"
+        },
+        {
+          "t_sec": 42.0,
+          "phash": "8f8faf030f2cacd0"
+        },
+        {
+          "t_sec": 43.0,
+          "phash": "8f8faf0f171090ec"
+        },
+        {
+          "t_sec": 44.0,
+          "phash": "bba3a71f0651e684"
+        },
+        {
+          "t_sec": 45.0,
+          "phash": "a32d8da3935c9a1e"
+        },
+        {
+          "t_sec": 46.0,
+          "phash": "a309ada68c57d656"
+        },
+        {
+          "t_sec": 47.0,
+          "phash": "e71bab2b9c4d9814"
+        },
+        {
+          "t_sec": 48.0,
+          "phash": "b32da919ad30da35"
+        },
+        {
+          "t_sec": 49.0,
+          "phash": "a40b8fa69d0dce71"
+        },
+        {
+          "t_sec": 50.0,
+          "phash": "a6098be69b16cc57"
+        },
+        {
+          "t_sec": 51.0,
+          "phash": "ad4fcd26e2719914"
+        },
+        {
+          "t_sec": 52.0,
+          "phash": "ad4f8f24e2719354"
+        },
+        {
+          "t_sec": 53.0,
+          "phash": "ae8f87059e7ae860"
+        },
+        {
+          "t_sec": 54.0,
+          "phash": "af9f9480820bbb7c"
+        },
+        {
+          "t_sec": 55.0,
+          "phash": "ae8f87879e78e060"
+        },
+        {
+          "t_sec": 56.0,
+          "phash": "cbafaf0b2f40e0d0"
+        },
+        {
+          "t_sec": 57.0,
+          "phash": "ad2bafe9bd14c210"
+        },
+        {
+          "t_sec": 58.0,
+          "phash": "ae2baf67ad148644"
+        },
+        {
+          "t_sec": 59.0,
+          "phash": "8f0faf833e34e070"
+        },
+        {
+          "t_sec": 60.0,
+          "phash": "870faf879634e470"
+        },
+        {
+          "t_sec": 61.0,
+          "phash": "9f0fafc79614e050"
+        },
+        {
+          "t_sec": 62.0,
+          "phash": "a92babab8f169445"
+        },
+        {
+          "t_sec": 63.0,
+          "phash": "a929a3a9cf16965c"
+        },
+        {
+          "t_sec": 64.0,
+          "phash": "e92d2d6987b47846"
+        },
+        {
+          "t_sec": 65.0,
+          "phash": "b82f29788f31f286"
+        },
+        {
+          "t_sec": 66.0,
+          "phash": "812faf01bc976b34"
+        },
+        {
+          "t_sec": 67.0,
+          "phash": "9f69a30fb8976c20"
+        },
+        {
+          "t_sec": 68.0,
+          "phash": "8faf8948b7356861"
+        },
+        {
+          "t_sec": 69.0,
+          "phash": "a7ad8369ac4378b8"
+        },
+        {
+          "t_sec": 70.0,
+          "phash": "bee78f09e654c114"
+        },
+        {
+          "t_sec": 71.0,
+          "phash": "9bad8616d389dd24"
+        },
+        {
+          "t_sec": 72.0,
+          "phash": "9aa58517d3ccce45"
+        },
+        {
+          "t_sec": 73.0,
+          "phash": "bbe38c1693d0c74c"
+        },
+        {
+          "t_sec": 74.0,
+          "phash": "beb98c17c94cf214"
+        },
+        {
+          "t_sec": 75.0,
+          "phash": "bf97ce03c944f218"
+        },
+        {
+          "t_sec": 76.0,
+          "phash": "998be78ccc46f30c"
+        },
+        {
+          "t_sec": 77.0,
+          "phash": "98efe703c621b91c"
+        },
+        {
+          "t_sec": 78.0,
+          "phash": "bdd9e603cb24b838"
+        },
+        {
+          "t_sec": 79.0,
+          "phash": "af2bab2b0951d0f4"
+        },
+        {
+          "t_sec": 80.0,
+          "phash": "ababab2b3515d0e0"
+        },
+        {
+          "t_sec": 81.0,
+          "phash": "8dafaf231b13d0e0"
+        },
+        {
+          "t_sec": 82.0,
+          "phash": "af2faf878614d450"
+        },
+        {
+          "t_sec": 83.0,
+          "phash": "ab2baf8f86069654"
+        },
+        {
+          "t_sec": 84.0,
+          "phash": "bfc9a723c166b01c"
+        },
+        {
+          "t_sec": 85.0,
+          "phash": "adf38b25c34fa430"
+        },
+        {
+          "t_sec": 86.0,
+          "phash": "a9d38b25c649b678"
+        },
+        {
+          "t_sec": 87.0,
+          "phash": "8f6bab85d7129251"
+        },
+        {
+          "t_sec": 88.0,
+          "phash": "aa47a7b3c613d246"
+        },
+        {
+          "t_sec": 89.0,
+          "phash": "8dacce15d447b94c"
+        }
+      ],
+      "transcript": "Being the police, episode 7. And show! And we are going to drive through the Marback farm. So I'm here now in the car with all of the scooters. Yeah? I'm there, guys. See. Oh, there we are. Oh, I'm leaving. Oh, I'm leaving. Oh, I'm leaving. Oh, I'm leaving. Last year, I rode. I mean, I like on the Amp Cave. I think it's really good. Should we speed? Do you cheat with the one who's on the car? But you know, you cheat on the one who's on the car? Okay. Yeah. This is just a little bit too much. All right. Every year, we made it. And the farm is like across the river. No, there's the Marback farm, huh? Great driving. Yeah. We survived. Yeah. We live. We live. So now we think of the operator of the farm to come pick us up. And there he is. No. Good day. Yo. All right, till this, Marcel, say hi. Okay, right. You're a fairly. He's not going to talk to me for the other one. Ah. What do you want to have? What do you want to have? John. John. I'm only. Good day.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
     }
   ],
   "youtube_upload_candidates": [
@@ -9397,7 +12437,15 @@
     "fernentation_Full HD 1080p.MP4",
     "oscar_farm_video_Full HD 1080p.MP4",
     "rainforest stroll_Full HD 1080p.MP4",
-    "ray making chocolate_Full HD 1080p.MP4"
+    "ray making chocolate_Full HD 1080p.MP4",
+    "bean to bliss episode 1.MP4",
+    "bean to bliss episode 11.MP4",
+    "bean to bliss episode 2.MP4",
+    "bean to bliss episode 3.MP4",
+    "bean to bliss episode 4.MP4",
+    "bean to bliss episode 5.MP4",
+    "bean to bliss episode 6.MP4",
+    "bean to bliss episode 7.MP4"
   ],
   "skip_if_already_on_channel": "Compare filename + duration against youtube_videos.json / YouTube Studio; this script does not call YouTube API."
 }
