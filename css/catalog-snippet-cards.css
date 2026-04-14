@@ -1,0 +1,140 @@
+/* Farm / shipment product grids upgraded by js/catalog-snippet-upgrade.js */
+
+.items-grid.items-grid--commerce {
+  align-items: stretch;
+}
+
+/* Grid cells need a definite block axis so cards fill the row and footers align. */
+.items-grid.items-grid--commerce > .product-card.catalog-snippet-card {
+  min-height: 0;
+  height: 100%;
+}
+
+.product-card.catalog-snippet-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: stretch;
+  min-height: 0;
+  height: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(59, 51, 51, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card.catalog-snippet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+.catalog-snippet-card__link {
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.catalog-snippet-card__link:hover h3 {
+  text-decoration: underline;
+}
+
+.catalog-snippet-card__link img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  background: #f0ebe4;
+}
+
+.catalog-snippet-card__link h3 {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary, #3b3333);
+  line-height: 1.35;
+  margin: 0;
+  padding: 0.75rem 1rem 0.35rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  /* Reserve three lines so price/stock/actions line up across the row. */
+  min-height: calc(1.05rem * 1.35 * 3);
+}
+
+.catalog-snippet-card__body {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0 1rem 1rem;
+  gap: 0.35rem;
+}
+
+/* Inventory pill is injected as a sibling of .price (inventory-display.js). */
+.catalog-snippet-card__body > .inventory-badge {
+  flex-shrink: 0;
+}
+
+.catalog-snippet-card__context {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-light, #756f63);
+  line-height: 1.4;
+}
+
+.catalog-snippet-card__body .price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary, #3b3333);
+  margin: 0;
+}
+
+.catalog-snippet-card__actions {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: flex-end;
+  /* Match primary CTA height so wholesale copy lines up with Add to Cart on siblings. */
+  min-height: 3.1rem;
+}
+
+.catalog-snippet-card__actions .add-to-cart-btn {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: var(--color-primary, #3b3333);
+  color: #fff;
+}
+
+.catalog-snippet-card__actions .add-to-cart-btn:hover:not(:disabled):not(.out-of-stock) {
+  background: var(--color-secondary, #4d4d4d);
+}
+
+.catalog-snippet-card__wholesale-note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-light, #756f63);
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  .items-grid.items-grid--commerce {
+    grid-template-columns: 1fr;
+  }
+}

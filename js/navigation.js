@@ -33,6 +33,14 @@
       // Prevent body scroll when menu is open
       if (!isExpanded) {
         document.body.style.overflow = 'hidden';
+        // Reset panel scroll so the first link is inside the scrollable viewport (Playwright + short viewports).
+        mobileMenu.scrollTop = 0;
+        var firstMenuLink = mobileMenu.querySelector('a');
+        if (firstMenuLink && typeof firstMenuLink.scrollIntoView === 'function') {
+          requestAnimationFrame(function() {
+            firstMenuLink.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+          });
+        }
       } else {
         document.body.style.overflow = '';
       }

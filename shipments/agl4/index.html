@@ -35,6 +35,7 @@
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
 <!-- Standardized Cards CSS -->
 <link href="../../css/cards.css" rel="stylesheet"/>
+<link href="../../css/catalog-snippet-cards.css" rel="stylesheet"/>
 <link href="../../css/shipment-commerce-ux.css" rel="stylesheet"/>
 <style>
         :root {
@@ -1095,7 +1096,7 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
 <!-- Products from This Shipment -->
 <section id="shop" class="content-section" style="margin-top: 3rem;">
 <h2>Products from This Shipment</h2>
-<div class="items-grid">
+<div class="items-grid items-grid--commerce">
 <a class="item-card" href="../../product-page/oscar-s-bahia-ceremonial-cacao/index.html">
 <img alt="Ceremonial Cacao – Oscar's Farm" class="item-card-image" src="../../assets/images/products/oscars-farm.jpeg"/>
 <div class="item-card-body">
@@ -1121,6 +1122,16 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
 <div class="item-card-body">
 <h3>Organic Criollo Cacao Nibs (per kg)</h3>
 <div class="item-meta">Wholesale • From AGL4</div>
+<div class="item-links">
+<span class="item-link">View Product</span>
+</div>
+</div>
+</a>
+<a class="item-card" href="../../product-page/organic-81-dark-chocolate-bar-50g-oscar-bahia-2024/index.html">
+<img alt="81% Organic Dark Chocolate Bar (50g) — Oscar's Farm, Bahia 2024" class="item-card-image" src="../../assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg"/>
+<div class="item-card-body">
+<h3>81% Organic Dark Chocolate Bar (50g)</h3>
+<div class="item-meta">$10.00 • From AGL4</div>
 <div class="item-links">
 <span class="item-link">View Product</span>
 </div>
@@ -1391,6 +1402,8 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
         function renderTasteProfile() {
             const container = document.getElementById('taste-profile-chart');
             if (!container || typeof d3 === 'undefined') return;
+            container.innerHTML = '';
+            try { d3.selectAll('.taste-tooltip--agl4').remove(); } catch (e) {}
             
             const data = {
                 batchId: 'AGL4',
@@ -1404,13 +1417,14 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 }
             };
             
-            const containerWidth = container.clientWidth || container.offsetWidth || 500;
+            let containerWidth = container.getBoundingClientRect().width || container.clientWidth || container.offsetWidth || 0;
+            containerWidth = Math.max(containerWidth, 280);
             const isMobile = window.innerWidth <= 768;
             
             if (isMobile) {
                 // Mobile: Horizontal Bar Chart
                 const margin = { top: 20, right: 20, bottom: 40, left: 100 };
-                const width = Math.min(containerWidth - margin.left - margin.right, 400);
+                const width = Math.min(Math.max(containerWidth - margin.left - margin.right, 120), 400);
                 const height = Object.keys(data.profiles).length * 50 + margin.top + margin.bottom;
                 
                 const svg = d3.select(container)
@@ -1489,7 +1503,7 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 // Desktop: Radial Chart
                 const padding = 40;
                 const maxWidth = 500;
-                const width = Math.min(maxWidth, containerWidth - (padding * 2));
+                const width = Math.max(240, Math.min(maxWidth, containerWidth - (padding * 2)));
                 const height = width;
                 const radius = width / 2 - padding;
                 const centerX = width / 2;
@@ -1503,7 +1517,7 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
                 
                 const tooltip = d3.select('body')
                     .append('div')
-                    .attr('class', 'taste-tooltip')
+                    .attr('class', 'taste-tooltip taste-tooltip--agl4')
                     .style('opacity', 0);
                 
                 const categories = Object.keys(data.profiles);
@@ -1604,7 +1618,10 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
             updateTreesPlanted();
             initializePage('agl4');
             setupHeroVideo();
-            renderTasteProfile();
+            // Defer chart render until layout gives #taste-profile-chart a non-zero width (fixes empty chart on first paint).
+            requestAnimationFrame(function() {
+                requestAnimationFrame(renderTasteProfile);
+            });
         });
         
         // Also update on page visibility change (when user returns to tab)
@@ -1617,72 +1634,12 @@ Perfect for those seeking a traditional, rich chocolate experience with exceptio
 <div class="mobile-menu-overlay"></div>
 <!-- Shared Navigation JavaScript -->
 <script src="../../js/navigation.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const overlay = document.querySelector('.mobile-menu-overlay');
-        
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                mobileMenu.classList.toggle('active');
-                
-                if (overlay) {
-                    overlay.classList.toggle('active');
-                }
-                
-                // Prevent body scroll when menu is open
-                if (!isExpanded) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Close menu when clicking overlay
-            if (overlay) {
-                overlay.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            }
-            
-            // Close menu when clicking a link
-            const menuLinks = mobileMenu.querySelectorAll('a');
-            menuLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                });
-            });
-            
-            // Close menu on window resize if it becomes desktop view
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('active');
-                    if (overlay) {
-                        overlay.classList.remove('active');
-                    }
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-    });
-    </script>
 <script src="../../js/config.js"></script>
 <script src="../../js/universal-nav.js"></script>
-<script src="../../js/config.js"></script>
-<script src="../../js/universal-nav.js"></script>
+<script src="../../js/products.js"></script>
+<script src="../../js/inventory-service.js"></script>
+<script src="../../js/catalog-snippet-upgrade.js"></script>
+<script src="../../js/inventory-display.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>

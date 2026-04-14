@@ -45,6 +45,7 @@ MAP = {
     "agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_c446f62f5a2d42f89e4c0285f46b72f9_mv2.png",
     "the-joy-of-cacao-circles-connections-and-community": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.png",
     "understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.jpeg",
+    "kirsten-kikis-cocoa-hot-chocolate-single-estate": "/assets/partners/kikis-cocoa-kirsten.jpg",
 }
 
 

@@ -107,7 +107,20 @@ mkdir -p product-page/product-slug-name
 
 ---
 
-### 3. Google Merchant Center Setup
+### 3. Cross-list on farm and shipment pages (do not skip)
+
+PDP body copy may already link to the farm and shipment, but **discovery grids** are separate:
+
+- [ ] **`farms/<farm-slug>/index.html`** — In **“Products from This Farm”**, add an **`item-card`** for the new SKU (same HTML pattern as sibling products: `href` to `../../product-page/<folder>/index.html`, image, title, **`item-meta`** with price and **`From AGLn`**).
+- [ ] **`shipments/aglN/index.html`** — In **“Products from This Shipment”**, add the same **`item-card`** for that shipment id.
+
+**Why:** Shoppers browsing by farm or AGL expect every in-stock SKU tied to that origin to appear in the grid, not only on the homepage or in feeds.
+
+**AI / workspace context:** `agentic_ai_context/AGROVERSE_SHOP_NEW_SKU_WEB_CHECKLIST.md` (checklist + examples).
+
+---
+
+### 4. Google Merchant Center Setup
 
 **When adding product to Merchant Center feed:**
 
@@ -221,6 +234,10 @@ Verification:
 - [ ] URL loads in browser (no 404)
 - [ ] Rich Results Test passes
 - [ ] Added to sitemap.xml
+
+Farm & shipment grids:
+- [ ] **`item-card`** added on **`farms/<farm>/index.html`** (Products from This Farm)
+- [ ] **`item-card`** added on **`shipments/aglN/index.html`** (Products from This Shipment)
 ```
 
 ---
@@ -246,6 +263,6 @@ For reference, here are the correct URLs for existing products:
 
 ---
 
-**Last Updated:** 2025-01-30  
+**Last Updated:** 2026-04-14 (farm/shipment cross-listing section + template)  
 **Maintained by:** Development team  
-**Questions?** Check `docs/MERCHANT_CENTER_FIX.md` for troubleshooting
+**Questions?** Check `docs/MERCHANT_CENTER_FIX.md` for troubleshooting. **Farm/shipment grids:** `agentic_ai_context/AGROVERSE_SHOP_NEW_SKU_WEB_CHECKLIST.md`
