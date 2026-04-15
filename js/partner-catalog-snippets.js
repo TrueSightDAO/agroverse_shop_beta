@@ -283,7 +283,13 @@
     }
 
     section.appendChild(grid);
-    story.insertAdjacentElement('afterend', section);
+    // Place inventory after venue media when a gallery exists: story → place → shelf reads
+    // better than story → shelf → photos (commerce before you’ve “been there”).
+    var root =
+      (story.closest && story.closest('section.content-section')) || story.parentElement;
+    var gallery = root && root.querySelector('.partner-gallery');
+    var anchorEl = gallery || story;
+    anchorEl.insertAdjacentElement('afterend', section);
 
     if (window.InventoryDisplay && window.InventoryDisplay.initProductCards) {
       window.InventoryDisplay.initProductCards();
