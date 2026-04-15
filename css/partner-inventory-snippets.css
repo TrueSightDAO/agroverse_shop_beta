@@ -1,0 +1,51 @@
+/* Partner PDP — inventory-driven product snippets (see js/partner-catalog-snippets.js) */
+
+.partner-inventory-section {
+  padding-top: 0;
+}
+
+.partner-inventory-lede {
+  max-width: 820px;
+  margin: 0 0 1.5rem;
+  color: var(--color-text-light, #756f63);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.partner-inventory-grid {
+  margin-top: 1.25rem;
+}
+
+.partner-venue-inventory-pill {
+  display: inline-block;
+  margin: 0.35rem 0 0;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(254, 252, 143, 0.35);
+  border: 1px solid rgba(59, 51, 51, 0.12);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary, #3b3333);
+  line-height: 1.35;
+}
+
+.partner-venue-inventory-pill--muted {
+  background: rgba(59, 51, 51, 0.05);
+  font-weight: 500;
+}
+
+.partner-venue-only-card .catalog-snippet-card__actions {
+  min-height: 0;
+}
+
+a.partner-view-pdp-link {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: var(--color-primary, #3b3333);
+  text-decoration: underline;
+}
+
+a.partner-view-pdp-link:hover {
+  color: var(--color-secondary, #4d4d4d);
+}
