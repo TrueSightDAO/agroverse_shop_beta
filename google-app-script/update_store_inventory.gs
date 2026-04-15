@@ -5,7 +5,10 @@
  * Description: Calculates and updates store inventory for Agroverse SKUs based on:
  * - Main ledger "offchain asset location" sheet
  * - Managed ledgers from "Shipment Ledger Listing" (Balance tabs)
- * - Only counts inventory managed by store managers (Contributors contact information Column T = TRUE)
+ * - Only counts inventory at locations where Contributors Column T = TRUE (website / online-fulfillment
+ *   eligible stock). Partner venue inventory for PDPs is built separately (Python sync:
+ *   market_research/scripts/sync_agroverse_store_inventory.py) and includes any location mapped on
+ *   "Agroverse Partners" regardless of Column T.
  * 
  * Deployment URL: https://script.google.com/macros/s/AKfycbzcrCKpRv7ONKpDrrj6ZBTql_MHCLzkGTizvMgGfzT12Uc_SlObS_N5RbUwPqilAzdxoQ/exec
  * 
@@ -166,7 +169,7 @@ function getCurrencyToSKUMapping() {
 
 /**
  * Get inventory from main ledger "offchain asset location" sheet.
- * Only counts inventory where Column B (Location/Manager Name) matches a store manager.
+ * Only counts inventory where Column B (Location) matches a store manager (Column T = TRUE).
  * Data starts at row 5 (row 4 is header).
  *
  * @param {Array<string>} storeManagers - List of store manager names to filter by
@@ -278,7 +281,7 @@ function getManagedLedgerUrls() {
 /**
  * Get inventory from a managed ledger's Balance sheet.
  * Reads the "Balance" sheet in the ledger spreadsheet.
- * Only counts inventory where Column H (Location/Manager Name) matches a store manager.
+ * Only counts inventory where Column H (Location) matches a store manager (Column T = TRUE).
  *
  * @param {string} ledgerUrl - Resolved ledger URL (Google Sheets URL)
  * @param {Array<string>} storeManagers - List of store manager names to filter by

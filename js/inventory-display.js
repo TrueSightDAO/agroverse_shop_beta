@@ -89,6 +89,9 @@
   function updateProductCard(card, productId, inventory) {
     if (!card) return;
 
+    const inPartnerInventory =
+      typeof card.closest === 'function' && !!card.closest('.partner-inventory-section');
+
     // Check if we've already processed this card (prevent duplicate calls)
     if (card.dataset.inventoryProcessed === 'true') {
       // Still remove any existing badges in case they're stale
@@ -109,6 +112,10 @@
     // Also check if badge was added directly to card or actions section
     const allChildren = Array.from(card.querySelectorAll('*'));
     allChildren.forEach(el => {
+      // Partner PDP venue copy (partner-catalog-snippets.js); must not be stripped as "inventory UI".
+      if (el.classList && el.classList.contains('partner-venue-inventory-pill')) {
+        return;
+      }
       if (el.classList && (
           el.classList.contains('inventory-badge') || 
           el.classList.contains('inventory-display') ||
@@ -166,25 +173,25 @@
           nextSibling = nextSibling.nextSibling;
         }
         priceParent.insertBefore(badge, nextSibling);
-        badge.style.marginTop = '0.5rem';
+        badge.style.marginTop = inPartnerInventory ? '0.15rem' : '0.5rem';
         badge.style.display = 'block';
       } else {
         // Price is in a link or other container, insert after it
         priceElement.parentElement.insertBefore(badge, priceElement.nextSibling);
-        badge.style.marginTop = '0.5rem';
+        badge.style.marginTop = inPartnerInventory ? '0.15rem' : '0.5rem';
         badge.style.display = 'block';
       }
     } else if (cardBody && !actionsSection) {
       // Fallback: insert at end of card body (only if no actions section)
       cardBody.appendChild(badge);
-      badge.style.marginTop = '0.5rem';
+      badge.style.marginTop = inPartnerInventory ? '0.15rem' : '0.5rem';
       badge.style.display = 'block';
     } else if (priceElement) {
       // Last resort: insert after price wherever it is (but not in actions)
       const priceParent = priceElement.parentElement;
       if (priceParent && (!actionsSection || !actionsSection.contains(priceParent))) {
         priceParent.insertBefore(badge, priceElement.nextSibling);
-        badge.style.marginTop = '0.5rem';
+        badge.style.marginTop = inPartnerInventory ? '0.15rem' : '0.5rem';
         badge.style.display = 'block';
       }
     }
@@ -203,10 +210,19 @@
       }
     }
 
-    // Breathing room above Add to Cart / actions when the card has an actions row
+    // Breathing room above Add to Cart / actions when the card has an actions row.
+    // Partner PDPs place a venue pill between the warehouse badge and the CTA — do not
+    // leave a 1rem gap there or the stock row and “Roughly …” pill look vertically detached.
     if (badge.parentNode) {
       const hasActions = card.querySelector('.product-card-actions');
-      badge.style.marginBottom = hasActions ? '1rem' : '0';
+      const hasVenuePill = !!(cardBody && cardBody.querySelector('.partner-venue-inventory-pill'));
+      if (inPartnerInventory && hasActions && hasVenuePill) {
+        badge.style.marginBottom = '0.35rem';
+      } else if (hasActions) {
+        badge.style.marginBottom = '1rem';
+      } else {
+        badge.style.marginBottom = '0';
+      }
     }
 
     // Disable add-to-cart button if out of stock

@@ -30,10 +30,32 @@
 
   function normalizeImg(src) {
     if (!src) return '';
-    var s = String(src);
+    var s = String(src).trim();
     if (/^https?:\/\//i.test(s)) return s;
-    if (s.charAt(0) === '/') return '../..' + s;
+    if (s.indexOf('//') === 0) return 'https:' + s;
+    if (s.charAt(0) === '/') {
+      var host = typeof window !== 'undefined' && window.location && window.location.hostname;
+      var isLocal =
+        host === '127.0.0.1' ||
+        host === 'localhost' ||
+        host === '0.0.0.0' ||
+        (host && String(host).endsWith('.local'));
+      // Local static servers often lack /assets at ../../; use production host for root-relative paths.
+      if (isLocal) return 'https://www.agroverse.shop' + s;
+      return '../..' + s;
+    }
     return s;
+  }
+
+  /** Prefer snapshot / absolute URLs so local dev (e.g. 127.0.0.1) is not stuck on ../../assets 404s. */
+  function snippetImageSrc(item, product) {
+    var fromItem = item && item.imagePath ? String(item.imagePath).trim() : '';
+    var fromProd = product && product.image ? String(product.image).trim() : '';
+    if (/^https?:\/\//i.test(fromItem)) return fromItem;
+    if (/^https?:\/\//i.test(fromProd)) return fromProd;
+    if (fromItem) return fromItem;
+    if (fromProd) return fromProd;
+    return '';
   }
 
   function pdpHref(product) {
@@ -78,7 +100,7 @@
     pill.className =
       'partner-venue-inventory-pill' + (muted ? ' partner-venue-inventory-pill--muted' : '');
     pill.textContent =
-      'About ' + String(n) + ' in stock at this partner (in‑person pickup).';
+      'Roughly ' + String(n) + ' on the shelf here — staff can confirm what’s for sale.';
     var priceEl = body.querySelector('.price');
     if (priceEl && priceEl.nextSibling) {
       body.insertBefore(pill, priceEl.nextSibling);
@@ -98,7 +120,7 @@
     var img = document.createElement('img');
     img.alt = '';
     img.loading = 'lazy';
-    img.src = normalizeImg((product && product.image) || (item && item.imagePath) || '');
+    img.src = normalizeImg(snippetImageSrc(item, product));
     link.appendChild(img);
 
     var h3 = document.createElement('h3');
@@ -114,10 +136,10 @@
     var v = venueUnits(item);
     if (v > 0) {
       ctx.textContent =
-        'Available online while warehouse inventory lasts — this partner also holds shelf stock for walk‑ins.';
+        'Order from agroverse.shop when we have warehouse stock — and say hello at this partner for what’s on the shelf.';
     } else {
       ctx.textContent =
-        'Ships from Agroverse when in stock online. (No separate shelf count is published for this partner yet.)';
+        'We’ll ship this from agroverse.shop when it’s in stock online; ask on site what they have for sale.';
     }
     body.appendChild(ctx);
 
@@ -160,7 +182,7 @@
     var img = document.createElement('img');
     img.alt = '';
     img.loading = 'lazy';
-    img.src = normalizeImg((product && product.image) || (item && item.imagePath) || '');
+    img.src = normalizeImg(snippetImageSrc(item, product));
     link.appendChild(img);
 
     var h3 = document.createElement('h3');
@@ -174,7 +196,7 @@
     var ctx = document.createElement('p');
     ctx.className = 'catalog-snippet-card__context';
     ctx.textContent =
-      'Not available for online shipping right now. Visit this partner for limited in‑venue stock.';
+      'This one is meant to be part of your visit — stop in, talk with the team, and take it home from the counter.';
     body.appendChild(ctx);
 
     var priceEl = document.createElement('div');
@@ -187,8 +209,8 @@
     var v = venueUnits(item);
     pill.textContent =
       v > 0
-        ? 'About ' + String(v) + ' in stock at this partner (in person).'
-        : 'Ask in store for availability.';
+        ? 'Roughly ' + String(v) + ' on the shelf — staff can confirm what’s for sale.'
+        : 'Ask in store what they have for sale.';
     body.appendChild(pill);
 
     var actions = document.createElement('div');
@@ -233,13 +255,13 @@
     section.setAttribute('data-partner-inventory', '1');
 
     var h2 = document.createElement('h2');
-    h2.textContent = 'Inventory at this partner';
+    h2.textContent = 'When you visit';
     section.appendChild(h2);
 
     var lede = document.createElement('p');
     lede.className = 'partner-inventory-lede';
     lede.textContent =
-      'Counts below reflect how many units our ledger attributes to this venue (in‑person pickup). When the Agroverse shop is also shipping a SKU, you can add it to your cart; otherwise, visit the partner for limited shelf stock.';
+      'We route cacao to partners we love visiting ourselves. Use this list as a compass for what might be on shelf — say hello, see what they have for sale, and let the stop be part of the ritual. When agroverse.shop can also ship a cacao, you’ll see Add to cart; when it can’t, the welcome mat is here.';
     section.appendChild(lede);
 
     var grid = document.createElement('div');
