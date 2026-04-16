@@ -770,6 +770,41 @@
                 text-align: left;
             }
         }
+        /* Taste Profile Chart Styles */
+        .taste-profile-section {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .taste-profile-grid {
+                grid-template-columns: 1fr !important;
+                display: flex !important;
+                flex-direction: column;
+                gap: 2rem !important;
+            }
+
+            .taste-description {
+                order: 2;
+            }
+
+            .taste-chart {
+                order: 1;
+            }
+
+            #taste-profile-chart {
+                min-height: auto;
+                width: 100%;
+                max-width: 100%;
+                overflow: visible;
+                padding: 0;
+                margin-bottom: 0;
+            }
+
+            .taste-bar-chart {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
         /* QR Code Mobile Responsive Fix */
         @media (max-width: 768px) {
             [id^="qr-code-display-"] {
@@ -960,6 +995,26 @@
 <a href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" rel="noreferrer" style="color: var(--color-primary); text-decoration: underline; font-size: 14px;" target="_blank">View on Google Maps</a>
 </p>
 </div>
+<!-- Taste Profile Section -->
+<div class="taste-profile-section" style="margin: 3rem 0; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(59, 51, 51, 0.05) 100%); border-radius: 16px; border: 2px solid rgba(139, 69, 19, 0.2);">
+<h3 style="margin-top: 0; margin-bottom: 1.5rem; font-family: var(--font-heading); color: var(--color-primary); font-size: 32px;">Taste Profile</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;" class="taste-profile-grid">
+<div class="taste-description">
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+AGL2 from <a href="../../farms/fazenda-santa-ana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Fazenda Santa Ana</a> opens with a distinctly <strong>nutty</strong> profile and a clear <strong>bright lift</strong> that is expressive but not citrus-driven. The flavor is dynamic, moving in stages instead of staying flat.
+</p>
+<p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
+The mid-palate is <strong>super smooth</strong>, with no astringency and a grounded <strong>earthy core</strong>. As it develops, the profile shifts toward <strong>coffee and mocha</strong>, then closes with a short, clean finish. This is a gentle but evolving cacao that rewards slow tasting.
+</p>
+<p style="font-size: 1rem; line-height: 1.8; color: var(--color-text-light); font-style: italic;">
+Movement in flavor, high smoothness, and a short mocha finish.
+</p>
+</div>
+<div id="taste-profile-chart" class="taste-chart" style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; overflow: visible;">
+<!-- Taste profile chart will be rendered here -->
+</div>
+</div>
+</div>
 <!-- Products from This Shipment -->
 <section id="shop" class="content-section" style="margin-top: 3rem;">
 <h2>Products from This Shipment</h2>
@@ -1026,6 +1081,9 @@
 <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
 </div>
 </footer>
+<!-- D3.js for taste profile visualization -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="../../js/agroverse-taste-profile-chart.js"></script>
 <!-- Leaflet JS for maps -->
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -1122,6 +1180,23 @@
                 emailMessage.textContent = `Your bag (QR: ${params.qr_code}) = 1 tree planted. Get notified when your tree is planted in the Amazon Rainforest.`;
             }
         }
+
+        function renderTasteProfile() {
+            const container = document.getElementById('taste-profile-chart');
+            if (!container || !window.AgroverseTasteProfileChart) return;
+            window.AgroverseTasteProfileChart.render(container, {
+                batchId: 'AGL2',
+                tooltipClass: 'taste-tooltip--agl2-shipment',
+                profiles: {
+                    nutty: { intensity: 8, notes: ['Roasted', 'Structured'], color: '#A67C52' },
+                    bright: { intensity: 7, notes: ['Lifted', 'Non-citrus'], color: '#D8B26E' },
+                    earthy: { intensity: 6, notes: ['Grounded', 'Cacao-forward'], color: '#6B4423' },
+                    smooth: { intensity: 10, notes: ['No astringency', 'Silky'], color: '#C9A961' },
+                    mocha: { intensity: 7, notes: ['Coffee', 'Cocoa mocha'], color: '#5C4033' },
+                    finish: { intensity: 4, notes: ['Short', 'Clean close'], color: '#B39B82' }
+                }
+            });
+        }
         
         async function handleEmailSignup(event, shipmentId) {
             event.preventDefault();
@@ -1211,6 +1286,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateTreesPlanted();
             initializePage('agl2');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(renderTasteProfile);
+            });
         });
         
         // Also update on page visibility change (when user returns to tab)
