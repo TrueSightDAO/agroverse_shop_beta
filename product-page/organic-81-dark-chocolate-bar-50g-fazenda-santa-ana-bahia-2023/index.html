@@ -233,7 +233,7 @@
 <h3>Taste profile (AGL2 lot)</h3>
 <div class="taste-profile-grid">
 <div class="taste-description">
-<p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1rem;">The cacao behind this bar maps to shipment <strong>AGL2</strong> from <a href="../../farms/fazenda-santa-ana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Fazenda Santa Ana</a>. The chart mirrors the mild, floral-forward Santa Ana model used on the AGL2 shipment and ceremonial PDPs: jasmine-like florals, warm caramel, creamy texture, and a smooth, approachable finish.</p>
+<p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1rem;">The cacao behind this bar maps to shipment <strong>AGL2</strong> from <a href="../../farms/fazenda-santa-ana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Fazenda Santa Ana</a>. It opens nutty and bright (without citrus), moves through a super-smooth earthy mid-palate with no astringency, and then shifts to coffee-mocha with a short finish.</p>
 <p style="font-size: 0.98rem; line-height: 1.75; color: var(--color-text-light);">Hover segments (desktop) or read the bar chart (mobile). For FDA prior notice, invoices, and the purchase order, use the shipment link below.</p>
 </div>
 <div id="taste-profile-chart" class="taste-chart"></div>
@@ -345,11 +345,12 @@ document.addEventListener('DOMContentLoaded', function() {
       batchId: 'AGL2',
       tooltipClass: 'taste-tooltip--bar81-santa-ana',
       profiles: {
-        floral: { intensity: 7, notes: ['Jasmine', 'Elegant'], color: '#FFB6C1' },
-        caramel: { intensity: 6, notes: ['Warm', 'Sweet'], color: '#D2691E' },
-        creamy: { intensity: 9, notes: ['Fatty', 'Velvety'], color: '#F5DEB3' },
-        mild: { intensity: 8, notes: ['Gentle', 'Approachable'], color: '#E8D5B7' },
-        smooth: { intensity: 9, notes: ['Pleasant', 'Refined'], color: '#B8A68A' }
+        nutty: { intensity: 8, notes: ['Roasted', 'Structured'], color: '#A67C52' },
+        bright: { intensity: 7, notes: ['Lifted', 'Non-citrus'], color: '#D8B26E' },
+        earthy: { intensity: 6, notes: ['Grounded', 'Cacao-forward'], color: '#6B4423' },
+        smooth: { intensity: 10, notes: ['No astringency', 'Silky'], color: '#C9A961' },
+        mocha: { intensity: 7, notes: ['Coffee', 'Cocoa mocha'], color: '#5C4033' },
+        finish: { intensity: 4, notes: ['Short', 'Clean close'], color: '#B39B82' }
       }
     });
   }

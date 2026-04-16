@@ -677,13 +677,13 @@ Fazenda Santa Ana is a farm with deep roots in Bahia, Brazil, known for its rich
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;" class="taste-profile-grid">
 <div class="taste-description">
 <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
-AGL2 from <a href="../../farms/fazenda-santa-ana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Fazenda Santa Ana</a> presents a <strong>mild and pleasantly smooth</strong> taste profile that reflects the gentle character of Bahia's regenerative cacao. This cacao offers a delicate <strong>floral jasmine</strong> note that dances on the palate, complemented by subtle <strong>caramel</strong> sweetness and an exceptionally <strong>creamy, fatty</strong> texture that creates a luxurious mouthfeel.
+AGL2 from <a href="../../farms/fazenda-santa-ana-bahia/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Fazenda Santa Ana</a> opens with a distinctly <strong>nutty</strong> profile and a clear <strong>bright lift</strong> that is expressive but not citrus-driven. The flavor is dynamic, moving in stages instead of staying flat.
 </p>
 <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 1.5rem;">
-The flavor profile is characterized by its <strong>mild nature</strong>—approachable and gentle, making it perfect for those new to ceremonial cacao or seeking a smooth, contemplative experience. The <strong>jasmine floral notes</strong> provide an elegant aromatic quality, while the <strong>caramel</strong> adds a warm, comforting sweetness. The <strong>creamy, fatty texture</strong> is particularly notable—this cacao is rich in cocoa butter, creating a velvety smoothness that coats the tongue and lingers beautifully. This is a cacao that invites slow, mindful tasting, allowing its subtle layers to reveal themselves gradually.
+The mid-palate is <strong>super smooth</strong>, with no astringency and a grounded <strong>earthy core</strong>. As it develops, the profile shifts toward <strong>coffee and mocha</strong>, then closes with a short, clean finish. This is a gentle but evolving cacao that rewards slow tasting.
 </p>
 <p style="font-size: 1rem; line-height: 1.8; color: var(--color-text-light); font-style: italic;">
-Perfect for those seeking a mild, smooth cacao experience with elegant floral notes and exceptional creamy texture.
+Movement in flavor, high smoothness, and a short mocha finish.
 </p>
 </div>
 <div id="taste-profile-chart" class="taste-chart" style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 100%; overflow: visible;">
@@ -823,11 +823,12 @@ function renderTasteProfile() {
         batchId: 'AGL2',
         origin: "Fazenda Santa Ana - Bahia, Brazil",
         profiles: {
-            floral: { intensity: 7, notes: ['Jasmine', 'Elegant'], color: '#FFB6C1' },
-            caramel: { intensity: 6, notes: ['Warm', 'Sweet'], color: '#D2691E' },
-            creamy: { intensity: 9, notes: ['Fatty', 'Velvety'], color: '#F5DEB3' },
-            mild: { intensity: 8, notes: ['Gentle', 'Approachable'], color: '#E8D5B7' },
-            smooth: { intensity: 9, notes: ['Pleasant', 'Refined'], color: '#B8A68A' }
+            nutty: { intensity: 8, notes: ['Roasted', 'Structured'], color: '#A67C52' },
+            bright: { intensity: 7, notes: ['Lifted', 'Non-citrus'], color: '#D8B26E' },
+            earthy: { intensity: 6, notes: ['Grounded', 'Cacao-forward'], color: '#6B4423' },
+            smooth: { intensity: 10, notes: ['No astringency', 'Silky'], color: '#C9A961' },
+            mocha: { intensity: 7, notes: ['Coffee', 'Cocoa mocha'], color: '#5C4033' },
+            finish: { intensity: 4, notes: ['Short', 'Clean close'], color: '#B39B82' }
         }
     };
     
@@ -1035,7 +1036,7 @@ function renderTasteProfile() {
             .attr('text-anchor', 'middle')
             .attr('fill', 'white')
             .attr('font-size', '10px')
-            .text('Mild & Smooth');
+            .text('Dynamic Profile');
     }
 }
 </script>
