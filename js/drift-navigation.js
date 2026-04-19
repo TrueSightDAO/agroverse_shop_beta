@@ -51,6 +51,7 @@
         const exactOrder = [
             'founderhaus',                    // Partner - Florianópolis
             'fazenda-capelavelha-bahia',      // Farm - Bahia
+            'fazenda-sao-jorge-bahia',        // Farm - Itajuípe, Bahia
             'fazenda-analuana-bahia',          // Farm - Bahia
             'fazenda-santa-ana-bahia',        // Farm - Bahia
             'vivi-jesus-do-deus-itacare',    // Farm - Itacaré, Bahia

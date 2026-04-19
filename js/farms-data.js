@@ -44,6 +44,13 @@ window.FARMS_DATA = {
         lat: -15.691646,
         lon: -39.295703,
         location: 'Bahia, Brazil'
+    },
+    'fazenda-sao-jorge-bahia': {
+        name: 'Fazenda São Jorge',
+        slug: 'fazenda-sao-jorge-bahia',
+        lat: -14.6289989,
+        lon: -39.4028297,
+        location: 'Itajuípe, Bahia, Brazil'
     }
 };
 
