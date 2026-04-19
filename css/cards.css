@@ -163,6 +163,20 @@
     border: none;
 }
 
+/* HTML5 video or photo stills — same “asset box” as iframe embeds (16:9 frame, cover crop) */
+.farm-video-container video.farm-video,
+.farm-video-container img.farm-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    max-width: none;
+    max-height: none;
+}
+
 .farm-video-section p {
     padding: 0 1.5rem 1.5rem 1.5rem;
     margin: 1rem 0 0 0;

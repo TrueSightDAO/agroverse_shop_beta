@@ -46,6 +46,7 @@ MAP = {
     "the-joy-of-cacao-circles-connections-and-community": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.png",
     "understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.jpeg",
     "kirsten-kikis-cocoa-hot-chocolate-single-estate": "/assets/partners/kikis-cocoa-kirsten.jpg",
+    "hot-chocolate-from-sao-jorge-cacao-beans-agl6": "/assets/images/blog/bahia-photo-library/cocoa-still-life-beans-nibs-juice-jar.jpg",
 }
 
 
