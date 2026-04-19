@@ -50,6 +50,16 @@
             url: '../../farms/fazenda-capelavelha-bahia/index.html',
             description: 'A women-owned regenerative organic cacao farm dedicated to sustainable agriculture and empowering women in farming. Capelavelha specializes in innovative cacao processing techniques, including caramelized cacao beans, while serving as a model for sustainable agriculture that supports both the land and the community through gender equity in agriculture.'
         },
+        'fazenda-sao-jorge-bahia': {
+            name: 'Fazenda São Jorge',
+            slug: 'fazenda-sao-jorge-bahia',
+            lat: -14.6289989,
+            lon: -39.4028297,
+            location: 'Itajuípe, Bahia, Brazil',
+            type: 'farm',
+            url: '../../farms/fazenda-sao-jorge-bahia/index.html',
+            description: 'A Coopercabruca member farm in Itajuípe practicing cabruca agroforestry—cacao grown under native forest canopy for biodiversity and nuanced flavor. Fazenda São Jorge is the source of Agroverse shipment AGL6, offering mild, nutty cacao with gentle fruit and floral notes, and transparent farm-to-ledger traceability.'
+        },
         'fazenda-analuana-bahia': {
             name: 'Fazenda Analuana',
             slug: 'fazenda-analuana-bahia',
