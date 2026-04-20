@@ -72,7 +72,7 @@ For each product:
 
 ### 3. Test Cart Functionality
 
-1. Start local server: `./start-local-server.sh`
+1. Start local server: `./start_local.sh`
 2. Visit `http://127.0.0.1:8000`
 3. Test adding products from:
    - Main page product gallery
