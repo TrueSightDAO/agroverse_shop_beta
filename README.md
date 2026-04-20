@@ -333,8 +333,8 @@ npm run test:resume   # Resume from last failure (smart runner)
 
 **Option 1: Startup Script (Recommended)**
 ```bash
-chmod +x start-local-server.sh
-./start-local-server.sh
+chmod +x start_local.sh
+./start_local.sh
 ```
 
 The script automatically:
@@ -950,7 +950,7 @@ git push origin main
 **Testing Commands:**
 ```bash
 # Start local server
-./start-local-server.sh
+./start_local.sh
 
 # Visit product page
 open http://127.0.0.1:8000/product-page/[product-id]/
@@ -1158,7 +1158,7 @@ npm install
 
 **"Permission denied" (macOS/Linux)**
 ```bash
-chmod +x start-local-server.sh
+chmod +x start_local.sh
 ```
 
 **Google Places API not working**
