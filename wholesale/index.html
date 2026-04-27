@@ -52,7 +52,9 @@ nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-b
 .hero-inner { max-width: 900px; margin: 0 auto; }
 .hero h1 { font-family: var(--font-heading); font-size: 44px; margin-bottom: 1rem; }
 .hero p.lede { font-size: 20px; opacity: 0.95; margin-bottom: 2rem; }
-.hero-cta { display: inline-block; padding: 1rem 2.5rem; background: var(--color-accent); color: var(--color-primary); text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 1.1rem; transition: transform 0.2s; }
+/* Both hero CTAs use a 2px border (transparent on the primary) so the
+   buttons render at exactly the same height when sat side-by-side. */
+.hero-cta { display: inline-block; padding: 1rem 2.5rem; background: var(--color-accent); color: var(--color-primary); text-decoration: none; border: 2px solid transparent; border-radius: 6px; font-weight: 700; font-size: 1.1rem; transition: transform 0.2s; }
 .hero-cta:hover { transform: translateY(-1px); }
 .hero-cta-secondary { display: inline-block; padding: 1rem 2.5rem; margin-left: 1rem; background: transparent; color: white; text-decoration: none; border: 2px solid white; border-radius: 6px; font-weight: 700; font-size: 1.1rem; }
 
@@ -60,7 +62,10 @@ nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-b
 .section h2 { font-family: var(--font-heading); font-size: 36px; color: var(--color-primary); margin-bottom: 1.5rem; }
 .section p, .section li { font-size: 17px; line-height: 1.8; }
 .section.alt { background: var(--color-bg-light); max-width: 100%; padding: 4rem 2rem; }
-.section.alt > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+/* Alt sections are full-bleed; constrain inner content to match the
+   *content* area of regular sections (1200px outer minus 2rem padding
+   each side) so headings line up across alternating backgrounds. */
+.section.alt > * { max-width: calc(1200px - 4rem); margin-left: auto; margin-right: auto; }
 
 .packaging-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
 .packaging-grid figure { margin: 0; }
@@ -106,7 +111,7 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
     .hero h1 { font-size: 32px; }
     .hero p.lede { font-size: 17px; }
     .hero-cta-secondary { margin-left: 0; margin-top: 0.75rem; }
-    .section { padding: 3rem 1.5rem; }
+    .section, .section.alt { padding: 3rem 1.5rem; }
     .section h2 { font-size: 28px; }
     .packaging-grid { grid-template-columns: 1fr; }
     .stockist-list { columns: 1; }
