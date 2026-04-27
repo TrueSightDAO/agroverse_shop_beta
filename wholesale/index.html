@@ -5,19 +5,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <title>Wholesale — Stock Agroverse Ceremonial Cacao | Agroverse</title>
-<meta content="Stock single-estate, QR-traced ceremonial cacao from Brazilian smallholder farms. $17/bag (200g), MOQ 10 bags, recommended retail $25–$35. Every bag plants a tree in the Amazon." name="description"/>
+<meta content="Stock single-estate, QR-traced ceremonial cacao from Brazilian smallholder farms. $17/bag (200g), consignment from 5 bags or wholesale from 10 bags, recommended retail $25–$35. Every bag plants a tree in the Amazon." name="description"/>
 <link href="https://www.agroverse.shop/wholesale/" rel="canonical"/>
 <!-- Open Graph -->
 <meta content="website" property="og:type"/>
 <meta content="https://www.agroverse.shop/wholesale/" property="og:url"/>
 <meta content="Wholesale — Stock Agroverse Ceremonial Cacao" property="og:title"/>
-<meta content="Single-estate, QR-traced ceremonial cacao for retailers. $17/bag, MOQ 10. Every bag plants a tree in the Amazon." property="og:description"/>
+<meta content="Single-estate, QR-traced ceremonial cacao for retailers. $17/bag — consignment from 5 bags or wholesale from 10. Every bag plants a tree in the Amazon." property="og:description"/>
 <meta content="https://www.agroverse.shop/assets/images/products/packaging/front.jpeg" property="og:image"/>
 <!-- Twitter -->
 <meta content="summary_large_image" property="twitter:card"/>
 <meta content="https://www.agroverse.shop/wholesale/" property="twitter:url"/>
 <meta content="Wholesale — Stock Agroverse Ceremonial Cacao" property="twitter:title"/>
-<meta content="Single-estate, QR-traced ceremonial cacao for retailers. $17/bag, MOQ 10." property="twitter:description"/>
+<meta content="Single-estate, QR-traced ceremonial cacao for retailers. $17/bag — consignment from 5 bags or wholesale from 10." property="twitter:description"/>
 <meta content="https://www.agroverse.shop/assets/images/products/packaging/front.jpeg" property="twitter:image"/>
 <!-- Favicon -->
 <link href="../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
@@ -86,13 +86,16 @@ nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-b
 .stockist-list li a:hover { text-decoration: underline; }
 .stockist-list li .city { display: block; font-size: 13px; color: var(--color-text-light); font-weight: 400; }
 
-.pricing-card { background: white; border: 2px solid var(--color-primary); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
-.pricing-card .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid rgba(59,51,51,0.08); }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; }
+.pricing-card { background: white; border: 2px solid var(--color-primary); border-radius: 12px; padding: 2rem; margin-bottom: 0; }
+.pricing-card .price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid rgba(59,51,51,0.08); gap: 1rem; }
 .pricing-card .price-row:last-of-type { border-bottom: none; }
 .pricing-card .price-label { color: var(--color-text-light); font-size: 15px; }
-.pricing-card .price-value { font-weight: 700; color: var(--color-primary); font-size: 18px; }
+.pricing-card .price-value { font-weight: 700; color: var(--color-primary); font-size: 18px; text-align: right; }
 .pricing-card .headline { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 0.25rem; }
 .pricing-card .sub { color: var(--color-text-light); margin-bottom: 1rem; font-size: 15px; }
+.origins-row { background: white; border: 1px solid rgba(59,51,51,0.15); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 0.5rem; font-size: 15px; }
+.origins-row strong { color: var(--color-primary); }
 
 .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 1rem; }
@@ -114,6 +117,7 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
     .section, .section.alt { padding: 3rem 1.5rem; }
     .section h2 { font-size: 28px; }
     .packaging-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
     .stockist-list { columns: 1; }
     .nav-links { gap: 1rem; font-size: 14px; }
 }
@@ -235,17 +239,31 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
 <!-- Pricing -->
 <section class="section alt">
 <h2>Wholesale terms</h2>
+<p style="margin-bottom: 1.5rem;">Two parallel paths for retail packs (200g resealable pouch with traceability QR code). Same product, same price per bag — pick whichever fits how your shop carries new lines.</p>
+<div class="pricing-grid">
 <div class="pricing-card">
-<div class="headline">Retail packs (200g ceremonial cacao)</div>
-<div class="sub">Stand-up resealable pouch with traceability QR code, ready for shelf.</div>
+<div class="headline">Consignment</div>
+<div class="sub">Lowest barrier — we keep ownership of the inventory until it sells.</div>
 <div class="price-row"><span class="price-label">Cost per bag</span><span class="price-value">$17.00</span></div>
 <div class="price-row"><span class="price-label">Recommended retail</span><span class="price-value">$25–$35</span></div>
-<div class="price-row"><span class="price-label">Minimum opening order</span><span class="price-value">10 bags</span></div>
-<div class="price-row"><span class="price-label">Reorder minimum</span><span class="price-value">10 bags</span></div>
+<div class="price-row"><span class="price-label">Opening order</span><span class="price-value">5 bags</span></div>
+<div class="price-row"><span class="price-label">Reorder</span><span class="price-value">As sales velocity supports</span></div>
 <div class="price-row"><span class="price-label">Shipping</span><span class="price-value">Included (US)</span></div>
-<div class="price-row"><span class="price-label">Origins available</span><span class="price-value">Oscar's (Bahia) · Fazenda Santa Ana · Paulo's La do Sitio · Vivi's Jesus Do Deus</span></div>
+<div class="price-row"><span class="price-label">You pay when</span><span class="price-value">Bags sell through</span></div>
 </div>
-<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 15px;">Pricing is open and inclusive of shipping within the U.S. We don't gate anything behind a form — if the math works for your shop, the next step is just a sample pack.</p>
+<div class="pricing-card">
+<div class="headline">Wholesale (bought outright)</div>
+<div class="sub">Best fit if you'd rather own the inventory and the sell-through.</div>
+<div class="price-row"><span class="price-label">Cost per bag</span><span class="price-value">$17.00</span></div>
+<div class="price-row"><span class="price-label">Recommended retail</span><span class="price-value">$25–$35</span></div>
+<div class="price-row"><span class="price-label">Opening order</span><span class="price-value">10 bags</span></div>
+<div class="price-row"><span class="price-label">Reorder</span><span class="price-value">10 bags</span></div>
+<div class="price-row"><span class="price-label">Shipping</span><span class="price-value">Included (US)</span></div>
+<div class="price-row"><span class="price-label">You pay when</span><span class="price-value">Order placed</span></div>
+</div>
+</div>
+<div class="origins-row"><strong>Origins available (either path):</strong> Oscar's (Bahia) · Fazenda Santa Ana · Paulo's La do Sitio · Vivi's Jesus Do Deus</div>
+<p style="margin-top: 1rem; color: var(--color-text-light); font-size: 15px;">Pricing is open and inclusive of US shipping. We don't gate anything behind a form — if the math works for your shop, the next step is just a sample pack.</p>
 
 <h3 style="font-family: var(--font-heading); font-size: 22px; color: var(--color-primary); margin-top: 3rem; margin-bottom: 0.75rem;">Bulk cacao (paste, nibs, beans, tea)</h3>
 <p>For volumes &gt; 5 kg of cacao paste, nibs, beans, or tea, see <a href="../quote-request/" style="color: var(--color-primary); font-weight: 600;">our bulk quote request →</a> Bulk pricing starts at $20/lb depending on quantity, freight, and customs. Ships from our San Francisco warehouse or directly from Brazil for larger orders.</p>
