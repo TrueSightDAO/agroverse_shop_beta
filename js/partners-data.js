@@ -201,6 +201,14 @@ window.PARTNERS_DATA = {
         location: 'San Francisco, California',
         description: 'A collaborative space in San Francisco serving as a hub for Web3 innovators, developers, and entrepreneurs. Fosters innovation, collaboration, and community building within the decentralized technology ecosystem, enhanced by regenerative cacao.'
     },
+    'the-way-home-shop': {
+        name: 'The Way Home Shop',
+        slug: 'the-way-home-shop',
+        lat: 45.5189,
+        lon: -122.5765,
+        location: 'Portland, Oregon',
+        description: 'A sacred spiritual sanctuary in Portland, Oregon — Reiki-cleansed crystals, herbs, ritual tools, candles, tarot, workshops, and women\'s circles. Born from a dream in 2023, curated as a space for healing, connection, and community. Carries Agroverse regenerative ceremonial cacao on Mt. Tabor / Montavilla.'
+    },
     'founderhaus': {
         name: 'Founderhaus',
         slug: 'founderhaus',
