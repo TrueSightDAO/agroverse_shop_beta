@@ -108,7 +108,7 @@
             background-color: var(--color-bg-light);
             background-image: linear-gradient(135deg, rgba(59, 51, 51, 0.6) 0%, rgba(77, 77, 77, 0.6) 100%),
                         url('https://static.wixstatic.com/media/0e2cde_83e04603361047ac8329eef7ce8cf0c9~mv2.jpeg/v1/fill/w_800,h_622,al_c,q_85/block71_banner.jpeg');
-            background-size: contain;
+            background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
         }
@@ -250,9 +250,6 @@
             border-radius: 8px;
             display: inline-block;
         
-        body {
-            overflow-x: hidden;
-        }
         }
             
             .nav-links {
@@ -320,9 +317,6 @@
             .mobile-menu-toggle {
                 display: flex;
             
-        body {
-            overflow-x: hidden;
-        }
         }
             .nav-links:not(.mobile-menu) {
                 display: none !important;
@@ -401,7 +395,11 @@
             .logo img {
                 height: 40px;
             }
-        }</style>
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 <!-- Leaflet CSS for maps -->
 <!-- Partner Navigation CSS -->
 <link href="../../css/partner-navigation.css" rel="stylesheet"/>
@@ -430,7 +428,7 @@
 </ul>
 </nav>
 </header>
-<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/block71-silicon-valley-header.jpg'); background-size: contain; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
+<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/block71-silicon-valley-header.jpg'); background-size: cover; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
 <div class="partner-hero-content">
 <div class="partner-logo-container">
 <img alt="Partner Logo" class="partner-logo" src="../../assets/partners/logos/block71-silicon-valley-logo.jpeg"/>

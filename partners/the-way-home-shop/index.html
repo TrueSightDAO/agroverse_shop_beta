@@ -240,9 +240,6 @@
             text-decoration: underline;
         }
         
-        body {
-            overflow-x: hidden;
-        }
 
         @media (max-width: 768px) {
             .partner-hero-content h1 {
@@ -322,7 +319,11 @@
             .gallery-item {
                 height: 300px;
             }
-        }</style>
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 <!-- Shared Navigation CSS -->
 <link href="../../css/navigation.css" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
@@ -358,7 +359,7 @@
 </ul>
 </nav>
 </header>
-<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-way-home-shop-header.jpeg'); background-size: contain; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
+<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-way-home-shop-header.jpeg'); background-size: cover; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
 <div class="partner-hero-content">
 <div class="partner-logo-container">
 <img alt="The Way Home Shop Logo" class="partner-logo" src="../../assets/partners/logos/the-way-home-shop-logo.png"/>
