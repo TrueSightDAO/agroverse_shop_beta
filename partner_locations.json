@@ -86,5 +86,9 @@
   "raven-things-collected": {
     "name": "Raven Things Collected",
     "location": "Los Angeles, California"
+  },
+  "the-way-home-shop": {
+    "name": "The Way Home Shop",
+    "location": "Portland, Oregon"
   }
 }
