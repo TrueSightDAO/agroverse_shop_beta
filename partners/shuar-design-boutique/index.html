@@ -115,6 +115,11 @@
             .nav-links.mobile-menu.active { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: 80%; max-width: 300px; background: var(--color-bg); flex-direction: column; padding: 5rem 2rem 2rem; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 1000; gap: 1.5rem; }
         }
         @media (max-width: 768px) {
+            .nav-links:not(.mobile-menu) {
+                display: none !important;
+            }
+        }
+        @media (max-width: 768px) {
             .partner-hero-content h1 { font-size: 32px; }
             .partner-hero-content p { font-size: 18px; }
             .nav-links { gap: 1rem; font-size: 14px; }
