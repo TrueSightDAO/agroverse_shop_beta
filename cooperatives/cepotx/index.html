@@ -433,8 +433,17 @@
                 display: block;
             }
         }
+        @media (max-width: 768px) {
+            .nav-links:not(.mobile-menu) {
+                display: none !important;
+            }
+        }
 
-        </style>
+        
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 
 <!-- Google Analytics - Only loads on production (www.agroverse.shop) -->
 <script src="../../js/google-analytics.js"></script>
