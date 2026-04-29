@@ -246,9 +246,6 @@
             border-radius: 8px;
             display: inline-block;
         
-        body {
-            overflow-x: hidden;
-        }
         }
             
             .nav-links {
@@ -316,9 +313,6 @@
             .mobile-menu-toggle {
                 display: flex;
             
-        body {
-            overflow-x: hidden;
-        }
         }
             .nav-links:not(.mobile-menu) {
                 display: none !important;
@@ -397,7 +391,11 @@
             .logo img {
                 height: 40px;
             }
-        }</style>
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 <!-- Leaflet CSS for maps -->
 <!-- Partner Navigation CSS -->
 <link href="../../css/partner-navigation.css" rel="stylesheet"/>
@@ -426,7 +424,7 @@
 </ul>
 </nav>
 </header>
-<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-ponderosa-slab-city-header.jpg'); background-size: contain; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
+<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-ponderosa-slab-city-header.jpg'); background-size: cover; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
 <div class="partner-hero-content">
 <div class="partner-logo-container">
 <img alt="Partner Logo" class="partner-logo" src="../../assets/partners/logos/the-ponderosa-slab-city-logo.jpg"/>

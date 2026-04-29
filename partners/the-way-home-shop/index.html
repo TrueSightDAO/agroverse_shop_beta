@@ -240,36 +240,27 @@
             text-decoration: underline;
         }
         
+
         @media (max-width: 768px) {
             .partner-hero-content h1 {
-            font-family: var(--font-heading);
-            font-size: 36px;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            display: inline-block;
-        
-        body {
-            overflow-x: hidden;
-        }
-        }
-            
+                font-size: 36px;
+                padding: 0.75rem 1.25rem;
+            }
             .nav-links {
                 gap: 1rem;
                 font-size: 14px;
             }
         }
-    
+
+        /* Logo + heading + address stack in normal flow at the bottom of
+           the hero (parent .partner-hero is align-items:flex-end). The
+           previous version absolutely-positioned the logo at bottom:8rem
+           which collided with the flex-end-aligned h1 on narrow viewports
+           — the logo and "The Way Home Shop" heading clobbered each other
+           on mobile. */
         .partner-logo-container {
-            margin-bottom: 2rem;
             text-align: center;
-            position: absolute;
-            bottom: 8rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
+            margin-bottom: 1.25rem;
         }
         
         .partner-logo {
@@ -328,7 +319,11 @@
             .gallery-item {
                 height: 300px;
             }
-        }</style>
+        }
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 <!-- Shared Navigation CSS -->
 <link href="../../css/navigation.css" rel="stylesheet"/>
 <!-- Leaflet CSS for maps -->
@@ -364,7 +359,7 @@
 </ul>
 </nav>
 </header>
-<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-way-home-shop-header.jpeg'); background-size: contain; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
+<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/the-way-home-shop-header.jpeg'); background-size: cover; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
 <div class="partner-hero-content">
 <div class="partner-logo-container">
 <img alt="The Way Home Shop Logo" class="partner-logo" src="../../assets/partners/logos/the-way-home-shop-logo.png"/>
