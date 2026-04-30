@@ -47,6 +47,7 @@ EXEMPT_SLUGS: set[str] = {
     # partners hub HTML in their own "international" cluster.
     "black-king-ilheus",            # Ilhéus, Bahia, Brazil — origin warehouse
     "cic-cacao-innovation-center",  # Ilhéus, Bahia, Brazil — lab + processing
+    "santos-chocolate-factory",     # Itabuna, Bahia, Brazil — origin processing partner
     "shuar-design-boutique",        # Bern, Switzerland — fair-trade boutique
 }
 
