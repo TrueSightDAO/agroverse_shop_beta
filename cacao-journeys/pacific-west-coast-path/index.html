@@ -706,14 +706,15 @@
         
         // Filter and sort partners.
         // Exclusions:
-        //   - the-ponderosa-slab-city: part of the Slab City + Salvation Mountain experience, not a stand-alone stop.
         //   - prism-percussions: pop-up vendor / artisan, not a venue with regular hours.
-        //   - shiok-kitchen-menlo-park: processing partner (commercial kitchen access for cacao→bar conversion);
-        //     the journey is a retail tour of venues where pilgrims can pop in for cacao, not a tour of
-        //     processing facilities. Future processing partners should be excluded here too.
+        // The-ponderosa-slab-city and shiok-kitchen-menlo-park are intentionally
+        // INCLUDED — Ponderosa carries Agroverse bags as part of the Slab City
+        // experience, and Shiok Kitchen is the Bay-Area processing stop where
+        // pilgrims can engage with the cacao supply chain. Both are part of the
+        // journey.
         const westCoastPartners = filterWestCoastPartners();
         const sortedPath = sortNorthToSouth(westCoastPartners)
-            .filter(slug => slug !== 'the-ponderosa-slab-city' && slug !== 'prism-percussions' && slug !== 'shiok-kitchen-menlo-park');
+            .filter(slug => slug !== 'prism-percussions');
         const stops = sortedPath.map(slug => {
             const partner = westCoastPartners[slug];
             return {
@@ -875,7 +876,7 @@
                     if (stop.slug === 'prism-percussions') {
                         imagePath = '../../assets/partners/prism-percussions/me_with_jennifer_runnion.jpg';
                     } else {
-                        const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' || stop.slug === 'the-way-home-shop' ? 'jpeg' : 'jpg';
+                        const imageExt = stop.slug === 'hacker-dojo' || stop.slug === 'lumin-earth-apothecary' || stop.slug === 'republic-cafe-and-ming-lounge' || stop.slug === 'the-way-home-shop' || stop.slug === 'shiok-kitchen-menlo-park' ? 'jpeg' : 'jpg';
                         imagePath = `../../assets/partners/headers/${stop.slug}-header.${imageExt}`;
                     }
                 }
