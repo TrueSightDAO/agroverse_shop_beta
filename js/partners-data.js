@@ -122,6 +122,15 @@ window.PARTNERS_DATA = {
         location: 'San Luis Obispo, California',
         description: 'A beloved tea and herb shop established in 2004, specializing in hand-blended premium teas and herbal blends. Owned by Kirstin Sherritt, Secrets of Garden SLO is dedicated to enhancing physical, mental, and spiritual well-being through nature\'s healing power. As a partner venue, they offer Agroverse ceremonial cacao, bringing regenerative, ethically-sourced cacao to the Central Coast community, perfectly complementing their existing offerings of premium teas and herbal remedies while supporting rainforest restoration.'
     },
+    'shiok-kitchen-menlo-park': {
+        name: 'Shiok Singapore Kitchen',
+        slug: 'shiok-kitchen-menlo-park',
+        lat: 37.4527,
+        lon: -122.1838,
+        location: 'Menlo Park, California',
+        description: 'A 27-year family-run Singaporean restaurant whose owner Dennis Lim provides off-hours access to the commercial kitchen at 625 Oak Grove Avenue for Agroverse to convert cacao nibs into chocolate bars. First processing partner on the Bay Area side of the supply chain.',
+        partner_role: 'processing'
+    },
     'soulfulness-breathe': {
         name: 'Soulfulness Breathe',
         slug: 'soulfulness-breathe',

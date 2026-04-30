@@ -704,9 +704,16 @@
             return km * 0.621371;
         }
         
-        // Filter and sort partners (excluding Ponderosa since it's part of an experience, and Prism Percussions since it's a pop-up vendor/partner rather than a venue)
+        // Filter and sort partners.
+        // Exclusions:
+        //   - the-ponderosa-slab-city: part of the Slab City + Salvation Mountain experience, not a stand-alone stop.
+        //   - prism-percussions: pop-up vendor / artisan, not a venue with regular hours.
+        //   - shiok-kitchen-menlo-park: processing partner (commercial kitchen access for cacao→bar conversion);
+        //     the journey is a retail tour of venues where pilgrims can pop in for cacao, not a tour of
+        //     processing facilities. Future processing partners should be excluded here too.
         const westCoastPartners = filterWestCoastPartners();
-        const sortedPath = sortNorthToSouth(westCoastPartners).filter(slug => slug !== 'the-ponderosa-slab-city' && slug !== 'prism-percussions');
+        const sortedPath = sortNorthToSouth(westCoastPartners)
+            .filter(slug => slug !== 'the-ponderosa-slab-city' && slug !== 'prism-percussions' && slug !== 'shiok-kitchen-menlo-park');
         const stops = sortedPath.map(slug => {
             const partner = westCoastPartners[slug];
             return {
