@@ -40,8 +40,6 @@ PARTNER_LOCATIONS_JSON = REPO / "partner_locations.json"
 # documented reason. Future additions go here only when the omission is
 # deliberate (international partners absent from US-focused hub map,
 # etc) — NOT when it's an oversight to be fixed.
-#
-# Established pre-existing exemptions (snapshot of 2026-04-30):
 EXEMPT_SLUGS: set[str] = {
     # International / origin partners — geographically outside the US-focused
     # hub map (js/partners-data.js + partner_locations.json), so their
@@ -50,20 +48,6 @@ EXEMPT_SLUGS: set[str] = {
     "black-king-ilheus",            # Ilhéus, Bahia, Brazil — origin warehouse
     "cic-cacao-innovation-center",  # Ilhéus, Bahia, Brazil — lab + processing
     "shuar-design-boutique",        # Bern, Switzerland — fair-trade boutique
-
-    # Pre-existing US partners with missing partner_locations.json entries.
-    # These are tech-debt backfill candidates, NOT intentional omissions.
-    # Filed for backfill so the lint can stop exempting them once the
-    # entries are added (next routine pass through partner data).
-    "llama-bus",
-    "okanogan-family-barter-faire",
-    "orbis86",
-    "raye-workz",
-    "rhythm-and-stones",
-    "rpm-ninja",
-    "secrets-of-garden-slo",
-    "soha",
-    "the-whole-body-repair-clinic",
 }
 
 

@@ -3,6 +3,18 @@
     "name": "Block71 Silicon Valley",
     "location": "Silicon Valley, California"
   },
+  "edge-and-node-house-of-web3": {
+    "name": "Edge and Node, House of Web3",
+    "location": "San Francisco, California"
+  },
+  "embodied-blindfold-dance": {
+    "name": "Embodied Blindfold Dance",
+    "location": "Eugene, Oregon"
+  },
+  "founderhaus": {
+    "name": "Founder Haus",
+    "location": "Brazil"
+  },
   "go-ask-alice": {
     "name": "Go Ask Alice",
     "location": "Santa Cruz, California"
@@ -11,33 +23,93 @@
     "name": "Green Gulch Farm Zen Center",
     "location": "Marin County, California"
   },
+  "hacker-dojo": {
+    "name": "Hacker Dojo",
+    "location": "Mountain View, California"
+  },
+  "heierling-ski": {
+    "name": "Heierling Ski",
+    "location": "Switzerland"
+  },
   "kikis-cocoa": {
     "name": "Kiki's Cocoa",
+    "location": "San Francisco, California"
+  },
+  "llama-bus": {
+    "name": "Llama Bus",
+    "location": "Pop-up Vendor at Gatherings"
+  },
+  "love-of-ganesha": {
+    "name": "Love of Ganesha",
     "location": "San Francisco, California"
   },
   "love-wisdom-power": {
     "name": "Love Wisdom Power",
     "location": "Williams, Oregon"
   },
+  "lumin-earth-apothecary": {
+    "name": "Lumin Earth Apothecary",
+    "location": "Morro Bay, California"
+  },
   "miss-tomato": {
     "name": "Miss Tomato",
     "location": "Daly City, California"
+  },
+  "okanogan-family-barter-faire": {
+    "name": "Okanogan Family Barter Faire",
+    "location": "Okanogan, Washington"
+  },
+  "orbis86": {
+    "name": "Orbis86",
+    "location": "San Francisco, California"
   },
   "peace-on-fifth": {
     "name": "Peace on Fifth",
     "location": "Dayton, Ohio"
   },
+  "prism-percussions": {
+    "name": "Prism Percussions",
+    "location": "Corvallis, Oregon"
+  },
   "queen-hippie-gypsy": {
     "name": "Queen Hippie Gypsy",
     "location": "Downtown Oakland, California"
+  },
+  "raven-things-collected": {
+    "name": "Raven Things Collected",
+    "location": "Los Angeles, California"
+  },
+  "raye-workz": {
+    "name": "Raye Workz",
+    "location": "Pop-up Vendor at Gatherings"
+  },
+  "republic-cafe-and-ming-lounge": {
+    "name": "Republic Cafe and Ming Lounge",
+    "location": "Portland, Oregon"
+  },
+  "rhythm-and-stones": {
+    "name": "Rhythm and Stones",
+    "location": "Pop-up Vendor at Winter Desert Gatherings - Quartzsite, Arizona"
+  },
+  "rpm-ninja": {
+    "name": "RPM Ninja",
+    "location": "Seattle, Washington"
   },
   "sacred-earth-farms": {
     "name": "Sacred Earth Farms",
     "location": "Merlin, Oregon"
   },
+  "secrets-of-garden-slo": {
+    "name": "Secrets of Garden SLO",
+    "location": "San Luis Obispo, California"
+  },
   "shiok-kitchen-menlo-park": {
     "name": "Shiok Singapore Kitchen",
     "location": "Menlo Park, California"
+  },
+  "soha": {
+    "name": "SOHA - Sanctuary of Healing Arts",
+    "location": "Philomath, Oregon"
   },
   "soulfulness-breathe": {
     "name": "Soulfulness Breathe",
@@ -51,48 +123,12 @@
     "name": "The Ponderosa, Slab City",
     "location": "Slab City, California"
   },
-  "founderhaus": {
-    "name": "Founder Haus",
-    "location": "Brazil"
-  },
-  "heierling-ski": {
-    "name": "Heierling Ski",
-    "location": "Switzerland"
-  },
-  "lumin-earth-apothecary": {
-    "name": "Lumin Earth Apothecary",
-    "location": "Morro Bay, California"
-  },
-  "hacker-dojo": {
-    "name": "Hacker Dojo",
-    "location": "Mountain View, California"
-  },
-  "republic-cafe-and-ming-lounge": {
-    "name": "Republic Cafe and Ming Lounge",
-    "location": "Portland, Oregon"
-  },
-  "prism-percussions": {
-    "name": "Prism Percussions",
-    "location": "Corvallis, Oregon"
-  },
-  "love-of-ganesha": {
-    "name": "Love of Ganesha",
-    "location": "San Francisco, California"
-  },
-  "embodied-blindfold-dance": {
-    "name": "Embodied Blindfold Dance",
-    "location": "Eugene, Oregon"
-  },
-  "edge-and-node-house-of-web3": {
-    "name": "Edge and Node, House of Web3",
-    "location": "San Francisco, California"
-  },
-  "raven-things-collected": {
-    "name": "Raven Things Collected",
-    "location": "Los Angeles, California"
-  },
   "the-way-home-shop": {
     "name": "The Way Home Shop",
     "location": "Portland, Oregon"
+  },
+  "the-whole-body-repair-clinic": {
+    "name": "The Whole Body Repair Clinic",
+    "location": "Quartzsite, Arizona"
   }
 }
