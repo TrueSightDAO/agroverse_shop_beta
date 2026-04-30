@@ -1,0 +1,45 @@
+name: Partner Discovery Lint
+
+# Defense-in-depth check that every directory under `partners/<slug>/`
+# is also referenced from the discovery surfaces a visitor uses to find
+# that partner: hub HTML, js/partners-data.js, and partner_locations.json.
+#
+# Triggered by PR #92 (Shiok Kitchen partner page shipped without listings).
+# The dao_client `onboard_partner.py` step5 automates these listing
+# updates on the canonical onboarding path; this lint catches anything
+# that bypasses that flow (hand-crafted PRs, copy-of-existing-partner
+# experiments, etc).
+#
+# Failure mode: exits 1 with a per-partner missing-surface report. Fix by
+# either re-running onboard_partner.py against the partner's manifest, or
+# hand-adding the missing entries (lint message points at the right files).
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "partners/**"
+      - "js/partners-data.js"
+      - "partner_locations.json"
+      - "scripts/lint_partner_discovery.py"
+      - ".github/workflows/partner-discovery-lint.yml"
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Partner Discovery Surfaces
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run partner discovery lint
+        run: python3 scripts/lint_partner_discovery.py
