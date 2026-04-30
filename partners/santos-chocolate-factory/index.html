@@ -106,7 +106,7 @@
             color: white;
             padding: 4rem 2rem;
             background: linear-gradient(135deg, rgba(59, 51, 51, 0.8) 0%, rgba(77, 77, 77, 0.8) 100%),
-                        url('../../assets/partners/headers/santos-chocolate-factory-header.jpg') center 25%/cover;
+                        url('../../assets/partners/headers/santos-chocolate-factory-header.jpg') center center/cover;
         }
 
         .partner-hero-content h1 {
@@ -314,6 +314,70 @@
                 height: 300px;
             }
         }
+
+        /* Featured + inline video embeds */
+        .featured-video {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 0;
+            text-align: center;
+        }
+        .featured-video h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .featured-video p.lede {
+            font-size: 18px;
+            color: var(--color-text-light);
+            max-width: 720px;
+            margin: 0 auto 2rem;
+        }
+        .video-frame {
+            position: relative;
+            width: 100%;
+            max-width: 405px; /* portrait 9:16 cap, fits 720px tall */
+            margin: 0 auto;
+            aspect-ratio: 9 / 16;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+        .video-grid .video-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .video-grid .video-card .video-frame {
+            max-width: 100%;
+        }
+        .video-grid .video-card h4 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: var(--color-primary);
+            margin: 0;
+        }
+        .video-grid .video-card p {
+            font-size: 15px;
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
         body {
             overflow-x: hidden;
         }
@@ -353,10 +417,17 @@
 </ul>
 </nav>
 </header>
-<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/santos-chocolate-factory-header.jpg'); background-size: cover; background-color: #f7f7f7; background-position: center 25%; background-repeat: no-repeat;">
+<section class="partner-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/partners/headers/santos-chocolate-factory-header.jpg'); background-size: cover; background-color: #f7f7f7; background-position: center center; background-repeat: no-repeat;">
 <div class="partner-hero-content">
 <h1>Santos Chocolate Factory</h1>
 <p>Itabuna, Bahia, Brazil</p>
+</div>
+</section>
+<section class="featured-video">
+<h2>Meet Santos</h2>
+<p class="lede">A short interview with José Carlos Souza Santos Paim — over 40 years in the Bahian cacao industry, recorded on-site at his Itabuna facility. English subtitles.</p>
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/q7eMtTHtwvU" title="Meet Santos — Master Cacao Processor in Itabuna, Bahia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 </div>
 </section>
 <section class="content-section">
@@ -375,6 +446,31 @@
 </div>
 <div class="gallery-item">
 <img alt="Santos's wife packaging finished Agroverse-branded chocolate bars" src="../../assets/partners/santos-chocolate-factory/santos_wife_putting_bars_in_bag.jpg"/>
+</div>
+</div>
+<h3 style="font-family: var(--font-heading); font-size: 28px; color: var(--color-primary); margin-top: 3rem;">Inside the facility — bean to bar</h3>
+<p style="font-size: 17px; color: var(--color-text-light); margin-top: 0.5rem; margin-bottom: 1.5rem;">Three short clips filmed on-site at Santos's Itabuna facility, walking through the processing pipeline that turns Paulo's farmgate cacao into finished Agroverse bars.</p>
+<div class="video-grid">
+<div class="video-card">
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/x2Y1EpfHJZk" title="Santos's Roasting Step — Paulo's Farm Beans into the Roaster" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</div>
+<h4>1 — Roasting</h4>
+<p>Paulo's farm beans go into the roaster: 25 minutes at 125°C, then cooled to ~55°C before inspection.</p>
+</div>
+<div class="video-card">
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/Ia-uNkj4T1A" title="Santos's Winnowing & Cracking — From Roasted Beans to Cacao Nibs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</div>
+<h4>2 — Winnowing &amp; Cracking</h4>
+<p>The winnowing-and-cracking machine separates husks from nibs — the ingredient that becomes liquor, bars, and 8-oz pouches.</p>
+</div>
+<div class="video-card">
+<div class="video-frame">
+<iframe src="https://www.youtube.com/embed/2tthzrRl34E" title="Santos's Melanger to Bars — Cacao Liquor Becomes Ceremonial Chocolate" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</div>
+<h4>3 — Melanger to Bars</h4>
+<p>Tempered to 29°C, poured into molds, set in the fridge — six glossy bars per batch, ready for the Agroverse crop pouch.</p>
 </div>
 </div>
 <div class="partner-info">
