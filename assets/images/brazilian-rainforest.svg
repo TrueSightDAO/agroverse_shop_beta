@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="#000000" fill-rule="evenodd">
+  <title>Brazilian rainforest grove — Agroverse grower network</title>
+  <desc>Stylized black-silhouette pictogram of a rainforest grove (broadleaf canopy, cacao tree with hanging pod, tall canopy, palm), matching the icon language used by the other Mission stat-card images.</desc>
+
+  <!-- White medallion background. The Mission section uses a dark slate
+       gradient; the other two stat-card icons render as black silhouettes
+       on a white disc, and this SVG matches that treatment so all three
+       Mission icons read as a coherent set after the `border-radius: 50%`
+       circular clip. -->
+  <circle cx="100" cy="100" r="100" fill="#ffffff"/>
+
+  <!-- Ground / horizon ellipse -->
+  <ellipse cx="100" cy="184" rx="80" ry="5"/>
+
+  <!-- Tree 1 (left): broadleaf -->
+  <rect x="42" y="125" width="6" height="59"/>
+  <circle cx="45" cy="100" r="26"/>
+  <circle cx="30" cy="115" r="18"/>
+  <circle cx="60" cy="112" r="18"/>
+  <circle cx="45" cy="82" r="16"/>
+
+  <!-- Tree 2 (left-center): shorter cacao tree -->
+  <rect x="85" y="142" width="5" height="42"/>
+  <circle cx="88" cy="130" r="16"/>
+  <circle cx="76" cy="140" r="12"/>
+  <circle cx="100" cy="138" r="12"/>
+  <!-- Cacao pod hanging from low branch (the network's fruit) -->
+  <ellipse cx="74" cy="148" rx="3.5" ry="6" transform="rotate(-20 74 148)"/>
+
+  <!-- Tree 3 (center): tallest canopy -->
+  <rect x="117" y="95" width="6" height="89"/>
+  <circle cx="120" cy="74" r="22"/>
+  <circle cx="103" cy="86" r="16"/>
+  <circle cx="137" cy="84" r="17"/>
+  <circle cx="120" cy="58" r="12"/>
+
+  <!-- Tree 4 (right): palm tree — thin trunk + radiating fronds -->
+  <path d="M158 184 Q157 152 159 122 L163 122 Q165 152 162 184 Z"/>
+  <path d="M161 120 Q140 108 122 110 Q142 115 161 124 Z"/>
+  <path d="M161 120 Q182 108 200 110 Q180 115 161 124 Z"/>
+  <path d="M161 115 Q155 96 161 80 Q167 96 163 115 Z"/>
+  <path d="M161 118 Q176 102 192 92 Q176 115 163 122 Z"/>
+  <path d="M161 118 Q146 102 130 92 Q146 115 159 122 Z"/>
+</svg>
