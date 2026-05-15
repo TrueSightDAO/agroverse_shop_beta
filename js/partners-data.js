@@ -138,6 +138,14 @@ window.PARTNERS_DATA = {
         lon: -104.9903,
         location: 'Denver, Colorado'
     },
+    'the-alchemist': {
+        name: 'The Alchemist',
+        slug: 'the-alchemist',
+        lat: 33.69,
+        lon: -114.18,
+        location: 'Pop-up Vendor at Skooliepalooza',
+        description: 'The Alchemist by Sammi Whitchurch is a pop-up vendor at Skooliepalooza and the nomadic festival circuit, turning ceremonial cacao into community medicine. Based in the Quartzsite, Arizona area during the winter season, part of the vibrant nomad community that gathers for connection, celebration, and conscious commerce.'
+    },
     'the-enchanted-forest-boutique': {
         name: 'The Enchanted Forest Boutique',
         slug: 'the-enchanted-forest-boutique',
