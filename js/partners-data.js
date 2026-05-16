@@ -138,6 +138,14 @@ window.PARTNERS_DATA = {
         lon: -104.9903,
         location: 'Denver, Colorado'
     },
+    'the-alchemist': {
+        name: 'The Alchemist',
+        slug: 'the-alchemist',
+        lat: 33.69,
+        lon: -114.18,
+        location: 'Pop-up Vendor at Skooliepalooza',
+        description: 'The Alchemist by Sammi Whitchurch is a pop-up vendor at Skooliepalooza and the nomadic festival circuit, turning ceremonial cacao into community medicine. Based in the Quartzsite, Arizona area during the winter season, part of the vibrant nomad community that gathers for connection, celebration, and conscious commerce.'
+    },
     'the-enchanted-forest-boutique': {
         name: 'The Enchanted Forest Boutique',
         slug: 'the-enchanted-forest-boutique',
@@ -185,14 +193,6 @@ window.PARTNERS_DATA = {
         lon: -123.2620,
         location: 'Corvallis, Oregon',
         description: 'Crafts soulful wooden drums featuring intricate laser-etched designs. Founded by artisan Jenifer Runnion, Prism Percussions blends fine craftsmanship with ecological restoration, creating spaces where rhythm, creativity, and regenerative cacao converge.'
-    },
-    'love-of-ganesha': {
-        name: 'Love of Ganesha',
-        slug: 'love-of-ganesha',
-        lat: 37.7699,
-        lon: -122.4469,
-        location: 'San Francisco, California',
-        description: 'A cornerstone of spiritual exploration in San Francisco\'s Haight Street since the counterculture era, offering raw crystals, handcrafted jewelry, protection amulets, and spiritually blessed items, where regenerative cacao enhances sacred gatherings.'
     },
     'embodied-blindfold-dance': {
         name: 'Embodied Blindfold Dance',
