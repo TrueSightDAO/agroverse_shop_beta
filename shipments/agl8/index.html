@@ -963,6 +963,10 @@
 </div>
 <form class="email-form" id="email-signup-form-agl8" onsubmit="handleEmailSignup(event, 'agl8')">
 <input class="email-input" id="email-input-agl8" placeholder="Enter your email" required="" type="email"/>
+<label class="email-consent" for="subscribe-checkbox-agl8" style="display:flex;align-items:flex-start;gap:0.5rem;margin:0.75rem 0;font-size:13px;color:var(--color-text-light);text-align:left;line-height:1.4;">
+<input id="subscribe-checkbox-agl8" type="checkbox" style="margin-top:3px;flex:none;"/>
+<span>Keep me posted on Agroverse — occasional notes on single-estate releases and farm stories. (You'll get your tree updates either way.)</span>
+</label>
 <button class="email-submit" id="email-submit-agl8" type="submit">Track My Impact</button>
 </form>
 <div class="email-success" id="email-success-agl8">
@@ -1269,7 +1273,9 @@ Perfect for those seeking a complex, evolving flavor profile that transforms fro
             try {
                 if (qrCode) {
                     // Link email to QR code via Google Apps Script
-                    const apiUrl = `${LINK_EMAIL_API_URL}?qr_code=${encodeURIComponent(qrCode)}&email_address=${encodeURIComponent(email)}`;
+                    const subscribeBox = document.getElementById(`subscribe-checkbox-${shipmentId}`);
+                    const wantsNewsletter = subscribeBox && subscribeBox.checked;
+                    const apiUrl = `${LINK_EMAIL_API_URL}?qr_code=${encodeURIComponent(qrCode)}&email_address=${encodeURIComponent(email)}` + (wantsNewsletter ? '&subscribe=true' : '');
                     
                     const response = await fetch(apiUrl, {
                         method: 'GET',
