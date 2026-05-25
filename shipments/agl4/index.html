@@ -427,15 +427,16 @@
         
         .email-form {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 1rem;
             max-width: 500px;
             margin: 0 auto;
-            flex-wrap: wrap;
         }
         
         .email-input {
-            flex: 1;
-            min-width: 250px;
+            width: 100%;
+            box-sizing: border-box;
             padding: 1rem 1.5rem;
             border: 2px solid rgba(59, 51, 51, 0.2);
             border-radius: 8px;
@@ -998,7 +999,7 @@
 <form class="email-form" id="email-signup-form-agl4" onsubmit="handleEmailSignup(event, 'agl4')">
 <input class="email-input" id="email-input-agl4" placeholder="Enter your email" required="" type="email"/>
 <label class="email-consent" for="subscribe-checkbox-agl4" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin:0.75rem auto;max-width:34rem;font-size:13px;color:var(--color-text-light);text-align:center;line-height:1.4;">
-<input id="subscribe-checkbox-agl4" type="checkbox" style="flex:none;"/>
+<input id="subscribe-checkbox-agl4" type="checkbox" checked style="flex:none;"/>
 <span>Keep me posted on Agroverse — occasional notes on single-estate releases and farm stories. (You'll get your tree updates either way.)</span>
 </label>
 <button class="email-submit" id="email-submit-agl4" type="submit">Track My Impact</button>
