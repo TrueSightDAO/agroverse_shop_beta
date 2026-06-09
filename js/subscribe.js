@@ -1,0 +1,463 @@
+/**
+ * Subscribe Engine
+ * Data-driven subscription flow. Resolves the SKU from the catalog,
+ * renders quantity picker + address form, calls the GAS action,
+ * and redirects to Stripe Checkout.
+ *
+ * URL parameter: ?slug=<subscriptionSlug>  (e.g. ?slug=chocolate-bar)
+ * The thin wrapper pages (/subscribe/chocolate-bar/) pass this.
+ */
+
+(function() {
+  'use strict';
+
+  var config = window.AGROVERSE_CONFIG || {};
+  var currentProduct = null;
+
+  /**
+   * Get the subscription slug from the URL query string.
+   */
+  function getSubscriptionSlug() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('slug');
+  }
+
+  /**
+   * Resolve the product from the catalog by subscription slug.
+   */
+  function resolveProduct() {
+    var slug = getSubscriptionSlug();
+    if (!slug) {
+      return null;
+    }
+    if (window.getProductBySubscriptionSlug) {
+      return window.getProductBySubscriptionSlug(slug);
+    }
+    return null;
+  }
+
+  /**
+   * Render the product card at the top of the subscribe page.
+   */
+  function renderProductCard(product) {
+    var container = document.getElementById('subscribe-product-card');
+    if (!container) return;
+
+    var imageUrl = product.image || '';
+    if (imageUrl && !imageUrl.startsWith('http') && !imageUrl.startsWith('/')) {
+      imageUrl = '../' + imageUrl;
+    }
+
+    container.innerHTML =
+      '<img src="' + (imageUrl || '../assets/images/hero/cacao-circles.jpg') + '" alt="' + escapeHtml(product.name) + '" onerror="this.onerror=null; this.src=\'../assets/images/hero/cacao-circles.jpg\';">' +
+      '<div class="product-info">' +
+        '<div class="product-name">' + escapeHtml(product.name) + '</div>' +
+        '<div class="product-price">$' + product.price.toFixed(2) + ' <span>per bar</span></div>' +
+      '</div>';
+  }
+
+  /**
+   * Render quantity preset buttons.
+   */
+  function renderQuantityPresets(product) {
+    var container = document.getElementById('quantity-presets');
+    if (!container) return;
+
+    var presets = [3, 6, 12];
+    var html = '';
+    for (var i = 0; i < presets.length; i++) {
+      var qty = presets[i];
+      if (qty >= product.minQty && qty <= product.maxQty) {
+        var active = (qty === product.defaultQty) ? ' active' : '';
+        html += '<button type="button" class="quantity-preset' + active + '" data-qty="' + qty + '">' + qty + ' bars</button>';
+      }
+    }
+    container.innerHTML = html;
+
+    // Attach click handlers
+    var buttons = container.querySelectorAll('.quantity-preset');
+    for (var j = 0; j < buttons.length; j++) {
+      buttons[j].addEventListener('click', function() {
+        var qty = parseInt(this.getAttribute('data-qty'), 10);
+        setQuantity(qty);
+      });
+    }
+  }
+
+  /**
+   * Set the quantity input value and update UI.
+   */
+  function setQuantity(qty) {
+    var input = document.getElementById('subscribe-quantity');
+    if (!input) return;
+
+    if (!currentProduct) return;
+    qty = Math.max(currentProduct.minQty, Math.min(currentProduct.maxQty, qty));
+    input.value = qty;
+    updateSummary();
+    updatePresetActive(qty);
+    updateStepperButtons(qty);
+  }
+
+  /**
+   * Update which preset button is active.
+   */
+  function updatePresetActive(qty) {
+    var presets = document.querySelectorAll('.quantity-preset');
+    for (var i = 0; i < presets.length; i++) {
+      var presetQty = parseInt(presets[i].getAttribute('data-qty'), 10);
+      if (presetQty === qty) {
+        presets[i].classList.add('active');
+      } else {
+        presets[i].classList.remove('active');
+      }
+    }
+  }
+
+  /**
+   * Enable/disable stepper buttons based on bounds.
+   */
+  function updateStepperButtons(qty) {
+    var decBtn = document.getElementById('qty-decrease');
+    var incBtn = document.getElementById('qty-increase');
+    if (!currentProduct) return;
+    if (decBtn) decBtn.disabled = (qty <= currentProduct.minQty);
+    if (incBtn) incBtn.disabled = (qty >= currentProduct.maxQty);
+  }
+
+  /**
+   * Update the subscription summary (quantity, subtotal, etc.).
+   */
+  function updateSummary() {
+    var input = document.getElementById('subscribe-quantity');
+    if (!input || !currentProduct) return;
+
+    var qty = parseInt(input.value, 10) || currentProduct.defaultQty;
+    qty = Math.max(currentProduct.minQty, Math.min(currentProduct.maxQty, qty));
+
+    var unitPrice = currentProduct.price;
+    var subtotal = qty * unitPrice;
+
+    var qtyEl = document.getElementById('summary-quantity');
+    var unitEl = document.getElementById('summary-unit-price');
+    var subEl = document.getElementById('summary-subtotal');
+
+    if (qtyEl) qtyEl.textContent = qty + (qty === 1 ? ' bar' : ' bars');
+    if (unitEl) unitEl.textContent = '$' + unitPrice.toFixed(2);
+    if (subEl) subEl.textContent = '$' + subtotal.toFixed(2);
+  }
+
+  /**
+   * Validate the subscribe form.
+   */
+  function validateForm(formData) {
+    var errors = [];
+    var fieldErrors = {};
+
+    if (!formData.fullName || formData.fullName.trim().length < 2) {
+      errors.push('Full name is required');
+      fieldErrors.fullName = true;
+    }
+    if (!formData.email || formData.email.indexOf('@') === -1) {
+      errors.push('Valid email is required');
+      fieldErrors.email = true;
+    }
+    if (!formData.phone || formData.phone.trim().length < 10) {
+      errors.push('Valid phone number is required');
+      fieldErrors.phone = true;
+    }
+    if (!formData.address || formData.address.trim().length < 5) {
+      errors.push('Street address is required');
+      fieldErrors.address = true;
+    }
+    if (!formData.city || formData.city.trim().length < 2) {
+      errors.push('City is required');
+      fieldErrors.city = true;
+    }
+    if (!formData.state || formData.state.trim().length < 2) {
+      errors.push('State is required');
+      fieldErrors.state = true;
+    }
+    if (!formData.zip || !/^\d{5}(-\d{4})?$/.test(formData.zip)) {
+      errors.push('Valid ZIP code is required');
+      fieldErrors.zip = true;
+    }
+
+    return { valid: errors.length === 0, errors: errors, fieldErrors: fieldErrors };
+  }
+
+  /**
+   * Get form data from the subscribe form.
+   */
+  function getFormData() {
+    var form = document.getElementById('subscribe-form');
+    if (!form) return null;
+
+    return {
+      fullName: getFieldValue(form, 'fullName'),
+      email: getFieldValue(form, 'email'),
+      phone: getFieldValue(form, 'phone'),
+      address: getFieldValue(form, 'address'),
+      city: getFieldValue(form, 'city'),
+      state: getFieldValue(form, 'state'),
+      zip: getFieldValue(form, 'zip'),
+      country: getFieldValue(form, 'country') || 'US'
+    };
+  }
+
+  function getFieldValue(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    return el ? el.value : '';
+  }
+
+  /**
+   * Show form errors.
+   */
+  function showErrors(errors, fieldErrors) {
+    var container = document.getElementById('subscribe-errors');
+    if (container) {
+      container.innerHTML = errors.map(function(err) {
+        return '<div class="error-message">' + escapeHtml(err) + '</div>';
+      }).join('');
+    }
+
+    // Highlight invalid fields
+    if (fieldErrors) {
+      var form = document.getElementById('subscribe-form');
+      if (form) {
+        var fields = form.querySelectorAll('input, select');
+        for (var i = 0; i < fields.length; i++) {
+          var name = fields[i].getAttribute('name');
+          if (name && fieldErrors[name]) {
+            fields[i].classList.add('error');
+          } else {
+            fields[i].classList.remove('error');
+          }
+        }
+      }
+    }
+  }
+
+  function clearErrors() {
+    var container = document.getElementById('subscribe-errors');
+    if (container) {
+      container.innerHTML = '';
+    }
+    var form = document.getElementById('subscribe-form');
+    if (form) {
+      var fields = form.querySelectorAll('input, select');
+      for (var i = 0; i < fields.length; i++) {
+        fields[i].classList.remove('error');
+      }
+    }
+  }
+
+  /**
+   * Set loading state on the submit button.
+   */
+  function setLoading(loading) {
+    var btn = document.getElementById('subscribe-submit');
+    var form = document.getElementById('subscribe-form');
+    if (btn) {
+      btn.disabled = loading;
+      btn.textContent = loading ? 'Processing...' : 'Subscribe Now';
+    }
+    if (form) {
+      var inputs = form.querySelectorAll('input, select, button');
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].id !== 'qty-decrease' && inputs[i].id !== 'qty-increase') {
+          inputs[i].disabled = loading;
+        }
+      }
+    }
+  }
+
+  /**
+   * Call the GAS createSubscriptionCheckoutSession action.
+   */
+  async function createSubscriptionSession(product, quantity, shippingAddress) {
+    var scriptUrl = config.googleScriptUrl;
+    if (!scriptUrl || scriptUrl.indexOf('YOUR_') !== -1) {
+      throw new Error('Google App Script URL not configured.');
+    }
+
+    var params = new URLSearchParams();
+    params.append('action', 'createSubscriptionCheckoutSession');
+    params.append('environment', config.environment || 'production');
+    params.append('sku', product.productId);
+    params.append('quantity', quantity.toString());
+    params.append('shippingAddress', JSON.stringify(shippingAddress));
+
+    var response = await fetch(scriptUrl + '?' + params.toString(), {
+      method: 'GET'
+    });
+
+    if (!response.ok) {
+      var errorText = await response.text();
+      throw new Error(errorText || 'Failed to create subscription session');
+    }
+
+    var data = await response.json();
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    if (!data.checkoutUrl) {
+      throw new Error('No checkout URL received');
+    }
+
+    return data.checkoutUrl;
+  }
+
+  /**
+   * Handle form submission.
+   */
+  async function handleSubmit(event) {
+    event.preventDefault();
+    clearErrors();
+
+    if (!currentProduct) {
+      showErrors(['Product not found. Please check the URL.']);
+      return;
+    }
+
+    var formData = getFormData();
+    var validation = validateForm(formData);
+    if (!validation.valid) {
+      showErrors(validation.errors, validation.fieldErrors);
+      return;
+    }
+
+    var qtyInput = document.getElementById('subscribe-quantity');
+    var quantity = parseInt(qtyInput ? qtyInput.value : currentProduct.defaultQty, 10);
+    quantity = Math.max(currentProduct.minQty, Math.min(currentProduct.maxQty, quantity));
+
+    setLoading(true);
+
+    try {
+      var checkoutUrl = await createSubscriptionSession(currentProduct, quantity, formData);
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.error('Subscription error:', error);
+      showErrors([error.message || 'Failed to process subscription. Please try again.']);
+      setLoading(false);
+    }
+  }
+
+  /**
+   * Simple HTML escaping.
+   */
+  function escapeHtml(str) {
+    if (!str) return '';
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  /**
+   * Initialize the subscribe engine.
+   */
+  function init() {
+    // Resolve product
+    currentProduct = resolveProduct();
+
+    if (!currentProduct) {
+      var container = document.getElementById('subscribe-product-card');
+      if (container) {
+        container.innerHTML = '<div style="text-align: center; width: 100%; color: #c33; font-weight: 600;">Product not found. Please check the subscription link.</div>';
+      }
+      var btn = document.getElementById('subscribe-submit');
+      if (btn) btn.disabled = true;
+      return;
+    }
+
+    // Render UI
+    renderProductCard(currentProduct);
+    renderQuantityPresets(currentProduct);
+
+    // Set default quantity
+    var qtyInput = document.getElementById('subscribe-quantity');
+    if (qtyInput) {
+      qtyInput.value = currentProduct.defaultQty;
+      qtyInput.min = currentProduct.minQty;
+      qtyInput.max = currentProduct.maxQty;
+    }
+
+    updateSummary();
+    updateStepperButtons(currentProduct.defaultQty);
+
+    // Stepper buttons
+    var decBtn = document.getElementById('qty-decrease');
+    var incBtn = document.getElementById('qty-increase');
+
+    if (decBtn) {
+      decBtn.addEventListener('click', function() {
+        var input = document.getElementById('subscribe-quantity');
+        if (input) {
+          var qty = parseInt(input.value, 10) || currentProduct.defaultQty;
+          setQuantity(qty - 1);
+        }
+      });
+    }
+
+    if (incBtn) {
+      incBtn.addEventListener('click', function() {
+        var input = document.getElementById('subscribe-quantity');
+        if (input) {
+          var qty = parseInt(input.value, 10) || currentProduct.defaultQty;
+          setQuantity(qty + 1);
+        }
+      });
+    }
+
+    // Manual quantity input
+    if (qtyInput) {
+      qtyInput.addEventListener('input', function() {
+        var qty = parseInt(this.value, 10);
+        if (!isNaN(qty)) {
+          updateSummary();
+          updatePresetActive(qty);
+          updateStepperButtons(qty);
+        }
+      });
+
+      qtyInput.addEventListener('blur', function() {
+        var qty = parseInt(this.value, 10);
+        if (isNaN(qty) || qty < currentProduct.minQty) {
+          setQuantity(currentProduct.defaultQty);
+        } else {
+          setQuantity(qty);
+        }
+      });
+    }
+
+    // Form submit
+    var form = document.getElementById('subscribe-form');
+    if (form) {
+      form.addEventListener('submit', handleSubmit);
+
+      // Clear field errors on input
+      var fields = form.querySelectorAll('input, select');
+      for (var i = 0; i < fields.length; i++) {
+        fields[i].addEventListener('input', function() {
+          this.classList.remove('error');
+        });
+      }
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Export for testing
+  window.SubscribeEngine = {
+    resolveProduct: resolveProduct,
+    setQuantity: setQuantity,
+    getFormData: getFormData,
+    validateForm: validateForm
+  };
+
+})();
