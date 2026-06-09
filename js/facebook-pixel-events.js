@@ -7,6 +7,12 @@
 (function() {
   'use strict';
 
+  // Skip on beta or localhost to avoid leaking into production analytics
+  var hostname = window.location.hostname;
+  if (hostname === 'beta.agroverse.shop' || hostname === 'www.beta.agroverse.shop' || hostname === 'localhost' || hostname === '127.0.0.1') {
+    return;
+  }
+
   /**
    * Check if Facebook Pixel is available
    */
