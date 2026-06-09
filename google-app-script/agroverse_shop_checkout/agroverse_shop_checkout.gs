@@ -571,6 +571,219 @@ function createCheckoutSession(data) {
 }
 
 /**
+ * Create Stripe Subscription Checkout Session
+ * Purely additive — does NOT touch the existing createCheckoutSession.
+ *
+ * Input: sku (productId), quantity, shippingAddress, environment
+ * Creates a subscription-mode checkout session with:
+ *   - Recurring unit line (monthly)
+ *   - Recurring shipping line (EasyPost, one tier)
+ *
+ * @param {Object} data Request data containing sku, quantity, shippingAddress, environment
+ * @return {ContentService.TextOutput} JSON response with checkout URL or error
+ */
+function createSubscriptionCheckoutSession(data) {
+  try {
+    var sku = data.sku;
+    var quantity = parseInt(data.quantity, 10) || 6;
+    var shippingAddress = data.shippingAddress;
+    var environment = data.environment || 'production';
+
+    var CONFIG = getConfig(environment);
+
+    // Validate SKU
+    if (!sku) {
+      return createCORSResponse({
+        status: 'error',
+        error: 'sku parameter is required'
+      });
+    }
+
+    // Validate Stripe key
+    if (!CONFIG.stripeSecretKey) {
+      var keyType = environment === 'development' ? 'STRIPE_TEST_SECRET_KEY' : 'STRIPE_LIVE_SECRET_KEY';
+      return createCORSResponse({
+        status: 'error',
+        error: 'Stripe ' + environment + ' secret key not configured. Please set ' + keyType + ' in Script Properties.'
+      });
+    }
+
+    // Resolve product info from the catalog (passed via data or looked up)
+    // The frontend sends sku, name, price, weight, image in the data
+    var productName = data.name || 'Ceremonial Cacao Chocolate Bar';
+    var unitPrice = parseFloat(data.price) || 10.00;
+    var unitWeight = parseFloat(data.weight) || 1.76; // 50g bar in oz
+    var productImage = data.image || '';
+
+    // Clamp quantity to reasonable bounds
+    quantity = Math.max(1, Math.min(24, quantity));
+
+    // Convert price to cents
+    var unitAmount = Math.round(unitPrice * 100);
+
+    // Build product image URL (absolute HTTPS for Stripe)
+    if (productImage) {
+      var baseUrl = environment === 'development' ? 'https://beta.agroverse.shop' : 'https://www.agroverse.shop';
+      var imagePath = productImage.indexOf('/') === 0 ? productImage : '/' + productImage;
+      productImage = baseUrl + imagePath;
+      if (productImage.indexOf('http://') === 0) {
+        productImage = productImage.replace('http://', 'https://');
+      }
+    }
+
+    // Build line items
+    var lineItems = [];
+
+    // Line 1: Recurring unit line
+    var productData = {
+      name: productName,
+      description: productName
+    };
+    if (productImage) {
+      productData.images = [productImage];
+    }
+
+    lineItems.push({
+      quantity: quantity,
+      price_data: {
+        currency: 'usd',
+        unit_amount: unitAmount,
+        recurring: {
+          interval: 'month'
+        },
+        product_data: productData
+      }
+    });
+
+    // Line 2: Recurring shipping line
+    // Calculate total weight: product weight + packaging
+    var props = PropertiesService.getScriptProperties();
+    var baseBoxWeight = parseFloat(props.getProperty('BASE_BOX_WEIGHT_OZ')) || 11.5;
+    var perItemWeight = parseFloat(props.getProperty('PER_ITEM_PACKAGING_OZ')) || 0.65;
+    var totalWeightOz = (unitWeight * quantity) + baseBoxWeight + (perItemWeight * quantity);
+
+    // Get shipping rate via EasyPost (one tier, e.g. Ground Advantage)
+    var shippingOptions = [];
+    if (totalWeightOz > 0) {
+      shippingOptions = calculateShippingRatesViaEasyPost(totalWeightOz, shippingAddress);
+    }
+
+    // Pick the cheapest USPS rate for the recurring shipping line
+    var shippingAmountCents = 500; // Fallback $5.00
+    var shippingDisplayName = 'Ground Advantage - USPS';
+    if (shippingOptions.length > 0) {
+      // Sort by price and pick the cheapest
+      shippingOptions.sort(function(a, b) {
+        return (a.shipping_rate_data.fixed_amount.amount || 0) - (b.shipping_rate_data.fixed_amount.amount || 0);
+      });
+      shippingAmountCents = shippingOptions[0].shipping_rate_data.fixed_amount.amount || 500;
+      shippingDisplayName = shippingOptions[0].shipping_rate_data.display_name || 'Ground Advantage - USPS';
+    }
+
+    // Add shipping as a recurring line item (subscription mode doesn't support
+    // interactive shipping_options picker, so we lock the shipping amount)
+    lineItems.push({
+      quantity: 1,
+      price_data: {
+        currency: 'usd',
+        unit_amount: shippingAmountCents,
+        recurring: {
+          interval: 'month'
+        },
+        product_data: {
+          name: 'Shipping (' + shippingDisplayName + ')',
+          description: 'Monthly shipping — ' + shippingDisplayName
+        }
+      }
+    });
+
+    // Determine success and cancel URLs
+    var baseUrl = environment === 'development'
+      ? 'http://127.0.0.1:8000'
+      : 'https://www.agroverse.shop';
+
+    var successUrl = baseUrl + '/order-status?session_id={CHECKOUT_SESSION_ID}';
+    var cancelUrl = baseUrl + '/subscribe/chocolate-bar/';
+
+    // Build Stripe payload
+    var payload = {
+      mode: 'subscription',
+      line_items: lineItems,
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+      billing_address_collection: 'required',
+      phone_number_collection: {
+        enabled: true
+      },
+      metadata: {
+        sku: sku,
+        quantity: quantity.toString(),
+        environment: environment,
+        source: 'agroverse_shop_subscription'
+      }
+    };
+
+    // Add shipping address collection for subscription
+    // Note: In subscription mode, shipping_address_collection is not supported
+    // on the session level. The shipping address is collected via the customer
+    // portal or managed separately. We pass it in metadata for fulfillment.
+    if (shippingAddress) {
+      payload.metadata.shippingName = shippingAddress.fullName || shippingAddress.name || '';
+      payload.metadata.shippingAddress = shippingAddress.address || '';
+      payload.metadata.shippingCity = shippingAddress.city || '';
+      payload.metadata.shippingState = shippingAddress.state || '';
+      payload.metadata.shippingZip = shippingAddress.zip || '';
+      payload.metadata.shippingCountry = shippingAddress.country || 'US';
+    }
+
+    Logger.log('Creating subscription checkout session for sku: ' + sku + ', qty: ' + quantity);
+    Logger.log('  Unit price: $' + (unitAmount / 100).toFixed(2));
+    Logger.log('  Shipping: $' + (shippingAmountCents / 100).toFixed(2));
+    Logger.log('  Total monthly: $' + ((unitAmount * quantity + shippingAmountCents) / 100).toFixed(2));
+
+    var formData = buildFormData(payload);
+
+    var response = UrlFetchApp.fetch('https://api.stripe.com/v1/checkout/sessions', {
+      method: 'post',
+      headers: {
+        'Authorization': 'Bearer ' + CONFIG.stripeSecretKey,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      payload: formData,
+      muteHttpExceptions: true
+    });
+
+    var responseText = response.getContentText();
+    if (response.getResponseCode() !== 200) {
+      Logger.log('Stripe API Error Response: ' + responseText);
+      var errorData = JSON.parse(responseText);
+      throw new Error('Stripe API error: ' + (errorData.error ? errorData.error.message : responseText));
+    }
+
+    var session = JSON.parse(responseText);
+
+    if (session.error) {
+      return createCORSResponse({
+        status: 'error',
+        error: session.error.message
+      });
+    }
+
+    return createCORSResponse({
+      status: 'success',
+      checkoutUrl: session.url,
+      sessionId: session.id
+    });
+  } catch (error) {
+    Logger.log('Error creating subscription checkout session: ' + error.toString());
+    return createCORSResponse({
+      status: 'error',
+      error: error.toString()
+    });
+  }
+}
+
+/**
  * Handle Stripe webhook (OPTIONAL - not required if using polling)
  * 
  * NOTE: This function is kept for backward compatibility but is not required
