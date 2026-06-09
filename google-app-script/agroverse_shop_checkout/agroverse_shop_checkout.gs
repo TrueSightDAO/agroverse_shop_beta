@@ -161,6 +161,10 @@ function doPost(e) {
       return createCheckoutSession(data);
     }
 
+    if (action === 'createSubscriptionCheckoutSession') {
+      return createSubscriptionCheckoutSession(data);
+    }
+
     if (action === 'submitQuoteRequest') {
       return submitQuoteRequest(data);
     }
