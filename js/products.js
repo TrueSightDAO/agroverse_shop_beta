@@ -6,7 +6,10 @@
  * Products are created dynamically during checkout.
  *
  * relatedFamily: groups PDPs for js/related-pdp-section.js (merged with same-farm picks).
- * productPageSlug: folder name under /product-page/ for this SKU’s PDP.
+ * productPageSlug: folder name under /product-page/ for this SKU's PDP.
+ * gtin: GTIN-14 (or other GTIN format) for Google Merchant Center and structured data.
+ *       Add this field to every product entry; scripts generating PDP pages,
+ *       JSON-LD, and product feeds read it from here as the single source of truth.
  */
 
 window.PRODUCTS = {
@@ -36,6 +39,7 @@ window.PRODUCTS = {
     category: 'retail',
     shipment: 'AGL10',
     farm: 'Capela Velha Fazenda',
+    gtin: '00860010660249',
     relatedFamily: 'whole-cacao-retail'
   },
   'oscar-bahia-ceremonial-cacao-200g': {
@@ -138,6 +142,7 @@ window.PRODUCTS = {
     category: 'retail',
     shipment: 'AGL4',
     farm: "Oscar's Farm, Bahia",
+    gtin: '00860010660256',
     relatedFamily: 'bar-81-50g'
   },
   'organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023': {
@@ -151,6 +156,7 @@ window.PRODUCTS = {
     category: 'retail',
     shipment: 'AGL2',
     farm: 'Fazenda Santa Ana, Bahia',
+    gtin: '00860010660256',
     relatedFamily: 'bar-81-50g'
   }
 };
