@@ -10,6 +10,13 @@
  * gtin: GTIN-14 (or other GTIN format) for Google Merchant Center and structured data.
  *       Add this field to every product entry; scripts generating PDP pages,
  *       JSON-LD, and product feeds read it from here as the single source of truth.
+ *
+ * SUBSCRIPTION FIELDS (generic / subscribable entries only):
+ *   subscribable: true           — this SKU can be subscribed to
+ *   subscriptionSlug: string     — maps to /subscribe/<slug>/ clean URL
+ *   cadence: 'monthly'           — billing interval
+ *   minQty, maxQty, defaultQty   — quantity bounds for the subscribe engine
+ *   origin: 'rotating'           — sentinel: not bound to a single farm/shipment
  */
 
 window.PRODUCTS = {
@@ -158,6 +165,31 @@ window.PRODUCTS = {
     farm: 'Fazenda Santa Ana, Bahia',
     gtin: '00860010660256',
     relatedFamily: 'bar-81-50g'
+  },
+
+  // ===== GENERIC / SUBSCRIBABLE ENTRIES =====
+  // These are vintage-independent, single-GTIN entries. The GTIN is shared with
+  // the vintage PDPs above. Provenance is per-bar via the QR code.
+
+  'generic-ceremonial-cacao-chocolate-bar': {
+    productId: 'generic-ceremonial-cacao-chocolate-bar',
+    productPageSlug: 'ceremonial-cacao-chocolate-bar',
+    name: 'Ceremonial Cacao Chocolate Bar — Single-Estate, Rotating Origins',
+    price: 10.00,
+    weight: 1.76, // 50g ≈ 1.76 oz
+    image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
+    stripePriceId: '',
+    category: 'retail',
+    gtin: '00860010660256', // Shared 81% 50g bar GTIN — REUSE, never mint
+    origin: 'rotating',      // Sentinel: NOT one farm/shipment
+    relatedFamily: 'bar-81-50g',
+    // Subscription metadata
+    subscribable: true,
+    subscriptionSlug: 'chocolate-bar',  // → /subscribe/chocolate-bar/
+    cadence: 'monthly',
+    minQty: 1,
+    maxQty: 24,
+    defaultQty: 6
   }
 };
 
@@ -182,3 +214,23 @@ window.getProductsByCategory = function(category) {
   return Object.values(window.PRODUCTS).filter(p => p.category === category);
 };
 
+/**
+ * Get subscribable products (those with subscribable: true)
+ */
+window.getSubscribableProducts = function() {
+  return Object.values(window.PRODUCTS).filter(p => p.subscribable === true);
+};
+
+/**
+ * Resolve a subscription slug to its product entry.
+ * Returns null if no match.
+ */
+window.getProductBySubscriptionSlug = function(slug) {
+  var all = Object.values(window.PRODUCTS);
+  for (var i = 0; i < all.length; i++) {
+    if (all[i].subscriptionSlug === slug) {
+      return all[i];
+    }
+  }
+  return null;
+};
