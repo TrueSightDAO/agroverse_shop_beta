@@ -366,6 +366,17 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
 <script src="../../js/config.js"></script>
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
+<script>
+// Redirect to ?slug=chocolate-bar if no slug is in the URL
+// The subscribe engine reads the slug from the query string.
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (!params.get('slug')) {
+    var newUrl = window.location.pathname.replace(/\/$/, '') + '/?slug=chocolate-bar' + window.location.hash;
+    window.location.replace(newUrl);
+  }
+})();
+</script>
 </head>
 <body>
 <header>
