@@ -174,7 +174,7 @@ window.PRODUCTS = {
   'generic-ceremonial-cacao-chocolate-bar': {
     productId: 'generic-ceremonial-cacao-chocolate-bar',
     productPageSlug: 'ceremonial-cacao-chocolate-bar',
-    name: 'Ceremonial Cacao Chocolate Bar — Single-Estate, Rotating Origins',
+    name: 'Ceremonial Cacao Chocolate Bar — Single-Estate, Monthly Discovery',
     price: 10.00,
     weight: 1.76, // 50g ≈ 1.76 oz
     image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
