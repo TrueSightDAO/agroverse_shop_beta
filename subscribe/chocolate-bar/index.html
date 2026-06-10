@@ -440,11 +440,12 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
         </div>
         <div class="subscribe-summary-row">
           <span class="label">Shipping</span>
-          <span class="value" id="summary-shipping">Calculated at signup</span>
+          <span class="value" id="summary-shipping">Enter address below</span>
         </div>
+        <div id="subscribe-shipping-rates"></div>
         <div class="subscribe-summary-row total">
           <span class="label">Monthly total</span>
-          <span class="value" id="summary-total">Calculated at signup</span>
+          <span class="value" id="summary-total">Enter address</span>
         </div>
       </div>
 
@@ -496,7 +497,7 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
 
       <div id="subscribe-errors"></div>
 
-      <button type="submit" id="subscribe-submit" class="cta-button">Subscribe Now</button>
+      <button type="submit" id="subscribe-submit" class="cta-button" disabled>Subscribe Now</button>
       <p class="subscribe-note">
         You'll be redirected to Stripe Checkout to complete your subscription.
         Cancel or modify anytime via the <a href="https://dashboard.stripe.com/" target="_blank" rel="noopener">Stripe Customer Portal</a>.
