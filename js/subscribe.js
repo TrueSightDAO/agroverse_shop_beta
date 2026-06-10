@@ -126,7 +126,7 @@
   }
 
   /**
-   * Update the subscription summary (quantity, subtotal, etc.).
+   * Update the subscription summary (quantity, subtotal, shipping, total).
    */
   function updateSummary() {
     var input = document.getElementById('subscribe-quantity');
@@ -141,10 +141,29 @@
     var qtyEl = document.getElementById('summary-quantity');
     var unitEl = document.getElementById('summary-unit-price');
     var subEl = document.getElementById('summary-subtotal');
+    var shipEl = document.getElementById('summary-shipping');
+    var totalEl = document.getElementById('summary-total');
 
     if (qtyEl) qtyEl.textContent = qty + (qty === 1 ? ' bar' : ' bars');
     if (unitEl) unitEl.textContent = '$' + unitPrice.toFixed(2);
     if (subEl) subEl.textContent = '$' + subtotal.toFixed(2);
+
+    // Update total with shipping if selected
+    var shippingAmount = _selectedShippingRate ? _selectedShippingRate.amount : 0;
+    if (shipEl) {
+      if (_selectedShippingRate) {
+        shipEl.textContent = '$' + shippingAmount.toFixed(2);
+      } else {
+        shipEl.textContent = 'Select below';
+      }
+    }
+    if (totalEl) {
+      if (_selectedShippingRate) {
+        totalEl.textContent = '$' + (subtotal + shippingAmount).toFixed(2) + '/mo';
+      } else {
+        totalEl.textContent = 'Select shipping';
+      }
+    }
   }
 
   /**
@@ -270,6 +289,185 @@
         }
       }
     }
+  }
+
+  // --- Shipping calculation (mirrors checkout-shipping-calculator.js) ---
+  var _selectedShippingRate = null;
+  var _shippingRatesCache = null;
+  var _lastAddressHash = null;
+
+  /**
+   * Calculate shipping rates for the subscribe page.
+   */
+  function calculateShipping() {
+    var form = document.getElementById('subscribe-form');
+    if (!form || !currentProduct) return;
+
+    var address = form.querySelector('[name="address"]').value.trim();
+    var city = form.querySelector('[name="city"]').value.trim();
+    var state = form.querySelector('[name="state"]').value.trim();
+    var zip = form.querySelector('[name="zip"]').value.trim();
+
+    if (!address || !city || !state || !zip) {
+      updateShippingDisplay(null, 'Enter your complete address to see shipping options');
+      return;
+    }
+
+    var addressHash = address + city + state + zip;
+    if (addressHash === _lastAddressHash && _shippingRatesCache) {
+      updateShippingDisplay(_shippingRatesCache);
+      return;
+    }
+
+    updateShippingDisplay(null, 'Calculating shipping...');
+
+    var scriptUrl = config.googleScriptUrl;
+    var importerOrigin = config.shippingRatesApiOrigin;
+    var tryImporter = importerOrigin && String(importerOrigin).indexOf('YOUR_') === -1;
+
+    // Calculate weight: product weight * quantity + packaging
+    var qty = parseInt(document.getElementById('subscribe-quantity').value, 10) || currentProduct.defaultQty;
+    var totalWeightOz = (parseFloat(currentProduct.weight) || 1.76) * qty;
+    var packageWeightOz = 11.5 + (0.65 * qty); // box + per-item packaging
+    totalWeightOz += packageWeightOz;
+
+    var shippingAddress = { address: address, city: city, state: state, zip: zip, country: 'US' };
+
+    function fetchFromImporter(origin) {
+      var p = new URLSearchParams();
+      p.append('weightOz', totalWeightOz.toFixed(2));
+      p.append('environment', config.environment || 'production');
+      p.append('shippingAddress', JSON.stringify(shippingAddress));
+      var url = String(origin).replace(/\/?$/, '') + '/agroverse_shop/shipping_rates?' + p.toString();
+      return fetch(url, { method: 'GET' }).then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      });
+    }
+
+    function fetchFromGas(url) {
+      var p = new URLSearchParams();
+      p.append('action', 'calculateShippingRates');
+      p.append('environment', config.environment || 'production');
+      p.append('weightOz', totalWeightOz.toFixed(2));
+      p.append('shippingAddress', JSON.stringify(shippingAddress));
+      return fetch(url + '?' + p.toString(), { method: 'GET' }).then(function(r) {
+        return r.json();
+      });
+    }
+
+    var importerPromise = tryImporter
+      ? fetchFromImporter(importerOrigin).catch(function(e) {
+          console.warn('Shipping rates (Edgar) failed, falling back to GAS:', e);
+          return null;
+        })
+      : Promise.resolve(null);
+
+    importerPromise.then(function(data) {
+      if (data && data.status === 'success' && data.rates && data.rates.length > 0) {
+        _shippingRatesCache = data.rates;
+        _lastAddressHash = addressHash;
+        updateShippingDisplay(data.rates);
+        return null;
+      }
+      if (!scriptUrl || scriptUrl.includes('YOUR_')) {
+        updateShippingDisplay(null, (data && data.error) ? data.error : 'Shipping calculator not configured');
+        return null;
+      }
+      return fetchFromGas(scriptUrl);
+    }).then(function(gasData) {
+      if (!gasData) return;
+      if (gasData.status === 'success' && gasData.rates && gasData.rates.length > 0) {
+        _shippingRatesCache = gasData.rates;
+        _lastAddressHash = addressHash;
+        updateShippingDisplay(gasData.rates);
+      } else {
+        updateShippingDisplay(null, gasData.error || 'Unable to calculate shipping rates');
+      }
+    }).catch(function(error) {
+      console.error('Error calculating shipping:', error);
+      updateShippingDisplay(null, 'Error calculating shipping. Please try again.');
+    });
+  }
+
+  /**
+   * Update the shipping display with rates or a message.
+   */
+  function updateShippingDisplay(rates, message) {
+    var container = document.getElementById('subscribe-shipping-rates');
+    var shipEl = document.getElementById('summary-shipping');
+    var totalEl = document.getElementById('summary-total');
+    var submitBtn = document.getElementById('subscribe-submit');
+
+    if (message) {
+      if (container) container.innerHTML = '<div style="color: var(--color-text-light); font-size: 14px; padding: 0.5rem 0;">' + escapeHtml(message) + '</div>';
+      _selectedShippingRate = null;
+      if (submitBtn) submitBtn.disabled = true;
+      if (shipEl) shipEl.textContent = message === 'Calculating shipping...' ? 'Calculating...' : 'Select below';
+      if (totalEl) totalEl.textContent = 'Select shipping';
+      return;
+    }
+
+    if (!rates || rates.length === 0) {
+      if (container) container.innerHTML = '<div style="color: #c33; font-size: 14px; padding: 0.5rem 0;">No shipping options available. Please contact us.</div>';
+      _selectedShippingRate = null;
+      if (submitBtn) submitBtn.disabled = true;
+      if (shipEl) shipEl.textContent = 'Unavailable';
+      if (totalEl) totalEl.textContent = 'Select shipping';
+      return;
+    }
+
+    // Find cheapest rate for default selection
+    var cheapest = rates[0];
+    for (var i = 1; i < rates.length; i++) {
+      if (rates[i].amount < cheapest.amount) cheapest = rates[i];
+    }
+    _selectedShippingRate = cheapest;
+    if (submitBtn) submitBtn.disabled = false;
+
+    var html = '<div class="shipping-options" style="margin-top: 0.5rem;">';
+    for (var j = 0; j < rates.length; j++) {
+      var r = rates[j];
+      var checked = r.id === cheapest.id ? ' checked' : '';
+      var selected = r.id === cheapest.id ? ' shipping-option-selected' : '';
+      html += '<label class="shipping-option' + selected + '" data-rate-id="' + r.id + '" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.2s;">' +
+        '<input type="radio" name="subscribe-shipping-option" value="' + r.id + '"' + checked + ' data-rate-amount="' + r.amount + '" data-rate-name="' + escapeHtml(r.name) + '" style="flex-shrink: 0;">' +
+        '<div style="flex: 1;">' +
+          '<div style="font-weight: 600; font-size: 15px;">' + escapeHtml(r.name) + '</div>' +
+          '<div style="font-size: 14px; color: var(--color-text-light);">' + escapeHtml(r.deliveryDays || '') + '</div>' +
+        '</div>' +
+        '<div style="font-weight: 700; font-size: 16px;">$' + r.amount.toFixed(2) + '</div>' +
+      '</label>';
+    }
+    html += '</div>';
+    if (container) container.innerHTML = html;
+
+    // Attach change listeners
+    var radios = container.querySelectorAll('input[type="radio"]');
+    for (var k = 0; k < radios.length; k++) {
+      radios[k].addEventListener('change', function() {
+        var selectedId = this.value;
+        for (var m = 0; m < rates.length; m++) {
+          if (rates[m].id === selectedId) {
+            _selectedShippingRate = rates[m];
+            break;
+          }
+        }
+        // Update visual
+        var labels = container.querySelectorAll('.shipping-option');
+        for (var n = 0; n < labels.length; n++) {
+          labels[n].style.borderColor = '#ddd';
+        }
+        if (this.closest('.shipping-option')) {
+          this.closest('.shipping-option').style.borderColor = 'var(--color-primary)';
+        }
+        updateSummary();
+        var btn = document.getElementById('subscribe-submit');
+        if (btn) btn.disabled = false;
+      });
+    }
+
+    updateSummary();
   }
 
   /**
