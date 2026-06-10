@@ -171,10 +171,10 @@ window.PRODUCTS = {
   // These are vintage-independent, single-GTIN entries. The GTIN is shared with
   // the vintage PDPs above. Provenance is per-bar via the QR code.
 
-  'generic-ceremonial-cacao-chocolate-bar': {
-    productId: 'generic-ceremonial-cacao-chocolate-bar',
-    productPageSlug: 'ceremonial-cacao-chocolate-bar',
-    name: 'Ceremonial Cacao Chocolate Bar — Single-Estate, Monthly Discovery',
+  'generic-premium-dark-chocolate-bar': {
+    productId: 'generic-premium-dark-chocolate-bar',
+    productPageSlug: 'premium-dark-chocolate-bar',
+    name: 'Premium Dark Chocolate Bar — Single-Estate, Monthly Discovery',
     price: 10.00,
     weight: 1.76, // 50g ≈ 1.76 oz
     image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
