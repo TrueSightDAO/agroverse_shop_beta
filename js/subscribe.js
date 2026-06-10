@@ -471,6 +471,137 @@
   }
 
   /**
+   * Show address suggestion when EasyPost returns address_needs_review.
+   */
+  function showAddressSuggestions(data) {
+    var container = document.getElementById('subscribe-shipping-rates');
+    var shipEl = document.getElementById('summary-shipping');
+    var totalEl = document.getElementById('summary-total');
+    var submitBtn = document.getElementById('subscribe-submit');
+
+    if (!container) return;
+
+    var suggestions = data.suggestions || [];
+    var original = data.originalAddress || {};
+
+    var html = '<div style="margin-top: 0.75rem; padding: 1rem; background: #fff8e1; border: 2px solid #f0c040; border-radius: 8px;">' +
+      '<div style="font-weight: 700; font-size: 15px; margin-bottom: 0.5rem; color: #8a6d00;">\u26A0\uFE0F Address needs review</div>' +
+      '<div style="font-size: 13px; color: #666; margin-bottom: 0.75rem;">' + escapeHtml(data.error || 'We could not verify your address.') + '</div>';
+
+    if (suggestions.length > 0) {
+      var sug = suggestions[0];
+      html += '<div style="background: white; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem;">' +
+        '<div style="font-weight: 600; font-size: 14px; margin-bottom: 0.25rem; color: #2e7d32;">Suggested correction:</div>' +
+        '<div style="font-size: 14px;">' + escapeHtml(sug.line1) + '</div>' +
+        (sug.line2 ? '<div style="font-size: 14px;">' + escapeHtml(sug.line2) + '</div>' : '') +
+        '<div style="font-size: 14px;">' + escapeHtml(sug.city) + ', ' + escapeHtml(sug.state) + ' ' + escapeHtml(sug.postal_code) + '</div>' +
+      '</div>' +
+      '<div style="display: flex; gap: 0.5rem;">' +
+        '<button type="button" id="accept-address-suggestion" style="flex: 1; padding: 0.6rem 1rem; background: var(--color-primary); color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 14px;">Use suggested</button>' +
+        '<button type="button" id="reject-address-suggestion" style="flex: 1; padding: 0.6rem 1rem; background: white; color: var(--color-text); border: 2px solid #ddd; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 14px;">Keep mine</button>' +
+      '</div>';
+    } else {
+      html += '<div style="font-size: 14px; color: #c33;">Please check your address and try again.</div>';
+    }
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    _selectedShippingRate = null;
+    if (submitBtn) submitBtn.disabled = true;
+    if (shipEl) shipEl.textContent = 'Address needs review';
+    if (totalEl) totalEl.textContent = 'Address needs review';
+
+    // Wire up suggestion buttons
+    var acceptBtn = document.getElementById('accept-address-suggestion');
+    var rejectBtn = document.getElementById('reject-address-suggestion');
+
+    if (acceptBtn && suggestions.length > 0) {
+      acceptBtn.addEventListener('click', function() {
+        var sug = suggestions[0];
+        // Fill the form with the corrected address
+        var form = document.getElementById('subscribe-form');
+        if (form) {
+          var addrInput = form.querySelector('[name="address"]');
+          var cityInput = form.querySelector('[name="city"]');
+          var stateInput = form.querySelector('[name="state"]');
+          var zipInput = form.querySelector('[name="zip"]');
+          if (addrInput) addrInput.value = sug.line1 || '';
+          if (cityInput) cityInput.value = sug.city || '';
+          if (stateInput) stateInput.value = sug.state || '';
+          if (zipInput) zipInput.value = sug.postal_code || '';
+        }
+        // Re-fetch rates with corrected address
+        _lastAddressHash = null;
+        _shippingRatesCache = null;
+        calculateShipping();
+      });
+    }
+
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function() {
+        // User wants to keep their original address — proceed without verification
+        // Re-fetch rates without verification by calling the GAS fallback directly
+        container.innerHTML = '<div style="color: var(--color-text-light); font-size: 14px; padding: 0.5rem 0;">Using your address as entered...</div>';
+        // Force re-fetch without verification by clearing cache and retrying
+        _lastAddressHash = null;
+        _shippingRatesCache = null;
+        // Retry without the importer (which does verification) — fall back to GAS
+        calculateShippingFallback();
+      });
+    }
+  }
+
+  /**
+   * Fallback shipping calculation that skips the importer (address verification).
+   * Used when the user rejects an address suggestion.
+   */
+  function calculateShippingFallback() {
+    var form = document.getElementById('subscribe-form');
+    if (!form || !currentProduct) return;
+
+    var address = form.querySelector('[name="address"]').value.trim();
+    var city = form.querySelector('[name="city"]').value.trim();
+    var state = form.querySelector('[name="state"]').value.trim();
+    var zip = form.querySelector('[name="zip"]').value.trim();
+
+    if (!address || !city || !state || !zip) return;
+
+    var scriptUrl = config.googleScriptUrl;
+    if (!scriptUrl || scriptUrl.includes('YOUR_')) {
+      updateShippingDisplay(null, 'Shipping calculator not configured');
+      return;
+    }
+
+    var qty = parseInt(document.getElementById('subscribe-quantity').value, 10) || currentProduct.defaultQty;
+    var totalWeightOz = (parseFloat(currentProduct.weight) || 1.76) * qty;
+    totalWeightOz += 11.5 + (0.65 * qty);
+
+    var shippingAddress = { address: address, city: city, state: state, zip: zip, country: 'US' };
+
+    var p = new URLSearchParams();
+    p.append('action', 'calculateShippingRates');
+    p.append('environment', config.environment || 'production');
+    p.append('weightOz', totalWeightOz.toFixed(2));
+    p.append('shippingAddress', JSON.stringify(shippingAddress));
+
+    fetch(scriptUrl + '?' + p.toString(), { method: 'GET' })
+      .then(function(r) { return r.json(); })
+      .then(function(gasData) {
+        if (gasData.status === 'success' && gasData.rates && gasData.rates.length > 0) {
+          _shippingRatesCache = gasData.rates;
+          updateShippingDisplay(gasData.rates);
+        } else {
+          updateShippingDisplay(null, gasData.error || 'Unable to calculate shipping rates');
+        }
+      })
+      .catch(function(error) {
+        console.error('Error calculating shipping:', error);
+        updateShippingDisplay(null, 'Error calculating shipping. Please try again.');
+      });
+  }
+
+  /**
    * Call the GAS createSubscriptionCheckoutSession action.
    */
   async function createSubscriptionSession(product, quantity, shippingAddress) {
