@@ -370,17 +370,24 @@
         updateShippingDisplay(data.rates);
         return null;
       }
+      // Handle address verification response
+      if (data && data.status === 'address_needs_review') {
+        showAddressSuggestions(data);
+        return 'handled';
+      }
       if (!scriptUrl || scriptUrl.includes('YOUR_')) {
         updateShippingDisplay(null, (data && data.error) ? data.error : 'Shipping calculator not configured');
         return null;
       }
       return fetchFromGas(scriptUrl);
     }).then(function(gasData) {
-      if (!gasData) return;
+      if (!gasData || gasData === 'handled') return;
       if (gasData.status === 'success' && gasData.rates && gasData.rates.length > 0) {
         _shippingRatesCache = gasData.rates;
         _lastAddressHash = addressHash;
         updateShippingDisplay(gasData.rates);
+      } else if (gasData.status === 'address_needs_review') {
+        showAddressSuggestions(gasData);
       } else {
         updateShippingDisplay(null, gasData.error || 'Unable to calculate shipping rates');
       }
