@@ -640,6 +640,31 @@
           this.classList.remove('error');
         });
       }
+
+      // Address blur listeners → trigger shipping calculation
+      var addressFields = form.querySelectorAll('[name="address"], [name="city"], [name="state"], [name="zip"]');
+      for (var j = 0; j < addressFields.length; j++) {
+        addressFields[j].addEventListener('blur', function() {
+          // Debounce — wait a moment after user leaves the field
+          setTimeout(calculateShipping, 500);
+        });
+        addressFields[j].addEventListener('input', function() {
+          // Clear cache when address changes
+          _lastAddressHash = null;
+          _shippingRatesCache = null;
+        });
+      }
+
+      // Auto-calculate on page load if address is already filled (from saved data)
+      setTimeout(function() {
+        var addr = form.querySelector('[name="address"]').value.trim();
+        var cty = form.querySelector('[name="city"]').value.trim();
+        var ste = form.querySelector('[name="state"]').value.trim();
+        var zp = form.querySelector('[name="zip"]').value.trim();
+        if (addr && cty && ste && zp) {
+          calculateShipping();
+        }
+      }, 1500);
     }
   }
 
