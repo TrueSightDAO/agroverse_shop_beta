@@ -425,30 +425,6 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
         </div>
       </div>
 
-      <div id="subscribe-summary" class="subscribe-summary">
-        <div class="subscribe-summary-row">
-          <span class="label">Monthly bars</span>
-          <span class="value" id="summary-quantity">6 bars</span>
-        </div>
-        <div class="subscribe-summary-row">
-          <span class="label">Unit price</span>
-          <span class="value" id="summary-unit-price">$10.00</span>
-        </div>
-        <div class="subscribe-summary-row">
-          <span class="label">Monthly charge</span>
-          <span class="value" id="summary-subtotal">$60.00</span>
-        </div>
-        <div class="subscribe-summary-row">
-          <span class="label">Shipping</span>
-          <span class="value" id="summary-shipping">Enter address below</span>
-        </div>
-        <div id="subscribe-shipping-rates"></div>
-        <div class="subscribe-summary-row total">
-          <span class="label">Monthly total</span>
-          <span class="value" id="summary-total">Enter address</span>
-        </div>
-      </div>
-
       <h2 style="margin-top: 2rem;">Shipping address</h2>
 
       <div class="form-group">
@@ -495,11 +471,35 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
         </div>
       </div>
 
+      <div id="subscribe-summary" class="subscribe-summary">
+        <div class="subscribe-summary-row">
+          <span class="label">Monthly bars</span>
+          <span class="value" id="summary-quantity">6 bars</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Unit price</span>
+          <span class="value" id="summary-unit-price">$10.00</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Monthly charge</span>
+          <span class="value" id="summary-subtotal">$60.00</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Shipping</span>
+          <span class="value" id="summary-shipping">Enter address above</span>
+        </div>
+        <div id="subscribe-shipping-rates"></div>
+        <div class="subscribe-summary-row total">
+          <span class="label">Monthly total</span>
+          <span class="value" id="summary-total">Enter address</span>
+        </div>
+      </div>
+
       <div id="subscribe-errors"></div>
 
       <button type="submit" id="subscribe-submit" class="cta-button" disabled>Subscribe Now</button>
       <p class="subscribe-note" id="subscribe-note">
-        Fill in your shipping address to see shipping options and subscribe.
+        Fill in your shipping address above to see shipping options and subscribe.
       </p>
     </form>
 
