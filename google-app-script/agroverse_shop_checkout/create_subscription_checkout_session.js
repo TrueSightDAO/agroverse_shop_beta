@@ -265,3 +265,108 @@ function createStripeSubscriptionSession_(product, sku, quantity, shippingAmount
     checkoutUrl: sessionData.url
   });
 }
+
+
+/**
+ * Create a Stripe Customer Portal session for subscription management.
+ * Called from the success page when user clicks "Manage Subscription".
+ *
+ * URL params (GET):
+ *   action=createSubscriptionPortalSession
+ *   environment=development|production
+ *   sessionId=<checkout_session_id>  — the Stripe Checkout session ID
+ *
+ * Returns JSON:
+ *   { status: "success", portalUrl: "https://billing.stripe.com/..." }
+ *   { status: "error", error: "..." }
+ */
+function createSubscriptionPortalSession(params) {
+  var environment = params.environment || 'production';
+  var sessionId = params.sessionId;
+
+  if (!sessionId) {
+    return createCORSResponse({ status: 'error', error: 'sessionId parameter is required' });
+  }
+
+  // Select API key based on environment
+  var stripeKey;
+  if (environment === 'development') {
+    stripeKey = PropertiesService.getScriptProperties().getProperty('STRIPE_TEST_SECRET_KEY');
+  } else {
+    stripeKey = PropertiesService.getScriptProperties().getProperty('STRIPE_LIVE_SECRET_KEY');
+  }
+
+  if (!stripeKey) {
+    return createCORSResponse({ status: 'error', error: 'Stripe API key not configured for environment: ' + environment });
+  }
+
+  try {
+    // Step 1: Retrieve the Checkout Session to get the Customer ID
+    var sessionResponse = UrlFetchApp.fetch(
+      'https://api.stripe.com/v1/checkout/sessions/' + encodeURIComponent(sessionId),
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + stripeKey
+        },
+        muteHttpExceptions: true
+      }
+    );
+
+    var sessionCode = sessionResponse.getResponseCode();
+    var sessionBody = JSON.parse(sessionResponse.getContentText());
+
+    if (sessionCode >= 400) {
+      throw new Error(sessionBody.error ? sessionBody.error.message : 'Failed to retrieve session: ' + sessionCode);
+    }
+
+    var customerId = sessionBody.customer;
+    if (!customerId) {
+      throw new Error('No customer found for this session');
+    }
+
+    // Step 2: Create a Customer Portal session
+    var domain = (environment === 'development' ? 'https://beta.agroverse.shop' : 'https://agroverse.shop');
+    var returnUrl = domain + '/subscribe/chocolate-bar/?manage=true';
+
+    var portalPayload = {
+      'customer': customerId,
+      'return_url': returnUrl
+    };
+
+    var portalParts = [];
+    for (var key in portalPayload) {
+      if (portalPayload.hasOwnProperty(key)) {
+        portalParts.push(encodeURIComponent(key) + '=' + encodeURIComponent(portalPayload[key]));
+      }
+    }
+
+    var portalResponse = UrlFetchApp.fetch(
+      'https://api.stripe.com/v1/billing_portal/sessions',
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + stripeKey,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        payload: portalParts.join('&'),
+        muteHttpExceptions: true
+      }
+    );
+
+    var portalCode = portalResponse.getResponseCode();
+    var portalBody = JSON.parse(portalResponse.getContentText());
+
+    if (portalCode >= 400) {
+      throw new Error(portalBody.error ? portalBody.error.message : 'Failed to create portal session: ' + portalCode);
+    }
+
+    return createCORSResponse({
+      status: 'success',
+      portalUrl: portalBody.url
+    });
+
+  } catch (e) {
+    return createCORSResponse({ status: 'error', error: e.message });
+  }
+}
