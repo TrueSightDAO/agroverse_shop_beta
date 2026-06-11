@@ -85,34 +85,52 @@
   .story-card-body .farm-link { color: var(--color-primary); font-weight: 600; text-decoration: none; }
   .story-card-body .farm-link:hover { text-decoration: underline; }
   
-  .video-section { margin: 3rem 0; }
-  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
   .video-card { background: #000; border-radius: 12px; overflow: hidden; }
   .video-card iframe { width: 100%; height: 280px; border: none; }
   .video-card .video-label { padding: 1rem 1.25rem; background: white; }
   .video-card .video-label h4 { font-family: var(--font-heading); font-size: 18px; color: var(--color-primary); margin-bottom: 0.25rem; }
   .video-card .video-label p { font-size: 13px; color: var(--color-text-light); }
   
-  .signup-form {
+  /* Email signup — same system as shipment pages */
+  .email-signup-section {
     background: linear-gradient(135deg, var(--color-green-light) 0%, rgba(46, 125, 50, 0.02) 100%);
     border: 2px solid var(--color-green);
-    border-radius: 12px;
-    padding: 2.5rem;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
     text-align: center;
-    margin: 2rem 0;
   }
-  .signup-form h3 { font-family: var(--font-heading); font-size: 24px; color: var(--color-green); margin-bottom: 0.75rem; }
-  .signup-form p { font-size: 15px; color: var(--color-text-light); margin-bottom: 1.5rem; }
-  .form-group { display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-  .form-group input {
-    flex: 1; min-width: 200px; padding: 0.85rem 1rem; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; font-family: var(--font-body);
+  .email-signup-section h3 { font-family: var(--font-heading); font-size: 28px; color: var(--color-green); margin-bottom: 0.5rem; }
+  .email-signup-section p { color: var(--color-text-light); margin-bottom: 2rem; font-size: 16px; }
+  .email-form { display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .email-input {
+    flex: 1; min-width: 250px; padding: 1rem 1.5rem; border: 2px solid rgba(59, 51, 51, 0.2); border-radius: 8px; font-size: 16px; font-family: var(--font-body);
   }
-  .form-group input:focus { outline: none; border-color: var(--color-green); }
-  .submit-btn {
-    padding: 0.85rem 2rem; background-color: var(--color-green); color: white; border: none; border-radius: 5px; font-weight: 700; font-size: 15px; cursor: pointer; font-family: var(--font-body);
+  .email-input:focus { outline: none; border-color: var(--color-green); }
+  .email-submit {
+    padding: 1rem 2rem; background-color: var(--color-green); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: var(--font-body);
   }
-  .submit-btn:hover { background-color: #1b5e20; }
-  .success-message { display: none; color: var(--color-green); font-weight: 600; padding: 1rem; }
+  .email-submit:hover { background-color: #1b5e20; }
+  .email-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .email-success { display: none; color: var(--color-green); font-weight: 600; margin-top: 1rem; }
+  .email-success.show { display: block; }
+  .email-error { display: none; color: #d32f2f; margin-top: 1rem; font-size: 14px; }
+  
+  /* QR code detected banner — same as shipment pages */
+  .qr-detected-banner {
+    display: none;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.15) 0%, rgba(46, 125, 50, 0.05) 100%);
+    border: 2px solid var(--color-green);
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .qr-detected-banner .qr-label { margin-bottom: 0.5rem; font-weight: 600; color: var(--color-green); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .qr-detected-banner .qr-value { font-family: 'Courier New', monospace; font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: 2px; margin: 0.5rem 0; }
+  .qr-detected-banner .qr-hint { margin-top: 0.75rem; font-size: 13px; color: var(--color-text-light); }
   
   .cta-section { text-align: center; padding: 3rem 2rem; }
   .cta-section h2 { font-family: var(--font-heading); font-size: 30px; color: var(--color-primary); margin-bottom: 1rem; }
@@ -140,8 +158,6 @@
   .product-card-body h4 { font-family: var(--font-heading); font-size: 18px; color: var(--color-primary); margin-bottom: 0.25rem; }
   .product-card-body .price { font-size: 16px; font-weight: 700; color: var(--color-green); }
   
-  .map-container { width: 100%; height: 350px; border-radius: 12px; margin: 2rem 0; border: 1px solid rgba(59, 51, 51, 0.2); }
-  
   footer { background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; }
   .footer-content { max-width: 1200px; margin: 0 auto; }
   .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin: 1.5rem 0; flex-wrap: wrap; }
@@ -158,8 +174,8 @@
     .video-grid { grid-template-columns: 1fr; }
     .video-card iframe { height: 220px; }
     .impact-row { grid-template-columns: 1fr; gap: 0.5rem; }
-    .form-group { flex-direction: column; align-items: stretch; }
-    .form-group input { min-width: auto; }
+    .email-form { flex-direction: column; align-items: stretch; }
+    .email-input { min-width: auto; }
     .nav-links:not(.mobile-menu) { display: none !important; }
     .mobile-menu-toggle { display: flex; }
     .nav-links.mobile-menu { position: fixed; top: 0; right: -100%; height: 100vh; width: 80%; max-width: 300px; background-color: var(--color-bg); flex-direction: column; align-items: flex-start; padding: 5rem 2rem 2rem; box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); transition: right 0.3s ease; z-index: 1000; gap: 1.5rem; overflow-y: auto; }
@@ -284,19 +300,24 @@
 </section>
 
 <section class="section">
-<div class="signup-form" id="signup">
+<!-- Email Signup — same system as shipment pages, links QR code to email -->
+<div class="email-signup-section" id="signup">
 <h3>Stay connected to the forest</h3>
-<p>Leave your email and we'll send you stories from the farms, updates on the trees you help plant, and invitations to events like this one.</p>
-<form id="friend-signup" onsubmit="return submitFriendSignup(event)">
-<div class="form-group">
-<input type="text" id="friend-name" placeholder="Your name" required/>
-<input type="email" id="friend-email" placeholder="Your email" required/>
-<button type="submit" class="submit-btn">Become a Friend →</button>
+<p id="email-signup-message">Leave your email and we'll send you stories from the farms, updates on the trees you help plant, and invitations to events like this one.</p>
+
+<!-- QR code detected banner (shown when ?qr_code= is in URL) -->
+<div class="qr-detected-banner" id="qr-detected-banner">
+<div class="qr-label">📱 QR Code Detected</div>
+<div class="qr-value" id="qr-code-value"></div>
+<div class="qr-hint">We've detected your QR code! Enter your email below to become a Friend of the Rainforest and receive updates.</div>
 </div>
+
+<form class="email-form" id="email-signup-form" onsubmit="return handleEmailSignup(event)">
+<input class="email-input" id="email-input" placeholder="Enter your email" required type="email"/>
+<button class="email-submit" id="email-submit" type="submit">Become a Friend →</button>
 </form>
-<div class="success-message" id="success-message">
-✓ You're now a Friend of the Rainforest! Welcome to the community.
-</div>
+<div class="email-success" id="email-success">✓ You're now a Friend of the Rainforest! Welcome to the community.</div>
+<div class="email-error" id="email-error">There was an error. Please try again.</div>
 </div>
 </section>
 
@@ -321,7 +342,82 @@
 <div class="mobile-menu-overlay"></div>
 
 <script>
+// Same email-to-QR-code linking system used on shipment pages
+const LINK_EMAIL_API_URL = 'https://script.google.com/macros/s/AKfycbxigq4-J0izShubqIC5k6Z7fgNRyVJLakfQ34HPuENiSpxuCG-wSq0g-wOAedZzzgaL/exec';
+
+function getUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    qr_code: params.get('qr_code'),
+    status: params.get('status')
+  };
+}
+
+function initializePage() {
+  const params = getUrlParams();
+  const qrBanner = document.getElementById('qr-detected-banner');
+  const qrValue = document.getElementById('qr-code-value');
+  const emailMessage = document.getElementById('email-signup-message');
+  
+  if (params.qr_code) {
+    qrValue.textContent = params.qr_code;
+    qrBanner.style.display = 'block';
+    emailMessage.textContent = 'Your QR code (' + params.qr_code + ') has been detected! Enter your email to become a Friend of the Rainforest and track your impact.';
+  }
+}
+
+async function handleEmailSignup(event) {
+  event.preventDefault();
+  const emailInput = document.getElementById('email-input');
+  const submitButton = document.getElementById('email-submit');
+  const successMessage = document.getElementById('email-success');
+  const errorMessage = document.getElementById('email-error');
+  const email = emailInput.value.trim();
+  const params = getUrlParams();
+  const qrCode = params.qr_code;
+  
+  if (!email) return false;
+  
+  successMessage.classList.remove('show');
+  errorMessage.style.display = 'none';
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
+  
+  try {
+    if (qrCode) {
+      // Link email to QR code — same endpoint as shipment pages
+      const apiUrl = LINK_EMAIL_API_URL + '?qr_code=' + encodeURIComponent(qrCode) + '&email_address=' + encodeURIComponent(email);
+      await fetch(apiUrl, { method: 'GET', mode: 'no-cors' });
+      console.log('Email linked to QR code:', { email, qrCode });
+      successMessage.textContent = '✓ Email registered! You\'re now a Friend of the Rainforest. We\'ll keep you updated on the trees you help plant.';
+    } else {
+      // Store locally if no QR code
+      const signups = JSON.parse(localStorage.getItem('agroverse_friends_signups') || '[]');
+      signups.push({ email: email, timestamp: new Date().toISOString() });
+      localStorage.setItem('agroverse_friends_signups', JSON.stringify(signups));
+      successMessage.textContent = '✓ You\'re now a Friend of the Rainforest! Welcome to the community.';
+    }
+    
+    successMessage.classList.add('show');
+    emailInput.value = '';
+    
+    // Track signup
+    if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'friends-of-rainforest-signup' });
+    if (typeof gtag === 'function') gtag('event', 'generate_lead', { value: 1, currency: 'USD' });
+  } catch (error) {
+    console.error('Error submitting email:', error);
+    errorMessage.style.display = 'block';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Become a Friend →';
+  }
+  return false;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  initializePage();
+  
+  // Mobile menu
   const menuToggle = document.querySelector('.mobile-menu-toggle');
   const mobileMenu = document.querySelector('.mobile-menu');
   const overlay = document.querySelector('.mobile-menu-overlay');
@@ -350,30 +446,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-function submitFriendSignup(event) {
-  event.preventDefault();
-  const name = document.getElementById('friend-name').value;
-  const email = document.getElementById('friend-email').value;
-  
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbwv4FQhF7Rq7M5X8L3p2N9kZ1jK4m6n8o0p2r4t6v8w0y2z4B6C8D/exec';
-  
-  fetch(scriptUrl + '?action=addFriend&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email))
-    .then(function(response) { return response.text(); })
-    .then(function(data) {
-      document.getElementById('friend-signup').style.display = 'none';
-      document.getElementById('success-message').style.display = 'block';
-      if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'friends-of-rainforest-signup' });
-      if (typeof gtag === 'function') gtag('event', 'generate_lead', { value: 1, currency: 'USD' });
-    })
-    .catch(function(error) {
-      console.error('Signup error:', error);
-      document.getElementById('friend-signup').style.display = 'none';
-      document.getElementById('success-message').style.display = 'block';
-      document.getElementById('success-message').textContent = 'Thank you! You\'re now a Friend of the Rainforest.';
-    });
-  return false;
-}
 </script>
 <script src="../js/config.js"></script>
 <script src="../js/ga4-events.js"></script>
