@@ -745,6 +745,23 @@
         '<a href="../../index.html" style="color: var(--color-primary); font-weight: 600;">Continue Shopping \u2192</a>' +
       '</div>';
 
+    // Save to order history so it appears on /order-history/
+    if (window.OrderHistory && sessionId) {
+      window.OrderHistory.saveOrderToHistory({
+        sessionId: sessionId,
+        date: new Date().toISOString(),
+        status: 'Placed',
+        amount: parseFloat(document.getElementById('summary-total') ? document.getElementById('summary-total').textContent.replace('$', '').replace('/mo', '') : '0') || 0,
+        currency: 'USD',
+        items: [{
+          name: productName,
+          quantity: parseInt(quantity, 10) || 6,
+          price: 10.00,
+          image: currentProduct ? currentProduct.image : null
+        }]
+      });
+    }
+
     // Wire up the Manage Subscription button
     var manageBtn = document.getElementById('manage-subscription-btn');
     if (manageBtn && sessionId) {
