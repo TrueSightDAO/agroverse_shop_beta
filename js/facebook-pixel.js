@@ -20,6 +20,13 @@
     return;
   }
 
+  // Skip initialization on beta or localhost to avoid leaking into production analytics
+  var hostname = window.location.hostname;
+  if (hostname === 'beta.agroverse.shop' || hostname === 'www.beta.agroverse.shop' || hostname === 'localhost' || hostname === '127.0.0.1') {
+    console.log('Facebook Pixel disabled: running on ' + hostname);
+    return;
+  }
+
   // Facebook Pixel base code
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

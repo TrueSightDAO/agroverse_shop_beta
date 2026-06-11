@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>Subscribe to Chocolate Bars | Agroverse</title>
+<meta content="Subscribe to a monthly shipment of single-estate ceremonial cacao chocolate bars from Agroverse." name="description"/>
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="../../css/navigation.css" rel="stylesheet"/>
+<link href="../../css/cart.css" rel="stylesheet"/>
+<style>
+:root {
+  --color-primary: #3b3333;
+  --color-secondary: #4d4d4d;
+  --color-text: #3b3333;
+  --color-text-light: #756F63;
+  --color-bg: #ffffff;
+  --color-bg-light: #f7f7f7;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6; background-color: var(--color-bg); }
+
+.subscribe-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.subscribe-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.subscribe-header h1 {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.subscribe-header .subtitle {
+  color: var(--color-text-light);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscribe-product-card {
+  background: var(--color-bg-light);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.subscribe-product-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.subscribe-product-card .product-info {
+  flex: 1;
+}
+
+.subscribe-product-card .product-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.subscribe-product-card .product-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.subscribe-product-card .product-price span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-light);
+}
+
+.subscribe-form-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-form-section h2 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: var(--font-body);
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-group input.error,
+.form-group select.error {
+  border-color: #c33;
+  border-width: 2px;
+  background-color: #fff5f5;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.quantity-section {
+  margin-bottom: 2rem;
+}
+
+.quantity-section label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 16px;
+}
+
+.quantity-presets {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantity-preset {
+  padding: 0.6rem 1.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+
+.quantity-preset:hover {
+  border-color: var(--color-primary);
+}
+
+.quantity-preset.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+}
+
+.quantity-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantity-stepper button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+}
+
+.quantity-stepper button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.quantity-stepper button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.quantity-stepper input {
+  width: 70px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+.quantity-stepper input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.subscribe-summary {
+  background: var(--color-bg-light);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.subscribe-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.subscribe-summary-row.total {
+  border-top: 2px solid var(--color-primary);
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.subscribe-summary-row .label {
+  color: var(--color-text-light);
+}
+
+.subscribe-summary-row .value {
+  font-weight: 600;
+}
+
+.subscribe-summary-row.total .value {
+  color: var(--color-primary);
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #fcc;
+  font-weight: 500;
+}
+
+#subscribe-errors {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+#subscribe-errors:not(:empty) {
+  display: block;
+}
+
+.cta-button {
+  display: block;
+  width: 100%;
+  padding: 1rem 2.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+.cta-button:hover:not(:disabled) {
+  background-color: var(--color-secondary);
+}
+
+.cta-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.subscribe-note {
+  margin-top: 1rem;
+  font-size: 14px;
+  color: var(--color-text-light);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.subscribe-note a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.wholesale-banner {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-light);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.wholesale-banner a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .subscribe-product-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .subscribe-product-card img {
+    width: 100px;
+    height: 100px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script src="../../js/google-analytics.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/facebook-pixel.js"></script>
+<script src="../../js/facebook-pixel-events.js"></script>
+<script>
+// Redirect to ?slug=chocolate-bar if no slug is in the URL.
+// Preserves any existing query params (e.g. ?success=true&session_id=...)
+// so subscribe.js can detect Stripe return states.
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (!params.get('slug')) {
+    params.set('slug', 'chocolate-bar');
+    var newUrl = window.location.pathname.replace(/\/$/, '') + '/?' + params.toString() + window.location.hash;
+    window.location.replace(newUrl);
+  }
+})();
+</script>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../../index.html">
+<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+<ul class="nav-links mobile-menu">
+<li><a href="../../index.html#home">Home</a></li>
+<li><a href="../../index.html#products">Products</a></li>
+<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="../../blog/">Blog</a></li>
+<li><a href="../../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<div class="mobile-menu-overlay"></div>
+
+<div class="subscribe-container">
+  <div class="subscribe-header">
+    <h1>Subscribe to Premium Dark Chocolate Bars</h1>
+    <p class="subtitle">Discover a new single-estate farm every month. Each 81% dark chocolate bar is QR-traceable to its exact origin and vintage. Cancel or modify anytime.</p>
+  </div>
+
+  <div id="subscribe-product-card" class="subscribe-product-card">
+    <div style="text-align: center; width: 100%; color: var(--color-text-light);">Loading product information...</div>
+  </div>
+
+  <div class="subscribe-form-section">
+    <h2>Your subscription</h2>
+
+    <form id="subscribe-form">
+      <div class="quantity-section">
+        <label for="subscribe-quantity">Bars per month</label>
+        <div id="quantity-presets" class="quantity-presets">
+        </div>
+        <div class="quantity-stepper">
+          <button type="button" id="qty-decrease" aria-label="Decrease quantity">−</button>
+          <input type="number" id="subscribe-quantity" name="quantity" min="1" max="24" value="6"/>
+          <button type="button" id="qty-increase" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2rem;">Shipping address</h2>
+
+      <div class="form-group">
+        <label for="fullName">Full Name *</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" autocomplete="email" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Street Address *</label>
+        <input type="text" id="address" name="address" autocomplete="street-address" required/>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" autocomplete="address-level2" required/>
+        </div>
+        <div class="form-group">
+          <label for="state">State *</label>
+          <input type="text" id="state" name="state" autocomplete="address-level1" required maxlength="2" placeholder="CA"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="zip">ZIP Code *</label>
+          <input type="text" id="zip" name="zip" autocomplete="postal-code" required pattern="\d{5}(-\d{4})?" placeholder="94102"/>
+        </div>
+        <div class="form-group">
+          <label for="country">Country *</label>
+          <select id="country" name="country" autocomplete="country" required>
+            <option value="US" selected>United States</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="subscribe-summary" class="subscribe-summary">
+        <div class="subscribe-summary-row">
+          <span class="label">Monthly bars</span>
+          <span class="value" id="summary-quantity">6 bars</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Unit price</span>
+          <span class="value" id="summary-unit-price">$10.00</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Monthly charge</span>
+          <span class="value" id="summary-subtotal">$60.00</span>
+        </div>
+        <div class="subscribe-summary-row">
+          <span class="label">Shipping</span>
+          <span class="value" id="summary-shipping">Enter address above</span>
+        </div>
+        <div id="subscribe-shipping-rates"></div>
+        <div class="subscribe-summary-row total">
+          <span class="label">Monthly total</span>
+          <span class="value" id="summary-total">Enter address</span>
+        </div>
+      </div>
+
+      <div id="subscribe-errors"></div>
+
+      <button type="submit" id="subscribe-submit" class="cta-button" disabled>Subscribe Now</button>
+      <p class="subscribe-note" id="subscribe-note">
+        Fill in your shipping address above to see shipping options and subscribe.
+      </p>
+    </form>
+
+    <div class="wholesale-banner">
+      <strong>Buying for your shop?</strong> See <a href="../../wholesale/">wholesale terms, pricing, and how to order →</a>
+    </div>
+  </div>
+</div>
+
+<footer id="contact">
+<div class="footer-content" style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center;">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: white;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<ul class="footer-links" style="display: flex; justify-content: center; gap: 2rem; list-style: none; margin: 1.5rem 0; flex-wrap: wrap;">
+<li><a href="../../index.html#home" style="color: white; text-decoration: none;">Home</a></li>
+<li><a href="../../index.html#products" style="color: white; text-decoration: none;">Products</a></li>
+<li><a href="../../cacao-journeys/index.html" style="color: white; text-decoration: none;">Cacao Journeys</a></li>
+<li><a href="../../blog/" style="color: white; text-decoration: none;">Blog</a></li>
+<li><a href="mailto:community@agroverse.shop" style="color: white; text-decoration: none;">Contact</a></li>
+<li><a href="../../order-history/" style="color: white; text-decoration: none;">Order History</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem; color: white;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+
+<script src="../../js/config.js"></script>
+<script src="../../js/products.js"></script>
+<script src="../../js/ga4-events.js"></script>
+<script src="../../js/universal-nav.js"></script>
+<script src="../../js/checkout-form-storage.js"></script>
+<script src="../../js/order-history.js"></script>
+<script src="../../js/subscribe.js"></script>
+</body>
+</html>
