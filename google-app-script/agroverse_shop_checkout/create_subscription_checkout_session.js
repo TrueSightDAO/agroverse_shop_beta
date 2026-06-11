@@ -125,9 +125,18 @@ function calculateSubscriptionShipping_(product, quantity, shippingAddress) {
   };
 
   // Try EasyPost first (via the existing calculateShippingRatesViaEasyPost helper)
+  // Note: calculateShippingRatesViaEasyPost(weightOz, shippingAddress) takes
+  // weight + destination address. The origin is read from Script Properties internally.
   var rates = [];
   try {
-    rates = calculateShippingRatesViaEasyPost(totalWeightOz, ORIGIN_ADDRESS, toAddress);
+    var easypostAddress = {
+      address: shippingAddress.address,
+      city: shippingAddress.city,
+      state: shippingAddress.state,
+      zip: shippingAddress.zip,
+      country: shippingAddress.country || 'US'
+    };
+    rates = calculateShippingRatesViaEasyPost(totalWeightOz, easypostAddress);
   } catch (e) {
     console.warn('EasyPost shipping failed, using fallback: ' + e.message);
   }
@@ -194,6 +203,7 @@ function createStripeSubscriptionSession_(product, sku, quantity, shippingAmount
     'line_items[0][price_data][product_data][description]': quantity + ' bars per month',
     'line_items[0][price_data][product_data][metadata][sku]': sku,
     'line_items[0][price_data][product_data][metadata][gtin]': product.gtin,
+    'line_items[0][price_data][product_data][images][0]': 'https://beta.agroverse.shop/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
     'line_items[0][price_data][unit_amount]': String(unitAmountCents),
     'line_items[0][price_data][recurring][interval]': 'month',
     'line_items[0][quantity]': String(quantity),
