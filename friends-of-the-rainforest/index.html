@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>Friend of the Rainforest — Join the Community | Agroverse</title>
+<meta content="You just became a Friend of the Rainforest. Meet Oscar and Paulo, the farmers behind your cup. Watch their stories, explore their farms, and join the community protecting the Amazon." name="description"/>
+<link href="https://www.agroverse.shop/friends-of-the-rainforest" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/friends-of-the-rainforest" property="og:url"/>
+<meta content="Friend of the Rainforest — Join the Community | Agroverse" property="og:title"/>
+<meta content="You just became a Friend of the Rainforest. Meet the farmers behind your cup and join the community protecting the Amazon." property="og:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" property="og:image"/>
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/friends-of-the-rainforest" property="twitter:url"/>
+<meta content="Friend of the Rainforest — Join the Community | Agroverse" property="twitter:title"/>
+<meta content="You just became a Friend of the Rainforest. Meet the farmers behind your cup." property="twitter:description"/>
+<meta content="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" property="twitter:image"/>
+<link href="../assets/images/logo/favicon-192x192.jpeg" rel="icon" type="image/jpeg" sizes="192x192"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="icon" type="image/jpeg" sizes="32x32"/>
+<link href="../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="../css/navigation.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/cards.css" rel="stylesheet"/>
+<style>
+  :root {
+    --color-primary: #3b3333;
+    --color-secondary: #4d4d4d;
+    --color-accent: #fefc8f;
+    --color-text: #3b3333;
+    --color-text-light: #756F63;
+    --color-bg: #ffffff;
+    --color-bg-light: #f7f7f7;
+    --color-green: #2e7d32;
+    --color-green-light: rgba(46, 125, 50, 0.05);
+    --color-gold: #b8860b;
+    --color-gold-light: rgba(184, 134, 11, 0.08);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Open Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6; background-color: var(--color-bg); overflow-x: hidden; }
+  header { background-color: var(--color-bg); padding: 1.5rem 2rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; }
+  nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .logo img { height: 61px; width: auto; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--color-text); text-decoration: none; font-weight: 500; }
+  
+  .hero {
+    background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 50%, #3b7a3b 100%);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif') center center/cover;
+    opacity: 0.12;
+  }
+  .hero-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 { font-family: var(--font-heading); font-size: 42px; margin-bottom: 1rem; line-height: 1.2; }
+  .hero p { font-size: 18px; opacity: 0.9; margin-bottom: 2rem; line-height: 1.7; }
+  .hero .leaf-icon { font-size: 48px; margin-bottom: 1rem; display: block; }
+  
+  .section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+  .section h2 { font-family: var(--font-heading); font-size: 30px; color: var(--color-primary); margin-bottom: 1.5rem; text-align: center; }
+  .section-bg { background-color: var(--color-bg-light); }
+  
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+  .story-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+  .story-card-image { width: 100%; height: 250px; object-fit: cover; }
+  .story-card-body { padding: 1.5rem; }
+  .story-card-body h3 { font-family: var(--font-heading); font-size: 22px; color: var(--color-green); margin-bottom: 0.75rem; }
+  .story-card-body p { font-size: 15px; color: var(--color-text); line-height: 1.7; margin-bottom: 1rem; }
+  .story-card-body .farm-link { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+  .story-card-body .farm-link:hover { text-decoration: underline; }
+  
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+  .video-card { background: #000; border-radius: 12px; overflow: hidden; }
+  .video-card iframe { width: 100%; height: 280px; border: none; }
+  .video-card .video-label { padding: 1rem 1.25rem; background: white; }
+  .video-card .video-label h4 { font-family: var(--font-heading); font-size: 18px; color: var(--color-primary); margin-bottom: 0.25rem; }
+  .video-card .video-label p { font-size: 13px; color: var(--color-text-light); }
+  
+  /* Email signup — same system as shipment pages */
+  .email-signup-section {
+    background: linear-gradient(135deg, var(--color-green-light) 0%, rgba(46, 125, 50, 0.02) 100%);
+    border: 2px solid var(--color-green);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .email-signup-section h3 { font-family: var(--font-heading); font-size: 28px; color: var(--color-green); margin-bottom: 0.5rem; }
+  .email-signup-section p { color: var(--color-text-light); margin-bottom: 2rem; font-size: 16px; }
+  .email-form { display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .email-input {
+    flex: 1; min-width: 250px; padding: 1rem 1.5rem; border: 2px solid rgba(59, 51, 51, 0.2); border-radius: 8px; font-size: 16px; font-family: var(--font-body);
+  }
+  .email-input:focus { outline: none; border-color: var(--color-green); }
+  .email-submit {
+    padding: 1rem 2rem; background-color: var(--color-green); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+  }
+  .email-submit:hover { background-color: #1b5e20; }
+  .email-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .email-success { display: none; color: var(--color-green); font-weight: 600; margin-top: 1rem; }
+  .email-success.show { display: block; }
+  .email-error { display: none; color: #d32f2f; margin-top: 1rem; font-size: 14px; }
+  
+  /* QR code detected banner — same as shipment pages */
+  .qr-detected-banner {
+    display: none;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.15) 0%, rgba(46, 125, 50, 0.05) 100%);
+    border: 2px solid var(--color-green);
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .qr-detected-banner .qr-label { margin-bottom: 0.5rem; font-weight: 600; color: var(--color-green); font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .qr-detected-banner .qr-value { font-family: 'Courier New', monospace; font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: 2px; margin: 0.5rem 0; }
+  .qr-detected-banner .qr-hint { margin-top: 0.75rem; font-size: 13px; color: var(--color-text-light); }
+  
+  /* Subscription section */
+  .subscription-section {
+    background: linear-gradient(135deg, var(--color-gold-light) 0%, rgba(184, 134, 11, 0.02) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .subscription-section h3 { font-family: var(--font-heading); font-size: 28px; color: var(--color-gold); margin-bottom: 0.75rem; }
+  .subscription-section p { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .subscription-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-gold);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  .subscription-cta:hover { background-color: #8b6508; }
+  .subscription-perks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .subscription-perk { padding: 1rem; }
+  .subscription-perk .icon { font-size: 28px; margin-bottom: 0.5rem; display: block; }
+  .subscription-perk .title { font-weight: 600; color: var(--color-primary); font-size: 15px; }
+  .subscription-perk .desc { font-size: 13px; color: var(--color-text-light); margin-top: 0.25rem; }
+  
+  .cta-section { text-align: center; padding: 3rem 2rem; }
+  .cta-section h2 { font-family: var(--font-heading); font-size: 30px; color: var(--color-primary); margin-bottom: 1rem; }
+  .cta-section p { font-size: 16px; color: var(--color-text-light); margin-bottom: 2rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-button {
+    display: inline-block; padding: 1rem 2.5rem; background-color: var(--color-primary); color: white; text-decoration: none; border-radius: 5px; font-weight: 700; font-size: 1.1rem;
+  }
+  .cta-button:hover { background-color: var(--color-secondary); }
+  .cta-button-green { background-color: var(--color-green); }
+  .cta-button-green:hover { background-color: #1b5e20; }
+  
+  .impact-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; text-align: center; }
+  .impact-item { padding: 1.5rem; }
+  .impact-item .number { font-family: var(--font-heading); font-size: 36px; color: var(--color-green); font-weight: 700; }
+  .impact-item .label { font-size: 14px; color: var(--color-text-light); margin-top: 0.25rem; }
+  
+  .product-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .product-card {
+    background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); text-decoration: none; color: inherit; display: block;
+  }
+  .product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.15); transform: translateY(-2px); transition: all 0.2s; }
+  .product-card img { width: 100%; height: 220px; object-fit: cover; }
+  .product-card-body { padding: 1.25rem; }
+  .product-card-body h4 { font-family: var(--font-heading); font-size: 18px; color: var(--color-primary); margin-bottom: 0.25rem; }
+  .product-card-body .price { font-size: 16px; font-weight: 700; color: var(--color-green); }
+  
+  footer { background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; }
+  .footer-content { max-width: 1200px; margin: 0 auto; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin: 1.5rem 0; flex-wrap: wrap; }
+  .footer-links a { color: white; text-decoration: none; }
+  .footer-links a:hover { text-decoration: underline; }
+  
+  .mobile-menu-toggle { display: none; flex-direction: column; background: transparent; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
+  .hamburger-line { width: 25px; height: 3px; background-color: var(--color-text); margin: 3px 0; border-radius: 2px; }
+  
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 30px; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .story-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .video-card iframe { height: 220px; }
+    .impact-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .subscription-perks { grid-template-columns: 1fr; gap: 0.5rem; }
+    .email-form { flex-direction: column; align-items: stretch; }
+    .email-input { min-width: auto; }
+    .nav-links:not(.mobile-menu) { display: none !important; }
+    .mobile-menu-toggle { display: flex; }
+    .nav-links.mobile-menu { position: fixed; top: 0; right: -100%; height: 100vh; width: 80%; max-width: 300px; background-color: var(--color-bg); flex-direction: column; align-items: flex-start; padding: 5rem 2rem 2rem; box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); transition: right 0.3s ease; z-index: 1000; gap: 1.5rem; overflow-y: auto; }
+    .nav-links.mobile-menu.active { right: 0; }
+    .mobile-menu-overlay { display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 999; }
+    .mobile-menu-overlay.active { display: block; }
+  }
+</style>
+<script src="../js/google-analytics.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/facebook-pixel.js"></script>
+<script src="../js/facebook-pixel-events.js"></script>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="../index.html">
+<img alt="Agroverse Logo" src="../assets/images/logo/agroverse-logo.jpeg"/>
+</a>
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+<ul class="nav-links mobile-menu">
+<li><a href="../index.html#home">Home</a></li>
+<li><a href="../index.html#products">Products</a></li>
+<li><a href="../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<span class="leaf-icon">🌿</span>
+<h1>You just became a<br/>Friend of the Rainforest</h1>
+<p>What you drank today came from deep in the Amazon — regenerative ceremonial cacao grown by Oscar in Bahia, and cacao tea crafted by Paulo in Pará. Every bag of this cacao plants a tree in the forest that made it.</p>
+</div>
+</section>
+
+<section class="section">
+<h2>Meet the farmers behind your cup</h2>
+<div class="story-grid">
+<div class="story-card">
+<img class="story-card-image" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif" alt="Oscar's farm in Bahia" onerror="this.style.display='none'"/>
+<div class="story-card-body">
+<h3>🌳 Oscar's Ceremonial Cacao</h3>
+<p>Three generations of cacao wisdom. Oscar's grandfather planted trees 80 years ago that are still producing today. His 100-year-old farm in Bahia features 80-year-old Criolla trees — a testament to regenerative farming that spans generations.</p>
+<p>Grown in the shade of the Atlantic Forest, Oscar's cacao is fine-flavored Criollo, yielding 900-1000kg per hectare through regenerative agroforestry that preserves biodiversity.</p>
+<a class="farm-link" href="../farms/oscar-bahia/">Explore Oscar's Farm →</a>
+</div>
+</div>
+<div class="story-card">
+<img class="story-card-image" src="../assets/images/farms/paulo_profile_photo.jpeg" alt="Paulo's farm in Pará" onerror="this.style.display='none'"/>
+<div class="story-card-body">
+<h3>🍃 Paulo's Cacao Tea</h3>
+<p>From the heart of the Amazon rainforest in Pará, Paulo and his wife run La do Sitio — an award-winning farm that has won multiple regional cacao awards. Their farm is part of the CEPOTX cooperative, supporting small-scale farmers through regenerative practices.</p>
+<p>Each cup of Paulo's cacao tea is a celebration of the Amazon's biodiversity — a reminder that the forest is not just a resource to extract, but a partner to protect.</p>
+<a class="farm-link" href="../farms/paulo-la-do-sitio-para/">Explore Paulo's Farm →</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section section-bg">
+<h2>See the farms in action</h2>
+<div class="video-grid">
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/lh_dAXhE7xQ?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-label">
+<h4>Hear from Oscar</h4>
+<p>Oscar shares the story of three generations of cacao wisdom and how his grandfather's vision continues to shape the farm today.</p>
+</div>
+</div>
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/8PIi57AOEE0?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-label">
+<h4>Experience Paulo's Farm</h4>
+<p>See regenerative cacao farming in the heart of the Amazon Rainforest, where Paulo and his family cultivate award-winning cacao.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Your impact at a glance</h2>
+<div class="impact-row">
+<div class="impact-item">
+<div class="number">1</div>
+<div class="label">Tree planted per bag sold</div>
+</div>
+<div class="impact-item">
+<div class="number">2</div>
+<div class="label">Farming families supported</div>
+</div>
+<div class="impact-item">
+<div class="number">100%</div>
+<div class="label">Regenerative agriculture</div>
+</div>
+</div>
+</section>
+
+<section class="section section-bg">
+<h2>Bring the taste home</h2>
+<p style="text-align: center; color: var(--color-text-light); margin-bottom: 2rem;">The same ceremonial cacao and cacao tea you just tasted — now available to bring home.</p>
+<div class="product-cards">
+<a class="product-card" href="../product-page/oscar-s-bahia-ceremonial-cacao/">
+<img src="../assets/images/products/oscars-farm.jpeg" alt="Ceremonial Cacao from Oscar's Farm" onerror="this.style.display='none'"/>
+<div class="product-card-body">
+<h4>Ceremonial Cacao – Oscar's Farm</h4>
+<p style="font-size: 13px; color: var(--color-text-light); margin: 0.25rem 0;">200g • Bahia, Brazil</p>
+<span class="price">$25.00</span>
+</div>
+</a>
+<a class="product-card" href="../product-page/ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g/">
+<img src="../assets/images/products/la-do-sitio-farm.jpg" alt="Ceremonial Cacao from Paulo's Farm" onerror="this.style.display='none'"/>
+<div class="product-card-body">
+<h4>Ceremonial Cacao – La do Sitio</h4>
+<p style="font-size: 13px; color: var(--color-text-light); margin: 0.25rem 0;">200g • Pará, Amazon Rainforest</p>
+<span class="price">$25.00</span>
+</div>
+</a>
+</div>
+</section>
+
+<section class="section">
+<!-- Subscription section — recurring revenue offsets event CAC -->
+<div class="subscription-section">
+<h3>🌙 Make it monthly</h3>
+<p>Subscribe to a monthly discovery of single-estate dark chocolate bars. Each month a different Bahia farm, each bar QR-traceable to its origin. Your subscription directly supports bringing these tasting experiences to more events.</p>
+<div class="subscription-perks">
+<div class="subscription-perk">
+<span class="icon">🍫</span>
+<div class="title">Monthly discovery</div>
+<div class="desc">A different single-estate 81% bar every month</div>
+</div>
+<div class="subscription-perk">
+<span class="icon">🔍</span>
+<div class="title">Fully traceable</div>
+<div class="desc">Every bar QR-linked to its farm and vintage</div>
+</div>
+<div class="subscription-perk">
+<span class="icon">🌳</span>
+<div class="title">Plants trees</div>
+<div class="desc">Every bar sold plants a tree in the Amazon</div>
+</div>
+</div>
+<a class="subscription-cta" href="../subscribe/chocolate-bar/">Start a Monthly Subscription →</a>
+<p style="font-size: 13px; color: var(--color-text-light); margin-top: 1rem;">From $10/bar. Cancel or modify anytime.</p>
+</div>
+</section>
+
+<section class="section">
+<!-- Email Signup — same system as shipment pages, links QR code to email -->
+<div class="email-signup-section" id="signup">
+<h3>Stay connected to the forest</h3>
+<p id="email-signup-message">Leave your email and we'll send you stories from the farms, updates on the trees you help plant, and invitations to events like this one.</p>
+
+<!-- QR code detected banner (shown when ?qr_code= is in URL) -->
+<div class="qr-detected-banner" id="qr-detected-banner">
+<div class="qr-label">📱 QR Code Detected</div>
+<div class="qr-value" id="qr-code-value"></div>
+<div class="qr-hint">We've detected your QR code! Enter your email below to become a Friend of the Rainforest and receive updates.</div>
+</div>
+
+<form class="email-form" id="email-signup-form" onsubmit="return handleEmailSignup(event)">
+<input class="email-input" id="email-input" placeholder="Enter your email" required type="email"/>
+<button class="email-submit" id="email-submit" type="submit">Become a Friend →</button>
+</form>
+<div class="email-success" id="email-success">✓ You're now a Friend of the Rainforest! Welcome to the community.</div>
+<div class="email-error" id="email-error">There was an error. Please try again.</div>
+</div>
+</section>
+
+<footer id="contact">
+<div class="footer-content">
+<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
+<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
+<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
+<ul class="footer-links">
+<li><a href="../index.html#home">Home</a></li>
+<li><a href="../index.html#mission">Mission</a></li>
+<li><a href="../index.html#products">Products</a></li>
+<li><a href="../index.html#farmers">Farms</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../partners/index.html">Partners</a></li>
+<li><a href="../cacao-journeys/index.html">Cacao Journeys</a></li>
+<li><a href="mailto:community@agroverse.shop">Contact</a></li>
+</ul>
+<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
+</div>
+</footer>
+<div class="mobile-menu-overlay"></div>
+
+<script>
+// Same email-to-QR-code linking system used on shipment pages
+const LINK_EMAIL_API_URL = 'https://script.google.com/macros/s/AKfycbxigq4-J0izShubqIC5k6Z7fgNRyVJLakfQ34HPuENiSpxuCG-wSq0g-wOAedZzzgaL/exec';
+
+function getUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    qr_code: params.get('qr_code'),
+    status: params.get('status')
+  };
+}
+
+function initializePage() {
+  const params = getUrlParams();
+  const qrBanner = document.getElementById('qr-detected-banner');
+  const qrValue = document.getElementById('qr-code-value');
+  const emailMessage = document.getElementById('email-signup-message');
+  
+  if (params.qr_code) {
+    qrValue.textContent = params.qr_code;
+    qrBanner.style.display = 'block';
+    emailMessage.textContent = 'Your QR code (' + params.qr_code + ') has been detected! Enter your email to become a Friend of the Rainforest and track your impact.';
+  }
+}
+
+async function handleEmailSignup(event) {
+  event.preventDefault();
+  const emailInput = document.getElementById('email-input');
+  const submitButton = document.getElementById('email-submit');
+  const successMessage = document.getElementById('email-success');
+  const errorMessage = document.getElementById('email-error');
+  const email = emailInput.value.trim();
+  const params = getUrlParams();
+  const qrCode = params.qr_code;
+  
+  if (!email) return false;
+  
+  successMessage.classList.remove('show');
+  errorMessage.style.display = 'none';
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
+  
+  try {
+    if (qrCode) {
+      // Link email to QR code — same endpoint as shipment pages
+      const apiUrl = LINK_EMAIL_API_URL + '?qr_code=' + encodeURIComponent(qrCode) + '&email_address=' + encodeURIComponent(email);
+      await fetch(apiUrl, { method: 'GET', mode: 'no-cors' });
+      console.log('Email linked to QR code:', { email, qrCode });
+      successMessage.textContent = '✓ Email registered! You\'re now a Friend of the Rainforest. We\'ll keep you updated on the trees you help plant.';
+    } else {
+      // Store locally if no QR code
+      const signups = JSON.parse(localStorage.getItem('agroverse_friends_signups') || '[]');
+      signups.push({ email: email, timestamp: new Date().toISOString() });
+      localStorage.setItem('agroverse_friends_signups', JSON.stringify(signups));
+      successMessage.textContent = '✓ You\'re now a Friend of the Rainforest! Welcome to the community.';
+    }
+    
+    successMessage.classList.add('show');
+    emailInput.value = '';
+    
+    // Track signup
+    if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'friends-of-rainforest-signup' });
+    if (typeof gtag === 'function') gtag('event', 'generate_lead', { value: 1, currency: 'USD' });
+  } catch (error) {
+    console.error('Error submitting email:', error);
+    errorMessage.style.display = 'block';
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Become a Friend →';
+  }
+  return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializePage();
+  
+  // Mobile menu
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.mobile-menu-overlay');
+  if (!menuToggle || !mobileMenu) return;
+  menuToggle.addEventListener('click', function() {
+    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.classList.toggle('active');
+    if (overlay) overlay.classList.toggle('active');
+    document.body.style.overflow = !isExpanded ? 'hidden' : '';
+  });
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('active');
+      if (overlay) overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+});
+</script>
+<script src="../js/config.js"></script>
+<script src="../js/ga4-events.js"></script>
+<script src="../js/universal-nav.js"></script>
+</body>
+</html>
