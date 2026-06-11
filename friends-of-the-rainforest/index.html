@@ -36,6 +36,8 @@
     --color-bg-light: #f7f7f7;
     --color-green: #2e7d32;
     --color-green-light: rgba(46, 125, 50, 0.05);
+    --color-gold: #b8860b;
+    --color-gold-light: rgba(184, 134, 11, 0.08);
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Open Sans', sans-serif;
   }
@@ -132,6 +134,41 @@
   .qr-detected-banner .qr-value { font-family: 'Courier New', monospace; font-size: 20px; font-weight: 700; color: var(--color-primary); letter-spacing: 2px; margin: 0.5rem 0; }
   .qr-detected-banner .qr-hint { margin-top: 0.75rem; font-size: 13px; color: var(--color-text-light); }
   
+  /* Subscription section */
+  .subscription-section {
+    background: linear-gradient(135deg, var(--color-gold-light) 0%, rgba(184, 134, 11, 0.02) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .subscription-section h3 { font-family: var(--font-heading); font-size: 28px; color: var(--color-gold); margin-bottom: 0.75rem; }
+  .subscription-section p { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .subscription-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-gold);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  .subscription-cta:hover { background-color: #8b6508; }
+  .subscription-perks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .subscription-perk { padding: 1rem; }
+  .subscription-perk .icon { font-size: 28px; margin-bottom: 0.5rem; display: block; }
+  .subscription-perk .title { font-weight: 600; color: var(--color-primary); font-size: 15px; }
+  .subscription-perk .desc { font-size: 13px; color: var(--color-text-light); margin-top: 0.25rem; }
+  
   .cta-section { text-align: center; padding: 3rem 2rem; }
   .cta-section h2 { font-family: var(--font-heading); font-size: 30px; color: var(--color-primary); margin-bottom: 1rem; }
   .cta-section p { font-size: 16px; color: var(--color-text-light); margin-bottom: 2rem; }
@@ -174,6 +211,7 @@
     .video-grid { grid-template-columns: 1fr; }
     .video-card iframe { height: 220px; }
     .impact-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .subscription-perks { grid-template-columns: 1fr; gap: 0.5rem; }
     .email-form { flex-direction: column; align-items: stretch; }
     .email-input { min-width: auto; }
     .nav-links:not(.mobile-menu) { display: none !important; }
@@ -296,6 +334,33 @@
 <span class="price">$25.00</span>
 </div>
 </a>
+</div>
+</section>
+
+<section class="section">
+<!-- Subscription section — recurring revenue offsets event CAC -->
+<div class="subscription-section">
+<h3>🌙 Make it monthly</h3>
+<p>Subscribe to a monthly discovery of single-estate dark chocolate bars. Each month a different Bahia farm, each bar QR-traceable to its origin. Your subscription directly supports bringing these tasting experiences to more events.</p>
+<div class="subscription-perks">
+<div class="subscription-perk">
+<span class="icon">🍫</span>
+<div class="title">Monthly discovery</div>
+<div class="desc">A different single-estate 81% bar every month</div>
+</div>
+<div class="subscription-perk">
+<span class="icon">🔍</span>
+<div class="title">Fully traceable</div>
+<div class="desc">Every bar QR-linked to its farm and vintage</div>
+</div>
+<div class="subscription-perk">
+<span class="icon">🌳</span>
+<div class="title">Plants trees</div>
+<div class="desc">Every bar sold plants a tree in the Amazon</div>
+</div>
+</div>
+<a class="subscription-cta" href="../subscribe/chocolate-bar/">Start a Monthly Subscription →</a>
+<p style="font-size: 13px; color: var(--color-text-light); margin-top: 1rem;">From $10/bar. Cancel or modify anytime.</p>
 </div>
 </section>
 
