@@ -690,9 +690,92 @@
   }
 
   /**
+   * Check if returning from Stripe Checkout (success or cancel).
+   */
+  function checkReturnFromStripe() {
+    var params = new URLSearchParams(window.location.search);
+    var success = params.get('success');
+    var canceled = params.get('canceled');
+    var sessionId = params.get('session_id');
+
+    if (success === 'true') {
+      showSuccessState(sessionId);
+      return true;
+    }
+
+    if (canceled === 'true') {
+      showCanceledState();
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Show success state after a completed subscription checkout.
+   */
+  function showSuccessState(sessionId) {
+    var container = document.querySelector('.subscribe-container');
+    if (!container) return;
+
+    var productName = currentProduct ? currentProduct.name : 'Premium Dark Chocolate Bar';
+    var qty = document.getElementById('subscribe-quantity');
+    var quantity = qty ? qty.value : '6';
+
+    container.innerHTML = '' +
+      '<div class="subscribe-header">' +
+        '<h1>\u2705 Subscription Confirmed!</h1>' +
+        '<p class="subtitle">Thank you for subscribing to ' + escapeHtml(productName) + '. Your first shipment of ' + quantity + ' bars will be on its way soon.</p>' +
+      '</div>' +
+      '<div style="background: #d4edda; border: 2px solid #c3e6cb; border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem;">' +
+        '<div style="font-size: 48px; margin-bottom: 1rem;">\uD83C\uDF6B</div>' +
+        '<h2 style="font-family: var(--font-heading); color: #155724; margin-bottom: 0.5rem;">You\'re all set!</h2>' +
+        '<p style="color: #155724; font-size: 16px; margin-bottom: 1.5rem;">' +
+          'Your monthly subscription is active. You will be charged each month and your chocolate bars will ship to your address.' +
+        '</p>' +
+        (sessionId ? '<p style="color: #666; font-size: 14px;">Reference: ' + escapeHtml(sessionId) + '</p>' : '') +
+      '</div>' +
+      '<div style="text-align: center;">' +
+        '<a href="../../order-history/" class="cta-button" style="display: inline-block;">View Order History</a>' +
+        '<br><br>' +
+        '<a href="../../index.html" style="color: var(--color-primary); font-weight: 600;">Continue Shopping \u2192</a>' +
+      '</div>';
+  }
+
+  /**
+   * Show canceled state when user returns from Stripe without completing.
+   */
+  function showCanceledState() {
+    var container = document.querySelector('.subscribe-container');
+    if (!container) return;
+
+    container.innerHTML = '' +
+      '<div class="subscribe-header">' +
+        '<h1>Subscription Canceled</h1>' +
+        '<p class="subtitle">Your subscription was not completed. No charges have been made.</p>' +
+      '</div>' +
+      '<div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem;">' +
+        '<div style="font-size: 48px; margin-bottom: 1rem;">\u23F3</div>' +
+        '<p style="color: #856404; font-size: 16px; margin-bottom: 1.5rem;">' +
+          'Changed your mind? You can subscribe anytime.' +
+        '</p>' +
+      '</div>' +
+      '<div style="text-align: center;">' +
+        '<a href="?slug=' + encodeURIComponent(getSubscriptionSlug() || 'chocolate-bar') + '" class="cta-button" style="display: inline-block;">Try Again</a>' +
+        '<br><br>' +
+        '<a href="../../index.html" style="color: var(--color-primary); font-weight: 600;">Continue Shopping \u2192</a>' +
+      '</div>';
+  }
+
+  /**
    * Initialize the subscribe engine.
    */
   function init() {
+    // Check if returning from Stripe before showing the form
+    if (checkReturnFromStripe()) {
+      return;
+    }
+
     // Resolve product
     currentProduct = resolveProduct();
 
