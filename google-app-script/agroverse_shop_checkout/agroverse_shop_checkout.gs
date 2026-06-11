@@ -296,6 +296,34 @@ function doGet(e) {
       });
     }
 
+    if (action === 'createSubscriptionCheckoutSession') {
+      // Parse subscription parameters from URL
+      var sku = e.parameter.sku;
+      var quantity = parseInt(e.parameter.quantity, 10) || 6;
+      var shippingAddress = null;
+      var environment = e.parameter.environment || 'production';
+      
+      if (e.parameter.shippingAddress) {
+        try {
+          shippingAddress = JSON.parse(e.parameter.shippingAddress);
+        } catch (parseError) {
+          Logger.log('Warning: Invalid shippingAddress JSON: ' + parseError.toString());
+        }
+      }
+      
+      // Call createSubscriptionCheckoutSession
+      return createSubscriptionCheckoutSession({
+        sku: sku,
+        quantity: quantity,
+        shippingAddress: shippingAddress,
+        environment: environment,
+        name: e.parameter.name || '',
+        price: e.parameter.price || '',
+        weight: e.parameter.weight || '',
+        image: e.parameter.image || ''
+      });
+    }
+
     return createCORSResponse({
       status: 'error',
       error: 'Invalid action. Use: action=getOrderStatus&sessionId=cs_xxx | action=getGcrContextByQr&qr=... | action=calculateShippingRates&...'
