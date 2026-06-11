@@ -155,15 +155,19 @@ function calculateSubscriptionShipping_(product, quantity, shippingAddress) {
     }
   }
 
-  // Find cheapest rate
+  // Find cheapest rate (rates are in Stripe format: shipping_rate_data.fixed_amount.amount in cents)
   var cheapest = rates[0];
   for (var i = 1; i < rates.length; i++) {
-    if (rates[i].amount < cheapest.amount) {
+    var a = rates[i].shipping_rate_data && rates[i].shipping_rate_data.fixed_amount ? rates[i].shipping_rate_data.fixed_amount.amount || 0 : 0;
+    var b = cheapest.shipping_rate_data && cheapest.shipping_rate_data.fixed_amount ? cheapest.shipping_rate_data.fixed_amount.amount || 0 : 0;
+    if (a < b) {
       cheapest = rates[i];
     }
   }
 
-  return cheapest.amount;
+  // Return amount in dollars (EasyPost returns cents in fixed_amount.amount)
+  var cheapestCents = cheapest.shipping_rate_data && cheapest.shipping_rate_data.fixed_amount ? cheapest.shipping_rate_data.fixed_amount.amount || 0 : 0;
+  return cheapestCents / 100;
 }
 
 
