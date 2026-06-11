@@ -736,10 +736,22 @@
         (sessionId ? '<p style="color: #666; font-size: 14px;">Reference: ' + escapeHtml(sessionId) + '</p>' : '') +
       '</div>' +
       '<div style="text-align: center;">' +
-        '<a href="../../order-history/" class="cta-button" style="display: inline-block;">View Order History</a>' +
-        '<br><br>' +
+        '<button id="manage-subscription-btn" class="cta-button" style="display: inline-block; margin-bottom: 0.75rem;">Manage Subscription</button>' +
+        '<p style="color: var(--color-text-light); font-size: 14px; margin-bottom: 1.5rem;">' +
+          'You can also manage your subscription from the email Stripe sent you.' +
+        '</p>' +
+        '<a href="../../order-history/" style="color: var(--color-primary); font-weight: 600;">View Order History</a>' +
+        '<span style="color: var(--color-text-light); margin: 0 0.5rem;">\u00B7</span>' +
         '<a href="../../index.html" style="color: var(--color-primary); font-weight: 600;">Continue Shopping \u2192</a>' +
       '</div>';
+
+    // Wire up the Manage Subscription button
+    var manageBtn = document.getElementById('manage-subscription-btn');
+    if (manageBtn && sessionId) {
+      manageBtn.addEventListener('click', function() {
+        openSubscriptionPortal(sessionId);
+      });
+    }
   }
 
   /**
@@ -765,6 +777,49 @@
         '<br><br>' +
         '<a href="../../index.html" style="color: var(--color-primary); font-weight: 600;">Continue Shopping \u2192</a>' +
       '</div>';
+  }
+
+  /**
+   * Open the Stripe Customer Portal to manage a subscription.
+   */
+  function openSubscriptionPortal(sessionId) {
+    var scriptUrl = config.googleScriptUrl;
+    if (!scriptUrl || scriptUrl.indexOf('YOUR_') !== -1) {
+      alert('Customer portal not configured yet.');
+      return;
+    }
+
+    var btn = document.getElementById('manage-subscription-btn');
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Opening portal...';
+    }
+
+    var params = new URLSearchParams();
+    params.append('action', 'createSubscriptionPortalSession');
+    params.append('environment', config.environment || 'production');
+    params.append('sessionId', sessionId);
+
+    fetch(scriptUrl + '?' + params.toString(), { method: 'GET' })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        if (data.portalUrl) {
+          window.location.href = data.portalUrl;
+        } else {
+          throw new Error('No portal URL received');
+        }
+      })
+      .catch(function(error) {
+        console.error('Portal error:', error);
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Manage Subscription';
+        }
+        alert('Could not open the management portal. Please check your email from Stripe to manage your subscription.');
+      });
   }
 
   /**
