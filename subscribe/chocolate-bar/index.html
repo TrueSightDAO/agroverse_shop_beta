@@ -367,12 +367,14 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
 <script src="../../js/facebook-pixel.js"></script>
 <script src="../../js/facebook-pixel-events.js"></script>
 <script>
-// Redirect to ?slug=chocolate-bar if no slug is in the URL
-// The subscribe engine reads the slug from the query string.
+// Redirect to ?slug=chocolate-bar if no slug is in the URL.
+// Preserves any existing query params (e.g. ?success=true&session_id=...)
+// so subscribe.js can detect Stripe return states.
 (function() {
   var params = new URLSearchParams(window.location.search);
   if (!params.get('slug')) {
-    var newUrl = window.location.pathname.replace(/\/$/, '') + '/?slug=chocolate-bar' + window.location.hash;
+    params.set('slug', 'chocolate-bar');
+    var newUrl = window.location.pathname.replace(/\/$/, '') + '/?' + params.toString() + window.location.hash;
     window.location.replace(newUrl);
   }
 })();
