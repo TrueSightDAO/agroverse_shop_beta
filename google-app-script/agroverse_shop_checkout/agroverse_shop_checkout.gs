@@ -846,8 +846,8 @@ function createSubscriptionCheckoutSession(data) {
       ? 'https://beta.agroverse.shop'
       : 'https://www.agroverse.shop';
 
-    var successUrl = baseUrl + '/order-status?session_id={CHECKOUT_SESSION_ID}';
-    var cancelUrl = baseUrl + '/subscribe/chocolate-bar/?slug=chocolate-bar';
+    var successUrl = baseUrl + '/subscribe/chocolate-bar/?success=true&session_id={CHECKOUT_SESSION_ID}';
+    var cancelUrl = baseUrl + '/subscribe/chocolate-bar/?canceled=true';
 
     // Build Stripe payload
     var payload = {
