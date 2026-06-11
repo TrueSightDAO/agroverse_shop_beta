@@ -2399,7 +2399,8 @@ function getOrderStatus(sessionId) {
       shippingAddress: shippingAddress,
       shippingProvider: finalShippingProvider || null, // Shipping provider from Stripe or sheet
       trackingNumber: trackingNumber || null, // Tracking number from Google Sheet (Column N)
-      paymentStatus: stripeSession.payment_status || 'unknown'
+      paymentStatus: stripeSession.payment_status || 'unknown',
+      mode: stripeSession.mode || 'payment' // 'subscription' or 'payment'
     };
     
     return createCORSResponse({
