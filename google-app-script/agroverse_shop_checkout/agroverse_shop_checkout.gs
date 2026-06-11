@@ -437,7 +437,7 @@ function createCheckoutSession(data) {
 
     // Determine success and cancel URLs based on environment
     var baseUrl = environment === 'development' 
-      ? 'http://127.0.0.1:8000' 
+      ? 'https://beta.agroverse.shop' 
       : 'https://www.agroverse.shop';
 
     var successUrl = baseUrl + '/order-status?session_id={CHECKOUT_SESSION_ID}';
@@ -699,11 +699,11 @@ function createSubscriptionCheckoutSession(data) {
 
     // Determine success and cancel URLs
     var baseUrl = environment === 'development'
-      ? 'http://127.0.0.1:8000'
+      ? 'https://beta.agroverse.shop'
       : 'https://www.agroverse.shop';
 
     var successUrl = baseUrl + '/order-status?session_id={CHECKOUT_SESSION_ID}';
-    var cancelUrl = baseUrl + '/subscribe/chocolate-bar/';
+    var cancelUrl = baseUrl + '/subscribe/chocolate-bar/?slug=chocolate-bar';
 
     // Build Stripe payload
     var payload = {
