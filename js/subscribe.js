@@ -806,10 +806,62 @@
     }
   }
 
+  /**
+   * Populate subscribe form from saved checkout info (localStorage).
+   */
+  function populateFromSavedInfo() {
+    if (window.CheckoutFormStorage) {
+      var saved = window.CheckoutFormStorage.load();
+      if (saved) {
+        var form = document.getElementById('subscribe-form');
+        if (!form) return;
+        var fields = ['fullName', 'email', 'phone', 'address', 'city', 'state', 'zip', 'country'];
+        for (var i = 0; i < fields.length; i++) {
+          var field = fields[i];
+          var el = form.querySelector('[name="' + field + '"]');
+          if (el && saved[field]) {
+            el.value = saved[field];
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Save subscribe form data to localStorage on input changes.
+   */
+  function attachFormStorage() {
+    var form = document.getElementById('subscribe-form');
+    if (!form || !window.CheckoutFormStorage) return;
+
+    var inputs = form.querySelectorAll('input, select');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('input', function() {
+        var formData = {
+          fullName: form.querySelector('[name="fullName"]').value,
+          email: form.querySelector('[name="email"]').value,
+          phone: form.querySelector('[name="phone"]').value,
+          address: form.querySelector('[name="address"]').value,
+          city: form.querySelector('[name="city"]').value,
+          state: form.querySelector('[name="state"]').value,
+          zip: form.querySelector('[name="zip"]').value,
+          country: form.querySelector('[name="country"]').value || 'US'
+        };
+        window.CheckoutFormStorage.save(formData);
+      });
+    }
+  }
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function() {
+      populateFromSavedInfo();
+      attachFormStorage();
+      init();
+    });
   } else {
+    populateFromSavedInfo();
+    attachFormStorage();
     init();
   }
 
