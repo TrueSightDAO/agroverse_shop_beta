@@ -51,6 +51,15 @@ window.PARTNERS_DATA = {
         location: 'Mountain View, California',
         description: 'A community workspace and innovation hub in Mountain View, California, fostering creativity, collaboration, and technological innovation. At Hacker Dojo, regenerative cacao brings together technologists, entrepreneurs, and creators, creating spaces for mindful connection and conscious innovation that support both technological advancement and rainforest restoration.'
     },
+    'kopi-bar-and-bakery': {
+        name: 'Kopi Bar & Bakery',
+        slug: 'kopi-bar-and-bakery',
+        lat: 37.8708,
+        lon: -122.2664,
+        location: 'Berkeley, California',
+        description: 'Indonesian-Singaporean cafe inside the Berkeley Art Museum & Pacific Film Archive. Chef Nora Haron brings Cal-Indonesian pastries, avocado coffee, and sourdough with a 10-year-old starter.',
+        tags: ['cafe', 'bakery', 'coffee', 'indonesian', 'berkeley']
+    },
     'kikis-cocoa': {
         name: 'Kiki\'s Cocoa',
         slug: 'kikis-cocoa',
