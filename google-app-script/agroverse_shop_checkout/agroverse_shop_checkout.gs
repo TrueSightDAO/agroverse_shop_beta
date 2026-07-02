@@ -3612,7 +3612,9 @@ function getSheetUrl() {
 // 5. Create time-driven trigger for syncAllOrders() or syncEtsyOrders()
 // 6. Ensure column O ("Channel") header exists in the sheet
 
-var ETSY_API_BASE = 'https://openapi.etsy.com/v3';
+var ETSY_API_BASE = 'https://api.etsy.com/v3';
+var ETSY_AUTH_URL = 'https://www.etsy.com/oauth/connect';
+var ETSY_TOKEN_URL = 'https://api.etsy.com/v3/public/oauth/token';
 var ETSY_TOKEN_CACHE_KEY = 'etsy_access_token';
 var ETSY_TOKEN_CACHE_SECONDS = 3000; // 50 minutes (token expires in 1 hour)
 
@@ -3660,11 +3662,11 @@ function setupEtsyOAuth() {
   var redirectUri = 'https://agroverse.shop/etsy/callback';
   var scopes = 'listings_r%20listings_w%20transactions_r';
   
-  var authUrl = ETSY_API_BASE + '/public/oauth/authorize' +
+  var authUrl = ETSY_AUTH_URL +
     '?response_type=code' +
     '&client_id=' + keystring +
     '&redirect_uri=' + encodeURIComponent(redirectUri) +
-    '&scope=' + scopes +
+    '&scope=' + encodeURIComponent(scopes) +
     '&state=etsy_setup' +
     '&code_challenge=' + codeChallenge +
     '&code_challenge_method=S256';
@@ -3771,7 +3773,7 @@ function getEtsyAccessToken_() {
   };
 
   try {
-    var response = UrlFetchApp.fetch(ETSY_API_BASE + '/public/oauth/token', {
+  var response = UrlFetchApp.fetch(ETSY_TOKEN_URL, {
       method: 'post',
       contentType: 'application/x-www-form-urlencoded',
       payload: payload,
