@@ -3660,7 +3660,7 @@ function setupEtsyOAuth() {
   userProps.setProperty('ETSY_CODE_VERIFIER', codeVerifier);
 
   var redirectUri = 'https://agroverse.shop/etsy/callback';
-  var scopes = 'listings_r%20listings_w%20transactions_r';
+  var scopes = 'transactions_r listings_r listings_w';
   
   var authUrl = ETSY_AUTH_URL +
     '?response_type=code' +
