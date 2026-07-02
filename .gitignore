@@ -44,3 +44,4 @@ credentials/
 *.secret
 *.credential
 *.token
+.clasp.json
