@@ -1180,20 +1180,8 @@
 <script src="js/facebook-pixel-events.js"></script>
 </head>
 <body>
-<header>
-<nav>
-<a class="logo" href="#">
-<img alt="Agroverse Logo" src="assets/images/logo/agroverse-logo.jpeg"/>
-</a>
-<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
-<li><a href="#home">Home</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="blog/">Blog</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
+<div id="site-nav"></div>
+<script src="/js/shared-chrome.js"></script>
 <!-- Hero Section -->
 <section class="hero" id="home">
 <video autoplay="" class="hero-video" loop="" muted="" playsinline="" poster="assets/images/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg">
@@ -1681,27 +1669,7 @@
 </p>
 </div>
 </section>
-<footer id="contact">
-<div class="footer-content">
-<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
-<p>Regenerating Brazil’s forests—one cacao at a time</p>
-<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
-<ul class="footer-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#mission">Mission</a></li>
-<li><a href="#products">Products</a></li>
-<li><a href="#farmers">Farms</a></li>
-<li><a href="#shipments">Shipments</a></li>
-<li><a href="blog/">Blog</a></li>
-<li><a href="partners/index.html">Partners</a></li>
-<li><a href="wholesale/">Wholesale</a></li>
-<li><a href="cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="order-history/">Order History</a></li>
-<li><a href="mailto:community@agroverse.shop">Contact</a></li>
-</ul>
-<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
-</div>
-</footer>
+<div id="site-footer"></div>
 <script>
         // Web service URL for sold bags count (1 bag = 1 tree planted, 1000 trees = 1 hectare restored)
         const SOLD_BAGS_API_URL = 'https://script.google.com/macros/s/AKfycbzHDqxI4lWlDcl6AnAhZxw7kbOp4exPPk5GFgdwqJuAfMva_00q8eIMFOAzAYIlxVRH/exec';
