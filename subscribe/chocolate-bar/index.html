@@ -381,25 +381,8 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
 </script>
 </head>
 <body>
-<header>
-<nav>
-<a class="logo" href="../../index.html">
-<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
-</a>
-<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle">
-<span class="hamburger-line"></span>
-<span class="hamburger-line"></span>
-<span class="hamburger-line"></span>
-</button>
-<ul class="nav-links mobile-menu">
-<li><a href="../../index.html#home">Home</a></li>
-<li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="../../blog/">Blog</a></li>
-<li><a href="../../index.html#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
+<div id="site-nav"></div>
+<script src="/js/shared-chrome.js"></script>
 <div class="mobile-menu-overlay"></div>
 
 <div class="subscribe-container">
@@ -511,21 +494,7 @@ body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6
   </div>
 </div>
 
-<footer id="contact">
-<div class="footer-content" style="max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; text-align: center;">
-<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: white;">Agroverse</h3>
-<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
-<ul class="footer-links" style="display: flex; justify-content: center; gap: 2rem; list-style: none; margin: 1.5rem 0; flex-wrap: wrap;">
-<li><a href="../../index.html#home" style="color: white; text-decoration: none;">Home</a></li>
-<li><a href="../../index.html#products" style="color: white; text-decoration: none;">Products</a></li>
-<li><a href="../../cacao-journeys/index.html" style="color: white; text-decoration: none;">Cacao Journeys</a></li>
-<li><a href="../../blog/" style="color: white; text-decoration: none;">Blog</a></li>
-<li><a href="mailto:community@agroverse.shop" style="color: white; text-decoration: none;">Contact</a></li>
-<li><a href="../../order-history/" style="color: white; text-decoration: none;">Order History</a></li>
-</ul>
-<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem; color: white;">© 2024 Agroverse. All rights reserved.</p>
-</div>
-</footer>
+<div id="site-footer"></div>
 
 <script src="../../js/config.js"></script>
 <script src="../../js/products.js"></script>

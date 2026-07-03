@@ -2,25 +2,26 @@
  * File: google-app-script/agroverse_shop_checkout/agroverse_shop_checkout.gs
  * Repository: https://github.com/TrueSightDAO/agroverse_shop
  * 
- * Description: Handles Stripe checkout session creation, order polling, and order management
+ * Description: Handles Stripe + Etsy checkout/order polling and order management
  * for the Agroverse Shop e-commerce platform. Integrates with Google Sheets for order storage
  * and automated tracking email notifications.
  * 
- * Google Sheet Structure (columns A-N):
+ * Google Sheet Structure (columns A-O):
  * A: Timestamp
  * B: Customer Name
- * C: Stripe Session ID
- * D: Wix Order Number (empty for Stripe orders)
- * E: Wix Order ID (empty for Stripe orders)
+ * C: Stripe Session ID / Etsy Receipt ID
+ * D: Wix Order Number (empty for non-Wix orders)
+ * E: Wix Order ID (empty for non-Wix orders)
  * F: Items Purchased
  * G: Total Quantity
- * H: Amount (total including shipping)
+ * H: Amount (total including shipping/tax)
  * I: Currency
  * J: Shipping Address
  * K: Shipping Cost
- * L: Stripe Transaction Fee
- * M: Shipping Provider (from Stripe)
+ * L: Transaction Fee (Stripe fee / Etsy fee)
+ * M: Shipping Provider
  * N: Tracking Number (manually entered by admin)
+ * O: Channel (Stripe, Etsy, Meta, QR)
  * 
  * Deployment URL: https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec
  * 
@@ -38,16 +39,27 @@
  *    - ORIGIN_ADDRESS_COUNTRY (warehouse/store country, default: "US")
  *    - BASE_BOX_WEIGHT_OZ (base box weight in ounces, default: 11.5)
  *    - PER_ITEM_PACKAGING_OZ (per-item packaging weight in ounces, default: 0.65)
+ *    - ETSY_KEYSTRING (Etsy API keystring / client ID)
+ *    - ETSY_SHARED_SECRET (Etsy API shared secret)
+ *    - ETSY_SHOP_ID (your Etsy shop ID number)
+ *    - ETSY_REFRESH_TOKEN (set after first OAuth setup — see setupEtsyOAuth())
  * 2. Deploy as Web App:
  *    - Click Deploy > New deployment > Web app
  *    - Set "Execute as: Me" and "Who has access: Anyone"
  *    - Copy the Web App URL to js/config.js
  * 3. Set up Time-Driven Trigger for polling:
  *    - Click Triggers (clock icon) > Add Trigger
- *    - Function: syncStripeOrders
+ *    - Function: syncAllOrders (runs both Stripe + Etsy sync)
  *    - Event source: Time-driven
  *    - Type: Minutes timer
  *    - Interval: Every 5-15 minutes
+ * 
+ * 4. Etsy OAuth setup (one-time):
+ *    - Run setupEtsyOAuth() from the Apps Script editor
+ *    - Visit the URL logged in the console
+ *    - Grant access to your Etsy shop
+ *    - Copy the authorization code from the redirect URL
+ *    - Run completeEtsyOAuth("CODE_FROM_URL") to store the refresh token
  * 
  * Endpoints:
  * - POST /exec?action=createCheckoutSession - Create Stripe checkout session
@@ -2553,15 +2565,16 @@ function retrieveStripeSession(sessionId, stripeSecretKey) {
 }
 
 /**
- * Find order row by Stripe Session ID
- * Matches existing sheet structure where Session ID is in column C (index 2)
+ * Find order row by Stripe Session ID or Etsy Receipt ID
+ * Matches existing sheet structure where ID is in column C (index 2)
+ * Handles both string IDs (Stripe cs_xxx) and numeric IDs (Etsy receipt IDs)
  */
 function findOrderRowBySessionId(sheet, sessionId) {
   var data = sheet.getDataRange().getValues();
   // Skip header row (index 0)
   for (var i = 1; i < data.length; i++) {
-    // Stripe Session ID is in column C (index 2)
-    if (data[i][2] === sessionId) {
+    // Column C (index 2) — compare as strings to handle both types
+    if (String(data[i][2]) === String(sessionId)) {
       return i + 1; // Return 1-based row number
     }
   }
@@ -2578,6 +2591,8 @@ function findOrderRow(sheet, sessionId) {
 /**
  * Poll Stripe for completed checkout sessions and update Google Sheet
  * This replaces webhooks - runs periodically via time-driven trigger
+ * 
+ * NOTE: For a unified trigger covering both Stripe + Etsy, use syncAllOrders().
  * 
  * SETUP: Create a time-driven trigger to run this function every 5-15 minutes
  * 1. Go to Triggers (clock icon) in Google App Script
@@ -3581,5 +3596,564 @@ function getSheetUrl() {
       Logger.log(env.toUpperCase() + ': GOOGLE_SHEET_ID not configured');
     }
   });
+}
+
+// ====================================================================
+// ETSY ORDER MONITORING
+// ====================================================================
+// Polls Etsy for new receipts (orders) and logs them to the same
+// "Stripe Social Media Checkout ID" sheet with Channel = "Etsy".
+//
+// Setup:
+// 1. Set Script Properties: ETSY_KEYSTRING, ETSY_SHARED_SECRET, ETSY_SHOP_ID
+// 2. Run setupEtsyOAuth() once to get the redirect URL
+// 3. Visit the URL, authorize, copy the auth code from redirect
+// 4. Run completeEtsyOAuth("CODE") to store the refresh token
+// 5. Create time-driven trigger for syncAllOrders() or syncEtsyOrders()
+// 6. Ensure column O ("Channel") header exists in the sheet
+
+var ETSY_API_BASE = 'https://api.etsy.com/v3';
+var ETSY_AUTH_URL = 'https://www.etsy.com/oauth/connect';
+var ETSY_TOKEN_URL = 'https://api.etsy.com/v3/public/oauth/token';
+var ETSY_TOKEN_CACHE_KEY = 'etsy_access_token';
+var ETSY_TOKEN_CACHE_SECONDS = 3000; // 50 minutes (token expires in 1 hour)
+
+/**
+ * Unified sync dispatcher — calls both Stripe and Etsy sync functions.
+ * Use this as the single time-driven trigger function.
+ */
+function syncAllOrders() {
+  try {
+    syncStripeOrders();
+  } catch (e) {
+    Logger.log('Stripe sync error: ' + e.toString());
+  }
+  try {
+    syncEtsyOrders();
+  } catch (e) {
+    Logger.log('Etsy sync error: ' + e.toString());
+  }
+}
+
+// ── Etsy OAuth ────────────────────────────────────────────────────────
+
+/**
+ * Step 1 of Etsy OAuth: Generate the authorization URL.
+ * Run this manually from the Apps Script editor, then visit the URL
+ * in your browser to grant Etsy access.
+ */
+function setupEtsyOAuth() {
+  var props = PropertiesService.getScriptProperties();
+  var keystring = props.getProperty('ETSY_KEYSTRING');
+  
+  if (!keystring) {
+    Logger.log('ERROR: ETSY_KEYSTRING not set in Script Properties.');
+    return;
+  }
+
+  // PKCE code verifier + challenge
+  var codeVerifier = generatePkceCodeVerifier_();
+  var codeChallenge = generatePkceCodeChallenge_(codeVerifier);
+
+  // Store code_verifier for step 2
+  var userProps = PropertiesService.getUserProperties();
+  userProps.setProperty('ETSY_CODE_VERIFIER', codeVerifier);
+
+  var redirectUri = 'https://agroverse.shop/etsy/callback';
+  var scopes = 'transactions_r listings_r listings_w';
+  
+  var authUrl = ETSY_AUTH_URL +
+    '?response_type=code' +
+    '&client_id=' + keystring +
+    '&redirect_uri=' + encodeURIComponent(redirectUri) +
+    '&scope=' + encodeURIComponent(scopes) +
+    '&state=etsy_setup' +
+    '&code_challenge=' + codeChallenge +
+    '&code_challenge_method=S256';
+
+  Logger.log('=== ETSY OAUTH SETUP ===');
+  Logger.log('Visit this URL in your browser to authorize:');
+  Logger.log(authUrl);
+  Logger.log('');
+  Logger.log('After authorizing, you will be redirected to:');
+  Logger.log(redirectUri + '?code=XXXXX&state=etsy_setup');
+  Logger.log('');
+  Logger.log('Copy the "code" parameter from the URL and run:');
+  Logger.log('completeEtsyOAuth("CODE_VALUE_HERE")');
+}
+
+/**
+ * Step 2 of Etsy OAuth: Exchange the authorization code for tokens.
+ * @param {string} authCode - The "code" query parameter from the redirect URL.
+ */
+function completeEtsyOAuth(authCode) {
+  var props = PropertiesService.getScriptProperties();
+  var keystring = props.getProperty('ETSY_KEYSTRING');
+  var sharedSecret = props.getProperty('ETSY_SHARED_SECRET');
+  var userProps = PropertiesService.getUserProperties();
+  var codeVerifier = userProps.getProperty('ETSY_CODE_VERIFIER');
+
+  if (!keystring || !sharedSecret) {
+    Logger.log('ERROR: ETSY_KEYSTRING or ETSY_SHARED_SECRET not set.');
+    return;
+  }
+  if (!codeVerifier) {
+    Logger.log('ERROR: No code_verifier found. Run setupEtsyOAuth() first.');
+    return;
+  }
+  if (!authCode) {
+    Logger.log('ERROR: No auth code provided. Pass it as: completeEtsyOAuth("CODE")');
+    return;
+  }
+
+  var redirectUri = 'https://agroverse.shop/etsy/callback';
+  var payload = {
+    grant_type: 'authorization_code',
+    client_id: keystring,
+    client_secret: sharedSecret,
+    redirect_uri: redirectUri,
+    code: authCode,
+    code_verifier: codeVerifier
+  };
+
+  var response = UrlFetchApp.fetch(ETSY_API_BASE + '/public/oauth/token', {
+    method: 'post',
+    contentType: 'application/x-www-form-urlencoded',
+    payload: payload,
+    muteHttpExceptions: true
+  });
+
+  if (response.getResponseCode() !== 200) {
+    Logger.log('ERROR: Token exchange failed: ' + response.getContentText());
+    return;
+  }
+
+  var tokenData = JSON.parse(response.getContentText());
+  props.setProperty('ETSY_REFRESH_TOKEN', tokenData.refresh_token);
+  userProps.deleteProperty('ETSY_CODE_VERIFIER');
+
+  // Cache the access token
+  var cache = CacheService.getScriptCache();
+  cache.put(ETSY_TOKEN_CACHE_KEY, tokenData.access_token, ETSY_TOKEN_CACHE_SECONDS);
+
+  Logger.log('=== ETSY OAUTH COMPLETE ===');
+  Logger.log('Access token obtained (expires in ' + tokenData.expires_in + 's)');
+  Logger.log('Refresh token stored in Script Properties.');
+  Logger.log('You can now run syncEtsyOrders() to test order polling.');
+}
+
+/**
+ * Get a valid Etsy access token (from cache or via refresh).
+ * @return {string|null} Access token, or null if not configured.
+ */
+function getEtsyAccessToken_() {
+  var cache = CacheService.getScriptCache();
+  var cached = cache.get(ETSY_TOKEN_CACHE_KEY);
+  if (cached) return cached;
+
+  var props = PropertiesService.getScriptProperties();
+  var keystring = props.getProperty('ETSY_KEYSTRING');
+  var sharedSecret = props.getProperty('ETSY_SHARED_SECRET');
+  var refreshToken = props.getProperty('ETSY_REFRESH_TOKEN');
+
+  if (!keystring || !sharedSecret) {
+    Logger.log('Etsy: Missing credentials (keystring/shared_secret)');
+    return null;
+  }
+  if (!refreshToken) {
+    Logger.log('Etsy: No refresh token — run setupEtsyOAuth() + completeEtsyOAuth() first');
+    return null;
+  }
+
+  var payload = {
+    grant_type: 'refresh_token',
+    client_id: keystring,
+    client_secret: sharedSecret,
+    refresh_token: refreshToken
+  };
+
+  try {
+  var response = UrlFetchApp.fetch(ETSY_TOKEN_URL, {
+      method: 'post',
+      contentType: 'application/x-www-form-urlencoded',
+      payload: payload,
+      muteHttpExceptions: true
+    });
+
+    if (response.getResponseCode() !== 200) {
+      Logger.log('Etsy: Token refresh failed: ' + response.getContentText());
+      // Refresh token may have expired — need re-auth
+      props.deleteProperty('ETSY_REFRESH_TOKEN');
+      return null;
+    }
+
+    var tokenData = JSON.parse(response.getContentText());
+    var accessToken = tokenData.access_token;
+
+    // Store new refresh token if provided
+    if (tokenData.refresh_token) {
+      props.setProperty('ETSY_REFRESH_TOKEN', tokenData.refresh_token);
+    }
+
+    // Cache access token for 50 minutes
+    cache.put(ETSY_TOKEN_CACHE_KEY, accessToken, ETSY_TOKEN_CACHE_SECONDS);
+    return accessToken;
+  } catch (e) {
+    Logger.log('Etsy: Token refresh error: ' + e.toString());
+    return null;
+  }
+}
+
+// ── PKCE helpers ──────────────────────────────────────────────────────
+
+function generatePkceCodeVerifier_() {
+  var charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+  var verifier = '';
+  for (var i = 0; i < 128; i++) {
+    verifier += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return verifier;
+}
+
+function generatePkceCodeChallenge_(verifier) {
+  var digest = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, verifier);
+  return Utilities.base64EncodeWebSafe(digest);
+}
+
+// ── Etsy Order Polling ────────────────────────────────────────────────
+
+/**
+ * Poll Etsy for new receipts (orders) and log them to the sheet.
+ * Runs via time-driven trigger. Safe to call repeatedly — dedups by receipt ID.
+ */
+function syncEtsyOrders() {
+  var props = PropertiesService.getScriptProperties();
+  var shopId = props.getProperty('ETSY_SHOP_ID');
+  
+  if (!shopId) {
+    Logger.log('Etsy: No ETSY_SHOP_ID configured — skipping');
+    return;
+  }
+
+  var accessToken = getEtsyAccessToken_();
+  if (!accessToken) {
+    Logger.log('Etsy: No access token — skipping. Run setupEtsyOAuth() first.');
+    return;
+  }
+
+  var keystring = props.getProperty('ETSY_KEYSTRING');
+
+  try {
+    // Fetch receipts from the last 24 hours
+    var oneDayAgo = Math.floor(Date.now() / 1000) - (24 * 60 * 60);
+    var receipts = fetchEtsyReceipts_(keystring, accessToken, shopId, oneDayAgo);
+
+    if (!receipts || receipts.length === 0) {
+      Logger.log('Etsy: No receipts found in window');
+      return;
+    }
+
+    Logger.log('Etsy: Found ' + receipts.length + ' receipts to process');
+
+    // Get existing receipt IDs from sheet for dedup
+    var CONFIG = getConfig('production');
+    var sheet = SpreadsheetApp.openById(CONFIG.sheetId).getSheetByName(CONFIG.sheetName);
+    if (!sheet) {
+      Logger.log('Etsy: Sheet not found: ' + CONFIG.sheetName);
+      return;
+    }
+
+    // Ensure Channel column header exists
+    ensureEtsySheetHeaders_(sheet);
+
+    var newOrdersCount = 0;
+    for (var i = 0; i < receipts.length; i++) {
+      var receipt = receipts[i];
+      var receiptId = String(receipt.receipt_id);
+
+      // Dedup — check if receipt ID is already in column C
+      if (findOrderRowBySessionId(sheet, receiptId) > 0) {
+        continue;
+      }
+
+      // Fetch full receipt with transactions
+      var fullReceipt = fetchEtsyReceiptDetail_(keystring, accessToken, shopId, receiptId);
+      if (!fullReceipt) continue;
+
+      saveEtsyOrderToSheet_(fullReceipt, sheet);
+      newOrdersCount++;
+    }
+
+    if (newOrdersCount > 0) {
+      Logger.log('Etsy: Synced ' + newOrdersCount + ' new orders');
+    }
+  } catch (e) {
+    Logger.log('Etsy: sync error: ' + e.toString());
+    Logger.log('Stack: ' + e.stack);
+  }
+}
+
+/**
+ * Fetch receipts from Etsy API (paginated).
+ */
+function fetchEtsyReceipts_(keystring, accessToken, shopId, minCreated) {
+  var allReceipts = [];
+  var limit = 100;
+  var offset = 0;
+  var maxPages = 10; // safety limit
+
+  while (offset < maxPages * limit) {
+    var url = ETSY_API_BASE + '/application/shops/' + shopId + '/receipts' +
+      '?limit=' + limit +
+      '&offset=' + offset +
+      '&min_created=' + minCreated +
+      '&sort_on=created&sort_order=desc';
+
+    Logger.log('Etsy: Fetching receipts page ' + (offset / limit + 1));
+    
+    var response = UrlFetchApp.fetch(url, {
+      method: 'get',
+      headers: {
+        'x-api-key': keystring,
+        'Authorization': 'Bearer ' + accessToken
+      },
+      muteHttpExceptions: true
+    });
+
+    if (response.getResponseCode() !== 200) {
+      Logger.log('Etsy: API error ' + response.getResponseCode() + ': ' + response.getContentText());
+      break;
+    }
+
+    var data = JSON.parse(response.getContentText());
+    var results = data.results || [];
+
+    if (results.length === 0) break;
+
+    allReceipts = allReceipts.concat(results);
+    offset += limit;
+
+    // Stop if we got fewer than limit (last page)
+    if (results.length < limit) break;
+  }
+
+  return allReceipts;
+}
+
+/**
+ * Fetch a single receipt with full transaction details.
+ */
+function fetchEtsyReceiptDetail_(keystring, accessToken, shopId, receiptId) {
+  try {
+    // Get receipt with transactions
+    var url = ETSY_API_BASE + '/application/shops/' + shopId + '/receipts/' + receiptId +
+      '?includes=transactions,listings';
+
+    var response = UrlFetchApp.fetch(url, {
+      method: 'get',
+      headers: {
+        'x-api-key': keystring,
+        'Authorization': 'Bearer ' + accessToken
+      },
+      muteHttpExceptions: true
+    });
+
+    if (response.getResponseCode() !== 200) {
+      Logger.log('Etsy: Failed to fetch receipt ' + receiptId + ': ' + response.getContentText());
+      return null;
+    }
+
+    return JSON.parse(response.getContentText());
+  } catch (e) {
+    Logger.log('Etsy: Error fetching receipt detail: ' + e.toString());
+    return null;
+  }
+}
+
+/**
+ * Ensure the sheet has the Channel column header (column O).
+ * Skips if header already exists.
+ */
+function ensureEtsySheetHeaders_(sheet) {
+  var headers = sheet.getRange(1, 1, 1, 15).getValues()[0];
+  if (headers[14] && headers[14].trim() !== '') return; // Column O already set
+
+  sheet.getRange(1, 15).setValue('Channel');
+  Logger.log('Etsy: Added "Channel" header to column O');
+}
+
+/**
+ * Save an Etsy receipt to the sheet.
+ * Uses same column layout as Stripe orders, with Channel = "Etsy" in column O.
+ */
+function saveEtsyOrderToSheet_(receipt, sheet) {
+  try {
+    var receiptId = String(receipt.receipt_id);
+
+    // ── Customer name ──
+    var buyerName = 'Unknown';
+    if (receipt.buyer_name) {
+      buyerName = receipt.buyer_name;
+    } else if (receipt.name) {
+      buyerName = receipt.name;
+    }
+
+    // ── Buyer email ──
+    var buyerEmail = receipt.buyer_email || '';
+
+    // ── Line items from transactions ──
+    var transactions = receipt.transactions || [];
+    var itemsList = [];
+    var totalQuantity = 0;
+
+    for (var t = 0; t < transactions.length; t++) {
+      var tx = transactions[t];
+      var qty = tx.quantity || 1;
+      var title = tx.title || 'Etsy Item';
+      var variation = '';
+      if (tx.variations && tx.variations.length > 0) {
+        var varStr = tx.variations.map(function(v) {
+          return v.formatted_name + ': ' + v.formatted_value;
+        }).join(', ');
+        variation = ' (' + varStr + ')';
+      }
+      totalQuantity += qty;
+      itemsList.push(title + variation + ' (x' + qty + ')');
+    }
+
+    var itemsPurchased = itemsList.join(', ');
+
+    // ── Amounts ──
+    var totalAmount = parseFloat(receipt.grandtotal && receipt.grandtotal.amount || 0) / (receipt.grandtotal && receipt.grandtotal.divisor || 100);
+    var subtotalAmount = parseFloat(receipt.subtotal && receipt.subtotal.amount || 0) / (receipt.subtotal && receipt.subtotal.divisor || 100);
+    var shippingCost = parseFloat(receipt.total_shipping_cost && receipt.total_shipping_cost.amount || 0) / (receipt.total_shipping_cost && receipt.total_shipping_cost.divisor || 100);
+    var taxAmount = parseFloat(receipt.total_tax_cost && receipt.total_tax_cost.amount || 0) / (receipt.total_tax_cost && receipt.total_tax_cost.divisor || 100);
+    var currency = (receipt.grandtotal && receipt.grandtotal.currency_code) || 'USD';
+
+    // ── Shipping address ──
+    var shippingAddressFormatted = '';
+    if (receipt.formatted_address) {
+      shippingAddressFormatted = receipt.formatted_address;
+    } else if (receipt.shipping_address) {
+      var addr = receipt.shipping_address;
+      var parts = [];
+      if (addr.name) parts.push(addr.name);
+      if (addr.first_line) parts.push(addr.first_line);
+      if (addr.second_line) parts.push(addr.second_line);
+      if (addr.city) parts.push(addr.city);
+      if (addr.state) parts.push(addr.state);
+      if (addr.zip) parts.push(addr.zip);
+      if (addr.country_name) parts.push(addr.country_name);
+      shippingAddressFormatted = parts.join(', ');
+    }
+
+    // ── Shipping provider ──
+    var shippingProvider = '';
+    if (receipt.shipments && receipt.shipments.length > 0) {
+      var carrierNames = [];
+      for (var s = 0; s < receipt.shipments.length; s++) {
+        var shipment = receipt.shipments[s];
+        if (shipment.carrier_name) {
+          carrierNames.push(shipment.carrier_name);
+          if (shipment.tracking_code && shipment.tracking_url) {
+            carrierNames[carrierNames.length - 1] += ' (' + shipment.tracking_code + ')';
+          }
+        }
+      }
+      shippingProvider = carrierNames.join('; ');
+    }
+
+    // ── Etsy fee (approximate — Etsy transaction fee is ~6.5%) ──
+    var etsyFee = totalAmount * 0.065;
+
+    // ── Order date ──
+    var orderDate = '';
+    if (receipt.created_timestamp) {
+      orderDate = new Date(receipt.created_timestamp * 1000).toISOString();
+    }
+
+    // ── Write row ──
+    // Columns: Timestamp | Customer Name | Receipt ID | Wix Order# | Wix Order ID |
+    //          Items Purchased | Total Qty | Amount | Currency | Shipping Address |
+    //          Shipping Cost | Fee | Shipping Provider | Tracking | Channel
+    var row = [
+      orderDate || new Date().toISOString(), // A: Timestamp
+      buyerName,                              // B: Customer Name
+      receiptId,                              // C: Receipt ID (maps to Session ID column)
+      '',                                     // D: Wix Order Number
+      '',                                     // E: Wix Order ID
+      itemsPurchased,                         // F: Items Purchased
+      totalQuantity,                          // G: Total Quantity
+      totalAmount.toFixed(2),                // H: Amount
+      currency,                               // I: Currency
+      shippingAddressFormatted,              // J: Shipping Address
+      shippingCost.toFixed(2),               // K: Shipping Cost
+      etsyFee.toFixed(2),                    // L: Transaction Fee
+      shippingProvider,                       // M: Shipping Provider
+      '',                                     // N: Tracking Number
+      'Etsy'                                  // O: Channel
+    ];
+
+    sheet.appendRow(row);
+    Logger.log('Etsy order saved: ' + receiptId);
+
+    // ── Send email notification ──
+    try {
+      sendEtsyOrderNotificationEmail_(receipt, buyerName, buyerEmail, itemsPurchased, totalQuantity, totalAmount, shippingCost, etsyFee, currency);
+    } catch (emailError) {
+      Logger.log('Etsy: Email notification failed (non-critical): ' + emailError.toString());
+    }
+  } catch (e) {
+    Logger.log('Etsy: Failed to save receipt ' + (receipt && receipt.receipt_id) + ': ' + e.toString());
+    Logger.log('Stack: ' + e.stack);
+  }
+}
+
+/**
+ * Send email notification for new Etsy orders.
+ */
+function sendEtsyOrderNotificationEmail_(receipt, buyerName, buyerEmail, itemsPurchased, totalQuantity, totalAmount, shippingCost, etsyFee, currency) {
+  var currencySymbol = currency === 'USD' ? '$' : (currency + ' ');
+  var orderDate = receipt.created_timestamp
+    ? new Date(receipt.created_timestamp * 1000).toLocaleString()
+    : new Date().toLocaleString();
+  var receiptId = String(receipt.receipt_id);
+
+  var subject = '[Etsy] New Order: ' + buyerName + ' - ' + currencySymbol + totalAmount.toFixed(2);
+
+  var body = 'New Etsy order received!\n\n' +
+    '=== ORDER DETAILS ===\n' +
+    'Order Date: ' + orderDate + '\n' +
+    'Etsy Receipt ID: ' + receiptId + '\n' +
+    'Payment Status: ' + (receipt.was_paid ? 'Paid' : 'Pending') + '\n\n' +
+
+    '=== CUSTOMER INFORMATION ===\n' +
+    'Name: ' + buyerName + '\n' +
+    'Email: ' + (buyerEmail || 'N/A') + '\n\n' +
+
+    '=== ORDER ITEMS ===\n' +
+    itemsPurchased + '\n' +
+    'Total Quantity: ' + totalQuantity + '\n\n' +
+
+    '=== PRICING BREAKDOWN ===\n' +
+    'Total: ' + currencySymbol + totalAmount.toFixed(2) + '\n' +
+    'Shipping: ' + currencySymbol + shippingCost.toFixed(2) + '\n' +
+    'Etsy Fee (est): ' + currencySymbol + etsyFee.toFixed(2) + '\n' +
+    'Net (est): ' + currencySymbol + (totalAmount - etsyFee).toFixed(2) + '\n\n' +
+
+    '=== LINKS ===\n' +
+    'View in Etsy Shop Manager: https://www.etsy.com/your/orders\n' +
+    'Receipt URL: https://www.etsy.com/your/orders/sold/completed?order_id=' + receiptId + '\n\n' +
+
+    '---\n' +
+    'This is an automated notification from Agroverse Shop.';
+
+  MailApp.sendEmail({
+    to: 'garyjob@agroverse.shop',
+    subject: subject,
+    body: body
+  });
+
+  Logger.log('Etsy: Order notification email sent for ' + receiptId);
 }
 
