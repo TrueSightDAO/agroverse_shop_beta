@@ -384,20 +384,8 @@
 </script>
 </head>
 <body>
-<header>
-<nav>
-<a class="logo" href="../../index.html">
-<img alt="Agroverse Logo" src="../../assets/images/logo/agroverse-logo.jpeg"/>
-</a>
-<button aria-expanded="false" aria-label="Toggle navigation menu" class="mobile-menu-toggle"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button><ul class="nav-links mobile-menu">
-<li><a href="../../index.html#home">Home</a></li>
-<li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="../../blog/">Blog</a></li>
-<li><a href="../../index.html#contact">Contact</a></li>
-</ul>
-</nav>
-</header>
+<div id="site-nav"></div>
+<script src="/js/shared-chrome.js"></script>
 <section class="farm-hero">
 <div class="farm-hero-content">
 <h1>Fazenda Analuana</h1>
@@ -475,25 +463,7 @@
 <p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/Fazenda+Analuana/@-15.691646,-39.295703,17z/data=!3m1!4b1!4m6!3m5!1s0x7370acb6be9166f:0xec6f6e4a9f37a4ef!8m2!3d-15.691646!4d-39.295703!16s%2Fg%2F11fx9cmz2m!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
 </section>
 <div class="farm-navigation" id="farm-navigation"></div>
-<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><footer id="contact">
-<div class="footer-content">
-<h3 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">Agroverse</h3>
-<p>Regenerating our Amazon rainforest, One Cacao at a time</p>
-<p>Phone: <a href="tel:4153000019" style="color: white;">415-300-0019</a></p>
-<ul class="footer-links">
-<li><a href="../../index.html#home">Home</a></li>
-<li><a href="../../index.html#mission">Mission</a></li>
-<li><a href="../../index.html#products">Products</a></li>
-<li><a href="../../cacao-journeys/index.html">Cacao Journeys</a></li>
-<li><a href="../../index.html#shipments">Shipments</a></li>
-
-<li><a href="../../blog/">Blog</a></li>
-<li><a href="../../order-history/">Order History</a></li>
-<li><a href="mailto:community@agroverse.shop">Contact</a></li>
-</ul>
-<p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">© 2024 Agroverse. All rights reserved.</p>
-</div>
-</footer>
+<a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><div id="site-footer"></div>
 <script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
         // Initialize map for Fazenda Analuana coordinates from Google Maps
