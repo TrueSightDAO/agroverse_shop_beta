@@ -1,0 +1,797 @@
+{
+  "input_dir": "/Users/garyjob/Downloads",
+  "ffmpeg_sample": {
+    "anchors": "10/30/50/70/90% duration, phash, scale=320px",
+    "timeline": "every 10.0s, max 90 frames",
+    "transcription_model": "tiny"
+  },
+  "duplicate_policy": {
+    "exact": "same sha256",
+    "near": "same duration\u00b1~0.01s (bucket), same WxH, mean anchor Hamming \u2264 10"
+  },
+  "videos": [
+    {
+      "path": "/Users/garyjob/Downloads/Bean to Bliss episode 12_Full HD 1081.MP4",
+      "basename": "Bean to Bliss episode 12_Full HD 1081.MP4",
+      "sha256": "3e0c16ca429b9804a948a1a1ae84fa29d3be5bd1e6ecfc88599fa1da48d2c305",
+      "duration_sec": 78.1,
+      "width": 1080,
+      "height": 1920,
+      "video_codec": "h264",
+      "bit_rate": 7961211,
+      "container_size_bytes": 77721326,
+      "anchor_phashes": [
+        "f830f27b0d8e78c4",
+        "80567f0b69d54aea",
+        "d105ee14b6ef01ea",
+        "a92ff4d414e092d7",
+        "c66e19916e67711a"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.1,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.2,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.3,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.4,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.5,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.6,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.7,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.8,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 0.9,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.1,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.2,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.3,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.4,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.5,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.6,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.7,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.8,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 1.9,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.1,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.2,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.3,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.4,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.5,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.6,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.7,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.8,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 2.9,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.1,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.2,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.3,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.4,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.5,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.6,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.7,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.8,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 3.9,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.1,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.2,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.3,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.4,
+          "phash": "ea9f5a604d7290b5"
+        },
+        {
+          "t_sec": 4.5,
+          "phash": "bd28d9ab34bc9660"
+        },
+        {
+          "t_sec": 4.6,
+          "phash": "bd19d99b28bc86e0"
+        },
+        {
+          "t_sec": 4.7,
+          "phash": "bd19d91938bc86e8"
+        },
+        {
+          "t_sec": 4.8,
+          "phash": "bd19d93828b596e8"
+        },
+        {
+          "t_sec": 4.9,
+          "phash": "b919d13839b58ee8"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "b91d913a35956ce8"
+        },
+        {
+          "t_sec": 5.1,
+          "phash": "b999913aa5cd4ac9"
+        },
+        {
+          "t_sec": 5.2,
+          "phash": "b999912ce5ca4b95"
+        },
+        {
+          "t_sec": 5.3,
+          "phash": "b91b952dc54a0b97"
+        },
+        {
+          "t_sec": 5.4,
+          "phash": "bb1f9f2d444a2f80"
+        },
+        {
+          "t_sec": 5.5,
+          "phash": "b91b9f6d4a5b21c0"
+        },
+        {
+          "t_sec": 5.6,
+          "phash": "b91afd4dcba72180"
+        },
+        {
+          "t_sec": 5.7,
+          "phash": "9118fd5fcbad0990"
+        },
+        {
+          "t_sec": 5.8,
+          "phash": "9109d95e83abb3f0"
+        },
+        {
+          "t_sec": 5.9,
+          "phash": "9309d9fc86a73742"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "f83297cc60705f96"
+        },
+        {
+          "t_sec": 6.1,
+          "phash": "ff1b82c472744e83"
+        },
+        {
+          "t_sec": 6.2,
+          "phash": "ed1980c23f3e4ec9"
+        },
+        {
+          "t_sec": 6.3,
+          "phash": "ec0dc8c3393b4fc8"
+        },
+        {
+          "t_sec": 6.4,
+          "phash": "e40cc8e53c3b4fcc"
+        },
+        {
+          "t_sec": 6.5,
+          "phash": "e60eede53c1942cc"
+        },
+        {
+          "t_sec": 6.6,
+          "phash": "e607e1e43e1962ce"
+        },
+        {
+          "t_sec": 6.7,
+          "phash": "e307e1e61e1962ce"
+        },
+        {
+          "t_sec": 6.8,
+          "phash": "e307e1e21e1963e6"
+        },
+        {
+          "t_sec": 6.9,
+          "phash": "f313e1e2170c61e7"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "f113e1e2170c63e7"
+        },
+        {
+          "t_sec": 7.1,
+          "phash": "f111f071171e61e7"
+        },
+        {
+          "t_sec": 7.2,
+          "phash": "f111f4700f1e72e3"
+        },
+        {
+          "t_sec": 7.3,
+          "phash": "f108f4f20b0f72e3"
+        },
+        {
+          "t_sec": 7.4,
+          "phash": "f008e2f30b0e7bf1"
+        },
+        {
+          "t_sec": 7.5,
+          "phash": "f018e2f10d0e7bf1"
+        },
+        {
+          "t_sec": 7.6,
+          "phash": "f010f279050e7bf3"
+        },
+        {
+          "t_sec": 7.7,
+          "phash": "f810f379058f78e4"
+        },
+        {
+          "t_sec": 7.8,
+          "phash": "f830f2790d8f78c4"
+        },
+        {
+          "t_sec": 7.9,
+          "phash": "f834f27807ce78c4"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "f834f07c07c67cc4"
+        },
+        {
+          "t_sec": 8.1,
+          "phash": "b83cf07c06c67cc6"
+        },
+        {
+          "t_sec": 8.2,
+          "phash": "b82afa5c07c66c87"
+        },
+        {
+          "t_sec": 8.3,
+          "phash": "b82af84c07ee6c87"
+        },
+        {
+          "t_sec": 8.4,
+          "phash": "b82efa0e07e43c87"
+        },
+        {
+          "t_sec": 8.5,
+          "phash": "bc2ef20607f43c87"
+        },
+        {
+          "t_sec": 8.6,
+          "phash": "bc3ef20607f43187"
+        },
+        {
+          "t_sec": 8.7,
+          "phash": "ba3ee60607f43097"
+        },
+        {
+          "t_sec": 8.8,
+          "phash": "ba3ef60707f03093"
+        },
+        {
+          "t_sec": 8.9,
+          "phash": "ba3ee60687b03197"
+        }
+      ],
+      "transcript": "being the police, episode 12. Ehh, show! Previously, we explored how Kakou Nips were created, as well as some some ceremonial great Kakou. Today, we'll finally bring the Kakou Nips across the U.S. border. So I'm right now finally in S\u00e3o Paulo, and getting ready for the water crossing on Friday. I've got all the documents prepared. Last week of the cargo, before we see it on the other side of the border, who got all our inventory properly packaged? Okay, I'm checking Vows luggage into the United Airlines. Oh, access baggage, 100 USD. Wow, man. Oh my god. We are the U.S. border customs. The luggage is out. My turn to cross the border coming through, I'm declaring that 130 USD. Okay, so we're all in this undercutting the security. And we officially cleared customs. Ha ha ha. It's finally in the U.S.",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    },
+    {
+      "path": "/Users/garyjob/Downloads/Project 04-27(1)_Full HD 1080p.MP4",
+      "basename": "Project 04-27(1)_Full HD 1080p.MP4",
+      "sha256": "9a615bbe4076b800b3bc1f20a475fddb50dfe23d6062d31800ed9c5885643c09",
+      "duration_sec": 50.5,
+      "width": 1080,
+      "height": 1920,
+      "video_codec": "h264",
+      "bit_rate": 8614101,
+      "container_size_bytes": 54376515,
+      "anchor_phashes": [
+        "cd96cbc2524bd1d2",
+        "ee9134e318e0fd19",
+        "ed4dc47ccf892912",
+        "a3039169789c6fbc",
+        "b3420fa7805e786f"
+      ],
+      "timeline_phashes": [
+        {
+          "t_sec": 0.0,
+          "phash": "b3043e3d1a49f659"
+        },
+        {
+          "t_sec": 0.1,
+          "phash": "a51a7362f957e814"
+        },
+        {
+          "t_sec": 0.2,
+          "phash": "aa116d4ee691cb2e"
+        },
+        {
+          "t_sec": 0.3,
+          "phash": "b5264851ecb3de38"
+        },
+        {
+          "t_sec": 0.4,
+          "phash": "a22d5d10eaa5f93a"
+        },
+        {
+          "t_sec": 0.5,
+          "phash": "82291c15daa5fd76"
+        },
+        {
+          "t_sec": 0.6,
+          "phash": "832d1415dbadb476"
+        },
+        {
+          "t_sec": 0.7,
+          "phash": "89283794cbadb672"
+        },
+        {
+          "t_sec": 0.8,
+          "phash": "8e223795ccaab571"
+        },
+        {
+          "t_sec": 0.9,
+          "phash": "8c2331bdc46ab567"
+        },
+        {
+          "t_sec": 1.0,
+          "phash": "882f69b0ca6ead65"
+        },
+        {
+          "t_sec": 1.1,
+          "phash": "932e60e09f7fbc40"
+        },
+        {
+          "t_sec": 1.2,
+          "phash": "933c686196dff850"
+        },
+        {
+          "t_sec": 1.3,
+          "phash": "90386b6717fcf051"
+        },
+        {
+          "t_sec": 1.4,
+          "phash": "81737e4e3ce1a316"
+        },
+        {
+          "t_sec": 1.5,
+          "phash": "8e6650592fc68f35"
+        },
+        {
+          "t_sec": 1.6,
+          "phash": "b9680772c8dcbc0f"
+        },
+        {
+          "t_sec": 1.7,
+          "phash": "f2020de7dab378c4"
+        },
+        {
+          "t_sec": 1.8,
+          "phash": "e51f1ac4b5ee2309"
+        },
+        {
+          "t_sec": 1.9,
+          "phash": "ca35079af80b5d56"
+        },
+        {
+          "t_sec": 2.0,
+          "phash": "916e0cf1e31e395c"
+        },
+        {
+          "t_sec": 2.1,
+          "phash": "976a19e1e61d2279"
+        },
+        {
+          "t_sec": 2.2,
+          "phash": "976e19e0e61d2279"
+        },
+        {
+          "t_sec": 2.3,
+          "phash": "976a19e0e617627c"
+        },
+        {
+          "t_sec": 2.4,
+          "phash": "e57e836a63d0f0d0"
+        },
+        {
+          "t_sec": 2.5,
+          "phash": "ed7e826a63d0f0d0"
+        },
+        {
+          "t_sec": 2.6,
+          "phash": "ed7e826a61d1f0d0"
+        },
+        {
+          "t_sec": 2.7,
+          "phash": "ed3e826b61d1f0d0"
+        },
+        {
+          "t_sec": 2.8,
+          "phash": "ed36a26b61d370d0"
+        },
+        {
+          "t_sec": 2.9,
+          "phash": "c936a26b61d3f4d0"
+        },
+        {
+          "t_sec": 3.0,
+          "phash": "c936a46b61d1fcd0"
+        },
+        {
+          "t_sec": 3.1,
+          "phash": "c936a46b6351f4d4"
+        },
+        {
+          "t_sec": 3.2,
+          "phash": "c936a46b6151f85d"
+        },
+        {
+          "t_sec": 3.3,
+          "phash": "c836a47b61d15c5d"
+        },
+        {
+          "t_sec": 3.4,
+          "phash": "cab6a47b61d05c78"
+        },
+        {
+          "t_sec": 3.5,
+          "phash": "cab5247b61d15c78"
+        },
+        {
+          "t_sec": 3.6,
+          "phash": "d2bd247a69d15c58"
+        },
+        {
+          "t_sec": 3.7,
+          "phash": "d0bd20726bd5fa50"
+        },
+        {
+          "t_sec": 3.8,
+          "phash": "c2ccc8e43c3ff292"
+        },
+        {
+          "t_sec": 3.9,
+          "phash": "c3ccc8e46c37f292"
+        },
+        {
+          "t_sec": 4.0,
+          "phash": "c3cccce06c3df0d2"
+        },
+        {
+          "t_sec": 4.1,
+          "phash": "c2cccce72c2cf0f2"
+        },
+        {
+          "t_sec": 4.2,
+          "phash": "e2cccce52424f6f2"
+        },
+        {
+          "t_sec": 4.3,
+          "phash": "f3ccc4f12425b6b2"
+        },
+        {
+          "t_sec": 4.4,
+          "phash": "f3cec4e42425b1b3"
+        },
+        {
+          "t_sec": 4.5,
+          "phash": "f2ccc4e4242df3c3"
+        },
+        {
+          "t_sec": 4.6,
+          "phash": "e2ccc4642d6ce3c7"
+        },
+        {
+          "t_sec": 4.7,
+          "phash": "e6c8cc64286ce3de"
+        },
+        {
+          "t_sec": 4.8,
+          "phash": "c4c9cc6d6868e2de"
+        },
+        {
+          "t_sec": 4.9,
+          "phash": "c49bc9e84a68d6dc"
+        },
+        {
+          "t_sec": 5.0,
+          "phash": "cd93c9ca5269d4d8"
+        },
+        {
+          "t_sec": 5.1,
+          "phash": "cb96dac35243d1d2"
+        },
+        {
+          "t_sec": 5.2,
+          "phash": "ca94d2c55643d7c3"
+        },
+        {
+          "t_sec": 5.3,
+          "phash": "ca9582c55646d7c7"
+        },
+        {
+          "t_sec": 5.4,
+          "phash": "9a9d8a8e444ed5c7"
+        },
+        {
+          "t_sec": 5.5,
+          "phash": "9abd8a8e4c4cd4ce"
+        },
+        {
+          "t_sec": 5.6,
+          "phash": "9abd8a8c4c4dc4de"
+        },
+        {
+          "t_sec": 5.7,
+          "phash": "92b99a8c4d4dd4dc"
+        },
+        {
+          "t_sec": 5.8,
+          "phash": "91ba94cd4bcdc4cc"
+        },
+        {
+          "t_sec": 5.9,
+          "phash": "95b29dcd4bc9c4e0"
+        },
+        {
+          "t_sec": 6.0,
+          "phash": "97b68d4d49c1cce4"
+        },
+        {
+          "t_sec": 6.1,
+          "phash": "ca849cd83c34faea"
+        },
+        {
+          "t_sec": 6.2,
+          "phash": "c8849cd83c34fafa"
+        },
+        {
+          "t_sec": 6.3,
+          "phash": "c8849cd83c34fafa"
+        },
+        {
+          "t_sec": 6.4,
+          "phash": "ca849cd83c34faf8"
+        },
+        {
+          "t_sec": 6.5,
+          "phash": "ca849cd83c3cfaf0"
+        },
+        {
+          "t_sec": 6.6,
+          "phash": "ca849cd8bc3cbaf0"
+        },
+        {
+          "t_sec": 6.7,
+          "phash": "ca849cdabc3cb8f0"
+        },
+        {
+          "t_sec": 6.8,
+          "phash": "ca849cdabc3cb8f0"
+        },
+        {
+          "t_sec": 6.9,
+          "phash": "c9849cdabc3cb8f0"
+        },
+        {
+          "t_sec": 7.0,
+          "phash": "c9849cda343cb8fa"
+        },
+        {
+          "t_sec": 7.1,
+          "phash": "c9849cda343cb8fa"
+        },
+        {
+          "t_sec": 7.2,
+          "phash": "c9849ccb163cbcba"
+        },
+        {
+          "t_sec": 7.3,
+          "phash": "c9848ccb163dbcba"
+        },
+        {
+          "t_sec": 7.4,
+          "phash": "c9848ccb1615bfb6"
+        },
+        {
+          "t_sec": 7.5,
+          "phash": "c9848ccb1615bfb6"
+        },
+        {
+          "t_sec": 7.6,
+          "phash": "c8848ccb1615bfbe"
+        },
+        {
+          "t_sec": 7.7,
+          "phash": "c8848ccb161dbfb6"
+        },
+        {
+          "t_sec": 7.8,
+          "phash": "c8858cca861dbfb6"
+        },
+        {
+          "t_sec": 7.9,
+          "phash": "c8858cca871db7b6"
+        },
+        {
+          "t_sec": 8.0,
+          "phash": "e1317e6e5a559826"
+        },
+        {
+          "t_sec": 8.1,
+          "phash": "e1397e6e53d0b824"
+        },
+        {
+          "t_sec": 8.2,
+          "phash": "c8397f6e53b0382c"
+        },
+        {
+          "t_sec": 8.3,
+          "phash": "c8397f4ed3b02c2c"
+        },
+        {
+          "t_sec": 8.4,
+          "phash": "c8396f47d3b82c2c"
+        },
+        {
+          "t_sec": 8.5,
+          "phash": "ea1d6642d1bd2e26"
+        },
+        {
+          "t_sec": 8.6,
+          "phash": "e50e6360da9d3336"
+        },
+        {
+          "t_sec": 8.7,
+          "phash": "b28978756b9a3855"
+        },
+        {
+          "t_sec": 8.8,
+          "phash": "9da22f6976c4164b"
+        },
+        {
+          "t_sec": 8.9,
+          "phash": "cb9433577c654866"
+        }
+      ],
+      "transcript": "Yeah, opening. Oh, yeah, see see. Oh, yeah, see see. Trying to eat this. How is it? Yeah. It's really different from the swamp. Like really murky, yeah. It's a surprise. Oh, yeah. No, no, no. Huh? 100%! Wow. 100%! I'm getting 100%! I'm getting 100%! I'm getting 100%! I'm getting right up! I'm getting right up! Yeah, yeah. Zero sugar. I'm getting...",
+      "transcript_language": "en",
+      "transcript_error": null,
+      "duplicate_of_index": null,
+      "duplicate_group_id": null,
+      "duplicate_of_basename": null,
+      "duplicate_reason": null,
+      "youtube_upload_recommended": true,
+      "notes": ""
+    }
+  ],
+  "youtube_upload_candidates": [
+    "Bean to Bliss episode 12_Full HD 1081.MP4",
+    "Project 04-27(1)_Full HD 1080p.MP4"
+  ],
+  "skip_if_already_on_channel": "Compare filename + duration against youtube_videos.json / YouTube Studio; this script does not call YouTube API."
+}
