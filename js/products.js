@@ -166,6 +166,20 @@ window.PRODUCTS = {
     gtin: '00860010660256',
     relatedFamily: 'bar-81-50g'
   },
+  'organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024': {
+    productId: 'organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024',
+    productPageSlug: 'organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024',
+    name: '81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024',
+    price: 10.00,
+    weight: 1.76,
+    image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
+    stripePriceId: '',
+    category: 'retail',
+    shipment: 'AGL4',
+    farm: 'Fazenda São Jorge, Bahia',
+    gtin: '00860010660256',
+    relatedFamily: 'bar-81-50g'
+  },
 
   // ===== GENERIC / SUBSCRIBABLE ENTRIES =====
   // These are vintage-independent, single-GTIN entries. The GTIN is shared with

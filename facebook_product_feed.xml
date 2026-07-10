@@ -4,7 +4,7 @@
     <title>Agroverse Shop Products</title>
     <link>https://agroverse.shop</link>
     <description>Agroverse regenerative cacao products from Brazilian farms</description>
-    <lastBuildDate>Tue, 14 Apr 2026 19:15:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 18:46:20 +0000</lastBuildDate>
     <item>
       <g:id>ceremonial-cacao-paulo-s-la-do-sitio-farm-200g</g:id>
       <g:title>Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)</g:title>
@@ -30,7 +30,6 @@
       <g:price>25.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:gtin>00860010660249</g:gtin>
       <g:custom_label_0>Capela Velha Fazenda</g:custom_label_0>
       <g:custom_label_1>AGL10</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
@@ -83,16 +82,15 @@
     </item>
     <item>
       <g:id>organic-81-dark-chocolate-bar-50g-oscar-bahia-2024</g:id>
-      <g:title>81% Organic Dark Chocolate Bar (50g) — Oscar&apos;s Farm, Bahia Brazil, 2024</g:title>
+      <g:title>81% Organic Dark Chocolate Bar (50g) — Oscar's Farm, Bahia Brazil, 2024</g:title>
       <g:link>https://agroverse.shop/product-page/organic-81-dark-chocolate-bar-50g-oscar-bahia-2024/</g:link>
       <g:image_link>https://agroverse.shop/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg</g:image_link>
-      <g:description>81% single-estate dark chocolate bar (50g) from Oscar&apos;s farm in Bahia, Brazil. 19% cane sugar. Unique QR per bar; each bar sold plants a tree. Crafted by Kirsten Ritschel (KiKi&apos;s Cocoa). Shipment AGL4.</g:description>
+      <g:description>81% Organic Dark Chocolate Bar (50g) — Oscar's Farm, Bahia Brazil, 2024. From Oscar's Farm, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
       <g:availability>in stock</g:availability>
       <g:price>10.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:gtin>00860010660256</g:gtin>
-      <g:custom_label_0>Oscar&apos;s Farm, Bahia</g:custom_label_0>
+      <g:custom_label_0>Oscar's Farm, Bahia</g:custom_label_0>
       <g:custom_label_1>AGL4</g:custom_label_1>
       <g:product_type>Retail</g:product_type>
       <g:google_product_category>4748</g:google_product_category>
@@ -102,14 +100,41 @@
       <g:title>81% Organic Dark Chocolate Bar (50g) — Fazenda Santa Ana, Bahia Brazil, 2023</g:title>
       <g:link>https://agroverse.shop/product-page/organic-81-dark-chocolate-bar-50g-fazenda-santa-ana-bahia-2023/</g:link>
       <g:image_link>https://agroverse.shop/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg</g:image_link>
-      <g:description>81% single-estate dark chocolate bar (50g) from Fazenda Santa Ana in Bahia, Brazil. 19% cane sugar. Unique QR per bar; each bar sold plants a tree. Crafted by Kirsten Ritschel (KiKi&apos;s Cocoa). Shipment AGL2.</g:description>
+      <g:description>81% Organic Dark Chocolate Bar (50g) — Fazenda Santa Ana, Bahia Brazil, 2023. From Fazenda Santa Ana, Bahia. Shipment AGL2. Available for direct purchase.</g:description>
       <g:availability>in stock</g:availability>
       <g:price>10.00 USD</g:price>
       <g:condition>new</g:condition>
       <g:brand>Agroverse</g:brand>
-      <g:gtin>00860010660256</g:gtin>
       <g:custom_label_0>Fazenda Santa Ana, Bahia</g:custom_label_0>
       <g:custom_label_1>AGL2</g:custom_label_1>
+      <g:product_type>Retail</g:product_type>
+      <g:google_product_category>4748</g:google_product_category>
+    </item>
+    <item>
+      <g:id>organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024</g:id>
+      <g:title>81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024</g:title>
+      <g:link>https://agroverse.shop/product-page/organic-81-dark-chocolate-bar-50g-fazenda-sao-jorge-bahia-2024/</g:link>
+      <g:image_link>https://agroverse.shop/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg</g:image_link>
+      <g:description>81% Organic Dark Chocolate Bar (50g) — Fazenda São Jorge, Bahia Brazil, 2024. From Fazenda São Jorge, Bahia. Shipment AGL4. Available for direct purchase.</g:description>
+      <g:availability>in stock</g:availability>
+      <g:price>10.00 USD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>Agroverse</g:brand>
+      <g:custom_label_0>Fazenda São Jorge, Bahia</g:custom_label_0>
+      <g:custom_label_1>AGL4</g:custom_label_1>
+      <g:product_type>Retail</g:product_type>
+      <g:google_product_category>4748</g:google_product_category>
+    </item>
+    <item>
+      <g:id>generic-premium-dark-chocolate-bar</g:id>
+      <g:title>Premium Dark Chocolate Bar — Single-Estate, Monthly Discovery</g:title>
+      <g:link>https://agroverse.shop/product-page/premium-dark-chocolate-bar/</g:link>
+      <g:image_link>https://agroverse.shop/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg</g:image_link>
+      <g:description>Premium Dark Chocolate Bar — Single-Estate, Monthly Discovery. Available for direct purchase.</g:description>
+      <g:availability>in stock</g:availability>
+      <g:price>10.00 USD</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>Agroverse</g:brand>
       <g:product_type>Retail</g:product_type>
       <g:google_product_category>4748</g:google_product_category>
     </item>
