@@ -6,7 +6,7 @@
  * for the Agroverse Shop e-commerce platform. Integrates with Google Sheets for order storage
  * and automated tracking email notifications.
  * 
- * Google Sheet Structure (columns A-O):
+ * Google Sheet Structure (columns A-T):
  * A: Timestamp
  * B: Customer Name
  * C: Stripe Session ID / Etsy Receipt ID
@@ -21,7 +21,12 @@
  * L: Transaction Fee (Stripe fee / Etsy fee)
  * M: Shipping Provider
  * N: Tracking Number (manually entered by admin)
- * O: Channel (Stripe, Etsy, Meta, QR)
+ * O: Tracking Notification Sent
+ * P: Ledger Routed
+ * Q: Environment
+ * R: Invoice ID (subscription renewals)
+ * S: Payment Intent ID (subscription renewals)
+ * T: Payment Type (one_time | subscription_renewal)
  * 
  * Deployment URL: https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec
  * 
@@ -973,6 +978,15 @@ function handleStripeWebhook(e) {
       // Use full session if available, otherwise use the session from webhook
       var sessionToSave = fullSession || session;
       saveOrderToSheet(sessionToSave, environment);
+    } else if (event.type === 'invoice.paid') {
+      var invoice = event.data.object;
+      var CONFIG = getConfig('production');
+      // Only process subscription renewal invoices
+      if (invoice.subscription && invoice.billing_reason === 'subscription_cycle') {
+        var subscription = retrieveStripeSubscription(invoice.subscription, CONFIG.stripeSecretKey);
+        var originalSessionId = subscription && subscription.metadata && subscription.metadata.checkout_session_id ? subscription.metadata.checkout_session_id : '';
+        saveSubscriptionPaymentToSheet(invoice, subscription, originalSessionId, CONFIG);
+      }
     }
 
     return createCORSResponse({
@@ -2669,6 +2683,33 @@ function syncStripeOrdersForEnvironment(environment) {
     if (newOrdersCount > 0) {
       Logger.log('Synced ' + newOrdersCount + ' new orders from ' + environment + ' environment');
     }
+
+    // Poll for subscription invoice payments (7-day lookback)
+    ensureSubscriptionColumns_(sheet);
+    var sevenDaysAgo = Math.floor(Date.now() / 1000) - (7 * 24 * 60 * 60);
+    var recentInvoices = retrievePaidSubscriptionInvoices(CONFIG.stripeSecretKey, sevenDaysAgo);
+    Logger.log('Found ' + recentInvoices.length + ' paid subscription invoices from Stripe');
+
+    var newInvoiceCount = 0;
+    for (var j = 0; j < recentInvoices.length; j++) {
+      var invoice = recentInvoices[j];
+      // Dedup by Invoice ID (col R, index 17)
+      if (findOrderRowByColumn(sheet, 17, invoice.id) > 0) continue;
+      // Dedup by Payment Intent ID (col S, index 18)
+      if (invoice.payment_intent && findOrderRowByColumn(sheet, 18, invoice.payment_intent) > 0) continue;
+
+      try {
+        var subscription = retrieveStripeSubscription(invoice.subscription, CONFIG.stripeSecretKey);
+        var originalSessionId = subscription && subscription.metadata && subscription.metadata.checkout_session_id ? subscription.metadata.checkout_session_id : '';
+        saveSubscriptionPaymentToSheet(invoice, subscription, originalSessionId, CONFIG);
+        newInvoiceCount++;
+      } catch (invErr) {
+        Logger.log('Error processing invoice ' + invoice.id + ': ' + invErr.toString());
+      }
+    }
+    if (newInvoiceCount > 0) {
+      Logger.log('Synced ' + newInvoiceCount + ' subscription renewals from ' + environment + ' environment');
+    }
   } catch (error) {
     Logger.log('Error syncing ' + environment + ' orders: ' + error.toString());
   }
@@ -2748,6 +2789,295 @@ function getExistingSessionIds(sheet) {
       return sessionIds.hasOwnProperty(id);
     }
   };
+}
+
+/**
+ * Find order row by a specific column value (for dedup beyond session ID).
+ * @param {Sheet} sheet
+ * @param {number} colIndex 0-based column index
+ * @param {string} value Value to match
+ * @return {number} 1-based row number, or 0 if not found
+ */
+function findOrderRowByColumn(sheet, colIndex, value) {
+  if (!value) return 0;
+  var data = sheet.getDataRange().getValues();
+  for (var i = 1; i < data.length; i++) {
+    if (data[i].length > colIndex && String(data[i][colIndex]) === String(value)) {
+      return i + 1;
+    }
+  }
+  return 0;
+}
+
+/**
+ * Ensure the sheet has subscription renewal columns (R/S/T).
+ * Adds headers if they don't already exist.
+ * R = Invoice ID, S = Payment Intent ID, T = Payment Type
+ */
+function ensureSubscriptionColumns_(sheet) {
+  var headers = sheet.getRange(1, 1, 1, 20).getValues()[0];
+  if (!headers[17] || String(headers[17]).trim() === '') {
+    sheet.getRange(1, 18).setValue('Invoice ID');
+  }
+  if (!headers[18] || String(headers[18]).trim() === '') {
+    sheet.getRange(1, 19).setValue('Payment Intent ID');
+  }
+  if (!headers[19] || String(headers[19]).trim() === '') {
+    sheet.getRange(1, 20).setValue('Payment Type');
+  }
+}
+
+/**
+ * Retrieve paid subscription invoices from Stripe.
+ * Filters to only billing_reason === 'subscription_cycle'.
+ * @param {string} stripeSecretKey
+ * @param {number} createdAfter Unix timestamp
+ * @return {Array} Array of invoice objects
+ */
+function retrievePaidSubscriptionInvoices(stripeSecretKey, createdAfter) {
+  try {
+    var params = [
+      'status=paid',
+      'limit=100',
+      'created[gte]=' + createdAfter
+    ].join('&');
+
+    var url = 'https://api.stripe.com/v1/invoices?' + params;
+    Logger.log('Calling Stripe invoices API: ' + url);
+
+    var response = UrlFetchApp.fetch(url, {
+      method: 'get',
+      headers: {
+        'Authorization': 'Bearer ' + stripeSecretKey
+      },
+      muteHttpExceptions: true
+    });
+
+    var data = JSON.parse(response.getContentText());
+    var invoices = data.data || [];
+
+    // Filter to only subscription_cycle billing reasons
+    var subscriptionInvoices = [];
+    for (var i = 0; i < invoices.length; i++) {
+      if (invoices[i].billing_reason === 'subscription_cycle') {
+        subscriptionInvoices.push(invoices[i]);
+      }
+    }
+
+    Logger.log('Retrieved ' + invoices.length + ' paid invoices, ' + subscriptionInvoices.length + ' subscription cycles');
+    return subscriptionInvoices;
+  } catch (error) {
+    Logger.log('Error retrieving paid invoices: ' + error.toString());
+    return [];
+  }
+}
+
+/**
+ * Retrieve a Stripe subscription by ID.
+ * @param {string} subscriptionId
+ * @param {string} secretKey
+ * @return {Object|null} Subscription object or null
+ */
+function retrieveStripeSubscription(subscriptionId, secretKey) {
+  try {
+    if (!subscriptionId) return null;
+    var url = 'https://api.stripe.com/v1/subscriptions/' + encodeURIComponent(subscriptionId);
+    var response = UrlFetchApp.fetch(url, {
+      method: 'get',
+      headers: {
+        'Authorization': 'Bearer ' + secretKey
+      },
+      muteHttpExceptions: true
+    });
+
+    if (response.getResponseCode() !== 200) {
+      Logger.log('Failed to retrieve subscription ' + subscriptionId + ': ' + response.getContentText());
+      return null;
+    }
+
+    return JSON.parse(response.getContentText());
+  } catch (error) {
+    Logger.log('Error retrieving subscription: ' + error.toString());
+    return null;
+  }
+}
+
+/**
+ * Save a subscription renewal payment to the sheet.
+ * Uses columns A-N (same as one-time), plus R/S/T for renewal metadata.
+ * Column C = original checkout session ID (from subscription metadata).
+ *
+ * Columns: A Timestamp | B Customer Name | C Stripe Session ID | D Wix Order Number
+ * | E Wix Order ID | F Items Purchased | G Total Quantity | H Amount | I Currency
+ * | J Shipping Address | K Shipping Cost | L Stripe Transaction Fee
+ * | M Shipping Provider | N Tracking Number | R Invoice ID | S Payment Intent ID | T Payment Type
+ *
+ * @param {Object} invoice Stripe invoice object
+ * @param {Object} subscription Stripe subscription object
+ * @param {string} originalSessionId Original checkout session ID from subscription metadata
+ * @param {Object} CONFIG Configuration object
+ */
+function saveSubscriptionPaymentToSheet(invoice, subscription, originalSessionId, CONFIG) {
+  try {
+    var sheet = SpreadsheetApp.openById(CONFIG.sheetId).getSheetByName(CONFIG.sheetName);
+    ensureSubscriptionColumns_(sheet);
+
+    // Dedup
+    if (findOrderRowByColumn(sheet, 17, invoice.id) > 0) {
+      Logger.log('Invoice already in sheet: ' + invoice.id);
+      return;
+    }
+    if (invoice.payment_intent && findOrderRowByColumn(sheet, 18, invoice.payment_intent) > 0) {
+      Logger.log('Payment intent already in sheet: ' + invoice.payment_intent);
+      return;
+    }
+
+    // Extract customer info
+    var customerName = 'Unknown';
+    var customerEmail = '';
+    if (invoice.customer_details) {
+      customerName = invoice.customer_details.name || invoice.customer_details.email || 'Unknown';
+      customerEmail = invoice.customer_details.email || '';
+    } else if (invoice.customer_email) {
+      customerName = invoice.customer_email;
+      customerEmail = invoice.customer_email;
+    }
+
+    // Extract line items from invoice
+    var itemsList = [];
+    var totalQuantity = 0;
+    var totalAmount = 0;
+    var lines = (invoice.lines && invoice.lines.data) || [];
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      var qty = line.quantity || 1;
+      var amount = (line.amount || 0) / 100;
+      var description = line.description || 'Product';
+
+      totalQuantity += qty;
+      totalAmount += amount;
+      itemsList.push(description + ' (x' + qty + ')');
+    }
+
+    if (itemsList.length === 0) {
+      totalAmount = (invoice.total || 0) / 100;
+      totalQuantity = 1;
+      itemsList.push('Subscription Renewal');
+    }
+
+    var itemsPurchased = itemsList.join(', ');
+    var currency = (invoice.currency && invoice.currency.toUpperCase()) || 'USD';
+
+    // Shipping cost from invoice
+    var shippingCost = 0;
+    if (lines.length > 0) {
+      for (var s = 0; s < lines.length; s++) {
+        var lineItem = lines[s];
+        if (lineItem.proration_details || (lineItem.description && lineItem.description.toLowerCase().indexOf('shipping') >= 0)) {
+          shippingCost += (lineItem.amount || 0) / 100;
+        }
+      }
+    }
+
+    // Shipping address from invoice or subscription metadata
+    var shippingAddressFormatted = '';
+    if (invoice.shipping_details && invoice.shipping_details.address) {
+      var addr = invoice.shipping_details.address;
+      var parts = [];
+      if (addr.line1) parts.push(addr.line1);
+      if (addr.line2) parts.push(addr.line2);
+      if (addr.city) parts.push(addr.city);
+      if (addr.state) parts.push(addr.state);
+      if (addr.postal_code) parts.push(addr.postal_code);
+      if (addr.country) parts.push(addr.country);
+      shippingAddressFormatted = parts.join(', ');
+    } else if (subscription && subscription.metadata) {
+      var meta = subscription.metadata;
+      var metaParts = [];
+      if (meta.shippingAddress) metaParts.push(meta.shippingAddress);
+      if (meta.shippingCity) metaParts.push(meta.shippingCity);
+      if (meta.shippingState) metaParts.push(meta.shippingState);
+      if (meta.shippingZip) metaParts.push(meta.shippingZip);
+      if (meta.shippingCountry) metaParts.push(meta.shippingCountry);
+      shippingAddressFormatted = metaParts.join(', ');
+    }
+
+    // Get Stripe transaction fee from payment intent
+    var stripeFee = 0;
+    if (invoice.payment_intent) {
+      try {
+        var piId = typeof invoice.payment_intent === 'string' ? invoice.payment_intent : invoice.payment_intent.id;
+        var piResponse = UrlFetchApp.fetch('https://api.stripe.com/v1/payment_intents/' + piId, {
+          method: 'get',
+          headers: { 'Authorization': 'Bearer ' + CONFIG.stripeSecretKey },
+          muteHttpExceptions: true
+        });
+        if (piResponse.getResponseCode() === 200) {
+          var pi = JSON.parse(piResponse.getContentText());
+          if (pi.latest_charge) {
+            var chargeId = typeof pi.latest_charge === 'string' ? pi.latest_charge : pi.latest_charge.id;
+            var chargeResponse = UrlFetchApp.fetch('https://api.stripe.com/v1/charges/' + chargeId, {
+              method: 'get',
+              headers: { 'Authorization': 'Bearer ' + CONFIG.stripeSecretKey },
+              muteHttpExceptions: true
+            });
+            if (chargeResponse.getResponseCode() === 200) {
+              var charge = JSON.parse(chargeResponse.getContentText());
+              if (charge.balance_transaction) {
+                var btId = typeof charge.balance_transaction === 'string' ? charge.balance_transaction : charge.balance_transaction.id;
+                var btResponse = UrlFetchApp.fetch('https://api.stripe.com/v1/balance_transactions/' + btId, {
+                  method: 'get',
+                  headers: { 'Authorization': 'Bearer ' + CONFIG.stripeSecretKey },
+                  muteHttpExceptions: true
+                });
+                if (btResponse.getResponseCode() === 200) {
+                  stripeFee = (JSON.parse(btResponse.getContentText()).fee || 0) / 100;
+                }
+              }
+            }
+          }
+        }
+      } catch (feeErr) {
+        Logger.log('Error retrieving subscription fee: ' + feeErr.toString());
+      }
+    }
+
+    // Build row: A-N + R/S/T
+    var row = [
+      new Date().toISOString(),           // A: Timestamp
+      customerName,                        // B: Customer Name
+      originalSessionId,                   // C: Stripe Session ID (original checkout session)
+      '',                                  // D: Wix Order Number
+      '',                                  // E: Wix Order ID
+      itemsPurchased,                      // F: Items Purchased
+      totalQuantity,                       // G: Total Quantity
+      totalAmount,                         // H: Amount
+      currency,                            // I: Currency
+      shippingAddressFormatted,            // J: Shipping Address
+      shippingCost.toFixed(2),             // K: Shipping Cost
+      stripeFee.toFixed(2),                // L: Stripe Transaction Fee
+      '',                                  // M: Shipping Provider
+      '',                                  // N: Tracking Number
+      '',                                  // O: Tracking Notification Sent
+      '',                                  // P: Ledger Routed
+      '',                                  // Q: Environment
+      invoice.id,                          // R: Invoice ID
+      invoice.payment_intent || '',        // S: Payment Intent ID
+      'subscription_renewal'               // T: Payment Type
+    ];
+
+    // Pad row to 20 columns before appending
+    while (row.length < 20) {
+      row.push('');
+    }
+
+    sheet.appendRow(row);
+    Logger.log('Subscription renewal saved: invoice ' + invoice.id + ' for ' + customerName + ' $' + totalAmount.toFixed(2));
+  } catch (error) {
+    Logger.log('Error saving subscription payment: ' + error.toString());
+    throw error;
+  }
 }
 
 /**
