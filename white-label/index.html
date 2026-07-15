@@ -41,37 +41,50 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
   <section class="wl-hero">
     <h1>Custom White-Label Chocolate Bars</h1>
     <p class="wl-subtitle">Design your own label. We handle the rest — 81% organic dark chocolate bars with custom 2"&times;4" labels, assembled and shipped to you. Every bar plants a tree in the Amazon.</p>
-    <img src="../assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg" alt="Agroverse 81% dark chocolate bar" class="wl-hero-img"/>
+    <!-- The mockup IS the product this page sells — a stock photo of the plain
+         retail bar answers a different question (P1). -->
+    <img src="../assets/images/products/white-label-mockup.png" alt="Your custom 2&quot;&times;4&quot; portrait label on the Agroverse 81% organic dark chocolate pouch" class="wl-hero-img"/>
+    <p class="wl-hero-caption">Your custom label on this bar</p>
     <p class="wl-badge">50-unit minimum &middot; $10/bar flat &middot; 2"&times;4" labels &middot; 50g per bar &middot; 1 bar = 1 tree</p>
+  </section>
+
+  <section class="wl-card wl-how">
+    <h2>How It Works</h2>
+    <div class="wl-steps">
+      <div class="wl-step"><span class="wl-step-num">1</span><strong>Upload artwork</strong><br/>600&times;1200px PNG or JPEG (2"&times;4" at 300 DPI)</div>
+      <div class="wl-step"><span class="wl-step-num">2</span><strong>Choose quantity</strong><br/>50 to 1,000 bars at $10 each</div>
+      <div class="wl-step"><span class="wl-step-num">3</span><strong>Checkout</strong><br/>Secure Stripe payment + shipping</div>
+      <div class="wl-step"><span class="wl-step-num">4</span><strong>We produce</strong><br/>Custom labels printed + bars assembled (~2 weeks)</div>
+      <div class="wl-step"><span class="wl-step-num">5</span><strong>Delivered</strong><br/>Custom-labeled bars shipped to you</div>
+    </div>
+  </section>
+
+  <section class="wl-card wl-pricing">
+    <h2>Pricing</h2>
+    <p class="wl-pricing-line">$10 per bar, any quantity from 50 to 1,000 — no volume tiers, no surprises.</p>
+    <p class="wl-note">Shipping calculated at checkout via USPS. Production lead time: ~2 weeks from order to delivery. Each bar plants one tree — your order funds Amazon rainforest regeneration.</p>
   </section>
 
   <!-- AUTH -->
   <section id="wl-auth" class="wl-card" style="display:none">
-    <div class="wl-auth-layout">
-      <div class="wl-auth-left">
-        <div class="wl-section-header">
-          <h2>Sign In to Get Started</h2>
-        </div>
-        <p class="wl-auth-intro">Design your label, choose your quantity, and we'll produce custom-labeled 81% organic dark chocolate bars for your brand, event, or corporate gift.</p>
-        <div id="wl-auth-form">
-          <label class="wl-label" for="wl-email">Email address</label>
-          <input type="email" id="wl-email" class="wl-input" placeholder="your@company.com" autocomplete="email"/>
-          <button id="wl-auth-btn" class="wl-btn wl-btn-primary">Get Started</button>
-        </div>
-        <!-- Errors live OUTSIDE #wl-auth-form: when the form is hidden, anything
-             inside it is hidden too, so an error placed there is unreadable
-             exactly when it matters most. -->
-        <p id="wl-auth-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
-        <div id="wl-verify-state" class="wl-verify-state" style="display:none">
-          <div class="wl-verify-icon">&#9993;</div>
-          <p id="wl-verify-msg"></p>
-          <button id="wl-verify-check" class="wl-btn">Check Status</button>
-          <p id="wl-verify-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
-        </div>
-      </div>
-      <div class="wl-auth-right">
-        <img src="../assets/images/products/white-label-mockup.png" alt="Your custom 2&quot;&times;4&quot; portrait label on the Agroverse 81% organic dark chocolate pouch" class="wl-auth-photo"/>
-      </div>
+    <div class="wl-section-header">
+      <h2>Start your design</h2>
+    </div>
+    <p class="wl-auth-intro">We'll email you a link to your design workspace.</p>
+    <div id="wl-auth-form">
+      <label class="wl-label" for="wl-email">Email address</label>
+      <input type="email" id="wl-email" class="wl-input" placeholder="your@company.com" autocomplete="email"/>
+      <button id="wl-auth-btn" class="wl-btn wl-btn-primary">Get Started</button>
+    </div>
+    <!-- Errors live OUTSIDE #wl-auth-form: when the form is hidden, anything
+         inside it is hidden too, so an error placed there is unreadable
+         exactly when it matters most. -->
+    <p id="wl-auth-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
+    <div id="wl-verify-state" class="wl-verify-state" style="display:none">
+      <div class="wl-verify-icon">&#9993;</div>
+      <p id="wl-verify-msg"></p>
+      <button id="wl-verify-check" class="wl-btn">Check Status</button>
+      <p id="wl-verify-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
     </div>
   </section>
 
@@ -154,32 +167,6 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
     <button id="wl-success-back" class="wl-btn wl-btn-primary">Back to Gallery</button>
   </section>
 
-  <section class="wl-card wl-how">
-    <h2>How It Works</h2>
-    <div class="wl-steps">
-      <div class="wl-step"><span class="wl-step-num">1</span><strong>Upload artwork</strong><br/>600&times;1200px PNG or JPEG (2"&times;4" at 300 DPI)</div>
-      <div class="wl-step"><span class="wl-step-num">2</span><strong>Choose quantity</strong><br/>50 to 1,000 bars at $10 each</div>
-      <div class="wl-step"><span class="wl-step-num">3</span><strong>Checkout</strong><br/>Secure Stripe payment + shipping</div>
-      <div class="wl-step"><span class="wl-step-num">4</span><strong>We produce</strong><br/>Custom labels printed + bars assembled (~2 weeks)</div>
-      <div class="wl-step"><span class="wl-step-num">5</span><strong>Delivered</strong><br/>Custom-labeled bars shipped to you</div>
-    </div>
-  </section>
-
-  <section class="wl-card wl-pricing">
-    <h2>Pricing</h2>
-    <table class="wl-table">
-      <thead><tr><th>Quantity</th><th>Price per bar</th><th>Total</th></tr></thead>
-      <tbody>
-        <tr><td>50</td><td>$10.00</td><td>$500</td></tr>
-        <tr><td>100</td><td>$10.00</td><td>$1,000</td></tr>
-        <tr><td>200</td><td>$10.00</td><td>$2,000</td></tr>
-        <tr><td>300</td><td>$10.00</td><td>$3,000</td></tr>
-        <tr><td>500</td><td>$10.00</td><td>$5,000</td></tr>
-        <tr><td>1,000</td><td>$10.00</td><td>$10,000</td></tr>
-      </tbody>
-    </table>
-    <p class="wl-note">Shipping calculated at checkout via USPS. Production lead time: ~2 weeks from order to delivery. Each bar plants one tree — your order funds Amazon rainforest regeneration.</p>
-  </section>
 </main>
 
 <div id="site-footer"></div>
