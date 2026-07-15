@@ -108,8 +108,9 @@ test.describe('White-Label — Order Flow UI', () => {
     await page.goto(WL_URL);
     const options = page.locator('#wl-ship-state option');
     await expect(options).toHaveCount(51); // 50 states + empty
-    await expect(options.nth(6)).toContainText('CA'); // California
-    await expect(options.nth(45)).toContainText('TX'); // Texas
+    // index 0 is the empty "State" placeholder, so the Nth state is at nth(N).
+    await expect(options.nth(5)).toContainText('CA');  // 5th state: AL AK AZ AR CA
+    await expect(options.nth(43)).toContainText('TX'); // 43rd state
   });
 
   test('total updates when quantity changes', async ({ page }) => {

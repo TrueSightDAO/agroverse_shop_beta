@@ -244,8 +244,8 @@
       reader.onload = function(e) {
         var img = document.createElement('img');
         img.onload = function() {
-          if (img.naturalWidth !== 1200 || img.naturalHeight !== 600) {
-            reject('Image must be exactly 1200x600px (4"x2" at 300 DPI). Got ' + img.naturalWidth + 'x' + img.naturalHeight + 'px.');
+          if (img.naturalWidth !== 600 || img.naturalHeight !== 1200) {
+            reject('Image must be exactly 600x1200px (2"x4" portrait at 300 DPI). Got ' + img.naturalWidth + 'x' + img.naturalHeight + 'px.');
             return;
           }
           resolve({ dataUrl: img.src, width: img.naturalWidth, height: img.naturalHeight });
@@ -321,7 +321,7 @@
       Email: getEmail(),
       'Design ID': designId,
       Filename: filename,
-      Dimensions: '4x2in',
+      Dimensions: '2x4in',
       'Destination Design File Location': 'https://github.com/' + GH_REPO + '/blob/main/designs/' + eh + '/' + designId + '.png'
     });
 
