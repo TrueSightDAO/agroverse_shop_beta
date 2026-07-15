@@ -181,9 +181,17 @@
     hide('wl-verify-state');
     hide('wl-order');
     hide('wl-success');
+    // P4: the marketing frame is for anonymous visitors only. A repeat
+    // customer reordering shouldn't re-read the pitch under their own app.
+    hide('wl-marketing-frame');
     show('wl-gallery');
     await loadGallery();
   }
+
+  // Set right after a successful upload; consumed once by the next
+  // loadGallery() to highlight the new card (B9) instead of a toast that's
+  // already gone by the time the grid re-renders.
+  var highlightDesignIdOnNextLoad = null;
 
   async function loadGallery() {
     var grid = document.getElementById('wl-gallery-grid');
@@ -200,11 +208,11 @@
 
     try {
       var resp = await fetch(GH_API + '/' + eh);
-      if (resp.status === 404) { empty.style.display = ''; return; }
+      if (resp.status === 404) { empty.style.display = ''; openUploadPanel(); return; }
       if (!resp.ok) { error('wl-gallery-error', 'Could not load designs.'); return; }
 
       var entries = await resp.json();
-      if (!Array.isArray(entries)) { empty.style.display = ''; return; }
+      if (!Array.isArray(entries)) { empty.style.display = ''; openUploadPanel(); return; }
 
       var designs = [];
       for (var i = 0; i < entries.length; i++) {
@@ -218,13 +226,18 @@
 
       designs.sort(function(a, b) { return (b.created_at || '').localeCompare(a.created_at || ''); });
 
-      if (designs.length === 0) { empty.style.display = ''; return; }
+      // B7: first-run is the highest-intent moment on the page. Open the
+      // drop zone by default instead of hiding it behind a button click.
+      if (designs.length === 0) { empty.style.display = ''; openUploadPanel(); return; }
       empty.style.display = 'none';
 
       for (var j = 0; j < designs.length; j++) {
         var d = designs[j];
         var card = document.createElement('div');
         card.className = 'wl-design-card';
+        if (d.design_id && d.design_id === highlightDesignIdOnNextLoad) {
+          card.className += ' wl-design-card--new';
+        }
 
         var img = document.createElement('img');
         img.className = 'wl-design-card-img';
@@ -258,6 +271,7 @@
         card.appendChild(info);
         grid.appendChild(card);
       }
+      highlightDesignIdOnNextLoad = null;
     } catch(e) {
       error('wl-gallery-error', 'Could not load designs: ' + e.message);
     }
@@ -284,6 +298,46 @@
     });
   }
 
+  // Q5: no branded artboard exists yet. Generates a correctly-dimensioned
+  // blank guide client-side (safe-area margin + centreline) so first-run
+  // isn't a wall with no way to produce a conforming file. Replace with a
+  // designed asset from Gary when one exists.
+  function downloadTemplate() {
+    var canvas = document.createElement('canvas');
+    canvas.width = 600;
+    canvas.height = 1200;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 600, 1200);
+    ctx.strokeStyle = '#c0392b';
+    ctx.setLineDash([10, 8]);
+    ctx.lineWidth = 2;
+    ctx.strokeRect(30, 30, 540, 1140); // safe-area margin guide
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#999999';
+    ctx.font = '24px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('600 x 1200px — 2"x4" at 300 DPI', 300, 600);
+    ctx.fillText('keep key art inside the dashed line', 300, 636);
+    canvas.toBlob(function(blob) {
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'agroverse-white-label-template-600x1200.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  }
+  document.getElementById('wl-download-template').addEventListener('click', downloadTemplate);
+
+  // B7: open-by-default on an empty gallery. Reused by wl-upload-btn's
+  // manual toggle so both paths land in the same state.
+  function openUploadPanel() {
+    document.getElementById('wl-upload-panel').style.display = '';
+  }
+
   document.getElementById('wl-upload-btn').addEventListener('click', function() {
     var panel = document.getElementById('wl-upload-panel');
     panel.style.display = panel.style.display === 'none' ? '' : 'none';
@@ -304,6 +358,19 @@
   });
 
   var pendingDesignFile = null;
+  var pendingBadFile = null; // held for the auto-fit escape hatch
+
+  function showPreview(file) {
+    pendingDesignFile = file;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('wl-upload-preview-img').src = e.target.result;
+      show('wl-upload-preview');
+      dropZone.style.display = 'none';
+      hide('wl-upload-recover');
+    };
+    reader.readAsDataURL(file);
+  }
 
   async function handleDesignFile(file) {
     var ext = file.name.split('.').pop().toLowerCase();
@@ -314,18 +381,74 @@
     hide('wl-upload-error');
     try {
       await validateImageDimensions(file);
-      pendingDesignFile = file;
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('wl-upload-preview-img').src = e.target.result;
-        show('wl-upload-preview');
-        dropZone.style.display = 'none';
-      };
-      reader.readAsDataURL(file);
+      showPreview(file);
     } catch (err) {
-      error('wl-upload-error', String(err));
+      // Never a bare rejection with no way forward: offer the template
+      // and an auto-fit that actually produces a conforming file.
+      pendingBadFile = file;
+      document.getElementById('wl-upload-recover-msg').textContent = String(err);
+      show('wl-upload-recover');
     }
   }
+
+  // Scales to cover 600x1200 and center-crops the overflow -- the same
+  // "cover" fit CSS object-fit:cover would give you, just baked into a real
+  // file so it can be uploaded and reproduced on the actual label.
+  function autoFitImageToSpec(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = document.createElement('img');
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          canvas.width = 600;
+          canvas.height = 1200;
+          var ctx = canvas.getContext('2d');
+          var targetRatio = 600 / 1200;
+          var srcRatio = img.naturalWidth / img.naturalHeight;
+          var sx, sy, sw, sh;
+          if (srcRatio > targetRatio) {
+            // source is relatively wider -- crop left/right
+            sh = img.naturalHeight;
+            sw = sh * targetRatio;
+            sx = (img.naturalWidth - sw) / 2;
+            sy = 0;
+          } else {
+            // source is relatively taller -- crop top/bottom
+            sw = img.naturalWidth;
+            sh = sw / targetRatio;
+            sx = 0;
+            sy = (img.naturalHeight - sh) / 2;
+          }
+          ctx.drawImage(img, sx, sy, sw, sh, 0, 0, 600, 1200);
+          canvas.toBlob(function(blob) {
+            if (!blob) { reject('Could not process image.'); return; }
+            resolve(new File([blob], file.name.replace(/\.[^.]+$/, '') + '-autofit.png', { type: 'image/png' }));
+          }, 'image/png');
+        };
+        img.onerror = function() { reject('Cannot read image file.'); };
+        img.src = e.target.result;
+      };
+      reader.onerror = function() { reject('Cannot read image file.'); };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('wl-upload-autofit').addEventListener('click', async function() {
+    if (!pendingBadFile) return;
+    try {
+      var fitted = await autoFitImageToSpec(pendingBadFile);
+      pendingBadFile = null;
+      showPreview(fitted);
+    } catch (err) {
+      document.getElementById('wl-upload-recover-msg').textContent = String(err);
+    }
+  });
+
+  document.getElementById('wl-upload-recover-cancel').addEventListener('click', function() {
+    pendingBadFile = null;
+    hide('wl-upload-recover');
+  });
 
   document.getElementById('wl-upload-cancel').addEventListener('click', function() {
     pendingDesignFile = null;
@@ -375,6 +498,12 @@
         hide('wl-upload-preview');
         dropZone.style.display = '';
         document.getElementById('wl-upload-panel').style.display = 'none';
+        // B9: the panel used to just close, indistinguishable from a silent
+        // failure. Confirm explicitly, then highlight the new card once the
+        // grid reloads (designs sort newest-first since B4).
+        show('wl-upload-success');
+        setTimeout(function() { hide('wl-upload-success'); }, 4000);
+        highlightDesignIdOnNextLoad = designId;
         loadGallery();
       } else {
         error('wl-upload-error', body.error || 'Upload failed. Signature verification: ' + body.signature_verification);

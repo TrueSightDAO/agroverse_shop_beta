@@ -38,6 +38,10 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
 <div id="site-nav"></div>
 
 <main class="wl-container">
+  <!-- P4: this frame is only for anonymous visitors. Once authenticated
+       it's hidden by showGallery() -- a repeat customer reordering should
+       not have to scroll past the pitch they already accepted. -->
+  <div id="wl-marketing-frame">
   <section class="wl-hero">
     <h1>Custom White-Label Chocolate Bars</h1>
     <p class="wl-subtitle">Design your own label. We handle the rest — 81% organic dark chocolate bars with custom 2"&times;4" labels, assembled and shipped to you. Every bar plants a tree in the Amazon.</p>
@@ -64,6 +68,7 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
     <p class="wl-pricing-line">$10 per bar, any quantity from 50 to 1,000 — no volume tiers, no surprises.</p>
     <p class="wl-note">Shipping calculated at checkout via USPS. Production lead time: ~2 weeks from order to delivery. Each bar plants one tree — your order funds Amazon rainforest regeneration.</p>
   </section>
+  </div>
 
   <!-- AUTH -->
   <section id="wl-auth" class="wl-card" style="display:none">
@@ -98,20 +103,35 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
       <div class="wl-drop-zone" id="wl-drop-zone">
         <p>Drag your artwork here or click to browse</p>
         <p class="wl-drop-hint">Must be exactly 600&times;1200px (2"&times;4" portrait at 300 DPI) — PNG or JPEG</p>
+        <!-- Q5: no branded artboard exists yet -- this generates a correctly-
+             dimensioned blank guide client-side so first-run isn't a wall.
+             Swap for a designed asset from Gary when one exists. -->
+        <button id="wl-download-template" class="wl-btn wl-btn-outline wl-btn-small" type="button">Download blank template (600&times;1200px)</button>
         <input type="file" id="wl-design-file" class="wl-file-input" accept="image/png,image/jpeg" hidden/>
       </div>
+      <div id="wl-upload-recover" class="wl-upload-recover" style="display:none">
+        <p id="wl-upload-recover-msg" class="wl-error"></p>
+        <div class="wl-upload-actions">
+          <button id="wl-upload-autofit" class="wl-btn wl-btn-primary" type="button">Auto-fit this image</button>
+          <button id="wl-upload-recover-cancel" class="wl-btn" type="button">Try a different file</button>
+        </div>
+        <p class="wl-recover-hint">Auto-fit scales and center-crops your image to exactly 600&times;1200px — check the preview before uploading.</p>
+      </div>
       <div id="wl-upload-preview" style="display:none">
-        <p class="wl-label">Preview</p>
-        <img id="wl-upload-preview-img" class="wl-preview-img" alt="Design preview"/>
+        <p class="wl-label">Your label</p>
+        <img id="wl-upload-preview-img" class="wl-preview-img wl-preview-img-product" alt="Design preview"/>
         <div class="wl-upload-actions">
           <button id="wl-upload-submit" class="wl-btn wl-btn-primary">Upload Design</button>
           <button id="wl-upload-cancel" class="wl-btn">Cancel</button>
         </div>
       </div>
+      <p id="wl-upload-success" class="wl-upload-success" role="status" aria-live="polite" style="display:none">&#10003; Uploaded — added to My Designs below.</p>
       <p id="wl-upload-error" class="wl-error" style="display:none"></p>
     </div>
     <div id="wl-gallery-grid" class="wl-gallery-grid"></div>
-    <p id="wl-gallery-empty" class="wl-empty" style="display:none">No designs yet. Upload your first one above.</p>
+    <!-- B7: the drop zone above opens automatically on an empty gallery, so
+         this no longer needs to point at anything -- it's just orientation. -->
+    <p id="wl-gallery-empty" class="wl-empty" style="display:none">Drop your first design above to get started.</p>
     <p id="wl-gallery-error" class="wl-error" style="display:none"></p>
   </section>
 
