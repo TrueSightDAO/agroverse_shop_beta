@@ -1,0 +1,83 @@
+.wl-container { max-width: 960px; margin: 0 auto; padding: 40px 20px; font-family: 'Open Sans', sans-serif; color: #3b3333; }
+
+.wl-hero { text-align: center; margin-bottom: 40px; }
+.wl-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.2em; color: #3b3333; margin-bottom: 12px; }
+.wl-subtitle { font-size: 1.1em; color: #756F63; max-width: 600px; margin: 0 auto 16px; }
+.wl-hero-img { max-width: 100%; max-height: 320px; display: block; margin: 20px auto; border-radius: 8px; }
+.wl-badge { display: inline-block; background: #f5f0eb; padding: 8px 20px; border-radius: 20px; font-size: 0.9em; color: #8B7355; }
+
+.wl-card { background: #fff; border: 1px solid #e0d8cd; border-radius: 8px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.wl-section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid #e0d8cd; padding-bottom: 12px; }
+.wl-section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5em; color: #3b3333; margin: 0; }
+
+.wl-label { display: block; font-weight: 600; font-size: 0.85em; margin-bottom: 4px; color: #4d4d4d; }
+.wl-input { width: 100%; padding: 10px 14px; border: 1px solid #d0c8bc; border-radius: 6px; font-size: 1em; font-family: 'Open Sans', sans-serif; color: #3b3333; box-sizing: border-box; margin-bottom: 12px; transition: border-color 0.2s; }
+.wl-input:focus { border-color: #8B7355; outline: none; }
+.wl-select { width: 100%; padding: 10px 14px; border: 1px solid #d0c8bc; border-radius: 6px; font-size: 1em; font-family: 'Open Sans', sans-serif; color: #3b3333; background: #fff; margin-bottom: 12px; box-sizing: border-box; }
+
+.wl-btn { padding: 10px 24px; border-radius: 6px; font-size: 0.95em; font-family: 'Open Sans', sans-serif; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+.wl-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.wl-btn-primary { background: #5a4e3c; color: #fff; }
+.wl-btn-primary:hover:not(:disabled) { background: #6b5e4a; }
+.wl-btn-outline { background: transparent; border-color: #d0c8bc; color: #5a4e3c; }
+.wl-btn-outline:hover:not(:disabled) { background: #f7f5f2; }
+
+.wl-error { color: #c0392b; font-size: 0.85em; margin-top: 8px; }
+
+.wl-verify-state { text-align: center; }
+.wl-verify-state p { margin-bottom: 16px; color: #756F63; }
+
+.wl-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.wl-design-card { border: 1px solid #e0d8cd; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+.wl-design-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.wl-design-card-img { width: 100%; aspect-ratio: 2/1; object-fit: contain; background: #fafaf8; }
+.wl-design-card-info { padding: 12px; }
+.wl-design-card-name { font-weight: 600; font-size: 0.9em; margin: 0 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wl-design-card-meta { font-size: 0.8em; color: #756F63; margin: 0 0 10px; }
+.wl-design-card-info .wl-btn { width: 100%; text-align: center; padding: 8px; font-size: 0.85em; }
+.wl-empty { text-align: center; color: #756F63; padding: 40px 0; }
+
+.wl-upload-panel { margin-bottom: 24px; }
+.wl-drop-zone { border: 2px dashed #d0c8bc; border-radius: 8px; padding: 40px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.wl-drop-zone:hover { border-color: #8B7355; background: #fafaf8; }
+.wl-drop-zone p { margin: 4px 0; color: #4d4d4d; }
+.wl-drop-hint { font-size: 0.8em; color: #999; }
+.wl-preview-img { max-width: 100%; max-height: 300px; border: 1px solid #e0d8cd; border-radius: 6px; display: block; margin: 12px auto; }
+.wl-upload-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+
+.wl-order-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+@media (max-width: 640px) { .wl-order-layout { grid-template-columns: 1fr; } }
+.wl-order-design-name { text-align: center; font-size: 0.85em; color: #756F63; margin-top: 8px; }
+.wl-order-total { font-size: 1.1em; font-weight: 700; color: #3b3333; margin: 8px 0 16px; }
+.wl-ship-row { display: grid; grid-template-columns: 1fr 80px 100px; gap: 8px; }
+@media (max-width: 480px) { .wl-ship-row { grid-template-columns: 1fr; } }
+.wl-ship-rates { margin: 12px 0; }
+.wl-ship-option { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 0.9em; cursor: pointer; }
+.wl-ship-option input { margin: 0; }
+.wl-success-detail { font-size: 0.85em; color: #756F63; word-break: break-all; margin-bottom: 16px; }
+
+.wl-how h2, .wl-pricing h2 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 16px; }
+.wl-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+.wl-step { text-align: center; font-size: 0.85em; color: #4d4d4d; }
+.wl-step-num { display: inline-block; width: 28px; height: 28px; line-height: 28px; background: #5a4e3c; color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 6px; font-size: 0.85em; }
+.wl-step strong { display: block; color: #3b3333; margin-bottom: 2px; }
+
+.wl-table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin-bottom: 12px; }
+.wl-table th { background: #f5f0eb; text-align: left; padding: 8px 12px; font-weight: 600; }
+.wl-table td { padding: 6px 12px; border-bottom: 1px solid #e0d8cd; }
+.wl-table tr:hover td { background: #fafaf8; }
+.wl-note { font-size: 0.8em; color: #756F63; margin-top: 8px; }
+
+.wl-auth-intro { font-size: 0.9em; color: #756F63; margin-bottom: 16px; line-height: 1.5; }
+.wl-auth-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: center; }
+@media (max-width: 860px) {
+  .wl-auth-layout { grid-template-columns: 1fr; }
+  /* proof before ask: stack the mockup above the email field, never below it */
+  .wl-auth-right { order: -1; }
+}
+/* The mockup is a portrait product shot (label is 2"W x 4"H). Never `cover` —
+   cropping it would cut the label, which is the one thing it exists to show. */
+.wl-auth-photo { display: block; margin: 0 auto; max-width: 100%; max-height: 460px; width: auto; height: auto; border-radius: 8px; border: 1px solid #e0d8cd; }
+.wl-auth-photo-caption { font-size: 0.8em; color: #999; text-align: center; margin-top: 8px; }
+
+.wl-verify-icon { font-size: 2em; margin-bottom: 12px; }

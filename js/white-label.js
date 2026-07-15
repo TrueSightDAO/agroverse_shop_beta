@@ -1,0 +1,543 @@
+(function() {
+  'use strict';
+
+  var EDGAR_BASE = 'https://edgar.truesight.me';
+  var GAS_CHECKOUT = 'https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec';
+  var GH_REPO = 'TrueSightDAO/agroverse-designs';
+  var GH_API = 'https://api.github.com/repos/' + GH_REPO + '/contents/designs';
+  var GH_RAW = 'https://raw.githubusercontent.com/' + GH_REPO + '/main/designs';
+
+  var client = new DaoClient({
+    edgarBase: EDGAR_BASE,
+    publicKeyKey: 'publicKey',
+    privateKeyKey: 'privateKey'
+  });
+
+  var selectedDesign = null;
+
+  // ─── EMAIL HELPERS ─────────────────────────────────────────────────
+
+  function getEmail() {
+    return localStorage.getItem('agroverse_wl_email') || '';
+  }
+
+  function setEmail(email) {
+    localStorage.setItem('agroverse_wl_email', email);
+  }
+
+  async function emailHash() {
+    var email = getEmail();
+    if (!email) return '';
+    var enc = new TextEncoder();
+    var hash = await crypto.subtle.digest('SHA-256', enc.encode(email.toLowerCase().trim()));
+    return Array.from(new Uint8Array(hash)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  // ─── UI HELPERS ────────────────────────────────────────────────────
+
+  function show(id) { var el = document.getElementById(id); if (el) el.style.display = ''; }
+  function hide(id) { var el = document.getElementById(id); if (el) el.style.display = 'none'; }
+  function error(id, msg) {
+    var el = document.getElementById(id);
+    if (el) { el.textContent = msg; el.style.display = ''; }
+  }
+
+  // ─── KEYPAIR ────────────────────────────────────────────────────────
+
+  async function ensureKeypair() {
+    if (client.publicKey) return client.publicKey;
+    var kp = await client.generateKeyPair();
+    return kp.publicKey;
+  }
+
+  // ─── AUTH FLOW ─────────────────────────────────────────────────────
+
+  async function initAuth() {
+    await ensureKeypair();
+    if (client.publicKey && getEmail()) {
+      showGallery();
+      return;
+    }
+    show('wl-auth');
+    document.getElementById('wl-verify-check').style.display = 'none';
+    show('wl-auth-form');
+  }
+
+  async function handleAuth() {
+    var email = document.getElementById('wl-email').value.trim();
+    if (!email || email.indexOf('@') === -1) {
+      error('wl-auth-error', 'Please enter a valid email address.');
+      return;
+    }
+
+    var btn = document.getElementById('wl-auth-btn');
+    btn.disabled = true;
+    hide('wl-auth-error');
+
+    try {
+      await ensureKeypair();
+      setEmail(email);
+
+      var result = await client.registerEmail(email);
+
+      if (!result.ok) {
+        error('wl-auth-error', result.error || 'Registration failed. Try again.');
+        btn.disabled = false;
+        return;
+      }
+
+      var er = result.emailRegistration;
+      if (er && er.status === 'activated') {
+        showGallery();
+        return;
+      }
+
+      hide('wl-auth-form');
+      document.getElementById('wl-auth-loading').textContent = '';
+      show('wl-verify-state');
+      document.getElementById('wl-verify-check').style.display = '';
+    } catch (e) {
+      error('wl-auth-error', 'Error: ' + e.message);
+      btn.disabled = false;
+    }
+  }
+
+  document.getElementById('wl-auth-btn').addEventListener('click', handleAuth);
+  document.getElementById('wl-email').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); handleAuth(); }
+  });
+
+  document.getElementById('wl-verify-check').addEventListener('click', async function() {
+    try {
+      var result = await client.registerEmail(getEmail());
+      var er = result.emailRegistration;
+      if (er && er.status === 'activated') {
+        showGallery();
+      } else {
+        error('wl-verify-error', 'Still pending. Check your inbox and click the verification link.');
+      }
+    } catch(e) {
+      error('wl-verify-error', 'Error: ' + e.message);
+    }
+  });
+
+  // ─── VERIFY REDIRECT ───────────────────────────────────────────────
+
+  async function verifyFromEmailLink(email, vk) {
+    show('wl-auth');
+    hide('wl-auth-form');
+    show('wl-verify-state');
+    document.querySelector('#wl-verify-state p').textContent = 'Verifying your email...';
+    setEmail(email);
+
+    try {
+      await ensureKeypair();
+      var result = await client.verifyEmail(email, vk);
+
+      if (result.ok && result.emailRegistration && result.emailRegistration.status === 'activated') {
+        history.replaceState(null, '', window.location.pathname);
+        showGallery();
+      } else {
+        document.querySelector('#wl-verify-state p').textContent = 'Verification did not succeed. Try re-registering.';
+        show('wl-auth-form');
+      }
+    } catch (e) {
+      document.querySelector('#wl-verify-state p').textContent = 'Error: ' + e.message + '. Try re-registering.';
+      show('wl-auth-form');
+    }
+  }
+
+  // ─── GALLERY (GitHub API directly) ──────────────────────────────────
+
+  async function showGallery() {
+    hide('wl-auth');
+    hide('wl-verify-state');
+    hide('wl-order');
+    hide('wl-success');
+    show('wl-gallery');
+    await loadGallery();
+  }
+
+  async function loadGallery() {
+    var grid = document.getElementById('wl-gallery-grid');
+    var empty = document.getElementById('wl-gallery-empty');
+    grid.innerHTML = '';
+    hide('wl-gallery-error');
+
+    var eh = await emailHash();
+    if (!eh) {
+      empty.style.display = '';
+      empty.textContent = 'Sign in to see your designs.';
+      return;
+    }
+
+    try {
+      var resp = await fetch(GH_API + '/' + eh);
+      if (resp.status === 404) { empty.style.display = ''; return; }
+      if (!resp.ok) { error('wl-gallery-error', 'Could not load designs.'); return; }
+
+      var entries = await resp.json();
+      if (!Array.isArray(entries)) { empty.style.display = ''; return; }
+
+      var designs = [];
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].name.endsWith('.json')) {
+          try {
+            var dr = await fetch(entries[i].download_url);
+            if (dr.ok) designs.push(await dr.json());
+          } catch(e) {}
+        }
+      }
+
+      designs.sort(function(a, b) { return (b.created_at || '').localeCompare(a.created_at || ''); });
+
+      if (designs.length === 0) { empty.style.display = ''; return; }
+      empty.style.display = 'none';
+
+      for (var j = 0; j < designs.length; j++) {
+        var d = designs[j];
+        var card = document.createElement('div');
+        card.className = 'wl-design-card';
+
+        var img = document.createElement('img');
+        img.className = 'wl-design-card-img';
+        img.src = GH_RAW + '/' + eh + '/' + d.design_id + '.png';
+        img.alt = d.filename || 'Design';
+        img.loading = 'lazy';
+
+        var info = document.createElement('div');
+        info.className = 'wl-design-card-info';
+
+        var name = document.createElement('p');
+        name.className = 'wl-design-card-name';
+        name.textContent = d.filename || 'Design ' + d.design_id.substring(0, 8);
+
+        var meta = document.createElement('p');
+        meta.className = 'wl-design-card-meta';
+        var orderCount = (d.orders && d.orders.length) ? d.orders.length : 0;
+        meta.textContent = (orderCount ? orderCount + ' past order' + (orderCount > 1 ? 's' : '') : 'No orders yet');
+
+        var btn = document.createElement('button');
+        btn.className = 'wl-btn wl-btn-primary';
+        btn.textContent = 'Reorder';
+        btn.addEventListener('click', (function(design) {
+          return function() { showOrder(design); };
+        })(d));
+
+        info.appendChild(name);
+        info.appendChild(meta);
+        info.appendChild(btn);
+        card.appendChild(img);
+        card.appendChild(info);
+        grid.appendChild(card);
+      }
+    } catch(e) {
+      error('wl-gallery-error', 'Could not load designs: ' + e.message);
+    }
+  }
+
+  // ─── UPLOAD (via submit_contribution) ───────────────────────────────
+
+  function validateImageDimensions(file) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = document.createElement('img');
+        img.onload = function() {
+          if (img.naturalWidth !== 1200 || img.naturalHeight !== 600) {
+            reject('Image must be exactly 1200x600px (4"x2" at 300 DPI). Got ' + img.naturalWidth + 'x' + img.naturalHeight + 'px.');
+            return;
+          }
+          resolve({ dataUrl: img.src, width: img.naturalWidth, height: img.naturalHeight });
+        };
+        img.onerror = function() { reject('Cannot read image file.'); };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('wl-upload-btn').addEventListener('click', function() {
+    var panel = document.getElementById('wl-upload-panel');
+    panel.style.display = panel.style.display === 'none' ? '' : 'none';
+  });
+
+  var dropZone = document.getElementById('wl-drop-zone');
+  dropZone.addEventListener('click', function() { document.getElementById('wl-design-file').click(); });
+  dropZone.addEventListener('dragover', function(e) { e.preventDefault(); });
+  dropZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    var file = e.dataTransfer.files[0];
+    if (file) handleDesignFile(file);
+  });
+
+  document.getElementById('wl-design-file').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (file) handleDesignFile(file);
+  });
+
+  var pendingDesignFile = null;
+
+  async function handleDesignFile(file) {
+    var ext = file.name.split('.').pop().toLowerCase();
+    if (ext !== 'png' && ext !== 'jpg' && ext !== 'jpeg') {
+      error('wl-upload-error', 'Only PNG and JPEG files are supported.');
+      return;
+    }
+    hide('wl-upload-error');
+    try {
+      await validateImageDimensions(file);
+      pendingDesignFile = file;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('wl-upload-preview-img').src = e.target.result;
+        show('wl-upload-preview');
+        dropZone.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    } catch (err) {
+      error('wl-upload-error', String(err));
+    }
+  }
+
+  document.getElementById('wl-upload-cancel').addEventListener('click', function() {
+    pendingDesignFile = null;
+    hide('wl-upload-preview');
+    dropZone.style.display = '';
+    hide('wl-upload-error');
+  });
+
+  document.getElementById('wl-upload-submit').addEventListener('click', async function() {
+    if (!pendingDesignFile || !client.publicKey) return;
+    var btn = document.getElementById('wl-upload-submit');
+    btn.disabled = true;
+    hide('wl-upload-error');
+
+    var designId = crypto.randomUUID();
+    var filename = pendingDesignFile.name;
+    var eh = await emailHash();
+
+    var signResult = await client.sign('DESIGN UPLOAD EVENT', {
+      Email: getEmail(),
+      'Design ID': designId,
+      Filename: filename,
+      Dimensions: '4x2in',
+      'Destination Design File Location': 'https://github.com/' + GH_REPO + '/blob/main/designs/' + eh + '/' + designId + '.png'
+    });
+
+    var formData = new FormData();
+    formData.append('text', signResult.shareText);
+    formData.append('attachment', pendingDesignFile, filename);
+
+    try {
+      var resp = await fetch(EDGAR_BASE + '/dao/submit_contribution', { method: 'POST', body: formData });
+      var body = await resp.json().catch(function() { return {}; });
+      btn.disabled = false;
+
+      if (body.signature_verification === 'success') {
+        pendingDesignFile = null;
+        hide('wl-upload-preview');
+        dropZone.style.display = '';
+        document.getElementById('wl-upload-panel').style.display = 'none';
+        loadGallery();
+      } else {
+        error('wl-upload-error', body.error || 'Upload failed. Signature verification: ' + body.signature_verification);
+      }
+    } catch (e) {
+      error('wl-upload-error', 'Network error: ' + e.message);
+      btn.disabled = false;
+    }
+  });
+
+  // ─── ORDER ─────────────────────────────────────────────────────────
+
+  function showOrder(design) {
+    selectedDesign = design;
+    hide('wl-gallery');
+    show('wl-order');
+    document.getElementById('wl-order-design-img').src = design.image_url;
+    document.getElementById('wl-order-design-name').textContent = design.filename || 'Design ' + design.design_id.substring(0, 8);
+    updateOrderTotal();
+  }
+
+  document.getElementById('wl-order-back').addEventListener('click', function() {
+    hide('wl-order');
+    show('wl-gallery');
+    selectedDesign = null;
+  });
+
+  document.getElementById('wl-order-qty').addEventListener('change', updateOrderTotal);
+
+  function updateOrderTotal() {
+    var qty = parseInt(document.getElementById('wl-order-qty').value);
+    var total = (qty * 10).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    document.getElementById('wl-order-total').textContent = 'Total: ' + total;
+  }
+
+  var shippingPolling = null;
+  ['wl-ship-address', 'wl-ship-city', 'wl-ship-zip'].forEach(function(id) {
+    document.getElementById(id).addEventListener('blur', pollShippingRates);
+  });
+  document.getElementById('wl-ship-state').addEventListener('change', pollShippingRates);
+  var selectedShippingRateId = null;
+
+  function pollShippingRates() {
+    if (shippingPolling) clearTimeout(shippingPolling);
+    shippingPolling = setTimeout(calculateShipping, 300);
+  }
+
+  async function calculateShipping() {
+    var addr = document.getElementById('wl-ship-address').value.trim();
+    var city = document.getElementById('wl-ship-city').value.trim();
+    var state = document.getElementById('wl-ship-state').value;
+    var zip = document.getElementById('wl-ship-zip').value.trim();
+    if (!addr || !city || !state || !zip) return;
+
+    var qty = parseInt(document.getElementById('wl-order-qty').value);
+    var totalWeightOz = (1.76 * qty) + 11.5 + (0.65 * qty);
+
+    try {
+      var resp = await fetch(GAS_CHECKOUT + '?' + new URLSearchParams({
+        action: 'calculateShippingRates',
+        weightOz: totalWeightOz.toFixed(1),
+        shippingAddress: JSON.stringify({ address: addr, city: city, state: state, zip: zip, country: 'US' })
+      }));
+      var data = await resp.json().catch(function() { return { status: 'error' }; });
+      var ratesDiv = document.getElementById('wl-ship-rates');
+
+      if (data.status === 'success' && data.rates && data.rates.length > 0) {
+        ratesDiv.style.display = '';
+        ratesDiv.innerHTML = '';
+        selectedShippingRateId = null;
+        for (var i = 0; i < data.rates.length; i++) {
+          var rate = data.rates[i];
+          var label = document.createElement('label');
+          label.className = 'wl-ship-option';
+          var radio = document.createElement('input');
+          radio.type = 'radio';
+          radio.name = 'wl-ship-rate';
+          radio.value = rate.id || ('rate_' + i);
+          radio.addEventListener('change', (function(id) { return function() { selectedShippingRateId = id; updateProduceButton(); }; })(radio.value));
+          var span = document.createElement('span');
+          span.textContent = rate.service + ' — $' + parseFloat(rate.rate).toFixed(2) + ' (' + (rate.delivery_days || '?') + ' days)';
+          if (i === 0) radio.checked = true;
+          label.appendChild(radio);
+          label.appendChild(span);
+          ratesDiv.appendChild(label);
+          if (i === 0) { radio.checked = true; selectedShippingRateId = radio.value; }
+        }
+        updateProduceButton();
+      } else {
+        ratesDiv.style.display = '';
+        ratesDiv.innerHTML = '<p class="wl-error">Unable to calculate shipping. Check address and try again.</p>';
+        document.getElementById('wl-order-submit').disabled = true;
+      }
+    } catch (e) {}
+  }
+
+  function updateProduceButton() {
+    document.getElementById('wl-order-submit').disabled = !selectedShippingRateId;
+  }
+
+  document.getElementById('wl-order-submit').addEventListener('click', async function() {
+    if (!selectedDesign || !client.publicKey) return;
+    var btn = document.getElementById('wl-order-submit');
+    btn.disabled = true;
+    hide('wl-order-error');
+
+    var qty = parseInt(document.getElementById('wl-order-qty').value);
+
+    // Record via submit_contribution (GAS handles order processing)
+    var result = await client.submitEvent({
+      eventType: 'DESIGN ORDER EVENT',
+      fields: {
+        Email: getEmail(),
+        'Design ID': selectedDesign.design_id,
+        Quantity: String(qty),
+        SKU: 'custom-white-label-chocolate-bar-50g',
+        'Unit Price': '10.00'
+      }
+    });
+
+    if (!result.ok) {
+      error('wl-order-error', result.error || 'Order recording failed. Try again.');
+      btn.disabled = false;
+      return;
+    }
+
+    // Build cart for GAS checkout
+    var cart = {
+      sessionId: 'wl-' + Date.now(),
+      items: [{
+        productId: 'custom-white-label-chocolate-bar-50g',
+        name: 'Custom White-Label Chocolate Bar 50g',
+        price: 10.00,
+        quantity: qty,
+        weight: 1.76,
+        image: selectedDesign.image_url
+      }]
+    };
+
+    var shippingAddress = {
+      address: document.getElementById('wl-ship-address').value.trim(),
+      city: document.getElementById('wl-ship-city').value.trim(),
+      state: document.getElementById('wl-ship-state').value,
+      zip: document.getElementById('wl-ship-zip').value.trim(),
+      country: 'US'
+    };
+
+    var checkoutParams = new URLSearchParams({
+      action: 'createCheckoutSession',
+      cart: JSON.stringify(cart),
+      shippingAddress: JSON.stringify(shippingAddress),
+      selectedShippingRateId: selectedShippingRateId,
+      designUrl: selectedDesign.image_url,
+      designId: selectedDesign.design_id
+    });
+
+    try {
+      var resp = await fetch(GAS_CHECKOUT + '?' + checkoutParams);
+      var data = await resp.json().catch(function() { return { status: 'error' }; });
+      if (data.status === 'success' && data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        error('wl-order-error', data.error || 'Checkout failed.');
+        btn.disabled = false;
+      }
+    } catch (e) {
+      error('wl-order-error', 'Network error: ' + e.message);
+      btn.disabled = false;
+    }
+  });
+
+  // ─── SUCCESS ───────────────────────────────────────────────────────
+
+  document.getElementById('wl-success-back').addEventListener('click', function() {
+    hide('wl-success');
+    showGallery();
+  });
+
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('session_id')) {
+      hide('wl-auth');
+      hide('wl-gallery');
+      hide('wl-order');
+      show('wl-success');
+      document.getElementById('wl-success-detail').textContent = 'Session ID: ' + params.get('session_id');
+    }
+  })();
+
+  // ─── INIT ──────────────────────────────────────────────────────────
+
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var em = params.get('em');
+    var vk = params.get('vk');
+    if (em && vk) {
+      verifyFromEmailLink(em, vk);
+      return;
+    }
+    initAuth();
+  })();
+})();
