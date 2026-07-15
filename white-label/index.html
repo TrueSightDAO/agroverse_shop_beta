@@ -57,13 +57,16 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
           <label class="wl-label" for="wl-email">Email address</label>
           <input type="email" id="wl-email" class="wl-input" placeholder="your@company.com" autocomplete="email"/>
           <button id="wl-auth-btn" class="wl-btn wl-btn-primary">Get Started</button>
-          <p id="wl-auth-error" class="wl-error" style="display:none"></p>
         </div>
+        <!-- Errors live OUTSIDE #wl-auth-form: when the form is hidden, anything
+             inside it is hidden too, so an error placed there is unreadable
+             exactly when it matters most. -->
+        <p id="wl-auth-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
         <div id="wl-verify-state" class="wl-verify-state" style="display:none">
           <div class="wl-verify-icon">&#9993;</div>
-          <p><strong>Verification email sent.</strong> Click the link in your inbox to activate your key and access your designs.</p>
+          <p id="wl-verify-msg"></p>
           <button id="wl-verify-check" class="wl-btn">Check Status</button>
-          <p id="wl-verify-error" class="wl-error" style="display:none"></p>
+          <p id="wl-verify-error" class="wl-error" role="alert" aria-live="polite" style="display:none"></p>
         </div>
       </div>
       <div class="wl-auth-right">
@@ -184,6 +187,11 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
 <script src="https://unpkg.com/@truesight_dao/dao-client@1.1.0-rc.4/dist/dao-client.min.js"></script>
 <script src="../js/config.js"></script>
 <script src="../js/products.js"></script>
+<!-- cart.js defines window.Cart. universal-nav.js injects cart-ui.js, which
+     calls window.Cart.getItemCount() for the nav badge — without this the page
+     threw a TypeError on every load. Every other page loads cart.js explicitly;
+     this one was missing it. -->
+<script src="../js/cart.js"></script>
 <script src="/js/shared-chrome.js"></script>
 <script src="../js/universal-nav.js"></script>
 <script src="../js/white-label.js"></script>
