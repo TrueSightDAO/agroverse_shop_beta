@@ -519,10 +519,15 @@
   function showOrder(design) {
     selectedDesign = design;
     hide('wl-gallery');
+    // E1: no marketing frame above the order form. Defensive -- showGallery()
+    // already hides it on the only path that reaches showOrder() today, but
+    // this state should never depend on that.
+    hide('wl-marketing-frame');
     show('wl-order');
     document.getElementById('wl-order-design-img').src = design.image_url;
     document.getElementById('wl-order-design-name').textContent = design.filename || 'Design ' + design.design_id.substring(0, 8);
-    updateOrderTotal();
+    updateOrderSummary();
+    updateProduceButton();
   }
 
   document.getElementById('wl-order-back').addEventListener('click', function() {
@@ -531,15 +536,43 @@
     selectedDesign = null;
   });
 
+  // B8: realizing the wrong design is selected previously only offered
+  // "Back to Gallery" -- an extra click to then find Upload again.
+  document.getElementById('wl-order-different-design').addEventListener('click', async function() {
+    selectedDesign = null;
+    hide('wl-order');
+    await showGallery();
+    openUploadPanel();
+  });
+
   document.getElementById('wl-order-qty').addEventListener('change', function() {
-    updateOrderTotal();
+    updateOrderSummary();
     invalidateShippingRates();
   });
 
-  function updateOrderTotal() {
+  // E4: there was no summary before -- "Total" (bars only) excluded
+  // shipping, so the number on screen was never the number Stripe would
+  // actually charge. Reflects the live shipping selection once one exists.
+  function updateOrderSummary() {
     var qty = parseInt(document.getElementById('wl-order-qty').value);
-    var total = (qty * 10).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    document.getElementById('wl-order-total').textContent = 'Total: ' + total;
+    var barsTotal = qty * 10;
+    document.getElementById('wl-order-summary-bars').textContent =
+      qty + ' × $10 = ' + barsTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    document.getElementById('wl-order-summary-trees').textContent =
+      '🌳 ' + qty + ' tree' + (qty === 1 ? '' : 's') + ' planted';
+
+    var shippingRow = document.getElementById('wl-order-summary-shipping-row');
+    var totalEl = document.getElementById('wl-order-summary-total');
+    if (selectedShippingRateAmount != null) {
+      shippingRow.style.display = '';
+      document.getElementById('wl-order-summary-shipping').textContent =
+        selectedShippingRateLabel + ' — ' + selectedShippingRateAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      var grandTotal = barsTotal + selectedShippingRateAmount;
+      totalEl.textContent = 'Total: ' + grandTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    } else {
+      shippingRow.style.display = 'none';
+      totalEl.textContent = 'Total: ' + barsTotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + ' + shipping';
+    }
   }
 
   var shippingPolling = null;
@@ -548,6 +581,8 @@
   });
   document.getElementById('wl-ship-state').addEventListener('change', pollShippingRates);
   var selectedShippingRateId = null;
+  var selectedShippingRateAmount = null;
+  var selectedShippingRateLabel = null;
 
   function pollShippingRates() {
     if (shippingPolling) clearTimeout(shippingPolling);
@@ -560,8 +595,11 @@
   // re-quote right away if an address is already on file.
   function invalidateShippingRates() {
     selectedShippingRateId = null;
+    selectedShippingRateAmount = null;
+    selectedShippingRateLabel = null;
     document.getElementById('wl-ship-rates').innerHTML = '';
-    document.getElementById('wl-order-submit').disabled = true;
+    updateOrderSummary();
+    updateProduceButton();
 
     var addr = document.getElementById('wl-ship-address').value.trim();
     var city = document.getElementById('wl-ship-city').value.trim();
@@ -593,28 +631,46 @@
         ratesDiv.style.display = '';
         ratesDiv.innerHTML = '';
         selectedShippingRateId = null;
+        selectedShippingRateAmount = null;
+        selectedShippingRateLabel = null;
         for (var i = 0; i < data.rates.length; i++) {
           var rate = data.rates[i];
+          var rateAmount = parseFloat(rate.rate);
+          var rateLabel = rate.service + ' (' + (rate.delivery_days || '?') + ' days)';
           var label = document.createElement('label');
           label.className = 'wl-ship-option';
           var radio = document.createElement('input');
           radio.type = 'radio';
           radio.name = 'wl-ship-rate';
           radio.value = rate.id || ('rate_' + i);
-          radio.addEventListener('change', (function(id) { return function() { selectedShippingRateId = id; updateProduceButton(); }; })(radio.value));
+          radio.addEventListener('change', (function(id, amount, lbl) {
+            return function() {
+              selectedShippingRateId = id;
+              selectedShippingRateAmount = amount;
+              selectedShippingRateLabel = lbl;
+              updateOrderSummary();
+              updateProduceButton();
+            };
+          })(radio.value, rateAmount, rateLabel));
           var span = document.createElement('span');
-          span.textContent = rate.service + ' — $' + parseFloat(rate.rate).toFixed(2) + ' (' + (rate.delivery_days || '?') + ' days)';
+          span.textContent = rate.service + ' — $' + rateAmount.toFixed(2) + ' (' + (rate.delivery_days || '?') + ' days)';
           if (i === 0) radio.checked = true;
           label.appendChild(radio);
           label.appendChild(span);
           ratesDiv.appendChild(label);
-          if (i === 0) { radio.checked = true; selectedShippingRateId = radio.value; }
+          if (i === 0) {
+            radio.checked = true;
+            selectedShippingRateId = radio.value;
+            selectedShippingRateAmount = rateAmount;
+            selectedShippingRateLabel = rateLabel;
+          }
         }
+        updateOrderSummary();
         updateProduceButton();
       } else {
         ratesDiv.style.display = '';
         ratesDiv.innerHTML = '<p class="wl-error">Unable to calculate shipping. Check address and try again.</p>';
-        document.getElementById('wl-order-submit').disabled = true;
+        updateProduceButton();
       }
     } catch (e) {
       // B5: this previously failed silently — the button stayed disabled
@@ -622,12 +678,28 @@
       var errDiv = document.getElementById('wl-ship-rates');
       errDiv.style.display = '';
       errDiv.innerHTML = '<p class="wl-error">Could not reach shipping — check your connection and try again.</p>';
-      document.getElementById('wl-order-submit').disabled = true;
+      updateProduceButton();
     }
   }
 
+  // B6: a greyed button with no stated reason reads as broken, not as "one
+  // more step". Names the blocker instead.
   function updateProduceButton() {
-    document.getElementById('wl-order-submit').disabled = !selectedShippingRateId;
+    var hasRate = !!selectedShippingRateId;
+    document.getElementById('wl-order-submit').disabled = !hasRate;
+    var blocker = document.getElementById('wl-order-blocker');
+    if (hasRate) {
+      hide('wl-order-blocker');
+      return;
+    }
+    show('wl-order-blocker');
+    var addr = document.getElementById('wl-ship-address').value.trim();
+    var city = document.getElementById('wl-ship-city').value.trim();
+    var state = document.getElementById('wl-ship-state').value;
+    var zip = document.getElementById('wl-ship-zip').value.trim();
+    blocker.textContent = (addr && city && state && zip)
+      ? 'Fetching shipping rates — one moment.'
+      : 'Enter a shipping address to see rates and enable checkout.';
   }
 
   document.getElementById('wl-order-submit').addEventListener('click', async function() {
@@ -690,6 +762,21 @@
       var resp = await fetch(GAS_CHECKOUT + '?' + checkoutParams);
       var data = await resp.json().catch(function() { return { status: 'error' }; });
       if (data.status === 'success' && data.checkoutUrl) {
+        // F: Stripe's redirect back only carries ?session_id= -- nothing about
+        // what was actually bought. Stash it client-side so the receipt isn't
+        // "Session ID: cs_test_..." (developer output, not a receipt).
+        var etaDate = new Date();
+        etaDate.setDate(etaDate.getDate() + 14);
+        localStorage.setItem('agroverse_wl_last_order', JSON.stringify({
+          designImageUrl: selectedDesign.image_url,
+          designName: selectedDesign.filename || ('Design ' + selectedDesign.design_id.substring(0, 8)),
+          qty: qty,
+          barsTotal: qty * 10,
+          shippingAmount: selectedShippingRateAmount,
+          total: qty * 10 + (selectedShippingRateAmount || 0),
+          eta: etaDate.toISOString(),
+          email: getEmail()
+        }));
         window.location.href = data.checkoutUrl;
       } else {
         error('wl-order-error', data.error || 'Checkout failed.');
@@ -708,12 +795,42 @@
     showGallery();
   });
 
+  // F: the highest-anxiety moment in the funnel -- "I just wired $2,000 to a
+  // chocolate company." A bare Session ID is developer output, not a
+  // receipt. Reads the order details stashed client-side right before the
+  // Stripe redirect (see the checkout handler above).
   function showSuccess(sessionId) {
     hide('wl-auth');
     hide('wl-gallery');
     hide('wl-order');
+    hide('wl-marketing-frame');
     show('wl-success');
-    document.getElementById('wl-success-detail').textContent = 'Session ID: ' + sessionId;
+
+    var order = null;
+    try { order = JSON.parse(localStorage.getItem('agroverse_wl_last_order') || 'null'); } catch (e) {}
+
+    if (order) {
+      var img = document.getElementById('wl-success-design-img');
+      img.src = order.designImageUrl;
+      img.style.display = '';
+
+      var total = order.total.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      var etaStr = order.eta ? new Date(order.eta).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+      document.getElementById('wl-success-summary').textContent =
+        order.qty + ' bars · ' + total + (etaStr ? ' · Est. delivery ' + etaStr : '');
+
+      document.getElementById('wl-success-trees').textContent = '🌳 You planted ' + order.qty + ' trees.';
+
+      if (order.email) {
+        document.getElementById('wl-success-email').textContent = 'Confirmation sent to ' + order.email;
+      }
+
+      // Consumed once -- a page refresh on this same URL shouldn't keep
+      // re-showing (and eventually staling) the last order's details.
+      localStorage.removeItem('agroverse_wl_last_order');
+    }
+
+    document.getElementById('wl-success-ref').textContent = 'Order reference: ' + sessionId;
   }
 
   // ─── INIT ──────────────────────────────────────────────────────────

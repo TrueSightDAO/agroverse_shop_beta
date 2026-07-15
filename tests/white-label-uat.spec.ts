@@ -113,17 +113,24 @@ test.describe('White-Label — Order Flow UI', () => {
     await expect(options.nth(43)).toContainText('TX'); // 43rd state
   });
 
-  test('total updates when quantity changes', async ({ page }) => {
+  test('order summary updates when quantity changes (PR5: bars total + trees, shipping pending)', async ({ page }) => {
     // This tests the JS function directly since order section is hidden
     await page.goto(WL_URL);
     const result = await page.evaluate(() => {
       var el = document.getElementById('wl-order-qty');
-      if (!el) return 'no element';
+      if (!el) return { total: 'no element', trees: '' };
       el.value = '500';
       el.dispatchEvent(new Event('change'));
-      return document.getElementById('wl-order-total').textContent;
+      return {
+        total: document.getElementById('wl-order-summary-total')!.textContent,
+        trees: document.getElementById('wl-order-summary-trees')!.textContent,
+      };
     });
-    expect(result).toContain('$5,000.00');
+    // No shipping rate selected yet -- E4: total states it's bars-only, not a
+    // final charge (the pre-PR5 bug was presenting this as the final total).
+    expect(result.total).toContain('$5,000.00');
+    expect(result.total).toContain('shipping');
+    expect(result.trees).toContain('500');
   });
 
 });

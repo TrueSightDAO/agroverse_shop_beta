@@ -63,16 +63,41 @@
 .wl-upload-recover { text-align: center; padding: 16px; background: #fdf6f4; border: 1px solid #f0d8d2; border-radius: 8px; margin-top: 12px; }
 .wl-upload-success { color: #2e7d32; font-weight: 600; font-size: 0.9em; margin-top: 12px; text-align: center; }
 
-.wl-order-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+.wl-order-header-actions { display: flex; gap: 8px; }
+/* E2: the design preview is the largest element on screen and stays put
+   while the form scrolls -- a $500-$10,000 decision does not get a
+   130px thumbnail in a column with dead space beneath it. */
+.wl-order-layout { display: grid; grid-template-columns: 320px 1fr; gap: 32px; align-items: start; }
 @media (max-width: 640px) { .wl-order-layout { grid-template-columns: 1fr; } }
+.wl-order-preview { position: sticky; top: 20px; }
+@media (max-width: 640px) { .wl-order-preview { position: static; } }
+.wl-order-preview-img { max-height: 560px; }
 .wl-order-design-name { text-align: center; font-size: 0.85em; color: #756F63; margin-top: 8px; }
-.wl-order-total { font-size: 1.1em; font-weight: 700; color: #3b3333; margin: 8px 0 16px; }
-.wl-ship-row { display: grid; grid-template-columns: 1fr 80px 100px; gap: 8px; }
+/* B11: 80px could not hold a 2-letter select + its arrow, truncating to
+   "Stat". States need real room; ZIP does not need as much. */
+.wl-ship-row { display: grid; grid-template-columns: 1fr 110px 90px; gap: 8px; }
 @media (max-width: 480px) { .wl-ship-row { grid-template-columns: 1fr; } }
+.wl-select-state { padding-right: 6px; }
 .wl-ship-rates { margin: 12px 0; }
 .wl-ship-option { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 0.9em; cursor: pointer; }
 .wl-ship-option input { margin: 0; }
-.wl-success-detail { font-size: 0.85em; color: #756F63; word-break: break-all; margin-bottom: 16px; }
+
+/* E4: there was no summary before -- "Total" excluded shipping, so the
+   number on screen was not the number Stripe would charge. */
+.wl-order-summary { background: #f7f5f2; border-radius: 8px; padding: 16px; margin: 16px 0; }
+.wl-order-summary-row { font-size: 0.9em; color: #4d4d4d; margin-bottom: 6px; }
+.wl-order-summary-row:last-child { margin-bottom: 0; }
+.wl-order-summary-total { font-size: 1.2em; font-weight: 700; color: #3b3333; border-top: 1px solid #e0d8cd; padding-top: 8px; margin-top: 8px; }
+.wl-order-summary-trees { color: #4a7c3f; font-weight: 600; }
+
+/* F: the highest-anxiety moment in the funnel -- full width, top of page,
+   the design front and center. */
+.wl-success-section { text-align: center; max-width: 560px; margin: 0 auto; }
+.wl-success-design-img { max-height: 420px; margin-left: auto; margin-right: auto; }
+.wl-success-summary { font-size: 1.15em; font-weight: 600; color: #3b3333; margin: 16px 0 4px; }
+.wl-success-ref { font-size: 0.8em; color: #999; margin-bottom: 12px; }
+.wl-success-email { font-size: 0.9em; color: #756F63; margin-bottom: 8px; }
+.wl-success-trees { font-size: 1.05em; color: #4a7c3f; font-weight: 600; margin-bottom: 20px; }
 
 .wl-how h2, .wl-pricing h2 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 16px; }
 /* B12: auto-fit at minmax(160px,1fr) only fit 4 columns inside the card's

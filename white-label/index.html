@@ -136,14 +136,19 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
   </section>
 
   <!-- ORDER -->
+  <!-- E1: no marketing frame above this -- hidden by showOrder(). A $500-$10,000
+       decision doesn't compete with a pitch the visitor already accepted. -->
   <section id="wl-order" class="wl-card wl-order-section" style="display:none">
     <div class="wl-section-header">
       <h2>Place Order</h2>
-      <button id="wl-order-back" class="wl-btn wl-btn-outline">&larr; Back to Gallery</button>
+      <div class="wl-order-header-actions">
+        <button id="wl-order-different-design" class="wl-btn wl-btn-outline">Use a different design</button>
+        <button id="wl-order-back" class="wl-btn wl-btn-outline">&larr; Back to Gallery</button>
+      </div>
     </div>
     <div class="wl-order-layout">
       <div class="wl-order-preview">
-        <img id="wl-order-design-img" class="wl-preview-img" alt="Selected design"/>
+        <img id="wl-order-design-img" class="wl-preview-img wl-preview-img-product wl-order-preview-img" alt="Selected design"/>
         <p id="wl-order-design-name" class="wl-order-design-name"></p>
       </div>
       <div class="wl-order-form">
@@ -156,13 +161,12 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
           <option value="500">500 bars — $5,000.00</option>
           <option value="1000">1,000 bars — $10,000.00</option>
         </select>
-        <div class="wl-order-total" id="wl-order-total">Total: $2,000.00</div>
 
         <label class="wl-label" for="wl-ship-address">Shipping Address</label>
         <input type="text" id="wl-ship-address" class="wl-input" placeholder="Street address" autocomplete="street-address"/>
         <div class="wl-ship-row">
           <input type="text" id="wl-ship-city" class="wl-input" placeholder="City" autocomplete="address-level2"/>
-          <select id="wl-ship-state" class="wl-select">
+          <select id="wl-ship-state" class="wl-select wl-select-state">
             <option value="">State</option>
             <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option>
             <option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
@@ -173,6 +177,18 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
           <input type="text" id="wl-ship-zip" class="wl-input" placeholder="ZIP" autocomplete="postal-code" maxlength="10"/>
         </div>
         <div id="wl-ship-rates" class="wl-ship-rates" style="display:none"></div>
+
+        <!-- E4: there was no summary before -- "Total" excluded shipping, so
+             the number shown was not the number charged. -->
+        <div id="wl-order-summary" class="wl-order-summary">
+          <div class="wl-order-summary-row"><span id="wl-order-summary-bars">200 &times; $10 = $2,000.00</span></div>
+          <div class="wl-order-summary-row" id="wl-order-summary-shipping-row" style="display:none"><span id="wl-order-summary-shipping"></span></div>
+          <div class="wl-order-summary-row wl-order-summary-total"><span id="wl-order-summary-total">Total: $2,000.00</span></div>
+          <div class="wl-order-summary-row wl-order-summary-trees"><span id="wl-order-summary-trees">&#127795; 200 trees planted</span></div>
+        </div>
+
+        <!-- B6: name the blocker instead of a greyed button with no reason. -->
+        <p id="wl-order-blocker" class="wl-note">Enter a shipping address to see rates and enable checkout.</p>
         <button id="wl-order-submit" class="wl-btn wl-btn-primary" disabled>Produce &rarr; Checkout</button>
         <p id="wl-order-error" class="wl-error" style="display:none"></p>
       </div>
@@ -180,11 +196,16 @@ footer { background-color: var(--color-primary); color: white; padding: 3rem 2re
   </section>
 
   <!-- SUCCESS -->
-  <section id="wl-success" class="wl-card" style="display:none">
+  <!-- F: the highest-anxiety moment in the funnel -- whole viewport, top of
+       page, nothing above it. hidden by hide('wl-marketing-frame') below. -->
+  <section id="wl-success" class="wl-card wl-success-section" style="display:none">
     <h2>Order Placed!</h2>
-    <p>Your custom white-label bar order has been submitted. You'll receive a confirmation email shortly.</p>
-    <p id="wl-success-detail" class="wl-success-detail"></p>
-    <button id="wl-success-back" class="wl-btn wl-btn-primary">Back to Gallery</button>
+    <img id="wl-success-design-img" class="wl-preview-img wl-preview-img-product wl-success-design-img" alt="Your design" style="display:none"/>
+    <p id="wl-success-summary" class="wl-success-summary"></p>
+    <p id="wl-success-ref" class="wl-success-ref"></p>
+    <p id="wl-success-email" class="wl-success-email"></p>
+    <p id="wl-success-trees" class="wl-success-trees"></p>
+    <button id="wl-success-back" class="wl-btn wl-btn-primary">View my designs</button>
   </section>
 
 </main>
