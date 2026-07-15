@@ -21,8 +21,9 @@
     '      <li><a href="' + homeHref + '">Home</a></li>' +
     '      <li><a href="' + productsHref + '">Products</a></li>' +
     '      <li><a href="/cacao-journeys/">Cacao Journeys</a></li>' +
-    '      <li><a href="/blog/">Blog</a></li>' +
-    '      <li><a href="' + contactHref + '">Contact</a></li>' +
+'      <li><a href="/blog/">Blog</a></li>' +
+'      <li><a href="/white-label/">White Label</a></li>' +
+'      <li><a href="' + contactHref + '">Contact</a></li>' +
     '    </ul>' +
     '  </nav>' +
     '</header>';
@@ -42,6 +43,7 @@
     '      <li><a href="/blog/">Blog</a></li>' +
     '      <li><a href="/partners/">Partners</a></li>' +
     '      <li><a href="/wholesale/">Wholesale</a></li>' +
+'      <li><a href="/white-label/">White Label</a></li>' +
     '      <li><a href="/cacao-journeys/">Cacao Journeys</a></li>' +
     '      <li><a href="/order-history/">Order History</a></li>' +
     '      <li><a href="mailto:community@agroverse.shop">Contact</a></li>' +

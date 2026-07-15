@@ -248,3 +248,19 @@ window.getProductBySubscriptionSlug = function(slug) {
   }
   return null;
 };
+
+/**
+ * White-label custom bar product
+ */
+window.PRODUCTS['custom-white-label-chocolate-bar-50g'] = {
+  productId: 'custom-white-label-chocolate-bar-50g',
+  productPageSlug: 'white-label-chocolate-bar',
+  name: 'Custom White-Label Chocolate Bar 50g',
+  price: 10.00,
+  weight: 1.76,
+  image: '/assets/white-label-bar-placeholder.png',
+  category: 'white-label',
+  relatedFamily: 'white-label',
+  gtin: '00860010660256',
+  subscribable: false
+};

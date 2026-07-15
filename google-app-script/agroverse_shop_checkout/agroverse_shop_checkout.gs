@@ -358,9 +358,17 @@ function doGet(e) {
       });
     }
 
+    if (action === 'triggerSync') {
+      syncStripeOrdersForEnvironment('production');
+      return createCORSResponse({
+        status: 'success',
+        message: 'Sync triggered for production environment'
+      });
+    }
+
     return createCORSResponse({
       status: 'error',
-      error: 'Invalid action. Use: action=getOrderStatus&sessionId=cs_xxx | action=getGcrContextByQr&qr=... | action=calculateShippingRates&... | action=createSubscriptionPortalSession&sessionId=...'
+      error: 'Invalid action. Use: action=getOrderStatus&sessionId=cs_xxx | action=getGcrContextByQr&qr=... | action=calculateShippingRates&... | action=createSubscriptionPortalSession&sessionId=... | action=triggerSync'
     });
   } catch (error) {
     Logger.log('Error in doGet: ' + error.toString());
@@ -430,28 +438,31 @@ function createCheckoutSession(data) {
       Logger.log('  Product ID: ' + (item.productId || 'N/A'));
       
       if (imageUrl) {
-        // Make relative URLs absolute based on environment
-        // For localhost development, use beta.agroverse.shop so Stripe can access images
-        // Stripe requires publicly accessible HTTPS URLs for images
-        var baseUrl;
-        if (environment === 'development') {
-          // Local development - use beta.agroverse.shop for images (Stripe can't access localhost)
-          baseUrl = 'https://beta.agroverse.shop';
-        } else {
-          // Production - use main domain
-          baseUrl = 'https://www.agroverse.shop';
+        // Skip base-url prepend for already-absolute URLs (e.g. GitHub raw, external CDNs)
+        if (imageUrl.indexOf('http://') !== 0 && imageUrl.indexOf('https://') !== 0) {
+          // Make relative URLs absolute based on environment
+          // For localhost development, use beta.agroverse.shop so Stripe can access images
+          // Stripe requires publicly accessible HTTPS URLs for images
+          var baseUrl;
+          if (environment === 'development') {
+            // Local development - use beta.agroverse.shop for images (Stripe can't access localhost)
+            baseUrl = 'https://beta.agroverse.shop';
+          } else {
+            // Production - use main domain
+            baseUrl = 'https://www.agroverse.shop';
+          }
+
+          // Ensure image path starts with /
+          // Handle both '/assets/...' and 'assets/...' formats
+          var imagePath = imageUrl.indexOf('/') === 0 ? imageUrl : '/' + imageUrl;
+          imageUrl = baseUrl + imagePath;
         }
-        
-        // Ensure image path starts with /
-        // Handle both '/assets/...' and 'assets/...' formats
-        var imagePath = imageUrl.indexOf('/') === 0 ? imageUrl : '/' + imageUrl;
-        imageUrl = baseUrl + imagePath;
-        
+
         // Ensure HTTPS (Stripe requirement - all image URLs must be HTTPS)
         if (imageUrl.indexOf('http://') === 0) {
           imageUrl = imageUrl.replace('http://', 'https://');
         }
-        
+
         // Validate URL format
         if (imageUrl.indexOf('https://') !== 0) {
           Logger.log('  ERROR: Invalid image URL format: ' + imageUrl);
@@ -539,7 +550,9 @@ function createCheckoutSession(data) {
       metadata: {
         cartSessionId: cart.sessionId || '',
         environment: environment,
-        source: 'agroverse_shop'
+        source: 'agroverse_shop',
+        design_url: data.designUrl || '',
+        design_id: data.designId || ''
       }
     };
 
