@@ -345,6 +345,15 @@
     var eh = await emailHash();
 
     var signResult = await client.sign('DESIGN UPLOAD EVENT', {
+      // sign() uses the legacy payload builder (no auto Timestamp — see
+      // dao-client/src/payload.ts). Inject it manually: dao.py:369 reads
+      // created_at from this field, and loadGallery() below sorts on it.
+      // Without it every design's created_at is "" and "newest first" is a
+      // no-op (B4). _extract_field() is a plain regex scan for a
+      // "- Timestamp: ..." line anywhere in the header, so this doesn't
+      // require switching to buildSubmitEvent()/submitEvent() — which
+      // can't carry the file attachment this call needs anyway.
+      Timestamp: new Date().toISOString(),
       Email: getEmail(),
       'Design ID': designId,
       Filename: filename,
@@ -393,7 +402,10 @@
     selectedDesign = null;
   });
 
-  document.getElementById('wl-order-qty').addEventListener('change', updateOrderTotal);
+  document.getElementById('wl-order-qty').addEventListener('change', function() {
+    updateOrderTotal();
+    invalidateShippingRates();
+  });
 
   function updateOrderTotal() {
     var qty = parseInt(document.getElementById('wl-order-qty').value);
@@ -411,6 +423,22 @@
   function pollShippingRates() {
     if (shippingPolling) clearTimeout(shippingPolling);
     shippingPolling = setTimeout(calculateShipping, 300);
+  }
+
+  // Quantity drives shipping weight (see calculateShipping). A rate quoted
+  // before the qty change no longer matches what will actually ship (B3) —
+  // clear it immediately so a stale selection can never reach checkout, and
+  // re-quote right away if an address is already on file.
+  function invalidateShippingRates() {
+    selectedShippingRateId = null;
+    document.getElementById('wl-ship-rates').innerHTML = '';
+    document.getElementById('wl-order-submit').disabled = true;
+
+    var addr = document.getElementById('wl-ship-address').value.trim();
+    var city = document.getElementById('wl-ship-city').value.trim();
+    var state = document.getElementById('wl-ship-state').value;
+    var zip = document.getElementById('wl-ship-zip').value.trim();
+    if (addr && city && state && zip) pollShippingRates();
   }
 
   async function calculateShipping() {
@@ -459,7 +487,14 @@
         ratesDiv.innerHTML = '<p class="wl-error">Unable to calculate shipping. Check address and try again.</p>';
         document.getElementById('wl-order-submit').disabled = true;
       }
-    } catch (e) {}
+    } catch (e) {
+      // B5: this previously failed silently — the button stayed disabled
+      // with no indication why, indistinguishable from the page being broken.
+      var errDiv = document.getElementById('wl-ship-rates');
+      errDiv.style.display = '';
+      errDiv.innerHTML = '<p class="wl-error">Could not reach shipping — check your connection and try again.</p>';
+      document.getElementById('wl-order-submit').disabled = true;
+    }
   }
 
   function updateProduceButton() {
