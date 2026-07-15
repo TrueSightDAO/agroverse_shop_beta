@@ -87,8 +87,10 @@ test.describe('D0 — label is 2"x4" portrait, asserted consistently', () => {
   });
 
   test('the mockup is a portrait product shot, not a landscape diagram', async ({ page }) => {
+    // PR3 moved the mockup from the auth card into the hero — it's the
+    // product this page sells, so it belongs at the top, not the auth card (P1).
     await page.goto(WL_URL);
-    const img = page.locator('.wl-auth-photo');
+    const img = page.locator('.wl-hero-img');
     await expect(img).toBeVisible();
     const dims = await img.evaluate((el: HTMLImageElement) => ({
       w: el.naturalWidth,

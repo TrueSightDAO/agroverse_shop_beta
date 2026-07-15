@@ -3,7 +3,11 @@
 .wl-hero { text-align: center; margin-bottom: 40px; }
 .wl-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.2em; color: #3b3333; margin-bottom: 12px; }
 .wl-subtitle { font-size: 1.1em; color: #756F63; max-width: 600px; margin: 0 auto 16px; }
-.wl-hero-img { max-width: 100%; max-height: 320px; display: block; margin: 20px auto; border-radius: 8px; }
+/* The hero mockup is a portrait product shot (label is 2"W x 4"H). Never
+   `cover` — cropping it would cut the label, which is the one thing it
+   exists to show (P1: it's the product this page sells). */
+.wl-hero-img { display: block; margin: 20px auto 8px; max-width: 100%; width: auto; height: auto; max-height: 460px; border-radius: 8px; border: 1px solid #e0d8cd; }
+.wl-hero-caption { font-size: 0.85em; color: #999; margin-bottom: 16px; }
 .wl-badge { display: inline-block; background: #f5f0eb; padding: 8px 20px; border-radius: 20px; font-size: 0.9em; color: #8B7355; }
 
 .wl-card { background: #fff; border: 1px solid #e0d8cd; border-radius: 8px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
@@ -57,27 +61,21 @@
 .wl-success-detail { font-size: 0.85em; color: #756F63; word-break: break-all; margin-bottom: 16px; }
 
 .wl-how h2, .wl-pricing h2 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 16px; }
-.wl-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+/* B12: auto-fit at minmax(160px,1fr) only fit 4 columns inside the card's
+   ~856px content width, orphaning step 5 onto its own row. Five steps is a
+   fixed fact about this flow, not a responsive count — say so explicitly. */
+.wl-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+@media (max-width: 700px) { .wl-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px) { .wl-steps { grid-template-columns: 1fr; } }
 .wl-step { text-align: center; font-size: 0.85em; color: #4d4d4d; }
 .wl-step-num { display: inline-block; width: 28px; height: 28px; line-height: 28px; background: #5a4e3c; color: #fff; border-radius: 50%; font-weight: 700; margin-bottom: 6px; font-size: 0.85em; }
 .wl-step strong { display: block; color: #3b3333; margin-bottom: 2px; }
 
-.wl-table { width: 100%; border-collapse: collapse; font-size: 0.9em; margin-bottom: 12px; }
-.wl-table th { background: #f5f0eb; text-align: left; padding: 8px 12px; font-weight: 600; }
-.wl-table td { padding: 6px 12px; border-bottom: 1px solid #e0d8cd; }
-.wl-table tr:hover td { background: #fafaf8; }
+/* B13: a 6-row "$10.00" table implied volume tiers that don't exist and
+   restated the qty dropdown verbatim. One line is the whole truth. */
+.wl-pricing-line { font-size: 1.05em; font-weight: 600; color: #3b3333; margin-bottom: 8px; }
 .wl-note { font-size: 0.8em; color: #756F63; margin-top: 8px; }
 
 .wl-auth-intro { font-size: 0.9em; color: #756F63; margin-bottom: 16px; line-height: 1.5; }
-.wl-auth-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: center; }
-@media (max-width: 860px) {
-  .wl-auth-layout { grid-template-columns: 1fr; }
-  /* proof before ask: stack the mockup above the email field, never below it */
-  .wl-auth-right { order: -1; }
-}
-/* The mockup is a portrait product shot (label is 2"W x 4"H). Never `cover` —
-   cropping it would cut the label, which is the one thing it exists to show. */
-.wl-auth-photo { display: block; margin: 0 auto; max-width: 100%; max-height: 460px; width: auto; height: auto; border-radius: 8px; border: 1px solid #e0d8cd; }
-.wl-auth-photo-caption { font-size: 0.8em; color: #999; text-align: center; margin-top: 8px; }
 
 .wl-verify-icon { font-size: 2em; margin-bottom: 12px; }

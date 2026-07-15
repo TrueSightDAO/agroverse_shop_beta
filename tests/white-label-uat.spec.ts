@@ -37,19 +37,19 @@ test.describe('White-Label Page — Visual & Structure', () => {
     await expect(steps.nth(4)).toContainText('Delivered');
   });
 
-  test('pricing table shows all quantity tiers', async ({ page }) => {
+  test('pricing states a single flat rate covering the full quantity range (B13)', async ({ page }) => {
+    // PR3: the 6-row "$10.00 every time" table implied volume tiers that
+    // don't exist and restated the qty dropdown verbatim. One line is the
+    // whole truth.
     await page.goto(WL_URL);
-    const rows = page.locator('.wl-table tbody tr');
-    await expect(rows).toHaveCount(6);
-    await expect(rows.nth(0)).toContainText('50');
-    await expect(rows.nth(0)).toContainText('$500');
-    await expect(rows.nth(5)).toContainText('1,000');
-    await expect(rows.nth(5)).toContainText('$10,000');
+    await expect(page.locator('.wl-table')).toHaveCount(0);
+    await expect(page.locator('.wl-pricing-line')).toContainText('$10');
+    await expect(page.locator('.wl-pricing-line')).toContainText('50');
+    await expect(page.locator('.wl-pricing-line')).toContainText('1,000');
   });
 
-  test('pricing table does NOT mention Sticker Mule', async ({ page }) => {
+  test('pricing does NOT mention Sticker Mule', async ({ page }) => {
     await page.goto(WL_URL);
-    await expect(page.locator('.wl-table')).not.toContainText('Sticker Mule');
     await expect(page.locator('.wl-pricing')).not.toContainText('Sticker Mule');
     await expect(page.locator('.wl-how')).not.toContainText('Sticker Mule');
   });
