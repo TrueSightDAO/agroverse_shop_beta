@@ -42,6 +42,28 @@
     if (el) { el.textContent = msg; el.style.display = ''; }
   }
 
+  // Single owner of #wl-verify-msg. Every writer goes through here, so no
+  // caller can leave the element in a shape another caller depends on —
+  // that coupling is what made the registration handler crash (B1).
+  function verifyMessage(text) {
+    document.getElementById('wl-verify-msg').textContent = text;
+  }
+
+  // Same element, but with the address emphasised. Built from DOM nodes rather
+  // than innerHTML so a hostile address can't inject markup.
+  function verifyMessageSentTo(email) {
+    var msg = document.getElementById('wl-verify-msg');
+    msg.textContent = '';
+    var lead = document.createElement('strong');
+    lead.textContent = 'Check your inbox.';
+    var addr = document.createElement('strong');
+    addr.textContent = email;
+    msg.appendChild(lead);
+    msg.appendChild(document.createTextNode(' We sent a verification link to '));
+    msg.appendChild(addr);
+    msg.appendChild(document.createTextNode('. Click it to activate your key and reach your designs.'));
+  }
+
   // ─── KEYPAIR ────────────────────────────────────────────────────────
 
   async function ensureKeypair() {
@@ -93,10 +115,14 @@
       }
 
       hide('wl-auth-form');
-      document.getElementById('wl-auth-loading').textContent = '';
+      verifyMessageSentTo(email);
       show('wl-verify-state');
       document.getElementById('wl-verify-check').style.display = '';
     } catch (e) {
+      // Re-show the form: the error element lives outside it, but the retry
+      // button lives inside, and a hidden form leaves the user with no way back.
+      show('wl-auth-form');
+      hide('wl-verify-state');
       error('wl-auth-error', 'Error: ' + e.message);
       btn.disabled = false;
     }
@@ -127,7 +153,8 @@
     show('wl-auth');
     hide('wl-auth-form');
     show('wl-verify-state');
-    document.querySelector('#wl-verify-state p').textContent = 'Verifying your email...';
+    document.getElementById('wl-verify-check').style.display = 'none';
+    verifyMessage('Verifying your email…');
     setEmail(email);
 
     try {
@@ -138,11 +165,11 @@
         history.replaceState(null, '', window.location.pathname);
         showGallery();
       } else {
-        document.querySelector('#wl-verify-state p').textContent = 'Verification did not succeed. Try re-registering.';
+        verifyMessage('Verification did not succeed. Try registering again.');
         show('wl-auth-form');
       }
     } catch (e) {
-      document.querySelector('#wl-verify-state p').textContent = 'Error: ' + e.message + '. Try re-registering.';
+      verifyMessage('Error: ' + e.message + '. Try registering again.');
       show('wl-auth-form');
     }
   }
@@ -517,27 +544,38 @@
     showGallery();
   });
 
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    if (params.get('session_id')) {
-      hide('wl-auth');
-      hide('wl-gallery');
-      hide('wl-order');
-      show('wl-success');
-      document.getElementById('wl-success-detail').textContent = 'Session ID: ' + params.get('session_id');
-    }
-  })();
+  function showSuccess(sessionId) {
+    hide('wl-auth');
+    hide('wl-gallery');
+    hide('wl-order');
+    show('wl-success');
+    document.getElementById('wl-success-detail').textContent = 'Session ID: ' + sessionId;
+  }
 
   // ─── INIT ──────────────────────────────────────────────────────────
 
-  (function() {
+  // ONE router. These branches were previously two separate IIFEs, and they
+  // raced: the first showed #wl-success, then the second ran initAuth(), which
+  // for any returning visitor falls through to showGallery() -> hide('wl-success').
+  // Every customer arriving back from Stripe therefore saw "No designs yet"
+  // instead of their receipt. Branches are mutually exclusive — keep them that
+  // way, and keep the receipt first: it outranks anything else we could render.
+  (function init() {
     var params = new URLSearchParams(window.location.search);
+
+    var sessionId = params.get('session_id');
+    if (sessionId) {
+      showSuccess(sessionId);
+      return;
+    }
+
     var em = params.get('em');
     var vk = params.get('vk');
     if (em && vk) {
       verifyFromEmailLink(em, vk);
       return;
     }
+
     initAuth();
   })();
 })();
