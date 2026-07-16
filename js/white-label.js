@@ -15,6 +15,63 @@
 
   var selectedDesign = null;
 
+  // ─── EMAIL REGISTRATION/VERIFICATION (bypasses a dao-client parsing bug) ──
+  //
+  // dao-client@1.1.0-rc.4's parseEmailRegistration() reads body.email_registration
+  // (snake_case), but Edgar's actual /dao/submit_contribution response embeds
+  // this data as body.emailRegistration (camelCase) -- confirmed live against
+  // production (2026-07-16): a real registration + verification with
+  // admin+claude@truesight.me activated correctly server-side (Contributors
+  // Digital Signatures row flipped to ACTIVE, confirmed by re-clicking the
+  // same link and getting {"already_consumed":true}), but the frontend never
+  // saw it because result.emailRegistration was always undefined. Every
+  // consumer of client.registerEmail()/verifyEmail() has this bug (also
+  // affects oracle); this is a local workaround, not a fix to the shared
+  // library, because publishing a new dao-client version is a separate,
+  // wider-blast-radius change. See CONTEXT_UPDATES.md for the full writeup.
+  //
+  // client.sign() (not client.submitEvent()) is used deliberately: it's the
+  // one public dao-client method that signs without also parsing/consuming
+  // the response, so we read Edgar's raw JSON ourselves. Timestamp is
+  // injected manually for the same reason as the upload flow (B4) --
+  // client.sign() uses the legacy non-Timestamp payload builder.
+  function parseEmailRegistrationFixed(body) {
+    var er = body && body.emailRegistration;
+    if (!er || !er.applicable) return undefined;
+    var status = 'not_applicable';
+    if (er.ok === true) {
+      if (er.activated === true) status = 'activated';
+      else if (er.already_consumed === true) status = 'already_consumed';
+      else if (er.event === 'EMAIL_REGISTERED') status = 'pending_verification';
+    } else if (er.ok === false) {
+      if (/different device/i.test(er.error || '')) status = 'pubkey_mismatch';
+      else if (/not found|no matching/i.test(er.error || '')) status = 'not_found';
+    }
+    return { status: status, contributorEmail: er.email, error: er.error };
+  }
+
+  async function submitEmailEvent(eventName, fields) {
+    var signResult = await client.sign(eventName, Object.assign({ Timestamp: new Date().toISOString() }, fields));
+    var formData = new FormData();
+    formData.append('text', signResult.shareText);
+    var resp = await fetch(EDGAR_BASE + '/dao/submit_contribution', { method: 'POST', body: formData });
+    var body = await resp.json().catch(function() { return {}; });
+    var er = parseEmailRegistrationFixed(body);
+    return {
+      ok: body.signature_verification === 'success',
+      error: (er && er.error) || body.error,
+      emailRegistration: er
+    };
+  }
+
+  function registerEmailFixed(email) {
+    return submitEmailEvent('EMAIL REGISTERED EVENT', { Email: email });
+  }
+
+  function verifyEmailFixed(email, vk) {
+    return submitEmailEvent('EMAIL VERIFICATION EVENT', { Email: email, 'Verification Key': vk });
+  }
+
   // ─── EMAIL HELPERS ─────────────────────────────────────────────────
 
   function getEmail() {
@@ -62,6 +119,16 @@
     msg.appendChild(document.createTextNode(' We sent a verification link to '));
     msg.appendChild(addr);
     msg.appendChild(document.createTextNode('. Click it to activate your key and reach your designs.'));
+    // Verification is tied to the key held by THIS browser -- clicking the
+    // link on a different device/browser/profile generates a fresh key that
+    // won't match, and verification fails (see verifyFromEmailLink()'s
+    // pubkey_mismatch branch). State this up front rather than let people
+    // discover it as an unexplained failure.
+    var tip = document.createElement('em');
+    tip.className = 'wl-verify-tip';
+    tip.textContent = 'Open the link on this same device and browser.';
+    msg.appendChild(document.createElement('br'));
+    msg.appendChild(tip);
   }
 
   // ─── KEYPAIR ────────────────────────────────────────────────────────
@@ -93,18 +160,24 @@
     }
 
     var btn = document.getElementById('wl-auth-btn');
+    var btnIdleText = btn.textContent;
+    // Keypair generation (first run) plus the Edgar round-trip take a
+    // couple of seconds with nothing else on screen but a greyed button --
+    // felt like a freeze. Say what's happening immediately, not just "disabled".
     btn.disabled = true;
+    btn.textContent = 'Sending…';
     hide('wl-auth-error');
 
     try {
       await ensureKeypair();
       setEmail(email);
 
-      var result = await client.registerEmail(email);
+      var result = await registerEmailFixed(email);
 
       if (!result.ok) {
         error('wl-auth-error', result.error || 'Registration failed. Try again.');
         btn.disabled = false;
+        btn.textContent = btnIdleText;
         return;
       }
 
@@ -125,6 +198,7 @@
       hide('wl-verify-state');
       error('wl-auth-error', 'Error: ' + e.message);
       btn.disabled = false;
+      btn.textContent = btnIdleText;
     }
   }
 
@@ -135,7 +209,7 @@
 
   document.getElementById('wl-verify-check').addEventListener('click', async function() {
     try {
-      var result = await client.registerEmail(getEmail());
+      var result = await registerEmailFixed(getEmail());
       var er = result.emailRegistration;
       if (er && er.status === 'activated') {
         showGallery();
@@ -159,13 +233,23 @@
 
     try {
       await ensureKeypair();
-      var result = await client.verifyEmail(email, vk);
+      var result = await verifyEmailFixed(email, vk);
+      var erStatus = result.emailRegistration && result.emailRegistration.status;
 
-      if (result.ok && result.emailRegistration && result.emailRegistration.status === 'activated') {
+      // already_consumed means this exact link was already used successfully
+      // (e.g. a double-click, or revisiting the email) -- the key IS active,
+      // so treat it the same as activated rather than showing a failure for
+      // something that already worked. Matches oracle's handling.
+      if (result.ok && (erStatus === 'activated' || erStatus === 'already_consumed')) {
         history.replaceState(null, '', window.location.pathname);
         showGallery();
       } else {
-        verifyMessage('Verification did not succeed. Try registering again.');
+        // Edgar's most common failure here is pubkey_mismatch (the link was
+        // opened on a different device/browser than the one that
+        // registered -- see verifyMessageSentTo()'s tip) and it already
+        // returns a specific, actionable message for that. Surface it
+        // instead of a generic string that leaves the real cause a mystery.
+        verifyMessage(result.error || 'Verification did not succeed. Try registering again.');
         show('wl-auth-form');
       }
     } catch (e) {

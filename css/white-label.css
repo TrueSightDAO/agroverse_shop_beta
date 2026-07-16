@@ -30,6 +30,7 @@
 
 .wl-verify-state { text-align: center; }
 .wl-verify-state p { margin-bottom: 16px; color: #756F63; }
+.wl-verify-tip { display: inline-block; margin-top: 6px; font-size: 0.85em; color: #999; }
 
 .wl-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 .wl-design-card { border: 1px solid #e0d8cd; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
