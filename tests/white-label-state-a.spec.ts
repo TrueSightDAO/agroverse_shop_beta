@@ -38,22 +38,25 @@ test.describe('State A re-composition', () => {
 
   test('P2 — How It Works and Pricing precede the email-capture card in DOM order', async ({ page }) => {
     await page.goto(WL_URL);
-    const order = await page.evaluate(() => {
-      const main = document.querySelector('main.wl-container')!;
-      const children = Array.from(main.children);
-      return children.map((el) => el.id || el.className);
+    // PR4 wraps hero/how/pricing in #wl-marketing-frame (hidden as a group
+    // once authenticated), so a direct-children scan of <main> no longer
+    // reflects nesting -- compareDocumentPosition is robust to that.
+    const result = await page.evaluate(() => {
+      const how = document.querySelector('.wl-how');
+      const pricing = document.querySelector('.wl-pricing');
+      const auth = document.getElementById('wl-auth');
+      if (!how || !pricing || !auth) return { how: false, pricing: false, missing: true };
+      const FOLLOWING = Node.DOCUMENT_POSITION_FOLLOWING;
+      return {
+        missing: false,
+        how: !!(how.compareDocumentPosition(auth) & FOLLOWING),
+        pricing: !!(pricing.compareDocumentPosition(auth) & FOLLOWING),
+      };
     });
 
-    const howIdx = order.findIndex((c) => c.includes('wl-how'));
-    const pricingIdx = order.findIndex((c) => c.includes('wl-pricing'));
-    const authIdx = order.findIndex((c) => c === 'wl-auth' || c.includes('wl-auth'));
-
-    expect(howIdx, 'How It Works must exist').toBeGreaterThan(-1);
-    expect(pricingIdx, 'Pricing must exist').toBeGreaterThan(-1);
-    expect(authIdx, 'the auth/CTA card must exist').toBeGreaterThan(-1);
-
-    expect(howIdx, 'proof (How It Works) must precede the ask').toBeLessThan(authIdx);
-    expect(pricingIdx, 'proof (Pricing) must precede the ask').toBeLessThan(authIdx);
+    expect(result.missing, 'How It Works, Pricing, and the auth card must all exist').toBe(false);
+    expect(result.how, 'proof (How It Works) must precede the ask').toBe(true);
+    expect(result.pricing, 'proof (Pricing) must precede the ask').toBe(true);
   });
 
   test('B12 — all 5 how-it-works steps render on a single row at desktop width', async ({ page }) => {

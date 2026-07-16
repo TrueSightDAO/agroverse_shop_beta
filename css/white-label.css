@@ -25,6 +25,7 @@
 .wl-btn-primary:hover:not(:disabled) { background: #6b5e4a; }
 .wl-btn-outline { background: transparent; border-color: #d0c8bc; color: #5a4e3c; }
 .wl-btn-outline:hover:not(:disabled) { background: #f7f5f2; }
+.wl-btn-small { padding: 6px 14px; font-size: 0.8em; margin-top: 12px; }
 
 .wl-error { color: #c0392b; font-size: 0.85em; margin-top: 8px; }
 
@@ -33,22 +34,35 @@
 .wl-verify-tip { display: inline-block; margin-top: 6px; font-size: 0.85em; color: #999; }
 
 .wl-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-.wl-design-card { border: 1px solid #e0d8cd; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+.wl-design-card { border: 1px solid #e0d8cd; border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
 .wl-design-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.wl-design-card-img { width: 100%; aspect-ratio: 1/2; object-fit: contain; background: #fafaf8; }
+/* P7-adjacent: framed on a neutral surface with room to breathe, closer to
+   "your label" than "your file" -- true photographic compositing needs a
+   blank base-pouch asset we don't have yet (same gap as Q5). */
+.wl-design-card-img { width: 100%; aspect-ratio: 1/2; object-fit: contain; background: #fafaf8; padding: 10px; box-sizing: border-box; }
 .wl-design-card-info { padding: 12px; }
 .wl-design-card-name { font-weight: 600; font-size: 0.9em; margin: 0 0 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .wl-design-card-meta { font-size: 0.8em; color: #756F63; margin: 0 0 10px; }
 .wl-design-card-info .wl-btn { width: 100%; text-align: center; padding: 8px; font-size: 0.85em; }
 .wl-empty { text-align: center; color: #756F63; padding: 40px 0; }
+/* B9: the newest upload gets a brief highlight so the confirmation is
+   visible in the grid, not just a toast that's already gone. */
+@keyframes wl-card-new { from { box-shadow: 0 0 0 3px #8B7355; } to { box-shadow: 0 1px 3px rgba(0,0,0,0.04); } }
+.wl-design-card--new { animation: wl-card-new 2.5s ease-out; }
 
 .wl-upload-panel { margin-bottom: 24px; }
 .wl-drop-zone { border: 2px dashed #d0c8bc; border-radius: 8px; padding: 40px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .wl-drop-zone:hover { border-color: #8B7355; background: #fafaf8; }
 .wl-drop-zone p { margin: 4px 0; color: #4d4d4d; }
 .wl-drop-hint { font-size: 0.8em; color: #999; }
+.wl-recover-hint { font-size: 0.8em; color: #999; margin-top: 8px; }
 .wl-preview-img { max-width: 100%; max-height: 300px; border: 1px solid #e0d8cd; border-radius: 6px; display: block; margin: 12px auto; }
+/* Larger, product-framed treatment (P6/P7): a $500-$10,000 decision does not
+   get a thumbnail-sized preview. */
+.wl-preview-img-product { max-height: 480px; padding: 16px; background: #fafaf8; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .wl-upload-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+.wl-upload-recover { text-align: center; padding: 16px; background: #fdf6f4; border: 1px solid #f0d8d2; border-radius: 8px; margin-top: 12px; }
+.wl-upload-success { color: #2e7d32; font-weight: 600; font-size: 0.9em; margin-top: 12px; text-align: center; }
 
 .wl-order-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
 @media (max-width: 640px) { .wl-order-layout { grid-template-columns: 1fr; } }

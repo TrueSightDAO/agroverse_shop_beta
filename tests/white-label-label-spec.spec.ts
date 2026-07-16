@@ -51,7 +51,8 @@ async function openUploadPanel(page: Page) {
   await page.route('**/api.github.com/**', (r) => r.fulfill({ status: 404, body: '{}' }));
   await page.goto(WL_URL);
   await page.waitForTimeout(1200);
-  await page.click('#wl-upload-btn');
+  // PR4/B7: an empty gallery opens the drop zone automatically now -- no
+  // click needed, and clicking the toggle here would close it again.
   await expect(page.locator('#wl-drop-zone')).toBeVisible();
 }
 
@@ -110,22 +111,48 @@ test.describe('D0 — the upload validator enforces portrait', () => {
     await expect(page.locator('#wl-upload-error')).toBeHidden();
   });
 
-  test('rejects the old 1200x600 landscape artwork', async ({ page }) => {
+  test('rejects the old 1200x600 landscape artwork -- with a way forward, not a bare string (PR4)', async ({ page }) => {
     await openUploadPanel(page);
     await uploadImage(page, 1200, 600);
 
-    const err = page.locator('#wl-upload-error');
-    await expect(err).toBeVisible();
-    await expect(err).toContainText('600x1200');
-    await expect(err).toContainText('1200x600');   // echoes what the user actually gave us
+    // PR4: a non-conforming file no longer dead-ends in #wl-upload-error --
+    // it offers the recovery panel (auto-fit / try another file).
+    const recover = page.locator('#wl-upload-recover');
+    await expect(recover).toBeVisible();
+    const msg = page.locator('#wl-upload-recover-msg');
+    await expect(msg).toContainText('600x1200');
+    await expect(msg).toContainText('1200x600');   // echoes what the user actually gave us
+    await expect(page.locator('#wl-upload-autofit')).toBeVisible();
     await expect(page.locator('#wl-upload-preview')).toBeHidden();
   });
 
-  test('rejects a wrong-size portrait image', async ({ page }) => {
+  test('rejects a wrong-size portrait image, offers auto-fit', async ({ page }) => {
     await openUploadPanel(page);
     await uploadImage(page, 300, 600);
 
-    await expect(page.locator('#wl-upload-error')).toBeVisible();
+    await expect(page.locator('#wl-upload-recover')).toBeVisible();
     await expect(page.locator('#wl-upload-preview')).toBeHidden();
+  });
+
+  test('auto-fit produces a conforming, uploadable preview (PR4/Q5)', async ({ page }) => {
+    await openUploadPanel(page);
+    await uploadImage(page, 1200, 600); // wrong orientation entirely
+    await expect(page.locator('#wl-upload-recover')).toBeVisible();
+
+    await page.click('#wl-upload-autofit');
+    await page.waitForTimeout(500);
+
+    await expect(page.locator('#wl-upload-recover')).toBeHidden();
+    await expect(page.locator('#wl-upload-preview')).toBeVisible();
+    await expect(page.locator('#wl-upload-submit')).toBeEnabled();
+  });
+
+  test('the template download button produces a 600x1200 PNG (Q5)', async ({ page }) => {
+    await openUploadPanel(page);
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.click('#wl-download-template'),
+    ]);
+    expect(download.suggestedFilename()).toContain('600x1200');
   });
 });

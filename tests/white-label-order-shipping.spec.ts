@@ -144,7 +144,8 @@ test.describe('B4 — design uploads carry a Timestamp Edgar can extract', () =>
 
     await page.goto(WL_URL);
     await page.waitForTimeout(1200);
-    await page.click('#wl-upload-btn');
+    // PR4/B7: empty gallery opens the drop zone automatically -- no click needed.
+    await expect(page.locator('#wl-drop-zone')).toBeVisible();
 
     // Drop a conforming 600x1200 portrait PNG (per D0).
     await page.evaluate(async () => {
