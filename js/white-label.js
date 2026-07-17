@@ -7,6 +7,18 @@
   var GH_API = 'https://api.github.com/repos/' + GH_REPO + '/contents/designs';
   var GH_RAW = 'https://raw.githubusercontent.com/' + GH_REPO + '/main/designs';
 
+  // agroverse_shop_checkout.gs already branches its Stripe key (test vs live)
+  // on this exact value -- js/checkout.js (the main cart) already sends it.
+  // white-label.js hit the same GAS endpoint but never passed it, so it
+  // silently used the LIVE key on beta and localhost. js/config.js already
+  // computes the right value per-hostname (beta.agroverse.shop and
+  // localhost/127.0.0.1 -> 'development' -> Stripe test key); this just
+  // reads it. Falls back to 'production' (safe default) if config.js
+  // somehow isn't loaded, matching the GAS script's own default.
+  function gasEnvironment() {
+    return (window.AGROVERSE_CONFIG && window.AGROVERSE_CONFIG.environment) || 'production';
+  }
+
   var client = new DaoClient({
     edgarBase: EDGAR_BASE,
     publicKeyKey: 'publicKey',
@@ -706,7 +718,8 @@
       var resp = await fetch(GAS_CHECKOUT + '?' + new URLSearchParams({
         action: 'calculateShippingRates',
         weightOz: totalWeightOz.toFixed(1),
-        shippingAddress: JSON.stringify({ address: addr, city: city, state: state, zip: zip, country: 'US' })
+        shippingAddress: JSON.stringify({ address: addr, city: city, state: state, zip: zip, country: 'US' }),
+        environment: gasEnvironment()
       }));
       var data = await resp.json().catch(function() { return { status: 'error' }; });
       var ratesDiv = document.getElementById('wl-ship-rates');
@@ -839,7 +852,8 @@
       shippingAddress: JSON.stringify(shippingAddress),
       selectedShippingRateId: selectedShippingRateId,
       designUrl: selectedDesign.image_url,
-      designId: selectedDesign.design_id
+      designId: selectedDesign.design_id,
+      environment: gasEnvironment()
     });
 
     try {
