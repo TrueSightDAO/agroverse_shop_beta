@@ -59,7 +59,16 @@
   // ✅ GOOD NEWS: You can use the SAME URL for both local and production!
   // The script automatically detects dev vs prod from the request.
   // Just paste your deployment URL in both fields (or use the same one).
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec';
+  //
+  // 2026-07-17: this was pointing at a deployment ID that no longer existed
+  // (script.google.com returned Google Drive's generic "file not found" --
+  // not a JSON error, an HTML 404 -- so every checkout silently failed).
+  // Redeploying agroverse_shop_checkout.gs to "Manage deployments" > New
+  // version keeps the SAME deployment ID; only creating a brand-new
+  // deployment changes it. If checkout ever breaks again, first check
+  // `clasp deployments` (scriptId in google-app-script/agroverse_shop_checkout/
+  // CLASP.md) against this URL before assuming the bug is elsewhere.
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNfYeWKDnWGblvrs0VE-WYvzo8voMSIOdxBkaH7SJlRKJTyU_l_Gn4UIFZkQijUq6J/exec';
 
   // Agroverse checkout shipping quotes: sentiment_importer on Edgar (EasyPost USPS, same logic as GAS). Falls back to GAS if unreachable.
   const SHIPPING_RATES_API_ORIGIN = 'https://edgar.truesight.me';

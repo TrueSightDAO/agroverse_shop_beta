@@ -28,7 +28,7 @@
  * S: Payment Intent ID (subscription renewals)
  * T: Payment Type (one_time | subscription_renewal)
  * 
- * Deployment URL: https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec
+ * Deployment URL: https://script.google.com/macros/s/AKfycbwNfYeWKDnWGblvrs0VE-WYvzo8voMSIOdxBkaH7SJlRKJTyU_l_Gn4UIFZkQijUq6J/exec
  * 
  * SETUP INSTRUCTIONS:
  * 1. Set up Script Properties (Project Settings > Script Properties):
