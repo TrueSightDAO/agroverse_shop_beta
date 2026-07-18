@@ -2,6 +2,18 @@
 
 Playwright visual consistency tests for agroverse.shop. Ensure header/footer, cart, nav, and SEO content are consistent across all pages.
 
+## Required before merging any checkout/GAS/shipping change
+
+**Policy (2026-07-18):** Any PR touching `js/checkout.js`, `js/white-label.js`, `js/checkout-shipping-calculator.js`, `js/config.js`'s `GOOGLE_SCRIPT_URL`, or `google-app-script/agroverse_shop_checkout/agroverse_shop_checkout.gs` must be run through **`scripts/e2e-checkout-verify.js`** against beta before merging to `main`. The mocked specs below (`white-label-stripe-sandbox.spec.ts` etc.) stub Edgar/GAS responses and cannot catch a live field-name mismatch between what the GAS actually returns and what the frontend reads — that's exactly the class of bug this script exists to catch (see `agentic_ai_context/AGROVERSE_CHECKOUT_E2E_POLICY.md` for the incident that prompted this).
+
+```bash
+node scripts/e2e-checkout-verify.js register "<test-email>" [profileDir] [baseUrl]
+# check the inbox for the verification email, then:
+node scripts/e2e-checkout-verify.js continue "<verification-url>" [profileDir] [baseUrl]
+```
+
+The script fails loudly (non-zero exit) unless it actually lands on a real `checkout.stripe.com/.../cs_test_...` session with correctly rendered shipping rates and a non-`NaN` total. Requires an inbox you can read (e.g. `admin@truesight.me` via a Gmail API token) since email verification is real, not mocked.
+
 > **Local runs:** Tests hit `http://localhost:8000`. Playwright auto-starts Python `http.server` on port 8000. Ensure port 8000 is free. To test against beta instead: `BASE_URL=https://beta.agroverse.shop npm test`
 
 ## Quick start
