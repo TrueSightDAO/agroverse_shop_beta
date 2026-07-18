@@ -17,7 +17,7 @@ Handles Stripe checkout session creation, order polling, and order management. I
 - Order notification emails
 - Integration with Google Sheets for order tracking
 
-**Deployment URL:** https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec
+**Deployment URL:** https://script.google.com/macros/s/AKfycbwNfYeWKDnWGblvrs0VE-WYvzo8voMSIOdxBkaH7SJlRKJTyU_l_Gn4UIFZkQijUq6J/exec
 
 **Setup:** See comments in the script file for detailed setup instructions.
 

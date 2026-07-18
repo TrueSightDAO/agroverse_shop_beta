@@ -2,7 +2,11 @@
   'use strict';
 
   var EDGAR_BASE = 'https://edgar.truesight.me';
-  var GAS_CHECKOUT = 'https://script.google.com/macros/s/AKfycbyefqjQnWegrXR9y18HyJMxSM2wWCyucsK5qdh5isJICVhonssajEpT4Dt3hq3A7PTA/exec';
+  // Kept in sync with js/config.js's GOOGLE_SCRIPT_URL by hand (this file
+  // doesn't load config.js's value for this constant) -- see the comment
+  // there re: the 2026-07-17 stale-deployment-ID incident before assuming
+  // this URL is still correct.
+  var GAS_CHECKOUT = 'https://script.google.com/macros/s/AKfycbwNfYeWKDnWGblvrs0VE-WYvzo8voMSIOdxBkaH7SJlRKJTyU_l_Gn4UIFZkQijUq6J/exec';
   var GH_REPO = 'TrueSightDAO/agroverse-designs';
   var GH_API = 'https://api.github.com/repos/' + GH_REPO + '/contents/designs';
   var GH_RAW = 'https://raw.githubusercontent.com/' + GH_REPO + '/main/designs';
