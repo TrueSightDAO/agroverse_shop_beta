@@ -736,8 +736,8 @@
         selectedShippingRateLabel = null;
         for (var i = 0; i < data.rates.length; i++) {
           var rate = data.rates[i];
-          var rateAmount = parseFloat(rate.rate);
-          var rateLabel = rate.service + ' (' + (rate.delivery_days || '?') + ' days)';
+          var rateAmount = parseFloat(rate.amount);
+          var rateLabel = rate.name + ' (' + (rate.deliveryDays || '?') + ')';
           var label = document.createElement('label');
           label.className = 'wl-ship-option';
           var radio = document.createElement('input');
@@ -754,7 +754,7 @@
             };
           })(radio.value, rateAmount, rateLabel));
           var span = document.createElement('span');
-          span.textContent = rate.service + ' — $' + rateAmount.toFixed(2) + ' (' + (rate.delivery_days || '?') + ' days)';
+          span.textContent = rate.name + ' — $' + rateAmount.toFixed(2) + ' (' + (rate.deliveryDays || '?') + ')';
           if (i === 0) radio.checked = true;
           label.appendChild(radio);
           label.appendChild(span);
