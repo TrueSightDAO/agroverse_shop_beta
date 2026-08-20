@@ -10,7 +10,7 @@
     wrap.style.paddingBottom = '177.77%';
   }
   async function run() {
-    var heroEls = document.querySelectorAll('[data-media-slot="hero"]');
+    var heroEls = document.querySelectorAll('[data-media-slot="hero"], [data-media-slot="farmer"]');
     var galleryEls = document.querySelectorAll('[data-media-gallery]');
     var singleEl = document.getElementById('media-gallery');
     if (!heroEls.length && !galleryEls.length && !singleEl) return; // page hasn't opted in — no-op
@@ -25,12 +25,15 @@
     }
     if (!data) return;
 
-    // Hero: fill every matching slot (fixes today's copy-paste-per-slot duplication)
+    // Hero: fill every matching slot (fixes today's copy-paste-per-slot duplication).
+    // A slot with data-media-slot="farmer" uses data.farmer (distinct src) when present,
+    // falling back to hero — preserves genuinely-different farmer photos (e.g. AGL8).
     if (data.hero && data.hero.src) {
       heroEls.forEach(function (el) {
-        el.src = data.hero.src;
-        el.alt = data.hero.alt || '';
-        var fallback = data.hero.fallback || '../../assets/images/hero/cacao-circles-alt.jpg';
+        var use = (el.getAttribute('data-media-slot') === 'farmer' && data.farmer && data.farmer.src) ? data.farmer : data.hero;
+        el.src = use.src;
+        el.alt = use.alt || '';
+        var fallback = use.fallback || '../../assets/images/hero/cacao-circles-alt.jpg';
         el.onerror = function () { el.src = fallback; el.onerror = null; };
       });
     }
