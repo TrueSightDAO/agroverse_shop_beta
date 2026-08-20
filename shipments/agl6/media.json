@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "AGL6 - São Jorge Farm"
+  },
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "gw2vIxPCcyQ",
+      "title": "Hot chocolate from AGL6 beans",
+      "caption": "A short bean-to-cup walkthrough with cacao from this shipment. Also on the Agroverse blog: hot-chocolate-from-sao-jorge-cacao-beans-agl6."
+    }
+  ]
+}
