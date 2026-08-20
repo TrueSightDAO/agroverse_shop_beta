@@ -103,6 +103,17 @@
             .nav-links.mobile-menu.active { right: 0; }
             .mobile-menu-overlay { display: none; position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 999; }
             .mobile-menu-overlay.active { display: block; }
+            .detail-row { grid-template-columns: 1fr; gap: 0.25rem; padding: 0.6rem 0; }
+            .detail-label { margin-bottom: 0.1rem; }
+            .product-info h1 { font-size: 28px; }
+            .product-section { padding: 2.5rem 1.25rem; }
+            .product-details, .traceability-section { padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .product-info h1 { font-size: 24px; }
+            .gallery { gap: 0.75rem; }
+            .gallery img { height: 180px; }
+            .pdp-media-block > h2 { font-size: 1.35rem; }
         }
         body { overflow-x: hidden; }
     </style>
