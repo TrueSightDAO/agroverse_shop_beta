@@ -486,39 +486,8 @@
 </div>
     </div>
 </div>
-<!-- Videos Container - Side by Side on Desktop -->
-<div class="farm-videos-container">
-<!-- Family History Video Section -->
-<div class="farm-video-section">
-<h3>Hear from Oscar: The Family Story</h3>
-<div class="farm-video-container">
-<iframe 
-    class="farm-video"
-    src="https://www.youtube.com/embed/lh_dAXhE7xQ?rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-</iframe>
-</div>
-<p>Oscar shares the story of three generations of cacao wisdom and how his grandfather's vision continues to shape the farm today.</p>
-</div>
-<!-- Farm Video Section - Cacao Selection Process -->
-<div class="farm-video-section">
-<h3>Witness the Cacao Selection Process</h3>
-<div class="farm-video-container">
-<iframe 
-    class="farm-video"
-    src="https://www.youtube.com/embed/BI55aQ6B73U?rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-</iframe>
-</div>
-<p>See how Oscar's team carefully selects cacao beans, maintaining the quality standards passed down through generations.</p>
-</div>
-</div>
+<!-- Videos Container - Side by Side on Desktop (JSON-driven via media-gallery.js) -->
+<div class="farm-videos-container" id="media-gallery"></div>
 </section>
 <section class="content-section" style="background-color: var(--color-bg-light);">
 <h2>Shipments from This Farm</h2>
@@ -715,9 +684,7 @@
         }
     });
     </script>
-<script src="../../js/config.js"></script>
-<script src="../../js/farms-data.js"></script>
-<script src="../../js/partners-data.js"></script>
+<script src="../../js/media-gallery.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/farms-data.js"></script>
 <script src="../../js/partners-data.js"></script>
