@@ -25,6 +25,17 @@
     }
     if (!data) return;
 
+    // Farmer slot: distinct profile photo (agl8 pattern) - filled only if data.farmer exists
+    var farmerEls = document.querySelectorAll('[data-media-slot="farmer"]');
+    if (data.farmer && data.farmer.src) {
+      farmerEls.forEach(function (el) {
+        el.src = data.farmer.src;
+        el.alt = data.farmer.alt || '';
+        var fFallback = data.farmer.fallback || '../../assets/images/hero/cacao-circles-alt.jpg';
+        el.onerror = function () { el.src = fFallback; el.onerror = null; };
+      });
+    }
+
     // Hero: fill every matching slot (fixes today's copy-paste-per-slot duplication)
     if (data.hero && data.hero.src) {
       heroEls.forEach(function (el) {
