@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "FthJ9mftGsY",
+      "title": "Vivi's Farm Story",
+      "caption": "Hear Vivi share the story of Jesus do Deus farm and its journey in regenerative cacao farming in Itacare, Bahia."
+    },
+    {
+      "type": "youtube",
+      "videoId": "Z2RPqJzqS2k",
+      "title": "Farm Walkthrough",
+      "caption": "Join Vivi as he walks through the farm, showing how he tends to the cacao trees and maintains the regenerative ecosystem."
+    }
+  ]
+}
