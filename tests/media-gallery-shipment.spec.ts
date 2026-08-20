@@ -17,10 +17,13 @@ const PAGES = [
   { path: '/shipments/agl5/', slug: 'agl5', heroSrc: 'agl5.avif', videoIds: [] as string[], galleryIframes: 0, alt: 'AGL5 - Cacao Molasses', farmerAlt: '' },
   { path: '/shipments/agl7/', slug: 'agl7', heroSrc: 'agl7.gif', videoIds: [] as string[], galleryIframes: 0, alt: 'AGL7 - Cacao Molasses', farmerAlt: '' },
   { path: '/shipments/agl8/', slug: 'agl8', heroSrc: 'agl8.avif', farmerSrc: 'paulo_profile_photo.jpeg', videoIds: [] as string[], galleryIframes: 0, alt: "AGL8 Shipment - Cacao from Paulo's La do Sitio Farm", farmerAlt: 'Paulo' },
+  { path: '/shipments/agl10/', slug: 'agl10', heroSrc: 'agl10.avif', videoIds: [] as string[], galleryIframes: 0, alt: 'AGL10 - Capela Velha Fazenda', farmerAlt: '' },
+  { path: '/shipments/agl13/', slug: 'agl13', heroSrc: 'agl13.avif', videoIds: ['FthJ9mftGsY'], galleryIframes: 0, alt: "AGL13 - Vivi's Farm", farmerAlt: '' },
+  { path: '/shipments/agl14/', slug: 'agl14', heroSrc: 'agl14.avif', videoIds: ['BI55aQ6B73U'], galleryIframes: 0, alt: "AGL14 - Oscar's Farm", farmerAlt: '' },
 ];
 
 test.describe('Shipment media gallery (JSON-driven)', () => {
-  for (const { path, slug, heroSrc, farmerSrc, videoIds, galleryIframes, alt, farmerAlt } of PAGES) {
+  for (const { path, slug, heroSrc, farmerSrc, videoIds, nativeVideo, galleryIframes, alt, farmerAlt } of PAGES) {
     test(`${slug} fills media slots from media.json with zero console errors`, async ({ page }) => {
       const consoleErrors: string[] = [];
       const pageErrors: Error[] = [];
@@ -56,12 +59,21 @@ test.describe('Shipment media gallery (JSON-driven)', () => {
         await expect(farmerSlots).toHaveAttribute('alt', farmerAlt as string);
       }
 
-      // Inline hero video iframes stay in place (Option A), when the page has one
-      for (const vid of videoIds) {
+      // Inline hero video stays in place (Option A), when the page has one
+      if (nativeVideo) {
+        // agl10: native HTML5 <video> with <source> mp4 (no iframe src)
         const heroVideo = page.locator('.shipment-hero-video');
         await expect(heroVideo).toBeVisible();
-        const heroVideoSrc = await heroVideo.getAttribute('src');
-        expect(heroVideoSrc).toContain(vid);
+        await expect(heroVideo.locator('source')).toHaveCount(1);
+        const src = await heroVideo.locator('source').getAttribute('src');
+        expect(src).toContain('.mp4');
+      } else {
+        for (const vid of videoIds) {
+          const heroVideo = page.locator('.shipment-hero-video');
+          await expect(heroVideo).toBeVisible();
+          const heroVideoSrc = await heroVideo.getAttribute('src');
+          expect(heroVideoSrc).toContain(vid);
+        }
       }
 
       // No gallery iframes (all shipment pages keep hero media inline; gallery stays empty)

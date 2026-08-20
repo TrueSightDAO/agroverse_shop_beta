@@ -875,7 +875,7 @@
 </div>
 <div class="shipment-grid" id="story">
 <div>
-<img alt="AGL14 - Oscar's Farm" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif"/>
+<img class="shipment-image" data-media-slot="hero"/>
 <h2>AGL14</h2>
 <p style="color: var(--color-text-light); line-height: 1.8;">
                     Sourced exclusively from <a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">Oscar Fazenda</a> in Brazil's vibrant Bahia region, this 40-kilogram shipment captures the essence of Harvest 2025. Nurtured by trees over 70 years old—venerable guardians of regenerative farming—this cacao represents three generations of cacao wisdom and the enduring legacy of sustainable agriculture.
@@ -959,7 +959,7 @@
 <div class="farmer-section">
 <h3 style="margin-top: 0;">Meet the Farmer</h3>
 <div class="farmer-profile">
-<img alt="Oscar" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl14.avif"/>
+<img class="farmer-photo" data-media-slot="hero"/>
 <div class="farmer-details">
 <h3><a href="../../farms/oscar-bahia/index.html" style="color: var(--color-primary); text-decoration: none;">Oscar</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Bahia, Brazil</strong></p>
@@ -1136,7 +1136,7 @@
         
         function setupHeroVideo() {
             const heroVideo = document.querySelector('.shipment-hero-video');
-            if (heroVideo) {
+            if (heroVideo && typeof heroVideo.play === 'function') {
                 heroVideo.muted = true;
                 const playPromise = heroVideo.play();
                 
@@ -1252,8 +1252,6 @@
     </script>
 <script src="../../js/config.js"></script>
 <script src="../../js/universal-nav.js"></script>
-<script src="../../js/config.js"></script>
-<script src="../../js/universal-nav.js"></script>
 <script src="../../js/products.js"></script>
 <script src="../../js/inventory-service.js"></script>
 <script src="../../js/catalog-snippet-upgrade.js"></script>
@@ -1261,6 +1259,7 @@
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
+<script src="../../js/media-gallery.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>

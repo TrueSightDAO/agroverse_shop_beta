@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "AGL10 - Capela Velha Fazenda"
+  },
+  "gallery": []
+}
