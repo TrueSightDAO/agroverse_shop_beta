@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "../../assets/images/products/fazenda-santa-ana-product.jpg",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "Fazenda Santa Ana ceremonial cacao and on-farm chocolate from the same estate"
+  },
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "Kn13I7ijufs",
+      "title": "Farm Biodiversity",
+      "caption": "Explore the rich biodiversity at Fazenda Santa Ana, showcasing the regenerative agricultural practices that support the ecosystem."
+    },
+    {
+      "type": "youtube",
+      "videoId": "J80B6TgWtFs",
+      "title": "Harvesting & Fermentation",
+      "caption": "See the careful harvesting process and traditional fermentation methods that bring out the unique flavors of Fazenda Santa Ana cacao."
+    },
+    {
+      "type": "youtube",
+      "videoId": "PwUu7ACzBdk",
+      "title": "Organic Fertilizer Practices",
+      "caption": "Learn about the organic fertilizer practices at Fazenda Santa Ana that nurture the soil and contribute to regenerative farming."
+    }
+  ]
+}

@@ -553,58 +553,13 @@
 <a class="morbeck-ig" href="https://www.instagram.com/chocolate.morbeck?igsh=c3lrZW43eWtkcWU3" rel="noopener noreferrer" target="_blank" title="Chocolate Morbeck on Instagram">Follow @chocolate.morbeck on Instagram →</a>
 </div>
 <div>
-<img alt="Fazenda Santa Ana ceremonial cacao and on-farm chocolate from the same estate" height="400" loading="lazy" src="../../assets/images/products/fazenda-santa-ana-product.jpg" width="600"/>
+<img class="farm-story" data-media-slot="hero" height="400" loading="lazy" width="600"/>
 <p style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 0.75rem; text-align: center;">Ceremonial cacao from Santa Ana on Agroverse; finished bars and more via Chocolate Morbeck.</p>
 </div>
 </div>
 </div>
-<!-- Farm Videos Container -->
-<div class="farm-videos-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; width: 100%;">
-<!-- Biodiversity Video -->
-<div class="farm-video-section">
-<h3>Farm Biodiversity</h3>
-<div class="farm-video-container">
-<iframe 
-    class="farm-video"
-    src="https://www.youtube.com/embed/Kn13I7ijufs?rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-</iframe>
-</div>
-<p>Explore the rich biodiversity at Fazenda Santa Ana, showcasing the regenerative agricultural practices that support the ecosystem.</p>
-</div>
-<!-- Harvesting and Fermentation Video -->
-<div class="farm-video-section">
-<h3>Harvesting & Fermentation</h3>
-<div class="farm-video-container">
-<iframe 
-    class="farm-video"
-    src="https://www.youtube.com/embed/J80B6TgWtFs?rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-</iframe>
-</div>
-<p>See the careful harvesting process and traditional fermentation methods that bring out the unique flavors of Fazenda Santa Ana cacao.</p>
-</div>
-<!-- Organic Fertilizer Video -->
-<div class="farm-video-section">
-<h3>Organic Fertilizer Practices</h3>
-<div class="farm-video-container">
-<iframe 
-    class="farm-video"
-    src="https://www.youtube.com/embed/PwUu7ACzBdk?rel=0"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
-</iframe>
-</div>
-<p>Learn about the organic fertilizer practices at Fazenda Santa Ana that nurture the soil and contribute to regenerative farming.</p>
-</div>
+<!-- Farm Videos Container (JSON-driven via media-gallery.js) -->
+<div class="farm-videos-container" id="media-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; width: 100%;">
 </div>
 </section>
 <section class="content-section" style="background-color: var(--color-bg-light);">
@@ -745,9 +700,6 @@
 <script src="../../js/config.js"></script>
 <script src="../../js/farms-data.js"></script>
 <script src="../../js/partners-data.js"></script>
-<script src="../../js/config.js"></script>
-<script src="../../js/farms-data.js"></script>
-<script src="../../js/partners-data.js"></script>
 <script src="../../js/brazilian-path-data.js"></script>
 <script src="../../js/drift-navigation.js"></script>
 <script src="../../js/farm-navigation.js"></script>
@@ -760,6 +712,7 @@
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
+<script src="../../js/media-gallery.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>
