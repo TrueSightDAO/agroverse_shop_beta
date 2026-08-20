@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl8.avif",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "AGL8 Shipment - Cacao from Paulo's La do Sitio Farm"
+  },
+  "gallery": [],
+  "farmer": {
+    "type": "image",
+    "src": "../../assets/images/farms/paulo_profile_photo.jpeg",
+    "alt": "Paulo"
+  }
+}
