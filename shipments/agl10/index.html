@@ -868,7 +868,7 @@
 </div>
 <div class="shipment-grid" id="story">
 <div>
-<img alt="AGL10 - Capela Velha Fazenda" class="shipment-image" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif"/>
+<img alt="AGL10 - Capela Velha Fazenda" class="shipment-image" data-media-slot="hero"/>
 <h2>AGL10</h2>
 <p style="color: var(--color-text-light); line-height: 1.8;">
                     5 kg of caramelized cacao beans from Capela Velha Fazenda, a women-owned regenerative organic cacao farm. This special shipment showcases the unique caramelized cacao process and supports women-led regenerative agriculture in Brazil.
@@ -957,7 +957,7 @@
 <div class="farmer-section">
 <h3 style="margin-top: 0;">Meet the Farmer</h3>
 <div class="farmer-profile">
-<img alt="Capela Velha Fazenda" class="farmer-photo" onerror="this.src='../../assets/images/hero/cacao-circles-alt.jpg'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif"/>
+<img alt="Capela Velha Fazenda" class="farmer-photo" data-media-slot="hero"/>
 <div class="farmer-details">
 <h3><a href="../../farms/fazenda-capelavelha-bahia/index.html" style="color: var(--color-primary); text-decoration: none;">Fazenda Capelavelha</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Women-Owned Farm • Bahia, Brazil</strong></p>
@@ -1137,7 +1137,7 @@
         
         function setupHeroVideo() {
             const heroVideo = document.querySelector('.shipment-hero-video');
-            if (heroVideo) {
+            if (heroVideo && typeof heroVideo.play === 'function') {
                 heroVideo.muted = true;
                 const playPromise = heroVideo.play();
                 
@@ -1262,6 +1262,7 @@
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
+<script src="../../js/media-gallery.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
 </body>
 </html>
