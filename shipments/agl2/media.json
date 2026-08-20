@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl2.avif",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "AGL2 - Coopercabruca"
+  },
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "Kn13I7ijufs",
+      "title": "Inside the AGL2 Shipment",
+      "caption": "Video walkthrough of the AGL2 shipment story."
+    }
+  ]
+}
