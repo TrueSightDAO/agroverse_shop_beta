@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "sLNS9pZUBVw",
+      "section": "story-videos",
+      "aspect": "portrait",
+      "title": "After a swamp walk — century-old cacao trees",
+      "caption": "The walk to the oldest cacao trees on São Jorge — through a swamp and into the canopy."
+    },
+    {
+      "type": "youtube",
+      "videoId": "33nwH67UIag",
+      "section": "story-videos",
+      "aspect": "portrait",
+      "title": "Bean to Bliss — Episode 12",
+      "caption": "Bean to Bliss episode 12 — from the São Jorge harvest to the cup, full walkthrough with transcript."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/shipments/sao-jorge-matheus-mailan-cacao-pods.jpg",
+      "section": "photos",
+      "alt": "Matheus and Mailan at São Jorge Farm holding cacao pods",
+      "title": "Matheus & Mailan on the farm",
+      "caption": "Matheus and Mailan at São Jorge Farm with cacao pods—same photograph as on AGL6."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif",
+      "section": "photos",
+      "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+      "alt": "AGL6 — São Jorge Farm",
+      "title": "AGL6 lot imagery",
+      "caption": "Shipment story header image for AGL6, shown here in the same farm \"asset box\" layout as other estates."
+    }
+  ]
+}

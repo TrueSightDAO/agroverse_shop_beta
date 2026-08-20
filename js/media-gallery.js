@@ -1,8 +1,19 @@
 (function () {
+  function aspectFor(item) {
+    return (item && item.aspect === 'portrait') ? 'portrait' : 'landscape';
+  }
+  function applyAspect(section, wrap, aspect) {
+    if (aspect !== 'portrait') return;
+    // Preserve the portrait layout used by São Jorge's vertical videos (9:16 frame, centered column)
+    section.style.maxWidth = '420px';
+    section.style.justifySelf = 'center';
+    wrap.style.paddingBottom = '177.77%';
+  }
   async function run() {
     var heroEls = document.querySelectorAll('[data-media-slot="hero"]');
-    var galleryEl = document.getElementById('media-gallery');
-    if (!heroEls.length && !galleryEl) return; // page hasn't opted in — no-op
+    var galleryEls = document.querySelectorAll('[data-media-gallery]');
+    var singleEl = document.getElementById('media-gallery');
+    if (!heroEls.length && !galleryEls.length && !singleEl) return; // page hasn't opted in — no-op
 
     var data = null;
     try {
@@ -24,43 +35,67 @@
       });
     }
 
-    // Gallery: build each item fresh, reusing existing CSS classes (no new CSS)
-    if (galleryEl && Array.isArray(data.gallery)) {
+    function buildItem(item) {
+      var section = document.createElement('div');
+      section.className = 'farm-video-section';
+      if (item.title) {
+        var h3 = document.createElement('h3');
+        h3.textContent = item.title;
+        section.appendChild(h3);
+      }
+      var wrap = document.createElement('div');
+      wrap.className = 'farm-video-container';
+      if (item.type === 'youtube' && item.videoId) {
+        var iframe = document.createElement('iframe');
+        iframe.className = 'farm-video';
+        iframe.src = 'https://www.youtube.com/embed/' + item.videoId + '?rel=0';
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.allowFullscreen = true;
+        wrap.appendChild(iframe);
+      } else if (item.type === 'image' && item.src) {
+        var img = document.createElement('img');
+        img.className = 'farm-video';
+        img.loading = 'lazy';
+        img.src = item.src;
+        img.alt = item.alt || '';
+        if (item.fallback) {
+          img.onerror = function () { img.src = item.fallback; img.onerror = null; };
+        }
+        wrap.appendChild(img);
+      } else {
+        return null; // skip malformed entries rather than fail the whole gallery
+      }
+      applyAspect(section, wrap, aspectFor(item));
+      section.appendChild(wrap);
+      if (item.caption) {
+        var p = document.createElement('p');
+        p.textContent = item.caption;
+        section.appendChild(p);
+      }
+      return section;
+    }
+
+    // Multi-container pages: each [data-media-gallery] container gets only items with a matching "section"
+    if (galleryEls.length) {
+      galleryEls.forEach(function (el) {
+        var sectionName = el.getAttribute('data-media-gallery');
+        if (Array.isArray(data.gallery)) {
+          data.gallery.forEach(function (item) {
+            if ((item.section || '') !== sectionName) return;
+            var node = buildItem(item);
+            if (node) el.appendChild(node);
+          });
+        }
+      });
+    }
+
+    // Single-container pages (legacy + vivi-style): #media-gallery gets every item
+    if (singleEl && Array.isArray(data.gallery)) {
       data.gallery.forEach(function (item) {
-        var section = document.createElement('div');
-        section.className = 'farm-video-section';
-        if (item.title) {
-          var h3 = document.createElement('h3');
-          h3.textContent = item.title;
-          section.appendChild(h3);
-        }
-        var wrap = document.createElement('div');
-        wrap.className = 'farm-video-container';
-        if (item.type === 'youtube' && item.videoId) {
-          var iframe = document.createElement('iframe');
-          iframe.className = 'farm-video';
-          iframe.src = 'https://www.youtube.com/embed/' + item.videoId + '?rel=0';
-          iframe.setAttribute('frameborder', '0');
-          iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-          iframe.allowFullscreen = true;
-          wrap.appendChild(iframe);
-        } else if (item.type === 'image' && item.src) {
-          var img = document.createElement('img');
-          img.className = 'farm-video';
-          img.loading = 'lazy';
-          img.src = item.src;
-          img.alt = item.alt || '';
-          wrap.appendChild(img);
-        } else {
-          return; // skip malformed entries rather than fail the whole gallery
-        }
-        section.appendChild(wrap);
-        if (item.caption) {
-          var p = document.createElement('p');
-          p.textContent = item.caption;
-          section.appendChild(p);
-        }
-        galleryEl.appendChild(section);
+        if (item.section) return; // sectioned items belong to their own container
+        var node = buildItem(item);
+        if (node) singleEl.appendChild(node);
       });
     }
   }
