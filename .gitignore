@@ -45,3 +45,4 @@ credentials/
 *.credential
 *.token
 .clasp.json
+tests/consistency.spec.ts-snapshots/

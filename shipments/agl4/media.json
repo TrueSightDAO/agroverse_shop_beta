@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "AGL4 - Oscar's Farm"
+  },
+  "gallery": []
+}
