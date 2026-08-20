@@ -20,6 +20,7 @@ const PAGES = [
   { path: '/shipments/agl10/', slug: 'agl10', heroSrc: 'agl10.avif', videoIds: [] as string[], galleryIframes: 0, alt: 'AGL10 - Capela Velha Fazenda', farmerAlt: '' },
   { path: '/shipments/agl13/', slug: 'agl13', heroSrc: 'agl13.avif', videoIds: ['FthJ9mftGsY'], galleryIframes: 0, alt: "AGL13 - Vivi's Farm", farmerAlt: '' },
   { path: '/shipments/agl14/', slug: 'agl14', heroSrc: 'agl14.avif', videoIds: ['BI55aQ6B73U'], galleryIframes: 0, alt: "AGL14 - Oscar's Farm", farmerAlt: '' },
+  { path: '/shipments/agl6/', slug: 'agl6', heroSrc: 'agl6.avif', videoIds: [] as string[], galleryIframes: 1, alt: 'AGL6 - São Jorge Farm', farmerAlt: '' },
 ];
 
 test.describe('Shipment media gallery (JSON-driven)', () => {

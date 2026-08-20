@@ -5,7 +5,6 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-<meta name="agroverse:youtube:agl6-sao-jorge-hot-chocolate" content="gw2vIxPCcyQ"/>
 <!-- SEO Meta Tags -->
 <title>AGL6 Shipment | São Jorge Farm | Agroverse</title>
 <meta content="São Jorge Farm shipment: cacao mass bars and nibs from cabruca agroforestry in Itajuípe, Bahia, with rich nutty, fruity, and floral flavor complexity." name="description"/>
@@ -999,7 +998,7 @@
 </section>
 <div class="shipment-grid" id="story">
 <div>
-<img alt="AGL6 - São Jorge Farm" class="shipment-image" onerror="this.src='../../assets/images/shipments/cacao_circles.webp'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif"/>
+<img class="shipment-image" data-media-slot="hero"/>
 <h2>AGL6</h2>
 <p style="color: var(--color-text-light); line-height: 1.8;">
                     <a href="../../farms/fazenda-sao-jorge-bahia/index.html" style="color: var(--color-primary); text-decoration: underline;">São Jorge Farm</a> shipment: cacao mass bars and nibs from cabruca agroforestry in Itajuípe, Bahia, with rich nutty, fruity, and floral flavor complexity. This shipment represents the quality and tradition of regenerative cacao farming in Brazil's Bahia region.
@@ -1104,14 +1103,12 @@ Perfect for those seeking a mild, approachable cacao experience with rich nutty 
 <section id="hot-chocolate-agl6" style="margin: 3rem auto; padding: 2rem; background: rgba(59, 51, 51, 0.04); border-radius: 12px; max-width: 960px;">
 <h3 style="margin-top: 0; font-family: var(--font-heading); color: var(--color-primary); font-size: 1.75rem;">Hot chocolate from AGL6 beans</h3>
 <p style="color: var(--color-text); line-height: 1.8; margin-bottom: 1rem;">A short bean-to-cup walkthrough with cacao from this shipment. The same clip is on the <a href="../../post/hot-chocolate-from-sao-jorge-cacao-beans-agl6/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: 600;">Agroverse blog</a> with links and the YouTube description. Public watch link: <a href="https://www.youtube.com/watch?v=gw2vIxPCcyQ" rel="noopener noreferrer" target="_blank" style="color: var(--color-primary); text-decoration: underline;">YouTube</a>.</p>
-<div style="position: relative; width: 100%; max-width: 960px; margin: 1rem auto 0; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 28px rgba(0, 0, 0, 0.12); background: #1a1a1a;">
-<iframe id="agl6-sao-jorge-hot-chocolate-shipment-iframe" title="Making hot chocolate from São Jorge cacao beans — Agroverse AGL6" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="about:blank" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
-</div>
+<div id="media-gallery"></div>
 </section>
 <div class="farmer-section">
 <h3 style="margin-top: 0;">About São Jorge Farm</h3>
 <div class="farmer-profile">
-<img alt="São Jorge Farm" class="farmer-photo" onerror="this.src='../../assets/images/shipments/cacao_circles.webp'; this.onerror=null;" src="https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl6.avif"/>
+<img class="farmer-photo" data-media-slot="hero"/>
 <div class="farmer-details">
 <h3><a href="../../farms/fazenda-sao-jorge-bahia/index.html" style="color: inherit; text-decoration: none;">São Jorge Farm</a></h3>
 <p style="color: var(--color-text-light); margin-bottom: 0.5rem;"><strong>Itajuípe, Bahia, Brazil • <a href="../../cooperatives/coopercabruca/index.html" style="color: var(--color-text-light); text-decoration: underline;">Coopercabruca Cooperative</a></strong></p>
@@ -1652,20 +1649,10 @@ Perfect for those seeking a mild, approachable cacao experience with rich nutty 
     </script>
 <script src="../../js/config.js"></script>
 <script src="../../js/universal-nav.js"></script>
-<script src="../../js/config.js"></script>
-<script src="../../js/universal-nav.js"></script>
 <script src="../../js/cart.js"></script>
 <script src="../../js/cart-ui.js"></script>
 <script src="../../js/add-to-cart.js"></script>
+<script src="../../js/media-gallery.js"></script>
 <link href="../../css/cart.css" rel="stylesheet"/>
-<script>
-(function () {
-  var m = document.querySelector('meta[name="agroverse:youtube:agl6-sao-jorge-hot-chocolate"]');
-  var id = m && m.getAttribute('content');
-  if (!id || id.indexOf('__') === 0) return;
-  var f = document.getElementById('agl6-sao-jorge-hot-chocolate-shipment-iframe');
-  if (f) f.src = 'https://www.youtube.com/embed/' + id + '?rel=0';
-})();
-</script>
 </body>
 </html>
