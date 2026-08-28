@@ -1,0 +1,36 @@
+{
+    "schemaVersion": 1,
+    "hero": {
+        "type": "image",
+        "src": "https://raw.githubusercontent.com/TrueSightDAO/agroverse_shop_beta/main/assets/images/products/cacao-tea-oscars-farm-50g-hero.jpg",
+        "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+        "alt": "Cacao Tea 50g \u2013 Oscar's Farm, Bahia Brazil, 2024"
+    },
+    "gallery": [
+        {
+            "type": "image",
+            "src": "https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl4.avif",
+            "alt": "Cacao tea loose leaves"
+        },
+        {
+            "type": "image",
+            "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/founderhaus-farm-gallery-1.jpg",
+            "alt": "FounderHaus Farm planting day \u2014 volunteers at work"
+        },
+        {
+            "type": "image",
+            "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/founderhaus-farm-gallery-2.jpg",
+            "alt": "FounderHaus Farm planting day \u2014 in the grove"
+        },
+        {
+            "type": "image",
+            "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/founderhaus-farm-gallery-3.jpg",
+            "alt": "FounderHaus Farm planting day \u2014 planting a tree"
+        },
+        {
+            "type": "image",
+            "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/founderhaus-farm-gallery-4.jpg",
+            "alt": "FounderHaus Farm planting day \u2014 the founding grove"
+        }
+    ]
+}
