@@ -1,84 +1,84 @@
 {
-  "schemaVersion": 1,
-  "hero": {
-    "type": "image",
-    "src": "../../assets/images/farms/rancho-maranta-header-7660.jpg",
-    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
-    "alt": "The family at Rancho Maranta — Plot 1 beside the house, Altamira, Pará"
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/rancho-maranta-header-7660.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "The family at Rancho Maranta \u2014 Plot 1 beside the house, Altamira, Par\u00e1"
+ },
+ "gallery": [
+  {
+   "type": "youtube",
+   "videoId": "CQMPvCXaHfs",
+   "title": "Plot 1 \u2014 family moments at the house",
+   "caption": "Jedielcio and family at Plot 1, the land beside the family house where the first ceremonial cacao trees were planted (August 2026)."
   },
-  "gallery": [
-    {
-      "type": "youtube",
-      "videoId": "H9ZSF1-ahIo",
-      "title": "Plot 1 — family moments at the house",
-      "caption": "Jedielcio and family at Plot 1, the land beside the family house where the first ceremonial cacao trees were planted (August 2026)."
-    },
-    {
-      "type": "youtube",
-      "videoId": "AriHjXTsLio",
-      "title": "Rancho Maranta — Plot 1 walk",
-      "caption": "The family land of Jedielcio of the CEPOTX cooperative, Altamira, Pará — Plot 1 beside the house where the first ceremonial cacao trees were planted (August 2026)."
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/IMG_7693.jpg",
-      "alt": "Family moments at Rancho Maranta — Plot 1"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/IMG_7696.jpg",
-      "alt": "The family at Rancho Maranta — Plot 1"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/IMG_7697.jpg",
-      "alt": "Plot 1 walk with the family — Rancho Maranta"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/IMG_7698.jpg",
-      "alt": "Rancho Maranta family land — Plot 1"
-    },
-    {
-      "type": "youtube",
-      "videoId": "o3_nWticYQc",
-      "title": "Walking the boundary of Plot 2",
-      "caption": "Jedielcio walking the boundary of Plot 2 — the ~5 hectare family plot offered for the next phase of tree planting (August 2026)."
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7624.jpg",
-      "alt": "Plot 1 at Rancho Maranta — beside the family house"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7626.jpg",
-      "alt": "The family land and tree-planting site at Rancho Maranta"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7627.jpg",
-      "alt": "Walking the boundary of Plot 1 at Rancho Maranta"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7657.jpg",
-      "alt": "Plot 2 — the ~5 hectare family plot offered for planting"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7658.jpg",
-      "alt": "Plot 2 at Rancho Maranta — family land beyond the house"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7660.jpg",
-      "alt": "Plot 2 — regenerating Amazon landscape at Rancho Maranta"
-    },
-    {
-      "type": "image",
-      "src": "../../assets/images/farms/rancho-maranta-IMG_7678.jpg",
-      "alt": "Plot 2 — family land at Rancho Maranta"
-    }
-  ]
+  {
+   "type": "youtube",
+   "videoId": "NZThWnbWZE8",
+   "title": "Rancho Maranta \u2014 Plot 1 walk",
+   "caption": "The family land of Jedielcio of the CEPOTX cooperative, Altamira, Par\u00e1 \u2014 Plot 1 beside the house where the first ceremonial cacao trees were planted (August 2026)."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/IMG_7693.jpg",
+   "alt": "Family moments at Rancho Maranta \u2014 Plot 1"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/IMG_7696.jpg",
+   "alt": "The family at Rancho Maranta \u2014 Plot 1"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/IMG_7697.jpg",
+   "alt": "Plot 1 walk with the family \u2014 Rancho Maranta"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/IMG_7698.jpg",
+   "alt": "Rancho Maranta family land \u2014 Plot 1"
+  },
+  {
+   "type": "youtube",
+   "videoId": "BZRo4yPl8us",
+   "title": "Walking the boundary of Plot 2",
+   "caption": "Jedielcio walking the boundary of Plot 2 \u2014 the ~5 hectare family plot offered for the next phase of tree planting (August 2026)."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7624.jpg",
+   "alt": "Plot 1 at Rancho Maranta \u2014 beside the family house"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7626.jpg",
+   "alt": "The family land and tree-planting site at Rancho Maranta"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7627.jpg",
+   "alt": "Walking the boundary of Plot 1 at Rancho Maranta"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7657.jpg",
+   "alt": "Plot 2 \u2014 the ~5 hectare family plot offered for planting"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7658.jpg",
+   "alt": "Plot 2 at Rancho Maranta \u2014 family land beyond the house"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7660.jpg",
+   "alt": "Plot 2 \u2014 regenerating Amazon landscape at Rancho Maranta"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/rancho-maranta-IMG_7678.jpg",
+   "alt": "Plot 2 \u2014 family land at Rancho Maranta"
+  }
+ ]
 }
