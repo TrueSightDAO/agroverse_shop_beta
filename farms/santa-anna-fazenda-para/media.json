@@ -21,6 +21,21 @@
       "type": "image",
       "src": "../../assets/images/farms/santa-anna-IMG_7742.jpg",
       "alt": "Cacao beans drying in the ventilated shed at Santa Anna Fazenda"
+    },
+    {
+      "type": "youtube",
+      "videoId": "Rr0QOztkFSw",
+      "title": "Cacao Pods on Trunks at Santa Anna Fazenda"
+    },
+    {
+      "type": "youtube",
+      "videoId": "9LeB2PtZ4UE",
+      "title": "Fermentation at Santa Anna Fazenda"
+    },
+    {
+      "type": "youtube",
+      "videoId": "U7tQ5-4eOEg",
+      "title": "Cacao Drying Shed at Santa Anna Fazenda"
     }
   ]
 }
