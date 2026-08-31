@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "../../assets/images/farms/rancho-maranta-IMG_7625.jpg",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "Rancho Maranta family land near Altamira, Pará, Amazon Rainforest"
+  },
+  "gallery": [
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7624.jpg",
+      "alt": "Plot 1 at Rancho Maranta — beside the family house"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7626.jpg",
+      "alt": "The family land and tree-planting site at Rancho Maranta"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7627.jpg",
+      "alt": "Walking the boundary of Plot 1 at Rancho Maranta"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7657.jpg",
+      "alt": "Plot 2 — the ~5 hectare family plot offered for planting"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7658.jpg",
+      "alt": "Plot 2 at Rancho Maranta — family land beyond the house"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7660.jpg",
+      "alt": "Plot 2 — regenerating Amazon landscape at Rancho Maranta"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/rancho-maranta-IMG_7678.jpg",
+      "alt": "Plot 2 — family land at Rancho Maranta"
+    }
+  ]
+}
