@@ -31,6 +31,13 @@ window.FARMS_DATA = {
         lon: -51.8525278,
         location: 'Pará, Brazil'
     },
+    'santa-anna-fazenda-para': {
+        name: 'Santa Anna Fazenda',
+        slug: 'santa-anna-fazenda-para',
+        lat: -3.292475,
+        lon: -52.57225,
+        location: 'Pará, Brazil'
+    },
     'vivi-jesus-do-deus-itacare': {
         name: 'Vivi\'s Jesus Do Deus Farm',
         slug: 'vivi-jesus-do-deus-itacare',
