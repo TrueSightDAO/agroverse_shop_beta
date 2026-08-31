@@ -8,6 +8,12 @@
   },
   "gallery": [
     {
+      "type": "youtube",
+      "videoId": "AriHjXTsLio",
+      "title": "Rancho Maranta — Plot 1 walk",
+      "caption": "The family land of Jedielcio of the CEPOTX cooperative, Altamira, Pará — Plot 1 beside the house where the first ceremonial cacao trees were planted (August 2026)."
+    },
+    {
       "type": "image",
       "src": "../../assets/images/farms/rancho-maranta-IMG_7624.jpg",
       "alt": "Plot 1 at Rancho Maranta — beside the family house"
