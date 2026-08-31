@@ -170,6 +170,16 @@
             url: '../../farms/santa-anna-fazenda-para/index.html',
             description: 'A cacao farm in the Amazon Rainforest of Pará, introduced to Agroverse by Jedielcio of the CEPOTX cooperative. Site visit August 2026 confirmed regenerative agroforestry, on-farm fermentation, and clean drying practices.'
         },
+        'rancho-maranta-para': {
+            name: 'Rancho Maranta',
+            slug: 'rancho-maranta-para',
+            lat: -3.29610,
+            lon: -52.58316,
+            location: 'Altamira, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/rancho-maranta-para/index.html',
+            description: 'The family land of Jedielcio of the CEPOTX cooperative in the Amazon Rainforest of Pará. Two plots — one beside the family house where our first ceremonial cacao trees were planted, and a ~5 hectare family plot offered for the next phase of tree planting. Site visit August 2026, GPS-traced and visible on the SunMint impact map.'
+        },
         'cepotx': {
             name: 'CEPOTX Cooperative',
             slug: 'cepotx',

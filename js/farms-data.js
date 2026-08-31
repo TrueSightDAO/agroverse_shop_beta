@@ -38,6 +38,13 @@ window.FARMS_DATA = {
         lon: -52.57225,
         location: 'Pará, Brazil'
     },
+    'rancho-maranta-para': {
+        name: 'Rancho Maranta',
+        slug: 'rancho-maranta-para',
+        lat: -3.29610,
+        lon: -52.58316,
+        location: 'Altamira, Pará, Brazil'
+    },
     'vivi-jesus-do-deus-itacare': {
         name: 'Vivi\'s Jesus Do Deus Farm',
         slug: 'vivi-jesus-do-deus-itacare',
