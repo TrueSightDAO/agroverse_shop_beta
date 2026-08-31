@@ -46,6 +46,8 @@ const LEGACY_REDIRECTS = {
   '/recipes-3': '/cacao-glazed-eggplant',
   // Note: Wildcard patterns /recipes/{title} and /recipes-1/{title} are handled in 404.html
   '/trees-planted': 'https://docs.google.com/spreadsheets/d/1qbZZhf-_7xzmDTriaJVWj6OZshyQsFkdsAV8-pyzASQ/edit?gid=176124122#gid=176124122',
+  '/farms/fazenda-cleide': '/farms/fazenda-cleide-para',
+  '/farms/fazenda-cleide/': '/farms/fazenda-cleide-para/',
   '/white-paper': 'https://docs.google.com/document/d/1b3JiawnqA1QNpA_XZMH6oNQ9ZVJnLRGtOWzM31YLvJs/edit'
 };
 
