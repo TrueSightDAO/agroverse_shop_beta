@@ -552,8 +552,14 @@
                 </div>
     </div>
 </div>
-<!-- Farm Video Section (JSON-driven via media-gallery.js) -->
+<!-- Farm Media Gallery (JSON-driven via media-gallery.js) -->
 <div class="farm-videos-container" id="media-gallery"></div>
+</section>
+<section class="content-section" style="background-color: var(--color-bg-light);">
+<h2>SunMint Tree Planting</h2>
+<div class="farm-story">
+<p>Paulo's land at La do Sitio is registered on the <a href="https://www.truesight.me/sunmint.html" style="color: var(--color-primary); text-decoration: underline;">SunMint impact map</a> (plot LD-P1, ~5.56 ha) where we are actively planting trees. See the plot boundary on the map above and follow the planting progress on the SunMint program page.</p>
+</div>
 </section>
 <section class="content-section" style="background-color: var(--color-bg-light);">
 <h2>Shipments from This Farm</h2>
@@ -599,7 +605,7 @@
 <section class="content-section" style="background-color: var(--color-bg-light);">
 <h2>Farm Location</h2>
 <div class="map-container" id="map-paulo"></div>
-<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/3%C2%B023'32.0%22S+51%C2%B051'09.1%22W/@-29.3170975,-101.1799934,3z/data=!4m4!3m3!8m2!3d-3.3922222!4d-51.8525278!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
+<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/3%C2%B023'32.0%22S+51%C2%B051'09.1%22W/@-29.3170975,-101.1799934,3z/data=!4m4!3m3!8m2!3d-3.3922222!4d-51.8525278!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="item-link" href="https://www.truesight.me/sunmint.html" rel="noreferrer" style="display: inline-block;" target="_blank">View on SunMint impact map</a></p>
 </section>
 <section class="content-section">
 <!-- Farm Navigation -->
@@ -618,14 +624,23 @@
                     setTimeout(initMap, 100);
                     return;
                 }
-                const mapPaulo = L.map('map-paulo').setView([-3.392213, -51.85254], 13);
+                const mapPaulo = L.map('map-paulo').setView([-3.387855, -51.851991], 14);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                     maxZoom: 19
                 }).addTo(mapPaulo);
-                L.marker([-3.392213, -51.85254]).addTo(mapPaulo)
-                    .bindPopup('La do Sitio Farm<br>Pará, Amazon Rainforest, Brazil<br><a href="https://www.google.com/maps/place/3%C2%B023\'32.0%22S+51%C2%B051\'09.1%22W/@-29.3170975,-101.1799934,3z/data=!4m4!3m3!8m2!3d-3.3922222!4d-51.8525278!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">View on Google Maps</a>')
-                    .openPopup();
+                // LD-P1 SunMint plot polygon (GPS hull of 115 geotagged media, ~5.56 ha)
+                const ldP1 = [
+                    [-3.389614, -51.852944], [-3.391, -51.8523], [-3.390956, -51.852097],
+                    [-3.3906, -51.852], [-3.3864, -51.8513], [-3.3863, -51.8513],
+                    [-3.385969, -51.851681], [-3.385969, -51.851683], [-3.385972, -51.851689],
+                    [-3.385983, -51.8517], [-3.3868, -51.8523], [-3.3887, -51.8529]
+                ];
+                L.polygon(ldP1, { color: '#3a7d44', weight: 2, fillOpacity: 0.15 })
+                    .addTo(mapPaulo)
+                    .bindPopup('LD-P1 — La do Sitio SunMint plot<br>~5.56 ha • registered on the SunMint impact map');
+                L.marker([-3.387855, -51.851991]).addTo(mapPaulo)
+                    .bindPopup('La do Sitio Farm<br>Pará, Amazon Rainforest, Brazil<br><a href="https://www.truesight.me/sunmint.html" target="_blank" rel="noreferrer">View on the SunMint impact map</a>')
             }
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initMap);
