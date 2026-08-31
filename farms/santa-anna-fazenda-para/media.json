@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "hero": {
     "type": "image",
-    "src": "../../assets/images/farms/santa_anna_profile_photo.jpg",
+    "src": "../../assets/images/farms/santa_anna_farmers_hero.jpg",
     "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
-    "alt": "Santa Anna Fazenda cacao grove in Pará, Amazon Rainforest"
+    "alt": "Farmers with Jedielcio at Santa Anna Fazenda, Pará, Amazon Rainforest"
   },
   "gallery": [
     {
