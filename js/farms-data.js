@@ -32,7 +32,7 @@ window.FARMS_DATA = {
         location: 'Pará, Brazil'
     },
     'santa-anna-fazenda-para': {
-        name: 'Santa Anna Fazenda',
+        name: 'Ana Lucia Araujo de Sousa',
         slug: 'santa-anna-fazenda-para',
         lat: -3.292475,
         lon: -52.57225,
