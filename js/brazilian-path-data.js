@@ -160,6 +160,16 @@
             url: '../../farms/paulo-la-do-sitio-para/index.html',
             description: 'An award-winning cacao farm in the Amazon Rainforest of Pará. Part of the CEPOTX cooperative, this farm has won multiple regional cacao awards for quality and regenerative practices.'
         },
+        'santa-anna-fazenda-para': {
+            name: 'Santa Anna Fazenda',
+            slug: 'santa-anna-fazenda-para',
+            lat: -3.292475,
+            lon: -52.57225,
+            location: 'Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/santa-anna-fazenda-para/index.html',
+            description: 'A cacao farm in the Amazon Rainforest of Pará, introduced to Agroverse by Jedielcio of the CEPOTX cooperative. Site visit August 2026 confirmed regenerative agroforestry, on-farm fermentation, and clean drying practices.'
+        },
         'cepotx': {
             name: 'CEPOTX Cooperative',
             slug: 'cepotx',

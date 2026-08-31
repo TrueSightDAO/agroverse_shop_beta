@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "../../assets/images/farms/santa_anna_profile_photo.jpg",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "Santa Anna Fazenda cacao grove in Pará, Amazon Rainforest"
+  },
+  "gallery": [
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/santa-anna-IMG_7733.jpg",
+      "alt": "Cacao pods on the trunk of a mature tree at Santa Anna Fazenda"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/santa-anna-IMG_7735.jpg",
+      "alt": "Wooden fermentation boxes at Santa Anna Fazenda"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/santa-anna-IMG_7742.jpg",
+      "alt": "Cacao beans drying in the ventilated shed at Santa Anna Fazenda"
+    }
+  ]
+}
