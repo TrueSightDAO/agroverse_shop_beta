@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<!-- SEO Meta Tags -->
+<title>Fazenda Cleide - Pará, Amazon Rainforest | Agroverse</title>
+<meta content="Cacao farm in the Amazon rainforest of Pará, Brazil, farmed by Cleide Maris Suk & Marcelo, members of the CEPOTX cooperative. Site visit July 2024. Organic certified (IBD/NOP). Regenerative farming in the heart of the Amazon." name="description"/>
+<link href="https://www.agroverse.shop/farms/fazenda-cleide-para" rel="canonical"/>
+<!-- Open Graph / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.agroverse.shop/farms/fazenda-cleide-para" property="og:url"/>
+<meta content="Fazenda Cleide - Pará, Amazon Rainforest | Agroverse" property="og:title"/>
+<meta content="Cacao farm in the Amazon rainforest of Pará, Brazil, part of the CEPOTX cooperative network." property="og:description"/>
+<meta content="https://www.agroverse.shop/assets/images/farms/fazenda_cleide_hero.jpg" property="og:image"/><meta content="900" property="og:image:height"/><meta content="1200" property="og:image:width"/>
+<!-- Twitter -->
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://www.agroverse.shop/farms/fazenda-cleide-para" property="twitter:url"/>
+<meta content="Fazenda Cleide - Pará, Amazon Rainforest | Agroverse" property="twitter:title"/>
+<meta content="Cacao farm in the Amazon rainforest of Pará, Brazil, part of the CEPOTX cooperative network." property="twitter:description"/>
+<meta content="https://www.agroverse.shop/assets/images/farms/fazenda_cleide_hero.jpg" property="twitter:image"/>
+<!-- Favicon -->
+<link href="../../assets/images/logo/favicon-192x192.jpeg" rel="icon" sizes="192x192" type="image/jpeg"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="icon" sizes="32x32" type="image/jpeg"/>
+<link href="../../assets/images/logo/favicon-32x32.jpeg" rel="shortcut icon" type="image/jpeg"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for maps -->
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<link href="../../css/cards.css" rel="stylesheet"/>
+<link href="../../css/catalog-snippet-cards.css" rel="stylesheet"/>
+<style>
+        :root {
+            --color-primary: #3b3333;
+            --color-secondary: #4d4d4d;
+            --color-accent: #fefc8f;
+            --color-text: #3b3333;
+            --color-text-light: #756F63;
+            --color-bg: #ffffff;
+            --color-bg-light: #f7f7f7;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); color: var(--color-text); line-height: 1.6; background-color: var(--color-bg); overflow-x: hidden; }
+        header { background-color: var(--color-bg); padding: 1.5rem 2rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 61px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--color-text); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--color-secondary); }
+        .farm-hero { position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(59,51,51,0.8) 0%, rgba(77,77,77,0.8) 100%), url('../../assets/images/farms/fazenda_cleide_hero.jpg') center center/cover; }
+        .farm-hero-content h1 { font-family: var(--font-heading); font-size: 56px; margin-bottom: 1rem; }
+        .farm-hero-content p { font-size: 20px; opacity: 0.9; }
+        .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .content-section h2 { font-family: var(--font-heading); font-size: 36px; color: var(--color-primary); margin-bottom: 2rem; }
+        .farm-story { font-size: 18px; line-height: 1.8; color: var(--color-text); margin-bottom: 2rem; }
+        .farm-story p { margin-bottom: 1.5rem; }
+        .farm-highlights { background: var(--color-bg-light); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .farm-highlights h3 { font-family: var(--font-heading); font-size: 24px; color: var(--color-primary); margin-bottom: 1rem; }
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .highlight-item { padding: 1rem; background: white; border-radius: 8px; border-left: 4px solid var(--color-primary); }
+        .highlight-item strong { display: block; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .gallery img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .map-container { width: 100%; height: 400px; border-radius: 12px; margin: 2rem 0; border: 1px solid rgba(59,51,51,0.2); }
+        footer { background-color: var(--color-primary); color: white; padding: 3rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin: 1.5rem 0; }
+        .footer-links a { color: white; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+        .back-link { display: inline-block; margin-top: 2rem; color: var(--color-primary); text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .back-link::before { content: '\2190 '; }
+        @media (max-width: 768px) {
+            .farm-hero-content h1 { font-size: 36px; }
+            .nav-links { gap: 1rem; font-size: 14px; }
+            .gallery { grid-template-columns: 1fr; }
+        }
+</style>
+<!-- Google Analytics - Only loads on production (www.agroverse.shop) -->
+<script src="../../js/google-analytics.js"></script>
+<script src="../../js/facebook-pixel.js"></script>
+<script src="../../js/facebook-pixel-events.js"></script>
+</head>
+<body>
+<div id="site-nav"></div>
+<script src="/js/shared-chrome.js"></script>
+<section class="farm-hero" style="background: linear-gradient(135deg, rgba(59,51,51,0.8) 0%, rgba(77,77,77,0.8) 100%), url('../../assets/images/farms/fazenda_cleide_hero.jpg') center center/cover;">
+<div class="farm-hero-content">
+<h1>Fazenda Cleide</h1>
+<p>Pará, Amazon Rainforest, Brazil &bull; CEPOTX Cooperative Member Farm</p>
+</div>
+</section>
+<section class="content-section">
+<h2>About the Farm</h2>
+<div class="farm-story">
+<p>Fazenda Cleide is a family cacao farm in the municipality of Altamira, Pará — deep in the Brazilian Amazon — farmed by <strong>Cleide Maris Suk and Marcelo</strong>. The farm is part of the <strong>CEPOTX cooperative network</strong> (Cooperativa Central de Produção Orgânica da Transamazônica e Xingu), which supports organic smallholder cacao production along the Trans-Amazon highway.</p>
+<p>Agroverse visited the farm on <strong>2 July 2024</strong> as part of a Foreign Supplier Verification (FSVP) site visit. The farm is <strong>organic certified (IBD/NOP via CEPOTX)</strong> and carries CEPOTX site code <strong>B-06-108</strong>. During the visit we documented the family's careful post-harvest practice: cacao harvested with the Garra tool, fermented with pH monitored to <strong>4.8–5.8</strong>, sun-dried on a scheduled turnover routine, and hand-sorted through sieves — the slow, attentive work that makes ceremonial-grade cacao.</p>
+<p>Their cacao reaches you as traceable, QR-coded ceremonial cacao — every bag tied back to the family and the plot on the map below.</p>
+</div>
+<div class="farm-highlights">
+<h3>Farm Highlights</h3>
+<div class="highlights-grid">
+<div class="highlight-item"><strong>Organic Certified</strong>IBD / NOP via CEPOTX cooperative</div>
+<div class="highlight-item"><strong>Location</strong>Altamira, Pará — Amazon rainforest, Trans-Amazon region</div>
+<div class="highlight-item"><strong>Family</strong>Cleide Maris Suk &amp; Marcelo</div>
+<div class="highlight-item"><strong>Cooperative</strong>CEPOTX (Coop. Central de Produção Orgânica da Transamazônica e Xingu)</div>
+<div class="highlight-item"><strong>Process</strong>Garra harvest, pH-controlled fermentation (4.8–5.8), sun-drying, sieve sorting</div>
+<div class="highlight-item"><strong>Site Code</strong>B-06-108 (CEPOTX)</div>
+</div>
+</div>
+</section>
+<section class="content-section">
+<h2>From the Farm Visit</h2>
+<div class="gallery">
+<img alt="Working areas at Fazenda Cleide — drying yard" loading="lazy" src="../../assets/images/farms/fazenda_cleide_1.jpg"/>
+<img alt="Cacao processing area at Fazenda Cleide" loading="lazy" src="../../assets/images/farms/fazenda_cleide_2.jpg"/>
+<img alt="Farm surroundings at Fazenda Cleide, Pará" loading="lazy" src="../../assets/images/farms/fazenda_cleide_3.jpg"/>
+</div>
+<h2>Where the Farm Is</h2>
+<p>The map shows the farm's working areas (fermentation and drying yards) as recorded from 76 geotagged photos and videos taken during the July 2024 site visit. The polygon is an approximate outline from that GPS data; a formal boundary walk or CAR registration will refine it.</p>
+<div class="map-container" id="farm-map"></div>
+<p><a class="back-link" href="../../farms">All farms</a></p>
+</section>
+<footer>
+<div class="footer-content">
+<p><strong>Agroverse</strong> — regenerative cacao from the Amazon rainforest.</p>
+<ul class="footer-links">
+<li><a href="../../">Home</a></li>
+<li><a href="../../farms">Farms</a></li>
+<li><a href="../../shipments">Shipments</a></li>
+<li><a href="../../partners">Partners</a></li>
+</ul>
+</div>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function () {
+    var map = L.map('farm-map').setView([-3.4138, -52.6258], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    // Approx hull of working areas from 2024-07-02 site-visit media GPS
+    var hull = [[-52.6347,-3.4140],[-52.6340,-3.4148],[-52.6338,-3.4150],[-52.6288,-3.4185],[-52.6150,-3.4157],[-52.6150,-3.4139],[-52.6198,-3.4115],[-52.6231,-3.4111],[-52.6236,-3.4111],[-52.6305,-3.4124],[-52.6347,-3.4140]];
+    var ring = hull.map(function (c) { return [c[1], c[0]]; });
+    L.polygon(ring, { color: '#fefc8f', weight: 2, fillOpacity: 0.25 }).addTo(map).bindPopup('<strong>Fazenda Cleide</strong><br/>Working areas (approx hull)');
+    var centroid = [-3.4138, -52.6258];
+    L.marker([centroid[0], centroid[1]]).addTo(map).bindPopup('<strong>Fazenda Cleide</strong><br/>Cleide Maris Suk &amp; Marcelo<br/>CEPOTX &bull; Altamira, Pará');
+})();
+</script>
+</body>
+</html>
