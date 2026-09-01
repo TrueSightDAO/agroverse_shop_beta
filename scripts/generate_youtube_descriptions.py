@@ -111,6 +111,42 @@ def tail_for(video_id: str, id2slug: dict[str, str]) -> str:
     return FOOTER_HOME
 
 
+def build_description(
+    basename: str,
+    entry: dict,
+    raw_by_bn: dict[str, str] | None = None,
+    id2slug: dict[str, str] | None = None,
+) -> str:
+    """Build the polished YouTube description for one video entry.
+
+    Reuses the blog-pipeline helpers (clean_transcript + transcript_for_blog) and
+    the same tail/truncation logic as the batch generator, so every caller (the
+    batch backfill generator and the upload-time ingress in
+    youtube_batch_incoming.py) produces byte-identical, blog-parity descriptions.
+    """
+    video_id = entry["video_id"]
+    title = entry["title"]
+    raw = (raw_by_bn or {}).get(basename, "")
+
+    if raw.strip():
+        body = transcript_for_blog(
+            raw,
+            basename,
+            locally_cleaned=clean_transcript(raw),
+            title_hint=title,
+        )
+    else:
+        body = blog_transcript((id2slug or {}).get(video_id))
+
+    prefix = f"{title}\n\n"
+    tail = tail_for(video_id, id2slug or {})
+    combined = prefix + body + tail
+    if len(combined) > DESCRIPTION_CAP:
+        cut = DESCRIPTION_CAP - len(tail) - len(prefix) - len(TRUNC_NOTE)
+        body = body[: max(0, cut)] + TRUNC_NOTE
+    return prefix + body + tail
+
+
 def main() -> None:
     video_map = json.loads(VIDEO_MAP_FILE.read_text(encoding="utf-8"))
     raw_by_bn = load_manifests()
@@ -118,27 +154,7 @@ def main() -> None:
 
     results: dict[str, str] = {}
     for i, (bn, entry) in enumerate(video_map.items(), 1):
-        video_id = entry["video_id"]
-        title = entry["title"]
-        raw = raw_by_bn.get(bn, "")
-
-        if raw.strip():
-            body = transcript_for_blog(
-                raw,
-                bn,
-                locally_cleaned=clean_transcript(raw),
-                title_hint=title,
-            )
-        else:
-            body = blog_transcript(id2slug.get(video_id))
-
-        prefix = f"{title}\n\n"
-        tail = tail_for(video_id, id2slug)
-        combined = prefix + body + tail
-        if len(combined) > DESCRIPTION_CAP:
-            cut = DESCRIPTION_CAP - len(tail) - len(prefix) - len(TRUNC_NOTE)
-            body = body[: max(0, cut)] + TRUNC_NOTE
-        results[bn] = prefix + body + tail
+        results[bn] = build_description(bn, entry, raw_by_bn, id2slug)
 
         if i % 5 == 0 or i == len(video_map):
             print(f"progress {i}/{len(video_map)}", flush=True)
