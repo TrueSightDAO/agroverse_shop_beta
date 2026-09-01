@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "NGQ9BP97_t4",
+      "title": "Fazenda Cleide — IMG_4832",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4832 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "qmONEO7gjkM",
+      "title": "Fazenda Cleide — IMG_4833",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4833 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "_O--VctSMzo",
+      "title": "Fazenda Cleide — IMG_4834",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4834 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "eND8SsYvGp4",
+      "title": "Fazenda Cleide — IMG_4835",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4835 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "wTXm1-bcoc0",
+      "title": "Fazenda Cleide — IMG_4836",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4836 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "FDmHyqBKXfE",
+      "title": "Fazenda Cleide — IMG_4837",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4837 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "6H7W2Q3kLpM",
+      "title": "Fazenda Cleide — IMG_4838",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4838 (farm visit footage)."
+    },
+    {
+      "type": "youtube",
+      "videoId": "dTcdegmZFm0",
+      "title": "Fazenda Cleide — IMG_4839",
+      "caption": "On the land at Fazenda Cleide, Pará — IMG_4839 (farm visit footage)."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda_cleide_1.jpg",
+      "alt": "Sun-drying cacao beans at Fazenda Cleide"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda_cleide_2.jpg",
+      "alt": "Wooden fermentation barrel at Fazenda Cleide"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda_cleide_3.jpg",
+      "alt": "Sorting and inspecting sun-dried beans at Fazenda Cleide"
+    }
+  ],
+  "_note": "Curated subset of Fazenda Cleide's 71-video media archive (full manifest: FARM_MEDIA_MANIFESTS/cleide.json in agentic_ai_context)."
+}
