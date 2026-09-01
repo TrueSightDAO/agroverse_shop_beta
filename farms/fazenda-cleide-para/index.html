@@ -118,6 +118,9 @@
 <section class="content-section">
 <h2>From the Farm Visit</h2>
 <div class="gallery">
+<!-- Farm Media Gallery (JSON-driven via media-gallery.js) -->
+<div class="farm-videos-container" id="media-gallery"></div>
+<p class="gallery-note"><a href="https://www.youtube.com/@truesightdao" target="_blank" rel="noopener">View all 71 videos from the farm visit on YouTube →</a></p>
 <img alt="Sun-drying cacao beans at Fazenda Cleide" loading="lazy" src="../../assets/images/farms/fazenda_cleide_1.jpg"/>
 <img alt="Wooden fermentation barrel at Fazenda Cleide" loading="lazy" src="../../assets/images/farms/fazenda_cleide_2.jpg"/>
 <img alt="Sorting and inspecting sun-dried beans at Fazenda Cleide" loading="lazy" src="../../assets/images/farms/fazenda_cleide_3.jpg"/>
@@ -139,6 +142,7 @@
 </div>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../../js/media-gallery.js"></script>
 <script>
 (function () {
     var map = L.map('farm-map').setView([-3.4138, -52.6258], 13);
