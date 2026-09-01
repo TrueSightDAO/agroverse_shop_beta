@@ -124,13 +124,25 @@ def main() -> None:
         if not vid:
             print(f"Could not parse video id from output for {b}", file=sys.stderr)
             sys.exit(1)
-        yt[b] = {
+        entry = {
             "video_id": vid,
             "url": f"https://www.youtube.com/watch?v={vid}",
             "embed_url": f"https://www.youtube.com/embed/{vid}",
             "title": title,
             "uploaded_via": "upload_bean_lowercase_episodes.py",
         }
+        # Capture the source file's own embedded GPS at ingress.
+        try:
+            from add_gps_to_youtube_videos_json import gps_for_source
+
+            gps = gps_for_source(str(path))
+            if gps:
+                entry["latitude"] = gps["latitude"]
+                entry["longitude"] = gps["longitude"]
+                entry["gps_source"] = "file_exif"
+        except Exception:
+            pass  # GPS is best-effort; never fail the upload over it.
+        yt[b] = entry
         MAP_PATH.write_text(json.dumps(yt, indent=2), encoding="utf-8")
         print(f"Mapped {b} -> {vid}")
 

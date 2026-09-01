@@ -48,6 +48,7 @@ from transcript_publish_helpers import (
     youtube_snippet_title,
 )
 from generate_youtube_descriptions import build_description
+from add_gps_to_youtube_videos_json import gps_for_source
 
 REPO_ROOT = SCRIPT_DIR.parent
 CREDENTIALS_FILE = SCRIPT_DIR / "youtube_credentials.json"
@@ -343,7 +344,13 @@ def main() -> None:
         srt_content = transcript_to_srt(v.get("transcript") or "", duration)
 
         if args.dry_run:
-            print(f"DRY-RUN upload: {base}\n  title: {title}\n", flush=True)
+            gps = gps_for_source(str(path))
+            gps_txt = (
+                f"  gps: {gps['latitude']}, {gps['longitude']} [file_exif]"
+                if gps
+                else "  gps: (none)"
+            )
+            print(f"DRY-RUN upload: {base}\n  title: {title}\n{gps_txt}\n", flush=True)
             done += 1
             continue
 
@@ -359,7 +366,7 @@ def main() -> None:
             break
 
         vid = resp["id"]
-        mapping[base] = {
+        entry = {
             "video_id": vid,
             "url": f"https://www.youtube.com/watch?v={vid}",
             "embed_url": f"https://www.youtube.com/embed/{vid}",
@@ -367,6 +374,14 @@ def main() -> None:
             "description": desc,
             "uploaded_via": "youtube_batch_incoming.py",
         }
+        # Capture the source file's own embedded GPS at ingress (highest
+        # precision; the file is in hand right now) so the cache is geo-searchable.
+        gps = gps_for_source(str(path))
+        if gps:
+            entry["latitude"] = gps["latitude"]
+            entry["longitude"] = gps["longitude"]
+            entry["gps_source"] = "file_exif"
+        mapping[base] = entry
         save_mapping(mapping)
 
         if args.captions:
