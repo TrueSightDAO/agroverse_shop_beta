@@ -114,6 +114,15 @@ def load_farm_manifests() -> dict[str, dict]:
     return out
 
 
+def gps_for_source(path: str) -> dict | None:
+    """Return {'latitude','longitude'} for a source file, or None.
+
+    Thin wrapper so uploaders can capture GPS at ingress without importing
+    exiftool plumbing. Mirrors gps_from_exiftool() (exact DMS, S/W negative).
+    """
+    return gps_from_exiftool(path)
+
+
 def find_source_file(basename: str, source_dirs: list[str]) -> str | None:
     """Locate a source file for a mapping key across candidate dirs."""
     candidates = [basename]
