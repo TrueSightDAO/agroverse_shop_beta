@@ -180,6 +180,16 @@
             url: '../../farms/rancho-maranta-para/index.html',
             description: 'The family land of Jedielcio of the CEPOTX cooperative in the Amazon Rainforest of Pará. Two plots — one beside the family house where our first ceremonial cacao trees were planted, and a ~5 hectare family plot offered for the next phase of tree planting. Site visit August 2026, GPS-traced and visible on the SunMint impact map.'
         },
+        'raimundo-geniza-para': {
+            name: 'Sítio Raimundo & Geniza',
+            slug: 'raimundo-geniza-para',
+            lat: -3.629911,
+            lon: -53.652011,
+            location: 'Uruará, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/raimundo-geniza-para/index.html',
+            description: 'The new family restoration plot of Raimundo & Geniza in Uruará on the Transamazônica corridor of Pará. RG-P1 — 0.32 hectares registered on the SunMint impact map from a GPS-traced site walk (September 2026), planned for restorative cacao agroforestry.'
+        }
         'cepotx': {
             name: 'CEPOTX Cooperative',
             slug: 'cepotx',
