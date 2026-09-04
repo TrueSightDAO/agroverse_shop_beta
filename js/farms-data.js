@@ -45,6 +45,13 @@ window.FARMS_DATA = {
         lon: -52.58316,
         location: 'Altamira, Pará, Brazil'
     },
+    'raimundo-geniza-para': {
+        name: 'Sítio Raimundo & Geniza',
+        slug: 'raimundo-geniza-para',
+        lat: -3.629911,
+        lon: -53.652011,
+        location: 'Uruará, Pará, Brazil'
+    },
     'vivi-jesus-do-deus-itacare': {
         name: 'Vivi\'s Jesus Do Deus Farm',
         slug: 'vivi-jesus-do-deus-itacare',
