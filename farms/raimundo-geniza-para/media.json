@@ -1,18 +1,94 @@
 {
-  "schemaVersion": 1,
-  "hero": {
-    "type": "image",
-    "src": "../../assets/images/farms/raimundo-geniza-hero-8236.jpg",
-    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
-    "alt": "Sítio Raimundo & Geniza — new restoration plot in Uruará, Pará"
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/raimundo-geniza-hero-8236.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Sítio Raimundo & Geniza — new restoration plot in Uruará, Pará"
+ },
+ "gallery": [
+  {
+   "type": "youtube",
+   "videoId": "YitQkzR8dtY",
+   "title": "Sítio Raimundo & Geniza — IMG_8210 (79 s)",
+   "caption": "walk across the RG-P1 plot — the longest site-walk take. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
   },
-  "gallery": [
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8236.jpg", "alt": "Sítio Raimundo & Geniza — open view across the restoration plot"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8240.jpg", "alt": "Vegetation and clearing edge at the RG-P1 plot"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8275.jpg", "alt": "Sítio Raimundo & Geniza — regenerating landscape, Uruará"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8277.jpg", "alt": "Field and vegetation at the RG-P1 restoration site"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8253.jpg", "alt": "Transitional vegetation on the RG-P1 plot boundary"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8254_2.jpg", "alt": "Corner GPS evidence photo — hull vertex of RG-P1"},
-    {"type": "image", "src": "../../assets/images/farms/raimundo-geniza-IMG_8249.jpg", "alt": "Corner GPS evidence photo — closing hull vertex of RG-P1"}
-  ]
+  {
+   "type": "youtube",
+   "videoId": "HQOcuvdXVHs",
+   "title": "Sítio Raimundo & Geniza — IMG_8206 (52 s)",
+   "caption": "walking the restoration plot boundary. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "xAWFfPzVpas",
+   "title": "Sítio Raimundo & Geniza — IMG_8235 (40 s)",
+   "caption": "view across the plot toward the vegetation line. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "CBEahJEoYxw",
+   "title": "Sítio Raimundo & Geniza — IMG_8215 (28 s)",
+   "caption": "Raimundo & Geniza's land — clearing and regeneration edge. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "G-If2PHUazU",
+   "title": "Sítio Raimundo & Geniza — IMG_8248 (23 s)",
+   "caption": "field footage on the RG-P1 site walk. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "G--yy3d3ljM",
+   "title": "Sítio Raimundo & Geniza — IMG_8244 (22 s)",
+   "caption": "vegetation and ground cover at the plot. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "XKfM27PJr1c",
+   "title": "Sítio Raimundo & Geniza — IMG_8237 (21 s)",
+   "caption": "walking through the site, Uruará. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "youtube",
+   "videoId": "SHDwW39Up0U",
+   "title": "Sítio Raimundo & Geniza — IMG_8247 (18 s)",
+   "caption": "plot footage along the Transamazônica corridor. Site walk 03 Sep 2026, plot RG-P1, Uruará, Pará."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8236.jpg",
+   "alt": "Sítio Raimundo & Geniza — Open view across the restoration plot"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8240.jpg",
+   "alt": "Sítio Raimundo & Geniza — Vegetation and clearing edge at RG-P1"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8275.jpg",
+   "alt": "Sítio Raimundo & Geniza — Regenerating landscape, Uruará"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8277.jpg",
+   "alt": "Sítio Raimundo & Geniza — Field and vegetation at the restoration site"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8253.jpg",
+   "alt": "Sítio Raimundo & Geniza — Transitional vegetation on the plot boundary"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8254_2.jpg",
+   "alt": "Sítio Raimundo & Geniza — GPS evidence photo — hull vertex of RG-P1"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/raimundo-geniza-IMG_8249.jpg",
+   "alt": "Sítio Raimundo & Geniza — GPS evidence photo — closing hull vertex"
+  }
+ ]
 }
