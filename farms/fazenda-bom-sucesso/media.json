@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "gallery": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree01.jpg",
+      "alt": "Fazenda Bom Sucesso — first cacao sapling in the ground",
+      "title": "Tree 1 — first cacao sapling in the ground",
+      "caption": "Cacau - Hybrid planted 18:42 on 2 September 2026 at -3.094431, -52.095225 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree02.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 2 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 18:47 on 2 September 2026 at -3.094461, -52.095119 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree03.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 3 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 18:52 on 2 September 2026 at -3.094517, -52.094956 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree04.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 4 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 18:57 on 2 September 2026 at -3.094581, -52.094964 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree05.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 5 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 19:02 on 2 September 2026 at -3.094450, -52.095222 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree06.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 6 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 19:09 on 2 September 2026 at -3.094183, -52.095136 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree07.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 7 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 19:16 on 2 September 2026 at -3.094217, -52.094983 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree08.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling",
+      "title": "Tree 8 — Cacau - Hybrid sapling",
+      "caption": "Cacau - Hybrid planted 19:21 on 2 September 2026 at -3.094178, -52.095142 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree09.jpg",
+      "alt": "Fazenda Bom Sucesso — cacau hybrid sapling on the western edge of the plot",
+      "title": "Tree 9 — Cacau - Hybrid sapling, western edge of the plot",
+      "caption": "Cacau - Hybrid planted 19:26 on 2 September 2026 at -3.094333, -52.096053 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/sunmint/main/images/20260902_bomsucesso_tree10.jpg",
+      "alt": "Fazenda Bom Sucesso — the last sapling of the day",
+      "title": "Tree 10 — the last sapling of the day",
+      "caption": "Cacau - Hybrid planted 19:31 on 2 September 2026 at -3.094528, -52.095314 — PL-002, Fazenda Bom Sucesso, Vitória do Xingu, Pará. Registered on the SunMint impact map."
+    }
+  ]
+}
