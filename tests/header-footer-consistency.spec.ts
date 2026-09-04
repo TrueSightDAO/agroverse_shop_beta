@@ -21,6 +21,7 @@ const ALL_PAGES = [
   '/product-page/8-ounce-organic-cacao-nibs-from-brazil',
   '/farms/oscar-bahia',
   '/farms/paulo-la-do-sitio-para',
+  '/farms/fazenda-bom-sucesso',
   '/shipments/agl4',
   '/shipments/agl8',
   '/partners',
