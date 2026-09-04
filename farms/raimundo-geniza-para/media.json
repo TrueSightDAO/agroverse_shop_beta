@@ -2,7 +2,7 @@
  "schemaVersion": 1,
  "hero": {
   "type": "image",
-  "src": "../../assets/images/farms/raimundo-geniza-hero-8236.jpg",
+  "src": "../../assets/images/farms/raimundo-geniza-hero.jpg",
   "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
   "alt": "Sítio Raimundo & Geniza — new restoration plot in Uruará, Pará"
  },
