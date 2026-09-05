@@ -1,0 +1,41 @@
+{
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/fazenda-santa-rosa-hero.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Fazenda Santa Rosa — family cacao plot in Uruará, Pará"
+ },
+ "gallery": [
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8332.jpg",
+   "caption": "Fazenda Santa Rosa — Uruará, Pará. Site walk 03 Sep 2026."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8329.jpg",
+   "caption": "Fazenda Santa Rosa — vegetation and cacao. Site walk 03 Sep 2026."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8325.jpg",
+   "caption": "Fazenda Santa Rosa — plot U-06-06. Site walk 03 Sep 2026."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8319.jpg",
+   "caption": "Fazenda Santa Rosa — field footage, Uruará. Site walk 03 Sep 2026."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8318.jpg",
+   "caption": "Fazenda Santa Rosa — cacao area. Site walk 03 Sep 2026."
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8301.jpg",
+   "caption": "Fazenda Santa Rosa — site walk, Uruará. 03 Sep 2026."
+  }
+ ]
+}
