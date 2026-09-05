@@ -1,41 +1,196 @@
 {
- "schemaVersion": 1,
- "hero": {
-  "type": "image",
-  "src": "../../assets/images/farms/fazenda-santa-rosa-hero.jpg",
-  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
-  "alt": "Fazenda Santa Rosa — family cacao plot in Uruará, Pará"
- },
- "gallery": [
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8332.jpg",
-   "caption": "Fazenda Santa Rosa — Uruará, Pará. Site walk 03 Sep 2026."
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "../../assets/images/farms/fazenda-santa-rosa-hero.jpg",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "Fazenda Santa Rosa — family cacao plot in Uruará, Pará"
   },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8329.jpg",
-   "caption": "Fazenda Santa Rosa — vegetation and cacao. Site walk 03 Sep 2026."
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8325.jpg",
-   "caption": "Fazenda Santa Rosa — plot U-06-06. Site walk 03 Sep 2026."
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8319.jpg",
-   "caption": "Fazenda Santa Rosa — field footage, Uruará. Site walk 03 Sep 2026."
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8318.jpg",
-   "caption": "Fazenda Santa Rosa — cacao area. Site walk 03 Sep 2026."
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8301.jpg",
-   "caption": "Fazenda Santa Rosa — site walk, Uruará. 03 Sep 2026."
-  }
- ]
+  "gallery": [
+    {
+      "type": "youtube",
+      "videoId": "E7rJXE5So5U",
+      "caption": "Fazenda Santa Rosa — IMG_8281, field footage at the plot edge, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "8EbwHEtQE_E",
+      "caption": "Fazenda Santa Rosa — IMG_8282, walking the cacao rows, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "Y2WtNoVzr2c",
+      "caption": "Fazenda Santa Rosa — IMG_8286, view across the plot toward the vegetation, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "BPk4q7UgVkg",
+      "caption": "Fazenda Santa Rosa — IMG_8293, Antônio & Graça's cacao — plot U-06-06. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "a7lTPt9SQLY",
+      "caption": "Fazenda Santa Rosa — IMG_8294, vegetation and ground cover at the plot. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "Tclcnjce7no",
+      "caption": "Fazenda Santa Rosa — IMG_8295, walking through the site, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "LjTDSy3DZkc",
+      "caption": "Fazenda Santa Rosa — IMG_8296, cacao area with GPS-tagged footage. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "gIeQ09MeKl4",
+      "caption": "Fazenda Santa Rosa — IMG_8297, short clip at the plot boundary. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "sK16SxTlDz0",
+      "caption": "Fazenda Santa Rosa — IMG_8298, plot footage along the Transamazônica corridor. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "IB5RCk-2QNk",
+      "caption": "Fazenda Santa Rosa — IMG_8303, cacao and shade vegetation. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "CZsMFXQPPWA",
+      "caption": "Fazenda Santa Rosa — IMG_8304, field clip near the plot, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "kQVUiWl_EhY",
+      "caption": "Fazenda Santa Rosa — IMG_8305, walk across part of the U-06-06 plot. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "2IKKNciMjBw",
+      "caption": "Fazenda Santa Rosa — IMG_8306, restoration area footage. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "SRm92oqQVEg",
+      "caption": "Fazenda Santa Rosa — IMG_8307, cacao rows, Fazenda Santa Rosa. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "dj_if-3-Jg4",
+      "caption": "Fazenda Santa Rosa — IMG_8308, plot vegetation, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "ELxCs0vczAY",
+      "caption": "Fazenda Santa Rosa — IMG_8311, site walk clip, Fazenda Santa Rosa. 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "HMKXSgNOtVs",
+      "caption": "Fazenda Santa Rosa — IMG_8312, footage along the plot, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "DIBN4OTEzVI",
+      "caption": "Fazenda Santa Rosa — IMG_8313, short clip in the cacao area. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "d9Ht07zUCms",
+      "caption": "Fazenda Santa Rosa — IMG_8314, longer walk across the plot area. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "lVHN5OZ9HCY",
+      "caption": "Fazenda Santa Rosa — IMG_8316, field footage at Fazenda Santa Rosa. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "AI_FqGDWFPs",
+      "caption": "Fazenda Santa Rosa — IMG_8317, walking the plot, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "_f0PWDWj60Y",
+      "caption": "Fazenda Santa Rosa — IMG_8320, vegetation line and cacao. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "1axHmhOTJX4",
+      "caption": "Fazenda Santa Rosa — IMG_8322, plot U-06-06 footage. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "Dmd_SvbTlZg",
+      "caption": "Fazenda Santa Rosa — IMG_8323, clearing and regeneration footage. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "hsJzLUry_3A",
+      "caption": "Fazenda Santa Rosa — IMG_8324, very short clip at the plot. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "ODN4U3zFVMU",
+      "caption": "Fazenda Santa Rosa — IMG_8326, cacao and understory. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "qppiDoC-WDM",
+      "caption": "Fazenda Santa Rosa — IMG_8333, short field clip. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "IziwpJi2YMk",
+      "caption": "Fazenda Santa Rosa — IMG_8335, ground cover at the plot. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "qHo0K8GSpuM",
+      "caption": "Fazenda Santa Rosa — IMG_8336, quick clip near the cacao. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "J4Vl2tQ5nLk",
+      "caption": "Fazenda Santa Rosa — IMG_8337, longer site walk footage, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "youtube",
+      "videoId": "-P9ki8iBpGs",
+      "caption": "Fazenda Santa Rosa — IMG_8340, final clip — plot edge, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8332.jpg",
+      "caption": "Fazenda Santa Rosa — Uruará, Pará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8329.jpg",
+      "caption": "Fazenda Santa Rosa — vegetation and cacao. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8325.jpg",
+      "caption": "Fazenda Santa Rosa — plot U-06-06. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8319.jpg",
+      "caption": "Fazenda Santa Rosa — field footage, Uruará. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8318.jpg",
+      "caption": "Fazenda Santa Rosa — cacao area. Site walk 03 Sep 2026."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/fazenda-santa-rosa-IMG_8301.jpg",
+      "caption": "Fazenda Santa Rosa — site walk, Uruará. 03 Sep 2026."
+    }
+  ]
 }
