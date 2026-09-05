@@ -190,6 +190,26 @@
             url: '../../farms/raimundo-geniza-para/index.html',
             description: 'The new family restoration plot of Raimundo & Geniza in Uruará on the Transamazônica corridor of Pará. RG-P1 — 0.32 hectares registered on the SunMint impact map from a GPS-traced site walk (September 2026), planned for restorative cacao agroforestry.'
         },
+        'fazenda-santa-rosa-para': {
+            name: 'Fazenda Santa Rosa',
+            slug: 'fazenda-santa-rosa-para',
+            lat: -3.634141,
+            lon: -53.669688,
+            location: 'Uruará, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/fazenda-santa-rosa-para/index.html',
+            description: 'The family cacao land of Antônio and Graça in the Transamazônica corridor of Pará — plot U-06-06, a ≈4.75 hectare property near Uruará. Members of COPOPS (Cooperativa de Produtos Orgânicos de Perpétuo Socorro, Uruará), a member cooperative of the CEPOTX organic cacao network. September 2026 GPS-traced boundary walk registered on the SunMint impact map.'
+        },
+        'fazenda-cleide-para': {
+            name: 'Fazenda Cleide',
+            slug: 'fazenda-cleide-para',
+            lat: -3.4138,
+            lon: -52.6258,
+            location: 'Altamira, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/fazenda-cleide-para/index.html',
+            description: 'A family cacao farm in the municipality of Altamira, Pará, farmed by Cleide Maris Suk and Marcelo. Part of the CEPOTX cooperative network, organic certified (IBD/NOP via CEPOTX) with site code B-06-108. Agroverse visited 2 July 2024 on an FSVP site visit.'
+        },
         'cepotx': {
             name: 'CEPOTX Cooperative',
             slug: 'cepotx',

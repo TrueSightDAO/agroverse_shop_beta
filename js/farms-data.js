@@ -52,6 +52,20 @@ window.FARMS_DATA = {
         lon: -53.652011,
         location: 'Uruará, Pará, Brazil'
     },
+    'fazenda-santa-rosa-para': {
+        name: 'Fazenda Santa Rosa',
+        slug: 'fazenda-santa-rosa-para',
+        lat: -3.634141,
+        lon: -53.669688,
+        location: 'Uruará, Pará, Brazil'
+    },
+    'fazenda-cleide-para': {
+        name: 'Fazenda Cleide',
+        slug: 'fazenda-cleide-para',
+        lat: -3.4138,
+        lon: -52.6258,
+        location: 'Altamira, Pará, Brazil'
+    },
     'vivi-jesus-do-deus-itacare': {
         name: 'Vivi\'s Jesus Do Deus Farm',
         slug: 'vivi-jesus-do-deus-itacare',
