@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/fazenda-dona-rosa-para-hero.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Fazenda Dona Rosa — Rosa Wronscki's artisanal cacao farm in Medicilândia, Pará"
+ },
+ "gallery": [
+  {
+   "type": "youtube",
+   "videoId": "HhLdfeqpbbg",
+   "title": "Fazenda Dona Rosa — IMG_8501 (24 s) (Medicilândia, Pará)",
+   "caption": "walk in the cacao grove at night, Fazenda Dona Rosa"
+  },
+  {
+   "type": "youtube",
+   "videoId": "B_vnnvXLERk",
+   "title": "Fazenda Dona Rosa — IMG_8503 (96 s) (Medicilândia, Pará)",
+   "caption": "the longest take — through the grove and processing yard"
+  },
+  {
+   "type": "youtube",
+   "videoId": "d39lM4iThHQ",
+   "title": "Fazenda Dona Rosa — IMG_8510 (32 s) (Medicilândia, Pará)",
+   "caption": "cacao trees and the farm at dusk"
+  },
+  {
+   "type": "youtube",
+   "videoId": "QnSrcEaNxPA",
+   "title": "Fazenda Dona Rosa — IMG_8526 (50 s) (Medicilândia, Pará)",
+   "caption": "walking the grove — mature cacao under canopy"
+  },
+  {
+   "type": "youtube",
+   "videoId": "_4Yop8qKuKs",
+   "title": "Fazenda Dona Rosa — IMG_8537 (29 s) (Medicilândia, Pará)",
+   "caption": "fermentation and chocolate-making talk"
+  },
+  {
+   "type": "youtube",
+   "videoId": "6RyTiEPuaUA",
+   "title": "Fazenda Dona Rosa — IMG_8538 (29 s) (Medicilândia, Pará)",
+   "caption": "processing — beans and craft"
+  },
+  {
+   "type": "youtube",
+   "videoId": "ZpehxEeKyUM",
+   "title": "Fazenda Dona Rosa — IMG_8539 (13 s) (Medicilândia, Pará)",
+   "caption": "inside the chocolate workshop"
+  },
+  {
+   "type": "youtube",
+   "videoId": "VFcohJ3UgYM",
+   "title": "Fazenda Dona Rosa — IMG_8532 (15 s) (Medicilândia, Pará)",
+   "caption": "grove close-ups"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-dona-rosa-para-img_8535.jpg",
+   "alt": "Fazenda Dona Rosa — processing-yard visit — people at the farm"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-dona-rosa-para-img_8536.jpg",
+   "alt": "Fazenda Dona Rosa — Rosa's team by the cacao — evening site visit"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-dona-rosa-para-img_8557.jpg",
+   "alt": "Fazenda Dona Rosa — wrap-up at the farm with Rosa"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-dona-rosa-para-img_8533.jpg",
+   "alt": "Fazenda Dona Rosa — mature cacao grove"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/fazenda-dona-rosa-para-img_8540.jpg",
+   "alt": "Fazenda Dona Rosa — evening at the farm"
+  }
+ ]
+}
