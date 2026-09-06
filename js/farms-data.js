@@ -73,6 +73,13 @@ window.FARMS_DATA = {
         lon: -52.6258,
         location: 'Altamira, Pará, Brazil'
     },
+    'fazenda-bom-sucesso': {
+        name: 'Fazenda Bom Sucesso',
+        slug: 'fazenda-bom-sucesso',
+        lat: -3.0944,
+        lon: -52.0952,
+        location: 'Vitória do Xingu, Pará, Brazil'
+    },
     'vivi-jesus-do-deus-itacare': {
         name: 'Vivi\'s Jesus Do Deus Farm',
         slug: 'vivi-jesus-do-deus-itacare',
