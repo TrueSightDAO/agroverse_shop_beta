@@ -188,7 +188,7 @@
             location: 'Uruará, Pará, Amazon Rainforest, Brazil',
             type: 'farm',
             url: '../../farms/raimundo-geniza-para/index.html',
-            description: 'The new family restoration plot of Raimundo & Geniza in Uruará on the Transamazônica corridor of Pará. RG-P1 — 0.32 hectares registered on the SunMint impact map from a GPS-traced site walk (September 2026), planned for restorative cacao agroforestry.'
+            description: 'The new family restoration plot of Raimundo & Geniza in Uruará on the Transamazônica corridor of Pará. U-06-07 — 0.32 hectares registered on the SunMint impact map from a GPS-traced site walk (September 2026), planned for restorative cacao agroforestry.'
         },
         'fazenda-santa-rosa-para': {
             name: 'Fazenda Santa Rosa',
