@@ -541,6 +541,10 @@
 <strong>🍫 On-farm chocolate</strong>
 <a href="https://www.instagram.com/chocolate.morbeck?igsh=c3lrZW43eWtkcWU3" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" target="_blank">Chocolate Morbeck — @chocolate.morbeck</a>
 </div>
+<div class="highlight-item">
+<strong>🌱 SunMint Program</strong>
+<a href="https://truesight.me/sunmint.html?plot=FSA-P1" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" target="_blank">GPS-verified plot FSA-P1 on the SunMint impact map</a>
+</div>
 </div>
 </div>
 <div class="morbeck-section" role="region" aria-labelledby="morbeck-heading">
@@ -606,7 +610,7 @@
 <section class="content-section" style="background-color: var(--color-bg-light);">
 <h2>Farm Location</h2>
 <div class="map-container" id="map-santa-ana"></div>
-<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a></p>
+<p style="margin-top: 1rem;"><a class="item-link" href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" rel="noreferrer" style="display: inline-block;" target="_blank">View on Google Maps</a> · <a class="item-link" href="https://truesight.me/sunmint.html?plot=FSA-P1" rel="noopener noreferrer" style="display: inline-block;" target="_blank">View plot FSA-P1 on SunMint map</a></p>
 </section>
 <div class="farm-navigation" id="farm-navigation"></div>
 <a class="back-link" href="../../cacao-journeys/brazilian-path/index.html">Back to Journey</a><div id="site-footer"></div>
@@ -625,7 +629,11 @@
                     maxZoom: 19
                 }).addTo(mapSantaAna);
                 L.marker([-14.3225976, -39.1061207]).addTo(mapSantaAna)
-                    .bindPopup('Fazenda Santa Ana<br>Bahia, Brazil<br><a href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" target="_blank" rel="noreferrer">View on Google Maps</a>')
+                    .bindPopup('Fazenda Santa Ana<br>Bahia, Brazil<br><a href="https://www.google.com/maps/place/Fazenda+Santa+Ana/@-14.3148028,-39.1604428,12.59z/data=!4m6!3m5!1s0x73930f2cbbe1c23:0x5e46246f566adf69!8m2!3d-14.3225976!4d-39.1061207!16s%2Fg%2F11c6f03rg5?entry=ttu" target="_blank" rel="noreferrer">View on Google Maps</a><br><a href="https://truesight.me/sunmint.html?plot=FSA-P1" target="_blank" rel="noopener noreferrer">View plot FSA-P1 on SunMint map</a>')
+                // FSA-P1: GPS-walked boundary (18 Sep 2023 farm visit, 151 MOV + 91 HEIC trail)
+                L.polygon([[-14.3262, -39.1088], [-14.3262, -39.1037], [-14.3222, -39.1037], [-14.3222, -39.1088], [-14.3262, -39.1088]], {color: '#c46a2a', weight: 2, fillColor: '#c46a2a', fillOpacity: 0.08})
+                    .addTo(mapSantaAna)
+                    .bindPopup('FSA-P1 — GPS-verified plot boundary<br>Fazenda Santa Ana, Bahia<br><a href="https://truesight.me/sunmint.html?plot=FSA-P1" target="_blank" rel="noopener noreferrer">Open on SunMint map</a>');
                     .openPopup();
             }
             if (document.readyState === 'loading') {
