@@ -62,6 +62,11 @@
             'itacare-cultural-experiences',   // Experience - Itacaré
             'salvador-colonial-history',      // Experience - Salvador
             'paulo-la-do-sitio-para',         // Farm - Pará, Amazon
+            'santa-anna-fazenda-para',        // Farm - Pará, Amazon
+            'rancho-maranta-para',            // Farm - Pará, Amazon
+            'raimundo-geniza-para',           // Farm - Uruará, Pará (COPOPS/CEPOTX)
+            'fazenda-santa-rosa-para',        // Farm - Uruará, Pará (COPOPS/CEPOTX)
+            'fazenda-cleide-para',            // Farm - Altamira, Pará (CEPOTX)
             'cepotx',                         // Cooperative - Pará
             'jungle-johnny-amazon-tours',     // Experience - Manaus
             'cargo-boat-manaus-leticia'       // Experience - Leticia
