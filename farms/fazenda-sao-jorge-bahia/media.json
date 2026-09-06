@@ -15,7 +15,7 @@
       "section": "story-videos",
       "aspect": "portrait",
       "title": "Bean to Bliss — Episode 12",
-      "caption": "Bean to Bliss episode 12 — from the São Jorge harvest to the cup, full walkthrough with transcript."
+      "caption": "Bean to bliss episode 12 — from the São Jorge harvest to the cup, full walkthrough with transcript."
     },
     {
       "type": "image",
@@ -33,6 +33,24 @@
       "alt": "AGL6 — São Jorge Farm",
       "title": "AGL6 lot imagery",
       "caption": "Shipment story header image for AGL6, shown here in the same farm \"asset box\" layout as other estates."
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sao-jorge-IMG_1616.jpg",
+      "section": "photos",
+      "alt": "On the land at Fazenda São Jorge, Bahia — IMG_1616 (farm media, 6 Jun 2023)"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sao-jorge-IMG_1671.jpg",
+      "section": "photos",
+      "alt": "On the land at Fazenda São Jorge, Bahia — IMG_1671 (farm media, 6 Jun 2023)"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sao-jorge-IMG_8532.jpg",
+      "section": "photos",
+      "alt": "On the land at Fazenda São Jorge, Bahia — IMG_8532 (farm media, 21 Sep 2023)"
     }
   ]
 }
