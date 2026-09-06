@@ -17,6 +17,13 @@ window.FARMS_DATA = {
         lon: -39.1061207,
         location: 'Bahia, Brazil'
     },
+    'fazenda-clara-bahia': {
+        name: 'Fazenda Clara',
+        slug: 'fazenda-clara-bahia',
+        lat: -14.4625,
+        lon: -39.1317,
+        location: 'Bahia, Brazil'
+    },
     'oscar-bahia': {
         name: 'Oscar\'s Farm',
         slug: 'oscar-bahia',
