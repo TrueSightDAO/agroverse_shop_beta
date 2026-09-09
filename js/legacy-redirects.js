@@ -20,6 +20,8 @@ const LEGACY_REDIRECTS = {
   '/agl10': 'https://docs.google.com/spreadsheets/d/13BbbbfcVApCEAjh92o5ATLBxrHxTDDYHOKfQZNl_v7w/edit?gid=1930053694#gid=1930053694',
   '/agl13': 'https://docs.google.com/spreadsheets/d/1w3D0y9iPMu7kR9SuS6WNmIAym6FGUql9vUL2pD_qGR4/edit?gid=2133986329#gid=2133986329',
   '/agl14': 'https://docs.google.com/spreadsheets/d/18ZfEddlEwcNYTc6H0FHtfG948yZ8xCWMY_FmSsIv8cc/edit?gid=129566210#gid=129566210',
+  '/agl15': 'https://docs.google.com/spreadsheets/d/1tXgDss-AAdAFgBWVcW4ESRzRTodRmXyp7JxwBb0A-fE/edit?gid=2133986329#gid=2133986329',
+  '/agl16': 'https://docs.google.com/spreadsheets/d/1xesQdwcNt9lBxAUgtdqNwHE83n13wDyRxZIN4Ae6ijg/edit',
   '/agl2': 'https://docs.google.com/spreadsheets/d/1DTTTly1VEGoXc4XGa3F9z1ul1_1Pd9kwer81qhy07n8/edit#gid=1679004028',
   '/agl3': 'https://docs.google.com/spreadsheets/d/1ji-p9z6fMhb0A30lsW2r0hryzJGsDRBgM3vRnn9tCiU/edit?gid=0#gid=0',
   '/agl4': 'https://docs.google.com/spreadsheets/d/1Uo5p3nzWsD6HIw98tCiNYSBmSjXeGkdmopsXpket1Mc/edit?gid=0#gid=0',
