@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Sítio Cacau na Veia — Jader's family beside the covered curing house and drying racks, Pacajá, Pará"
+ },
+ "gallery": [
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+   "alt": "Jader's wife and a visitor beside the raised barcaças (drying racks) full of cacao, under the covered curing house"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9504.jpg",
+   "alt": "The family beside the long wooden drying rack under the metal-roofed curing structure"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9494.jpg",
+   "alt": "Raised wooden drying rack filled with red-brown fermented cacao beans"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9557.jpg",
+   "alt": "Close-up of cacao beans spread across the drying rack"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9507.jpg",
+   "alt": "A wooden fermentation box at the post-harvest area"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9506.jpg",
+   "alt": "Inspecting a wooden fermentation box at the post-harvest yard"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9511.jpg",
+   "alt": "Large wooden fermentation vessels beneath the shed"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9502.jpg",
+   "alt": "Jader's wife and a visitor in the farmyard in front of the wooden shed"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9536.jpg",
+   "alt": "A vigorous young cacao sapling growing through leaf litter beneath native forest"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9516.jpg",
+   "alt": "A cacao sapling with flushed red new leaves — the agroforest's next generation"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9510.jpg",
+   "alt": "The drying racks seen across the yard, older cacao stands behind"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9553.jpg",
+   "alt": "A visitor in an Agroverso shirt on the property"
+  }
+ ]
+}
