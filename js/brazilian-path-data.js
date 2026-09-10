@@ -210,6 +210,16 @@
             url: '../../farms/fazenda-cleide-para/index.html',
             description: 'A family cacao farm in the municipality of Altamira, Pará, farmed by Cleide Maris Suk and Marcelo. Part of the CEPOTX cooperative network, organic certified (IBD/NOP via CEPOTX) with site code B-06-108. Agroverse visited 2 July 2024 on an FSVP site visit.'
         },
+        'sitio-torres-pacaja-para': {
+            name: 'Sítio Torres',
+            slug: 'sitio-torres-pacaja-para',
+            lat: -3.536226,
+            lon: -51.144873,
+            location: 'Pacajá, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/sitio-torres-pacaja-para/index.html',
+            description: 'A family holding in Pacajá, Pará — 4.5 hectares of true (hybrid) and clonal cacao enriching standing native forest beneath emergent cumaru trees, worked by Alexandre, a director-coordinator of the CoopCao cooperative (CEPOTX family). Plot N-06-66. The family harvests, ferments in wooden barrels and dries under a screened structure on the property.'
+        },
         'cepotx': {
             name: 'CEPOTX Cooperative',
             slug: 'cepotx',

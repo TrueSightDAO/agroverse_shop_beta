@@ -100,6 +100,13 @@ window.FARMS_DATA = {
         lat: -14.6289989,
         lon: -39.4028297,
         location: 'Itajuípe, Bahia, Brazil'
+    },
+    'sitio-torres-pacaja-para': {
+        name: 'Sítio Torres',
+        slug: 'sitio-torres-pacaja-para',
+        lat: -3.536226,
+        lon: -51.144873,
+        location: 'Pacajá, Pará, Amazon Rainforest, Brazil'
     }
 };
 
