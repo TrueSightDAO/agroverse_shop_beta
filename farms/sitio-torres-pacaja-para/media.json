@@ -1,71 +1,316 @@
 {
- "schemaVersion": 1,
- "hero": {
-  "type": "image",
-  "src": "../../assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
-  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
-  "alt": "Sítio Torres (Pacajá) — cacao enrichment plot in Pacajá, Pará, Amazon rainforest"
- },
- "gallery": [
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
-   "alt": "Sítio Torres (Pacajá) — walking in to the family holding, Pacajá, Pará"
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "../../assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
+    "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+    "alt": "Sítio Torres (Pacajá) — cacao enrichment plot in Pacajá, Pará, Amazon rainforest"
   },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9642.jpg",
-   "alt": "Young cacao saplings growing through leaf litter under standing native forest"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9659.jpg",
-   "alt": "Alexandre among the cacao trees on the enrichment plot"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9662.jpg",
-   "alt": "Cacao and native understory beneath the forest canopy"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9666.jpg",
-   "alt": "Alexandre and family beside a giant native tree on the property"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9673.jpg",
-   "alt": "Dense rainforest landscape across the holding"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9676.jpg",
-   "alt": "The screened packing and drying structure"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9682.jpg",
-   "alt": "Wooden fermentation barrels at the post-harvest area"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9687.jpg",
-   "alt": "Stacked sacks of dried cacao in the family store"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9688.jpg",
-   "alt": "Alexandre holding a bag of the family's cacao beans"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9689.jpg",
-   "alt": "Close-up of the cacao beans — the ~120 kg harvest sample"
-  },
-  {
-   "type": "image",
-   "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9692.jpg",
-   "alt": "The family storehouse, Pacajá, Pará"
-  }
- ]
+  "gallery": [
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
+      "alt": "Sítio Torres (Pacajá) — walking in to the family holding, Pacajá, Pará"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9642.jpg",
+      "alt": "Young cacao saplings growing through leaf litter under standing native forest"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9659.jpg",
+      "alt": "Alexandre among the cacao trees on the enrichment plot"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9662.jpg",
+      "alt": "Cacao and native understory beneath the forest canopy"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9666.jpg",
+      "alt": "Alexandre and family beside a giant native tree on the property"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9673.jpg",
+      "alt": "Dense rainforest landscape across the holding"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9676.jpg",
+      "alt": "The screened packing and drying structure"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9682.jpg",
+      "alt": "Wooden fermentation barrels at the post-harvest area"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9687.jpg",
+      "alt": "Stacked sacks of dried cacao in the family store"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9688.jpg",
+      "alt": "Alexandre holding a bag of the family's cacao beans"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9689.jpg",
+      "alt": "Close-up of the cacao beans — the ~120 kg harvest sample"
+    },
+    {
+      "type": "image",
+      "src": "../../assets/images/farms/sitio-torres-pacaja-para-IMG_9692.jpg",
+      "alt": "The family storehouse, Pacajá, Pará"
+    },
+    {
+      "type": "youtube",
+      "videoId": "fL_9DhOnVQE",
+      "title": "Sítio Torres — IMG_9623 (155 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — A japonesa fica pura, a cola como vê? É boquínio, sabe impediágua, comesa, por lá, querendo na vida de passei lá, conheço a mãe do nao dia muitos anos, tem duas meninas que são filhos da Aurenda,…",
+      "aspect": "landscape"
+    },
+    {
+      "type": "youtube",
+      "videoId": "PuBY7oHXbVw",
+      "title": "Sítio Torres — IMG_9624 (64 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Quanto hectares? 4,5 hectares. O nome da fazenda? Aqui no caso é CITO, CITO 2. Quanto anos na fazenda? Após a área de plantada é de várias idades, tem uma área mais velha que lá em cima, tem mais de…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "7cCUb4luIjI",
+      "title": "Sítio Torres — IMG_9625 (43 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — As manis, as manis são uma grande plantação, como você pode ver, não há muito de árvores com uma forma.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "V4BskLlDYbM",
+      "title": "Sítio Torres — IMG_9627 (13 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "V9jpA7WRTgk",
+      "title": "Sítio Torres — IMG_9628 (38 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "-kjuAqLjfaQ",
+      "title": "Sítio Torres — IMG_9630 (34 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Viva? Não, o vojá não está resistindo. Mesmo na sombra? Isso. Ou temos que estar em lugar mais abertos? Tem um naquela roça em lá, naquela roça embaixo. Porque lá acho que são poucos que está…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "e6fckeCdNcM",
+      "title": "Sítio Torres — IMG_9640 (18 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Essa aqui é uma roça que um plantio que tem mais de 20 anos de desistência, então já tem árvores mais desenvolvidas, lá tem castanheira, tem outras árvores, tem mogno ali, né?",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "dAib9M6LVcI",
+      "title": "Sítio Torres — IMG_9641 (21 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Sim, então as arvores aqui estão ficando mais velhas e velhas, enquanto nós caminhamos mais longe e mais longe dentro do plano do mar. Olha isso. Sim. Sim. Olha isso. Oh, uhum. Ok. Uhum.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "5T-gdMtqHeY",
+      "title": "Sítio Torres — IMG_9643 (24 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "C40m7my3lV0",
+      "title": "Sítio Torres — IMG_9644 (10 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "bf_P2Xw-XMg",
+      "title": "Sítio Torres — IMG_9646 (5 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "DgnC1biqtds",
+      "title": "Sítio Torres — IMG_9649 (27 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Essa planta é utilizada principalmente para consumir o fruto, que você bebe um suco delicioso, fazer licores, licor, mas ela tem uma tinta, tanto no fruto como na casca, que os indígenas, na…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "z08bWEw_0dE",
+      "title": "Sítio Torres — IMG_9652 (9 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Parece que já está saindo. Agora vamos ir para o sangue. Vamos ver o sinal do fermento.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "Z_ENxslMIx8",
+      "title": "Sítio Torres — IMG_9653 (26 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Daçura. Giant tree, olha. É um grande daçura. Muito grande. Obrigado.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "Q-ghLIq49xk",
+      "title": "Sítio Torres — IMG_9657 (16 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Tudo bem, Gideo? Estamos aqui na floresta, no sombro. Oh, gigante avorista, né? Uh! Semanos, né? Sim.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "XrsOVX6tqyc",
+      "title": "Sítio Torres — IMG_9658 (69 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Está pronto, não? Está para o caio. É frio. Você pode ver o topo da árvore. É muito frio. É grande, não é? Sim. Se você pegar o frio da árvore. É um brasilão. Ah, aromática. Ah, que merda. Oh, bom.…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "EyrFVd54oPA",
+      "title": "Sítio Torres — IMG_9660 (30 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Um limpo de cendinho, ua! Um dos de cendinho. Oh, uau, olha isso. Oh!",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "ihrV2plrX-4",
+      "title": "Sítio Torres — IMG_9661 (0 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Legendas pela comunidade de Amara.org",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "0ouizRdR1MY",
+      "title": "Sítio Torres — IMG_9664 (48 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Oh, gigante, oh, wow. Gigante, né? Então, eu não sei dizer que tem algum grão, alguns altos na farmácia. Eu não entendo como são altos. Olha o tamanho desse grão. Oh, wow. Isso é enorme. Eu acho que…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "3ualfh4L0j8",
+      "title": "Sítio Torres — IMG_9665 (11 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "O3xxud1Y7eE",
+      "title": "Sítio Torres — IMG_9668 (34 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — O que é isso? O que é isso? O que é isso? Então, nós estamos suportando o agrobarco projéctico. Essas são as árvores que estamos ajudando a preservar. Essa árvore, em si, é mais do que 100 anos…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "Fyebo5-h8pw",
+      "title": "Sítio Torres — IMG_9669 (4 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — É? Oi. Tá se criando? Ah, oh. Tem que se levar assim.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "hVUZThQu754",
+      "title": "Sítio Torres — IMG_9675 (10 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "eiFTblGQSmM",
+      "title": "Sítio Torres — IMG_9678 (12 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Nós perdemos a sessão, então a toda farmácia é, literalmente, aberta de cacau-beins, neste momento. Então é o fermentação tanque, este aberto.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "KDOWUwmb6E0",
+      "title": "Sítio Torres — IMG_9679 (8 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "ObfG0oL-KNE",
+      "title": "Sítio Torres — IMG_9680 (27 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — O que é mostrado é demonstrar como fazer o trecho no recorde. Então, o que é mostrado é explicar como fazer as filmes, então, nos ensino, no próximo ano. Nós estamos começando a entrar a cerca de 4…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "bnV7qSrv7w8",
+      "title": "Sítio Torres — IMG_9693 (16 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Esse formato de coisa é tudo que faz, hein? Sabe por abertura? Foi.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "S5uZi9jpYrs",
+      "title": "Sítio Torres — IMG_9697 (91 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Quando você vai torrar o cacau, você tem que torrar considerando a temperatura do forno, então não pode ser uma temperatura muito alta, em média em 120 graus e em 25 minutos, 30 minutos de torra, ok?…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "45utOy7sFbc",
+      "title": "Sítio Torres — IMG_9699 (23 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "gLm91em_6Wg",
+      "title": "Sítio Torres — IMG_9700 (16 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Quando estiver pronto você fala, tomei forte, tchau, tchau.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "V9eDFfROzDE",
+      "title": "Sítio Torres — IMG_9701 (70 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — O que é o seu? Ele opitou o açúcar, geralmente a gente aconselha o açúcar bastante forte, mas você vai ver. Você pode experimentar, você tem a dimensão do que é isso. Que cheiroso isso aqui, né? Isso…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "jD8MJQhrEiM",
+      "title": "Sítio Torres — IMG_9702 (17 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Sim, Alexandre, ele é cooperado e também é da diretoria da filial CoopCao, aqui no inicio de Pakajá. Prazer. Então, ele tá gravando mais tão língua de fação.",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "j0pXIS4fYTU",
+      "title": "Sítio Torres — IMG_9703 (345 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — A ideia dele é procurar novas origens de cacau com a questão orgânica, água florestal para que ele possa vender para clientes que estão buscando novos produtos diferenciados. Por exemplo, ele faz…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "ZrEdAGD5XmI",
+      "title": "Sítio Torres — IMG_9704 (86 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — Se nós conseguimos criar um lote de cacau, dizer que esse cacau vem no meio de produtos de barte, grandes árvores, e do que criar uma embalagem com as árvores lá na coisa, e o chinês dizia assim, não…",
+      "aspect": "portrait"
+    },
+    {
+      "type": "youtube",
+      "videoId": "JZfMF6fD0XY",
+      "title": "Sítio Torres — IMG_9705 (88 s)",
+      "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-66 — É importante entender que, nas primeiras visitas, não atingiu a fermentação no produtor, mas assim. Então, a gente manda 600 agora, uns pouquinho anos que vem ele quer uma tonelada, duas toneladas,…",
+      "aspect": "portrait"
+    }
+  ]
 }
