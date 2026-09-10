@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/sitio-2-pacaja-para-hero.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Sítio Dois (Pacajá) — cacao enrichment plot in Pacajá, Pará, Amazon rainforest"
+ },
+ "gallery": [
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-hero.jpg",
+   "alt": "Sítio Dois (Pacajá) — walking in to the family holding, Pacajá, Pará"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9642.jpg",
+   "alt": "Young cacao saplings growing through leaf litter under standing native forest"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9659.jpg",
+   "alt": "Alexandre among the cacao trees on the enrichment plot"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9662.jpg",
+   "alt": "Cacao and native understory beneath the forest canopy"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9666.jpg",
+   "alt": "Alexandre and family beside a giant native tree on the property"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9673.jpg",
+   "alt": "Dense rainforest landscape across the holding"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9676.jpg",
+   "alt": "The screened packing and drying structure"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9682.jpg",
+   "alt": "Wooden fermentation barrels at the post-harvest area"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9687.jpg",
+   "alt": "Stacked sacks of dried cacao in the family store"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9688.jpg",
+   "alt": "Alexandre holding a bag of the family's cacao beans"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9689.jpg",
+   "alt": "Close-up of the cacao beans — the ~120 kg harvest sample"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/sitio-2-pacaja-para-IMG_9692.jpg",
+   "alt": "The family storehouse, Pacajá, Pará"
+  }
+ ]
+}
