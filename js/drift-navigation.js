@@ -67,6 +67,7 @@
             'raimundo-geniza-para',           // Farm - Uruará, Pará (COPOPS/CEPOTX)
             'fazenda-santa-rosa-para',        // Farm - Uruará, Pará (COPOPS/CEPOTX)
             'fazenda-cleide-para',            // Farm - Altamira, Pará (CEPOTX)
+            'sitio-torres-pacaja-para',       // Farm - Pacajá, Pará (CoopCao/CEPOTX)
             'cepotx',                         // Cooperative - Pará
             'jungle-johnny-amazon-tours',     // Experience - Manaus
             'cargo-boat-manaus-leticia'       // Experience - Leticia
