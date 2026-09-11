@@ -1,5 +1,302 @@
 {
-  "schemaVersion": 1,
-  "hero": {},
-  "gallery": []
+ "schemaVersion": 1,
+ "hero": {
+  "type": "image",
+  "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+  "fallback": "../../assets/images/hero/cacao-circles-alt.jpg",
+  "alt": "Sítio Cacau na Veia — Jader's family beside the covered curing house and drying racks, Pacajá, Pará"
+ },
+ "gallery": [
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+   "alt": "Jader's wife and a visitor beside the raised barcaças (drying racks) full of cacao, under the covered curing house"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9504.jpg",
+   "alt": "The family beside the long wooden drying rack under the metal-roofed curing structure"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9494.jpg",
+   "alt": "Raised wooden drying rack filled with red-brown fermented cacao beans"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9557.jpg",
+   "alt": "Close-up of cacao beans spread across the drying rack"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9507.jpg",
+   "alt": "A wooden fermentation box at the post-harvest area"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9506.jpg",
+   "alt": "Inspecting a wooden fermentation box at the post-harvest yard"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9511.jpg",
+   "alt": "Large wooden fermentation vessels beneath the shed"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9502.jpg",
+   "alt": "Jader's wife and a visitor in the farmyard in front of the wooden shed"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9536.jpg",
+   "alt": "A vigorous young cacao sapling growing through leaf litter beneath native forest"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9516.jpg",
+   "alt": "A cacao sapling with flushed red new leaves — the agroforest's next generation"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9510.jpg",
+   "alt": "The drying racks seen across the yard, older cacao stands behind"
+  },
+  {
+   "type": "image",
+   "src": "../../assets/images/farms/cacau-na-veia-pacaje-IMG_9553.jpg",
+   "alt": "A visitor in an Agroverso shirt on the property"
+  },
+  {
+   "type": "youtube",
+   "videoId": "tBwb-lY0avY",
+   "title": "Sítio Cacau na Veia — IMG_9493 (97 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Aqui? Ah, fazenda, para caçar, né? Isso, que é a baixa. É. Ah, sim. Olha. Projeto novo é aqui mesmo, né? Boa apuntação de cacau. Sim, que tem as mudas novas. Isso. Aqui, né? É. Hmm. Então, estamos aqu…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "R-UAgsRw328",
+   "title": "Sítio Cacau na Veia — IMG_9495 (14 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Eu estou fazendo o Cacau, que você pode ver aqui, e aí, no outro lado, é o Cacau, que não é fermentado.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "VnjaKiA5xlM",
+   "title": "Sítio Cacau na Veia — IMG_9496 (19 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — É bonita. Este é o Bão Cacau. É o Bão Convencional.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "zZcz_a_hsOA",
+   "title": "Sítio Cacau na Veia — IMG_9497 (11 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — É o COOPCAO, e esse é o CoopCao. E esse é o COOPCAO, e esse é o COOPCAO.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "QaMAjKSp6UI",
+   "title": "Sítio Cacau na Veia — IMG_9498 (7 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Este é o caos, e este é o mais grande caos. É a diferença.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "XGUD9-Czxrg",
+   "title": "Sítio Cacau na Veia — IMG_9501 (8 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Under the sun, on top of this top, see these landmarks from the drying activities.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "w5sHEoWkE8k",
+   "title": "Sítio Cacau na Veia — IMG_9503 (29 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Sim, a fazenda... Introduction. Estamos aqui na propriedade, sítio cacau na veia, propriedade do cooperador Jada Adriano e da Gianni, aqui no município de Parcajá. Se fazemos parte do grupo da CEPOTX…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "aEsQPY4ghV8",
+   "title": "Sítio Cacau na Veia — IMG_9508 (53 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Um brilho fresco de cacau, que tem sido muito grande.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "orQ-QmWD6BY",
+   "title": "Sítio Cacau na Veia — IMG_9509",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "s68bUb4NzJ4",
+   "title": "Sítio Cacau na Veia — IMG_9512 (36 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Eee, é assim. Queimando os arvores da gome gris, cacau, cada alguns horas, para que o arvore seja even, olha o cara desse gome gris. Eee, perfeito, perfeito. Nicely done. Muito bom! Obrigado! Quer faz…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "NB2r9gyMb4Q",
+   "title": "Sítio Cacau na Veia — IMG_9513 (33 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Então, agora, nós vamos pegar o toque, o toque que você já descobriu, nós vamos ver o que está acontecendo aqui. No final, vamos ver o que está acontecendo aqui. Você precisa ver isso há sete dias. Qu…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "xKDr_2MAK_g",
+   "title": "Sítio Cacau na Veia — IMG_9514 (42 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Aqui é um cadastro feito na propriedade de oito hectares de floresta e vinte e duas hectares de cacau, sistema águo florestal. Quanto anos na árvores? É, mais de trinta e cinco anos. São árvores já an…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "QPt93CXhvMU",
+   "title": "Sítio Cacau na Veia — IMG_9524 (9 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Então, uau, isso é um... relativamente... um pouco de peixe gronado, eu acho.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "YCnphzAO3wA",
+   "title": "Sítio Cacau na Veia — IMG_9528 (37 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Estou procurando uma nova patch que está sendo restaurada agora em a municipalidade de Pakajé. E... Eu vou marcar os bairros da nova patch do Amazon Rainforest que está sendo restaurada. Agora a nova…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "Aet59voqC98",
+   "title": "Sítio Cacau na Veia — IMG_9531 (24 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Essas são as novas árvores que foram abortadas, que vão lê-las no mar. Quando a temperatura não é muito quente e fria, agora é um pouco frio, então temos as linhas de árvores, sob a forma dessa grande…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "r9QzD8YXHcA",
+   "title": "Sítio Cacau na Veia — IMG_9532 (35 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Ah, é muito frio, é por isso que ele mora, sabe? É um problema, sabe? Esse é muito frio, né? É, mais aqui, né? Ok. É por isso que eles não acabaram plantando, mesmo que as árvores já foram financiadas…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "A507SJm6LjA",
+   "title": "Sítio Cacau na Veia — IMG_9533 (33 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Tem muito fogo, isso é por isso que eu não plantei, mesmo que eles já prepararam o fio. Essa área aqui ela foi plantar, feita uma espécie de projeto para reflorestamento, onde tinha uma combinação ent…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "8W98d8r3O2k",
+   "title": "Sítio Cacau na Veia — IMG_9534 (11 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Não é muito quente, porque da droga desde os últimos dois meses, um monte de lindas que foram plantadas, moraram, então a plantação justamente veio a um avião.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "66YaR_gmPXs",
+   "title": "Sítio Cacau na Veia — IMG_9535 (5 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "O7lX6tCbDKo",
+   "title": "Sítio Cacau na Veia — IMG_9537 (34 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Estamos viajando para a roca machete, vamos ver se a temperatura dropa, porque é muito chato de fora, na área com nenhuma forma, mas o que eu noto é que imediatamente quando eu viajo para essa roca ma…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "9hkFmhK9HtQ",
+   "title": "Sítio Cacau na Veia — IMG_9538 (30 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — E aqui, você tem um monte de árvores gigantes, que estão tendo uma forma, que você notou. Todas as árvores foram plantadas ao mesmo tempo. Mas, bem, algumas espécies de árvores crescem muito alto. Olh…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "ppoCjII2biM",
+   "title": "Sítio Cacau na Veia — IMG_9539 (31 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Então, estamos late no sessão de arvores, então você não realmente vê any cacau fruits at all wearing off the tree. This tree are late bloomers, just this tree. But it's visible on the trunk of the re…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "2zLf74yrE1g",
+   "title": "Sítio Cacau na Veia — IMG_9541 (8 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "5r2wMzY5tyg",
+   "title": "Sítio Cacau na Veia — IMG_9542 (62 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — E GDAL show está levando nós mais profundo e para o jungle, para a parte da placa.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "84limG_TUI4",
+   "title": "Sítio Cacau na Veia — IMG_9543 (29 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "8mhxDam_PzM",
+   "title": "Sítio Cacau na Veia — IMG_9544 (13 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Isso used to be a river and is dried out for the season, too hot, so now we are crossing the river.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "6lbVS8QHsJs",
+   "title": "Sítio Cacau na Veia — IMG_9545 (78 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — É um cacau, não? Nesse período agora, a gente chama período já fora do período da safra, então quase não tem mais frutos. Você percebe que é uma roça já com bastante ano, mais de 30 anos. É um cacau c…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "258c8N4YevI",
+   "title": "Sítio Cacau na Veia — IMG_9546 (12 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Quares de cacau. Oh, 22. 22 mil plantas. Muito grande, né? Sim. 22 mil plantas. Oh, wow. Bom.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "lIWvD5x5jMY",
+   "title": "Sítio Cacau na Veia — IMG_9547 (17 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Cacau na veia. Cacau na veia. Sim, já de fazenda. Sim, dono da fazenda, cacau na veia. Bom. Então, essa é a farmácia do presidente de CEPOTX. Ele não está aqui hoje porque ele está viajando.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "Jqp5PMCCy60",
+   "title": "Sítio Cacau na Veia — IMG_9549 (5 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "efPtmMXx1hc",
+   "title": "Sítio Cacau na Veia — IMG_9550 (2 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Onera abacaba.",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "w5Qvev7W2XU",
+   "title": "Sítio Cacau na Veia — IMG_9555 (33 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Cacau é? Cacau, esse aqui abre. Novo cacau, né? Sim, mas esse aqui é espécie florestal, não é cacau, serão novas árvores. Aqui, ó. Novos árvores, sim. Novos árvores, não. Sendo aqui, espécie florestal…",
+   "aspect": "portrait"
+  },
+  {
+   "type": "youtube",
+   "videoId": "6TWK1uKk6qA",
+   "title": "Sítio Cacau na Veia — IMG_9556 (26 s)",
+   "caption": "Site walk 9 September 2026 · Pacajá, Pará · plot N-06-37 — Esse cacau aqui é para vender para as empresas do mercado de commodity, cacau comum, cacau sem aroma, cacau sem devido controle de qualidade. Esse aqui é um cacau mais selecionado, cacau fermentado, p…",
+   "aspect": "portrait"
+  }
+ ]
 }
