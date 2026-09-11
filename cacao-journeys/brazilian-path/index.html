@@ -539,7 +539,7 @@
 </section>
 <section class="content-section">
 <div class="intro-text">
-<p>This journey takes you through Brazil's diverse landscapes and cultures, from the innovation hub of Founderhaus in Florianópolis, through the historic cacao farms of Bahia, to immersive cultural experiences in Itacaré and Salvador, and finally deep into the Amazon Rainforest. Experience capoeira lessons, street samba, and forró dancing in Itacaré. Explore Portuguese colonial architecture in Salvador before flying to Manaus for jungle adventures with Jungle Johnny Tours. Complete your journey with an authentic cargo boat voyage upriver to Leticia, Colombia, at the border where Brazil, Colombia, and Peru meet. Each stop offers unique opportunities to connect with the land, the people, and the regenerative practices that restore the rainforest while supporting local communities.</p>
+<p>This journey takes you through Brazil's diverse landscapes and cultures, from the innovation hub of Founderhaus in Florianópolis, north through the historic cacao farms of Bahia, into the cultural heart of Itacaré and colonial Salvador, then west across the Amazon cacao farms of Pará. Experience capoeira lessons, street samba, and forró dancing in Itacaré. Explore Portuguese colonial architecture in Salvador, then fly north into the Amazon. From Pará continue to Manaus for jungle adventures with Jungle Johnny Tours. Complete your journey with an authentic cargo boat voyage upriver to Leticia, Colombia, at the border where Brazil, Colombia, and Peru meet. Each stop offers unique opportunities to connect with the land, the people, and the regenerative practices that restore the rainforest while supporting local communities.</p>
 </div>
 <div class="map-section">
 <div id="journey-map"></div>
@@ -648,9 +648,9 @@
         'coopercabruca': {
             name: 'Coopercabruca Cooperative',
             slug: 'coopercabruca',
-            lat: -14.4,
-            lon: -39.2,
-            location: 'Bahia, Brazil',
+            lat: -14.784745,
+            lon: -39.274889,
+            location: 'Ilhéus, Bahia, Brazil',
             type: 'cooperative',
             url: '../../cooperatives/coopercabruca/index.html',
             description: 'Visit Coopercabruca, a cooperative that supports small-scale cacao farmers in Bahia, working together to preserve traditional farming methods while ensuring sustainable livelihoods. The cooperative brings together regenerative cacao producers who share knowledge, maintain quality standards, and support each other. Coopercabruca was instrumental in Agroverse\'s early shipments, establishing the transparency standards and direct relationships that define our commitment to regenerative cacao sourcing.'
@@ -855,33 +855,47 @@
             return km * 0.621371;
         }
         
-        // Sort stops in journey order (not just by latitude, but by logical journey sequence)
-        // Order: Founderhaus → Bahia Farms → Coopercabruca → CIC → Black King → Santos Factory → Itacaré → Salvador → Paulo's Farm → CEPOTX → Manaus → Leticia
+        // Pará / Amazon cluster — a Salvador→Amazon flight enters here and a
+        // last-Pará-stop→Manaus flight exits here, regardless of internal order.
+        const AMAZON_STOP_SLUGS = new Set([
+            'cacau-na-veia-pacaje','cristo-rei-pacaje-para','sitio-torres-pacaja-para',
+            'paulo-la-do-sitio-para','fazenda-bom-sucesso','cepotx','santa-anna-fazenda-para',
+            'rancho-maranta-para','fazenda-cleide-para','raimundo-geniza-para','fazenda-santa-rosa-para'
+        ]);
+
+        // Journey order = a smooth geographical arc, south → north → west, no backtracking.
+        // Florianópolis → Bahia heading NORTH → Salvador → flight into Pará heading WEST
+        // → flight out to Manaus → cargo boat upriver to Leticia (Brazil/Colombia border).
+        //   Bahia cluster: ordered by latitude (south → north).
+        //   Pará  cluster: ordered by longitude (east → west).
         const journeyOrder = [
             'founderhaus',
-            'fazenda-capelavelha-bahia',
-            'fazenda-sao-jorge-bahia',
+            // --- Bahia: northward (south → north) ---
             'fazenda-analuana-bahia',
-            'fazenda-santa-ana-bahia',
-            'vivi-jesus-do-deus-itacare',
-            'oscar-bahia',
-            'coopercabruca',
-            'cic-cacao-innovation-center',
-            'black-king-ilheus',
             'santos-chocolate-factory',
+            'black-king-ilheus',
+            'cic-cacao-innovation-center',
+            'coopercabruca',
+            'fazenda-sao-jorge-bahia',
+            'fazenda-capelavelha-bahia',
+            'vivi-jesus-do-deus-itacare',
             'itacare-cultural-experiences',
+            'fazenda-santa-ana-bahia',
+            'oscar-bahia',
             'salvador-colonial-history',
-            'paulo-la-do-sitio-para',
-            'santa-anna-fazenda-para',
-            'rancho-maranta-para',
-            'raimundo-geniza-para',
-            'fazenda-santa-rosa-para',
-            'fazenda-cleide-para',
-            'fazenda-bom-sucesso',
-            'sitio-torres-pacaja-para',
+            // --- Pará: westward (east → west) ---
             'cacau-na-veia-pacaje',
             'cristo-rei-pacaje-para',
+            'sitio-torres-pacaja-para',
+            'paulo-la-do-sitio-para',
+            'fazenda-bom-sucesso',
             'cepotx',
+            'santa-anna-fazenda-para',
+            'rancho-maranta-para',
+            'fazenda-cleide-para',
+            'raimundo-geniza-para',
+            'fazenda-santa-rosa-para',
+            // --- Amazon exit: Manaus, then upriver to the tri-border ---
             'jungle-johnny-amazon-tours',
             'cargo-boat-manaus-leticia'
         ];
@@ -914,8 +928,12 @@
                 let travelDays = 0;
                 if (index > 0) {
                     const prevStop = sortedStops[index - 1];
-                    // Flight from Salvador to Manaus
-                    if (prevStop.slug === 'salvador-colonial-history' && stop.slug === 'jungle-johnny-amazon-tours') {
+                    // Flight from Salvador into the Amazon (Bahia → Pará)
+                    if (prevStop.slug === 'salvador-colonial-history' && AMAZON_STOP_SLUGS.has(stop.slug)) {
+                        travelDays = 1; // Flight day
+                    }
+                    // Flight from the last Pará stop out to Manaus
+                    else if (AMAZON_STOP_SLUGS.has(prevStop.slug) && stop.slug === 'jungle-johnny-amazon-tours') {
                         travelDays = 1; // Flight day
                     }
                     // Cargo boat from Manaus to Leticia
@@ -1031,8 +1049,12 @@
                 let travelDays = 0;
                 if (index > 0) {
                     const prevStop = sortedStops[index - 1];
-                    // Flight from Salvador to Manaus
-                    if (prevStop.slug === 'salvador-colonial-history' && stop.slug === 'jungle-johnny-amazon-tours') {
+                    // Flight from Salvador into the Amazon (Bahia → Pará)
+                    if (prevStop.slug === 'salvador-colonial-history' && AMAZON_STOP_SLUGS.has(stop.slug)) {
+                        travelDays = 1; // Flight day
+                    }
+                    // Flight from the last Pará stop out to Manaus
+                    else if (AMAZON_STOP_SLUGS.has(prevStop.slug) && stop.slug === 'jungle-johnny-amazon-tours') {
                         travelDays = 1; // Flight day
                     }
                     // Cargo boat from Manaus to Leticia
@@ -1121,7 +1143,7 @@
                                 const prevStop = sortedStops[index - 1];
                                 let travelText = '';
                                 if (travelDays > 0) {
-                                    if (prevStop.slug === 'salvador-colonial-history' && stop.slug === 'jungle-johnny-amazon-tours') {
+                                    if (prevStop.slug === 'salvador-colonial-history' && AMAZON_STOP_SLUGS.has(stop.slug)) {
                                         travelText = `(${travelDays} day flight)`;
                                     } else if (prevStop.slug === 'jungle-johnny-amazon-tours' && stop.slug === 'cargo-boat-manaus-leticia') {
                                         travelText = `(${travelDays} day cargo boat journey)`;
