@@ -24,6 +24,16 @@ const PAGES = [
 ];
 
 test.describe('Shipment media gallery (JSON-driven)', () => {
+  // PR6: media-gallery.js probes the published gallery first
+  // (farm_media_manifests/galleries/<collection>.json). Stub it to an empty
+  // gallery so this spec exercises the local ./media.json path deterministically.
+  test.beforeEach(async ({ page }) => {
+    await page.route(
+      '**/farm_media_manifests/main/galleries/**',
+      (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' })
+    );
+  });
+
   for (const { path, slug, heroSrc, farmerSrc, videoIds, nativeVideo, galleryIframes, alt, farmerAlt } of PAGES) {
     test(`${slug} fills media slots from media.json with zero console errors`, async ({ page }) => {
       const consoleErrors: string[] = [];

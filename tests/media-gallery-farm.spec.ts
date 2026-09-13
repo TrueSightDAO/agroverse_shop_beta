@@ -14,12 +14,22 @@ import { test, expect } from '@playwright/test';
 const PAGES = [
   { path: '/farms/oscar-bahia/', videoIds: ['lh_dAXhE7xQ', 'BI55aQ6B73U'], hero: false, containers: 1, sections: [] as string[] },
   { path: '/farms/fazenda-santa-ana-bahia/', videoIds: ['Kn13I7ijufs', 'J80B6TgWtFs', 'PwUu7ACzBdk'], hero: true, containers: 1, sections: [] },
-  { path: '/farms/paulo-la-do-sitio-para/', videoIds: ['8PIi57AOEE0'], hero: false, containers: 1, sections: [] },
+  { path: '/farms/paulo-la-do-sitio-para/', videoIds: ['8PIi57AOEE0', 'K54lQEC8uG4', 'StfWJS_AnTg', 'RbER_LlTghg', '5qdSU7pV6zc'], hero: false, containers: 1, sections: [] },
   { path: '/farms/fazenda-sao-jorge-bahia/', videoIds: ['sLNS9pZUBVw', '33nwH67UIag'], hero: false, containers: 2, sections: ['story-videos', 'photos'] },
   { path: '/farms/vivi-jesus-do-deus-itacare/', videoIds: ['FthJ9mftGsY', 'Z2RPqJzqS2k'], hero: false, containers: 1, sections: [] },
 ];
 
 test.describe('Farm media gallery (JSON-driven)', () => {
+  // PR6: media-gallery.js probes the published gallery first
+  // (farm_media_manifests/galleries/<collection>.json). Stub it to an empty
+  // gallery so this spec exercises the local ./media.json path deterministically.
+  test.beforeEach(async ({ page }) => {
+    await page.route(
+      '**/farm_media_manifests/main/galleries/**',
+      (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' })
+    );
+  });
+
   for (const { path, videoIds, hero, containers, sections } of PAGES) {
     test(`${path} renders gallery from media.json with zero console errors`, async ({ page }) => {
       const consoleErrors: string[] = [];
@@ -53,7 +63,7 @@ test.describe('Farm media gallery (JSON-driven)', () => {
       // sao-jorge "photos" container renders IMAGES (not iframes)
       if (sections.includes('photos')) {
         const photosBox = page.locator('[data-media-gallery="photos"]');
-        await expect(photosBox.locator('img.farm-video')).toHaveCount(2);
+        await expect(photosBox.locator('img.farm-video')).toHaveCount(5);
         await expect(photosBox.locator('iframe')).toHaveCount(0);
       }
 
