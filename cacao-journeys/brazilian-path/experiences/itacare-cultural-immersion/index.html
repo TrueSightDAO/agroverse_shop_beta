@@ -7,7 +7,7 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!-- SEO Meta Tags -->
 <title>Itacaré Cultural Immersion | Brazilian Journey Experiences</title>
-<meta content="Experience capoeira lessons at Tribo Bahia by Bico duro, street samba, and forró dancing in Itacaré, Bahia. Immerse yourself in the vibrant Afro-Brazilian culture of coastal Bahia." name="description"/>
+<meta content="Immerse yourself in the Afro-Brazilian culture of Itacaré, Bahia: capoeira training with Mestre Bico Duro and Tribo Bahia Mirim, the berimbau-led roda, street samba and forró, a boat trip up the Rio de Contas to Cachoeira do Cleandro, and the cacao farm — Fazenda Jesus de Deus — behind Agroverse's ceremonial cacao." name="description"/>
 <link href="https://www.agroverse.shop/cacao-journeys/brazilian-path/experiences/itacare-cultural-immersion" rel="canonical"/>
 <!-- Open Graph / Facebook -->
 <meta content="website" property="og:type"/>
@@ -144,6 +144,97 @@
             font-size: 0.9rem;
             color: var(--color-text-light);
             text-align: center;
+        }
+        
+        /* Watch Section (community videos) */
+        .video-section {
+            margin: 3rem 0;
+        }
+        
+        .video-section h3 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            color: var(--color-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .video-intro {
+            color: var(--color-text-light);
+            max-width: 820px;
+            margin-bottom: 1.75rem;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--color-bg-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+        }
+        
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .video-caption {
+            padding: 0.9rem 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        
+        .video-caption strong {
+            color: var(--color-text);
+        }
+        
+        .video-more {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+        }
+        
+        /* Recurring events list */
+        .events-list {
+            list-style: none;
+            margin: 0.5rem 0 0;
+        }
+        
+        .events-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(59, 51, 51, 0.1);
+        }
+        
+        .events-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .events-list .ev-when {
+            display: inline-block;
+            min-width: 200px;
+            font-weight: 600;
+            color: var(--color-primary);
         }
         
         .experience-hero-content h1 {
@@ -308,12 +399,44 @@
 <section class="content-section">
 <h2>About This Experience</h2>
 <div class="experience-story">
-<p>Immerse yourself in the vibrant culture of Bahia in Itacaré, where Afro-Brazilian traditions come alive through movement, music, and community. This coastal town offers a perfect blend of beach culture, traditional arts, and the warm hospitality that defines Bahia.</p>
-<p><strong>Capoeira at Tribo Bahia by Bico duro:</strong> Learn this Afro-Brazilian martial art that combines dance, acrobatics, and music. Capoeira is more than a physical practice—it's a cultural expression with deep roots in resistance and community. At Tribo Bahia, you'll experience authentic capoeira instruction that connects you to this powerful tradition.</p>
-<p style="margin-top: 0.75rem; padding: 0.9rem 1.1rem; background: #faf7f2; border-left: 4px solid #fefc8f; border-radius: 6px; font-size: 0.95rem;"><strong>Can't make it to Itacaré yet?</strong> Practice with Bico Duro from anywhere at <a href="https://capoeira.agroverse.shop">capoeira.agroverse.shop</a> — 45-minute solo sessions pairing his individual move videos with curated berimbau music. Donation-supported; 100% of net proceeds fund the Tribo Bahia Mirim after-school program for kids in Itacaré.</p>
-<p><strong>Street Samba:</strong> As evening falls, the cobblestone streets of Itacaré come alive with the rhythm of samba. Join locals and travelers alike as spontaneous samba circles form, creating moments of pure joy and connection. The energy is infectious, and everyone is welcome to join the dance.</p>
+<p>Immerse yourself in the living culture of Bahia in Itacaré, the small town at the mouth of the Rio de Contas where Afro-Brazilian traditions are not a performance but a daily practice. Capoeira rodas form in the square, samba spills onto the sand, and the cacao that becomes Agroverse's ceremonial cacao is harvested a few kilometers from where the children of Tribo Mirim train — same coast, same soil, the same community.</p>
+<p><strong>Capoeira with Mestre Bico Duro at Tribo Bahia Mirim:</strong> Learn the Afro-Brazilian martial art that fuses dance, acrobatics, music, and history under <strong>Mestre Bico Duro</strong>, who leads Tribo Bahia Mirim and whose work with Itacaré's children is the heart of this stop. Capoeira lives in the <em>roda</em> — the circle of players, musicians, and onlookers — led by the single-string <em>berimbau</em>, which sets the rhythm and calls the game. You'll train the fundamental moves, learn the songs, and sit inside a real roda.</p>
+<p style="margin-top: 0.75rem; padding: 0.9rem 1.1rem; background: #faf7f2; border-left: 4px solid #fefc8f; border-radius: 6px; font-size: 0.95rem;"><strong>Can't make it to Itacaré yet?</strong> Practice with Mestre Bico Duro from anywhere at <a href="https://capoeira.agroverse.shop">capoeira.agroverse.shop</a> — 45-minute solo sessions pairing his move library with curated berimbau music, plus the roda songbook with lyrics and translations. Donation-supported; 100% of net proceeds (minus transfer fees) fund the Tribo Bahia Mirim after-school capoeira program for kids in Itacaré.</p>
+<p><strong>Samba da Roda:</strong> On Saturday evenings, after the weekly capoeira roda in <strong>Praça Santos Dumont</strong>, the capoeiristas of Itacaré walk down to <strong>Praia da Coroa</strong> and the roda becomes a samba. Multiple groups and masters, pandeiros and voices, the night ending barefoot in the sand — the whole community, back to its Afro-Brazilian roots.</p>
 <p><strong>Forró Dancing:</strong> Experience forró, a traditional Brazilian dance style that brings communities together in celebration. With its distinctive accordion-driven rhythm, forró creates an atmosphere of warmth and connection that embodies the spirit of Bahia.</p>
-<p>These cultural experiences in Itacaré offer a deeper understanding of the Afro-Brazilian heritage that shapes Bahia's identity, connecting you to the rhythms, movements, and community spirit that make this region so special.</p>
+<p>Beyond the music: ride a boat up the Rio de Contas to <strong>Cachoeira do Cleandro</strong>, a waterfall reached only by river; eat <em>acarajé</em> from the traditional <em>baianas de tabuleiro</em> in their white lace; and come to understand the Afro-Brazilian heritage — Catholic and Candomblé woven together — that shapes Bahia's identity. These experiences connect you to the rhythms, movements, and community spirit that make this stretch of coast so singular.</p>
+</div>
+<!-- Watch: Itacaré in Motion -->
+<div class="video-section">
+<h3>Watch: Itacaré in Motion</h3>
+<p class="video-intro">Recorded with Mestre Bico Duro and the community of Tribo Bahia Mirim — the roda, the batizado, and the samba as they actually happen in Itacaré, plus the cacao farm whose beans become Agroverse's ceremonial cacao.</p>
+<div class="video-grid">
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/nq79fMDe2k8?rel=0" title="Street Roda with Mestre Bico Duro &amp; Tribo Mirim in Itacaré"></iframe></div>
+<div class="video-caption"><strong>Street Roda</strong> — Mestre Bico Duro and the Tribo Mirim kids bring the roda to the streets of Itacaré.</div>
+</div>
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/fQwPENlh_70?rel=0" title="Batizado Ceremony: Capoeira Baptism in Itacaré"></iframe></div>
+<div class="video-caption"><strong>Batizado</strong> — the capoeira baptism: students from groups across the region receive their first <em>corda</em> (the rope marking their level) and a capoeira nickname.</div>
+</div>
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/lFoZjB5Aq-8?rel=0" title="Samba da Roda at Praia da Coroa, Itacaré"></iframe></div>
+<div class="video-caption"><strong>Samba da Roda</strong> — after the Saturday roda, the community walks to Praia da Coroa and the roda becomes a samba, barefoot in the sand.</div>
+</div>
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/asFJezjvk9A?rel=0" title="Crafting a Berimbau with Mestre Bico Duro"></iframe></div>
+<div class="video-caption"><strong>Crafting a Berimbau</strong> — Mestre Bico Duro builds the single-string bow that leads every roda: <em>verga</em>, <em>arame</em>, <em>cabaça</em>, <em>dobrão</em>, <em>baqueta</em>, and <em>caxixi</em>.</div>
+</div>
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/MVxvaDwj4nM?rel=0" title="Cacao Farming at Fazenda Jesus de Deus"></iframe></div>
+<div class="video-caption"><strong>Where the Cacao Grows</strong> — Mestre Bico Duro walks Fazenda Jesus de Deus, the farm whose beans become Agroverse's ceremonial cacao.</div>
+</div>
+<div class="video-card">
+<div class="video-embed"><iframe allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy" src="https://www.youtube-nocookie.com/embed/4fjVIBr-Qmg?rel=0" title="St Michael's Feast Day: Caruru Celebration at Tribo Mirim"></iframe></div>
+<div class="video-caption"><strong>São Miguel's Caruru</strong> — on 29 September, caruru (okra, dendê palm oil, dried shrimp, ground nuts) is served to the children at Tribo Mirim.</div>
+</div>
+</div>
+<p class="video-more">More from the community — the full move library, roda songbook, and berimbau playlists — at <a href="https://capoeira.agroverse.shop">capoeira.agroverse.shop</a>. Every session there supports the Tribo Bahia Mirim after-school program.</p>
 </div>
 <!-- Photo Gallery -->
 <div class="photo-gallery">
@@ -346,20 +469,33 @@
 <h3>Experience Details</h3>
 <div class="info-row">
 <div class="info-label">Location</div>
-<div class="info-value">Itacaré, Bahia, Brazil</div>
+<div class="info-value">Itacaré, Bahia, Brazil — at the mouth of the Rio de Contas, on the Cacao Coast</div>
 </div>
 <div class="info-row">
 <div class="info-label">Duration</div>
-<div class="info-value">3-4 days recommended</div>
+<div class="info-value">3–4 days recommended</div>
 </div>
 <div class="info-row">
 <div class="info-label">Activities</div>
-<div class="info-value">Capoeira lessons, Street samba, Forró dancing, Beach exploration</div>
+<div class="info-value">Capoeira training with Mestre Bico Duro · street roda &amp; samba da roda · forró · boat trip to Cachoeira do Cleandro · acarajé &amp; Bahian cuisine</div>
 </div>
 <div class="info-row">
 <div class="info-label">Best Time</div>
-<div class="info-value">Year-round, with vibrant cultural events throughout</div>
+<div class="info-value">Year-round. Weekly Saturday roda + samba da roda; São Miguel's caruru on 29 September; the annual batizado.</div>
 </div>
+<div class="info-row">
+<div class="info-label">Cacao Connection</div>
+<div class="info-value">The cacao in Agroverse's ceremonial cacao is grown at Fazenda Jesus de Deus, a few kilometers from where Tribo Mirim trains — same coast, same community.</div>
+</div>
+</div>
+<!-- Recurring Rhythms -->
+<div class="experience-info" style="margin-top: 2rem;">
+<h3>Recurring Rhythms — When to Go</h3>
+<ul class="events-list">
+<li><span class="ev-when">Every Saturday evening</span> Capoeira roda in Praça Santos Dumont, then <em>samba da roda</em> at Praia da Coroa — the full community, multiple groups and masters, ending barefoot in the sand.</li>
+<li><span class="ev-when">29 September · São Miguel</span> Caruru served to the children at Tribo Mirim — okra, dendê palm oil, dried shrimp, and ground nuts, a feast that bridges Catholic and Candomblé traditions.</li>
+<li><span class="ev-when">Annual</span> Batizado — the capoeira baptism, where students from groups across the region receive their first <em>corda</em> and a capoeira nickname.</li>
+</ul>
 </div>
 <!-- Location Map Section -->
 <div class="experience-info" style="margin-top: 3rem;">
