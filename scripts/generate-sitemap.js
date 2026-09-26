@@ -7,6 +7,13 @@
  *   node scripts/generate-sitemap.js --check   # exit 1 if sitemap would change (CI)
  *
  * After adding a new post under post/your-slug/, run: npm run sitemap
+ *
+ * <lastmod> is derived DETERMINISTICALLY from each post's
+ * <meta property="article:published_time"> meta tag (falling back to file
+ * mtime only when that meta is absent). This makes `--check` produce identical
+ * output in a fresh CI checkout as it does locally -- deriving lastmod from
+ * filesystem mtime made the check impossible to pass in CI, because a fresh
+ * clone stamps every file with the checkout time.
  */
 
 const fs = require('fs');
@@ -28,6 +35,29 @@ function formatDate(d) {
   return `${y}-${m}-${day}`;
 }
 
+/**
+ * Extract a stable lastmod Date from a post's HTML.
+ * Prefers article:modified_time, then article:published_time (either
+ * attribute order). Returns null when neither is present so the caller can
+ * fall back to mtime.
+ */
+function extractPostDate(html) {
+  const patterns = [
+    /property=["']article:modified_time["'][^>]*content=["']([^"']+)["']/i,
+    /content=["']([^"']+)["'][^>]*property=["']article:modified_time["']/i,
+    /property=["']article:published_time["'][^>]*content=["']([^"']+)["']/i,
+    /content=["']([^"']+)["'][^>]*property=["']article:published_time["']/i,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m) {
+      const d = new Date(m[1]);
+      if (!Number.isNaN(d.getTime())) return d;
+    }
+  }
+  return null;
+}
+
 function collectPosts() {
   if (!fs.existsSync(POSTS_DIR)) return [];
   const slugs = fs
@@ -44,7 +74,15 @@ function collectPosts() {
     .sort();
   return slugs.map((slug) => {
     const idx = path.join(POSTS_DIR, slug, 'index.html');
-    const mtime = fs.statSync(idx).mtime;
+    const html = fs.readFileSync(idx, 'utf8');
+    const fromMeta = extractPostDate(html);
+    if (!fromMeta) {
+      console.warn(
+        `warn: ${slug} has no article:published_time; falling back to mtime ` +
+          '(non-deterministic in CI -- add the meta tag).'
+      );
+    }
+    const mtime = fromMeta || fs.statSync(idx).mtime;
     return { slug, mtime };
   });
 }
