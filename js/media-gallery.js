@@ -162,6 +162,7 @@
         iframe.className = 'farm-video';
         iframe.src = 'https://www.youtube.com/embed/' + item.videoId + '?rel=0';
         iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('loading', 'lazy');
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
         iframe.allowFullscreen = true;
         wrap.appendChild(iframe);
