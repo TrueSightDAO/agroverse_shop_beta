@@ -57,8 +57,19 @@
 
     var localGallery = Array.isArray(local.gallery) ? local.gallery : [];
     var pubGallery = Array.isArray(published.gallery) ? published.gallery : [];
-    var base = pubGallery.length ? pubGallery : localGallery;
+    var base = pubGallery.length ? pubGallery.slice() : localGallery.slice();
     var localIndex = indexByKey(localGallery);
+    // Published membership wins for MAP assets, but keep local curated entries the
+    // publisher has no record of (curated YouTube picks, curated photos) so a
+    // sectioned page never silently renders empty (São Jorge regression, 2026-09-15).
+    var seen = indexByKey(base);
+    localGallery.forEach(function (item) {
+      var k = itemKey(item);
+      if (k && !seen[k]) {
+        base.push(item);
+        seen[k] = item;
+      }
+    });
     out.gallery = base.map(function (item) {
       var match = localIndex[itemKey(item)];
       if (!match) return item;
@@ -72,6 +83,17 @@
       return merged;
     });
     return out;
+  }
+
+  // Sectioned (multi-container) pages: an explicit item.section wins; otherwise fall back
+  // to a type default so published entries (which carry no section) still land in the
+  // correct container instead of being silently dropped.
+  var DEFAULT_SECTION = { youtube: 'story-videos', image: 'photos' };
+  function sectionFor(item, available) {
+    if (item && item.section) return item.section;
+    var guess = item && item.type ? DEFAULT_SECTION[item.type] : '';
+    if (guess && available.indexOf(guess) !== -1) return guess;
+    return guess || available[0] || '';
   }
 
   function aspectFor(item) {
@@ -168,11 +190,16 @@
 
     // Multi-container pages: each [data-media-gallery] container gets only items with a matching "section"
     if (galleryEls.length) {
+      var availableSections = [];
+      galleryEls.forEach(function (el) {
+        var n = el.getAttribute('data-media-gallery');
+        if (n && availableSections.indexOf(n) === -1) availableSections.push(n);
+      });
       galleryEls.forEach(function (el) {
         var sectionName = el.getAttribute('data-media-gallery');
         if (Array.isArray(data.gallery)) {
           data.gallery.forEach(function (item) {
-            if ((item.section || '') !== sectionName) return;
+            if (sectionFor(item, availableSections) !== sectionName) return;
             var node = buildItem(item);
             if (node) el.appendChild(node);
           });
