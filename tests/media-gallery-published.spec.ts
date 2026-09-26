@@ -74,8 +74,11 @@ test.describe('media-gallery.js fetch-first published gallery', () => {
     });
     await expect(shared.locator('p')).toContainText('Site walk 9 September 2026');
 
-    // published membership is authoritative: exactly two videos, not local's twenty
-    await expect(page.locator('iframe.farm-video')).toHaveCount(2);
+    // union semantics (PR #328): published membership AND local curated entries
+    // both render; a shared item appears exactly once, local-only entries survive.
+    await expect(page.locator('iframe.farm-video[src*="PUBLISHEDONLY1"]')).toHaveCount(1);
+    await expect(page.locator('iframe.farm-video[src*="tBwb-lY0avY"]')).toHaveCount(1);
+    await expect(page.locator('iframe.farm-video[src*="R-UAgsRw328"]')).toHaveCount(1);
     expect(errors).toEqual([]);
   });
 
