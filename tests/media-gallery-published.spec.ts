@@ -78,4 +78,32 @@ test.describe('media-gallery.js fetch-first published gallery', () => {
     await expect(page.locator('iframe.farm-video')).toHaveCount(2);
     expect(errors).toEqual([]);
   });
+
+  test('sectioned page renders published entries that carry no section (sao-jorge)', async ({ page }) => {
+    // Regression: the publisher emits no `section` field, and sao-jorge is the only
+    // farm page with two sectioned containers. Pre-fix these published entries were
+    // dropped from every container, leaving the page blank.
+    const published = {
+      schemaVersion: 1,
+      hero: null,
+      gallery: [
+        { type: 'youtube', videoId: 'PUBSAOJORGE1' },
+        { type: 'youtube', videoId: 'PUBSAOJORGE2' },
+      ],
+    };
+    await page.route(PUBLISHED_GLOB, (route) =>
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(published) })
+    );
+    const errors = trackErrors(page);
+
+    await page.goto('/farms/fazenda-sao-jorge-bahia/', { waitUntil: 'domcontentloaded', timeout: 30000 });
+
+    const storyBox = page.locator('[data-media-gallery="story-videos"]');
+    await expect(storyBox.locator('iframe.farm-video[src*="PUBSAOJORGE1"]')).toHaveCount(1);
+    await expect(storyBox.locator('iframe.farm-video[src*="PUBSAOJORGE2"]')).toHaveCount(1);
+
+    // curated local photos still render (union, not replace)
+    await expect(page.locator('[data-media-gallery="photos"] img.farm-video')).toHaveCount(5);
+    expect(errors).toEqual([]);
+  });
 });
