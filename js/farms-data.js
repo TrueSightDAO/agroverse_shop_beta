@@ -45,6 +45,13 @@ window.FARMS_DATA = {
         lon: -52.57225,
         location: 'Pará, Brazil'
     },
+    'sitio-catarinense-para': {
+        name: 'Sítio Catarinense',
+        slug: 'sitio-catarinense-para',
+        lat: -3.513221,
+        lon: -51.579573,
+        location: 'Anapu, Pará, Brazil'
+    },
     'rancho-maranta-para': {
         name: 'Rancho Maranta',
         slug: 'rancho-maranta-para',
