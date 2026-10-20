@@ -834,6 +834,16 @@
             type: 'cooperative',
             url: '../../cooperatives/cepotx/index.html',
             description: 'Visit CEPOTX, a cooperative that supports small-scale cacao farmers in Pará, Brazil, located in the heart of the Amazon Rainforest. The cooperative provides essential resources, knowledge sharing, and market access to help member farms maintain the highest standards of quality and sustainability. Through CEPOTX, small-scale farmers gain access to regenerative farming practices, quality control systems, and fair trade opportunities. Member farms like Paulo\'s La do Sitio produce award-winning cacao that reflects the unique terroir of the Amazon Rainforest.'
+        },
+        'sitio-catarinense-para': {
+            name: 'Sítio Catarinense',
+            slug: 'sitio-catarinense-para',
+            lat: -3.51322,
+            lon: -51.579572,
+            location: 'Anapu, Pará, Amazon Rainforest, Brazil',
+            type: 'farm',
+            url: '../../farms/sitio-catarinense-para/index.html',
+            description: 'The family land of Jhordan Madian Costa de Oliveira in Anapu, on the Transamazônica corridor of Pará — 150.78 hectares of cacao, cassava and corn alongside cattle, acquired by his father in 2014 through an INCRA land settlement. The property also holds dozens of protected giant Bertholletia excelsa (Brazil nut) trees estimated at 300 to 400 years old. September 2026 site visit: a hand-drawn boundary measured 150.78 hectares, matching the family’s 150-hectare claim, so the registry records the boundary as approximate. Jhordan is a student at the Casa Familiar Rural “Dorothy Stang” in Anapu, the SunMint tree-planting partner in this municipality.'
         }
     };
     
@@ -860,7 +870,8 @@
         const AMAZON_STOP_SLUGS = new Set([
             'cacau-na-veia-pacaje','cristo-rei-pacaje-para','sitio-torres-pacaja-para',
             'paulo-la-do-sitio-para','fazenda-bom-sucesso','cepotx','santa-anna-fazenda-para',
-            'rancho-maranta-para','fazenda-cleide-para','raimundo-geniza-para','fazenda-santa-rosa-para'
+            'rancho-maranta-para','fazenda-cleide-para','raimundo-geniza-para','fazenda-santa-rosa-para',
+            'sitio-catarinense-para'
         ]);
 
         // Journey order = a smooth geographical arc, south → north → west, no backtracking.
@@ -887,6 +898,7 @@
             'cacau-na-veia-pacaje',
             'cristo-rei-pacaje-para',
             'sitio-torres-pacaja-para',
+            'sitio-catarinense-para',
             'paulo-la-do-sitio-para',
             'fazenda-bom-sucesso',
             'cepotx',
