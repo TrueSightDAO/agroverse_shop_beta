@@ -472,7 +472,9 @@
         // Initialize Leaflet map with geocoding
         document.addEventListener('DOMContentLoaded', function() {
             function initMap() {
-                const map = L.map('map-cfr-anapu').setView([0, 0], 2);
+                const ANAPU = [-3.4668292, -51.2057035];
+                const map = L.map('map-cfr-anapu').setView(ANAPU, 11);
+                L.marker(ANAPU).addTo(map).bindPopup('<b>Casa Familiar Rural de Anapu<br/>"Dorothy Stang"</b><br/>Rodovia Transamazônica, BR-230, KM 123<br/>Zona Rural, Anapu - PA<br/>68365-000, Brazil<br/><em>Pin marks Anapu. The school sits at KM 123 on BR-230.</em>').openPopup();
                 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors',
@@ -489,10 +491,7 @@
                             const lon = parseFloat(data[0].lon);
                             map.setView([lat, lon], 13);
                             
-                            L.marker([lat, lon])
-                                .addTo(map)
-                                .bindPopup('<b>Founderhaus</b><br>Av. dos Merlins, 156<br>Jurerê Internacional, Florianópolis - SC<br>88053-370, Brazil')
-                                .openPopup();
+
                         }
                     })
                     .catch(error => {
