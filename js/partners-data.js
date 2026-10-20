@@ -3,6 +3,13 @@
  * Used to calculate nearest neighbors for next/previous navigation
  */
 window.PARTNERS_DATA = {
+    'sitio-catarinense-para': {
+        name: 'Sítio Catarinense',
+        slug: 'sitio-catarinense-para',
+        lat: -3.513221,
+        lon: -51.579573,
+        location: 'Anapu, Pará, Brazil'
+    },
     'cfr-anapu-dorothy-stang': {
         name: 'Casa Familiar Rural de Anapu “Dorothy Stang”',
         slug: 'cfr-anapu-dorothy-stang',
