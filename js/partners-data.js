@@ -3,6 +3,21 @@
  * Used to calculate nearest neighbors for next/previous navigation
  */
 window.PARTNERS_DATA = {
+    'sitio-catarinense-para': {
+        name: 'Sítio Catarinense',
+        slug: 'sitio-catarinense-para',
+        lat: -3.513221,
+        lon: -51.579573,
+        location: 'Anapu, Pará, Brazil'
+    },
+    'cfr-anapu-dorothy-stang': {
+        name: 'Casa Familiar Rural de Anapu “Dorothy Stang”',
+        slug: 'cfr-anapu-dorothy-stang',
+        lat: -3.4668292,
+        lon: -51.2057035,
+        location: 'Anapu, Pará, Brazil',
+        description: 'A rural family school on the Rodovia Transamazônica (BR-230, KM 123) in Anapu, Pará, following pedagogia da alternância — students study at the school part of the year and return to their family farms for the rest, learning general knowledge alongside agriculture and animal husbandry. The school keeps a tree nursery. As a SunMint program partner, participating students plant native Amazonian trees on their own family properties, supported at R$ 5.00 per verified tree paid directly to the student via PIX, with each attested student carrying a verifiable credential page bound to their tree records. The CFR is a program partner, not a farm.'
+    },
     'okanogan-family-barter-faire': {
         name: 'Okanogan Family Barter Faire',
         slug: 'okanogan-family-barter-faire',
