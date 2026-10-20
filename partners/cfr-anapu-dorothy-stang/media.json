@@ -1,1 +1,129 @@
-__SKIP__
+{
+  "schemaVersion": 1,
+  "hero": {
+    "type": "image",
+    "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-hero.jpg",
+    "alt": "Casa Familiar Rural de Anapu - students and visiting team at the rural family school, Anapu, Para"
+  },
+  "gallery": [
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9723.jpg",
+      "alt": "The CRF tree nursery - a group gathered under the shade cloth among rows of seedling pots, Anapu, Para"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9730.jpg",
+      "alt": "The 2025 graduating 9th-grade class of CFR Dorothy Stang, with Prefeitura de Anapu and Casa Familiar Rural logos"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9731.jpg",
+      "alt": "A Brazilian Independence Day banner beside the school entrance and the Auditorio, CFR Dorothy Stang, Anapu"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9732.jpg",
+      "alt": "An adult and seven students in green CFR shirts in front of the rural family school, Anapu, Para"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9733.jpg",
+      "alt": "The group photographed in front of the school's yellow building among palm trees, CFR Dorothy Stang, Anapu"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9735.jpg",
+      "alt": "An Agroverse volunteer and a CFR student in the school garden, Anapu, Para"
+    },
+    {
+      "type": "image",
+      "src": "https://raw.githubusercontent.com/TrueSightDAO/.github/main/assets/crf-anapu-IMG_9717.jpg",
+      "alt": "Inside the school building during the CEPOTX and SunMint site visit, CRF Dorothy Stang, Anapu"
+    },
+    {
+      "type": "youtube",
+      "videoId": "1ADEowsu8Dg",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9714",
+      "caption": "Wow, it's good."
+    },
+    {
+      "type": "youtube",
+      "videoId": "F9FT23Yd5-o",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9715",
+      "caption": "So we are visiting a school in the countryside right now. I think they are trying to find his friend who is a teacher over here in this school."
+    },
+    {
+      "type": "youtube",
+      "videoId": "XkH1wRV5-nE",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9716",
+      "caption": "This is how the classroom looks like."
+    },
+    {
+      "type": "youtube",
+      "videoId": "10v-uIwFs_4",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9718",
+      "caption": "I worked as a cooperative in Nazareso, Rubin, 27, Brasonov, until Lvar\u00e1. This cooperative was created as a project of CFR, created by the FVPP movement."
+    },
+    {
+      "type": "youtube",
+      "videoId": "g_TOsYTAiI8",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9719",
+      "caption": "We are all friends. I know you must have hard times."
+    },
+    {
+      "type": "youtube",
+      "videoId": "byTlnA12QIQ",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9722",
+      "caption": "They need, along with the year that they sell, to plant the trees. And then they have to make the local garden."
+    },
+    {
+      "type": "youtube",
+      "videoId": "YleKJApx8mA",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9724",
+      "caption": "All right, so this is the nursery in this world. And we are working with the teachers and the developer program for these kids here."
+    },
+    {
+      "type": "youtube",
+      "videoId": "sDZMr6dF4HI",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9725",
+      "caption": ""
+    },
+    {
+      "type": "youtube",
+      "videoId": "q6VQvXcufeQ",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9726",
+      "caption": ""
+    },
+    {
+      "type": "youtube",
+      "videoId": "7dyDZ_5u0QQ",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9727",
+      "caption": "A selection with 8 types of cupuacu; a cupuacu that grows a lot, is small and gives a lot of fruit."
+    },
+    {
+      "type": "youtube",
+      "videoId": "L02IP0RCTJs",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9728",
+      "caption": ""
+    },
+    {
+      "type": "youtube",
+      "videoId": "1_rvByPVP9A",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9729",
+      "caption": "The name of the school is the Dorothy Stang state school. The students are very dedicated."
+    },
+    {
+      "type": "youtube",
+      "videoId": "tGUIt9Ayu-w",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9736",
+      "caption": ""
+    },
+    {
+      "type": "youtube",
+      "videoId": "FFEhUGO0fPE",
+      "title": "Casa Familiar Rural Anapu \u2014 IMG_9737",
+      "caption": ""
+    }
+  ]
+}
