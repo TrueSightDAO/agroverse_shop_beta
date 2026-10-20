@@ -134,5 +134,13 @@
   "the-whole-body-repair-clinic": {
     "name": "The Whole Body Repair Clinic",
     "location": "Quartzsite, Arizona"
+  },
+  "cfr-anapu-dorothy-stang": {
+    "name": "Casa Familiar Rural de Anapu “Dorothy Stang”",
+    "location": "Anapu, Pará, Brazil"
+  },
+  "sitio-catarinense-para": {
+    "name": "Sítio Catarinense",
+    "location": "Anapu, Pará, Brazil"
   }
 }
