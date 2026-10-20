@@ -499,8 +499,17 @@
                 
                 // Geocode location using Nominatim (OpenStreetMap)
                 const location = "Rodovia Transamaz\u00f4nica, BR-230, KM 123, Zona Rural, Anapu - PA, 68365-000, Brazil";
+                // Nominatim may answer with an HTML body (403/429 when rate-limited, or a
+                // block page). Parsing that as JSON throws `Unexpected token '<'`, which
+                // surfaced as a console error on every partner page carrying this block.
+                // Read the text and parse defensively; a miss is non-fatal (map keeps the
+                // location-pin view already set above).
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
-                    .then(response => response.json())
+                    .then(response => response.ok ? response.text() : null)
+                    .then(text => {
+                        if (!text) return null;
+                        try { return JSON.parse(text); } catch (e) { return null; }
+                    })
                     .then(data => {
                         if (data && data.length > 0) {
                             const lat = parseFloat(data[0].lat);

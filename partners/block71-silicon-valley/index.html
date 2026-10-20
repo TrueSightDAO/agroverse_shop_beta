@@ -478,7 +478,11 @@
                 // Geocode location using Nominatim (OpenStreetMap)
                 const location = "1701 Page Mill Rd, Palo Alto, CA 94304";
                 fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}&limit=1`)
-                    .then(response => response.json())
+                    .then(response => response.ok ? response.text() : null)
+                    .then(text => {
+                        if (!text) return null;
+                        try { return JSON.parse(text); } catch (e) { return null; }
+                    })
                     .then(data => {
                         if (data && data.length > 0) {
                             const lat = parseFloat(data[0].lat);
