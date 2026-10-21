@@ -334,15 +334,15 @@
 <p>A self-guided journey from Washington's borderlands near Canada to the California and Arizona desert, connecting communities through regenerative cacao. Beginning in Spring (May) with the Okanogan Family Barter Faire and culminating in Winter (Thanksgiving period) with desert gatherings, this seasonal migration follows a path reminiscent of the Pacific Crest Trail. Experience diverse spaces—from mountain gatherings to urban sanctuaries, from the off-grid community of Slab City & Salvation Mountain to the vibrant Winter Desert Gatherings in Quartzite—where regenerative cacao creates spaces for connection, celebration, and transformation.</p>
 <div class="pilgrimage-stats">
 <div class="stat-item">
-<span class="stat-value" id="gathering-venues-count">21</span>
+<span class="stat-value" id="gathering-venues-count">&mdash;</span>
 <span class="stat-label">Partner Venues</span>
 </div>
 <div class="stat-item">
-<span class="stat-value">2</span>
+<span class="stat-value" id="gathering-experiences-count">2</span>
 <span class="stat-label">Experiences</span>
 </div>
 <div class="stat-item">
-<span class="stat-value" id="gathering-distance">~2,500</span>
+<span class="stat-value" id="gathering-distance">&mdash;</span>
 <span class="stat-label">Miles</span>
 </div>
 <div class="stat-item">
@@ -362,11 +362,11 @@
 <p>Embark on a transformative journey through Brazil, connecting regenerative cacao farms, cooperatives (Coopercabruca, CEPOTX), supply chain partners (CIC lab, Black King), cultural experiences, and Amazon adventures. Starting from Founderhaus in Florianópolis, travel north through the farms of Bahia, visit CIC for lab testing and Black King in Ilhéus, immerse yourself in capoeira and samba in Itacaré, explore Salvador, then journey deep into the Amazon for jungle adventures and river voyages to Leticia.</p>
 <div class="pilgrimage-stats">
 <div class="stat-item">
-<span class="stat-value" id="brazilian-farms-count">22</span>
+<span class="stat-value" id="brazilian-farms-count">&mdash;</span>
 <span class="stat-label">Stops</span>
 </div>
 <div class="stat-item">
-<span class="stat-value" id="brazilian-distance">~3,908</span>
+<span class="stat-value" id="brazilian-distance">&mdash;</span>
 <span class="stat-label">Miles</span>
 </div>
 <div class="stat-item">
@@ -383,129 +383,7 @@
 <script src="../js/config.js"></script>
 <script src="../js/partners-data.js"></script>
 <script src="../js/pacific-path-data.js"></script>
-<script>
-    // Update gathering path stats
-    document.addEventListener('DOMContentLoaded', function() {
-        // Pacific West Coast stats
-        const countElement = document.getElementById('gathering-venues-count');
-        const distanceElement = document.getElementById('gathering-distance');
-        
-        if (window.PARTNERS_DATA) {
-            // Count only West Coast partners (Washington, Oregon, California, Arizona)
-            const westCoastStates = ['Washington', 'Oregon', 'California', 'Arizona'];
-            const westCoastPartners = [];
-            
-            for (const slug in window.PARTNERS_DATA) {
-                const partner = window.PARTNERS_DATA[slug];
-                const location = partner.location.toLowerCase();
-                const isWestCoast = westCoastStates.some(state => 
-                    location.includes(state.toLowerCase())
-                );
-                if (isWestCoast) {
-                    westCoastPartners.push(partner);
-                }
-            }
-            
-            // Sort North to South
-            westCoastPartners.sort((a, b) => b.lat - a.lat);
-            
-            // Calculate total distance
-            function calculateDistance(lat1, lon1, lat2, lon2) {
-                const R = 6371; // Earth's radius in kilometers
-                const dLat = (lat2 - lat1) * Math.PI / 180;
-                const dLon = (lon2 - lon1) * Math.PI / 180;
-                const a = 
-                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                return R * c;
-            }
-            
-            function kmToMiles(km) {
-                return km * 0.621371;
-            }
-            
-            let totalDistance = 0;
-            for (let i = 1; i < westCoastPartners.length; i++) {
-                const distance = calculateDistance(
-                    westCoastPartners[i - 1].lat, westCoastPartners[i - 1].lon,
-                    westCoastPartners[i].lat, westCoastPartners[i].lon
-                );
-                totalDistance += distance;
-            }
-            
-            // Add experiences count
-            let totalStops = westCoastPartners.length;
-            if (window.PACIFIC_PATH_DATA) {
-                // Count experiences (Slab City and Winter Desert)
-                const experienceCount = Object.keys(window.PACIFIC_PATH_DATA).length;
-                totalStops += experienceCount;
-            } else {
-                totalStops += 2; // Default: 2 experiences
-            }
-            
-            if (countElement) {
-                countElement.textContent = totalStops || 23;
-            }
-            if (distanceElement) {
-                distanceElement.textContent = '~' + Math.round(kmToMiles(totalDistance));
-            }
-        } else {
-            if (countElement) countElement.textContent = '23';
-            if (distanceElement) distanceElement.textContent = '~2,500';
-        }
-        
-        // Brazilian path stats
-        const brazilianCountElement = document.getElementById('brazilian-farms-count');
-        const brazilianDistanceElement = document.getElementById('brazilian-distance');
-        
-        // Brazilian journey coordinates in journey order (from brazilian-path/index.html)
-        // Order: Founderhaus → Bahia Farms → Coopercabruca → CIC → Black King → Itacaré → Salvador → Paulo's Farm → CEPOTX → Manaus → Leticia
-        const brazilianStops = [
-            { lat: -27.4305, lon: -48.4306 },      // Founderhaus
-            { lat: -14.6173663, lon: -39.2711487 }, // Fazenda Capela Velha
-            { lat: -14.3225976, lon: -39.1061207 }, // Fazenda Santa Ana
-            { lat: -14.324474, lon: -39.014201 },   // Vivi Jesus do Deus
-            { lat: -14.052624, lon: -39.438206 },   // Oscar Bahia
-            { lat: -14.4, lon: -39.2 },             // Coopercabruca
-            { lat: -14.7946, lon: -39.0503 },       // CIC (Ilhéus)
-            { lat: -14.7992591, lon: -39.0331959 }, // Black King (Ilhéus)
-            { lat: -14.324474, lon: -39.014201 },   // Itacaré Cultural
-            { lat: -12.9714, lon: -38.5014 },       // Salvador
-            { lat: -3.3922222, lon: -51.8525278 },  // Paulo's Farm
-            { lat: -3.292475, lon: -52.57225 },    // Santa Anna Fazenda
-            { lat: -3.29610, lon: -52.58316 },     // Rancho Maranta
-            { lat: -3.629756, lon: -53.652156 },   // Sítio Raimundo & Geniza (COPOPS)
-            { lat: -3.634141, lon: -53.669688 },   // Fazenda Santa Rosa (COPOPS)
-            { lat: -3.4138, lon: -52.6258 },       // Fazenda Cleide (CEPOTX)
-            { lat: -3.0944, lon: -52.0952 },       // Fazenda Bom Sucesso (SunMint PL-002)
-            { lat: -3.609276, lon: -51.034411 },   // Sítio Cacau na Veia (Pacajá), N-06-37 — CEPOTX
-            { lat: -3.536226, lon: -51.144873 },    // Sítio Torres (Pacajá), N-06-66 — CoopCao/CEPOTX
-            { lat: -3.2036111, lon: -52.2063889 },  // CEPOTX
-            { lat: -3.1190, lon: -60.0217 },        // Jungle Johnny (Manaus)
-            { lat: -4.2153, lon: -69.9406 }         // Leticia
-        ];
-        
-        // Calculate total distance for Brazilian journey
-        let brazilianTotalDistance = 0;
-        for (let i = 1; i < brazilianStops.length; i++) {
-            const distance = calculateDistance(
-                brazilianStops[i - 1].lat, brazilianStops[i - 1].lon,
-                brazilianStops[i].lat, brazilianStops[i].lon
-            );
-            brazilianTotalDistance += distance;
-        }
-        
-        if (brazilianCountElement) {
-            brazilianCountElement.textContent = brazilianStops.length;
-        }
-        
-        if (brazilianDistanceElement) {
-            brazilianDistanceElement.textContent = '~' + Math.round(kmToMiles(brazilianTotalDistance));
-        }
-    });
-</script>
+    <script src="../js/journey-stats.js"></script>
 <!-- Shared Navigation JavaScript -->
 <script src="../js/navigation.js"></script>
 <script src="../js/universal-nav.js"></script>
