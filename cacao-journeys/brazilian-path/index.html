@@ -1146,6 +1146,11 @@
                         imagePath = `https://raw.githubusercontent.com/TrueSightDAO/truesight_me/main/assets/shipments/agl10.avif`;
                     } else if (stop.slug === 'fazenda-sao-jorge-bahia') {
                         imagePath = `../../assets/images/shipments/sao-jorge-matheus-mailan-cacao-pods.jpg`;
+                    } else if (stop.slug === 'sitio-catarinense-para') {
+                        // 1040x780 landscape - fills the 200x150 card box exactly.
+                        // (sitio-catarinense-hero.jpg is 713x1600 portrait and would
+                        // render as a 66px-wide sliver under object-fit: contain.)
+                        imagePath = `../../assets/images/farms/sitio-catarinense-00000087.jpg`;
                     } else {
                         // Fallback - try to construct path from slug
                         imagePath = `../../assets/images/farms/${stop.slug}.jpg`;
