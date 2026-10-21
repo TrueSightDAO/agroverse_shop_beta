@@ -24,14 +24,14 @@
     },
     {
       "slug": "black-king-ilheus",
-      "name": "Black King - Ilh\u00e9us Warehouse",
+      "name": "Black King - Ilhéus Warehouse",
       "type": "partner",
       "lat": -14.7992591,
       "lon": -39.0331959
     },
     {
       "slug": "cic-cacao-innovation-center",
-      "name": "CIC - Centro de Inova\u00e7\u00e3o do Cacau",
+      "name": "CIC - Centro de Inovação do Cacau",
       "type": "partner",
       "lat": -14.7946,
       "lon": -39.0503
@@ -45,7 +45,7 @@
     },
     {
       "slug": "fazenda-sao-jorge-bahia",
-      "name": "Fazenda S\u00e3o Jorge",
+      "name": "Fazenda São Jorge",
       "type": "farm",
       "lat": -14.6289989,
       "lon": -39.4028297
@@ -59,14 +59,14 @@
     },
     {
       "slug": "vivi-jesus-do-deus-itacare",
-      "name": "Vivi\\",
+      "name": "Vivi's Jesus Do Deus Farm",
       "type": "farm",
       "lat": -14.324474,
       "lon": -39.014201
     },
     {
       "slug": "itacare-cultural-experiences",
-      "name": "Itacar\u00e9 Cultural Immersion",
+      "name": "Itacaré Cultural Immersion",
       "type": "experience",
       "lat": -14.324474,
       "lon": -39.014201
@@ -80,7 +80,7 @@
     },
     {
       "slug": "oscar-bahia",
-      "name": "Oscar\\",
+      "name": "Oscar's Farm",
       "type": "farm",
       "lat": -14.052624,
       "lon": -39.438206
@@ -94,42 +94,42 @@
     },
     {
       "slug": "cacau-na-veia-pacaje",
-      "name": "S\u00edtio Cacau na Veia",
+      "name": "Sítio Cacau na Veia",
       "type": "farm",
       "lat": -3.609276,
       "lon": -51.034411
     },
     {
       "slug": "cristo-rei-pacaje-para",
-      "name": "S\u00edtio Cristo Rei",
+      "name": "Sítio Cristo Rei",
       "type": "farm",
       "lat": -3.557358,
       "lon": -51.103642
     },
     {
       "slug": "sitio-torres-pacaja-para",
-      "name": "S\u00edtio Torres",
+      "name": "Sítio Torres",
       "type": "farm",
       "lat": -3.536226,
       "lon": -51.144873
     },
     {
       "slug": "cfr-anapu-dorothy-stang",
-      "name": "Casa Familiar Rural de Anapu \u201cDorothy Stang\u201d",
+      "name": "Casa Familiar Rural de Anapu “Dorothy Stang”",
       "type": "partner",
       "lat": -3.4668292,
       "lon": -51.2057035
     },
     {
       "slug": "sitio-catarinense-para",
-      "name": "S\u00edtio Catarinense",
+      "name": "Sítio Catarinense",
       "type": "farm",
       "lat": -3.51322,
       "lon": -51.579572
     },
     {
       "slug": "paulo-la-do-sitio-para",
-      "name": "Paulo\\",
+      "name": "Paulo's La do Sitio Farm",
       "type": "farm",
       "lat": -3.392213,
       "lon": -51.85254
@@ -171,7 +171,7 @@
     },
     {
       "slug": "raimundo-geniza-para",
-      "name": "S\u00edtio Raimundo & Geniza",
+      "name": "Sítio Raimundo & Geniza",
       "type": "farm",
       "lat": -3.629756,
       "lon": -53.652156

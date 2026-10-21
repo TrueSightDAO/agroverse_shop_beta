@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """Regenerate cacao-journeys/journey-stops.json from the authoritative path data.
 
-Single source of truth: BRAZILIAN_PATH_DATA (inline in brazilian-path/index.html) and
-PACIFIC_PATH_DATA (js/pacific-path-data.js). The journeys landing page MUST consume the
-generated JSON instead of hand-copying coordinates (that duplication is what made the
-published stat counts drift).
+Single source of truth:
+  - BRAZILIAN_PATH_DATA  (inline in cacao-journeys/brazilian-path/index.html)
+  - journeyOrder         (inline, same file -> the authoritative route order)
+  - PACIFIC_PATH_DATA    (js/pacific-path-data.js)
+
+The literals are EVALUATED with node rather than regex-scraped: names contain
+escaped apostrophes ('Vivi\'s Farm'), which truncate a naive [^']* pattern.
+
+The journeys landing page must consume this JSON instead of hand-copying
+coordinates - that duplication is what made the published counts drift.
 """
-import json, re, pathlib
+import json, pathlib, re, subprocess, tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BR = ROOT / "cacao-journeys/brazilian-path/index.html"
@@ -14,64 +20,102 @@ PA = ROOT / "js/pacific-path-data.js"
 OUT = ROOT / "cacao-journeys/journey-stops.json"
 
 
-def num(block, field):
-    m = re.search(rf"{field}:\s*(-?\d+(?:\.\d+)?)", block)
-    return float(m.group(1)) if m else None
+def literal_after(text, ident):
+    """Return the balanced {...}/[...] assigned to `ident`.
+
+    Anchors on the ASSIGNMENT (`const X =`), never the bare identifier: these
+    names also appear inside guard/comment text (e.g. `if (X) { return; }`),
+    which would otherwise capture a block that is not the data.
+    """
+    m = re.search(rf"(?:(?:const|let|var)\s+|window\.)?{re.escape(ident)}\s*=\s*", text)
+    if not m:
+        raise SystemExit(f"assignment for {ident} not found")
+    return balanced(text, m.end())
 
 
-def txt(block, field):
-    m = re.search(rf"{field}:\s*'([^']*)'", block)
-    return m.group(1) if m else None
+def balanced(text, start):
+    """Return the balanced {...} or [...] literal beginning at or after `start`."""
+    i = min(j for j in (text.find("{", start), text.find("[", start)) if j != -1)
+    open_c = text[i]
+    close_c = "}" if open_c == "{" else "]"
+    depth, instr, quote, esc = 0, False, "", False
+    for k in range(i, len(text)):
+        c = text[k]
+        if instr:
+            if esc:
+                esc = False
+            elif c == "\\":
+                esc = True
+            elif c == quote:
+                instr = False
+            continue
+        if c in "'\"":
+            instr, quote = True, c
+        elif c == open_c:
+            depth += 1
+        elif c == close_c:
+            depth -= 1
+            if depth == 0:
+                return text[i:k + 1]
+    raise SystemExit(f"unbalanced literal from offset {start}")
+
+
+def eval_js(snippets):
+    """Evaluate JS literal snippets with node and return their JSON values."""
+    js = "\n".join(f"const __v{i} = {s};" for i, s in enumerate(snippets))
+    js += "\nconsole.log(JSON.stringify([" + ",".join(f"__v{i}" for i in range(len(snippets))) + "]));"
+    with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False, encoding="utf-8") as f:
+        f.write(js)
+        path = f.name
+    res = subprocess.run(["node", path], capture_output=True, text=True)
+    if res.returncode != 0:
+        raise SystemExit(f"node eval failed: {res.stderr[:400]}")
+    return json.loads(res.stdout)
 
 
 def brazilian():
-    """Stops in AUTHORITATIVE journey order (the explicit journeyOrder array).
-
-    The journey order matters: cumulative distance is computed along the route, so
-    file order is NOT good enough. Every slug in journeyOrder must resolve, otherwise
-    the count silently drifts (that is the bug this generator exists to kill).
-    """
     src = BR.read_text(encoding="utf-8")
-    body = re.search(r"const BRAZILIAN_PATH_DATA\s*=\s*\{(.*?)\n\s*\};", src, re.S).group(1)
-
-    orders = re.findall(r"journeyOrder\s*=\s*\[(.*?)\];", src, re.S)
-    if not orders:
-        raise SystemExit("journeyOrder array not found - refusing to guess route order")
-    order = re.findall(r"'([a-z0-9\-]+)'", orders[0])
-
-    blocks = {}
-    for slug, block in re.findall(r"^\s{8}'([a-z0-9\-]+)':\s*\{(.*?)^\s{8}\}(?:,|$)", body, re.S | re.M):
-        blocks[slug] = block
+    data, order = eval_js([literal_after(src, "BRAZILIAN_PATH_DATA"),
+                           literal_after(src, "journeyOrder")])
+    if not order:
+        raise SystemExit("journeyOrder empty - refusing to guess route order")
 
     out, missing = [], []
     for slug in order:
-        block = blocks.get(slug)
-        if block is None:
+        stop = data.get(slug)
+        if stop is None:
             missing.append(slug)
             continue
         out.append({
             "slug": slug,
-            "name": txt(block, "name"),
-            "type": txt(block, "type") or "farm",
-            "lat": num(block, "lat"),
-            "lon": num(block, "lon"),
+            "name": stop.get("name"),
+            "type": stop.get("type") or "farm",
+            "lat": stop.get("lat"),
+            "lon": stop.get("lon"),
         })
     if missing:
-        raise SystemExit(f"journeyOrder slugs with no data block: {missing}")
+        raise SystemExit(f"journeyOrder slugs with no data: {missing}")
     if len(out) != len(order):
-        raise SystemExit(f"count mismatch: journeyOrder={len(order)} emitted={len(out)}")
+        raise SystemExit(f"count mismatch journeyOrder={len(order)} emitted={len(out)}")
+    bad = [s["slug"] for s in out if s["lat"] is None or s["lon"] is None]
+    if bad:
+        raise SystemExit(f"stops missing coordinates: {bad}")
+    bad_name = [s["slug"] for s in out if not s["name"] or len(s["name"]) < 3]
+    if bad_name:
+        raise SystemExit(f"stops with unusable name: {bad_name}")
     return out
 
 
 def pacific():
     src = PA.read_text(encoding="utf-8")
+    (data,) = eval_js([literal_after(src, "PACIFIC_PATH_DATA")])
     out = []
-    for m in re.finditer(
-        r"^\s{8}'([a-z0-9\-]+)':\s*\{\s*\n\s*name:\s*'([^']*)'.*?lat:\s*(-?\d+(?:\.\d+)?),\s*\n\s*lon:\s*(-?\d+(?:\.\d+)?)",
-        src, re.M | re.S,
-    ):
-        out.append({"slug": m.group(1), "name": m.group(2), "type": "experience",
-                    "lat": float(m.group(3)), "lon": float(m.group(4))})
+    for slug, stop in data.items():
+        out.append({"slug": slug, "name": stop.get("name"), "type": "experience",
+                    "lat": stop.get("lat"), "lon": stop.get("lon")})
+    bad = [s["slug"] for s in out if s["lat"] is None or s["lon"] is None]
+    if bad:
+        raise SystemExit(f"pacific stops missing coordinates: {bad}")
     return out
 
 
@@ -81,10 +125,7 @@ def main():
         "brazilian": brazilian(),
         "pacific": pacific(),
     }
-    misses = [s["slug"] for s in data["brazilian"] if s["lat"] is None or s["lon"] is None]
-    if misses:
-        raise SystemExit(f"stops missing coordinates: {misses}")
-    OUT.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    OUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {OUT.relative_to(ROOT)}: brazilian={len(data['brazilian'])} pacific={len(data['pacific'])}")
 
 
