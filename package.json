@@ -21,7 +21,9 @@
     "clasp:checkout:pull": "npx clasp pull -P google-app-script/agroverse_shop_checkout",
     "clasp:checkout:push": "npx clasp push -P google-app-script/agroverse_shop_checkout",
     "clasp:checkout:open": "npx clasp open -P google-app-script/agroverse_shop_checkout",
-    "clasp:checkout:status": "npx clasp status -P google-app-script/agroverse_shop_checkout"
+    "clasp:checkout:status": "npx clasp status -P google-app-script/agroverse_shop_checkout",
+    "journey-stats": "node scripts/generate-journey-stats.js",
+    "journey-stats:check": "node scripts/generate-journey-stats.js --check"
   },
   "devDependencies": {
     "@google/clasp": "^3.3.0",
