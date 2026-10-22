@@ -8,11 +8,22 @@
   var PUBLISHED_BASE =
     'https://raw.githubusercontent.com/TrueSightDAO/farm_media_manifests/main/galleries/';
 
+  // Some pages carry a role-qualified directory slug while their MAP entity id is
+  // the canonical <name>-<region> farm_id. CFR Anapu is the *program*
+  // `crf-anapu-para` (handoffs/CRF_ANAPU_MEDIA_TASK_PLAN.md, Gary decision #1), but
+  // its shop page lives at partners/cfr-anapu-dorothy-stang/. Alias such directories
+  // to their manifest so the page reads its published gallery instead of 404-ing
+  // into the ./media.json fallback. Unlisted slugs behave exactly as before.
+  var COLLECTION_ALIASES = {
+    'cfr-anapu-dorothy-stang': 'crf-anapu-para'
+  };
+
   function collectionSlug() {
     var parts = window.location.pathname.split('/').filter(function (p) {
       return p && p !== 'index.html';
     });
-    return parts.length ? parts[parts.length - 1] : '';
+    var dir = parts.length ? parts[parts.length - 1] : '';
+    return COLLECTION_ALIASES[dir] || dir;
   }
 
   async function fetchJson(url) {
