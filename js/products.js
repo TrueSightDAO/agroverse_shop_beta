@@ -181,6 +181,21 @@ window.PRODUCTS = {
     relatedFamily: 'bar-81-50g'
   },
 
+  'organic-81-dark-chocolate-bar-50g-vivi-jesus-do-deus-bahia-2025': {
+    productId: 'organic-81-dark-chocolate-bar-50g-vivi-jesus-do-deus-bahia-2025',
+    productPageSlug: 'organic-81-dark-chocolate-bar-50g-vivi-jesus-do-deus-bahia-2025',
+    name: "81% Organic Dark Chocolate Bar (50g) \u2014 Vivi's Farm, Bahia Brazil, 2025",
+    price: 10.00,
+    weight: 1.76, // 50g \u2248 1.76 oz (shipping calculation)
+    image: '/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg',
+    stripePriceId: '',
+    category: 'retail',
+    shipment: 'AGL13',
+    farm: "Vivi's Farm (Jesus Do Deus), Itacar\u00e9, Bahia",
+    gtin: '00860010660256',
+    relatedFamily: 'bar-81-50g'
+  },
+
   // ===== GENERIC / SUBSCRIBABLE ENTRIES =====
   // These are vintage-independent, single-GTIN entries. The GTIN is shared with
   // the vintage PDPs above. Provenance is per-bar via the QR code.
