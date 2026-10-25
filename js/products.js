@@ -26,7 +26,7 @@ window.PRODUCTS = {
     // URL path under /product-page/ (must match folder name; id may differ for Stripe/SKU)
     productPageSlug: 'ceremonial-cacao-paulo-s-la-do-sitio-farm-2024-200g',
     name: 'Ceremonial Cacao – La do Sitio Farm, Pará Brazil, 2024 (200g)',
-    price: 25.00,
+    price: 30.00,
     weight: 7.05, // 200g = ~7.05 oz (for shipping calculation)
     image: '/assets/images/products/la-do-sitio-farm.jpg',
     stripePriceId: '', // Not needed - using price_data instead
