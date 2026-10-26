@@ -610,38 +610,86 @@
 
   /**
    * Call the GAS createSubscriptionCheckoutSession action.
+   * Uses a form POST to bypass CORS (GAS web apps don't return
+   * CORS headers for GET fetch requests).
    */
-  async function createSubscriptionSession(product, quantity, shippingAddress) {
-    var scriptUrl = config.googleScriptUrl;
-    if (!scriptUrl || scriptUrl.indexOf('YOUR_') !== -1) {
-      throw new Error('Google App Script URL not configured.');
-    }
+  function createSubscriptionSession(product, quantity, shippingAddress) {
+    return new Promise(function(resolve, reject) {
+      var scriptUrl = config.googleScriptUrl;
+      if (!scriptUrl || scriptUrl.indexOf('YOUR_') !== -1) {
+        reject(new Error('Google App Script URL not configured.'));
+        return;
+      }
 
-    var params = new URLSearchParams();
-    params.append('action', 'createSubscriptionCheckoutSession');
-    params.append('environment', config.environment || 'production');
-    params.append('sku', product.productId);
-    params.append('quantity', quantity.toString());
-    params.append('shippingAddress', JSON.stringify(shippingAddress));
+      // Build a form, submit it to a hidden iframe, and read the JSON response
+      // This avoids CORS entirely by using a form POST (same-origin fallback)
+      var form = document.createElement('form');
+      form.method = 'POST';
+      form.action = scriptUrl;
+      form.target = 'gas-subscription-iframe';
+      form.style.display = 'none';
 
-    var response = await fetch(scriptUrl + '?' + params.toString(), {
-      method: 'GET'
+      // Create hidden iframe to receive the response
+      var iframe = document.getElementById('gas-subscription-iframe');
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'gas-subscription-iframe';
+        iframe.name = 'gas-subscription-iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // Add form fields
+      function addField(name, value) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+      }
+
+      addField('action', 'createSubscriptionCheckoutSession');
+      addField('environment', config.environment || 'production');
+      addField('sku', product.productId);
+      addField('quantity', quantity.toString());
+      addField('shippingAddress', JSON.stringify(shippingAddress));
+      addField('name', product.name || '');
+      addField('price', product.price ? product.price.toString() : '');
+      addField('weight', product.weight ? product.weight.toString() : '');
+      addField('image', product.image || '');
+
+      // Listen for the iframe to load (GAS returns JSON in the POST response)
+      var timeout = setTimeout(function() {
+        reject(new Error('Request timed out'));
+      }, 30000);
+
+      iframe.onload = function() {
+        clearTimeout(timeout);
+        try {
+          // GAS returns the JSON response as the iframe body
+          var body = iframe.contentDocument.body;
+          var text = body ? body.textContent || body.innerText : '';
+          if (text) {
+            var data = JSON.parse(text);
+            if (data.error) {
+              reject(new Error(data.error));
+            } else if (data.checkoutUrl) {
+              resolve(data.checkoutUrl);
+            } else {
+              reject(new Error('No checkout URL received'));
+            }
+          } else {
+            reject(new Error('Empty response from server'));
+          }
+        } catch (e) {
+          reject(new Error('Failed to parse response: ' + e.message));
+        }
+      };
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
     });
-
-    if (!response.ok) {
-      var errorText = await response.text();
-      throw new Error(errorText || 'Failed to create subscription session');
-    }
-
-    var data = await response.json();
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    if (!data.checkoutUrl) {
-      throw new Error('No checkout URL received');
-    }
-
-    return data.checkoutUrl;
   }
 
   /**
