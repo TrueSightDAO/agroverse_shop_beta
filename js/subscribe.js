@@ -623,6 +623,12 @@
     params.append('sku', product.productId);
     params.append('quantity', quantity.toString());
     params.append('shippingAddress', JSON.stringify(shippingAddress));
+    params.append('name', product.name || '');
+    params.append('price', (product.price || 10.00).toString());
+    params.append('weight', (product.weight || 1.76).toString());
+    if (product.image) {
+      params.append('image', product.image);
+    }
 
     var response = await fetch(scriptUrl + '?' + params.toString(), {
       method: 'GET'
