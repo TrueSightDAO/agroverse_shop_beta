@@ -62,6 +62,20 @@ window.PRODUCTS = {
     farm: "Oscar's Farm, Bahia",
     relatedFamily: 'ceremonial-200g'
   },
+  'ceremonial-cacao-500g-ilheus-bahia-2024': {
+    productId: 'ceremonial-cacao-500g-ilheus-bahia-2024',
+    productPageSlug: 'ceremonial-cacao-500g-ilheus-bahia-2024',
+    name: 'Ceremonial Cacao (500g) — Ilhéus, Bahia, Brazil 2024',
+    price: 60.00,
+    weight: 17.64, // 500g ≈ 17.64 oz (shipping calculation)
+    image: '/assets/images/products/packaging/front.jpeg',
+    stripePriceId: '',
+    category: 'retail',
+    shipment: 'MAIN',
+    farm: 'Ilhéus, Bahia',
+    // NOTE: no GTIN assigned yet — do not reuse the 81% bar's GTIN.
+    relatedFamily: 'ceremonial-500g'
+  },
   '8-ounce-organic-cacao-nibs': {
     productId: '8-ounce-organic-cacao-nibs',
     productPageSlug: '8-ounce-organic-cacao-nibs-from-brazil',
