@@ -290,7 +290,7 @@ window.PRODUCTS['custom-white-label-chocolate-bar-50g'] = {
 window.PRODUCTS['cacao-mass-bar-500g-ilheus-2024'] = {
   productId: 'cacao-mass-bar-500g-ilheus-2024',
   productPageSlug: 'cacao-mass-bar-500g',
-  name: 'Cacao Mass Bar (500g) – Ilhéus, Bahia Brazil, 2024',
+  name: "Cacao Mass Bar (500g) – Oscar's Farm, Bahia Brazil, 2024",
   price: 60.00,
   weight: 17.64,
   image: '/assets/images/products/cacao-mass-bar-500g-1.jpeg',
