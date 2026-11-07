@@ -45,6 +45,41 @@ BASE_URL = 'https://agroverse.shop'
 # 4748 - Food, Beverages & Tobacco > Food Items > Candy & Chocolate
 DEFAULT_GOOGLE_PRODUCT_CATEGORY = '4748'
 
+# Live store-inventory snapshot — same SSOT the website's inventory-service.js reads.
+INVENTORY_URL = 'https://raw.githubusercontent.com/TrueSightDAO/agroverse-inventory/main/store-inventory.json'
+_inventory_cache = None
+
+def load_inventory(url=INVENTORY_URL, timeout=5):
+    """Fetch the store inventory snapshot. Returns {sku: qty}, or {} if unavailable."""
+    global _inventory_cache
+    if _inventory_cache is not None:
+        return _inventory_cache
+    try:
+        import urllib.request
+        with urllib.request.urlopen(url, timeout=timeout) as r:
+            data = json.loads(r.read().decode('utf-8'))
+        _inventory_cache = {str(k): int(v) for k, v in (data.get('inventory') or {}).items()}
+        print(f"Loaded inventory snapshot: {len(_inventory_cache)} SKUs")
+    except Exception as e:
+        print(f"WARNING: inventory snapshot unavailable ({e}) — availability left at 'in stock'")
+        _inventory_cache = {}
+    return _inventory_cache
+
+def resolve_availability(product_id):
+    """Map a product to Google's availability values using the inventory snapshot.
+
+    A SKU with no snapshot row is treated as 'in stock' (unknown), NOT sold out — this
+    mirrors the storefront, which shows "Check availability" rather than a false
+    "Out of stock" for untracked SKUs.
+    """
+    inv = load_inventory()
+    if not inv:
+        return 'in stock'
+    qty = inv.get(product_id)
+    if qty is None:
+        return 'in stock'
+    return 'in stock' if qty > 0 else 'out of stock'
+
 def parse_products_js():
     """Parse products.js file and extract product data."""
     with open(PRODUCTS_JS_FILE, 'r', encoding='utf-8') as f:
@@ -59,6 +94,14 @@ def parse_products_js():
         raise ValueError("Could not find PRODUCTS object in products.js")
     
     products_str = match.group(1)
+    
+    # products.js also appends products via annex-style assignments that sit OUTSIDE
+    # the main object literal: window.PRODUCTS['some-id'] = { ... };
+    # Those were previously invisible to this parser (silently dropped from the feed).
+    # Fold them into products_str so the single extraction loop below handles every one.
+    annex_re = re.compile(r"window\.PRODUCTS\[['\"]([^'\"]+)['\"]\]\s*=\s*\{((?:[^{}]|\{[^{}]*\})*)\}", re.DOTALL)
+    for _am in annex_re.finditer(content):
+        products_str += "\n'%s': {%s}" % (_am.group(1), _am.group(2))
     
     # Use a more robust parsing approach
     products = {}
@@ -207,7 +250,14 @@ def generate_xml_feed(products, include_wholesale=False):
         filtered_products[product_id] = product
     
     # Add products
+    skipped = []
     for product_id, product in filtered_products.items():
+        # Never emit a feed item whose landing page doesn't exist — a dead g:link is a
+        # Merchant Center disapproval and a wasted click for the customer.
+        _slug = product.get('productPageSlug') or product_id
+        if not (BASE_DIR / 'product-page' / str(_slug)).is_dir():
+            skipped.append((product_id, str(_slug)))
+            continue
         item = ET.SubElement(channel, 'item')
         
         # Required fields (plain Unicode on .text — ElementTree escapes &, <, > for XML)
@@ -228,9 +278,11 @@ def generate_xml_feed(products, include_wholesale=False):
         description = generate_description(product)
         ET.SubElement(item, 'g:description').text = description
         
-        # Availability (required)
+        # Availability (required) — must match what the storefront actually shows.
+        # Claiming "in stock" for a sold-out item is a Merchant Center misrepresentation
+        # and can suspend the account, not just disapprove an item.
         category = product.get('category', 'retail')
-        availability = 'in stock'
+        availability = resolve_availability(product_id)
         ET.SubElement(item, 'g:availability').text = availability
         
         # Price (required)
@@ -251,6 +303,14 @@ def generate_xml_feed(products, include_wholesale=False):
         # Brand
         ET.SubElement(item, 'g:brand').text = 'Agroverse'
         
+        # GTIN (Google strong identifier). Emit it when products.js knows it; otherwise
+        # declare that no identifier exists, so items aren't disapproved for a missing GTIN.
+        gtin = product.get('gtin')
+        if gtin:
+            ET.SubElement(item, 'g:gtin').text = str(gtin)
+        else:
+            ET.SubElement(item, 'g:identifier_exists').text = 'no'
+        
         # Additional fields
         if product.get('farm'):
             ET.SubElement(item, 'g:custom_label_0').text = str(product.get('farm'))
@@ -265,6 +325,11 @@ def generate_xml_feed(products, include_wholesale=False):
         cat = product.get('googleProductCategory') or DEFAULT_GOOGLE_PRODUCT_CATEGORY
         ET.SubElement(item, 'g:google_product_category').text = str(cat)
     
+    if skipped:
+        print(f"\nSkipped {len(skipped)} product(s) with no product-page directory:")
+        for pid, slug in skipped:
+            print(f"  • {pid} (expected product-page/{slug}/)")
+
     # Convert to string with pretty formatting
     xml_str = ET.tostring(rss, encoding='unicode')
     dom = minidom.parseString(xml_str)
