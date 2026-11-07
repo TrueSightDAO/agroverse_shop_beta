@@ -1,0 +1,40 @@
+name: product-feed-freshness
+
+# The Merchant Center feed is a committed artifact with no generator in the
+# pipeline, so it silently rotted from Oct 25 until the 500g bar was found
+# missing. This job is the owner it never had.
+on:
+  pull_request:
+    paths:
+      - 'js/products.js'
+      - 'scripts/generate_facebook_feed.py'
+      - 'facebook_product_feed.xml'
+      - 'tests/feed/**'
+      - '.github/workflows/product-feed-freshness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'js/products.js'
+      - 'scripts/generate_facebook_feed.py'
+      - 'facebook_product_feed.xml'
+      - 'tests/feed/**'
+  schedule:
+    # Daily 06:17 UTC -- catches inventory/schema drift even with no commits.
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest
+      - name: Feed contract tests
+        run: python -m pytest tests/feed -q
+      - name: Structural freshness (regenerate offline and diff)
+        env:
+          FEED_CHECK_FRESH: '1'
+        run: python -m pytest tests/feed -q

@@ -27,6 +27,7 @@ Required Fields:
 - product_type: Product category/type
 """
 
+import os
 import re
 import json
 import xml.etree.ElementTree as ET
@@ -52,6 +53,12 @@ _inventory_cache = None
 def load_inventory(url=INVENTORY_URL, timeout=5):
     """Fetch the store inventory snapshot. Returns {sku: qty}, or {} if unavailable."""
     global _inventory_cache
+    if os.environ.get('FEED_OFFLINE') == '1':
+        # Deterministic/offline mode: no network. Availability resolves to the
+        # 'no snapshot row' branch, i.e. in stock. Used by CI freshness tests,
+        # which must not depend on live stock levels.
+        _inventory_cache = {}
+        return _inventory_cache
     if _inventory_cache is not None:
         return _inventory_cache
     try:
