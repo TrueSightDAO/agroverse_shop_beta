@@ -144,17 +144,18 @@
   /**
    * Get inventory for a SKU (uses cache if available, otherwise fetches)
    * @param {string} sku - Product ID
-   * @return {Promise<number>} Inventory count for the SKU
+   * @return {Promise<number|null>} Count if tracked; null if the SKU is absent from
+   *   the snapshot (unknown, NOT zero). Callers must not treat null as out-of-stock.
    */
   async function getInventory(sku) {
-    if (!sku) return 0;
+    if (!sku) return null;
 
     if (inventoryCache && inventoryCacheTime && (Date.now() - inventoryCacheTime) < CACHE_TTL_MS) {
-      return inventoryCache[sku] !== undefined ? parseInt(inventoryCache[sku], 10) : 0;
+      return inventoryCache[sku] !== undefined ? parseInt(inventoryCache[sku], 10) : null;
     }
 
     const allInventory = await fetchAllInventory();
-    return allInventory[sku] !== undefined ? parseInt(allInventory[sku], 10) : 0;
+    return allInventory[sku] !== undefined ? parseInt(allInventory[sku], 10) : null;
   }
 
   /**
@@ -174,6 +175,20 @@
    */
   async function checkInventoryAvailability(sku, requestedQuantity, currentCartQuantity = 0) {
     const inventory = await getInventory(sku);
+
+    // Unknown inventory (SKU absent from the snapshot) must NOT block the sale.
+    // getInventory() returns null for an untracked SKU; comparing a number against
+    // null coerces to 0 and would reject every add-to-cart on a new product.
+    if (inventory === null) {
+      return {
+        available: true,
+        availableQuantity: null,
+        requestedQuantity: requestedQuantity,
+        inventory: null,
+        currentCartQuantity: currentCartQuantity
+      };
+    }
+
     const totalRequested = currentCartQuantity + requestedQuantity;
     const availableQuantity = Math.max(0, inventory - currentCartQuantity);
     const available = totalRequested <= inventory;
