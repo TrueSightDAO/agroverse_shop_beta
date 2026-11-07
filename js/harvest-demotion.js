@@ -82,6 +82,14 @@
     card.style.opacity = '0.7';
     if (!card.style.position) card.style.position = 'relative';
 
+    // Remove the grid's own inventory badge, now redundant: it reads "Out of stock"
+    // while this function adds a "Sold out" pill and relabels the CTA "Sold Out".
+    // Verified live 2026-11-07 \u2014 every Past Harvests card was showing BOTH labels.
+    // One label says it; three say it louder and look like a rendering bug.
+    Array.prototype.forEach.call(card.querySelectorAll('.inventory-badge'), function (b) {
+      b.remove();
+    });
+
     var btn = card.querySelector('.add-to-cart-btn, button[data-product-id]');
     if (btn) {
       btn.disabled = true;
