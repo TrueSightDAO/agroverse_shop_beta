@@ -9,6 +9,7 @@ Deliberately scoped to structural invariants only -- no network calls in the
 default path so CI stays hermetic. Pass --check-inventory to also assert live
 availability agreement (manual/opt-in; see scripts/check_feed_inventory.py).
 """
+
 import os
 import re
 import sys
@@ -114,7 +115,9 @@ def _normalize_availability(xml_text):
     appearing/disappearing, price/slug/identifier changes -- is the rot class this
     test exists to catch, and that survives normalization.
     """
-    out = re.sub(r"<g:availability>[^<]*</g:availability>", "<g:availability/>", xml_text)
+    out = re.sub(
+        r"<g:availability>[^<]*</g:availability>", "<g:availability/>", xml_text
+    )
     # lastBuildDate is the generation timestamp -- volatile by definition.
     return re.sub(r"<lastBuildDate>[^<]*</lastBuildDate>", "<lastBuildDate/>", out)
 
