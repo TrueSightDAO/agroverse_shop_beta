@@ -127,7 +127,8 @@ def test_committed_feed_matches_generator():
     """Regenerate offline and diff structurally. Catches 'nobody regenerates it' rot."""
     import subprocess
 
-    before = open(FEED_PATH, encoding="utf-8").read()
+    with open(FEED_PATH, encoding="utf-8") as f:
+        before = f.read()
     gen = os.path.join(BASE_DIR, "scripts", "generate_facebook_feed.py")
     try:
         subprocess.run(
@@ -138,7 +139,8 @@ def test_committed_feed_matches_generator():
             timeout=180,
             env={**os.environ, "FEED_OFFLINE": "1"},
         )
-        after = open(FEED_PATH, encoding="utf-8").read()
+        with open(FEED_PATH, encoding="utf-8") as f:
+            after = f.read()
     finally:
         with open(FEED_PATH, "w", encoding="utf-8") as f:
             f.write(before)
