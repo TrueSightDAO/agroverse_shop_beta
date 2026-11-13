@@ -1,0 +1,4038 @@
+{
+ "generated_at": "2026-11-13T23:53:13+00:00",
+ "source_repo": "TrueSightDAO/agroverse_shop_beta",
+ "image_root": "assets/images",
+ "total": 502,
+ "categories": {
+  "blog-posts": 163,
+  "farms": 137,
+  "blog": 99,
+  "experiences": 35,
+  "events": 28,
+  "products": 15,
+  "partners": 8,
+  "(root)": 7,
+  "hero": 4,
+  "logo": 3,
+  "shipments": 2,
+  "cooperatives": 1
+ },
+ "images": [
+  {
+   "path": "assets/images/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg",
+   "url": "/assets/images/0e2cde_e43e6687994b4d69bd1bfd671b910730f000.jpg",
+   "category": "",
+   "width": 1440,
+   "height": 678,
+   "bytes": 162505
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/agroverse-brand-fermentation-trough.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/agroverse-brand-fermentation-trough.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 656094
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/bahia-beach-capoeira-sunset.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/bahia-beach-capoeira-sunset.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 500573
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/bahia-beach-lifeguard-tower.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/bahia-beach-lifeguard-tower.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 638225
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/bahia-beach-sunset-child-silhouette.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/bahia-beach-sunset-child-silhouette.jpg",
+   "category": "blog",
+   "width": 1323,
+   "height": 1600,
+   "bytes": 626522
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/bahia-coast-hammock-between-palms.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/bahia-coast-hammock-between-palms.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 428338
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/bahia-waterway-boats-sunset-clouds.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/bahia-waterway-boats-sunset-clouds.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 389341
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/biodiversity-leafcutter-ants-green-leaves.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/biodiversity-leafcutter-ants-green-leaves.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 394351
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-beans-banana-leaf-stump.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-beans-banana-leaf-stump.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 481130
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-beans-drying-on-leaf-stump.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-beans-drying-on-leaf-stump.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 546999
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-01.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-01.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 306516
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-02.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-02.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 297965
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-03.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-dried-beans-handful-terreiro-03.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 263333
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-farmhouse-raking.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-farmhouse-raking.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 796916
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-raker-profile.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-raker-profile.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 827737
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-two-rakers.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-drying-terreiro-two-rakers.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 1143610
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-farm-visit-tree-many-pods.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-farm-visit-tree-many-pods.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 837510
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-fermentation-trough-foot-pulp.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-fermentation-trough-foot-pulp.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 901482
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-harvest-pruning-yellow-pod.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-harvest-pruning-yellow-pod.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 903412
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-plantation-banana-hills.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-plantation-banana-hills.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 896914
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-pods-red-purple-trunk.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-pods-red-purple-trunk.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 696851
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-ripe-pods-yellow-grove.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-ripe-pods-yellow-grove.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 607833
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/cocoa-still-life-beans-nibs-juice-jar.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/cocoa-still-life-beans-nibs-juice-jar.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 631831
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/farm-group-cacau-organico-cocoa-juice.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/farm-group-cacau-organico-cocoa-juice.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 646468
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/garden-buddha-stone-statue-palms.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/garden-buddha-stone-statue-palms.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 1154754
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/pitanga-fruit-still-life-wood-table.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/pitanga-fruit-still-life-wood-table.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 370848
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/pitanga-juice-jar-still-life.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/pitanga-juice-jar-still-life.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 405414
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/salvador-baianas-saia-rodada-banner.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/salvador-baianas-saia-rodada-banner.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 666609
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/salvador-night-acaraj\u00e9-capoeira-shirts.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/salvador-night-acaraj\u00e9-capoeira-shirts.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 556320
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/salvador-night-fire-performer-crowd.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/salvador-night-fire-performer-crowd.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 575442
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/salvador-night-fire-performer-restaurant-row.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/salvador-night-fire-performer-restaurant-row.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 754576
+  },
+  {
+   "path": "assets/images/blog/bahia-photo-library/young-cocoa-tree-maroon-pods-shadow.jpg",
+   "url": "/assets/images/blog/bahia-photo-library/young-cocoa-tree-maroon-pods-shadow.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 1246300
+  },
+  {
+   "path": "assets/images/blog/bean-to-bliss-episode-13/foam-containers-taped.jpg",
+   "url": "/assets/images/blog/bean-to-bliss-episode-13/foam-containers-taped.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1067,
+   "bytes": 125732
+  },
+  {
+   "path": "assets/images/blog/bean-to-bliss-episode-13/hand-truck-street.jpg",
+   "url": "/assets/images/blog/bean-to-bliss-episode-13/hand-truck-street.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1067,
+   "bytes": 281074
+  },
+  {
+   "path": "assets/images/blog/bean-to-bliss-episode-13/two-men-handshake-van.jpg",
+   "url": "/assets/images/blog/bean-to-bliss-episode-13/two-men-handshake-van.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1066,
+   "bytes": 150515
+  },
+  {
+   "path": "assets/images/blog/bean-to-bliss-episode-13/van-interior-load.jpg",
+   "url": "/assets/images/blog/bean-to-bliss-episode-13/van-interior-load.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1067,
+   "bytes": 182675
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8-common-pod-v3.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8-common-pod-v3.jpg",
+   "category": "blog",
+   "width": 594,
+   "height": 792,
+   "bytes": 82520
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8-hero-variety-row.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8-hero-variety-row.jpg",
+   "category": "blog",
+   "width": 1000,
+   "height": 1250,
+   "bytes": 265036
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8-large-yellow-pod-v2.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8-large-yellow-pod-v2.jpg",
+   "category": "blog",
+   "width": 1080,
+   "height": 810,
+   "bytes": 157268
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8_hero_farmer_pod.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8_hero_farmer_pod.jpg",
+   "category": "blog",
+   "width": 1080,
+   "height": 810,
+   "bytes": 273599
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8_opening_pod.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8_opening_pod.jpg",
+   "category": "blog",
+   "width": 1080,
+   "height": 810,
+   "bytes": 93949
+  },
+  {
+   "path": "assets/images/blog/jedielcio-cacao-varieties/fs8_seeds_concrete.jpg",
+   "url": "/assets/images/blog/jedielcio-cacao-varieties/fs8_seeds_concrete.jpg",
+   "category": "blog",
+   "width": 1080,
+   "height": 810,
+   "bytes": 176536
+  },
+  {
+   "path": "assets/images/blog/listing-640w/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community.jpg",
+   "url": "/assets/images/blog/listing-640w/agroverse-and-the-center-sf-a-partnership-rooted-in-regeneration-and-community.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 93936
+  },
+  {
+   "path": "assets/images/blog/listing-640w/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c.jpg",
+   "url": "/assets/images/blog/listing-640w/agroverse-partners-with-green-gulch-zen-monastery-to-offer-regenerative-cacao-nibs-to-marin-county-c.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 88637
+  },
+  {
+   "path": "assets/images/blog/listing-640w/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th.jpg",
+   "url": "/assets/images/blog/listing-640w/agroverse-partners-with-mestre-bico-duro-to-bring-capoeira-fitness-and-cacao-circle-gatherings-to-th.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 153993
+  },
+  {
+   "path": "assets/images/blog/listing-640w/bahia-cacao-belt-farms-harvest-guide.jpg",
+   "url": "/assets/images/blog/listing-640w/bahia-cacao-belt-farms-harvest-guide.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 73217
+  },
+  {
+   "path": "assets/images/blog/listing-640w/brazil-cacao-brand-origin-story-playbook.jpg",
+   "url": "/assets/images/blog/listing-640w/brazil-cacao-brand-origin-story-playbook.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 126585
+  },
+  {
+   "path": "assets/images/blog/listing-640w/brazil-cacao-climate-agroforestry-resilience.jpg",
+   "url": "/assets/images/blog/listing-640w/brazil-cacao-climate-agroforestry-resilience.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 89494
+  },
+  {
+   "path": "assets/images/blog/listing-640w/brazil-cacao-genetics-and-flavor.jpg",
+   "url": "/assets/images/blog/listing-640w/brazil-cacao-genetics-and-flavor.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 157654
+  },
+  {
+   "path": "assets/images/blog/listing-640w/brazil-cacao-processing-flower-to-bar.jpg",
+   "url": "/assets/images/blog/listing-640w/brazil-cacao-processing-flower-to-bar.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 96571
+  },
+  {
+   "path": "assets/images/blog/listing-640w/brazil-commodity-vs-origin-cacao-food-grade.jpg",
+   "url": "/assets/images/blog/listing-640w/brazil-commodity-vs-origin-cacao-food-grade.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 108073
+  },
+  {
+   "path": "assets/images/blog/listing-640w/cabruca-cacao-biodiversity-brazil.jpg",
+   "url": "/assets/images/blog/listing-640w/cabruca-cacao-biodiversity-brazil.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 98684
+  },
+  {
+   "path": "assets/images/blog/listing-640w/cacao-minerals-benefits-and-bean-uses-a-deep-dive.jpg",
+   "url": "/assets/images/blog/listing-640w/cacao-minerals-benefits-and-bean-uses-a-deep-dive.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 157854
+  },
+  {
+   "path": "assets/images/blog/listing-640w/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence.jpg",
+   "url": "/assets/images/blog/listing-640w/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 426,
+   "bytes": 86378
+  },
+  {
+   "path": "assets/images/blog/listing-640w/ceremonial-cacao-brazil-respectful-sourcing.jpg",
+   "url": "/assets/images/blog/listing-640w/ceremonial-cacao-brazil-respectful-sourcing.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 430,
+   "bytes": 37441
+  },
+  {
+   "path": "assets/images/blog/listing-640w/hot-chocolate-from-sao-jorge-cacao-beans-agl6.jpg",
+   "url": "/assets/images/blog/listing-640w/hot-chocolate-from-sao-jorge-cacao-beans-agl6.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 134352
+  },
+  {
+   "path": "assets/images/blog/listing-640w/how-stem-cells-regenerate-with-regular-cacao-consumption.jpg",
+   "url": "/assets/images/blog/listing-640w/how-stem-cells-regenerate-with-regular-cacao-consumption.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 512,
+   "bytes": 88036
+  },
+  {
+   "path": "assets/images/blog/listing-640w/kirsten-kikis-cocoa-hot-chocolate-single-estate.jpg",
+   "url": "/assets/images/blog/listing-640w/kirsten-kikis-cocoa-hot-chocolate-single-estate.jpg",
+   "category": "blog",
+   "width": 426,
+   "height": 640,
+   "bytes": 96149
+  },
+  {
+   "path": "assets/images/blog/listing-640w/okanogan-regenerative-cacao-journey.jpg",
+   "url": "/assets/images/blog/listing-640w/okanogan-regenerative-cacao-journey.jpg",
+   "category": "blog",
+   "width": 584,
+   "height": 640,
+   "bytes": 82458
+  },
+  {
+   "path": "assets/images/blog/listing-640w/santos-melanger-into-mold-and-then-bars.jpg",
+   "url": "/assets/images/blog/listing-640w/santos-melanger-into-mold-and-then-bars.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 1138,
+   "bytes": 62332
+  },
+  {
+   "path": "assets/images/blog/listing-640w/santos-roasting-step.jpg",
+   "url": "/assets/images/blog/listing-640w/santos-roasting-step.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 1138,
+   "bytes": 51504
+  },
+  {
+   "path": "assets/images/blog/listing-640w/santos-winnowing-and-cracking.jpg",
+   "url": "/assets/images/blog/listing-640w/santos-winnowing-and-cracking.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 1138,
+   "bytes": 58196
+  },
+  {
+   "path": "assets/images/blog/listing-640w/single-estate-brazil-cacao-for-brands.jpg",
+   "url": "/assets/images/blog/listing-640w/single-estate-brazil-cacao-for-brands.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 357,
+   "bytes": 65691
+  },
+  {
+   "path": "assets/images/blog/listing-640w/single-estate-vs-single-origin-why-it-matters.jpg",
+   "url": "/assets/images/blog/listing-640w/single-estate-vs-single-origin-why-it-matters.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 184110
+  },
+  {
+   "path": "assets/images/blog/listing-640w/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis.jpg",
+   "url": "/assets/images/blog/listing-640w/the-connection-between-wildfires-and-climate-change-a-growing-global-crisis.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 426,
+   "bytes": 43688
+  },
+  {
+   "path": "assets/images/blog/listing-640w/the-heart-of-brazilian-cacao-bahia-and-amazon-origins.jpg",
+   "url": "/assets/images/blog/listing-640w/the-heart-of-brazilian-cacao-bahia-and-amazon-origins.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 481,
+   "bytes": 172809
+  },
+  {
+   "path": "assets/images/blog/listing-640w/the-joy-of-cacao-circles-connections-and-community.jpg",
+   "url": "/assets/images/blog/listing-640w/the-joy-of-cacao-circles-connections-and-community.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 266,
+   "bytes": 61189
+  },
+  {
+   "path": "assets/images/blog/listing-640w/the-magic-of-terroir-how-place-shapes-the-extraordinary-flavors-of-cacao.jpg",
+   "url": "/assets/images/blog/listing-640w/the-magic-of-terroir-how-place-shapes-the-extraordinary-flavors-of-cacao.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 176353
+  },
+  {
+   "path": "assets/images/blog/listing-640w/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them.jpg",
+   "url": "/assets/images/blog/listing-640w/trends-driving-deforestation-in-the-amazon-rainforest-and-how-agroforestry-can-reverse-them.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 426,
+   "bytes": 150390
+  },
+  {
+   "path": "assets/images/blog/listing-640w/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation.jpg",
+   "url": "/assets/images/blog/listing-640w/understanding-cabruca-a-traditional-agroforestry-practice-for-amazonian-rainforest-conservation.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 480,
+   "bytes": 170267
+  },
+  {
+   "path": "assets/images/blog/listing-640w/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise.jpg",
+   "url": "/assets/images/blog/listing-640w/unveiling-cacao-bean-flavor-profiles-insights-from-global-tasting-tools-and-brazilian-expertise.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 121000
+  },
+  {
+   "path": "assets/images/blog/listing-640w/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection.jpg",
+   "url": "/assets/images/blog/listing-640w/vote-for-the-artwork-on-the-first-series-of-our-2024-limited-edition-paulo-s-farm-cacao-collection.jpg",
+   "category": "blog",
+   "width": 602,
+   "height": 640,
+   "bytes": 171239
+  },
+  {
+   "path": "assets/images/blog/listing-640w/wholesale-brazilian-cacao-buyer-checklist.jpg",
+   "url": "/assets/images/blog/listing-640w/wholesale-brazilian-cacao-buyer-checklist.jpg",
+   "category": "blog",
+   "width": 640,
+   "height": 640,
+   "bytes": 215257
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/after-a-swamp-walk-to-century-old-cacao-trees.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/after-a-swamp-walk-to-century-old-cacao-trees.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 112155
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-1.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-1.jpg",
+   "category": "blog",
+   "width": 480,
+   "height": 360,
+   "bytes": 9969
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-10.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-10.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 79020
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-11.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-11.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 97096
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-12.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-12.jpg",
+   "category": "blog",
+   "width": 1080,
+   "height": 1920,
+   "bytes": 224696
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-13.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-13.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 2000,
+   "bytes": 434421
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-14.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-14.jpg",
+   "category": "blog",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 410442
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-2.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-2.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 85950
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-3.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-3.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 72640
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-4.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-4.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 67278
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-5.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-5.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 67545
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-6.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-6.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 95834
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-7.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-7.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 148367
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/bean-to-bliss-episode-9.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/bean-to-bliss-episode-9.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 92320
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/cacao-pod-selection-walk-on-oscar-s-farm.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/cacao-pod-selection-walk-on-oscar-s-farm.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 109035
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/cracking-fresh-cacao-pods-in-the-field.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/cracking-fresh-cacao-pods-in-the-field.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 90024
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/day-three-sun-drying-cacao-on-banana-leaves.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/day-three-sun-drying-cacao-on-banana-leaves.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 87111
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/from-cattle-pasture-to-cacao-rebuilding-the-farm.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/from-cattle-pasture-to-cacao-rebuilding-the-farm.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 71225
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/greenhouse-visit-young-cacao-seedlings-before-transplant.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/greenhouse-visit-young-cacao-seedlings-before-transplant.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 124918
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/making-chocolate-at-home-from-amazon-rainforest-cacao.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/making-chocolate-at-home-from-amazon-rainforest-cacao.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 65019
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/opening-the-box-after-seven-days-of-cacao-fermentation.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/opening-the-box-after-seven-days-of-cacao-fermentation.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 98136
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/pruning-witches-broom-with-vivi-across-the-grove.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/pruning-witches-broom-with-vivi-across-the-grove.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 115795
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/santos-melanger-into-mold-and-then-bars.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/santos-melanger-into-mold-and-then-bars.jpg",
+   "category": "blog",
+   "width": 720,
+   "height": 1280,
+   "bytes": 68360
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/santos-roasting-step.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/santos-roasting-step.jpg",
+   "category": "blog",
+   "width": 720,
+   "height": 1280,
+   "bytes": 59929
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/santos-winnowing-and-cracking.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/santos-winnowing-and-cracking.jpg",
+   "category": "blog",
+   "width": 720,
+   "height": 1280,
+   "bytes": 67620
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/sorting-harvested-cacao-pods-at-oscar-s-farm.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/sorting-harvested-cacao-pods-at-oscar-s-farm.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 149033
+  },
+  {
+   "path": "assets/images/blog/transcript-thumbs/stone-melanger-cacao-nibs-to-liquor-for-a-small-batch.jpg",
+   "url": "/assets/images/blog/transcript-thumbs/stone-melanger-cacao-nibs-to-liquor-for-a-small-batch.jpg",
+   "category": "blog",
+   "width": 1280,
+   "height": 720,
+   "bytes": 100627
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_1c20e78e0bd648a5b851dd99f72bf0c0_mv2.webp",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_1c20e78e0bd648a5b851dd99f72bf0c0_mv2.webp",
+   "category": "blog-posts",
+   "width": 486,
+   "height": 486,
+   "bytes": 75386
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 529147
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 513044
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 314,
+   "bytes": 55103
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_96b5fad668da44baaf02d1a1a48b34e7_mv2.webp",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_96b5fad668da44baaf02d1a1a48b34e7_mv2.webp",
+   "category": "blog-posts",
+   "width": 486,
+   "height": 486,
+   "bytes": 43410
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_ebc1dad87bc54d1399b3579c0c7108a2_mv2.webp",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_0e2cde_ebc1dad87bc54d1399b3579c0c7108a2_mv2.webp",
+   "category": "blog-posts",
+   "width": 488,
+   "height": 486,
+   "bytes": 91202
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Green_Gulch_Zen_Monastery_to_Offer_Regenerative_Amazonian_Cacao_Nibs_to_Marin_County_Community_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 529147
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 513044
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 314,
+   "bytes": 55103
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_c446f62f5a2d42f89e4c0285f46b72f9_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_c446f62f5a2d42f89e4c0285f46b72f9_mv2.png",
+   "category": "blog-posts",
+   "width": 1280,
+   "height": 960,
+   "bytes": 3155923
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_d8063e0d8c324587905f18c5ad5108db_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_0e2cde_d8063e0d8c324587905f18c5ad5108db_mv2.png",
+   "category": "blog-posts",
+   "width": 564,
+   "height": 648,
+   "bytes": 234920
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_Partners_with_Mestre_Bico_Duro_to_Bring_Capoeira_Fitness_and_Cacao_Circle_Gatherings_to_the_USA_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_0e2cde_cb17c96a1c724f49a66dbf189d98b8b9_mv2.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_0e2cde_cb17c96a1c724f49a66dbf189d98b8b9_mv2.jpg",
+   "category": "blog-posts",
+   "width": 960,
+   "height": 720,
+   "bytes": 116686
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Agroverse_and_The_Center_SF__A_Partnership_Rooted_in_Regeneration_and_Community_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 431911
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 429124
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_3c76ad6a73664725b30234509155c781_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_3c76ad6a73664725b30234509155c781_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 56946
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.webp",
+   "category": "blog-posts",
+   "width": 400,
+   "height": 341,
+   "bytes": 48082
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_96b5fad668da44baaf02d1a1a48b34e7_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_96b5fad668da44baaf02d1a1a48b34e7_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 33091
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 60609
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_c446f62f5a2d42f89e4c0285f46b72f9_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_c446f62f5a2d42f89e4c0285f46b72f9_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 434289
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 387212
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_0e2cde_cb17c96a1c724f49a66dbf189d98b8b9_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_0e2cde_cb17c96a1c724f49a66dbf189d98b8b9_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 41504
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_889769_7899be5bd80847feb20cd1722cc513a2_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_889769_7899be5bd80847feb20cd1722cc513a2_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 37967
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_889769_7d5d9aad37604181a7bf60f73ed25747_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_889769_7d5d9aad37604181a7bf60f73ed25747_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 49257
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_889769_f9c52b08c7674e4d90de7e5e74f0f4a6_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_889769_f9c52b08c7674e4d90de7e5e74f0f4a6_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 29354
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_f8e133_0745d72332d0424190bd1f50f4e5cef6_mv2.webp",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_f8e133_0745d72332d0424190bd1f50f4e5cef6_mv2.webp",
+   "category": "blog-posts",
+   "width": 454,
+   "height": 341,
+   "bytes": 46814
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Blog___Agroverse_unnamed_1_.jpg",
+   "url": "/assets/images/blog-posts/Blog___Agroverse_unnamed_1_.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4301
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_0c9b32701b9a4b458400da2ce7033b58_mv2.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_0c9b32701b9a4b458400da2ce7033b58_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 87,
+   "bytes": 11663
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 410,
+   "height": 724,
+   "bytes": 804099
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_558c1b63883c440db1410a9e9989789f_mv2.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_558c1b63883c440db1410a9e9989789f_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 87,
+   "bytes": 11268
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_b477cfe1e2ef4ffdae7605b8709bcf5b_mv2.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_b477cfe1e2ef4ffdae7605b8709bcf5b_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 87,
+   "bytes": 10581
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_cd765a3cf408426eab94428171adbe9e_mv2.jpg",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_0e2cde_cd765a3cf408426eab94428171adbe9e_mv2.jpg",
+   "category": "blog-posts",
+   "width": 832,
+   "height": 912,
+   "bytes": 95698
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_unnamed.jpg",
+   "url": "/assets/images/blog-posts/From_Brazil_to_Your_Table__The_Journey_of_Regenerative_Cacao_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 529147
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 513044
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 314,
+   "bytes": 55103
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_889769_aeb44d9d4ebf4a029e1f9f36ed3a6de5_mv2.jpg",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_889769_aeb44d9d4ebf4a029e1f9f36ed3a6de5_mv2.jpg",
+   "category": "blog-posts",
+   "width": 1480,
+   "height": 1184,
+   "bytes": 271109
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_unnamed.jpg",
+   "url": "/assets/images/blog-posts/How_Stem_Cells_Regenerate_with_Regular_Cacao_Consumption_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4301
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_1da77c67aedf46889aaa4edc0b3a2688_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_1da77c67aedf46889aaa4edc0b3a2688_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 4162
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_21a5a7d1bfd24b55bd20201f88e845eb_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_21a5a7d1bfd24b55bd20201f88e845eb_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 147,
+   "bytes": 5980
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_3ad250efe701470d9ea86515a5005446_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_3ad250efe701470d9ea86515a5005446_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 83,
+   "bytes": 3093
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_56bea395f11e47ba8ba46ddf5b906b1c_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_56bea395f11e47ba8ba46ddf5b906b1c_mv2.jpg",
+   "category": "blog-posts",
+   "width": 144,
+   "height": 96,
+   "bytes": 3116
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_94bd35760cac47259294582c0554c567_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_94bd35760cac47259294582c0554c567_mv2.jpg",
+   "category": "blog-posts",
+   "width": 1480,
+   "height": 986,
+   "bytes": 117646
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_f9c52b08c7674e4d90de7e5e74f0f4a6_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_889769_f9c52b08c7674e4d90de7e5e74f0f4a6_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 107,
+   "bytes": 3454
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_unnamed.jpg",
+   "url": "/assets/images/blog-posts/The_Connection_Between_Wildfires_and_Climate_Change__A_Growing_Global_Crisis_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4301
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_15bd1ab5e3c6462a91e32cf0fa1ce5ee_mv2.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_15bd1ab5e3c6462a91e32cf0fa1ce5ee_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 28,
+   "bytes": 4024
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 700,
+   "height": 526,
+   "bytes": 1024584
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_386c8e5156b64c8383542c0edaf7564a_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_386c8e5156b64c8383542c0edaf7564a_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 261,
+   "bytes": 8931
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_3d9b93192163434fadfac5cc3e2071c3_mv2.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_3d9b93192163434fadfac5cc3e2071c3_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 49,
+   "bytes": 7099
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_665c7c4683a34827a8d07e89d6029563_mv2.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_665c7c4683a34827a8d07e89d6029563_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 65,
+   "bytes": 8803
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_adc3b5995c0e4b319519402796ff36d2_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_adc3b5995c0e4b319519402796ff36d2_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 196,
+   "bytes": 6456
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_e875d4bb6df54498946de3e0ff72602b_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_e875d4bb6df54498946de3e0ff72602b_mv2.jpg",
+   "category": "blog-posts",
+   "width": 700,
+   "height": 876,
+   "bytes": 309492
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_f0a32824335044da98bdb424df9e3837_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_0e2cde_f0a32824335044da98bdb424df9e3837_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 233,
+   "bytes": 8030
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_unnamed.jpg",
+   "url": "/assets/images/blog-posts/The_Heart_of_Brazilian_Cacao__Bahia_and_Amazon_Origins_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 529147
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 513044
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 314,
+   "bytes": 55103
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_0e2cde_c4d7b3e098aa4cd8bbaaa60eeb6258eb_mv2.png",
+   "category": "blog-posts",
+   "width": 1480,
+   "height": 616,
+   "bytes": 2202814
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_unnamed.jpg",
+   "url": "/assets/images/blog-posts/The_Joy_of_Cacao_Circles__Connections_and_Community_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_56bea395f11e47ba8ba46ddf5b906b1c_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_56bea395f11e47ba8ba46ddf5b906b1c_mv2.jpg",
+   "category": "blog-posts",
+   "width": 144,
+   "height": 96,
+   "bytes": 3116
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_5804a7b6c3584ba68a6a9cf035b77e1c_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_5804a7b6c3584ba68a6a9cf035b77e1c_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 4296
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_7d5d9aad37604181a7bf60f73ed25747_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_7d5d9aad37604181a7bf60f73ed25747_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 3455
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_992b178215234e079c9ca652ee36cba6_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_992b178215234e079c9ca652ee36cba6_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 4600
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_d6f21881f3234f56a02d4ee9b9047afe_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_d6f21881f3234f56a02d4ee9b9047afe_mv2.jpg",
+   "category": "blog-posts",
+   "width": 1280,
+   "height": 853,
+   "bytes": 443240
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_eb47a4b349c44ce191fc3754c06a357e_mv2.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_889769_eb47a4b349c44ce191fc3754c06a357e_mv2.jpg",
+   "category": "blog-posts",
+   "width": 144,
+   "height": 96,
+   "bytes": 2924
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Trends_Driving_Deforestation_in_the_Amazon_Rainforest_and_How_Agroforestry_Can_Reverse_Them_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4301
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_256b90673cf44a5696a5fbe3bd891c35_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 529147
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_3a03a335b022498e91ef82a5fa992811_mv2.png",
+   "category": "blog-posts",
+   "width": 578,
+   "height": 324,
+   "bytes": 513044
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 314,
+   "bytes": 55103
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.jpeg",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_0e2cde_9b52e8f381594d9e9f909bc0e3eedc89_mv2.jpeg",
+   "category": "blog-posts",
+   "width": 1480,
+   "height": 1110,
+   "bytes": 568601
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Understanding_Cabruca__A_Traditional_Agroforestry_Practice_for_Amazonian_Rainforest_Conservation_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_18f215cdbc7143fd9db25bbb8dc0a81e_mv2.jpg",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_18f215cdbc7143fd9db25bbb8dc0a81e_mv2.jpg",
+   "category": "blog-posts",
+   "width": 272,
+   "height": 362,
+   "bytes": 26037
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_8a929faa18c34a7592497e6ba057bafc_mv2.jpg",
+   "category": "blog-posts",
+   "width": 560,
+   "height": 560,
+   "bytes": 80993
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_a2086b9868ed4a22bfd68072295e3e31_mv2.jpg",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_a2086b9868ed4a22bfd68072295e3e31_mv2.jpg",
+   "category": "blog-posts",
+   "width": 125,
+   "height": 125,
+   "bytes": 4491
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_d41585ed720a480e9eea2e751d60b502_mv2.png",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_0e2cde_d41585ed720a480e9eea2e751d60b502_mv2.png",
+   "category": "blog-posts",
+   "width": 49,
+   "height": 50,
+   "bytes": 9374
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_unnamed.jpg",
+   "url": "/assets/images/blog-posts/Unveiling_Cacao_Bean_Flavor_Profiles__Insights_from_Global_Tasting_Tools_and_Brazilian_Expertise_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_095d76f5faea4448af90141d7dbdd3bf_mv2.jpeg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_095d76f5faea4448af90141d7dbdd3bf_mv2.jpeg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 147,
+   "bytes": 7084
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_2067d9f62c92421481cb943fa8e19183_mv2.jpeg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_2067d9f62c92421481cb943fa8e19183_mv2.jpeg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 147,
+   "bytes": 6080
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_3c76ad6a73664725b30234509155c781_mv2.jpeg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_3c76ad6a73664725b30234509155c781_mv2.jpeg",
+   "category": "blog-posts",
+   "width": 1024,
+   "height": 1024,
+   "bytes": 300589
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_4168487f71184a39a2f95b89d2189efb_mv2.jpeg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_4168487f71184a39a2f95b89d2189efb_mv2.jpeg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 147,
+   "bytes": 6904
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_908255537842431aa1e3adbc5b9f4734_mv2.jpg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__0e2cde_908255537842431aa1e3adbc5b9f4734_mv2.jpg",
+   "category": "blog-posts",
+   "width": 768,
+   "height": 816,
+   "bytes": 209878
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__unnamed.jpg",
+   "url": "/assets/images/blog-posts/Vote_for_the_Artwork_on_the_First_Series_of_Our_2024_Limited_Edition_Paulo_s_Farm_Ceremonial_Cacao_Collection__unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4864
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_1.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_1.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_10.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_10.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_11.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_11.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_12.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_12.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_13.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_13.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_2.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_2.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_3.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_3.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_4.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_4.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_5.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_5.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_6.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_6.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_7.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_7.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_8.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_8.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/agroverse-logo_9.jpeg",
+   "url": "/assets/images/blog-posts/agroverse-logo_9.jpeg",
+   "category": "blog-posts",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_11062b_7a80704b0d4547c4a6a39347d587411d_mv2.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1855
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_48a2a42b19814efaa824450f23e8a253.png",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_48a2a42b19814efaa824450f23e8a253.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_8d6893330740455c96d218258a458aa4.png",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_8d6893330740455c96d218258a458aa4.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1675
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_e316f544f9094143b9eac01f1f19e697.png",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_e316f544f9094143b9eac01f1f19e697.png",
+   "category": "blog-posts",
+   "width": 39,
+   "height": 39,
+   "bytes": 1433
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_31ef832e03114374a683acf5004d8178_mv2.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_31ef832e03114374a683acf5004d8178_mv2.jpg",
+   "category": "blog-posts",
+   "width": 1480,
+   "height": 986,
+   "bytes": 295843
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_9764a587c2ff453c953ad22b635b61e6_mv2.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_9764a587c2ff453c953ad22b635b61e6_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 78,
+   "bytes": 3768
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_ce89f0c41d674543a2ada648c4b4fe46_mv2.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_ce89f0c41d674543a2ada648c4b4fe46_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 3199
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_dfa98ce62d9944ba8ae69c7b224974a6_mv2.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_dfa98ce62d9944ba8ae69c7b224974a6_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 83,
+   "bytes": 3915
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_e5fe26764cd54015a43f09b934be23de_mv2.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_f8e133_e5fe26764cd54015a43f09b934be23de_mv2.jpg",
+   "category": "blog-posts",
+   "width": 147,
+   "height": 98,
+   "bytes": 3734
+  },
+  {
+   "path": "assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_unnamed.jpg",
+   "url": "/assets/images/blog-posts/ceremonial-cacao-and-the-art-of-being-from-biohacking-to-presence_unnamed.jpg",
+   "category": "blog-posts",
+   "width": 96,
+   "height": 96,
+   "bytes": 4301
+  },
+  {
+   "path": "assets/images/blog-posts/single-estate-vs-single-origin-infographic.png",
+   "url": "/assets/images/blog-posts/single-estate-vs-single-origin-infographic.png",
+   "category": "blog-posts",
+   "width": 1376,
+   "height": 768,
+   "bytes": 1111937
+  },
+  {
+   "path": "assets/images/blog-posts/single-estate-vs-single-origin-infographic.svg",
+   "url": "/assets/images/blog-posts/single-estate-vs-single-origin-infographic.svg",
+   "category": "blog-posts",
+   "width": null,
+   "height": null,
+   "bytes": 3214
+  },
+  {
+   "path": "assets/images/brazilian-rainforest.jpg",
+   "url": "/assets/images/brazilian-rainforest.jpg",
+   "category": "",
+   "width": 4906,
+   "height": 3259,
+   "bytes": 10758054
+  },
+  {
+   "path": "assets/images/brazilian-rainforest.svg",
+   "url": "/assets/images/brazilian-rainforest.svg",
+   "category": "",
+   "width": null,
+   "height": null,
+   "bytes": 2094
+  },
+  {
+   "path": "assets/images/cacao-journeys-hero.jpg",
+   "url": "/assets/images/cacao-journeys-hero.jpg",
+   "category": "",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2874467
+  },
+  {
+   "path": "assets/images/cacao_circles.webp",
+   "url": "/assets/images/cacao_circles.webp",
+   "category": "",
+   "width": 75,
+   "height": 75,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/cooperatives/coopercabruca/christiano-orlantildes-gary.jpg",
+   "url": "/assets/images/cooperatives/coopercabruca/christiano-orlantildes-gary.jpg",
+   "category": "cooperatives",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2630527
+  },
+  {
+   "path": "assets/images/events/agroverse-logo.jpeg",
+   "url": "/assets/images/events/agroverse-logo.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_1.jpeg",
+   "url": "/assets/images/events/agroverse-logo_1.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_10.jpeg",
+   "url": "/assets/images/events/agroverse-logo_10.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_11.jpeg",
+   "url": "/assets/images/events/agroverse-logo_11.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_12.jpeg",
+   "url": "/assets/images/events/agroverse-logo_12.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_13.jpeg",
+   "url": "/assets/images/events/agroverse-logo_13.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_14.jpeg",
+   "url": "/assets/images/events/agroverse-logo_14.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_15.jpeg",
+   "url": "/assets/images/events/agroverse-logo_15.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_16.jpeg",
+   "url": "/assets/images/events/agroverse-logo_16.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_17.jpeg",
+   "url": "/assets/images/events/agroverse-logo_17.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_18.jpeg",
+   "url": "/assets/images/events/agroverse-logo_18.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_19.jpeg",
+   "url": "/assets/images/events/agroverse-logo_19.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_2.jpeg",
+   "url": "/assets/images/events/agroverse-logo_2.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_20.jpeg",
+   "url": "/assets/images/events/agroverse-logo_20.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_21.jpeg",
+   "url": "/assets/images/events/agroverse-logo_21.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_22.jpeg",
+   "url": "/assets/images/events/agroverse-logo_22.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_23.jpeg",
+   "url": "/assets/images/events/agroverse-logo_23.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_24.jpeg",
+   "url": "/assets/images/events/agroverse-logo_24.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_25.jpeg",
+   "url": "/assets/images/events/agroverse-logo_25.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_26.jpeg",
+   "url": "/assets/images/events/agroverse-logo_26.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_27.jpeg",
+   "url": "/assets/images/events/agroverse-logo_27.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_3.jpeg",
+   "url": "/assets/images/events/agroverse-logo_3.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_4.jpeg",
+   "url": "/assets/images/events/agroverse-logo_4.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_5.jpeg",
+   "url": "/assets/images/events/agroverse-logo_5.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_6.jpeg",
+   "url": "/assets/images/events/agroverse-logo_6.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_7.jpeg",
+   "url": "/assets/images/events/agroverse-logo_7.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_8.jpeg",
+   "url": "/assets/images/events/agroverse-logo_8.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/events/agroverse-logo_9.jpeg",
+   "url": "/assets/images/events/agroverse-logo_9.jpeg",
+   "category": "events",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/border-crossing-leticia.jpg",
+   "url": "/assets/images/experiences/cargo-boat/border-crossing-leticia.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3997995
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/cargo-on-boat.jpg",
+   "url": "/assets/images/experiences/cargo-boat/cargo-on-boat.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2892415
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/food-on-boat.jpg",
+   "url": "/assets/images/experiences/cargo-boat/food-on-boat.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4254342
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/hammocks-on-boat.jpg",
+   "url": "/assets/images/experiences/cargo-boat/hammocks-on-boat.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4069254
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/small-boat-hopping.jpg",
+   "url": "/assets/images/experiences/cargo-boat/small-boat-hopping.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4187381
+  },
+  {
+   "path": "assets/images/experiences/cargo-boat/sunset-amazon-river.jpg",
+   "url": "/assets/images/experiences/cargo-boat/sunset-amazon-river.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 1218701
+  },
+  {
+   "path": "assets/images/experiences/founderhaus-venue.jpg",
+   "url": "/assets/images/experiences/founderhaus-venue.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4458899
+  },
+  {
+   "path": "assets/images/experiences/itacare/bico-duro-profile.jpg",
+   "url": "/assets/images/experiences/itacare/bico-duro-profile.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3605073
+  },
+  {
+   "path": "assets/images/experiences/itacare/cachoeira-do-cleandro.jpg",
+   "url": "/assets/images/experiences/itacare/cachoeira-do-cleandro.jpg",
+   "category": "experiences",
+   "width": 2000,
+   "height": 1500,
+   "bytes": 1046113
+  },
+  {
+   "path": "assets/images/experiences/itacare/capoeira-break-acaraje.jpg",
+   "url": "/assets/images/experiences/itacare/capoeira-break-acaraje.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2705270
+  },
+  {
+   "path": "assets/images/experiences/itacare/capoeira-sunset-beach.jpg",
+   "url": "/assets/images/experiences/itacare/capoeira-sunset-beach.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3408605
+  },
+  {
+   "path": "assets/images/experiences/itacare/itacare-waterfall.jpg",
+   "url": "/assets/images/experiences/itacare/itacare-waterfall.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 6152942
+  },
+  {
+   "path": "assets/images/experiences/itacare/samba-itacare.jpg",
+   "url": "/assets/images/experiences/itacare/samba-itacare.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2713196
+  },
+  {
+   "path": "assets/images/experiences/itacare/traditional-acaraje-makers.jpg",
+   "url": "/assets/images/experiences/itacare/traditional-acaraje-makers.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2427517
+  },
+  {
+   "path": "assets/images/experiences/jungle-johnny/giant-tree-amazon.jpg",
+   "url": "/assets/images/experiences/jungle-johnny/giant-tree-amazon.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4444080
+  },
+  {
+   "path": "assets/images/experiences/jungle-johnny/jungle-johnny-group.jpg",
+   "url": "/assets/images/experiences/jungle-johnny/jungle-johnny-group.jpg",
+   "category": "experiences",
+   "width": 1152,
+   "height": 648,
+   "bytes": 188679
+  },
+  {
+   "path": "assets/images/experiences/jungle-johnny/jungle-johnny-making-fire.jpg",
+   "url": "/assets/images/experiences/jungle-johnny/jungle-johnny-making-fire.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3405862
+  },
+  {
+   "path": "assets/images/experiences/jungle-johnny/jungle-johnny-on-boat.jpg",
+   "url": "/assets/images/experiences/jungle-johnny/jungle-johnny-on-boat.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3467335
+  },
+  {
+   "path": "assets/images/experiences/jungle-johnny/pristine-morning-boat.jpg",
+   "url": "/assets/images/experiences/jungle-johnny/pristine-morning-boat.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2879012
+  },
+  {
+   "path": "assets/images/experiences/salvador/kids-jumping-jetty-barro.jpg",
+   "url": "/assets/images/experiences/salvador/kids-jumping-jetty-barro.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 1685507
+  },
+  {
+   "path": "assets/images/experiences/salvador/michael-jackson-pelourinho.jpg",
+   "url": "/assets/images/experiences/salvador/michael-jackson-pelourinho.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3074787
+  },
+  {
+   "path": "assets/images/experiences/salvador/pelourinho-view-2.jpg",
+   "url": "/assets/images/experiences/salvador/pelourinho-view-2.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4534065
+  },
+  {
+   "path": "assets/images/experiences/salvador/street-bazar-salvador.jpg",
+   "url": "/assets/images/experiences/salvador/street-bazar-salvador.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3916147
+  },
+  {
+   "path": "assets/images/experiences/salvador/view-pelourinho.jpg",
+   "url": "/assets/images/experiences/salvador/view-pelourinho.jpg",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3235307
+  },
+  {
+   "path": "assets/images/experiences/slab-city/5A23510D-A8E2-4C40-A245-192A1FDC07CD.JPG",
+   "url": "/assets/images/experiences/slab-city/5A23510D-A8E2-4C40-A245-192A1FDC07CD.JPG",
+   "category": "experiences",
+   "width": 3669,
+   "height": 3024,
+   "bytes": 1818646
+  },
+  {
+   "path": "assets/images/experiences/slab-city/6943151E-0C7C-485A-97B6-61953F3CBC76.JPG",
+   "url": "/assets/images/experiences/slab-city/6943151E-0C7C-485A-97B6-61953F3CBC76.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2586393
+  },
+  {
+   "path": "assets/images/experiences/slab-city/ACCC4E34-A8B1-480B-BF86-3348B2C462F7.JPG",
+   "url": "/assets/images/experiences/slab-city/ACCC4E34-A8B1-480B-BF86-3348B2C462F7.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3329259
+  },
+  {
+   "path": "assets/images/experiences/slab-city/IMG_1461.JPG",
+   "url": "/assets/images/experiences/slab-city/IMG_1461.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4271010
+  },
+  {
+   "path": "assets/images/experiences/slab-city/IMG_1473.JPG",
+   "url": "/assets/images/experiences/slab-city/IMG_1473.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4410219
+  },
+  {
+   "path": "assets/images/experiences/slab-city/IMG_6980.JPG",
+   "url": "/assets/images/experiences/slab-city/IMG_6980.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2053308
+  },
+  {
+   "path": "assets/images/experiences/winter-desert/220E5915-E4B8-407E-9920-9BEC59113557.JPG",
+   "url": "/assets/images/experiences/winter-desert/220E5915-E4B8-407E-9920-9BEC59113557.JPG",
+   "category": "experiences",
+   "width": 3024,
+   "height": 3780,
+   "bytes": 3146917
+  },
+  {
+   "path": "assets/images/experiences/winter-desert/437A1E52-3204-4D15-A400-1C2E6B170EA0.JPG",
+   "url": "/assets/images/experiences/winter-desert/437A1E52-3204-4D15-A400-1C2E6B170EA0.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3861450
+  },
+  {
+   "path": "assets/images/experiences/winter-desert/533782E0-630D-4FD0-89F2-50702008EE43.JPG",
+   "url": "/assets/images/experiences/winter-desert/533782E0-630D-4FD0-89F2-50702008EE43.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3185716
+  },
+  {
+   "path": "assets/images/experiences/winter-desert/A33F477A-2096-44F4-A8B3-3E57E041D112.JPG",
+   "url": "/assets/images/experiences/winter-desert/A33F477A-2096-44F4-A8B3-3E57E041D112.JPG",
+   "category": "experiences",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2066993
+  },
+  {
+   "path": "assets/images/experiences/winter-desert/BFC04177-09AE-4EC1-A21C-E14ACA434CBF.JPG",
+   "url": "/assets/images/experiences/winter-desert/BFC04177-09AE-4EC1-A21C-E14ACA434CBF.JPG",
+   "category": "experiences",
+   "width": 3418,
+   "height": 3023,
+   "bytes": 2867431
+  },
+  {
+   "path": "assets/images/farms/IMG_3884.jpg",
+   "url": "/assets/images/farms/IMG_3884.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 516093
+  },
+  {
+   "path": "assets/images/farms/IMG_3891.jpg",
+   "url": "/assets/images/farms/IMG_3891.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 450061
+  },
+  {
+   "path": "assets/images/farms/IMG_3905.jpg",
+   "url": "/assets/images/farms/IMG_3905.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 434820
+  },
+  {
+   "path": "assets/images/farms/IMG_3929.jpg",
+   "url": "/assets/images/farms/IMG_3929.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 440094
+  },
+  {
+   "path": "assets/images/farms/IMG_3932.jpg",
+   "url": "/assets/images/farms/IMG_3932.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 442653
+  },
+  {
+   "path": "assets/images/farms/IMG_3940.jpg",
+   "url": "/assets/images/farms/IMG_3940.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 442420
+  },
+  {
+   "path": "assets/images/farms/IMG_3990.jpg",
+   "url": "/assets/images/farms/IMG_3990.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 378404
+  },
+  {
+   "path": "assets/images/farms/IMG_4001.jpg",
+   "url": "/assets/images/farms/IMG_4001.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 460363
+  },
+  {
+   "path": "assets/images/farms/IMG_7693.jpg",
+   "url": "/assets/images/farms/IMG_7693.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 515108
+  },
+  {
+   "path": "assets/images/farms/IMG_7694.jpg",
+   "url": "/assets/images/farms/IMG_7694.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 519567
+  },
+  {
+   "path": "assets/images/farms/IMG_7696.jpg",
+   "url": "/assets/images/farms/IMG_7696.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 572478
+  },
+  {
+   "path": "assets/images/farms/IMG_7697.jpg",
+   "url": "/assets/images/farms/IMG_7697.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 639089
+  },
+  {
+   "path": "assets/images/farms/IMG_7698.jpg",
+   "url": "/assets/images/farms/IMG_7698.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 572884
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9494.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9494.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 580524
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9499.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 600882
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9502.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9502.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 548029
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9504.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9504.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 501328
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9506.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9506.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 399221
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9507.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9507.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 340111
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9510.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9510.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 424377
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9511.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9511.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 465175
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9516.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9516.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 471304
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9536.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9536.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 575774
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9553.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9553.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 517810
+  },
+  {
+   "path": "assets/images/farms/cacau-na-veia-pacaje-IMG_9557.jpg",
+   "url": "/assets/images/farms/cacau-na-veia-pacaje-IMG_9557.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 701959
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9565.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9565.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 494940
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9567.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9567.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 339233
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9573.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9573.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 429413
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9575.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9575.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 490174
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9580.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9580.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 604672
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-IMG_9582.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-IMG_9582.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 334627
+  },
+  {
+   "path": "assets/images/farms/cristo-rei-pacaje-para-hero.jpg",
+   "url": "/assets/images/farms/cristo-rei-pacaje-para-hero.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 474786
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-hero.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-hero.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 315310
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-img_0360.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-img_0360.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 423023
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-img_0366.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-img_0366.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 243013
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-img_0367.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-img_0367.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 271429
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-img_0398.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-img_0398.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 260347
+  },
+  {
+   "path": "assets/images/farms/fazenda-clara-bahia-square.jpg",
+   "url": "/assets/images/farms/fazenda-clara-bahia-square.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1600,
+   "bytes": 621909
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-hero.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-hero.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 173289
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-img_8533.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-img_8533.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 465755
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-img_8535.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-img_8535.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 519152
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-img_8536.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-img_8536.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 278606
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-img_8540.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-img_8540.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 337904
+  },
+  {
+   "path": "assets/images/farms/fazenda-dona-rosa-para-img_8557.jpg",
+   "url": "/assets/images/farms/fazenda-dona-rosa-para-img_8557.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 257936
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8103.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8103.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 218957
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8117.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8117.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 189121
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8135.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8135.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 276944
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8137.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8137.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 375557
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8181.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8181.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 434569
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8224.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8224.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 458835
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8247.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8247.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 1280,
+   "bytes": 305507
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-IMG_8261.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-IMG_8261.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 279327
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-ana-itacare.jpg",
+   "url": "/assets/images/farms/fazenda-santa-ana-itacare.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1200,
+   "bytes": 490570
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8301.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8301.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 699409
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8318.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8318.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 675959
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8319.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8319.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 722628
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8322.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8322.jpg",
+   "category": "farms",
+   "width": 1080,
+   "height": 1920,
+   "bytes": 634402
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8325.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8325.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 661457
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8327.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8327.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 630801
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8328.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8328.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 228211
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8329.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8329.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 519367
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-IMG_8332.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-IMG_8332.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 545719
+  },
+  {
+   "path": "assets/images/farms/fazenda-santa-rosa-hero.jpg",
+   "url": "/assets/images/farms/fazenda-santa-rosa-hero.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 409812
+  },
+  {
+   "path": "assets/images/farms/fazenda_cleide_1.jpg",
+   "url": "/assets/images/farms/fazenda_cleide_1.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 2133,
+   "bytes": 422960
+  },
+  {
+   "path": "assets/images/farms/fazenda_cleide_2.jpg",
+   "url": "/assets/images/farms/fazenda_cleide_2.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 2844,
+   "bytes": 121477
+  },
+  {
+   "path": "assets/images/farms/fazenda_cleide_3.jpg",
+   "url": "/assets/images/farms/fazenda_cleide_3.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 565388
+  },
+  {
+   "path": "assets/images/farms/fazenda_cleide_hero.jpg",
+   "url": "/assets/images/farms/fazenda_cleide_hero.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 356118
+  },
+  {
+   "path": "assets/images/farms/oscar-bahia-IMG_2162.jpg",
+   "url": "/assets/images/farms/oscar-bahia-IMG_2162.jpg",
+   "category": "farms",
+   "width": 1400,
+   "height": 1050,
+   "bytes": 434629
+  },
+  {
+   "path": "assets/images/farms/oscar-bahia-IMG_2163.jpg",
+   "url": "/assets/images/farms/oscar-bahia-IMG_2163.jpg",
+   "category": "farms",
+   "width": 1400,
+   "height": 1050,
+   "bytes": 427090
+  },
+  {
+   "path": "assets/images/farms/oscar-bahia-IMG_2191.jpg",
+   "url": "/assets/images/farms/oscar-bahia-IMG_2191.jpg",
+   "category": "farms",
+   "width": 1400,
+   "height": 1050,
+   "bytes": 286566
+  },
+  {
+   "path": "assets/images/farms/oscar-bahia-IMG_2192.jpg",
+   "url": "/assets/images/farms/oscar-bahia-IMG_2192.jpg",
+   "category": "farms",
+   "width": 1050,
+   "height": 1400,
+   "bytes": 426665
+  },
+  {
+   "path": "assets/images/farms/oscar-bahia-IMG_2193.jpg",
+   "url": "/assets/images/farms/oscar-bahia-IMG_2193.jpg",
+   "category": "farms",
+   "width": 1400,
+   "height": 1050,
+   "bytes": 448020
+  },
+  {
+   "path": "assets/images/farms/paulo.jpg",
+   "url": "/assets/images/farms/paulo.jpg",
+   "category": "farms",
+   "width": 880,
+   "height": 592,
+   "bytes": 50845
+  },
+  {
+   "path": "assets/images/farms/paulo_profile_photo.jpeg",
+   "url": "/assets/images/farms/paulo_profile_photo.jpeg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 456818
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8236.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8236.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 464868
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8240.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8240.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 409196
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8249.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8249.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 860073
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8253.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8253.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 685379
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8254_2.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8254_2.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 458286
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8275.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8275.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 465831
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-IMG_8277.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-IMG_8277.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 494722
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-hero-8236.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-hero-8236.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 464868
+  },
+  {
+   "path": "assets/images/farms/raimundo-geniza-hero.jpg",
+   "url": "/assets/images/farms/raimundo-geniza-hero.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 158384
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7624.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7624.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 628794
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7625.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7625.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 656493
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7626.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7626.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 640367
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7627.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7627.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 710191
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7657.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7657.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 532217
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7658.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7658.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 540543
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7659.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7659.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 543476
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7660.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7660.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 561816
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7661.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7661.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 580363
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-IMG_7678.jpg",
+   "url": "/assets/images/farms/rancho-maranta-IMG_7678.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 650233
+  },
+  {
+   "path": "assets/images/farms/rancho-maranta-header-7660.jpg",
+   "url": "/assets/images/farms/rancho-maranta-header-7660.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 900,
+   "bytes": 447932
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7708.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7708.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 646715
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7710.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7710.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 639871
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7712.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7712.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 614273
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7723.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7723.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 303934
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7731.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7731.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 600516
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7733.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7733.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 605006
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7735.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7735.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 595575
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7739.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7739.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 502833
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7742.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7742.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 865750
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7744.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7744.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 313781
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7746.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7746.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 497641
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7747.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7747.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 455522
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7750.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7750.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 311500
+  },
+  {
+   "path": "assets/images/farms/santa-anna-IMG_7751.jpg",
+   "url": "/assets/images/farms/santa-anna-IMG_7751.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 369969
+  },
+  {
+   "path": "assets/images/farms/santa_anna_farmers_hero.jpg",
+   "url": "/assets/images/farms/santa_anna_farmers_hero.jpg",
+   "category": "farms",
+   "width": 1280,
+   "height": 960,
+   "bytes": 184628
+  },
+  {
+   "path": "assets/images/farms/santa_anna_profile_photo.jpg",
+   "url": "/assets/images/farms/santa_anna_profile_photo.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 743691
+  },
+  {
+   "path": "assets/images/farms/sao-jorge-IMG_1616.jpg",
+   "url": "/assets/images/farms/sao-jorge-IMG_1616.jpg",
+   "category": "farms",
+   "width": 1050,
+   "height": 1400,
+   "bytes": 142719
+  },
+  {
+   "path": "assets/images/farms/sao-jorge-IMG_1671.jpg",
+   "url": "/assets/images/farms/sao-jorge-IMG_1671.jpg",
+   "category": "farms",
+   "width": 1050,
+   "height": 1400,
+   "bytes": 254794
+  },
+  {
+   "path": "assets/images/farms/sao-jorge-IMG_8532.jpg",
+   "url": "/assets/images/farms/sao-jorge-IMG_8532.jpg",
+   "category": "farms",
+   "width": 1050,
+   "height": 1400,
+   "bytes": 193117
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000085.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000085.jpg",
+   "category": "farms",
+   "width": 713,
+   "height": 1600,
+   "bytes": 215935
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000086.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000086.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 713,
+   "bytes": 208763
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000087.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000087.jpg",
+   "category": "farms",
+   "width": 1040,
+   "height": 780,
+   "bytes": 198363
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000088.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000088.jpg",
+   "category": "farms",
+   "width": 464,
+   "height": 1040,
+   "bytes": 127014
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000089.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000089.jpg",
+   "category": "farms",
+   "width": 960,
+   "height": 868,
+   "bytes": 104477
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000093.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000093.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 313861
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000094.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000094.jpg",
+   "category": "farms",
+   "width": 900,
+   "height": 1600,
+   "bytes": 369614
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000095.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000095.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 495277
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000096.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000096.jpg",
+   "category": "farms",
+   "width": 900,
+   "height": 1600,
+   "bytes": 158434
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000097.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000097.jpg",
+   "category": "farms",
+   "width": 900,
+   "height": 1600,
+   "bytes": 288452
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-00000098.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-00000098.jpg",
+   "category": "farms",
+   "width": 900,
+   "height": 1600,
+   "bytes": 138451
+  },
+  {
+   "path": "assets/images/farms/sitio-catarinense-hero.jpg",
+   "url": "/assets/images/farms/sitio-catarinense-hero.jpg",
+   "category": "farms",
+   "width": 713,
+   "height": 1600,
+   "bytes": 215935
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9642.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9642.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 666631
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9659.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9659.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 643053
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9662.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9662.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 759274
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9666.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9666.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 603101
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9673.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9673.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 445427
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9676.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9676.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 547851
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9682.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9682.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 663212
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9687.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9687.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 249137
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9688.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9688.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 288288
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9689.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9689.jpg",
+   "category": "farms",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 283847
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-IMG_9692.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-IMG_9692.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 254406
+  },
+  {
+   "path": "assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
+   "url": "/assets/images/farms/sitio-torres-pacaja-para-hero.jpg",
+   "category": "farms",
+   "width": 1600,
+   "height": 1200,
+   "bytes": 482604
+  },
+  {
+   "path": "assets/images/hero/cacao-circles-alt.jpg",
+   "url": "/assets/images/hero/cacao-circles-alt.jpg",
+   "category": "hero",
+   "width": 75,
+   "height": 75,
+   "bytes": 2831
+  },
+  {
+   "path": "assets/images/hero/cacao-circles.jpg",
+   "url": "/assets/images/hero/cacao-circles.jpg",
+   "category": "hero",
+   "width": 75,
+   "height": 75,
+   "bytes": 1915
+  },
+  {
+   "path": "assets/images/hero/e671cd_1f8b49e6965e4e9798080cef829ee283~mv2.jpg",
+   "url": "/assets/images/hero/e671cd_1f8b49e6965e4e9798080cef829ee283~mv2.jpg",
+   "category": "hero",
+   "width": 2880,
+   "height": 1462,
+   "bytes": 142335
+  },
+  {
+   "path": "assets/images/hero/e671cd_6d787cc27b354ff6847ab5d93a5f9ed4~mv2.jpg",
+   "url": "/assets/images/hero/e671cd_6d787cc27b354ff6847ab5d93a5f9ed4~mv2.jpg",
+   "category": "hero",
+   "width": 1600,
+   "height": 286,
+   "bytes": 75499
+  },
+  {
+   "path": "assets/images/logo/agroverse-logo.jpeg",
+   "url": "/assets/images/logo/agroverse-logo.jpeg",
+   "category": "logo",
+   "width": 43,
+   "height": 61,
+   "bytes": 1873
+  },
+  {
+   "path": "assets/images/logo/favicon-192x192.jpeg",
+   "url": "/assets/images/logo/favicon-192x192.jpeg",
+   "category": "logo",
+   "width": 192,
+   "height": 192,
+   "bytes": 21933
+  },
+  {
+   "path": "assets/images/logo/favicon-32x32.jpeg",
+   "url": "/assets/images/logo/favicon-32x32.jpeg",
+   "category": "logo",
+   "width": 32,
+   "height": 32,
+   "bytes": 1679
+  },
+  {
+   "path": "assets/images/oscar_1.jpeg",
+   "url": "/assets/images/oscar_1.jpeg",
+   "category": "",
+   "width": 491,
+   "height": 538,
+   "bytes": 121890
+  },
+  {
+   "path": "assets/images/pacific-coast-highway.jpg",
+   "url": "/assets/images/pacific-coast-highway.jpg",
+   "category": "",
+   "width": 1920,
+   "height": 980,
+   "bytes": 162693
+  },
+  {
+   "path": "assets/images/partners/black-king/dropping-cacao-vivi-farm.jpg",
+   "url": "/assets/images/partners/black-king/dropping-cacao-vivi-farm.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2968167
+  },
+  {
+   "path": "assets/images/partners/black-king/ilheus-warehouse.jpg",
+   "url": "/assets/images/partners/black-king/ilheus-warehouse.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2633024
+  },
+  {
+   "path": "assets/images/partners/black-king/matheus-emelin-clara-fernando-farm.jpg",
+   "url": "/assets/images/partners/black-king/matheus-emelin-clara-fernando-farm.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2950051
+  },
+  {
+   "path": "assets/images/partners/black-king/printing-qr-codes.jpg",
+   "url": "/assets/images/partners/black-king/printing-qr-codes.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2697724
+  },
+  {
+   "path": "assets/images/partners/black-king/vivi-gifting-mel-cacau.jpg",
+   "url": "/assets/images/partners/black-king/vivi-gifting-mel-cacau.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3833524
+  },
+  {
+   "path": "assets/images/partners/cic/cacao-tasting-wheel.jpg",
+   "url": "/assets/images/partners/cic/cacao-tasting-wheel.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2177437
+  },
+  {
+   "path": "assets/images/partners/cic/christiano-orlantildes-gary.jpg",
+   "url": "/assets/images/partners/cic/christiano-orlantildes-gary.jpg",
+   "category": "partners",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 2630527
+  },
+  {
+   "path": "assets/images/partners/cic/gary-emelin-cic-oscar-farm.jpg",
+   "url": "/assets/images/partners/cic/gary-emelin-cic-oscar-farm.jpg",
+   "category": "partners",
+   "width": 3088,
+   "height": 2316,
+   "bytes": 1480602
+  },
+  {
+   "path": "assets/images/products/81-dark-chocolate-bar-50g-biodegradable-packaging.jpg",
+   "url": "/assets/images/products/81-dark-chocolate-bar-50g-biodegradable-packaging.jpg",
+   "category": "products",
+   "width": 2160,
+   "height": 2533,
+   "bytes": 932045
+  },
+  {
+   "path": "assets/images/products/81-dark-chocolate-bar-50g-close-up.jpg",
+   "url": "/assets/images/products/81-dark-chocolate-bar-50g-close-up.jpg",
+   "category": "products",
+   "width": 900,
+   "height": 1599,
+   "bytes": 310346
+  },
+  {
+   "path": "assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg",
+   "url": "/assets/images/products/81-dark-chocolate-bar-50g-packaging.jpg",
+   "category": "products",
+   "width": 1597,
+   "height": 900,
+   "bytes": 369709
+  },
+  {
+   "path": "assets/images/products/cacao-mass-bar-500g-1.jpeg",
+   "url": "/assets/images/products/cacao-mass-bar-500g-1.jpeg",
+   "category": "products",
+   "width": 1600,
+   "height": 900,
+   "bytes": 224832
+  },
+  {
+   "path": "assets/images/products/cacao-mass-bar-500g-2.jpeg",
+   "url": "/assets/images/products/cacao-mass-bar-500g-2.jpeg",
+   "category": "products",
+   "width": 1600,
+   "height": 900,
+   "bytes": 183616
+  },
+  {
+   "path": "assets/images/products/cacao-nibs.jpeg",
+   "url": "/assets/images/products/cacao-nibs.jpeg",
+   "category": "products",
+   "width": 626,
+   "height": 626,
+   "bytes": 136537
+  },
+  {
+   "path": "assets/images/products/cacao-tea-oscars-farm-50g-hero.jpg",
+   "url": "/assets/images/products/cacao-tea-oscars-farm-50g-hero.jpg",
+   "category": "products",
+   "width": 960,
+   "height": 1280,
+   "bytes": 115055
+  },
+  {
+   "path": "assets/images/products/cacao-tea-oscars-farm-50g.jpg",
+   "url": "/assets/images/products/cacao-tea-oscars-farm-50g.jpg",
+   "category": "products",
+   "width": 1070,
+   "height": 1280,
+   "bytes": 178666
+  },
+  {
+   "path": "assets/images/products/fazenda-santa-ana-product.jpg",
+   "url": "/assets/images/products/fazenda-santa-ana-product.jpg",
+   "category": "products",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 3848615
+  },
+  {
+   "path": "assets/images/products/la-do-sitio-farm.jpg",
+   "url": "/assets/images/products/la-do-sitio-farm.jpg",
+   "category": "products",
+   "width": 626,
+   "height": 626,
+   "bytes": 61727
+  },
+  {
+   "path": "assets/images/products/oscars-farm.jpeg",
+   "url": "/assets/images/products/oscars-farm.jpeg",
+   "category": "products",
+   "width": 626,
+   "height": 626,
+   "bytes": 140245
+  },
+  {
+   "path": "assets/images/products/packaging/back.jpeg",
+   "url": "/assets/images/products/packaging/back.jpeg",
+   "category": "products",
+   "width": 1200,
+   "height": 1600,
+   "bytes": 607197
+  },
+  {
+   "path": "assets/images/products/packaging/front.jpeg",
+   "url": "/assets/images/products/packaging/front.jpeg",
+   "category": "products",
+   "width": 768,
+   "height": 1024,
+   "bytes": 74004
+  },
+  {
+   "path": "assets/images/products/taste-of-rainforest.jpeg",
+   "url": "/assets/images/products/taste-of-rainforest.jpeg",
+   "category": "products",
+   "width": 626,
+   "height": 626,
+   "bytes": 93594
+  },
+  {
+   "path": "assets/images/products/white-label-mockup.png",
+   "url": "/assets/images/products/white-label-mockup.png",
+   "category": "products",
+   "width": 388,
+   "height": 708,
+   "bytes": 169242
+  },
+  {
+   "path": "assets/images/shipments/cacao_circles.webp",
+   "url": "/assets/images/shipments/cacao_circles.webp",
+   "category": "shipments",
+   "width": 75,
+   "height": 75,
+   "bytes": 1692
+  },
+  {
+   "path": "assets/images/shipments/sao-jorge-matheus-mailan-cacao-pods.jpg",
+   "url": "/assets/images/shipments/sao-jorge-matheus-mailan-cacao-pods.jpg",
+   "category": "shipments",
+   "width": 4032,
+   "height": 3024,
+   "bytes": 4687491
+  }
+ ]
+}
